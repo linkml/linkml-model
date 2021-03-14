@@ -1,0 +1,23 @@
+id: https://w3id.org/my_schema
+name: my_schema
+description: >-
+  My Schema Description
+imports:
+ - biolinkml:types
+ - my_core
+prefixes:
+  biolinkml: https://w3id.org/biolink/biolinkml/
+  my_schema: https://w3id.org/mixs/my_schema/
+default_prefix: my_schema
+
+slots:
+  name:
+    description: >-
+      example slot
+
+classes:
+  my class:
+    is_a: named thing
+    slots:
+      - name
+
