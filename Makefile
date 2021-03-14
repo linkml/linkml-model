@@ -1,105 +1,159 @@
-SRC_DIR = src
+# All artifacts of the build should be preserved
+.SECONDARY:
+
+# ----------------------------------------
+# Model documentation and schema directory
+# ----------------------------------------
+SRC_DIR = model
 SCHEMA_DIR = $(SRC_DIR)/schema
+MODEL_DOCS_DIR = $(SRC_DIR)/docs
 SOURCE_FILES := $(shell find $(SCHEMA_DIR) -name '*.yaml')
 SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 
-SCHEMA_NAME = my_schema
+SCHEMA_NAME = meta
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
-TGTS = graphql jsonschema docs shex owl csv graphql python
+TGTS = docs graphql json jsonld jsonschema owl python rdf shex
 
-#GEN_OPTS = --no-mergeimports
-GEN_OPTS = 
+# Global generation options
+GEN_OPTS =
 
-all: gen stage
+# ----------------------------------------
+# TOP LEVEL TARGETS
+# ----------------------------------------
+all: env.lock gen stage
+
+# ---------------------------------------
+# env.lock:  set up pipenv
+# ---------------------------------------
+export PIPENV_VERBOSITY = -1
+env.lock:
+	pipenv install --dev
+	cp /dev/null env.lock
+
+# ---------------------------------------
+# GEN: generate the new output into the target directory
+# ---------------------------------------
 gen: $(patsubst %,gen-%,$(TGTS))
-clean:
-	rm -rf target/
-	rm -rf docs/
 
+# ---------------------------------------
+# CLEAN: clear out all of the target directories
+# ---------------------------------------
+clean: $(patsubst %,clean-%,$(TGTS))
+	rm -rf target/
+	rm -f env.lock
+	pipenv --rm
+
+clean-%:
+	find $* ! -name 'README.*' -exec rm -rf {} +
+
+# ---------------------------------------
+# T: List files to generate
+# ---------------------------------------
 t:
 	echo $(SCHEMA_NAMES)
 
+# ---------------------------------------
+# ECHO: List all targets
+# ---------------------------------------
 echo:
 	echo $(patsubst %,gen-%,$(TGTS))
 
-test: all
-
-install:
-	. environment.sh
-	pip install -r requirements.txt
+# ---------------------------------------
+# STAGE: Copy the newly generated targets to their destinations
+# ---------------------------------------
+stage: $(patsubst %,stage-%,$(TGTS))
+stage-%: gen-%
+	find $* ! -name 'README.*' -type f -exec rm -f {} +
+	cp -pR target/$* .
 
 tdir-%:
 	mkdir -p target/$*
+
 docs:
-	mkdir $@
-
-stage: $(patsubst %,stage-%,$(TGTS))
-stage-%: gen-%
-	cp -pr target/$* .
+	mkdir -p $@
 
 
-###  -- MARKDOWN DOCS --
-# Generate documentation ready for mkdocs
-# TODO: modularize imports
-gen-docs: target/docs/index.md copy-src-docs
+# ---------------------------------------
+# MARKDOWN DOCS
+#      Generate documentation ready for mkdocs
+#      Note: phony means that even IF gen-docs exists as a file, we run this
+# ---------------------------------------
+gen-docs: $(patsubst %, target/python/%.md, $(SCHEMA_NAMES)) copy-src-docs
 .PHONY: gen-docs
 copy-src-docs:
-	cp $(SRC_DIR)/docs/*md target/docs/
+	cp -R $(MODEL_DOCS_DIR)/docs/*md target/docs/
 target/docs/%.md: $(SCHEMA_SRC) tdir-docs
-	gen-markdown $(GEN_OPTS) --dir target/docs $<
-stage-docs: gen-docs
-	cp -pr target/docs .
+	$(RUN) gen-markdown $(GEN_OPTS) --no-mergeimports --dir target/docs $<
 
-###  -- MARKDOWN DOCS --
-# TODO: modularize imports
+# ---------------------------------------
+# PYTHON Source
+# ---------------------------------------
 gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
 .PHONY: gen-python
 target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
-	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
+	$(RUN) gen-py-classes $(GEN_OPTS) --gen-meta --no-slots --no-mergeimports $< > $@
 
-###  -- MARKDOWN DOCS --
+# ---------------------------------------
+# GRAPHQL Source
+# ---------------------------------------
 # TODO: modularize imports. For now imports are merged.
-gen-graphql:target/graphql/$(SCHEMA_NAME).graphql 
+gen-graphql:target/graphql/$(SCHEMA_NAME).graphql $(patsubst %, target/graphql/%.graphql, $(SCHEMA_NAMES))
+.PHONY: gen-graphql
 target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
-	gen-graphql $(GEN_OPTS) $< > $@
+	$(RUN) gen-graphql $(GEN_OPTS) $< > $@
 
-###  -- JSON schema --
-# TODO: modularize imports. For now imports are merged.
-gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
+# ---------------------------------------
+# JSON Schema
+# ---------------------------------------
+gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json $(patsubst %, target/jsonschema/%.schema.json, $(SCHEMA_NAMES))
+.PHONY: gen-jsonschema
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
-	gen-json-schema $(GEN_OPTS) -t transaction $< > $@
+	$(RUN) gen-json-schema $(GEN_OPTS) -t transaction $< > $@
 
-###  -- Shex --
-# one file per module
+# ---------------------------------------
+# ShEx
+# ---------------------------------------
 gen-shex: $(patsubst %, target/shex/%.shex, $(SCHEMA_NAMES))
+.PHONY: gen-shex
 target/shex/%.shex: $(SCHEMA_DIR)/%.yaml tdir-shex
-	gen-shex --no-mergeimports $(GEN_OPTS) $< > $@
+	$(RUN) gen-shex --no-mergeimports $(GEN_OPTS) $< > $@
 
-###  -- CSV --
-# one file per module
-gen-csv: $(patsubst %, target/csv/%.csv, $(SCHEMA_NAMES))
-target/csv/%.csv: $(SCHEMA_DIR)/%.yaml tdir-csv
-	gen-csv $(GEN_OPTS) $< > $@
-
-###  -- OWL --
+# ---------------------------------------
+# OWL
+# ---------------------------------------
 # TODO: modularize imports. For now imports are merged.
 gen-owl: target/owl/$(SCHEMA_NAME).owl.ttl
 .PHONY: gen-owl
 target/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl
-	gen-owl $(GEN_OPTS) $< > $@
+	$(RUN) gen-owl $(GEN_OPTS) $< > $@
 
-###  -- RDF (direct mapping) --
+# ---------------------------------------
+# JSON-LD Context
+# ---------------------------------------
+gen-jsonld: $(patsubst %, target/jsonld/%.context.jsonld, $(SCHEMA_NAMES)) $(patsubst %, target/jsonld/%.model.context.jsonld, $(SCHEMA_NAMES))
+.PHONY: gen-jsonld
+target/jsonld/%.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld
+	$(RUN) gen-jsonld-context $(GEN_OPTS) $< > $@
+target/jsonld/%.model.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld
+	$(RUN) gen-jsonld-context $(GEN_OPTS) --metauris $< > $@
+
+# ---------------------------------------
+# PO JSON
+# ---------------------------------------
+gen-json: $(patsubst %, target/json/%.json, $(SCHEMA_NAMES))
+.PHONY: gen-json
+target/json/%.json: $(SCHEMA_DIR)/%.yaml tdir-json
+	$(RUN) gen-jsonld $(GEN_OPTS) $< > $@
+
+# ---------------------------------------
+# RDF
+# ---------------------------------------
 # TODO: modularize imports. For now imports are merged.
 gen-rdf: target/rdf/$(SCHEMA_NAME).ttl
+.PHONY: gen-rdf
 target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf
-	gen-rdf $(GEN_OPTS) $< > $@
+	$(RUN) gen-rdf $(GEN_OPTS) $< > $@
 
-###  -- LinkML --
-# linkml (copy)
-# one file per module
-gen-linkml: target/linkml/$(SCHEMA_NAME).yaml
-target/linkml/%.yaml: $(SCHEMA_DIR)/%.yaml tdir-limkml
-	cp $< > $@
 
 # test docs locally.
 docserve:

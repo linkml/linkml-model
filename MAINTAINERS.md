@@ -1,13 +1,13 @@
 # How to make a release
 
-See the instructions at the top of [Makefile](Makefile)
+Make an
 
-First install the linkml python package and mkdocs:
+1) Make changes to the source schema
+2) run `make all`
+3) run `make tests`
+4) run `make gh-deploy`
 
-```bash
-. environment.sh
-pip install -r requirements.txt
-```
+Your documentation will be available from a URL https://my_org_or_name.github.io/my_schema/
 
 Then every time you change the source schema, run:
 
