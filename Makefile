@@ -9,6 +9,7 @@ SCHEMA_DIR = $(SRC_DIR)/schema
 MODEL_DOCS_DIR = $(SRC_DIR)/docs
 SOURCE_FILES := $(shell find $(SCHEMA_DIR) -name '*.yaml')
 SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
+RUN = pipenv run
 
 SCHEMA_NAME = meta
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
@@ -20,7 +21,7 @@ GEN_OPTS =
 # ----------------------------------------
 # TOP LEVEL TARGETS
 # ----------------------------------------
-all: env.lock gen stage unlock
+all: gen stage unlock
 
 # ---------------------------------------
 # env.lock:  set up pipenv
@@ -30,7 +31,7 @@ env.lock:
 	pipenv install --dev
 	cp /dev/null env.lock
 unlock:
-.PHONY: unlock
+	pipenv --rm
 	rm env.lock
 
 # ---------------------------------------
@@ -41,13 +42,10 @@ gen: $(patsubst %,gen-%,$(TGTS))
 # ---------------------------------------
 # CLEAN: clear out all of the target directories
 # ---------------------------------------
-clean: $(patsubst %,clean-%,$(TGTS))
+clean:
 	rm -rf target/
 	rm -f env.lock
 	pipenv --rm
-
-clean-%:
-	find $* ! -name 'README.*' -exec rm -rf {} +
 
 # ---------------------------------------
 # T: List files to generate
@@ -66,7 +64,7 @@ echo:
 # ---------------------------------------
 stage: $(patsubst %,stage-%,$(TGTS))
 stage-%: gen-%
-	find $* ! -name 'README.*' -type f -exec rm -f {} +
+	find $* ! -name 'README.*' ! -name $* -type f -exec rm -f {} +
 	cp -pR target/$* .
 
 tdir-%:
@@ -81,11 +79,11 @@ docs:
 #      Generate documentation ready for mkdocs
 #      Note: phony means that even IF gen-docs exists as a file, we run this
 # ---------------------------------------
-gen-docs: $(patsubst %, target/docs/%.md, $(SCHEMA_NAMES)) copy-src-docs
+gen-docs:  $(patsubst %, target/docs/%.md, $(SCHEMA_NAMES)) env.lock copy-src-docs
 .PHONY: gen-docs
 copy-src-docs:
 	cp -R $(MODEL_DOCS_DIR)/*md target/docs/
-target/docs/%.md: $(SCHEMA_DIR)/%.yaml tdir-docs
+target/docs/%.md: $(SCHEMA_DIR)/%.yaml tdir-docs env.lock
 	$(RUN) gen-markdown $(GEN_OPTS) --no-mergeimports --dir target/docs $<
 
 # ---------------------------------------
@@ -93,7 +91,7 @@ target/docs/%.md: $(SCHEMA_DIR)/%.yaml tdir-docs
 # ---------------------------------------
 gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
 .PHONY: gen-python
-target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
+target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python env.lock
 	$(RUN) gen-py-classes $(GEN_OPTS) --genmeta --no-slots --no-mergeimports $< > $@
 
 # ---------------------------------------
@@ -102,7 +100,7 @@ target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
 # TODO: modularize imports. For now imports are merged.
 gen-graphql:target/graphql/$(SCHEMA_NAME).graphql $(patsubst %, target/graphql/%.graphql, $(SCHEMA_NAMES))
 .PHONY: gen-graphql
-target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
+target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql env.lock
 	$(RUN) gen-graphql $(GEN_OPTS) $< > $@
 
 # ---------------------------------------
@@ -110,7 +108,7 @@ target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
 # ---------------------------------------
 gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json $(patsubst %, target/jsonschema/%.schema.json, $(SCHEMA_NAMES))
 .PHONY: gen-jsonschema
-target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
+target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema env.lock
 	$(RUN) gen-json-schema $(GEN_OPTS) -t transaction $< > $@
 
 # ---------------------------------------
@@ -118,7 +116,7 @@ target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
 # ---------------------------------------
 gen-shex: $(patsubst %, target/shex/%.shex, $(SCHEMA_NAMES))
 .PHONY: gen-shex
-target/shex/%.shex: $(SCHEMA_DIR)/%.yaml tdir-shex
+target/shex/%.shex: $(SCHEMA_DIR)/%.yaml tdir-shex env.lock
 	$(RUN) gen-shex --no-mergeimports $(GEN_OPTS) $< > $@
 
 # ---------------------------------------
@@ -127,25 +125,26 @@ target/shex/%.shex: $(SCHEMA_DIR)/%.yaml tdir-shex
 # TODO: modularize imports. For now imports are merged.
 gen-owl: target/owl/$(SCHEMA_NAME).owl.ttl
 .PHONY: gen-owl
-target/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl
+target/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl env.lock
 	$(RUN) gen-owl $(GEN_OPTS) $< > $@
 
 # ---------------------------------------
 # JSON-LD Context
 # ---------------------------------------
-gen-jsonld: $(patsubst %, target/jsonld/%.context.jsonld, $(SCHEMA_NAMES)) $(patsubst %, target/jsonld/%.model.context.jsonld, $(SCHEMA_NAMES))
+#gen-jsonld: $(patsubst %, target/jsonld/%.context.jsonld, $(SCHEMA_NAMES)) $(patsubst %, target/jsonld/%.model.context.jsonld, $(SCHEMA_NAMES))
+gen-jsonld: target/jsonld/$(SCHEMA_NAME).context.jsonld target/jsonld/$(SCHEMA_NAME).model.context.jsonld
 .PHONY: gen-jsonld
-target/jsonld/%.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld
+target/jsonld/$(SCHEMA_NAME).context.jsonld: $(SCHEMA_SRC) tdir-jsonld env.lock
 	$(RUN) gen-jsonld-context $(GEN_OPTS) $< > $@
-target/jsonld/%.model.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld
-	$(RUN) gen-jsonld-context $(GEN_OPTS) --metauris $< > $@
+target/jsonld/$(SCHEMA_NAME).model.context.jsonld: $(SCHEMA_SRC) tdir-jsonld env.lock
+	$(RUN) gen-jsonld-context $(GEN_OPTS) $< > $@
 
 # ---------------------------------------
 # PO JSON
 # ---------------------------------------
 gen-json: $(patsubst %, target/json/%.json, $(SCHEMA_NAMES))
 .PHONY: gen-json
-target/json/%.json: $(SCHEMA_DIR)/%.yaml tdir-json
+target/json/%.json: $(SCHEMA_DIR)/%.yaml tdir-json env.lock
 	$(RUN) gen-jsonld $(GEN_OPTS) $< > $@
 
 # ---------------------------------------
@@ -156,7 +155,7 @@ gen-rdf: tdir-rdf
 .PHONY: gen-rdf
 #gen-rdf: target/rdf/$(SCHEMA_NAME).ttl
 #.PHONY: gen-rdf
-#target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf
+#target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf env.lock
 #	$(RUN) gen-rdf $(GEN_OPTS) $< > $@
 
 
