@@ -20,7 +20,7 @@ GEN_OPTS =
 # ----------------------------------------
 # TOP LEVEL TARGETS
 # ----------------------------------------
-all: env.lock gen stage
+all: env.lock gen stage unlock
 
 # ---------------------------------------
 # env.lock:  set up pipenv
@@ -29,6 +29,9 @@ export PIPENV_VERBOSITY = -1
 env.lock:
 	pipenv install --dev
 	cp /dev/null env.lock
+unlock:
+.PHONY: unlock
+	rm env.lock
 
 # ---------------------------------------
 # GEN: generate the new output into the target directory
@@ -78,11 +81,11 @@ docs:
 #      Generate documentation ready for mkdocs
 #      Note: phony means that even IF gen-docs exists as a file, we run this
 # ---------------------------------------
-gen-docs: $(patsubst %, target/python/%.md, $(SCHEMA_NAMES)) copy-src-docs
+gen-docs: $(patsubst %, target/docs/%.md, $(SCHEMA_NAMES)) copy-src-docs
 .PHONY: gen-docs
 copy-src-docs:
-	cp -R $(MODEL_DOCS_DIR)/docs/*md target/docs/
-target/docs/%.md: $(SCHEMA_SRC) tdir-docs
+	cp -R $(MODEL_DOCS_DIR)/*md target/docs/
+target/docs/%.md: $(SCHEMA_DIR)/%.yaml tdir-docs
 	$(RUN) gen-markdown $(GEN_OPTS) --no-mergeimports --dir target/docs $<
 
 # ---------------------------------------
@@ -91,7 +94,7 @@ target/docs/%.md: $(SCHEMA_SRC) tdir-docs
 gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
 .PHONY: gen-python
 target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
-	$(RUN) gen-py-classes $(GEN_OPTS) --gen-meta --no-slots --no-mergeimports $< > $@
+	$(RUN) gen-py-classes $(GEN_OPTS) --genmeta --no-slots --no-mergeimports $< > $@
 
 # ---------------------------------------
 # GRAPHQL Source
@@ -149,10 +152,12 @@ target/json/%.json: $(SCHEMA_DIR)/%.yaml tdir-json
 # RDF
 # ---------------------------------------
 # TODO: modularize imports. For now imports are merged.
-gen-rdf: target/rdf/$(SCHEMA_NAME).ttl
+gen-rdf: tdir-rdf
 .PHONY: gen-rdf
-target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf
-	$(RUN) gen-rdf $(GEN_OPTS) $< > $@
+#gen-rdf: target/rdf/$(SCHEMA_NAME).ttl
+#.PHONY: gen-rdf
+#target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf
+#	$(RUN) gen-rdf $(GEN_OPTS) $< > $@
 
 
 # test docs locally.
