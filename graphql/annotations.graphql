@@ -1,0 +1,26 @@
+interface Annotatable
+  {
+    annotations: [Annotation]
+  }
+
+type Annotation implements Annotatable
+  {
+    tag: Uriorcurie!
+    value: String!
+    extensions: [Extension]
+    annotations: [Annotation]
+  }
+
+interface Extensible
+  {
+    extensions: [Extension]
+  }
+
+type Extension
+  {
+    tag: Uriorcurie!
+    value: String!
+    extensions: [Extension]
+  }
+
+
