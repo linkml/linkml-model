@@ -5,6 +5,7 @@
 # Model documentation and schema directory
 # ----------------------------------------
 SRC_DIR = model
+PKG_DIR = linkml_model
 SCHEMA_DIR = $(SRC_DIR)/schema
 MODEL_DOCS_DIR = $(SRC_DIR)/docs
 SOURCE_FILES := $(shell find $(SCHEMA_DIR) -name '*.yaml')
@@ -13,7 +14,7 @@ RUN = pipenv run
 
 SCHEMA_NAME = meta
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
-TGTS = docs graphql json jsonld jsonschema owl python rdf shex
+TGTS = docs graphql json jsonld jsonschema owl linkml_model rdf shex
 
 # Global generation options
 GEN_OPTS =
@@ -31,7 +32,7 @@ env.lock:
 	pipenv install --dev
 	cp /dev/null env.lock
 unlock:
-	pipenv --rm
+#	pipenv --rm
 	rm env.lock
 
 # ---------------------------------------
@@ -64,7 +65,7 @@ echo:
 # ---------------------------------------
 stage: $(patsubst %,stage-%,$(TGTS))
 stage-%: gen-%
-	find $* ! -name 'README.*' ! -name $* -type f -exec rm -f {} +
+	find $* ! -name 'README.*' ! -name $* ! -name __init__.py -type f -exec rm -f {} +
 	cp -pR target/$* .
 
 tdir-%:
@@ -89,9 +90,9 @@ target/docs/%.md: $(SCHEMA_DIR)/%.yaml tdir-docs env.lock
 # ---------------------------------------
 # PYTHON Source
 # ---------------------------------------
-gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
-.PHONY: gen-python
-target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python env.lock
+gen-linkml_model: $(patsubst %, target/$(PKG_DIR)/%.py, $(SCHEMA_NAMES))
+.PHONY: gen-linkml_model
+target/$(PKG_DIR)/%.py: $(SCHEMA_DIR)/%.yaml  tdir-linkml_model env.lock
 	$(RUN) gen-py-classes $(GEN_OPTS) --genmeta --no-slots --no-mergeimports $< > $@
 
 # ---------------------------------------
@@ -114,10 +115,12 @@ target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema env.lock
 # ---------------------------------------
 # ShEx
 # ---------------------------------------
-gen-shex: $(patsubst %, target/shex/%.shex, $(SCHEMA_NAMES))
+gen-shex: $(patsubst %, target/shex/%.shex, $(SCHEMA_NAMES)) $(patsubst %, target/shex/%.shexj, $(SCHEMA_NAMES))
 .PHONY: gen-shex
 target/shex/%.shex: $(SCHEMA_DIR)/%.yaml tdir-shex env.lock
 	$(RUN) gen-shex --no-mergeimports $(GEN_OPTS) $< > $@
+target/shex/%.shexj: $(SCHEMA_DIR)/%.yaml tdir-shex env.lock
+	$(RUN) gen-shex --no-mergeimports $(GEN_OPTS) -f json $< > $@
 
 # ---------------------------------------
 # OWL
