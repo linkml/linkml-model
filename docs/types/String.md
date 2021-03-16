@@ -4,7 +4,7 @@
 
 A character string
 
-URI: [linkml:String](https://w3id.org/linkml/String)
+URI: [datatype:String](https://w3id.org/linkml/type/String)
 
 |  |  |  |
 | --- | --- | --- |

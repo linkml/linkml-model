@@ -7,8 +7,8 @@
   "license": "https://creativecommons.org/publicdomain/zero/1.0/",
   "prefixes": [
     {
-      "prefix_prefix": "linkml",
-      "prefix_reference": "https://w3id.org/linkml/"
+      "prefix_prefix": "datatype",
+      "prefix_reference": "https://w3id.org/linkml/type/"
     },
     {
       "prefix_prefix": "xsd",
@@ -19,67 +19,67 @@
       "prefix_reference": "http://www.w3.org/ns/shex#"
     }
   ],
-  "default_prefix": "linkml",
+  "default_prefix": "datatype",
   "default_range": "string",
   "types": [
     {
       "name": "string",
-      "definition_uri": "https://w3id.org/linkml/String",
+      "definition_uri": "https://w3id.org/linkml/type/String",
       "description": "A character string",
       "from_schema": "https://w3id.org/linkml/types",
       "base": "str",
       "uri": "http://www.w3.org/2001/XMLSchema#string",
-      "type": "TypeDefinition"
+      "@type": "TypeDefinition"
     },
     {
       "name": "integer",
-      "definition_uri": "https://w3id.org/linkml/Integer",
+      "definition_uri": "https://w3id.org/linkml/type/Integer",
       "description": "An integer",
       "from_schema": "https://w3id.org/linkml/types",
       "base": "int",
       "uri": "http://www.w3.org/2001/XMLSchema#integer",
-      "type": "TypeDefinition"
+      "@type": "TypeDefinition"
     },
     {
       "name": "boolean",
-      "definition_uri": "https://w3id.org/linkml/Boolean",
+      "definition_uri": "https://w3id.org/linkml/type/Boolean",
       "description": "A binary (true or false) value",
       "from_schema": "https://w3id.org/linkml/types",
       "base": "Bool",
       "uri": "http://www.w3.org/2001/XMLSchema#boolean",
       "repr": "bool",
-      "type": "TypeDefinition"
+      "@type": "TypeDefinition"
     },
     {
       "name": "float",
-      "definition_uri": "https://w3id.org/linkml/Float",
+      "definition_uri": "https://w3id.org/linkml/type/Float",
       "description": "A real number that conforms to the xsd:float specification",
       "from_schema": "https://w3id.org/linkml/types",
       "base": "float",
       "uri": "http://www.w3.org/2001/XMLSchema#float",
-      "type": "TypeDefinition"
+      "@type": "TypeDefinition"
     },
     {
       "name": "double",
-      "definition_uri": "https://w3id.org/linkml/Double",
+      "definition_uri": "https://w3id.org/linkml/type/Double",
       "description": "A real number that conforms to the xsd:double specification",
       "from_schema": "https://w3id.org/linkml/types",
       "base": "float",
       "uri": "http://www.w3.org/2001/XMLSchema#double",
-      "type": "TypeDefinition"
+      "@type": "TypeDefinition"
     },
     {
       "name": "decimal",
-      "definition_uri": "https://w3id.org/linkml/Decimal",
+      "definition_uri": "https://w3id.org/linkml/type/Decimal",
       "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
       "from_schema": "https://w3id.org/linkml/types",
       "base": "Decimal",
       "uri": "http://www.w3.org/2001/XMLSchema#decimal",
-      "type": "TypeDefinition"
+      "@type": "TypeDefinition"
     },
     {
       "name": "time",
-      "definition_uri": "https://w3id.org/linkml/Time",
+      "definition_uri": "https://w3id.org/linkml/type/Time",
       "description": "A time object represents a (local) time of day, independent of any particular day",
       "notes": [
         "URI is dateTime because OWL reasoners don't work with straight date or time"
@@ -88,11 +88,11 @@
       "base": "XSDTime",
       "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
       "repr": "str",
-      "type": "TypeDefinition"
+      "@type": "TypeDefinition"
     },
     {
       "name": "date",
-      "definition_uri": "https://w3id.org/linkml/Date",
+      "definition_uri": "https://w3id.org/linkml/type/Date",
       "description": "a date (year, month and day) in an idealized calendar",
       "notes": [
         "URI is dateTime because OWL reasoners don't work with straight date or time"
@@ -101,51 +101,51 @@
       "base": "XSDDate",
       "uri": "http://www.w3.org/2001/XMLSchema#date",
       "repr": "str",
-      "type": "TypeDefinition"
+      "@type": "TypeDefinition"
     },
     {
       "name": "datetime",
-      "definition_uri": "https://w3id.org/linkml/Datetime",
+      "definition_uri": "https://w3id.org/linkml/type/Datetime",
       "description": "The combination of a date and time",
       "from_schema": "https://w3id.org/linkml/types",
       "base": "XSDDateTime",
       "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
       "repr": "str",
-      "type": "TypeDefinition"
+      "@type": "TypeDefinition"
     },
     {
       "name": "uriorcurie",
-      "definition_uri": "https://w3id.org/linkml/Uriorcurie",
+      "definition_uri": "https://w3id.org/linkml/type/Uriorcurie",
       "description": "a URI or a CURIE",
       "from_schema": "https://w3id.org/linkml/types",
       "base": "URIorCURIE",
       "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
       "repr": "str",
-      "type": "TypeDefinition"
+      "@type": "TypeDefinition"
     },
     {
       "name": "uri",
-      "definition_uri": "https://w3id.org/linkml/Uri",
+      "definition_uri": "https://w3id.org/linkml/type/Uri",
       "description": "a complete URI",
       "from_schema": "https://w3id.org/linkml/types",
       "base": "URI",
       "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
       "repr": "str",
-      "type": "TypeDefinition"
+      "@type": "TypeDefinition"
     },
     {
       "name": "ncname",
-      "definition_uri": "https://w3id.org/linkml/Ncname",
+      "definition_uri": "https://w3id.org/linkml/type/Ncname",
       "description": "Prefix part of CURIE",
       "from_schema": "https://w3id.org/linkml/types",
       "base": "NCName",
       "uri": "http://www.w3.org/2001/XMLSchema#string",
       "repr": "str",
-      "type": "TypeDefinition"
+      "@type": "TypeDefinition"
     },
     {
       "name": "objectidentifier",
-      "definition_uri": "https://w3id.org/linkml/Objectidentifier",
+      "definition_uri": "https://w3id.org/linkml/type/Objectidentifier",
       "description": "A URI or CURIE that represents an object in the model.",
       "comments": [
         "Used for inheritence and type checking"
@@ -154,31 +154,31 @@
       "base": "ElementIdentifier",
       "uri": "http://www.w3.org/ns/shex#iri",
       "repr": "str",
-      "type": "TypeDefinition"
+      "@type": "TypeDefinition"
     },
     {
       "name": "nodeidentifier",
-      "definition_uri": "https://w3id.org/linkml/Nodeidentifier",
+      "definition_uri": "https://w3id.org/linkml/type/Nodeidentifier",
       "description": "A URI, CURIE or BNODE that represents a node in a model.",
       "from_schema": "https://w3id.org/linkml/types",
       "base": "NodeIdentifier",
       "uri": "http://www.w3.org/ns/shex#nonLiteral",
       "repr": "str",
-      "type": "TypeDefinition"
+      "@type": "TypeDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "types.yaml",
-  "source_file_date": "Mon Mar 15 18:50:45 2021",
-  "source_file_size": 2676,
-  "generation_date": "2021-03-15 18:52",
-  "type": "SchemaDefinition",
+  "source_file_date": "Tue Mar 16 17:25:54 2021",
+  "source_file_size": 2685,
+  "generation_date": "2021-03-16 17:27",
+  "@type": "SchemaDefinition",
   "@context": [
     [
       "https://w3id.org/biolink/biolinkml/context.jsonld"
     ],
     {
-      "@base": "https://w3id.org/linkml/"
+      "@base": "https://w3id.org/linkml/type/"
     }
   ]
 }
