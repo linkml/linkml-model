@@ -13,9 +13,11 @@ if __name__ == '__main__':
     print(sys.path)
 
 W3ID_SERVER = "https://w3id.org/"
+
+# Once you've got stuff working, uncomment the line below and comment out the DEFAULT_SERVER and SKIP_REWRITE_RULES
 # DEFAULT_SERVER = W3ID_SERVER
 DEFAULT_SERVER = "http://localhost:8091/"
-SKIP_REWRITE_RULES = False
+SKIP_REWRITE_RULES = True
 
 # Taken from Firefox network.http.accept.default
 default_header = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
@@ -31,7 +33,7 @@ class TestEntry:
 
 def build_test_entry_set(input_url: Namespace, model: str) -> List[TestEntry]:
     return [
-        TestEntry(input_url, f'includes/{model}'),
+        TestEntry(input_url, f'{model}'),
         TestEntry(input_url, f'includes/{model}.yaml', 'text/yaml'),
         TestEntry(input_url, f'includes/{model}.ttl', 'text/turtle'),
         TestEntry(input_url, f'includes/{model}.jsonld', 'application/json'),
@@ -47,6 +49,7 @@ class TestLists:
         if not server.endswith(('#', '/')):
             server += '/'
         self.linkml = server + 'linkml/'
+
         self.types = Namespace(self.linkml + 'types')
         self.mappings = Namespace(self.linkml + 'mappings')
         self.extensions = Namespace(self.linkml + 'extensions')
