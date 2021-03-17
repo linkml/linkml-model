@@ -134,12 +134,14 @@ target/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl env.lock
 # ---------------------------------------
 # JSON-LD Context
 # ---------------------------------------
-gen-jsonld: $(patsubst %, target/jsonld/%.context.jsonld, $(SCHEMA_NAMES)) $(patsubst %, target/jsonld/%.model.context.jsonld, $(SCHEMA_NAMES))
+gen-jsonld: $(patsubst %, target/jsonld/%.context.jsonld, $(SCHEMA_NAMES)) $(patsubst %, target/jsonld/%.model.context.jsonld, $(SCHEMA_NAMES)) target/jsonld/context.jsonld
 .PHONY: gen-jsonld
 target/jsonld/%.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld env.lock
-	$(RUN) gen-jsonld-context $(GEN_OPTS) $< > $@
+	$(RUN) gen-jsonld-context $(GEN_OPTS) --no-mergeimports $< > $@
 target/jsonld/%.model.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld env.lock
-	$(RUN) gen-jsonld-context $(GEN_OPTS) $< > $@
+	$(RUN) gen-jsonld-context $(GEN_OPTS) --no-mergeimports $< > $@
+target/jsonld/context.jsonld: target/jsonld/meta.context.jsonld
+	cp target/jsonld/meta.context.jsonld target/jsonld/context.jsonld
 
 # ---------------------------------------
 # PO JSON
@@ -147,18 +149,18 @@ target/jsonld/%.model.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld env.lock
 gen-json: $(patsubst %, target/json/%.json, $(SCHEMA_NAMES))
 .PHONY: gen-json
 target/json/%.json: $(SCHEMA_DIR)/%.yaml tdir-json env.lock
-	$(RUN) gen-jsonld $(GEN_OPTS) $< > $@
+	$(RUN) gen-jsonld $(GEN_OPTS) --no-mergeimports $< > $@
 
 # ---------------------------------------
 # RDF
 # ---------------------------------------
-# TODO: modularize imports. For now imports are merged.
-gen-rdf: tdir-rdf
+#gen-rdf: $(patsubst %, target/rdf/%.ttl, $(SCHEMA_NAMES)) $(patsubst %, target/rdf/%.model.ttl, $(SCHEMA_NAMES))
+gen-rdf:
 .PHONY: gen-rdf
-#gen-rdf: target/rdf/$(SCHEMA_NAME).ttl
-#.PHONY: gen-rdf
-#target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf env.lock
-#	$(RUN) gen-rdf $(GEN_OPTS) $< > $@
+#target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml target/jsonld/%.context.jsonld tdir-rdf env.lock
+#	$(RUN) gen-rdf $(GEN_OPTS) --context $(subst target/jsonld/,,$(word 2,$^)) $< > $@
+#target/rdf/%.model.ttl: $(SCHEMA_DIR)/%.yaml target/jsonld/%.model.context.jsonld tdir-rdf env.lock
+#	$(RUN) gen-rdf $(GEN_OPTS) --context $(subst target/jsonld/,,$(word 2,$^)) $< > $@
 
 
 # test docs locally.
