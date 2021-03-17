@@ -134,12 +134,11 @@ target/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl env.lock
 # ---------------------------------------
 # JSON-LD Context
 # ---------------------------------------
-#gen-jsonld: $(patsubst %, target/jsonld/%.context.jsonld, $(SCHEMA_NAMES)) $(patsubst %, target/jsonld/%.model.context.jsonld, $(SCHEMA_NAMES))
-gen-jsonld: target/jsonld/$(SCHEMA_NAME).context.jsonld target/jsonld/$(SCHEMA_NAME).model.context.jsonld
+gen-jsonld: $(patsubst %, target/jsonld/%.context.jsonld, $(SCHEMA_NAMES)) $(patsubst %, target/jsonld/%.model.context.jsonld, $(SCHEMA_NAMES))
 .PHONY: gen-jsonld
-target/jsonld/$(SCHEMA_NAME).context.jsonld: $(SCHEMA_SRC) tdir-jsonld env.lock
+target/jsonld/%.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld env.lock
 	$(RUN) gen-jsonld-context $(GEN_OPTS) $< > $@
-target/jsonld/$(SCHEMA_NAME).model.context.jsonld: $(SCHEMA_SRC) tdir-jsonld env.lock
+target/jsonld/%.model.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld env.lock
 	$(RUN) gen-jsonld-context $(GEN_OPTS) $< > $@
 
 # ---------------------------------------
