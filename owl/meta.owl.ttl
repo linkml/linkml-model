@@ -101,15 +101,15 @@ meta:slot_definition_mixins a owl:ObjectProperty,
     skos:definition "the actual annotation" .
 
 <https://w3id.org/linkml/meta> a owl:Ontology ;
-    rdfs:label "metamodel" ;
+    rdfs:label "meta" ;
     dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
     dcterms:title "LinkML Schema Metamodel" ;
     skos:definition "A metamodel for defining linked open data schemas" ;
-    meta:generation_date "2021-03-17 17:29" ;
+    meta:generation_date "2021-03-17 18:01" ;
     meta:metamodel_version "1.7.0" ;
     meta:source_file "meta.yaml" ;
-    meta:source_file_date "Wed Mar 17 17:26:47 2021" ;
-    meta:source_file_size 32418 .
+    meta:source_file_date "Wed Mar 17 17:59:07 2021" ;
+    meta:source_file_size 32413 .
 
 <https://w3id.org/linkml/slot_definitions> a owl:ObjectProperty,
         meta:SlotDefinition ;
@@ -1089,23 +1089,23 @@ For example, a Measurement class may have 3 fields: unit, value, and string_valu
     rdfs:label "enum_definition" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <http://UNKNOWN.org/pv_formula_options> ;
-            owl:onProperty <https://w3id.org/linkml/pv_formula> ],
+            owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
+            owl:onProperty <https://w3id.org/linkml/code_set> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/PermissibleValue> ;
+            owl:onProperty <https://w3id.org/linkml/permissible_values> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/String> ;
             owl:onProperty <https://w3id.org/linkml/code_set_tag> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/code_set_version> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/PermissibleValue> ;
-            owl:onProperty <https://w3id.org/linkml/permissible_values> ],
+            owl:onClass <http://UNKNOWN.org/pv_formula_options> ;
+            owl:onProperty <https://w3id.org/linkml/pv_formula> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
-            owl:onProperty <https://w3id.org/linkml/code_set> ],
+            owl:onClass <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/code_set_version> ],
         <https://w3id.org/linkml/Element> ;
     skos:definition "List of values that constrain the range of a slot" .
 
@@ -1136,16 +1136,16 @@ For example, a Measurement class may have 3 fields: unit, value, and string_valu
         meta:ClassDefinition ;
     rdfs:label "extension" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/Extension> ;
+            owl:onProperty <https://w3id.org/linkml/extensions> ],
+        [ a owl:Restriction ;
             owl:onClass <https://w3id.org/linkml/type/String> ;
             owl:onProperty <https://w3id.org/linkml/value> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
             owl:onProperty meta:tag ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/Extension> ;
-            owl:onProperty <https://w3id.org/linkml/extensions> ] ;
+            owl:qualifiedCardinality 1 ] ;
     skos:definition "a tag/value pair used to add non-model information to an entry" .
 
 <https://w3id.org/linkml/type/Datetime> a owl:Class,
@@ -1163,69 +1163,69 @@ For example, a Measurement class may have 3 fields: unit, value, and string_valu
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
-            owl:onProperty <https://w3id.org/linkml/deprecated_element_has_possible_replacement> ],
+            owl:onProperty <https://w3id.org/linkml/meaning> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/SubsetDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/in_subset> ],
+            owl:allValuesFrom <https://w3id.org/linkml/PermissibleValue> ;
+            owl:onProperty <https://w3id.org/linkml/mixins> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/AltDescription> ;
+            owl:onProperty <https://w3id.org/linkml/alt_descriptions> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/Uri> ;
+            owl:onProperty <https://w3id.org/linkml/from_schema> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/description> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/notes> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/Extension> ;
+            owl:onProperty <https://w3id.org/linkml/extensions> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/linkml/Example> ;
             owl:onProperty <https://w3id.org/linkml/examples> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/deprecated> ],
+            owl:onProperty <https://w3id.org/linkml/imported_from> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/linkml/type/String> ;
             owl:onProperty <https://w3id.org/linkml/comments> ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
-            owl:onProperty <https://w3id.org/linkml/meaning> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/notes> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/PermissibleValue> ;
-            owl:onProperty <https://w3id.org/linkml/mixins> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Uri> ;
-            owl:onProperty <https://w3id.org/linkml/from_schema> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/linkml/Annotation> ;
             owl:onProperty <https://w3id.org/linkml/annotations> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/description> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/Extension> ;
-            owl:onProperty <https://w3id.org/linkml/extensions> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/imported_from> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
-            owl:onProperty <https://w3id.org/linkml/deprecated_element_has_exact_replacement> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/todos> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/linkml/type/Uriorcurie> ;
             owl:onProperty <https://w3id.org/linkml/see_also> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/AltDescription> ;
-            owl:onProperty <https://w3id.org/linkml/alt_descriptions> ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
+            owl:onProperty <https://w3id.org/linkml/deprecated_element_has_possible_replacement> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/deprecated> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/SubsetDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/in_subset> ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/text> ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/PermissibleValue> ;
             owl:onProperty <https://w3id.org/linkml/is_a> ],
         [ a owl:Restriction ;
-            owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/text> ;
-            owl:qualifiedCardinality 1 ],
+            owl:allValuesFrom <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/todos> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
+            owl:onProperty <https://w3id.org/linkml/deprecated_element_has_exact_replacement> ],
         <https://w3id.org/linkml/Annotatable>,
         <https://w3id.org/linkml/Extensible> ;
     skos:definition "a permissible value, accompanied by intended text and an optional mapping to a concept URI" .
@@ -1236,11 +1236,7 @@ For example, a Measurement class may have 3 fields: unit, value, and string_valu
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/repr> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
-            owl:onProperty meta:uri ],
+            owl:onProperty <https://w3id.org/linkml/base> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/TypeDefinition> ;
@@ -1248,7 +1244,11 @@ For example, a Measurement class may have 3 fields: unit, value, and string_valu
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/base> ],
+            owl:onProperty <https://w3id.org/linkml/repr> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
+            owl:onProperty meta:uri ],
         <https://w3id.org/linkml/Element> ;
     skos:definition "A data type definition." .
 
@@ -1273,34 +1273,9 @@ meta:topValue a owl:DatatypeProperty ;
     rdfs:label "definition" ;
     rdfs:seeAlso "https://en.wikipedia.org/wiki/Data_element_definition" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/type/Uriorcurie> ;
-            owl:onProperty <https://w3id.org/linkml/values_from> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Boolean> ;
-            owl:onProperty <https://w3id.org/linkml/abstract> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Boolean> ;
-            owl:onProperty <https://w3id.org/linkml/mixin> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Datetime> ;
-            owl:onProperty <https://w3id.org/linkml/created_on> ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
             owl:onProperty <https://w3id.org/linkml/modified_by> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/Definition> ;
-            owl:onProperty <https://w3id.org/linkml/mixins> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/Definition> ;
-            owl:onProperty <https://w3id.org/linkml/apply_to> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
-            owl:onProperty <https://w3id.org/linkml/created_by> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/Definition> ;
@@ -1312,7 +1287,32 @@ meta:topValue a owl:DatatypeProperty ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
+            owl:onProperty <https://w3id.org/linkml/created_by> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/type/Uriorcurie> ;
+            owl:onProperty <https://w3id.org/linkml/values_from> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
             owl:onProperty <https://w3id.org/linkml/status> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/Definition> ;
+            owl:onProperty <https://w3id.org/linkml/mixins> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/Datetime> ;
+            owl:onProperty <https://w3id.org/linkml/created_on> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/Boolean> ;
+            owl:onProperty <https://w3id.org/linkml/mixin> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/Boolean> ;
+            owl:onProperty <https://w3id.org/linkml/abstract> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/Definition> ;
+            owl:onProperty <https://w3id.org/linkml/apply_to> ],
         <https://w3id.org/linkml/Element> ;
     skos:definition "base class for definitions" .
 
@@ -1325,16 +1325,69 @@ meta:ClassDefinition a owl:Class ;
     rdfs:label "schema_definition" ;
     rdfs:seeAlso "https://en.wikipedia.org/wiki/Data_dictionary" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/default_curi_maps> ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/default_prefix> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/Prefix> ;
+            owl:onProperty <https://w3id.org/linkml/prefixes> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/SlotDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/slots> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/type/Ncname> ;
+            owl:onProperty <https://w3id.org/linkml/emit_prefixes> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/metamodel_version> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/ClassDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/classes> ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/linkml/type/Uri> ;
+            owl:onProperty <https://w3id.org/linkml/id> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/license> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/TypeDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/default_range> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/version> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/source_file> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/Datetime> ;
             owl:onProperty <https://w3id.org/linkml/source_file_date> ],
         [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/default_curi_maps> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/SubsetDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/subsets> ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/version> ],
+            owl:onClass <https://w3id.org/linkml/type/Datetime> ;
+            owl:onProperty <https://w3id.org/linkml/generation_date> ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/linkml/type/Ncname> ;
+            owl:onProperty <https://w3id.org/linkml/name> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/EnumDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/enums> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/TypeDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/types> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/linkml/type/Uriorcurie> ;
             owl:onProperty <https://w3id.org/linkml/imports> ],
@@ -1344,61 +1397,8 @@ meta:ClassDefinition a owl:Class ;
             owl:onProperty <https://w3id.org/linkml/title> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/TypeDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/default_range> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/SubsetDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/subsets> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/EnumDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/enums> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/TypeDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/types> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/default_prefix> ],
-        [ a owl:Restriction ;
-            owl:onClass <https://w3id.org/linkml/type/Uri> ;
-            owl:onProperty <https://w3id.org/linkml/id> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Datetime> ;
-            owl:onProperty <https://w3id.org/linkml/generation_date> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/metamodel_version> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/Integer> ;
             owl:onProperty <https://w3id.org/linkml/source_file_size> ],
-        [ a owl:Restriction ;
-            owl:onClass <https://w3id.org/linkml/type/Ncname> ;
-            owl:onProperty <https://w3id.org/linkml/name> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/license> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/Prefix> ;
-            owl:onProperty <https://w3id.org/linkml/prefixes> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/SlotDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/slots> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/ClassDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/classes> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/source_file> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/type/Ncname> ;
-            owl:onProperty <https://w3id.org/linkml/emit_prefixes> ],
         <https://w3id.org/linkml/Element> ;
     skos:altLabel "data dictionary" ;
     skos:definition "a collection of subset, type, slot and class definitions" .
@@ -1408,41 +1408,41 @@ meta:ClassDefinition a owl:Class ;
     rdfs:label "class_definition" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/linkml/SlotDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/defining_slots> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/ClassDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/union_of> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/SlotDefinition> ;
             owl:onProperty <https://w3id.org/linkml/slot_usage> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/SlotDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/attributes> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/SlotDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/slots> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/ClassDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/mixins> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/ClassDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/is_a> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
             owl:onProperty <https://w3id.org/linkml/class_uri> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/ClassDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/apply_to> ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/Boolean> ;
             owl:onProperty <https://w3id.org/linkml/tree_root> ],
         [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/SlotDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/attributes> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/SlotDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/defining_slots> ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
             owl:onProperty <https://w3id.org/linkml/subclass_of> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/ClassDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/mixins> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/ClassDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/union_of> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/ClassDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/is_a> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/SlotDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/slots> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/ClassDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/apply_to> ],
         <https://w3id.org/linkml/Definition> ;
     skos:altLabel "record",
         "table",
@@ -1463,91 +1463,91 @@ meta:ClassDefinition a owl:Class ;
     rdfs:label "element" ;
     rdfs:seeAlso "https://en.wikipedia.org/wiki/Data_element" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/todos> ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Uri> ;
-            owl:onProperty <https://w3id.org/linkml/from_schema> ],
+            owl:onClass <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/description> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/linkml/type/Uriorcurie> ;
             owl:onProperty <https://w3id.org/linkml/narrow_mappings> ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/deprecated> ],
+            owl:allValuesFrom <https://w3id.org/linkml/type/Uriorcurie> ;
+            owl:onProperty <https://w3id.org/linkml/related_mappings> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/Extension> ;
-            owl:onProperty <https://w3id.org/linkml/extensions> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/todos> ],
+            owl:allValuesFrom <https://w3id.org/linkml/SubsetDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/in_subset> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/linkml/type/Uriorcurie> ;
-            owl:onProperty <https://w3id.org/linkml/exact_mappings> ],
+            owl:onProperty <https://w3id.org/linkml/broad_mappings> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/type/Uriorcurie> ;
+            owl:onProperty <https://w3id.org/linkml/close_mappings> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
+            owl:onProperty <https://w3id.org/linkml/deprecated_element_has_exact_replacement> ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/name> ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/linkml/type/Uriorcurie> ;
             owl:onProperty <https://w3id.org/linkml/mappings> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
-            owl:onProperty <https://w3id.org/linkml/definition_uri> ],
+            owl:onProperty <https://w3id.org/linkml/deprecated_element_has_possible_replacement> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/type/Uriorcurie> ;
-            owl:onProperty <https://w3id.org/linkml/broad_mappings> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/type/Uriorcurie> ;
-            owl:onProperty <https://w3id.org/linkml/related_mappings> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/aliases> ],
+            owl:allValuesFrom <https://w3id.org/linkml/Annotation> ;
+            owl:onProperty <https://w3id.org/linkml/annotations> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/linkml/AltDescription> ;
             owl:onProperty <https://w3id.org/linkml/alt_descriptions> ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
-            owl:onProperty <https://w3id.org/linkml/deprecated_element_has_possible_replacement> ],
+            owl:allValuesFrom <https://w3id.org/linkml/Extension> ;
+            owl:onProperty <https://w3id.org/linkml/extensions> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/type/Ncname> ;
+            owl:onProperty <https://w3id.org/linkml/id_prefixes> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
-            owl:onProperty <https://w3id.org/linkml/deprecated_element_has_exact_replacement> ],
+            owl:onClass <https://w3id.org/linkml/type/Uri> ;
+            owl:onProperty <https://w3id.org/linkml/from_schema> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/LocalName> ;
-            owl:onProperty <https://w3id.org/linkml/local_names> ],
+            owl:allValuesFrom <https://w3id.org/linkml/type/Uriorcurie> ;
+            owl:onProperty <https://w3id.org/linkml/see_also> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/SubsetDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/in_subset> ],
+            owl:allValuesFrom <https://w3id.org/linkml/Example> ;
+            owl:onProperty <https://w3id.org/linkml/examples> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/type/Uriorcurie> ;
+            owl:onProperty <https://w3id.org/linkml/exact_mappings> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/linkml/type/String> ;
             owl:onProperty <https://w3id.org/linkml/comments> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/description> ],
+            owl:onProperty <https://w3id.org/linkml/deprecated> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/Example> ;
-            owl:onProperty <https://w3id.org/linkml/examples> ],
+            owl:allValuesFrom <https://w3id.org/linkml/LocalName> ;
+            owl:onProperty <https://w3id.org/linkml/local_names> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/aliases> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
+            owl:onProperty <https://w3id.org/linkml/definition_uri> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/notes> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/String> ;
             owl:onProperty <https://w3id.org/linkml/imported_from> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/Annotation> ;
-            owl:onProperty <https://w3id.org/linkml/annotations> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/type/Uriorcurie> ;
-            owl:onProperty <https://w3id.org/linkml/see_also> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/type/Uriorcurie> ;
-            owl:onProperty <https://w3id.org/linkml/close_mappings> ],
-        [ a owl:Restriction ;
-            owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/name> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/type/Ncname> ;
-            owl:onProperty <https://w3id.org/linkml/id_prefixes> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/notes> ],
         <https://w3id.org/linkml/Annotatable>,
         <https://w3id.org/linkml/Extensible> ;
     skos:definition "a named element in the model" .
@@ -1567,85 +1567,45 @@ meta:ClassDefinition a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/role> ],
+            owl:onProperty <https://w3id.org/linkml/readonly> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Boolean> ;
-            owl:onProperty <https://w3id.org/linkml/identifier> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Integer> ;
-            owl:onProperty <https://w3id.org/linkml/maximum_value> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Boolean> ;
-            owl:onProperty <https://w3id.org/linkml/required> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Boolean> ;
-            owl:onProperty <https://w3id.org/linkml/is_usage_slot> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Boolean> ;
-            owl:onProperty <https://w3id.org/linkml/symmetric> ],
+            owl:onClass <https://w3id.org/linkml/SlotDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/subproperty_of> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/Boolean> ;
             owl:onProperty <https://w3id.org/linkml/multivalued> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/ClassDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/domain_of> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/Definition> ;
             owl:onProperty <https://w3id.org/linkml/owner> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/ClassDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/domain> ],
+            owl:onClass <https://w3id.org/linkml/SlotDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/inverse> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/Integer> ;
-            owl:onProperty <https://w3id.org/linkml/minimum_value> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/SlotDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/is_a> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
-            owl:onProperty <https://w3id.org/linkml/slot_uri> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/ifabsent> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/SlotDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/mixins> ],
+            owl:onProperty <https://w3id.org/linkml/maximum_value> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/String> ;
             owl:onProperty <https://w3id.org/linkml/alias> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/SlotDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/inverse> ],
+            owl:onClass <https://w3id.org/linkml/ClassDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/domain> ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/pattern> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Boolean> ;
-            owl:onProperty <https://w3id.org/linkml/inherited> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/ClassDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/domain_of> ],
+            owl:allValuesFrom <https://w3id.org/linkml/SlotDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/apply_to> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/String> ;
             owl:onProperty <https://w3id.org/linkml/usage_slot_name> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/SlotDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/subproperty_of> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/String> ;
@@ -1653,34 +1613,74 @@ meta:ClassDefinition a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/Boolean> ;
+            owl:onProperty <https://w3id.org/linkml/key> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/Boolean> ;
+            owl:onProperty <https://w3id.org/linkml/identifier> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/Boolean> ;
+            owl:onProperty <https://w3id.org/linkml/inherited> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/Boolean> ;
             owl:onProperty <https://w3id.org/linkml/inlined_as_list> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/Boolean> ;
+            owl:onProperty <https://w3id.org/linkml/required> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/Boolean> ;
+            owl:onProperty <https://w3id.org/linkml/inlined> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/role> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/pattern> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/Uriorcurie> ;
+            owl:onProperty <https://w3id.org/linkml/slot_uri> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/Boolean> ;
+            owl:onProperty <https://w3id.org/linkml/symmetric> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/type/String> ;
+            owl:onProperty <https://w3id.org/linkml/ifabsent> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/Element> ;
+            owl:onProperty <https://w3id.org/linkml/range> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/linkml/SlotDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/mixins> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/Boolean> ;
             owl:onProperty <https://w3id.org/linkml/is_class_field> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/Element> ;
-            owl:onProperty <https://w3id.org/linkml/range> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/String> ;
-            owl:onProperty <https://w3id.org/linkml/readonly> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/linkml/SlotDefinition> ;
-            owl:onProperty <https://w3id.org/linkml/apply_to> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/Boolean> ;
-            owl:onProperty <https://w3id.org/linkml/key> ],
+            owl:onProperty <https://w3id.org/linkml/is_usage_slot> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/linkml/SlotDefinition> ;
+            owl:onProperty <https://w3id.org/linkml/is_a> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/linkml/type/String> ;
             owl:onProperty <https://w3id.org/linkml/string_serialization> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/linkml/type/Boolean> ;
-            owl:onProperty <https://w3id.org/linkml/inlined> ],
+            owl:onClass <https://w3id.org/linkml/type/Integer> ;
+            owl:onProperty <https://w3id.org/linkml/minimum_value> ],
         <https://w3id.org/linkml/Definition> ;
     skos:altLabel "attribute",
         "field",

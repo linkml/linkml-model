@@ -1,5 +1,5 @@
 
-# Metamodel schema
+# Meta schema
 
 
 A metamodel for defining linked open data schemas
