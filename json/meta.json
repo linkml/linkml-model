@@ -50,8 +50,7 @@
     "dcterms",
     "OIO",
     "owl",
-    "pav",
-    "IAO"
+    "pav"
   ],
   "default_curi_maps": [
     "semweb_context"
@@ -73,6 +72,7 @@
       "definition_uri": "https://w3id.org/linkml/type/String",
       "description": "A character string",
       "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "types",
       "base": "str",
       "uri": "http://www.w3.org/2001/XMLSchema#string",
       "@type": "TypeDefinition"
@@ -82,6 +82,7 @@
       "definition_uri": "https://w3id.org/linkml/type/Integer",
       "description": "An integer",
       "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "types",
       "base": "int",
       "uri": "http://www.w3.org/2001/XMLSchema#integer",
       "@type": "TypeDefinition"
@@ -91,6 +92,7 @@
       "definition_uri": "https://w3id.org/linkml/type/Boolean",
       "description": "A binary (true or false) value",
       "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "types",
       "base": "Bool",
       "uri": "http://www.w3.org/2001/XMLSchema#boolean",
       "repr": "bool",
@@ -101,6 +103,7 @@
       "definition_uri": "https://w3id.org/linkml/type/Float",
       "description": "A real number that conforms to the xsd:float specification",
       "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "types",
       "base": "float",
       "uri": "http://www.w3.org/2001/XMLSchema#float",
       "@type": "TypeDefinition"
@@ -110,6 +113,7 @@
       "definition_uri": "https://w3id.org/linkml/type/Double",
       "description": "A real number that conforms to the xsd:double specification",
       "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "types",
       "base": "float",
       "uri": "http://www.w3.org/2001/XMLSchema#double",
       "@type": "TypeDefinition"
@@ -119,6 +123,7 @@
       "definition_uri": "https://w3id.org/linkml/type/Decimal",
       "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
       "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "types",
       "base": "Decimal",
       "uri": "http://www.w3.org/2001/XMLSchema#decimal",
       "@type": "TypeDefinition"
@@ -131,6 +136,7 @@
         "URI is dateTime because OWL reasoners don't work with straight date or time"
       ],
       "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "types",
       "base": "XSDTime",
       "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
       "repr": "str",
@@ -144,6 +150,7 @@
         "URI is dateTime because OWL reasoners don't work with straight date or time"
       ],
       "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "types",
       "base": "XSDDate",
       "uri": "http://www.w3.org/2001/XMLSchema#date",
       "repr": "str",
@@ -154,6 +161,7 @@
       "definition_uri": "https://w3id.org/linkml/type/Datetime",
       "description": "The combination of a date and time",
       "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "types",
       "base": "XSDDateTime",
       "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
       "repr": "str",
@@ -164,6 +172,7 @@
       "definition_uri": "https://w3id.org/linkml/type/Uriorcurie",
       "description": "a URI or a CURIE",
       "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "types",
       "base": "URIorCURIE",
       "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
       "repr": "str",
@@ -174,6 +183,7 @@
       "definition_uri": "https://w3id.org/linkml/type/Uri",
       "description": "a complete URI",
       "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "types",
       "base": "URI",
       "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
       "repr": "str",
@@ -184,6 +194,7 @@
       "definition_uri": "https://w3id.org/linkml/type/Ncname",
       "description": "Prefix part of CURIE",
       "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "types",
       "base": "NCName",
       "uri": "http://www.w3.org/2001/XMLSchema#string",
       "repr": "str",
@@ -197,6 +208,7 @@
         "Used for inheritence and type checking"
       ],
       "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "types",
       "base": "ElementIdentifier",
       "uri": "http://www.w3.org/ns/shex#iri",
       "repr": "str",
@@ -207,6 +219,7 @@
       "definition_uri": "https://w3id.org/linkml/type/Nodeidentifier",
       "description": "A URI, CURIE or BNODE that represents a node in a model.",
       "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "types",
       "base": "NodeIdentifier",
       "uri": "http://www.w3.org/ns/shex#nonLiteral",
       "repr": "str",
@@ -1974,6 +1987,7 @@
       ],
       "description": "A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.",
       "from_schema": "https://w3id.org/linkml/mappings",
+      "imported_from": "mappings",
       "range": "uriorcurie",
       "slot_uri": "http://www.w3.org/2004/02/skos/core#mappingRelation",
       "multivalued": true,
@@ -1991,6 +2005,7 @@
       ],
       "description": "A list of terms from different schemas or terminology systems that have identical meaning.",
       "from_schema": "https://w3id.org/linkml/mappings",
+      "imported_from": "mappings",
       "is_a": "mappings",
       "range": "uriorcurie",
       "slot_uri": "http://www.w3.org/2004/02/skos/core#exactMatch",
@@ -2009,6 +2024,7 @@
       ],
       "description": "A list of terms from different schemas or terminology systems that have close meaning.",
       "from_schema": "https://w3id.org/linkml/mappings",
+      "imported_from": "mappings",
       "is_a": "mappings",
       "range": "uriorcurie",
       "slot_uri": "http://www.w3.org/2004/02/skos/core#closeMatch",
@@ -2027,6 +2043,7 @@
       ],
       "description": "A list of terms from different schemas or terminology systems that have related meaning.",
       "from_schema": "https://w3id.org/linkml/mappings",
+      "imported_from": "mappings",
       "is_a": "mappings",
       "range": "uriorcurie",
       "slot_uri": "http://www.w3.org/2004/02/skos/core#relatedMatch",
@@ -2045,6 +2062,7 @@
       ],
       "description": "A list of terms from different schemas or terminology systems that have narrower meaning.",
       "from_schema": "https://w3id.org/linkml/mappings",
+      "imported_from": "mappings",
       "is_a": "mappings",
       "range": "uriorcurie",
       "slot_uri": "http://www.w3.org/2004/02/skos/core#narrowMatch",
@@ -2063,6 +2081,7 @@
       ],
       "description": "A list of terms from different schemas or terminology systems that have broader meaning.",
       "from_schema": "https://w3id.org/linkml/mappings",
+      "imported_from": "mappings",
       "is_a": "mappings",
       "range": "uriorcurie",
       "slot_uri": "http://www.w3.org/2004/02/skos/core#broadMatch",
@@ -2081,6 +2100,7 @@
       ],
       "description": "When an element is deprecated, it can be automatically replaced by this uri or curie",
       "from_schema": "https://w3id.org/linkml/mappings",
+      "imported_from": "mappings",
       "range": "uriorcurie",
       "slot_uri": "https://w3id.org/linkml/deprecated_element_has_exact_replacement",
       "owner": "PermissibleValue",
@@ -2098,6 +2118,7 @@
       ],
       "description": "When an element is deprecated, it can be potentially replaced by this uri or curie",
       "from_schema": "https://w3id.org/linkml/mappings",
+      "imported_from": "mappings",
       "range": "uriorcurie",
       "slot_uri": "https://w3id.org/linkml/deprecated_element_has_possible_replacement",
       "owner": "PermissibleValue",
@@ -2112,6 +2133,7 @@
       "definition_uri": "https://w3id.org/linkml/extensions",
       "description": "a tag/text tuple attached to an arbitrary element",
       "from_schema": "https://w3id.org/linkml/extensions",
+      "imported_from": "extensions",
       "domain": "Extensible",
       "range": "Extension",
       "slot_uri": "https://w3id.org/linkml/extensions",
@@ -2129,6 +2151,7 @@
       "definition_uri": "https://w3id.org/linkml/extension_tag",
       "description": "a tag associated with an extension",
       "from_schema": "https://w3id.org/linkml/extensions",
+      "imported_from": "extensions",
       "domain": "Extension",
       "range": "uriorcurie",
       "slot_uri": "https://w3id.org/linkml/tag",
@@ -2145,6 +2168,7 @@
       "definition_uri": "https://w3id.org/linkml/extension_value",
       "description": "the actual annotation",
       "from_schema": "https://w3id.org/linkml/extensions",
+      "imported_from": "extensions",
       "domain": "Extension",
       "range": "string",
       "slot_uri": "https://w3id.org/linkml/value",
@@ -2161,6 +2185,7 @@
       "definition_uri": "https://w3id.org/linkml/annotations",
       "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
       "from_schema": "https://w3id.org/linkml/annotations",
+      "imported_from": "annotations",
       "is_a": "extensions",
       "domain": "Annotatable",
       "range": "Annotation",
@@ -2834,6 +2859,7 @@
       "definition_uri": "https://w3id.org/linkml/Extension",
       "description": "a tag/value pair used to add non-model information to an entry",
       "from_schema": "https://w3id.org/linkml/extensions",
+      "imported_from": "extensions",
       "slots": [
         "extension_tag",
         "extension_value",
@@ -2847,6 +2873,7 @@
       "definition_uri": "https://w3id.org/linkml/Extensible",
       "description": "mixin for classes that support extension",
       "from_schema": "https://w3id.org/linkml/extensions",
+      "imported_from": "extensions",
       "mixin": true,
       "slots": [
         "extensions"
@@ -2859,6 +2886,7 @@
       "definition_uri": "https://w3id.org/linkml/Annotatable",
       "description": "mixin for classes that support annotations",
       "from_schema": "https://w3id.org/linkml/annotations",
+      "imported_from": "annotations",
       "mixin": true,
       "slots": [
         "annotations"
@@ -2871,6 +2899,7 @@
       "definition_uri": "https://w3id.org/linkml/Annotation",
       "description": "a tag/value pair with the semantics of OWL Annotation",
       "from_schema": "https://w3id.org/linkml/annotations",
+      "imported_from": "annotations",
       "is_a": "Extension",
       "mixins": [
         "Annotatable"
@@ -2887,9 +2916,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "meta.yaml",
-  "source_file_date": "Wed Mar 17 17:59:07 2021",
+  "source_file_date": "Thu Mar 18 19:17:50 2021",
   "source_file_size": 32413,
-  "generation_date": "2021-03-17 18:01",
+  "generation_date": "2021-03-18 19:19",
   "@type": "SchemaDefinition",
   "@context": [
     [
