@@ -155,7 +155,7 @@ target/json/%.json: $(SCHEMA_DIR)/%.yaml tdir-json env.lock
 # RDF
 # ---------------------------------------
 #gen-rdf: $(patsubst %, target/rdf/%.ttl, $(SCHEMA_NAMES)) $(patsubst %, target/rdf/%.model.ttl, $(SCHEMA_NAMES))
-gen-rdf:
+gen-rdf: tdir-rdf
 .PHONY: gen-rdf
 #target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml target/jsonld/%.context.jsonld tdir-rdf env.lock
 #	$(RUN) gen-rdf $(GEN_OPTS) --context $(subst target/jsonld/,,$(word 2,$^)) $< > $@
