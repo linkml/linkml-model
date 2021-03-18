@@ -4,7 +4,7 @@
 
 The combination of a date and time
 
-URI: [datatype:Datetime](https://w3id.org/linkml/type/Datetime)
+URI: [linkml:Datetime](https://w3id.org/linkml/Datetime)
 
 |  |  |  |
 | --- | --- | --- |

@@ -1,36 +1,35 @@
 BASE <https://w3id.org/linkml/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX datatype: <https://w3id.org/linkml/type/>
 
 
-datatype:String xsd:string
+<String> xsd:string
 
-datatype:Integer xsd:integer
+<Integer> xsd:integer
 
-datatype:Boolean xsd:boolean
+<Boolean> xsd:boolean
 
-datatype:Float xsd:float
+<Float> xsd:float
 
-datatype:Double xsd:double
+<Double> xsd:double
 
-datatype:Decimal xsd:decimal
+<Decimal> xsd:decimal
 
-datatype:Time xsd:dateTime
+<Time> xsd:dateTime
 
-datatype:Date xsd:date
+<Date> xsd:date
 
-datatype:Datetime xsd:dateTime
+<Datetime> xsd:dateTime
 
-datatype:Uriorcurie IRI
+<Uriorcurie> IRI
 
-datatype:Uri IRI
+<Uri> IRI
 
-datatype:Ncname xsd:string
+<Ncname> xsd:string
 
-datatype:Objectidentifier IRI
+<Objectidentifier> IRI
 
-datatype:Nodeidentifier NONLITERAL
+<Nodeidentifier> NONLITERAL
 
 <Extensible> {
     (  $<Extensible_tes> <extensions> @<Extension> * ;
@@ -39,8 +38,8 @@ datatype:Nodeidentifier NONLITERAL
 }
 
 <Extension> CLOSED {
-    (  $<Extension_tes> (  <tag> @datatype:Uriorcurie ;
-          <value> @datatype:String ;
+    (  $<Extension_tes> (  <tag> @<Uriorcurie> ;
+          <value> @<String> ;
           <extensions> @<Extension> *
        ) ;
        rdf:type [ <Extension> ] ?

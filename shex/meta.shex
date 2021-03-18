@@ -9,40 +9,39 @@ PREFIX bibo: <http://purl.org/ontology/bibo/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
-PREFIX datatype: <https://w3id.org/linkml/type/>
 
 
-datatype:String xsd:string
+<String> xsd:string
 
-datatype:Integer xsd:integer
+<Integer> xsd:integer
 
-datatype:Boolean xsd:boolean
+<Boolean> xsd:boolean
 
-datatype:Float xsd:float
+<Float> xsd:float
 
-datatype:Double xsd:double
+<Double> xsd:double
 
-datatype:Decimal xsd:decimal
+<Decimal> xsd:decimal
 
-datatype:Time xsd:dateTime
+<Time> xsd:dateTime
 
-datatype:Date xsd:date
+<Date> xsd:date
 
-datatype:Datetime xsd:dateTime
+<Datetime> xsd:dateTime
 
-datatype:Uriorcurie IRI
+<Uriorcurie> IRI
 
-datatype:Uri IRI
+<Uri> IRI
 
-datatype:Ncname xsd:string
+<Ncname> xsd:string
 
-datatype:Objectidentifier IRI
+<Objectidentifier> IRI
 
-datatype:Nodeidentifier NONLITERAL
+<Nodeidentifier> NONLITERAL
 
 <AltDescription> CLOSED {
-    (  $<AltDescription_tes> (  <source> @datatype:String ;
-          <description> @datatype:String
+    (  $<AltDescription_tes> (  <source> @<String> ;
+          <description> @<String>
        ) ;
        rdf:type [ <AltDescription> ]
     )
@@ -71,11 +70,11 @@ datatype:Nodeidentifier NONLITERAL
           <slots> @<SlotDefinition> * ;
           <slot_usage> @<SlotDefinition> * ;
           <attributes> @<SlotDefinition> * ;
-          <class_uri> @datatype:Uriorcurie ? ;
-          rdfs:subClassOf @datatype:Uriorcurie ? ;
+          <class_uri> @<Uriorcurie> ? ;
+          rdfs:subClassOf @<Uriorcurie> ? ;
           <union_of> @<ClassDefinition> * ;
           <defining_slots> @<SlotDefinition> * ;
-          <tree_root> @datatype:Boolean ? ;
+          <tree_root> @<Boolean> ? ;
           <is_a> @<ClassDefinition> ? ;
           <mixins> @<ClassDefinition> * ;
           <apply_to> @<ClassDefinition> *
@@ -91,16 +90,16 @@ datatype:Nodeidentifier NONLITERAL
 <Definition_struct> {
     (  $<Definition_tes> (  &<Element_tes> ;
           rdf:type [ <Element> ] ? ;
-          <abstract> @datatype:Boolean ? ;
-          <mixin> @datatype:Boolean ? ;
+          <abstract> @<Boolean> ? ;
+          <mixin> @<Boolean> ? ;
           <mixins> @<Definition> * ;
           <apply_to> @<Definition> * ;
-          <values_from> @datatype:Uriorcurie * ;
-          pav:createdBy @datatype:Uriorcurie ? ;
-          pav:createdOn @datatype:Datetime ? ;
-          pav:lastUpdatedOn @datatype:Datetime ? ;
-          oslc:modifiedBy @datatype:Uriorcurie ? ;
-          bibo:status @datatype:Uriorcurie ?
+          <values_from> @<Uriorcurie> * ;
+          pav:createdBy @<Uriorcurie> ? ;
+          pav:createdOn @<Datetime> ? ;
+          pav:lastUpdatedOn @<Datetime> ? ;
+          oslc:modifiedBy @<Uriorcurie> ? ;
+          bibo:status @<Uriorcurie> ?
        ) ;
        rdf:type [ <Definition> ]
     )
@@ -115,29 +114,29 @@ datatype:Nodeidentifier NONLITERAL
           rdf:type [ <Extensible> ] ? ;
           &<Annotatable_tes> ;
           rdf:type [ <Annotatable> ] ? ;
-          <id_prefixes> @datatype:Ncname * ;
-          <definition_uri> @datatype:Uriorcurie ? ;
-          skos:altLabel @datatype:String * ;
+          <id_prefixes> @<Ncname> * ;
+          <definition_uri> @<Uriorcurie> ? ;
+          skos:altLabel @<String> * ;
           <local_names> @<LocalName> * ;
-          skos:mappingRelation @datatype:Uriorcurie * ;
-          skos:definition @datatype:String ? ;
+          skos:mappingRelation @<Uriorcurie> * ;
+          skos:definition @<String> ? ;
           <alt_descriptions> @<AltDescription> * ;
-          <deprecated> @datatype:String ? ;
-          <todos> @datatype:String * ;
-          skos:editorialNote @datatype:String * ;
-          skos:note @datatype:String * ;
+          <deprecated> @<String> ? ;
+          <todos> @<String> * ;
+          skos:editorialNote @<String> * ;
+          skos:note @<String> * ;
           <examples> @<Example> * ;
           oboInOwl:inSubset @<SubsetDefinition> * ;
-          skos:inScheme @datatype:Uri ? ;
-          <imported_from> @datatype:String ? ;
-          rdfs:seeAlso @datatype:Uriorcurie * ;
-          skos:exactMatch @datatype:Uriorcurie * ;
-          skos:closeMatch @datatype:Uriorcurie * ;
-          skos:relatedMatch @datatype:Uriorcurie * ;
-          skos:narrowMatch @datatype:Uriorcurie * ;
-          skos:broadMatch @datatype:Uriorcurie * ;
-          <deprecated_element_has_exact_replacement> @datatype:Uriorcurie ? ;
-          <deprecated_element_has_possible_replacement> @datatype:Uriorcurie ? ;
+          skos:inScheme @<Uri> ? ;
+          <imported_from> @<String> ? ;
+          rdfs:seeAlso @<Uriorcurie> * ;
+          skos:exactMatch @<Uriorcurie> * ;
+          skos:closeMatch @<Uriorcurie> * ;
+          skos:relatedMatch @<Uriorcurie> * ;
+          skos:narrowMatch @<Uriorcurie> * ;
+          skos:broadMatch @<Uriorcurie> * ;
+          <deprecated_element_has_exact_replacement> @<Uriorcurie> ? ;
+          <deprecated_element_has_possible_replacement> @<Uriorcurie> ? ;
           <extensions> @<Extension> * ;
           <annotations> @<Annotation> *
        ) ;
@@ -148,9 +147,9 @@ datatype:Nodeidentifier NONLITERAL
 <EnumDefinition> CLOSED {
     (  $<EnumDefinition_tes> (  &<Element_tes> ;
           rdf:type [ <Element> ] ? ;
-          <code_set> @datatype:Uriorcurie ? ;
-          <code_set_tag> @datatype:String ? ;
-          <code_set_version> @datatype:String ? ;
+          <code_set> @<Uriorcurie> ? ;
+          <code_set_tag> @<String> ? ;
+          <code_set_version> @<String> ? ;
           <pv_formula> @<PvFormulaOptions> ? ;
           <permissible_values> @<PermissibleValue> *
        ) ;
@@ -159,8 +158,8 @@ datatype:Nodeidentifier NONLITERAL
 }
 
 <Example> CLOSED {
-    (  $<Example_tes> (  skos:example @datatype:String ? ;
-          <description> @datatype:String ?
+    (  $<Example_tes> (  skos:example @<String> ? ;
+          <description> @<String> ?
        ) ;
        rdf:type [ <Example> ] ?
     )
@@ -174,8 +173,8 @@ datatype:Nodeidentifier NONLITERAL
 
 <Extension>  (
     CLOSED {
-       (  $<Extension_tes> (  <tag> @datatype:Uriorcurie ;
-             <value> @datatype:String ;
+       (  $<Extension_tes> (  <tag> @<Uriorcurie> ;
+             <value> @<String> ;
              <extensions> @<Extension> *
           ) ;
           rdf:type [ <Extension> ] ?
@@ -184,8 +183,8 @@ datatype:Nodeidentifier NONLITERAL
 )
 
 <LocalName> CLOSED {
-    (  $<LocalName_tes> (  <local_name_source> @datatype:Ncname ;
-          skos:altLabel @datatype:String
+    (  $<LocalName_tes> (  <local_name_source> @<Ncname> ;
+          skos:altLabel @<String>
        ) ;
        rdf:type [ <LocalName> ]
     )
@@ -196,20 +195,20 @@ datatype:Nodeidentifier NONLITERAL
           rdf:type [ <Extensible> ] ? ;
           &<Annotatable_tes> ;
           rdf:type [ <Annotatable> ] ? ;
-          skos:definition @datatype:String ? ;
-          <meaning> @datatype:Uriorcurie ? ;
+          skos:definition @<String> ? ;
+          <meaning> @<Uriorcurie> ? ;
           <alt_descriptions> @<AltDescription> * ;
-          <deprecated> @datatype:String ? ;
-          <todos> @datatype:String * ;
-          skos:editorialNote @datatype:String * ;
-          skos:note @datatype:String * ;
+          <deprecated> @<String> ? ;
+          <todos> @<String> * ;
+          skos:editorialNote @<String> * ;
+          skos:note @<String> * ;
           <examples> @<Example> * ;
           oboInOwl:inSubset @<SubsetDefinition> * ;
-          skos:inScheme @datatype:Uri ? ;
-          <imported_from> @datatype:String ? ;
-          rdfs:seeAlso @datatype:Uriorcurie * ;
-          <deprecated_element_has_exact_replacement> @datatype:Uriorcurie ? ;
-          <deprecated_element_has_possible_replacement> @datatype:Uriorcurie ? ;
+          skos:inScheme @<Uri> ? ;
+          <imported_from> @<String> ? ;
+          rdfs:seeAlso @<Uriorcurie> * ;
+          <deprecated_element_has_exact_replacement> @<Uriorcurie> ? ;
+          <deprecated_element_has_possible_replacement> @<Uriorcurie> ? ;
           <is_a> @<PermissibleValue> ? ;
           <mixins> @<PermissibleValue> * ;
           <extensions> @<Extension> * ;
@@ -220,8 +219,8 @@ datatype:Nodeidentifier NONLITERAL
 }
 
 <Prefix> CLOSED {
-    (  $<Prefix_tes> (  <prefix_prefix> @datatype:Ncname ;
-          <prefix_reference> @datatype:Uri
+    (  $<Prefix_tes> (  <prefix_prefix> @<Ncname> ;
+          <prefix_reference> @<Uri>
        ) ;
        rdf:type [ <Prefix> ]
     )
@@ -230,26 +229,26 @@ datatype:Nodeidentifier NONLITERAL
 <SchemaDefinition> CLOSED {
     (  $<SchemaDefinition_tes> (  &<Element_tes> ;
           rdf:type [ <Element> ] ? ;
-          <id> @datatype:Uri ;
-          dcterms:title @datatype:String ? ;
-          pav:version @datatype:String ? ;
-          <imports> @datatype:Uriorcurie * ;
-          dcterms:license @datatype:String ? ;
+          <id> @<Uri> ;
+          dcterms:title @<String> ? ;
+          pav:version @<String> ? ;
+          <imports> @<Uriorcurie> * ;
+          dcterms:license @<String> ? ;
           <prefixes> @<Prefix> * ;
-          <emit_prefixes> @datatype:Ncname * ;
-          <default_curi_maps> @datatype:String * ;
-          <default_prefix> @datatype:String ? ;
+          <emit_prefixes> @<Ncname> * ;
+          <default_curi_maps> @<String> * ;
+          <default_prefix> @<String> ? ;
           <default_range> @<TypeDefinition> ? ;
           <subsets> @<SubsetDefinition> * ;
           <types> @<TypeDefinition> * ;
           <enums> @<EnumDefinition> * ;
           <slots> @<SlotDefinition> * ;
           <classes> @<ClassDefinition> * ;
-          <metamodel_version> @datatype:String ? ;
-          <source_file> @datatype:String ? ;
-          <source_file_date> @datatype:Datetime ? ;
-          <source_file_size> @datatype:Integer ? ;
-          <generation_date> @datatype:Datetime ?
+          <metamodel_version> @<String> ? ;
+          <source_file> @<String> ? ;
+          <source_file_date> @<Datetime> ? ;
+          <source_file_size> @<Integer> ? ;
+          <generation_date> @<Datetime> ?
        ) ;
        rdf:type [ <SchemaDefinition> ]
     )
@@ -258,33 +257,33 @@ datatype:Nodeidentifier NONLITERAL
 <SlotDefinition> CLOSED {
     (  $<SlotDefinition_tes> (  &<Definition_tes> ;
           rdf:type [ <Definition> ] ? ;
-          skos:altLabel @datatype:String ? ;
+          skos:altLabel @<String> ? ;
           <domain> @<ClassDefinition> ? ;
           <range> @<Element> ? ;
-          <slot_uri> @datatype:Uriorcurie ? ;
-          <multivalued> @datatype:Boolean ? ;
-          <inherited> @datatype:Boolean ? ;
-          <readonly> @datatype:String ? ;
-          <ifabsent> @datatype:String ? ;
-          <required> @datatype:Boolean ? ;
-          <inlined> @datatype:Boolean ? ;
-          <inlined_as_list> @datatype:Boolean ? ;
-          <key> @datatype:Boolean ? ;
-          <identifier> @datatype:Boolean ? ;
-          <alias> @datatype:String ? ;
+          <slot_uri> @<Uriorcurie> ? ;
+          <multivalued> @<Boolean> ? ;
+          <inherited> @<Boolean> ? ;
+          <readonly> @<String> ? ;
+          <ifabsent> @<String> ? ;
+          <required> @<Boolean> ? ;
+          <inlined> @<Boolean> ? ;
+          <inlined_as_list> @<Boolean> ? ;
+          <key> @<Boolean> ? ;
+          <identifier> @<Boolean> ? ;
+          <alias> @<String> ? ;
           <owner> @<Definition> ? ;
           <domain_of> @<ClassDefinition> * ;
           rdfs:subPropertyOf @<SlotDefinition> ? ;
-          <symmetric> @datatype:Boolean ? ;
+          <symmetric> @<Boolean> ? ;
           owl:inverseOf @<SlotDefinition> ? ;
-          <is_class_field> @datatype:Boolean ? ;
-          <role> @datatype:String ? ;
-          <is_usage_slot> @datatype:Boolean ? ;
-          <usage_slot_name> @datatype:String ? ;
-          <minimum_value> @datatype:Integer ? ;
-          <maximum_value> @datatype:Integer ? ;
-          <pattern> @datatype:String ? ;
-          <string_serialization> @datatype:String ? ;
+          <is_class_field> @<Boolean> ? ;
+          <role> @<String> ? ;
+          <is_usage_slot> @<Boolean> ? ;
+          <usage_slot_name> @<String> ? ;
+          <minimum_value> @<Integer> ? ;
+          <maximum_value> @<Integer> ? ;
+          <pattern> @<String> ? ;
+          <string_serialization> @<String> ? ;
           <is_a> @<SlotDefinition> ? ;
           <mixins> @<SlotDefinition> * ;
           <apply_to> @<SlotDefinition> *
@@ -305,9 +304,9 @@ datatype:Nodeidentifier NONLITERAL
     (  $<TypeDefinition_tes> (  &<Element_tes> ;
           rdf:type [ <Element> ] ? ;
           <typeof> @<TypeDefinition> ? ;
-          <base> @datatype:String ? ;
-          <uri> @datatype:Uriorcurie ? ;
-          <repr> @datatype:String ?
+          <base> @<String> ? ;
+          <uri> @<Uriorcurie> ? ;
+          <repr> @<String> ?
        ) ;
        rdf:type [ <TypeDefinition> ]
     )

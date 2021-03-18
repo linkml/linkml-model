@@ -4,7 +4,7 @@
 
 A URI, CURIE or BNODE that represents a node in a model.
 
-URI: [datatype:Nodeidentifier](https://w3id.org/linkml/type/Nodeidentifier)
+URI: [linkml:Nodeidentifier](https://w3id.org/linkml/Nodeidentifier)
 
 |  |  |  |
 | --- | --- | --- |

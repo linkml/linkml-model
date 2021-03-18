@@ -4,7 +4,7 @@
 
 An integer
 
-URI: [datatype:Integer](https://w3id.org/linkml/type/Integer)
+URI: [linkml:Integer](https://w3id.org/linkml/Integer)
 
 |  |  |  |
 | --- | --- | --- |

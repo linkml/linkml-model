@@ -1,5 +1,5 @@
 # Auto generated from types.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-03-18 19:36
+# Generation date: 2021-03-18 20:13
 # Schema: types
 #
 # id: https://w3id.org/linkml/types
@@ -31,10 +31,10 @@ metamodel_version = "1.7.0"
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
-DATATYPE = CurieNamespace('datatype', 'https://w3id.org/linkml/type/')
+LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 SHEX = CurieNamespace('shex', 'http://www.w3.org/ns/shex#')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
-DEFAULT_ = DATATYPE
+DEFAULT_ = LINKML
 
 
 # Types
@@ -43,7 +43,7 @@ class String(str):
     type_class_uri = XSD.string
     type_class_curie = "xsd:string"
     type_name = "string"
-    type_model_uri = DATATYPE.String
+    type_model_uri = LINKML.String
 
 
 class Integer(int):
@@ -51,7 +51,7 @@ class Integer(int):
     type_class_uri = XSD.integer
     type_class_curie = "xsd:integer"
     type_name = "integer"
-    type_model_uri = DATATYPE.Integer
+    type_model_uri = LINKML.Integer
 
 
 class Boolean(Bool):
@@ -59,7 +59,7 @@ class Boolean(Bool):
     type_class_uri = XSD.boolean
     type_class_curie = "xsd:boolean"
     type_name = "boolean"
-    type_model_uri = DATATYPE.Boolean
+    type_model_uri = LINKML.Boolean
 
 
 class Float(float):
@@ -67,7 +67,7 @@ class Float(float):
     type_class_uri = XSD.float
     type_class_curie = "xsd:float"
     type_name = "float"
-    type_model_uri = DATATYPE.Float
+    type_model_uri = LINKML.Float
 
 
 class Double(float):
@@ -75,7 +75,7 @@ class Double(float):
     type_class_uri = XSD.double
     type_class_curie = "xsd:double"
     type_name = "double"
-    type_model_uri = DATATYPE.Double
+    type_model_uri = LINKML.Double
 
 
 class Decimal(Decimal):
@@ -83,7 +83,7 @@ class Decimal(Decimal):
     type_class_uri = XSD.decimal
     type_class_curie = "xsd:decimal"
     type_name = "decimal"
-    type_model_uri = DATATYPE.Decimal
+    type_model_uri = LINKML.Decimal
 
 
 class Time(XSDTime):
@@ -91,7 +91,7 @@ class Time(XSDTime):
     type_class_uri = XSD.dateTime
     type_class_curie = "xsd:dateTime"
     type_name = "time"
-    type_model_uri = DATATYPE.Time
+    type_model_uri = LINKML.Time
 
 
 class Date(XSDDate):
@@ -99,7 +99,7 @@ class Date(XSDDate):
     type_class_uri = XSD.date
     type_class_curie = "xsd:date"
     type_name = "date"
-    type_model_uri = DATATYPE.Date
+    type_model_uri = LINKML.Date
 
 
 class Datetime(XSDDateTime):
@@ -107,7 +107,7 @@ class Datetime(XSDDateTime):
     type_class_uri = XSD.dateTime
     type_class_curie = "xsd:dateTime"
     type_name = "datetime"
-    type_model_uri = DATATYPE.Datetime
+    type_model_uri = LINKML.Datetime
 
 
 class Uriorcurie(URIorCURIE):
@@ -115,7 +115,7 @@ class Uriorcurie(URIorCURIE):
     type_class_uri = XSD.anyURI
     type_class_curie = "xsd:anyURI"
     type_name = "uriorcurie"
-    type_model_uri = DATATYPE.Uriorcurie
+    type_model_uri = LINKML.Uriorcurie
 
 
 class Uri(URI):
@@ -123,7 +123,7 @@ class Uri(URI):
     type_class_uri = XSD.anyURI
     type_class_curie = "xsd:anyURI"
     type_name = "uri"
-    type_model_uri = DATATYPE.Uri
+    type_model_uri = LINKML.Uri
 
 
 class Ncname(NCName):
@@ -131,7 +131,7 @@ class Ncname(NCName):
     type_class_uri = XSD.string
     type_class_curie = "xsd:string"
     type_name = "ncname"
-    type_model_uri = DATATYPE.Ncname
+    type_model_uri = LINKML.Ncname
 
 
 class Objectidentifier(ElementIdentifier):
@@ -139,7 +139,7 @@ class Objectidentifier(ElementIdentifier):
     type_class_uri = SHEX.iri
     type_class_curie = "shex:iri"
     type_name = "objectidentifier"
-    type_model_uri = DATATYPE.Objectidentifier
+    type_model_uri = LINKML.Objectidentifier
 
 
 class Nodeidentifier(NodeIdentifier):
@@ -147,7 +147,7 @@ class Nodeidentifier(NodeIdentifier):
     type_class_uri = SHEX.nonLiteral
     type_class_curie = "shex:nonLiteral"
     type_name = "nodeidentifier"
-    type_model_uri = DATATYPE.Nodeidentifier
+    type_model_uri = LINKML.Nodeidentifier
 
 
 # Class references

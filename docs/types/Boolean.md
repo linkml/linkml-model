@@ -4,7 +4,7 @@
 
 A binary (true or false) value
 
-URI: [datatype:Boolean](https://w3id.org/linkml/type/Boolean)
+URI: [linkml:Boolean](https://w3id.org/linkml/Boolean)
 
 |  |  |  |
 | --- | --- | --- |
