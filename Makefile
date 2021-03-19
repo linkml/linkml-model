@@ -49,9 +49,12 @@ clean:
 #	pipenv --rm
 .PHONY: clean
 
+# ---------------------------------------
+# REAL_CLEAN: remove all of the final targets to make sure we don't leave old artifacts around
+# ---------------------------------------
 real_clean: $(patsubst %,real_clean-%,$(TGTS))
 .PHONY: real_clean
-real_clean-%:
+real_clean-%: clean
 	find $* ! -name 'README.*' ! -name $* ! -name __init__.py -type f -exec rm -f {} +
 
 # ---------------------------------------
@@ -75,7 +78,7 @@ docs:
 
 
 # ---------------------------------------
-# MARKDOWN DOCS
+# MARKDOWN DOCSgraphql
 #      Generate documentation ready for mkdocs
 # ---------------------------------------
 gen-docs: docs/index.md env.lock
@@ -83,7 +86,7 @@ gen-docs: docs/index.md env.lock
 
 docs/index.md: target/docs/index.md
 	cp -R $(MODEL_DOCS_DIR)/*.md docs
-	cp -R target/docs docs
+	cp -R target/docs/* docs
 target/docs/index.md: $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml tdir-docs env.lock
 	$(RUN) gen-markdown $(GEN_OPTS) --no-mergeimports --dir target/docs $<
 
@@ -108,7 +111,7 @@ target/$(PKG_DIR)/%.py: $(SCHEMA_DIR)/%.yaml  tdir-linkml_model env.lock
 gen-graphql: graphql/$(SCHEMA_NAME).graphql
 .PHONY: gen-graphql
 
-graphql/%.graphql: target/%.graphql
+graphql/%.graphql: target/graphql/%.graphql
 	cp $< $@
 target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql env.lock
 	$(RUN) gen-graphql $(GEN_OPTS) $< > $@
@@ -118,7 +121,7 @@ target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql env.lock
 # ---------------------------------------
 gen-jsonschema: $(patsubst %, jsonschema/%.schema.json, $(SCHEMA_NAMES))
 .PHONY: gen-jsonschema
-jsonschema/%.schema.json: target/%.schema.json
+jsonschema/%.schema.json: target/jsonschema/%.schema.json
 	cp $< $@
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema env.lock
 	$(RUN) gen-json-schema $(GEN_OPTS) -t transaction $< > $@
@@ -157,10 +160,10 @@ target/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl env.lock
 gen-jsonld: $(patsubst %, jsonld/%.context.jsonld, $(SCHEMA_NAMES)) $(patsubst %, jsonld/%.model.context.jsonld, $(SCHEMA_NAMES)) jsonld/context.jsonld
 .PHONY: gen-jsonld
 
-jsonld/%.context.jsonld: target/%.context.jsonld
+jsonld/%.context.jsonld: target/jsonld/%.context.jsonld
 	cp $< $@
 
-jsonld/%.model.context.jsonld: target/%.model.context.jsonld
+jsonld/%.model.context.jsonld: target/jsonld/%.model.context.jsonld
 	cp $< $@
 
 jsonld/context.jsonld: target/jsonld/meta.context.jsonld
