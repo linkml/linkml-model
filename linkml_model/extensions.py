@@ -1,5 +1,5 @@
 # Auto generated from extensions.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-03-18 20:13
+# Generation date: 2021-03-19 18:27
 # Schema: extensions
 #
 # id: https://w3id.org/linkml/extensions
@@ -23,7 +23,7 @@ from biolinkml.utils.formatutils import camelcase, underscore, sfx
 from biolinkml.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from biolinkml.utils.curienamespace import CurieNamespace
-from . types import String, Uriorcurie
+from .types import String, Uriorcurie
 from biolinkml.utils.metamodelcore import URIorCURIE
 
 metamodel_version = "1.7.0"

@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-03-18 20:13
+# Generation date: 2021-03-19 18:27
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -23,9 +23,9 @@ from biolinkml.utils.formatutils import camelcase, underscore, sfx
 from biolinkml.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from biolinkml.utils.curienamespace import CurieNamespace
-from . annotations import Annotation
-from . extensions import Extension
-from . types import Boolean, Datetime, Integer, Ncname, String, Uri, Uriorcurie
+from .annotations import Annotation
+from .extensions import Extension
+from .types import Boolean, Datetime, Integer, Ncname, String, Uri, Uriorcurie
 from biolinkml.utils.metamodelcore import Bool, NCName, URI, URIorCURIE, XSDDateTime
 
 metamodel_version = "1.7.0"
