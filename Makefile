@@ -22,7 +22,7 @@ GEN_OPTS =
 # ----------------------------------------
 # TOP LEVEL TARGETS
 # ----------------------------------------
-all: gen stage unlock
+all: env.lock gen unlock
 
 # ---------------------------------------
 # env.lock:  set up pipenv
@@ -41,12 +41,18 @@ unlock:
 gen: $(patsubst %,gen-%,$(TGTS))
 
 # ---------------------------------------
-# CLEAN: clear out all of the target directories
+# CLEAN: clear out all of the targets
 # ---------------------------------------
 clean:
 	rm -rf target/
 	rm -f env.lock
-	pipenv --rm
+#	pipenv --rm
+.PHONY: clean
+
+real_clean: $(patsubst %,real_clean-%,$(TGTS))
+.PHONY: real_clean
+real_clean-%:
+	find $* ! -name 'README.*' ! -name $* ! -name __init__.py -type f -exec rm -f {} +
 
 # ---------------------------------------
 # T: List files to generate
@@ -60,13 +66,6 @@ t:
 echo:
 	echo $(patsubst %,gen-%,$(TGTS))
 
-# ---------------------------------------
-# STAGE: Copy the newly generated targets to their destinations
-# ---------------------------------------
-stage: $(patsubst %,stage-%,$(TGTS))
-stage-%: gen-%
-	find $* ! -name 'README.*' ! -name $* ! -name __init__.py -type f -exec rm -f {} +
-	cp -pR target/$* .
 
 tdir-%:
 	mkdir -p target/$*
@@ -78,20 +77,27 @@ docs:
 # ---------------------------------------
 # MARKDOWN DOCS
 #      Generate documentation ready for mkdocs
-#      Note: phony means that even IF gen-docs exists as a file, we run this
 # ---------------------------------------
-gen-docs:  $(patsubst %, target/docs/%.md, $(SCHEMA_NAMES)) env.lock copy-src-docs
+gen-docs: docs/index.md env.lock
 .PHONY: gen-docs
-copy-src-docs:
-	cp -R $(MODEL_DOCS_DIR)/*md target/docs/
-target/docs/%.md: $(SCHEMA_DIR)/%.yaml tdir-docs env.lock
+
+docs/index.md: target/docs/index.md
+	cp -R $(MODEL_DOCS_DIR)/*.md docs
+	cp -R target/docs docs
+target/docs/index.md: $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml tdir-docs env.lock
 	$(RUN) gen-markdown $(GEN_OPTS) --no-mergeimports --dir target/docs $<
 
 # ---------------------------------------
 # PYTHON Source
 # ---------------------------------------
-gen-linkml_model: $(patsubst %, target/$(PKG_DIR)/%.py, $(SCHEMA_NAMES))
+gen_python: gen-linkml_model
+.PHONY: gen-python
+
+gen-linkml_model: $(patsubst %, $(PKG_DIR)/%.py, $(SCHEMA_NAMES))
 .PHONY: gen-linkml_model
+
+$(PKG_DIR)/%.py: target/$(PKG_DIR)/%.py
+	cp $< $@
 target/$(PKG_DIR)/%.py: $(SCHEMA_DIR)/%.yaml  tdir-linkml_model env.lock
 	$(RUN) gen-py-classes $(GEN_OPTS) --genmeta --no-slots --no-mergeimports $< > $@
 
@@ -99,24 +105,35 @@ target/$(PKG_DIR)/%.py: $(SCHEMA_DIR)/%.yaml  tdir-linkml_model env.lock
 # GRAPHQL Source
 # ---------------------------------------
 # TODO: modularize imports. For now imports are merged.
-gen-graphql:target/graphql/$(SCHEMA_NAME).graphql $(patsubst %, target/graphql/%.graphql, $(SCHEMA_NAMES))
+gen-graphql: graphql/$(SCHEMA_NAME).graphql
 .PHONY: gen-graphql
+
+graphql/%.graphql: target/%.graphql
+	cp $< $@
 target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql env.lock
 	$(RUN) gen-graphql $(GEN_OPTS) $< > $@
 
 # ---------------------------------------
 # JSON Schema
 # ---------------------------------------
-gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json $(patsubst %, target/jsonschema/%.schema.json, $(SCHEMA_NAMES))
+gen-jsonschema: $(patsubst %, jsonschema/%.schema.json, $(SCHEMA_NAMES))
 .PHONY: gen-jsonschema
+jsonschema/%.schema.json: target/%.schema.json
+	cp $< $@
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema env.lock
 	$(RUN) gen-json-schema $(GEN_OPTS) -t transaction $< > $@
 
 # ---------------------------------------
 # ShEx
 # ---------------------------------------
-gen-shex: $(patsubst %, target/shex/%.shex, $(SCHEMA_NAMES)) $(patsubst %, target/shex/%.shexj, $(SCHEMA_NAMES))
+gen-shex: $(patsubst %, shex/%.shex, $(SCHEMA_NAMES)) $(patsubst %, shex/%.shexj, $(SCHEMA_NAMES))
 .PHONY: gen-shex
+
+shex/%.shex: target/shex/%.shex
+	cp $< $@
+shex/%.shexj: target/shex/%.shexj
+	cp $< $@
+
 target/shex/%.shex: $(SCHEMA_DIR)/%.yaml tdir-shex env.lock
 	$(RUN) gen-shex --no-mergeimports $(GEN_OPTS) $< > $@
 target/shex/%.shexj: $(SCHEMA_DIR)/%.yaml tdir-shex env.lock
@@ -126,28 +143,42 @@ target/shex/%.shexj: $(SCHEMA_DIR)/%.yaml tdir-shex env.lock
 # OWL
 # ---------------------------------------
 # TODO: modularize imports. For now imports are merged.
-gen-owl: target/owl/$(SCHEMA_NAME).owl.ttl
+gen-owl: owl/$(SCHEMA_NAME).owl.ttl
 .PHONY: gen-owl
+
+owl/%.owl.ttl: target/owl/%.owl.ttl
+	cp $< $@
 target/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl env.lock
 	$(RUN) gen-owl $(GEN_OPTS) $< > $@
 
 # ---------------------------------------
 # JSON-LD Context
 # ---------------------------------------
-gen-jsonld: $(patsubst %, target/jsonld/%.context.jsonld, $(SCHEMA_NAMES)) $(patsubst %, target/jsonld/%.model.context.jsonld, $(SCHEMA_NAMES)) target/jsonld/context.jsonld
+gen-jsonld: $(patsubst %, jsonld/%.context.jsonld, $(SCHEMA_NAMES)) $(patsubst %, jsonld/%.model.context.jsonld, $(SCHEMA_NAMES)) jsonld/context.jsonld
 .PHONY: gen-jsonld
+
+jsonld/%.context.jsonld: target/%.context.jsonld
+	cp $< $@
+
+jsonld/%.model.context.jsonld: target/%.model.context.jsonld
+	cp $< $@
+
+jsonld/context.jsonld: target/jsonld/meta.context.jsonld
+	cp $< $@
+
 target/jsonld/%.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld env.lock
 	$(RUN) gen-jsonld-context $(GEN_OPTS) --no-mergeimports $< > $@
 target/jsonld/%.model.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld env.lock
 	$(RUN) gen-jsonld-context $(GEN_OPTS) --no-mergeimports $< > $@
-target/jsonld/context.jsonld: target/jsonld/meta.context.jsonld
-	cp target/jsonld/meta.context.jsonld target/jsonld/context.jsonld
 
 # ---------------------------------------
-# PO JSON
+# Plain Old (PO) JSON
 # ---------------------------------------
-gen-json: $(patsubst %, target/json/%.json, $(SCHEMA_NAMES))
+gen-json: $(patsubst %, json/%.json, $(SCHEMA_NAMES))
 .PHONY: gen-json
+
+json/%.json: target/json/%.json
+	cp $< $@
 target/json/%.json: $(SCHEMA_DIR)/%.yaml tdir-json env.lock
 	$(RUN) gen-jsonld $(GEN_OPTS) --no-mergeimports $< > $@
 
