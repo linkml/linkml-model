@@ -3,14 +3,18 @@ from enum import Enum, auto
 from typing import Optional, Union
 
 import requests
+from rdflib import Namespace
 
 LINKML_URL_BASE = "https://w3id.org/linkml/"
+LINKML_NAMESPACE = Namespace(LINKML_URL_BASE)
 GITHUB_IO_BASE = "https://linkml.github.io/linkml-model/"
 GITHUB_BASE = "https://raw.githubusercontent.com/linkml/linkml-model/"
 LOCAL_BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 GITHUB_API_BASE = "https://api.github.com/repos/linkml/linkml-model/"
 GITHUB_RELEASES = GITHUB_BASE + "releases"
 GITHUB_TAGS = GITHUB_BASE + "tags"
+
+
 
 
 class _AutoName(Enum):
