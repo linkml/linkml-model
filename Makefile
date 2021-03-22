@@ -55,7 +55,7 @@ clean:
 real_clean: $(patsubst %,real_clean-%,$(TGTS))
 .PHONY: real_clean
 real_clean-%: clean
-	find $* ! -name 'README.*' ! -name $* ! -name __init__.py -type f -exec rm -f {} +
+	find $* ! -name 'README.*' ! -name $* ! -name __init__.py ! -name linkml_files.py  -type f -exec rm -f {} +
 
 # ---------------------------------------
 # T: List files to generate
