@@ -1,5 +1,3 @@
-# All artifacts of the build should be preserved
-.SECONDARY:
 
 # ----------------------------------------
 # Model documentation and schema directory
@@ -14,7 +12,8 @@ RUN = pipenv run
 
 SCHEMA_NAME = meta
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
-TGTS = docs graphql json jsonld jsonschema owl linkml_model rdf shex
+PKG_TGTS = graphql json jsonld jsonschema owl rdf shex
+TGTS = docs $(PKG_TGTS)
 
 # Global generation options
 GEN_OPTS =
@@ -36,7 +35,7 @@ unlock:
 	rm env.lock
 
 # ---------------------------------------
-# GEN: generate the new output into the target directory
+# GEN: run generator for each target
 # ---------------------------------------
 gen: $(patsubst %,gen-%,$(TGTS))
 
@@ -52,10 +51,12 @@ clean:
 # ---------------------------------------
 # REAL_CLEAN: remove all of the final targets to make sure we don't leave old artifacts around
 # ---------------------------------------
-real_clean: $(patsubst %,real_clean-%,$(TGTS))
-.PHONY: real_clean
+real_clean: $(patsubst %,real_clean-%,$(PKG_TGTS))
+	find docs  ! -name 'README.txt' -type f -exec rm -f {} +
+	rm -f $(PKG_DIR)/model/schema/*
+
 real_clean-%: clean
-	find $* ! -name 'README.*' ! -name $* ! -name __init__.py ! -name linkml_files.py  -type f -exec rm -f {} +
+	find $(PKG_DIR)/$* ! -name 'README.*' ! -name $* ! -name __init__.py ! -name linkml_files.py  -type f -exec rm -f {} +
 
 # ---------------------------------------
 # T: List files to generate
@@ -87,31 +88,32 @@ gen-docs: docs/index.md env.lock
 docs/index.md: target/docs/index.md
 	cp -R $(MODEL_DOCS_DIR)/*.md docs
 	cp -R target/docs/* docs
+	rm -rf target/docs
 target/docs/index.md: $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml tdir-docs env.lock
 	$(RUN) gen-markdown $(GEN_OPTS) --no-mergeimports --dir target/docs $<
 
 # ---------------------------------------
 # PYTHON Source
 # ---------------------------------------
-gen_python: gen-linkml_model
+gen-python: gen-linkml_model
 .PHONY: gen-python
 
 gen-linkml_model: $(patsubst %, $(PKG_DIR)/%.py, $(SCHEMA_NAMES))
-.PHONY: gen-linkml_model
+	cp -r model/schema $(PKG_DIR)
 
-$(PKG_DIR)/%.py: target/$(PKG_DIR)/%.py
+$(PKG_DIR)/%.py: target/python/%.py
 	cp $< $@
-target/$(PKG_DIR)/%.py: $(SCHEMA_DIR)/%.yaml  tdir-linkml_model env.lock
+target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python env.lock
 	$(RUN) gen-py-classes $(GEN_OPTS) --genmeta --no-slots --no-mergeimports $< > $@
 
 # ---------------------------------------
 # GRAPHQL Source
 # ---------------------------------------
 # TODO: modularize imports. For now imports are merged.
-gen-graphql: graphql/$(SCHEMA_NAME).graphql
+gen-graphql: $(PKG_DIR)/graphql/$(SCHEMA_NAME).graphql
 .PHONY: gen-graphql
 
-graphql/%.graphql: target/graphql/%.graphql
+$(PKG_DIR)/graphql/%.graphql: target/graphql/%.graphql
 	cp $< $@
 target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql env.lock
 	$(RUN) gen-graphql $(GEN_OPTS) $< > $@
@@ -119,9 +121,9 @@ target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql env.lock
 # ---------------------------------------
 # JSON Schema
 # ---------------------------------------
-gen-jsonschema: $(patsubst %, jsonschema/%.schema.json, $(SCHEMA_NAMES))
+gen-jsonschema: $(patsubst %, $(PKG_DIR)/jsonschema/%.schema.json, $(SCHEMA_NAMES))
 .PHONY: gen-jsonschema
-jsonschema/%.schema.json: target/jsonschema/%.schema.json
+$(PKG_DIR)/jsonschema/%.schema.json: target/jsonschema/%.schema.json
 	cp $< $@
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema env.lock
 	$(RUN) gen-json-schema $(GEN_OPTS) -t transaction $< > $@
@@ -129,12 +131,12 @@ target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema env.lock
 # ---------------------------------------
 # ShEx
 # ---------------------------------------
-gen-shex: $(patsubst %, shex/%.shex, $(SCHEMA_NAMES)) $(patsubst %, shex/%.shexj, $(SCHEMA_NAMES))
+gen-shex: $(patsubst %, $(PKG_DIR)/shex/%.shex, $(SCHEMA_NAMES)) $(patsubst %, $(PKG_DIR)/shex/%.shexj, $(SCHEMA_NAMES))
 .PHONY: gen-shex
 
-shex/%.shex: target/shex/%.shex
+$(PKG_DIR)/shex/%.shex: target/shex/%.shex
 	cp $< $@
-shex/%.shexj: target/shex/%.shexj
+$(PKG_DIR)/shex/%.shexj: target/shex/%.shexj
 	cp $< $@
 
 target/shex/%.shex: $(SCHEMA_DIR)/%.yaml tdir-shex env.lock
@@ -146,10 +148,10 @@ target/shex/%.shexj: $(SCHEMA_DIR)/%.yaml tdir-shex env.lock
 # OWL
 # ---------------------------------------
 # TODO: modularize imports. For now imports are merged.
-gen-owl: owl/$(SCHEMA_NAME).owl.ttl
+gen-owl: $(PKG_DIR)/owl/$(SCHEMA_NAME).owl.ttl
 .PHONY: gen-owl
 
-owl/%.owl.ttl: target/owl/%.owl.ttl
+$(PKG_DIR)/owl/%.owl.ttl: target/owl/%.owl.ttl
 	cp $< $@
 target/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl env.lock
 	$(RUN) gen-owl $(GEN_OPTS) $< > $@
@@ -157,16 +159,16 @@ target/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl env.lock
 # ---------------------------------------
 # JSON-LD Context
 # ---------------------------------------
-gen-jsonld: $(patsubst %, jsonld/%.context.jsonld, $(SCHEMA_NAMES)) $(patsubst %, jsonld/%.model.context.jsonld, $(SCHEMA_NAMES)) jsonld/context.jsonld
+gen-jsonld: $(patsubst %, $(PKG_DIR)/jsonld/%.context.jsonld, $(SCHEMA_NAMES)) $(patsubst %, $(PKG_DIR)/jsonld/%.model.context.jsonld, $(SCHEMA_NAMES)) $(PKG_DIR)/jsonld/context.jsonld
 .PHONY: gen-jsonld
 
-jsonld/%.context.jsonld: target/jsonld/%.context.jsonld
+$(PKG_DIR)/jsonld/%.context.jsonld: target/jsonld/%.context.jsonld
 	cp $< $@
 
-jsonld/%.model.context.jsonld: target/jsonld/%.model.context.jsonld
+$(PKG_DIR)/jsonld/%.model.context.jsonld: target/jsonld/%.model.context.jsonld
 	cp $< $@
 
-jsonld/context.jsonld: target/jsonld/meta.context.jsonld
+$(PKG_DIR)/jsonld/context.jsonld: target/jsonld/meta.context.jsonld
 	cp $< $@
 
 target/jsonld/%.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld env.lock
@@ -177,10 +179,10 @@ target/jsonld/%.model.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld env.lock
 # ---------------------------------------
 # Plain Old (PO) JSON
 # ---------------------------------------
-gen-json: $(patsubst %, json/%.json, $(SCHEMA_NAMES))
+gen-json: $(patsubst %, $(PKG_DIR)/json/%.json, $(SCHEMA_NAMES))
 .PHONY: gen-json
 
-json/%.json: target/json/%.json
+$(PKG_DIR)/json/%.json: target/json/%.json
 	cp $< $@
 target/json/%.json: $(SCHEMA_DIR)/%.yaml tdir-json env.lock
 	$(RUN) gen-jsonld $(GEN_OPTS) --no-mergeimports $< > $@
@@ -188,18 +190,23 @@ target/json/%.json: $(SCHEMA_DIR)/%.yaml tdir-json env.lock
 # ---------------------------------------
 # RDF
 # ---------------------------------------
-#gen-rdf: $(patsubst %, target/rdf/%.ttl, $(SCHEMA_NAMES)) $(patsubst %, target/rdf/%.model.ttl, $(SCHEMA_NAMES))
-gen-rdf: tdir-rdf
+gen-rdf: gen-jsonld $(patsubst %, $(PKG_DIR)/rdf/%.ttl, $(SCHEMA_NAMES)) $(patsubst %, $(PKG_DIR)/rdf/%.model.ttl, $(SCHEMA_NAMES))
 .PHONY: gen-rdf
-#target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml target/jsonld/%.context.jsonld tdir-rdf env.lock
-#	$(RUN) gen-rdf $(GEN_OPTS) --context $(subst target/jsonld/,,$(word 2,$^)) $< > $@
-#target/rdf/%.model.ttl: $(SCHEMA_DIR)/%.yaml target/jsonld/%.model.context.jsonld tdir-rdf env.lock
-#	$(RUN) gen-rdf $(GEN_OPTS) --context $(subst target/jsonld/,,$(word 2,$^)) $< > $@
+
+$(PKG_DIR)/rdf/%.ttl: target/rdf/%.ttl
+	cp $< $@
+$(PKG_DIR)/rdf/%.model.ttl: target/rdf/%.model.ttl
+	cp $< $@
+
+target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml $(PKG_DIR)/jsonld/%.context.jsonld tdir-rdf env.lock
+	$(RUN) gen-rdf $(GEN_OPTS) --context $(realpath $(word 2,$^)) $< > $@
+#target/rdf/%.model.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf env.lock
+#	$(RUN) gen-rdf $(GEN_OPTS) --context $(subst $(PKG_DIR)/jsonld/,,$(word 2,$^)) $< > $@
 
 
 # test docs locally.
-docserve:
-	mkdocs serve
-
-gh-deploy:
-	mkdocs gh-deploy
+#docserve:
+#	mkdocs serve
+#
+#gh-deploy:
+#	mkdocs gh-deploy
