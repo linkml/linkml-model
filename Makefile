@@ -13,7 +13,7 @@ RUN = pipenv run
 SCHEMA_NAME = meta
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
 PKG_TGTS = graphql json jsonld jsonschema owl rdf shex
-TGTS = docs $(PKG_TGTS)
+TGTS = docs python $(PKG_TGTS)
 
 # Global generation options
 GEN_OPTS =
