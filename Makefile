@@ -21,7 +21,7 @@ GEN_OPTS =
 # ----------------------------------------
 # TOP LEVEL TARGETS
 # ----------------------------------------
-all: env.lock gen unlock
+all: env.lock gen move-model unlock
 
 # ---------------------------------------
 # env.lock:  set up pipenv
@@ -51,7 +51,7 @@ clean:
 # ---------------------------------------
 # REAL_CLEAN: remove all of the final targets to make sure we don't leave old artifacts around
 # ---------------------------------------
-real_clean: $(patsubst %,real_clean-%,$(PKG_TGTS))
+real_clean: clean $(patsubst %,real_clean-%,$(PKG_TGTS))
 	find docs  ! -name 'README.txt' -type f -exec rm -f {} +
 	rm -f $(PKG_DIR)/model/schema/*
 
@@ -79,7 +79,15 @@ docs:
 
 
 # ---------------------------------------
-# MARKDOWN DOCSgraphql
+# Move the model across
+# ---------------------------------------
+move-model:
+	mkdir -p $(PKG_DIR)/model/schema
+	cp -r model/schema/* $(PKG_DIR)/model/schema
+
+
+# ---------------------------------------
+# MARKDOWN DOCS
 #      Generate documentation ready for mkdocs
 # ---------------------------------------
 gen-docs: docs/index.md env.lock
