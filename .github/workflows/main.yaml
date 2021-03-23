@@ -45,7 +45,8 @@ jobs:
 
     - name: Check updated content
       run: |
-        git add --force docs graphql json jsonld jsonschema owl linkml_model rdf shex
+        find linkml_model -name __pycache__ -exec rm {} \;
+        git add --force docs linkml_model
         if [[ ! -z $(git status -s .) ]]
         then
           git config --local user.email "action@github.com"
