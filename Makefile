@@ -198,19 +198,18 @@ target/json/%.json: $(SCHEMA_DIR)/%.yaml tdir-json env.lock
 # ---------------------------------------
 # RDF
 # ---------------------------------------
-#gen-rdf: gen-jsonld $(patsubst %, $(PKG_DIR)/rdf/%.ttl, $(SCHEMA_NAMES)) $(patsubst %, $(PKG_DIR)/rdf/%.model.ttl, $(SCHEMA_NAMES))
-gen-rdf: tdir-rdf
+gen-rdf: gen-jsonld $(patsubst %, $(PKG_DIR)/rdf/%.ttl, $(SCHEMA_NAMES)) $(patsubst %, $(PKG_DIR)/rdf/%.model.ttl, $(SCHEMA_NAMES))
 .PHONY: gen-rdf
-#
-#$(PKG_DIR)/rdf/%.ttl: target/rdf/%.ttl
-#	cp $< $@
-#$(PKG_DIR)/rdf/%.model.ttl: target/rdf/%.model.ttl
-#	cp $< $@
-#
-#target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml $(PKG_DIR)/jsonld/%.context.jsonld tdir-rdf env.lock
-#	$(RUN) gen-rdf $(GEN_OPTS) --context $(realpath $(word 2,$^)) $< > $@
-#target/rdf/%.model.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf env.lock
-#	$(RUN) gen-rdf $(GEN_OPTS) --context $(subst $(PKG_DIR)/jsonld/,,$(word 2,$^)) $< > $@
+
+$(PKG_DIR)/rdf/%.ttl: target/rdf/%.ttl
+	cp $< $@
+$(PKG_DIR)/rdf/%.model.ttl: target/rdf/%.model.ttl
+	cp $< $@
+
+target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml $(PKG_DIR)/jsonld/%.context.jsonld tdir-rdf env.lock
+	$(RUN) gen-rdf $(GEN_OPTS) --context $(realpath $(word 2,$^)) $< > $@
+target/rdf/%.model.ttl: $(SCHEMA_DIR)/%.yaml $(PKG_DIR)/jsonld/%.model.context.jsonld tdir-rdf env.lock
+	$(RUN) gen-rdf $(GEN_OPTS) --context $(realpath $(word 2,$^)) $< > $@
 
 
 # test docs locally.
