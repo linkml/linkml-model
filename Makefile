@@ -49,14 +49,15 @@ clean:
 .PHONY: clean
 
 # ---------------------------------------
-# REAL_CLEAN: remove all of the final targets to make sure we don't leave old artifacts around
+# SQUEAKY_CLEAN: remove all of the final targets to make sure we don't leave old artifacts around
 # ---------------------------------------
-real_clean: clean $(patsubst %,real_clean-%,$(PKG_TGTS))
-	find docs  ! -name 'README.txt' -type f -exec rm -f {} +
-	rm -f $(PKG_DIR)/model/schema/*
+squeaky_clean: clean $(patsubst %,squeaky_clean-%,$(PKG_TGTS))
+	find docs  ! -name 'README.*' -type f -exec rm -f {} +
+	find $(PKG_DIR)/model/schema  ! -name 'README.*' -type f -exec rm -f {} +
+	find $(PKG_DIR) -name "*.py" ! -name "__init__.py" ! -name "linkml_files.py" -exec rm -f {} +
 
-real_clean-%: clean
-	find $(PKG_DIR)/$* ! -name 'README.*' ! -name $* ! -name __init__.py ! -name linkml_files.py  -type f -exec rm -f {} +
+squeaky_clean-%: clean
+	find $(PKG_DIR)/$* ! -name 'README.*' ! -name $*  -type f -exec rm -f {} +
 
 # ---------------------------------------
 # T: List files to generate
