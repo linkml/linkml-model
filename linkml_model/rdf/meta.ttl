@@ -26,6 +26,7 @@ linkml:date a linkml:TypeDefinition ;
     skos:inScheme linkml:types ;
     linkml:base "XSDDate" ;
     linkml:definition_uri linkml:Date ;
+    linkml:imported_from "linkml:types" ;
     linkml:repr "str" ;
     linkml:uri xsd:date .
 
@@ -34,6 +35,7 @@ linkml:decimal a linkml:TypeDefinition ;
     skos:inScheme linkml:types ;
     linkml:base "Decimal" ;
     linkml:definition_uri linkml:Decimal ;
+    linkml:imported_from "linkml:types" ;
     linkml:uri xsd:decimal .
 
 linkml:double a linkml:TypeDefinition ;
@@ -41,6 +43,7 @@ linkml:double a linkml:TypeDefinition ;
     skos:inScheme linkml:types ;
     linkml:base "float" ;
     linkml:definition_uri linkml:Double ;
+    linkml:imported_from "linkml:types" ;
     linkml:uri xsd:double .
 
 linkml:float a linkml:TypeDefinition ;
@@ -48,6 +51,7 @@ linkml:float a linkml:TypeDefinition ;
     skos:inScheme linkml:types ;
     linkml:base "float" ;
     linkml:definition_uri linkml:Float ;
+    linkml:imported_from "linkml:types" ;
     linkml:uri xsd:float .
 
 linkml:nodeidentifier a linkml:TypeDefinition ;
@@ -55,6 +59,7 @@ linkml:nodeidentifier a linkml:TypeDefinition ;
     skos:inScheme linkml:types ;
     linkml:base "NodeIdentifier" ;
     linkml:definition_uri linkml:Nodeidentifier ;
+    linkml:imported_from "linkml:types" ;
     linkml:repr "str" ;
     linkml:uri shex:nonLiteral .
 
@@ -64,6 +69,7 @@ linkml:objectidentifier a linkml:TypeDefinition ;
     skos:note "Used for inheritence and type checking" ;
     linkml:base "ElementIdentifier" ;
     linkml:definition_uri linkml:Objectidentifier ;
+    linkml:imported_from "linkml:types" ;
     linkml:repr "str" ;
     linkml:uri shex:iri .
 
@@ -73,6 +79,7 @@ linkml:time a linkml:TypeDefinition ;
     skos:inScheme linkml:types ;
     linkml:base "XSDTime" ;
     linkml:definition_uri linkml:Time ;
+    linkml:imported_from "linkml:types" ;
     linkml:repr "str" ;
     linkml:uri xsd:dateTime .
 
@@ -555,6 +562,7 @@ linkml:extension_tag a linkml:SlotDefinition ;
     linkml:definition_uri linkml:extension_tag ;
     linkml:domain linkml:Extension ;
     linkml:domain_of linkml:Extension ;
+    linkml:imported_from "linkml:extensions" ;
     linkml:owner linkml:Extension ;
     linkml:range linkml:uriorcurie ;
     linkml:required true ;
@@ -567,6 +575,7 @@ linkml:extension_value a linkml:SlotDefinition ;
     linkml:definition_uri linkml:extension_value ;
     linkml:domain linkml:Extension ;
     linkml:domain_of linkml:Extension ;
+    linkml:imported_from "linkml:extensions" ;
     linkml:owner linkml:Extension ;
     linkml:range linkml:string ;
     linkml:required true ;
@@ -691,6 +700,7 @@ linkml:integer a linkml:TypeDefinition ;
     skos:inScheme linkml:types ;
     linkml:base "int" ;
     linkml:definition_uri linkml:Integer ;
+    linkml:imported_from "linkml:types" ;
     linkml:uri xsd:integer .
 
 linkml:is_class_field a linkml:SlotDefinition ;
@@ -1115,6 +1125,7 @@ linkml:datetime a linkml:TypeDefinition ;
     skos:inScheme linkml:types ;
     linkml:base "XSDDateTime" ;
     linkml:definition_uri linkml:Datetime ;
+    linkml:imported_from "linkml:types" ;
     linkml:repr "str" ;
     linkml:uri xsd:dateTime .
 
@@ -1135,6 +1146,7 @@ linkml:uri a linkml:TypeDefinition ;
     skos:inScheme linkml:types ;
     linkml:base "URI" ;
     linkml:definition_uri linkml:Uri ;
+    linkml:imported_from "linkml:types" ;
     linkml:repr "str" ;
     linkml:uri xsd:anyURI .
 
@@ -1143,6 +1155,7 @@ linkml:Annotation a linkml:ClassDefinition ;
     skos:inScheme linkml:annotations ;
     linkml:class_uri linkml:Annotation ;
     linkml:definition_uri linkml:Annotation ;
+    linkml:imported_from "linkml:annotations" ;
     linkml:is_a linkml:Extension ;
     linkml:mixins linkml:Annotatable ;
     linkml:slots linkml:annotations,
@@ -1252,6 +1265,7 @@ linkml:ncname a linkml:TypeDefinition ;
     skos:inScheme linkml:types ;
     linkml:base "NCName" ;
     linkml:definition_uri linkml:Ncname ;
+    linkml:imported_from "linkml:types" ;
     linkml:repr "str" ;
     linkml:uri xsd:string .
 
@@ -1284,6 +1298,7 @@ linkml:Annotatable a linkml:ClassDefinition ;
     skos:inScheme linkml:annotations ;
     linkml:class_uri linkml:Annotatable ;
     linkml:definition_uri linkml:Annotatable ;
+    linkml:imported_from "linkml:annotations" ;
     linkml:mixin true ;
     linkml:slots linkml:annotations .
 
@@ -1292,6 +1307,7 @@ linkml:Extensible a linkml:ClassDefinition ;
     skos:inScheme linkml:extensions ;
     linkml:class_uri linkml:Extensible ;
     linkml:definition_uri linkml:Extensible ;
+    linkml:imported_from "linkml:extensions" ;
     linkml:mixin true ;
     linkml:slots linkml:extensions .
 
@@ -1347,6 +1363,7 @@ linkml:broad_mappings a linkml:SlotDefinition ;
     skos:mappingRelation skos:broadMatch ;
     linkml:definition_uri linkml:broad_mappings ;
     linkml:domain_of linkml:Element ;
+    linkml:imported_from "linkml:mappings" ;
     linkml:is_a linkml:mappings ;
     linkml:multivalued true ;
     linkml:owner linkml:Element ;
@@ -1359,6 +1376,7 @@ linkml:close_mappings a linkml:SlotDefinition ;
     skos:mappingRelation skos:closeMatch ;
     linkml:definition_uri linkml:close_mappings ;
     linkml:domain_of linkml:Element ;
+    linkml:imported_from "linkml:mappings" ;
     linkml:is_a linkml:mappings ;
     linkml:multivalued true ;
     linkml:owner linkml:Element ;
@@ -1371,6 +1389,7 @@ linkml:exact_mappings a linkml:SlotDefinition ;
     skos:mappingRelation skos:exactMatch ;
     linkml:definition_uri linkml:exact_mappings ;
     linkml:domain_of linkml:Element ;
+    linkml:imported_from "linkml:mappings" ;
     linkml:is_a linkml:mappings ;
     linkml:multivalued true ;
     linkml:owner linkml:Element ;
@@ -1405,6 +1424,7 @@ linkml:narrow_mappings a linkml:SlotDefinition ;
     skos:mappingRelation skos:narrowMatch ;
     linkml:definition_uri linkml:narrow_mappings ;
     linkml:domain_of linkml:Element ;
+    linkml:imported_from "linkml:mappings" ;
     linkml:is_a linkml:mappings ;
     linkml:multivalued true ;
     linkml:owner linkml:Element ;
@@ -1417,6 +1437,7 @@ linkml:related_mappings a linkml:SlotDefinition ;
     skos:mappingRelation skos:relatedMatch ;
     linkml:definition_uri linkml:related_mappings ;
     linkml:domain_of linkml:Element ;
+    linkml:imported_from "linkml:mappings" ;
     linkml:is_a linkml:mappings ;
     linkml:multivalued true ;
     linkml:owner linkml:Element ;
@@ -1555,6 +1576,7 @@ linkml:Extension a linkml:ClassDefinition ;
     skos:inScheme linkml:extensions ;
     linkml:class_uri linkml:Extension ;
     linkml:definition_uri linkml:Extension ;
+    linkml:imported_from "linkml:extensions" ;
     linkml:slots linkml:extension_tag,
         linkml:extension_value,
         linkml:extensions .
@@ -1589,6 +1611,7 @@ linkml:deprecated_element_has_exact_replacement a linkml:SlotDefinition ;
     linkml:definition_uri linkml:deprecated_element_has_exact_replacement ;
     linkml:domain_of linkml:Element,
         linkml:PermissibleValue ;
+    linkml:imported_from "linkml:mappings" ;
     linkml:owner linkml:PermissibleValue ;
     linkml:range linkml:uriorcurie ;
     linkml:slot_uri linkml:deprecated_element_has_exact_replacement .
@@ -1600,6 +1623,7 @@ linkml:deprecated_element_has_possible_replacement a linkml:SlotDefinition ;
     linkml:definition_uri linkml:deprecated_element_has_possible_replacement ;
     linkml:domain_of linkml:Element,
         linkml:PermissibleValue ;
+    linkml:imported_from "linkml:mappings" ;
     linkml:owner linkml:PermissibleValue ;
     linkml:range linkml:uriorcurie ;
     linkml:slot_uri linkml:deprecated_element_has_possible_replacement .
@@ -1660,6 +1684,7 @@ linkml:boolean a linkml:TypeDefinition ;
     skos:inScheme linkml:types ;
     linkml:base "Bool" ;
     linkml:definition_uri linkml:Boolean ;
+    linkml:imported_from "linkml:types" ;
     linkml:repr "bool" ;
     linkml:uri xsd:boolean .
 
@@ -1675,6 +1700,7 @@ linkml:annotations a linkml:SlotDefinition ;
     linkml:domain linkml:Annotatable ;
     linkml:domain_of linkml:Annotatable,
         linkml:Annotation ;
+    linkml:imported_from "linkml:annotations" ;
     linkml:inlined true ;
     linkml:is_a linkml:extensions ;
     linkml:multivalued true ;
@@ -1739,6 +1765,7 @@ linkml:extensions a linkml:SlotDefinition ;
     linkml:domain linkml:Extensible ;
     linkml:domain_of linkml:Extensible,
         linkml:Extension ;
+    linkml:imported_from "linkml:extensions" ;
     linkml:inlined true ;
     linkml:multivalued true ;
     linkml:owner linkml:Extensible ;
@@ -1750,6 +1777,7 @@ linkml:uriorcurie a linkml:TypeDefinition ;
     skos:inScheme linkml:types ;
     linkml:base "URIorCURIE" ;
     linkml:definition_uri linkml:Uriorcurie ;
+    linkml:imported_from "linkml:types" ;
     linkml:repr "str" ;
     linkml:uri xsd:anyURI .
 
@@ -1759,6 +1787,7 @@ linkml:mappings a linkml:SlotDefinition ;
     skos:mappingRelation skos:mappingRelation ;
     linkml:definition_uri linkml:mappings ;
     linkml:domain_of linkml:Element ;
+    linkml:imported_from "linkml:mappings" ;
     linkml:multivalued true ;
     linkml:owner linkml:Element ;
     linkml:range linkml:uriorcurie ;
@@ -1852,6 +1881,7 @@ linkml:string a linkml:TypeDefinition ;
     skos:inScheme linkml:types ;
     linkml:base "str" ;
     linkml:definition_uri linkml:String ;
+    linkml:imported_from "linkml:types" ;
     linkml:uri xsd:string .
 
 linkml:PermissibleValue a linkml:ClassDefinition ;
@@ -2063,27 +2093,27 @@ linkml:meta a linkml:SchemaDefinition ;
         "skos",
         "xsd" ;
     linkml:enums linkml:pv_formula_options ;
-    linkml:generation_date "2021-03-24 14:17"^^xsd:dateTime ;
+    linkml:generation_date "2021-03-24 16:26"^^xsd:dateTime ;
     linkml:id linkml:meta ;
     linkml:imports linkml:annotations,
         linkml:extensions,
         linkml:mappings,
         linkml:types ;
-    linkml:metamodel_version "1.7.0" ;
-    linkml:prefixes [ linkml:prefix_prefix "bibo" ;
-            linkml:prefix_reference bibo: ],
-        [ linkml:prefix_prefix "schema" ;
-            linkml:prefix_reference schema: ],
-        [ linkml:prefix_prefix "linkml" ;
-            linkml:prefix_reference linkml: ],
-        [ linkml:prefix_prefix "pav" ;
-            linkml:prefix_reference pav: ],
-        [ linkml:prefix_prefix "skos" ;
-            linkml:prefix_reference skos: ],
+    linkml:metamodel_version "2.0.0" ;
+    linkml:prefixes [ linkml:prefix_prefix "OIO" ;
+            linkml:prefix_reference OIO: ],
         [ linkml:prefix_prefix "oslc" ;
             linkml:prefix_reference oslc: ],
-        [ linkml:prefix_prefix "OIO" ;
-            linkml:prefix_reference OIO: ] ;
+        [ linkml:prefix_prefix "skos" ;
+            linkml:prefix_reference skos: ],
+        [ linkml:prefix_prefix "pav" ;
+            linkml:prefix_reference pav: ],
+        [ linkml:prefix_prefix "bibo" ;
+            linkml:prefix_reference bibo: ],
+        [ linkml:prefix_prefix "linkml" ;
+            linkml:prefix_reference linkml: ],
+        [ linkml:prefix_prefix "schema" ;
+            linkml:prefix_reference schema: ] ;
     linkml:slots linkml:abstract,
         linkml:alias,
         linkml:aliases,
@@ -2207,7 +2237,7 @@ linkml:meta a linkml:SchemaDefinition ;
         linkml:values_from,
         linkml:version ;
     linkml:source_file "meta.yaml" ;
-    linkml:source_file_date "Wed Mar 24 14:15:38 2021"^^xsd:dateTime ;
+    linkml:source_file_date "Tue Mar 23 14:31:02 2021"^^xsd:dateTime ;
     linkml:source_file_size 32441 ;
     linkml:subsets linkml:owl ;
     linkml:types linkml:boolean,

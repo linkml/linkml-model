@@ -4,7 +4,7 @@ import unittest
 from linkml_model.linkml_files import URL_FOR, Format, Source, LOCAL_PATH_FOR, GITHUB_IO_PATH_FOR, GITHUB_PATH_FOR, \
     ReleaseTag
 
-root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "linkml_model"))
 
 SKIP_GITHUB_API = True              # True means don't do the github API tests
 
@@ -17,6 +17,7 @@ class LinkMLFilesTestCase(unittest.TestCase):
                          URL_FOR(Source.META, Format.NATIVE_JSONLD))
         self.assertEqual(os.path.join(root_path, "model/schema/meta.yaml"),
                          LOCAL_PATH_FOR(Source.META, Format.YAML))
+        print(LOCAL_PATH_FOR(Source.META, Format.YAML))
         self.assertEqual(os.path.join(root_path, "jsonld/types.model.context.jsonld"),
                          LOCAL_PATH_FOR(Source.TYPES, Format.NATIVE_JSONLD))
         self.assertEqual("https://linkml.github.io/linkml-model/model/schema/meta.yaml",
