@@ -52,7 +52,7 @@ clean:
 # SQUEAKY_CLEAN: remove all of the final targets to make sure we don't leave old artifacts around
 # ---------------------------------------
 squeaky_clean: clean $(patsubst %,squeaky_clean-%,$(PKG_TGTS))
-	find docs  ! -name 'README.*' -type f -exec rm -f {} +
+	find docs/*  ! -name 'README.*' -exec rm -rf {} +
 	find $(PKG_DIR)/model/schema  ! -name 'README.*' -type f -exec rm -f {} +
 	find $(PKG_DIR) -name "*.py" ! -name "__init__.py" ! -name "linkml_files.py" -exec rm -f {} +
 
@@ -95,9 +95,8 @@ gen-docs: docs/index.md env.lock
 .PHONY: gen-docs
 
 docs/index.md: target/docs/index.md
-	cp -R $(MODEL_DOCS_DIR)/*.md docs
-	cp -R target/docs/* docs
-	rm -rf target/docs
+	cp -R $(MODEL_DOCS_DIR)/*.md target/docs
+	mkdocs build
 target/docs/index.md: $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml tdir-docs env.lock
 	$(RUN) gen-markdown $(GEN_OPTS) --no-mergeimports --dir target/docs $<
 
