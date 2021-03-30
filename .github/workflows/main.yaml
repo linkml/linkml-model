@@ -45,7 +45,7 @@ jobs:
 
     - name: Check updated content
       run: |
-        find linkml_model -name __pycache__ -exec rm -rf {} \;
+        # find linkml_model -name __pycache__ -exec rm -rf {} \;
         git add --force docs linkml_model
         if [[ ! -z $(git status -s .) ]]
         then
