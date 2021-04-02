@@ -505,6 +505,23 @@ slots:
     range: boolean
     description: indicator that this is the root class in tree structures
 
+  compound_keys:
+    domain: class_definition
+    range: compound_key_definition
+    multivalued: true
+    inlined: true
+    description: Set of compound keys for this slot
+    mappings:
+      - owl:hasKey
+  
+  compound_key_slots:
+    domain: compound_key
+    multivalued: true
+    required: true
+    range: slot_definition
+    description: list of slot names that form a key
+    comments:
+      - We allow compound keys with a single compound_key slot, but at least one must be specified
 
   # -----------------------------------
   # Slot definition slots
@@ -628,12 +645,12 @@ slots:
     range: boolean
     inherited: true
     description: >-
-      True means that the key slot(s) uniquely identify the container. In future releases, it will be possible for there
-      to be compound keys, where several slots combine to produce a unique identifier
+      True means that the key slot(s) uniquely identify the container.
     comments:
+      - see also 'compound_key'
       - key is inherited
       - a given domain can have at most one key slot (restriction to be removed in the future)
-      - identifiers and keys are mutually exclusive.  A given domain cannot have bot
+      - identifiers and keys are mutually exclusive.  A given domain cannot have both
       - a key slot is automatically required.  Keys cannot be optional
 
   identifier:
@@ -1109,6 +1126,27 @@ classes:
       - text
       - description
       - meaning
+      - alt_descriptions
+      - deprecated
+      - todos
+      - notes
+      - comments
+      - examples
+      - in_subset
+      - from_schema
+      - imported_from
+      - see_also
+      - deprecated element has exact replacement
+      - deprecated element has possible replacement
+
+  compound_key:
+    description: a collection of slots whose values uniquely identify an instance of a class
+    mixins:
+      - extensible
+      - annotatable
+    slots:
+      - description
+      - compound_key_slots
       - alt_descriptions
       - deprecated
       - todos
