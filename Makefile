@@ -73,7 +73,8 @@ echo:
 
 
 tdir-%:
-	mkdir -p target/$*
+	rm -rf target/$*
+	mkdir target/$*
 
 docs:
 	mkdir -p $@
@@ -98,7 +99,7 @@ docs/index.md: target/docs/index.md
 	cp -R $(MODEL_DOCS_DIR)/*.md target/docs
 	mkdocs build
 target/docs/index.md: $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml tdir-docs env.lock
-	$(RUN) gen-markdown $(GEN_OPTS) --no-mergeimports --dir target/docs $<
+	$(RUN) gen-markdown $(GEN_OPTS) --mergeimports --dir target/docs $<
 
 # ---------------------------------------
 # PYTHON Source
@@ -213,8 +214,5 @@ target/rdf/%.model.ttl: $(SCHEMA_DIR)/%.yaml $(PKG_DIR)/jsonld/%.model.context.j
 
 
 # test docs locally.
-#docserve:
-#	mkdocs serve
-#
-#gh-deploy:
-#	mkdocs gh-deploy
+docserve:
+	mkdocs serve
