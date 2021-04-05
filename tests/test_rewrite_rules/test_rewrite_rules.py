@@ -28,8 +28,10 @@ DEFAULT_HEADER = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.
 
 # Once you've got stuff working, uncomment the line below and comment out the DEFAULT_SERVER
 DEFAULT_SERVER = W3ID_SERVER
-# DEFAULT_SERVER = "http://localhost:8091/"
 SKIP_REWRITE_RULES = True
+
+# DEFAULT_SERVER = "http://localhost:8091/"
+# SKIP_REWRITE_RULES = False
 
 
 @dataclass
@@ -43,14 +45,15 @@ class TestEntry:
 def build_test_entry_set(input_url: Namespace, model: str) -> List[TestEntry]:
     """ Build a set of test entries for different permutations of input URL """
     return [
-        TestEntry(input_url, f'{DOCS_DIR}/{model}.html', 'text/html'),
+        TestEntry(input_url, f'{DOCS_DIR}/{model}', 'text/html'),
         TestEntry(input_url, f'{SOURCE_DIR}/model/schema/{model}.yaml', 'text/yaml'),
         TestEntry(input_url, f'{SOURCE_DIR}/rdf/{model}.ttl', 'text/turtle'),
         TestEntry(input_url, f'{SOURCE_DIR}/json/{model}.json', 'application/json'),
         TestEntry(input_url, f'{SOURCE_DIR}/shex/{model}.shex', 'text/shex'),
         TestEntry(input_url['.context.jsonld'], f'{SOURCE_DIR}/jsonld/{model}.context.jsonld'),
         TestEntry(input_url['.owl'], f'{SOURCE_DIR}/owl/{model}.owl.ttl'),
-        TestEntry(input_url['/'], f'{DOCS_DIR}/{model}/')
+        TestEntry(input_url['/'], f'{model}/'),
+        TestEntry(input_url['/abc'], f'{DOCS_DIR}/{model}/abc')
     ]
 
 
@@ -69,15 +72,14 @@ class TestLists:
         self.metas_base = Namespace(self.linkml)
 
         # Singular base directories (type / mapping / meta) (singular means an element within)
-        self.type_base = Namespace(self.linkml + 'types/')
+        self.type_base = Namespace(self.linkml)
         self.meta_base = Namespace(self.linkml)
 
         # meta_entries - test various module types and permutations
         self.meta_entries = build_test_entry_set(self.types_base, 'types')
 
         self.vocab_entries: List[TestEntry] = [
-            TestEntry(self.type_base['index'], f'{DOCS_DIR}/types/index.html'),
-            TestEntry(self.type_base.Boolean, f'{DOCS_DIR}/types/Boolean.html'),
+            TestEntry(self.type_base.Boolean, f'{DOCS_DIR}/Boolean'),
         ]
         # Test for various metamodel sources
         self.meta_model_entries: List[TestEntry] = [
@@ -94,10 +96,10 @@ class TestLists:
         ]
         # Test for metamodel slots and classes
         self.meta_vocab_entries: List[TestEntry] = [
-            TestEntry(self.meta_base.Element, f'{DOCS_DIR}/Element.html'),
-            TestEntry(self.meta_base.Element, f'{DOCS_DIR}/Element.html', 'text/html'),
-            TestEntry(self.meta_base.meaning, f'{DOCS_DIR}/meaning.html'),
-            TestEntry(self.type_base.Boolean, f'{DOCS_DIR}/types/Boolean.html'),
+            TestEntry(self.meta_base.Element, f'{DOCS_DIR}/Element'),
+            TestEntry(self.meta_base.Element, f'{DOCS_DIR}/Element', 'text/html'),
+            TestEntry(self.meta_base.meaning, f'{DOCS_DIR}/meaning'),
+            TestEntry(self.type_base.Boolean, f'{DOCS_DIR}/Boolean'),
             TestEntry(self.meta_base.meta, f'{SOURCE_DIR}/model/schema/meta.yaml', 'text/yaml'),
             TestEntry(self.meta_base.meta, f'{SOURCE_DIR}/rdf/meta.ttl', 'text/turtle'),
             TestEntry(self.meta_base.meta, f'{SOURCE_DIR}/json/meta.json', 'application/json'),
@@ -152,7 +154,7 @@ class RewriteRuleTestCase(unittest.TestCase):
                 if resp.status_code == 302 and 'location' in resp.headers \
                 else f"Error: {resp.status_code}"
             if FAIL_ON_ERROR:
-                self.assertEqual(expected, actual, f"redirect for: {resp.url}")
+                self.assertEqual(expected, actual, f"redirect for: {resp.url}({accept_header})")
                 self.record_results(e.input_url, accept_header, actual)
                 return True
             elif expected != actual:
