@@ -74,7 +74,7 @@ echo:
 
 tdir-%:
 	rm -rf target/$*
-	mkdir target/$*
+	mkdir -p target/$*
 
 docs:
 	mkdir -p $@
