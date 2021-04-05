@@ -16,7 +16,7 @@ PKG_TGTS = graphql json jsonld jsonschema owl rdf shex
 TGTS = docs python $(PKG_TGTS)
 
 # Global generation options
-GEN_OPTS =
+GEN_OPTS = --log_level WARNING
 
 # ----------------------------------------
 # TOP LEVEL TARGETS
@@ -74,7 +74,7 @@ echo:
 
 tdir-%:
 	rm -rf target/$*
-	mkdir target/$*
+	mkdir -p target/$*
 
 docs:
 	mkdir -p $@
