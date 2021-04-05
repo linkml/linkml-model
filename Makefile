@@ -99,7 +99,7 @@ docs/index.md: target/docs/index.md
 	cp -R $(MODEL_DOCS_DIR)/*.md target/docs
 	mkdocs build
 target/docs/index.md: $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml tdir-docs env.lock
-	$(RUN) gen-markdown $(GEN_OPTS) --mergeimports --dir target/docs $<
+	$(RUN) gen-markdown $(GEN_OPTS) --mergeimports --notypesdir --warnonexist --dir target/docs $<
 
 # ---------------------------------------
 # PYTHON Source
