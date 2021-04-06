@@ -208,15 +208,25 @@ slots:
       be directly instantiated.
 
   mixin:
+    aliases:
+      - trait
     domain: definition
     range: boolean
-    description: this slot or class can only be used as a mixin -- equivalent to abstract
+    description: this slot or class can only be used as a mixin.
+    see_also:
+      - https://en.wikipedia.org/wiki/Mixin
 
   mixins:
+    aliases:
+      - traits
     domain: definition
     multivalued: true
     range: definition
     description: List of definitions to be mixed in. Targets may be any definition of the same type
+    comments:
+      - mixins act in the same way as parents (is_a). They allow a model to have a primary strict hierachy, while keeping the benefits of multiple inheritance
+    see_also:
+      - https://en.wikipedia.org/wiki/Mixin
 
   apply_to:
     domain: definition
