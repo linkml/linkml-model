@@ -12,15 +12,15 @@ import re
 from typing import Optional, List, Union, Dict, ClassVar, Any
 from dataclasses import dataclass
 
-from linkml_runtime.utils.slot import Slot
-from linkml_runtime.utils.metamodelcore import empty_list, empty_dict, bnode
-from linkml_runtime.utils.yamlutils import YAMLRoot, extended_str, extended_float, extended_int
-from linkml_runtime.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
-from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
-from linkml_runtime.utils.enumerations import EnumDefinitionImpl
+from linkml.utils.slot import Slot
+from linkml.utils.metamodelcore import empty_list, empty_dict, bnode
+from linkml.utils.yamlutils import YAMLRoot, extended_str, extended_float, extended_int
+from linkml.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
+from linkml.utils.formatutils import camelcase, underscore, sfx
+from linkml.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
-from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.utils.metamodelcore import URIorCURIE
+from linkml.utils.curienamespace import CurieNamespace
+from linkml.utils.metamodelcore import URIorCURIE
 from linkml_model.extensions import Extension
 from linkml_model.types import String, Uriorcurie
 
