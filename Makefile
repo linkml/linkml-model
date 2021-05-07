@@ -39,9 +39,6 @@ install: venv-mkdocs
 ${PIPX_BIN}/%:
 	mkdir -p ${PIPX_BIN}
 	pipx install "git+https://github.com/linkml/linkml@linkml_runtime#egg=linkml"
-	pipx inject linkml "git+https://github.com/hsolbrig/jsonasobj#egg=jsonasobj"
-	pipx inject linkml "git+https://github.com/linkml/linkml-model@runtime_split#egg=linkml-model"
-	pipx inject linkml "git+https://github.com/hsolbrig/pyld#egg=pyld"
 	pipx install mkdocs
 
 unlock:
