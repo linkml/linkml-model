@@ -56,19 +56,19 @@ gen: $(patsubst %,gen-%,$(TGTS))
 # CLEAN: clear out all of the targets
 # ---------------------------------------
 clean:
-	rm -rf target/pipx inject linkml
+	rm -rf target/*
 .PHONY: clean
 
 # ---------------------------------------
 # SQUEAKY_CLEAN: remove all of the final targets to make sure we don't leave old artifacts around
 # ---------------------------------------
-squeaky_clean: clean $(patsubst %,squeaky_clean-%,$(PKG_TGTS))
+squeaky-clean: clean $(patsubst %,squeaky-clean-%,$(PKG_TGTS))
 	find docs/*  ! -name 'README.*' -exec rm -rf {} +
 	find $(PKG_DIR)/model/schema  ! -name 'README.*' -type f -exec rm -f {} +
 	find $(PKG_DIR) -name "*.py" ! -name "__init__.py" ! -name "linkml_files.py" -exec rm -f {} +
 	rm -rf pipenv-linkml
 
-squeaky_clean-%: clean
+squeaky-clean-%: clean
 	find $(PKG_DIR)/$* ! -name 'README.*' ! -name $*  -type f -exec rm -f {} +
 
 # ---------------------------------------
@@ -205,7 +205,7 @@ gen-json: $(patsubst %, $(PKG_DIR)/json/%.json, $(SCHEMA_NAMES))
 
 $(PKG_DIR)/json/%.json: target/json/%.json
 	cp $< $@
-target/json/%.json: $(SCHEMA_DIR)/%.yaml tdir-json venv/bjsonin/gen-
+target/json/%.json: $(SCHEMA_DIR)/%.yaml tdir-json venv-gen-jsonld
 	$(RUN)gen-jsonld $(GEN_OPTS) --no-mergeimports $< > $@
 
 # ---------------------------------------
