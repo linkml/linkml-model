@@ -12,15 +12,13 @@ SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 SCHEMA_NAME = meta
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
 PKG_TGTS = graphql json jsonld jsonschema owl rdf shex
-TGTS = docs python $(PKG_TGTS)
+TGTS = docs model python $(PKG_TGTS)
 
 # Run a linkml package
-PIPX_BIN = $(shell pwd)/pipx_bin
-export PIPX_BIN_DIR=${PIPX_BIN}
-RUN = ${PIPX_BIN}/
+RUN =
 
 # Global generation options
-GEN_OPTS = --log_level WARNING
+GEN_OPTS = --log_level WARNING -im model/import_map.json
 
 # ----------------------------------------
 # TOP LEVEL TARGETS
@@ -32,14 +30,17 @@ all: install gen move-model unlock
 # we install an isolated instance of linkml in the pipenv-linkml directory
 # ---------------------------------------
 venv-%: ${PIPX_BIN}/%
-	echo $*
+	venv
 
-install: venv-mkdocs
+install: venv
 
-${PIPX_BIN}/%:
-	mkdir -p ${PIPX_BIN}
-	pipx install "git+https://github.com/linkml/linkml@linkml_runtime#egg=linkml"
-	pipx install mkdocs
+uninstall:
+	rm -rf venv
+
+venv: .venv
+	. ./environment.sh
+	pipenv install "linkml==0.1.0.dev1"
+	pipenv install mkdocs
 
 unlock:
 .PHONY: unlock
@@ -104,22 +105,26 @@ move-model:
 gen-docs: docs/index.md
 .PHONY: gen-docs
 
-docs/index.md: target/docs/index.md venv-mkdocs
+docs/index.md: target/docs/index.md
 	cp -R $(MODEL_DOCS_DIR)/*.md target/docs
 	$(RUN)mkdocs build
 target/docs/index.md: $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml tdir-docs install
 	$(RUN)gen-markdown $(GEN_OPTS) --mergeimports --notypesdir --warnonexist --dir target/docs $<
 
 # ---------------------------------------
-# PYTHON Source
+# YAML source
 # ---------------------------------------
-gen-python: gen-linkml_model
-.PHONY: gen-python
+gen-model: $(patsubst %, $(PKG_DIR)/model/schema/%.yaml, $(SCHEMA_NAMES))
 
-gen-linkml_model: $(patsubst %, $(PKG_DIR)/%.py, $(SCHEMA_NAMES))
-	cp -r model/schema $(PKG_DIR)
+$(PKG_DIR)/model/schema/%.yaml: model/schema/%.yaml
+	cp $< $@
+.PHONY: gen-linkml_model
 
-$(PKG_DIR)/%.py: target/python/%.py venv-gen-python
+# ---------------------------------------
+# python source
+# ---------------------------------------
+gen-python: $(patsubst %, $(PKG_DIR)/%.py, $(SCHEMA_NAMES))
+$(PKG_DIR)/%.py: target/python/%.py
 	cp $< $@
 target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python install
 	$(RUN)gen-python $(GEN_OPTS) --genmeta --no-slots --no-mergeimports $< > $@
@@ -133,7 +138,7 @@ gen-graphql: $(PKG_DIR)/graphql/$(SCHEMA_NAME).graphql
 
 $(PKG_DIR)/graphql/%.graphql: target/graphql/%.graphql
 	cp $< $@
-target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql venv-gen-graphql
+target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql install
 	$(RUN)gen-graphql $(GEN_OPTS) $< > $@
 
 # ---------------------------------------
@@ -143,7 +148,7 @@ gen-jsonschema: $(patsubst %, $(PKG_DIR)/jsonschema/%.schema.json, $(SCHEMA_NAME
 .PHONY: gen-jsonschema
 $(PKG_DIR)/jsonschema/%.schema.json: target/jsonschema/%.schema.json
 	cp $< $@
-target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema venv-gen-json-schema
+target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema install
 	$(RUN)gen-json-schema $(GEN_OPTS) -t transaction $< > $@
 
 # ---------------------------------------
@@ -157,9 +162,9 @@ $(PKG_DIR)/shex/%.shex: target/shex/%.shex
 $(PKG_DIR)/shex/%.shexj: target/shex/%.shexj
 	cp $< $@
 
-target/shex/%.shex: $(SCHEMA_DIR)/%.yaml tdir-shex venv-gen-shex
+target/shex/%.shex: $(SCHEMA_DIR)/%.yaml tdir-shex install
 	$(RUN)gen-shex --no-mergeimports $(GEN_OPTS) $< > $@
-target/shex/%.shexj: $(SCHEMA_DIR)/%.yaml tdir-shex venv-gen-shex
+target/shex/%.shexj: $(SCHEMA_DIR)/%.yaml tdir-shex install
 	$(RUN)gen-shex --no-mergeimports $(GEN_OPTS) -f json $< > $@
 
 # ---------------------------------------
@@ -171,7 +176,7 @@ gen-owl: $(PKG_DIR)/owl/$(SCHEMA_NAME).owl.ttl
 
 $(PKG_DIR)/owl/%.owl.ttl: target/owl/%.owl.ttl
 	cp $< $@
-target/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl venv-gen-owl
+target/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl install
 	$(RUN)gen-owl $(GEN_OPTS) $< > $@
 
 # ---------------------------------------
@@ -189,9 +194,9 @@ $(PKG_DIR)/jsonld/%.model.context.jsonld: target/jsonld/%.model.context.jsonld
 $(PKG_DIR)/jsonld/context.jsonld: target/jsonld/meta.context.jsonld
 	cp $< $@
 
-target/jsonld/%.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld venv-gen-jsonld-context
+target/jsonld/%.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld install
 	$(RUN)gen-jsonld-context $(GEN_OPTS) --no-mergeimports $< > $@
-target/jsonld/%.model.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld venv-gen-jsonld-context
+target/jsonld/%.model.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld install
 	$(RUN)gen-jsonld-context $(GEN_OPTS) --no-mergeimports $< > $@
 
 # ---------------------------------------
@@ -202,7 +207,7 @@ gen-json: $(patsubst %, $(PKG_DIR)/json/%.json, $(SCHEMA_NAMES))
 
 $(PKG_DIR)/json/%.json: target/json/%.json
 	cp $< $@
-target/json/%.json: $(SCHEMA_DIR)/%.yaml tdir-json venv-gen-jsonld
+target/json/%.json: $(SCHEMA_DIR)/%.yaml tdir-json install
 	$(RUN)gen-jsonld $(GEN_OPTS) --no-mergeimports $< > $@
 
 # ---------------------------------------
@@ -216,12 +221,12 @@ $(PKG_DIR)/rdf/%.ttl: target/rdf/%.ttl
 $(PKG_DIR)/rdf/%.model.ttl: target/rdf/%.model.ttl
 	cp $< $@
 
-target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml $(PKG_DIR)/jsonld/%.context.jsonld tdir-rdf venv-gen-rdf
+target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml $(PKG_DIR)/jsonld/%.context.jsonld tdir-rdf install
 	$(RUN)gen-rdf $(GEN_OPTS) --context $(realpath $(word 2,$^)) $< > $@
-target/rdf/%.model.ttl: $(SCHEMA_DIR)/%.yaml $(PKG_DIR)/jsonld/%.model.context.jsonld tdir-rdf venv-gen-rdf
+target/rdf/%.model.ttl: $(SCHEMA_DIR)/%.yaml $(PKG_DIR)/jsonld/%.model.context.jsonld tdir-rdf install
 	$(RUN)gen-rdf $(GEN_OPTS) --context $(realpath $(word 2,$^)) $< > $@
 
 
 # test docs locally.
-docserve: venv-mkdocs gen-docs
+docserve: gen-docs install
 	$(RUN)mkdocs serve

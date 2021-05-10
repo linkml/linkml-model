@@ -1,3 +1,4 @@
 #!/bin/sh
-pip install pipenv
-pipenv install
+export PIPENV_VENV_IN_PROJECT=1
+export PATH=.venv/bin:$PATH
+export PYTHONPATH=.venv:$PYTHONPATH
