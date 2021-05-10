@@ -1,3 +1,5 @@
+# All artifacts of the build should be preserved
+.SECONDARY:
 
 # ----------------------------------------
 # Model documentation and schema directory
@@ -29,17 +31,16 @@ all: install gen move-model unlock
 # We don't want to pollute the python environment with linkml tool specific packages.  For this reason,
 # we install an isolated instance of linkml in the pipenv-linkml directory
 # ---------------------------------------
-venv-%: ${PIPX_BIN}/%
-	venv
-
-install: venv
+install: .venv
+	. ./environment.sh
+.PHONY: install
 
 uninstall:
-	rm -rf venv
+	rm -rf .venv
 
-venv: .venv
-	. ./environment.sh
-	pipenv install "linkml==0.1.0.dev1"
+.venv:
+	pipenv install "linkml==0.1.1.dev1"
+	pipenv install "linkml-model==0.1.0.dev2"
 	pipenv install mkdocs
 
 unlock:
