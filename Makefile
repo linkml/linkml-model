@@ -39,6 +39,7 @@ uninstall:
 	rm -rf .venv
 
 .venv:
+	touch .venv/Pipfile
 	pipenv install "linkml==0.1.1.dev1"
 	pipenv install "linkml-model==0.1.0.dev2"
 	pipenv install mkdocs
