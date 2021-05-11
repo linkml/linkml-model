@@ -13,6 +13,7 @@ SKIP_GITHUB_API = False              # True means don't do the github API tests
 
 
 class LinkMLFilesTestCase(unittest.TestCase):
+    """ Test that linkml_model/linkml_files.py work """
     def test_basic_rules(self):
         self.assertEqual("https://w3id.org/linkml/annotations.yaml",
                          URL_FOR(Source.ANNOTATIONS, Format.YAML))
