@@ -1,0 +1,97 @@
+id: https://w3id.org/linkml/rules
+title: LinkML Rules
+name: rules
+description: >-
+  LinkML model for rules
+
+  This module provides flexible ways to encode constraints and inference rules for a model.
+  [Rules](Rule.md) can be encoded in different [syntaxes](rule_syntax_options.md).
+
+  Many syntaxes will only be interpretable by certain systems. For example, rules written in SQL will only
+  be interpretable when a model is translated to SQL DDL. Rules can also serve as useful documentation.
+
+  The LinkML rule language is preferred as it will be translatable to different systems. See the separate
+  docs for this
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+version: 2.0.0
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  skos: http://www.w3.org/2004/02/skos/core#
+  OIO: http://www.geneontology.org/formats/oboInOwl#
+
+default_curi_maps:
+    - semweb_context
+
+default_prefix: linkml
+default_range: string
+
+
+emit_prefixes:
+  - linkml
+  - rdf
+  - rdfs
+  - xsd
+  - skos
+  - OIO
+  - IAO
+
+imports:
+  - linkml:types
+  - linkml:meta
+
+classes:
+  rule:
+    is_a: element
+    description: >-
+      A rule that is applicable to this class
+    slots:
+      - syntax
+      - rule text
+      - rule type
+
+slots:
+  rules:
+    range: rule
+    multivalued: true
+    description: >-
+      A list of rules that apply to members of this class
+  syntax:
+    domain: rule
+    description: syntax in which the rule is written
+    range: rule_syntax_options
+  rule type:
+    domain: rule
+    description: type of rule
+    range: rule_type_options
+  rule text:
+    domain: rule
+    description: >-
+      Textual serialization of the rule.
+
+#==================================
+# Enumerations                    #
+#==================================
+enums:
+  rule_syntax_options:
+    description: >-
+      The syntax used to encode a rule
+    permissible_values:
+      Pseudocode: the rule is intended for documentation purposes
+      LinkML: LinkML rule syntax
+      SQL: Vanilla SQL syntax
+      Souffle: Souffle Datalog Syntax
+      Jena: Jena Rule Language
+      SWRL: Semantic Web Rule Language
+      ACE: Attempto Controlled English
+      Python: Executable python code
+    notes:
+      - the list may be extended in future
+  rule_type_options:
+    description: >-
+      How the rule should be interpreted
+    permissible_values:
+      Constraint: the rule is interpreted as a closed-world constraint
+      View: The rule is interpreted as a view
+      Materialization: The rule is executed to insert new information
