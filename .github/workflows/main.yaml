@@ -26,11 +26,14 @@ jobs:
 
     - name: Run make file
       run: |
+        pip install pipx
         make
 
     - name: Run unit tests over output
       run: |
-        python -m unittest discover -p 'test_*.py'
+        pip install pipenv
+        pipenv install --dev
+        pipenv run python -m unittest discover -p 'test_*.py'
 
     - name: Check in changes to requirements files
       run: |
@@ -45,7 +48,7 @@ jobs:
 
     - name: Check updated content
       run: |
-        # find linkml_model -name __pycache__ -exec rm -rf {} \;
+        find linkml_model -name __pycache__ -type d -prune -exec rm -rf '{}' '+'
         git add --force docs linkml_model
         if [[ ! -z $(git status -s .) ]]
         then
