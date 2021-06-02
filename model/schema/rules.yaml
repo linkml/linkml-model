@@ -42,10 +42,10 @@ imports:
   - linkml:meta
 
 classes:
-  rule:
+  rule encoding:
     is_a: element
     description: >-
-      A rule that is applicable to this class
+      An encoding of a rule that is applicable to this class
     slots:
       - syntax
       - rule text
@@ -53,20 +53,20 @@ classes:
 
 slots:
   rules:
-    range: rule
+    range: rule encoding
     multivalued: true
     description: >-
       A list of rules that apply to members of this class
   syntax:
-    domain: rule
+    domain: rule encoding
     description: syntax in which the rule is written
     range: rule_syntax_options
   rule type:
-    domain: rule
+    domain: rule encoding
     description: type of rule
     range: rule_type_options
   rule text:
-    domain: rule
+    domain: rule encoding
     description: >-
       Textual serialization of the rule.
 
