@@ -1,0 +1,92 @@
+id: https://w3id.org/linkml/rulelang
+title: LinkML Rule Language
+name: rulelang
+description: >-
+  todo
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+version: 2.0.0
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  skos: http://www.w3.org/2004/02/skos/core#
+  OIO: http://www.geneontology.org/formats/oboInOwl#
+
+default_curi_maps:
+    - semweb_context
+
+default_prefix: linkml
+default_range: string
+
+emit_prefixes:
+  - linkml
+  - rdf
+  - rdfs
+  - xsd
+  - skos
+  - OIO
+  - IAO
+
+imports:
+  - linkml:types
+  - linkml:meta
+
+classes:
+  term:
+    abstract: true
+
+  atomic rule:
+    is_a: term
+    description: >-
+      A logical rule
+    slots:
+      - operand
+      - lhs
+      - rhs
+
+  compound expression:
+    is_a: term
+    description: >-
+      An expression
+    slots:
+      - operand
+      - arguments
+
+  function expression:
+    is_a: term
+    description: >-
+      A function term
+    slots:
+      - operand
+      - arguments
+slots:
+  arguments:
+    multivalued: true
+    range: term
+
+#==================================
+# Enumerations                    #
+#==================================
+enums:
+  operator_enum:
+    description: >-
+      Operator
+    permissible_values:
+      "+":
+      "-":
+      "*":
+      "/":
+      "%":
+      "and":
+      "or":
+      "not":
+      "&":
+      "|":
+      "->":
+      "<-":
+      "<":
+      ">":
+      "<=":
+      ">=":
+
+
