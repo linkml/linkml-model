@@ -25,11 +25,11 @@ GEN_OPTS = --log_level WARNING -im model/import_map.json
 # ----------------------------------------
 # TOP LEVEL TARGETS
 # ----------------------------------------
-all: install gen move-model unlock
+all: install gen
 
 # ---------------------------------------
 # We don't want to pollute the python environment with linkml tool specific packages.  For this reason,
-# we install an isolated instance of linkml in the pipenv-linkml directory
+# we install an isolated instance of linkml
 # ---------------------------------------
 install: .venv
 	. ./environment.sh
@@ -44,8 +44,6 @@ uninstall:
 	pipenv install "linkml-model==0.1.0.dev2"
 	pipenv install mkdocs
 
-unlock:
-.PHONY: unlock
 
 # ---------------------------------------
 # GEN: run generator for each target
@@ -66,7 +64,7 @@ squeaky-clean: clean $(patsubst %,squeaky-clean-%,$(PKG_TGTS))
 	find docs/*  ! -name 'README.*' -exec rm -rf {} +
 	find $(PKG_DIR)/model/schema  ! -name 'README.*' -type f -exec rm -f {} +
 	find $(PKG_DIR) -name "*.py" ! -name "__init__.py" ! -name "linkml_files.py" -exec rm -f {} +
-	rm -rf pipenv-linkml
+	rm -rf .venv
 
 squeaky-clean-%: clean
 	find $(PKG_DIR)/$* ! -name 'README.*' ! -name $*  -type f -exec rm -f {} +
@@ -90,14 +88,6 @@ tdir-%:
 
 docs:
 	mkdir -p $@
-
-
-# ---------------------------------------
-# Move the model across
-# ---------------------------------------
-move-model:
-	mkdir -p $(PKG_DIR)/model/schema
-	cp -r model/schema/* $(PKG_DIR)/model/schema
 
 
 # ---------------------------------------
@@ -126,7 +116,7 @@ $(PKG_DIR)/model/schema/%.yaml: model/schema/%.yaml
 # python source
 # ---------------------------------------
 gen-python: $(patsubst %, $(PKG_DIR)/%.py, $(SCHEMA_NAMES))
-$(PKG_DIR)/%.py: target/python/%.py
+$(PKG_T_PYTHON)/%.py: target/python/%.py
 	cp $< $@
 target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python install
 	$(RUN)gen-python $(GEN_OPTS) --genmeta --no-slots --no-mergeimports $< > $@
