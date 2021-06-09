@@ -505,23 +505,21 @@ slots:
     range: boolean
     description: indicator that this is the root class in tree structures
 
-  compound_keys:
+  unique_keys:
     domain: class_definition
-    range: compound_key_definition
+    range: unique_key_definition
     multivalued: true
     inlined: true
-    description: Set of compound keys for this slot
+    description: Set of unique keys for this slot
     mappings:
       - owl:hasKey
   
-  compound_key_slots:
-    domain: compound_key
+  unique_key_slots:
+    domain: unique_key
     multivalued: true
     required: true
     range: slot_definition
     description: list of slot names that form a key
-    comments:
-      - We allow compound keys with a single compound_key slot, but at least one must be specified
 
   # -----------------------------------
   # Slot definition slots
@@ -647,7 +645,7 @@ slots:
     description: >-
       True means that the key slot(s) uniquely identify the container.
     comments:
-      - see also 'compound_key'
+      - see also 'unique_key'
       - key is inherited
       - a given domain can have at most one key slot (restriction to be removed in the future)
       - identifiers and keys are mutually exclusive.  A given domain cannot have both
@@ -1139,14 +1137,14 @@ classes:
       - deprecated element has exact replacement
       - deprecated element has possible replacement
 
-  compound_key:
+  unique_key:
     description: a collection of slots whose values uniquely identify an instance of a class
     mixins:
       - extensible
       - annotatable
     slots:
       - description
-      - compound_key_slots
+      - unique_key_slots
       - alt_descriptions
       - deprecated
       - todos
