@@ -41,7 +41,6 @@ uninstall:
 .venv:
 	mkdir -p .venv && touch .venv/Pipfile
 	pipenv install "linkml~=1.0"
-	pipenv install "linkml-model~=1.0"
 	pipenv install mkdocs
 
 
@@ -116,7 +115,7 @@ $(PKG_DIR)/model/schema/%.yaml: model/schema/%.yaml
 # python source
 # ---------------------------------------
 gen-python: $(patsubst %, $(PKG_DIR)/%.py, $(SCHEMA_NAMES))
-$(PKG_T_PYTHON)/%.py: target/python/%.py
+$(PKG_DIR)/%.py: target/python/%.py
 	cp $< $@
 target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python install
 	$(RUN)gen-python $(GEN_OPTS) --genmeta --no-slots --no-mergeimports $< > $@
