@@ -1,5 +1,5 @@
 # Auto generated from extensions.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-04-29 21:27
+# Generation date: 2021-06-11 19:30
 # Schema: extensions
 #
 # id: https://w3id.org/linkml/extensions
@@ -9,7 +9,7 @@
 import dataclasses
 import sys
 import re
-from jsonasobj import JsonObj
+from jsonasobj2 import JsonObj
 from typing import Optional, List, Union, Dict, ClassVar, Any
 from dataclasses import dataclass
 
@@ -21,8 +21,8 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
+from .types import String, Uriorcurie
 from linkml_runtime.utils.metamodelcore import URIorCURIE
-from linkml_model.types import String, Uriorcurie
 
 metamodel_version = "1.7.0"
 
@@ -57,21 +57,17 @@ class Extension(YAMLRoot):
     extensions: Optional[Union[Union[dict, "Extension"], List[Union[dict, "Extension"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.tag is None:
-            raise ValueError("tag must be supplied")
+        if self._is_empty(self.tag):
+            self.MissingRequiredField("tag")
         if not isinstance(self.tag, URIorCURIE):
             self.tag = URIorCURIE(self.tag)
 
-        if self.value is None:
-            raise ValueError("value must be supplied")
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
         if not isinstance(self.value, str):
             self.value = str(self.value)
 
-        if self.extensions is None:
-            self.extensions = []
-        if not isinstance(self.extensions, list):
-            self.extensions = [self.extensions]
-        self._normalize_inlined_slot(slot_name="extensions", slot_type=Extension, key_name="tag", inlined_as_list=True, keyed=False)
+        self._normalize_inlined_as_dict(slot_name="extensions", slot_type=Extension, key_name="tag", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -91,11 +87,7 @@ class Extensible(YAMLRoot):
     extensions: Optional[Union[Union[dict, Extension], List[Union[dict, Extension]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.extensions is None:
-            self.extensions = []
-        if not isinstance(self.extensions, list):
-            self.extensions = [self.extensions]
-        self._normalize_inlined_slot(slot_name="extensions", slot_type=Extension, key_name="tag", inlined_as_list=True, keyed=False)
+        self._normalize_inlined_as_dict(slot_name="extensions", slot_type=Extension, key_name="tag", keyed=False)
 
         super().__post_init__(**kwargs)
 

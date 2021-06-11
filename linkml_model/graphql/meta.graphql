@@ -53,6 +53,7 @@ type ClassDefinition
     lastUpdatedOn: Datetime
     modifiedBy: Uriorcurie
     status: Uriorcurie
+    stringSerialization: String
     slots: [SlotDefinition]
     slotUsage: [SlotDefinition]
     attributes: [SlotDefinition]
@@ -105,6 +106,7 @@ interface Definition
     lastUpdatedOn: Datetime
     modifiedBy: Uriorcurie
     status: Uriorcurie
+    stringSerialization: String
   }
 
 type Element implements Extensible, Annotatable
@@ -311,6 +313,7 @@ type SlotDefinition
     lastUpdatedOn: Datetime
     modifiedBy: Uriorcurie
     status: Uriorcurie
+    stringSerialization: String
     singularName: String
     domain: ClassDefinition
     range: Element
@@ -337,7 +340,6 @@ type SlotDefinition
     minimumValue: Integer
     maximumValue: Integer
     pattern: String
-    stringSerialization: String
     isA: SlotDefinition
     mixins: [SlotDefinition]
     applyTo: [SlotDefinition]
