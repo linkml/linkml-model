@@ -729,6 +729,22 @@ slots:
     description: the role played by the slot range
     inherited: true
 
+  minimum_cardinality:
+    domain: slot_definition
+    range: integer
+    description: for multivalued slots, the cardinality (size) of the list of values must be equal to or higher than this
+    comments:
+      - This should only be used in combination with slots that are declared multivalued
+    inherited: true
+
+  maximum_cardinality:
+    domain: slot_definition
+    range: integer
+    description: for multivalued slots, the cardinality (size) of the list of values must be equal to or lower than this
+    comments:
+      - This should only be used in combination with slots that are declared multivalued
+    inherited: true
+
   minimum_value:
     domain: slot_definition
     range: integer
@@ -1045,6 +1061,8 @@ classes:
       - role
       - is_usage_slot
       - usage_slot_name
+      - minimum_cardinality
+      - maximum_cardinality
       - minimum_value
       - maximum_value
       - pattern
