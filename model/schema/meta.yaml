@@ -1020,7 +1020,11 @@ classes:
       - field
       - property
       - attribute
+      - column
+      - variable
     is_a: definition
+    close_mappings:
+      - rdf:Property
     slots:
       - singular_name
       - domain
@@ -1063,6 +1067,8 @@ classes:
       - table
       - record
       - template
+      - message
+      - observation
     is_a: definition
     slots:
       - slots
@@ -1080,6 +1086,8 @@ classes:
         range: class_definition
       apply_to:
         range: class_definition
+    close_mappings:
+      - owl:Class
 
   prefix:
     description: prefix URI tuple
