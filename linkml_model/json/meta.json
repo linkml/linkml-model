@@ -1421,6 +1421,28 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "recommended",
+      "definition_uri": "https://w3id.org/linkml/recommended",
+      "description": "true means that the slot should be present in the loaded definition, but this is not required",
+      "comments": [
+        "This is to be used where not all data is expected to conform to having a required field",
+        "If a slot is recommended, and it is not populated, applications must not treat this as an error. Applications may use this to inform the user of missing data"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "see_also": [
+        "https://github.com/linkml/linkml/issues/177"
+      ],
+      "domain": "SlotDefinition",
+      "range": "boolean",
+      "slot_uri": "https://w3id.org/linkml/recommended",
+      "inherited": true,
+      "owner": "SlotDefinition",
+      "domain_of": [
+        "SlotDefinition"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "inlined",
       "definition_uri": "https://w3id.org/linkml/inlined",
       "description": "True means that keyed or identified slot appears in an outer structure by value.  False means that only the key or identifier for the slot appears within the domain, referencing a structure that appears elsewhere.",
@@ -2710,6 +2732,7 @@
         "readonly",
         "ifabsent",
         "required",
+        "recommended",
         "inlined",
         "inlined_as_list",
         "key",
@@ -2950,9 +2973,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "meta.yaml",
-  "source_file_date": "Fri Jun 11 19:28:41 2021",
-  "source_file_size": 32755,
-  "generation_date": "2021-06-11 19:29",
+  "source_file_date": "Sat Jun 26 00:11:01 2021",
+  "source_file_size": 33311,
+  "generation_date": "2021-06-26 00:12",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",

@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-06-11 19:30
+# Generation date: 2021-06-26 00:12
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -513,7 +513,7 @@ class SlotDefinition(Definition):
     """
     the definition of a property or a slot
     """
-    _inherited_slots: ClassVar[List[str]] = ["domain", "range", "multivalued", "inherited", "readonly", "ifabsent", "required", "inlined", "inlined_as_list", "key", "identifier", "role", "minimum_value", "maximum_value", "pattern"]
+    _inherited_slots: ClassVar[List[str]] = ["domain", "range", "multivalued", "inherited", "readonly", "ifabsent", "required", "recommended", "inlined", "inlined_as_list", "key", "identifier", "role", "minimum_value", "maximum_value", "pattern"]
 
     class_class_uri: ClassVar[URIRef] = LINKML.SlotDefinition
     class_class_curie: ClassVar[str] = "linkml:SlotDefinition"
@@ -530,6 +530,7 @@ class SlotDefinition(Definition):
     readonly: Optional[str] = None
     ifabsent: Optional[str] = None
     required: Optional[Union[bool, Bool]] = None
+    recommended: Optional[Union[bool, Bool]] = None
     inlined: Optional[Union[bool, Bool]] = None
     inlined_as_list: Optional[Union[bool, Bool]] = None
     key: Optional[Union[bool, Bool]] = None
@@ -583,6 +584,9 @@ class SlotDefinition(Definition):
 
         if self.required is not None and not isinstance(self.required, Bool):
             self.required = Bool(self.required)
+
+        if self.recommended is not None and not isinstance(self.recommended, Bool):
+            self.recommended = Bool(self.recommended)
 
         if self.inlined is not None and not isinstance(self.inlined, Bool):
             self.inlined = Bool(self.inlined)

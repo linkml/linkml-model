@@ -923,6 +923,20 @@ linkml:readonly a linkml:SlotDefinition ;
     linkml:range linkml:string ;
     linkml:slot_uri linkml:readonly .
 
+linkml:recommended a linkml:SlotDefinition ;
+    rdfs:seeAlso <https://github.com/linkml/linkml/issues/177> ;
+    skos:definition "true means that the slot should be present in the loaded definition, but this is not required" ;
+    skos:inScheme linkml:meta ;
+    skos:note "If a slot is recommended, and it is not populated, applications must not treat this as an error. Applications may use this to inform the user of missing data",
+        "This is to be used where not all data is expected to conform to having a required field" ;
+    linkml:definition_uri linkml:recommended ;
+    linkml:domain linkml:SlotDefinition ;
+    linkml:domain_of linkml:SlotDefinition ;
+    linkml:inherited true ;
+    linkml:owner linkml:SlotDefinition ;
+    linkml:range linkml:boolean ;
+    linkml:slot_uri linkml:recommended .
+
 linkml:repr a linkml:SlotDefinition ;
     skos:definition "the name of the python object that implements this type definition" ;
     skos:inScheme linkml:meta ;
@@ -1693,6 +1707,11 @@ linkml:description a linkml:SlotDefinition ;
     linkml:range linkml:string ;
     linkml:slot_uri skos:definition .
 
+linkml:owl a linkml:SubsetDefinition ;
+    skos:definition "Set of slots that appear in the OWL representation of a model" ;
+    skos:inScheme linkml:meta ;
+    linkml:definition_uri linkml:Owl .
+
 linkml:boolean a linkml:TypeDefinition ;
     skos:definition "A binary (true or false) value" ;
     skos:inScheme linkml:types ;
@@ -1701,11 +1720,6 @@ linkml:boolean a linkml:TypeDefinition ;
     linkml:imported_from "linkml:types" ;
     linkml:repr "bool" ;
     linkml:uri xsd:boolean .
-
-linkml:owl a linkml:SubsetDefinition ;
-    skos:definition "Set of slots that appear in the OWL representation of a model" ;
-    skos:inScheme linkml:meta ;
-    linkml:definition_uri linkml:Owl .
 
 linkml:annotations a linkml:SlotDefinition ;
     skos:definition "a collection of tag/text tuples with the semantics of OWL Annotation" ;
@@ -2116,27 +2130,27 @@ linkml:meta a linkml:SchemaDefinition ;
         "skos",
         "xsd" ;
     linkml:enums linkml:pv_formula_options ;
-    linkml:generation_date "2021-06-11 19:30"^^xsd:dateTime ;
+    linkml:generation_date "2021-06-26 00:12"^^xsd:dateTime ;
     linkml:id linkml:meta ;
     linkml:imports linkml:annotations,
         linkml:extensions,
         linkml:mappings,
         linkml:types ;
     linkml:metamodel_version "1.7.0" ;
-    linkml:prefixes [ linkml:prefix_prefix "linkml" ;
+    linkml:prefixes [ linkml:prefix_prefix "bibo" ;
+            linkml:prefix_reference bibo: ],
+        [ linkml:prefix_prefix "linkml" ;
             linkml:prefix_reference linkml: ],
-        [ linkml:prefix_prefix "skos" ;
-            linkml:prefix_reference skos: ],
         [ linkml:prefix_prefix "schema" ;
             linkml:prefix_reference schema: ],
-        [ linkml:prefix_prefix "oslc" ;
-            linkml:prefix_reference oslc: ],
-        [ linkml:prefix_prefix "pav" ;
-            linkml:prefix_reference pav: ],
         [ linkml:prefix_prefix "OIO" ;
             linkml:prefix_reference OIO: ],
-        [ linkml:prefix_prefix "bibo" ;
-            linkml:prefix_reference bibo: ] ;
+        [ linkml:prefix_prefix "skos" ;
+            linkml:prefix_reference skos: ],
+        [ linkml:prefix_prefix "pav" ;
+            linkml:prefix_reference pav: ],
+        [ linkml:prefix_prefix "oslc" ;
+            linkml:prefix_reference oslc: ] ;
     linkml:slots linkml:abstract,
         linkml:alias,
         linkml:aliases,
@@ -2223,6 +2237,7 @@ linkml:meta a linkml:SchemaDefinition ;
         linkml:pv_formula,
         linkml:range,
         linkml:readonly,
+        linkml:recommended,
         linkml:related_mappings,
         linkml:repr,
         linkml:required,
@@ -2260,8 +2275,8 @@ linkml:meta a linkml:SchemaDefinition ;
         linkml:values_from,
         linkml:version ;
     linkml:source_file "meta.yaml" ;
-    linkml:source_file_date "Fri Jun 11 19:28:41 2021"^^xsd:dateTime ;
-    linkml:source_file_size 32755 ;
+    linkml:source_file_date "Sat Jun 26 00:11:01 2021"^^xsd:dateTime ;
+    linkml:source_file_size 33311 ;
     linkml:subsets linkml:owl ;
     linkml:types linkml:boolean,
         linkml:date,
@@ -2337,6 +2352,7 @@ linkml:SlotDefinition a linkml:ClassDefinition ;
         linkml:pattern,
         linkml:range,
         linkml:readonly,
+        linkml:recommended,
         linkml:related_mappings,
         linkml:required,
         linkml:role,
