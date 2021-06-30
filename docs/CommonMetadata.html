@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="img/favicon.ico">
-  <title>Class: SubsetDefinition - LinkML Model</title>
+  <title>Class: CommonMetadata - LinkML Model</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Class: SubsetDefinition";
-    var mkdocs_page_input_path = "SubsetDefinition.md";
+    var mkdocs_page_name = "Class: CommonMetadata";
+    var mkdocs_page_input_path = "CommonMetadata.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Class: SubsetDefinition</li>
+    <li>Class: CommonMetadata</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,74 +91,86 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="class-subsetdefinition">Class: SubsetDefinition</h1>
-<p>the name and description of a subset</p>
-<p>URI: <a href="https://w3id.org/linkml/SubsetDefinition">linkml:SubsetDefinition</a></p>
-<p><img alt="img" src="http://yuml.me/diagram/nofunky;dir:TB/class/[CommonMetadata]-%20in_subset%200..*&gt;[SubsetDefinition&#124;name(i):string;id_prefixes(i):ncname%20*;definition_uri(i):uriorcurie%20%3F;aliases(i):string%20*;mappings(i):uriorcurie%20*;exact_mappings(i):uriorcurie%20*;close_mappings(i):uriorcurie%20*;related_mappings(i):uriorcurie%20*;narrow_mappings(i):uriorcurie%20*;broad_mappings(i):uriorcurie%20*;description(i):string%20%3F;deprecated(i):string%20%3F;todos(i):string%20*;notes(i):string%20*;comments(i):string%20*;from_schema(i):uri%20%3F;imported_from(i):string%20%3F;see_also(i):uriorcurie%20*;deprecated_element_has_exact_replacement(i):uriorcurie%20%3F;deprecated_element_has_possible_replacement(i):uriorcurie%20%3F],[SchemaDefinition]++-%20subsets%200..*&gt;[SubsetDefinition],[Element]^-[SubsetDefinition],[SchemaDefinition],[LocalName],[Extension],[Example],[Element],[CommonMetadata],[Annotation],[AltDescription]" /></p>
-<h2 id="parents">Parents</h2>
+                <h1 id="class-commonmetadata">Class: CommonMetadata</h1>
+<p>Generic metadata shared across definitions</p>
+<p>URI: <a href="https://w3id.org/linkml/CommonMetadata">linkml:CommonMetadata</a></p>
+<p><img alt="img" src="http://yuml.me/diagram/nofunky;dir:TB/class/[SubsetDefinition],[Example],[SubsetDefinition]&lt;in_subset%200..*-%20[CommonMetadata&#124;description:string%20%3F;deprecated:string%20%3F;todos:string%20*;notes:string%20*;comments:string%20*;from_schema:uri%20%3F;imported_from:string%20%3F;see_also:uriorcurie%20*;deprecated_element_has_exact_replacement:uriorcurie%20%3F;deprecated_element_has_possible_replacement:uriorcurie%20%3F],[Example]&lt;examples%200..*-++[CommonMetadata],[AltDescription]&lt;alt_descriptions%200..*-++[CommonMetadata],[PermissibleValue]uses%20-.-&gt;[CommonMetadata],[Element]uses%20-.-&gt;[CommonMetadata],[PermissibleValue],[Element],[AltDescription]" /></p>
+<h2 id="mixin-for">Mixin for</h2>
 <ul>
-<li>is_a: <a href="Element.html">Element</a> - a named element in the model</li>
+<li><a href="Element.html">Element</a> (mixin)  - a named element in the model</li>
+<li><a href="PermissibleValue.html">PermissibleValue</a> (mixin)  - a permissible value, accompanied by intended text and an optional mapping to a concept URI</li>
 </ul>
 <h2 id="referenced-by-class">Referenced by class</h2>
-<ul>
-<li><strong><a href="Element.html">Element</a></strong> <em><a href="in_subset.html">in_subset</a></em>  <sub>0..*</sub>  <strong><a href="SubsetDefinition.html">SubsetDefinition</a></strong></li>
-<li><strong><a href="SchemaDefinition.html">SchemaDefinition</a></strong> <em><a href="subsets.html">subsets</a></em>  <sub>0..*</sub>  <strong><a href="SubsetDefinition.html">SubsetDefinition</a></strong></li>
-</ul>
 <h2 id="attributes">Attributes</h2>
-<h3 id="inherited-from-element">Inherited from element:</h3>
+<h3 id="own">Own</h3>
 <ul>
-<li><a href="aliases.html">aliases</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="String.html">String</a></li>
+<li><a href="alt_descriptions.html">alt_descriptions</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="AltDescription.html">AltDescription</a></li>
 </ul>
 </li>
-<li><a href="broad_mappings.html">broad mappings</a>  <sub>0..*</sub><ul>
-<li>Description: A list of terms from different schemas or terminology systems that have broader meaning.</li>
-<li>Range: <a href="Uriorcurie.html">Uriorcurie</a></li>
-</ul>
-</li>
-<li><a href="close_mappings.html">close mappings</a>  <sub>0..*</sub><ul>
-<li>Description: A list of terms from different schemas or terminology systems that have close meaning.</li>
-<li>Range: <a href="Uriorcurie.html">Uriorcurie</a></li>
-</ul>
-</li>
-<li><a href="definition_uri.html">definition_uri</a>  <sub>OPT</sub><ul>
-<li>Description: the "native" URI of the element</li>
-<li>Range: <a href="Uriorcurie.html">Uriorcurie</a></li>
-</ul>
-</li>
-<li><a href="exact_mappings.html">exact mappings</a>  <sub>0..*</sub><ul>
-<li>Description: A list of terms from different schemas or terminology systems that have identical meaning.</li>
-<li>Range: <a href="Uriorcurie.html">Uriorcurie</a></li>
-</ul>
-</li>
-<li><a href="id_prefixes.html">id_prefixes</a>  <sub>0..*</sub><ul>
-<li>Description: the identifier of this class or slot must begin with one of the URIs referenced by this prefix</li>
-<li>Range: <a href="Ncname.html">Ncname</a></li>
-</ul>
-</li>
-<li><a href="local_names.html">local_names</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="LocalName.html">LocalName</a></li>
-</ul>
-</li>
-<li><a href="mappings.html">mappings</a>  <sub>0..*</sub><ul>
-<li>Description: A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.</li>
-<li>Range: <a href="Uriorcurie.html">Uriorcurie</a></li>
-</ul>
-</li>
-<li><a href="name.html">name</a>  <sub>REQ</sub><ul>
-<li>Description: the unique name of the element within the context of the schema.  Name is combined with the default prefix to form the globally unique subject of the target class.</li>
+<li><a href="comments.html">comments</a>  <sub>0..*</sub><ul>
+<li>Description: notes and comments about an element intended for external consumption</li>
 <li>Range: <a href="String.html">String</a></li>
 <li>in subsets: (owl)</li>
 </ul>
 </li>
-<li><a href="narrow_mappings.html">narrow mappings</a>  <sub>0..*</sub><ul>
-<li>Description: A list of terms from different schemas or terminology systems that have narrower meaning.</li>
+<li><a href="deprecated.html">deprecated</a>  <sub>OPT</sub><ul>
+<li>Description: Description of why and when this element will no longer be used</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="deprecated_element_has_exact_replacement.html">deprecated element has exact replacement</a>  <sub>OPT</sub><ul>
+<li>Description: When an element is deprecated, it can be automatically replaced by this uri or curie</li>
 <li>Range: <a href="Uriorcurie.html">Uriorcurie</a></li>
 </ul>
 </li>
-<li><a href="related_mappings.html">related mappings</a>  <sub>0..*</sub><ul>
-<li>Description: A list of terms from different schemas or terminology systems that have related meaning.</li>
+<li><a href="deprecated_element_has_possible_replacement.html">deprecated element has possible replacement</a>  <sub>OPT</sub><ul>
+<li>Description: When an element is deprecated, it can be potentially replaced by this uri or curie</li>
 <li>Range: <a href="Uriorcurie.html">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="description.html">description</a>  <sub>OPT</sub><ul>
+<li>Description: a description of the element's purpose and use</li>
+<li>Range: <a href="String.html">String</a></li>
+<li>in subsets: (owl)</li>
+</ul>
+</li>
+<li><a href="examples.html">examples</a>  <sub>0..*</sub><ul>
+<li>Description: example usages of an element</li>
+<li>Range: <a href="Example.html">Example</a></li>
+<li>in subsets: (owl)</li>
+</ul>
+</li>
+<li><a href="from_schema.html">from_schema</a>  <sub>OPT</sub><ul>
+<li>Description: id of the schema that defined the element</li>
+<li>Range: <a href="Uri.html">Uri</a></li>
+</ul>
+</li>
+<li><a href="imported_from.html">imported_from</a>  <sub>OPT</sub><ul>
+<li>Description: the imports entry that this element was derived from.  Empty means primary source</li>
+<li>Range: <a href="String.html">String</a></li>
+</ul>
+</li>
+<li><a href="in_subset.html">in_subset</a>  <sub>0..*</sub><ul>
+<li>Description: used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)</li>
+<li>Range: <a href="SubsetDefinition.html">SubsetDefinition</a></li>
+</ul>
+</li>
+<li><a href="notes.html">notes</a>  <sub>0..*</sub><ul>
+<li>Description: editorial notes about an element intended for internal consumption</li>
+<li>Range: <a href="String.html">String</a></li>
+<li>in subsets: (owl)</li>
+</ul>
+</li>
+<li><a href="see_also.html">see_also</a>  <sub>0..*</sub><ul>
+<li>Description: a reference</li>
+<li>Range: <a href="Uriorcurie.html">Uriorcurie</a></li>
+<li>in subsets: (owl)</li>
+</ul>
+</li>
+<li><a href="todos.html">todos</a>  <sub>0..*</sub><ul>
+<li>Description: Outstanding issue that needs resolution</li>
+<li>Range: <a href="String.html">String</a></li>
 </ul>
 </li>
 </ul>

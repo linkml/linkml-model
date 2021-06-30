@@ -1158,7 +1158,7 @@
                "type": "boolean"
             },
             "key": {
-               "description": "True means that the key slot(s) uniquely identify the container. In future releases, it will be possible for there to be compound keys, where several slots combine to produce a unique identifier",
+               "description": "True means that the key slot(s) uniquely identify the container.",
                "type": "boolean"
             },
             "last_updated_on": {
@@ -1659,6 +1659,38 @@
             "name"
          ],
          "title": "TypeDefinition",
+         "type": "object"
+      },
+      "UniqueKey": {
+         "additionalProperties": false,
+         "description": "a collection of slots whose values uniquely identify an instance of a class",
+         "properties": {
+            "annotations": {
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
+               "items": {
+                  "$ref": "#/definitions/Annotation"
+               },
+               "type": "array"
+            },
+            "extensions": {
+               "description": "a tag/text tuple attached to an arbitrary element",
+               "items": {
+                  "$ref": "#/definitions/Extension"
+               },
+               "type": "array"
+            },
+            "unique_key_slots": {
+               "description": "list of slot names that form a key",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "unique_key_slots"
+         ],
+         "title": "UniqueKey",
          "type": "object"
       }
    },

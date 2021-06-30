@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="img/favicon.ico">
-  <title>Slot: see_also - LinkML Model</title>
+  <title>Class: UniqueKey - LinkML Model</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Slot: see_also";
-    var mkdocs_page_input_path = "see_also.md";
+    var mkdocs_page_name = "Class: UniqueKey";
+    var mkdocs_page_input_path = "UniqueKey.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -79,7 +79,7 @@
     
       
     
-    <li>Slot: see_also</li>
+    <li>Class: UniqueKey</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,48 +91,44 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="slot-see_also">Slot: see_also</h1>
-<p>a reference</p>
-<p>URI: <a href="https://w3id.org/linkml/see_also">linkml:see_also</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p><a href="Element.html">Element</a> &#8594;  <sub>0..*</sub> <a href="Uriorcurie.html">Uriorcurie</a></p>
-<h2 id="parents">Parents</h2>
-<h2 id="children">Children</h2>
-<h2 id="used-by">Used by</h2>
+                <h1 id="class-uniquekey">Class: UniqueKey</h1>
+<p>a collection of slots whose values uniquely identify an instance of a class</p>
+<p>URI: <a href="https://w3id.org/linkml/UniqueKey">linkml:UniqueKey</a></p>
+<p><img alt="img" src="http://yuml.me/diagram/nofunky;dir:TB/class/[SlotDefinition]&lt;unique_key_slots%201..*-%20[UniqueKey],[UniqueKey]uses%20-.-&gt;[Extensible],[UniqueKey]uses%20-.-&gt;[Annotatable],[SlotDefinition],[Extension],[Extensible],[ClassDefinition],[Annotation],[Annotatable]" /></p>
+<h2 id="uses-mixins">Uses Mixins</h2>
 <ul>
-<li><a href="ClassDefinition.html">ClassDefinition</a></li>
-<li><a href="CommonMetadata.html">CommonMetadata</a></li>
-<li><a href="Definition.html">Definition</a></li>
-<li><a href="Element.html">Element</a></li>
-<li><a href="EnumDefinition.html">EnumDefinition</a></li>
-<li><a href="PermissibleValue.html">PermissibleValue</a></li>
-<li><a href="SchemaDefinition.html">SchemaDefinition</a></li>
-<li><a href="SlotDefinition.html">SlotDefinition</a></li>
-<li><a href="SubsetDefinition.html">SubsetDefinition</a></li>
-<li><a href="TypeDefinition.html">TypeDefinition</a></li>
+<li>mixin: <a href="Extensible.html">Extensible</a> - mixin for classes that support extension</li>
+<li>mixin: <a href="Annotatable.html">Annotatable</a> - mixin for classes that support annotations</li>
 </ul>
-<h2 id="other-properties">Other properties</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Mappings:</strong></td>
-<td></td>
-<td>rdfs:seeAlso</td>
-</tr>
-<tr>
-<td><strong>In Subsets:</strong></td>
-<td></td>
-<td>owl</td>
-</tr>
-</tbody>
-</table>
+<h2 id="referenced-by-class">Referenced by class</h2>
+<ul>
+<li><strong><a href="ClassDefinition.html">ClassDefinition</a></strong> <em><a href="unique_keys.html">unique_keys</a></em>  <sub>0..*</sub>  <strong><a href="UniqueKey.html">UniqueKey</a></strong></li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="unique_key_slots.html">unique_key_slots</a>  <sub>1..*</sub><ul>
+<li>Description: list of slot names that form a key</li>
+<li>Range: <a href="SlotDefinition.html">SlotDefinition</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-annotatable">Mixed in from annotatable:</h3>
+<ul>
+<li><a href="annotations.html">annotations</a>  <sub>0..*</sub><ul>
+<li>Description: a collection of tag/text tuples with the semantics of OWL Annotation</li>
+<li>Range: <a href="Annotation.html">Annotation</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-extensible">Mixed in from extensible:</h3>
+<ul>
+<li><a href="extensions.html">extensions</a>  <sub>0..*</sub><ul>
+<li>Description: a tag/text tuple attached to an arbitrary element</li>
+<li>Range: <a href="Extension.html">Extension</a></li>
+</ul>
+</li>
+</ul>
               
             </div>
           </div>
