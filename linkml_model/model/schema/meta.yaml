@@ -77,7 +77,14 @@ slots:
     multivalued: true
     range: ncname
     description: >-
-      the identifier of this class or slot must begin with one of the URIs referenced by this prefix
+      the identifier of this class or slot must begin with the URIs referenced by this prefix
+    comments:
+      - Order of elements may be used to indicate priority order
+      - If identifiers are treated as CURIEs, then the CURIE must start with one of the indicated prefixes followed by `:` (_should_ start if the list is open)
+      - If identifiers are treated as URIs, then the URI string must start with the expanded for of the prefix (_should_ start if the list is open)
+    see_also:
+      - https://github.com/linkml/linkml/issues/194
+      - https://github.com/linkml/linkml-model/issues/28
 
   description:
     domain: element
@@ -1052,7 +1059,11 @@ classes:
       - field
       - property
       - attribute
+      - column
+      - variable
     is_a: definition
+    close_mappings:
+      - rdf:Property
     slots:
       - singular_name
       - domain
@@ -1096,6 +1107,8 @@ classes:
       - table
       - record
       - template
+      - message
+      - observation
     is_a: definition
     slots:
       - slots
@@ -1113,6 +1126,8 @@ classes:
         range: class_definition
       apply_to:
         range: class_definition
+    close_mappings:
+      - owl:Class
 
   prefix:
     description: prefix URI tuple
