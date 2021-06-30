@@ -1529,8 +1529,13 @@ linkml:definition_uri a linkml:SlotDefinition ;
     linkml:slot_uri linkml:definition_uri .
 
 linkml:id_prefixes a linkml:SlotDefinition ;
-    skos:definition "the identifier of this class or slot must begin with one of the URIs referenced by this prefix" ;
+    rdfs:seeAlso <https://github.com/linkml/linkml-model/issues/28>,
+        <https://github.com/linkml/linkml/issues/194> ;
+    skos:definition "the identifier of this class or slot must begin with the URIs referenced by this prefix" ;
     skos:inScheme linkml:meta ;
+    skos:note "If identifiers are treated as CURIEs, then the CURIE must start with one of the indicated prefixes followed by `:` (_should_ start if the list is open)",
+        "If identifiers are treated as URIs, then the URI string must start with the expanded for of the prefix (_should_ start if the list is open)",
+        "Order of elements may be used to indicate priority order" ;
     linkml:definition_uri linkml:id_prefixes ;
     linkml:domain linkml:Element ;
     linkml:domain_of linkml:Element ;
@@ -2180,27 +2185,27 @@ linkml:meta a linkml:SchemaDefinition ;
         "skos",
         "xsd" ;
     linkml:enums linkml:pv_formula_options ;
-    linkml:generation_date "2021-06-30 16:50"^^xsd:dateTime ;
+    linkml:generation_date "2021-06-30 16:54"^^xsd:dateTime ;
     linkml:id linkml:meta ;
     linkml:imports linkml:annotations,
         linkml:extensions,
         linkml:mappings,
         linkml:types ;
     linkml:metamodel_version "1.7.0" ;
-    linkml:prefixes [ linkml:prefix_prefix "pav" ;
-            linkml:prefix_reference pav: ],
+    linkml:prefixes [ linkml:prefix_prefix "OIO" ;
+            linkml:prefix_reference OIO: ],
         [ linkml:prefix_prefix "linkml" ;
             linkml:prefix_reference linkml: ],
-        [ linkml:prefix_prefix "OIO" ;
-            linkml:prefix_reference OIO: ],
-        [ linkml:prefix_prefix "schema" ;
-            linkml:prefix_reference schema: ],
-        [ linkml:prefix_prefix "oslc" ;
-            linkml:prefix_reference oslc: ],
         [ linkml:prefix_prefix "skos" ;
             linkml:prefix_reference skos: ],
+        [ linkml:prefix_prefix "schema" ;
+            linkml:prefix_reference schema: ],
+        [ linkml:prefix_prefix "pav" ;
+            linkml:prefix_reference pav: ],
         [ linkml:prefix_prefix "bibo" ;
-            linkml:prefix_reference bibo: ] ;
+            linkml:prefix_reference bibo: ],
+        [ linkml:prefix_prefix "oslc" ;
+            linkml:prefix_reference oslc: ] ;
     linkml:slots linkml:abstract,
         linkml:alias,
         linkml:aliases,
@@ -2327,8 +2332,8 @@ linkml:meta a linkml:SchemaDefinition ;
         linkml:values_from,
         linkml:version ;
     linkml:source_file "meta.yaml" ;
-    linkml:source_file_date "Wed Jun 30 16:49:23 2021"^^xsd:dateTime ;
-    linkml:source_file_size 33625 ;
+    linkml:source_file_date "Wed Jun 30 16:52:30 2021"^^xsd:dateTime ;
+    linkml:source_file_size 34128 ;
     linkml:subsets linkml:owl ;
     linkml:types linkml:boolean,
         linkml:date,
