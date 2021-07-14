@@ -14,7 +14,7 @@ SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 SCHEMA_NAME = meta
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
 PKG_TGTS = graphql json jsonld jsonschema owl rdf shex
-TGTS = docs model python $(PKG_TGTS)
+TGTS = docs python $(PKG_TGTS)
 
 # Run a linkml package
 RUN =
@@ -61,7 +61,6 @@ clean:
 # ---------------------------------------
 squeaky-clean: clean $(patsubst %,squeaky-clean-%,$(PKG_TGTS))
 	find docs/*  ! -name 'README.*' -exec rm -rf {} +
-	find $(PKG_DIR)/model/schema  ! -name 'README.*' -type f -exec rm -f {} +
 	find $(PKG_DIR) -name "*.py" ! -name "__init__.py" ! -name "linkml_files.py" -exec rm -f {} +
 	rm -rf .venv
 
@@ -105,11 +104,9 @@ target/docs/index.md: $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml tdir-docs install
 # ---------------------------------------
 # YAML source
 # ---------------------------------------
-gen-model: $(patsubst %, $(PKG_DIR)/model/schema/%.yaml, $(SCHEMA_NAMES))
-
-$(PKG_DIR)/model/schema/%.yaml: model/schema/%.yaml
-	cp $< $@
-.PHONY: gen-linkml_model
+# YAML source is no longewr copied to the output directory.  Instead, it is placed there via setup.cfg
+gen-model:
+.PHONY: gen-model
 
 # ---------------------------------------
 # python source
