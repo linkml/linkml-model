@@ -4,9 +4,9 @@
 # ----------------------------------------
 # Model documentation and schema directory
 # ----------------------------------------
-SRC_DIR = model
 PKG_DIR = linkml_model
-SCHEMA_DIR = $(SRC_DIR)/schema
+SRC_DIR = $(PKG_DIR)/model
+SCHEMA_DIR = $(PKG_DIR)/model/schema
 MODEL_DOCS_DIR = $(SRC_DIR)/docs
 SOURCE_FILES := $(shell find $(SCHEMA_DIR) -name '*.yaml')
 SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
@@ -20,7 +20,7 @@ TGTS = docs python $(PKG_TGTS)
 RUN =
 
 # Global generation options
-GEN_OPTS = --log_level WARNING -im model/import_map.json
+GEN_OPTS = --log_level WARNING -im $(PKG_DIR)/model/import_map.json
 
 # ----------------------------------------
 # TOP LEVEL TARGETS
