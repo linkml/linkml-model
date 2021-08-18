@@ -21,11 +21,11 @@ jobs:
     - name: Install pipenv
       uses: dschep/install-pipenv-action@v1
 
-    - name: Install dependencies
-      run: |
-       pipenv install --dev
-
-    - name: Run a full make and unit test
+    - name: Run make file
       run: |
         make
+
+    - name: Run unit tests over results
+      run: |
+        pipenv install --dev
         pipenv run python -m unittest discover -p 'test_*.py'
