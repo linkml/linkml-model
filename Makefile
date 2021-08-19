@@ -13,7 +13,7 @@ SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 
 SCHEMA_NAME = meta
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
-PKG_TGTS = graphql json jsonld jsonschema owl rdf shex
+PKG_TGTS = graphql json jsonld jsonschema owl rdf shex sqlddl
 TGTS = docs model python $(PKG_TGTS)
 
 # Run a linkml package
@@ -40,7 +40,7 @@ uninstall:
 
 .venv:
 	mkdir -p .venv && touch .venv/Pipfile
-	pipenv install "linkml~=1.0"
+	pipenv install "linkml~=1.0.1"
 	pipenv install mkdocs
 
 
@@ -216,6 +216,18 @@ target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml $(PKG_DIR)/jsonld/%.context.jsonld tdir-r
 	$(RUN)gen-rdf $(GEN_OPTS) --context $(realpath $(word 2,$^)) $< > $@
 target/rdf/%.model.ttl: $(SCHEMA_DIR)/%.yaml $(PKG_DIR)/jsonld/%.model.context.jsonld tdir-rdf install
 	$(RUN)gen-rdf $(GEN_OPTS) --context $(realpath $(word 2,$^)) $< > $@
+
+# ---------------------------------------
+# SQLDDL
+# ---------------------------------------
+gen-sqlddl: $(PKG_T_SQLDDL)/$(SCHEMA_NAME).sql
+.PHONY: gen-sqlddl
+
+$(PKG_T_SQLDDL)/%.sql: target/sqlddl/%.sql
+	mkdir -p $(PKG_T_SQLDDL)
+	cp $< $@
+target/sqlddl/%.sql: $(SCHEMA_DIR)/%.yaml tdir-sqlddl install
+	$(RUN) gen-sqlddl $(GEN_OPTS) $< > $@
 
 
 # test docs locally.
