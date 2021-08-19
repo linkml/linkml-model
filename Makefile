@@ -128,7 +128,7 @@ $(PKG_T_PYTHON)/%.py: target/python/%.py
 	mkdir -p $(PKG_T_PYTHON)
 	cp $< $@
 target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python install
-	$(RUN) gen-python $(GEN_OPTS)  --no-slots --no-mergeimports $< > $@
+	$(RUN) gen-python $(GEN_OPTS) --genmeta --no-slots --no-mergeimports $< > $@
 
 # ---------------------------------------
 # GRAPHQL Source
