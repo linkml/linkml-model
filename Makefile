@@ -13,7 +13,7 @@ SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 
 SCHEMA_NAME = meta
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
-PKG_TGTS = graphql json jsonld jsonschema owl rdf shex
+PKG_TGTS = graphql json jsonld jsonschema owl rdf shex sqlddl
 TGTS = docs python $(PKG_TGTS)
 
 # Targets by PKG_TGT
