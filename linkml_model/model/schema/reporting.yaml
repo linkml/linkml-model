@@ -1,0 +1,109 @@
+id: https://w3id.org/linkml/reporting
+title: LinkML Report Metamodel
+name: reporting
+description: A datamodel for reports on data
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  reporting: https://w3id.org/linkml/report
+  skos: http://www.w3.org/2004/02/skos/core#
+  pav: http://purl.org/pav/
+  schema: http://schema.org/
+
+default_prefix: reporting
+default_range: string
+
+default_curi_maps:
+    - semweb_context
+
+emit_prefixes:
+  - linkml
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+imports:
+  - linkml:types
+
+
+
+#==================================
+# Classes                         #
+#==================================
+classes:
+  report:
+    description: A report object
+    attributes:
+      results:
+        range: check_result
+        multivalued: true
+    todos:
+      - add prov object
+
+  check_result:
+    description: An individual check
+    slots:
+      - type
+      - subject
+      - instantiates
+      - predicate
+      - object
+      - object_str
+      - source
+      - info
+
+  problem:
+    is_a: check_result
+
+  problem_slot_undeclared:
+    is_a: problem
+    description: >-
+      A problem in which an undeclared slot is used
+
+  problem_slot_inapplicable:
+    is_a: problem
+    description: >-
+      A problem in which a slot is used in an instance of a class where the slot is not applicable for that class
+
+  problem_slot_missing:
+    is_a: problem
+    description: >-
+      A problem in which an instance of a class has a required slot which is not filled in
+
+
+#==================================
+# Slots                           #
+#==================================
+slots:
+  type:
+    range: uriorcurie
+  subject:
+    range: nodeidentifier
+  instantiates:
+    range: nodeidentifier
+  predicate:
+    range: nodeidentifier
+  object:
+    range: nodeidentifier
+  object_str:
+    range: string
+  source:
+    range: nodeidentifier
+  severity:
+    range: severity_options
+  info:
+    range: string
+
+
+#==================================
+# Enumerations                    #
+#==================================
+enums:
+  severity_options:
+    permissible_values:
+      FATAL: 
+      ERROR: 
+      WARNING:
+      INFO:
