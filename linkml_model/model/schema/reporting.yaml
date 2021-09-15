@@ -10,6 +10,7 @@ prefixes:
   skos: http://www.w3.org/2004/02/skos/core#
   pav: http://purl.org/pav/
   schema: http://schema.org/
+  sh: https://w3id.org/shacl/
 
 default_prefix: reporting
 default_range: string
@@ -34,6 +35,7 @@ imports:
 #==================================
 classes:
   report:
+    class_uri: sh:ValidationReport
     description: A report object
     attributes:
       results:
@@ -43,6 +45,7 @@ classes:
       - add prov object
 
   check_result:
+    class_uri: sh:AbstractResult
     description: An individual check
     slots:
       - type
@@ -55,6 +58,7 @@ classes:
       - info
 
   problem:
+    class_uri: sh:ValidationResult
     is_a: check_result
 
   problem_slot_undeclared:
@@ -102,8 +106,13 @@ slots:
 #==================================
 enums:
   severity_options:
+    exact_mappings:
+      - sh:Severity
     permissible_values:
-      FATAL: 
+      FATAL:
       ERROR: 
+        meaning: sh:Violation
       WARNING:
+        meaning: sh:Warning
       INFO:
+        meaning: sh:Info
