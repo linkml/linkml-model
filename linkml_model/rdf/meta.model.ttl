@@ -834,17 +834,6 @@ linkml:owner a linkml:SlotDefinition ;
     linkml:readonly "filled in by loader -- either class domain or slot domain" ;
     linkml:slot_uri linkml:owner .
 
-linkml:pattern a linkml:SlotDefinition ;
-    skos:definition "the string value of the slot must conform to this regular expression" ;
-    skos:inScheme linkml:meta ;
-    linkml:definition_uri linkml:pattern ;
-    linkml:domain linkml:SlotDefinition ;
-    linkml:domain_of linkml:SlotDefinition ;
-    linkml:inherited true ;
-    linkml:owner linkml:SlotDefinition ;
-    linkml:range linkml:string ;
-    linkml:slot_uri linkml:pattern .
-
 linkml:permissible_values a linkml:SlotDefinition ;
     skos:definition "A list of possible values for a slot range" ;
     skos:inScheme linkml:meta ;
@@ -1310,6 +1299,18 @@ linkml:ncname a linkml:TypeDefinition ;
     linkml:imported_from "linkml:types" ;
     linkml:repr "str" ;
     linkml:uri xsd:string .
+
+linkml:pattern a linkml:SlotDefinition ;
+    skos:definition "the string value of the slot must conform to this regular expression" ;
+    skos:inScheme linkml:meta ;
+    linkml:definition_uri linkml:pattern ;
+    linkml:domain linkml:Definition ;
+    linkml:domain_of linkml:SlotDefinition,
+        linkml:TypeDefinition ;
+    linkml:inherited true ;
+    linkml:owner linkml:pattern ;
+    linkml:range linkml:string ;
+    linkml:slot_uri linkml:pattern .
 
 linkml:status a linkml:SlotDefinition ;
     skos:definition "status of the element" ;
@@ -1946,6 +1947,7 @@ linkml:TypeDefinition a linkml:ClassDefinition ;
         linkml:name,
         linkml:narrow_mappings,
         linkml:notes,
+        linkml:pattern,
         linkml:related_mappings,
         linkml:repr,
         linkml:see_also,
@@ -2201,25 +2203,25 @@ linkml:meta a linkml:SchemaDefinition ;
         "skos",
         "xsd" ;
     linkml:enums linkml:pv_formula_options ;
-    linkml:generation_date "2021-09-03 03:49"^^xsd:dateTime ;
+    linkml:generation_date "2021-09-17 20:24"^^xsd:dateTime ;
     linkml:id linkml:meta ;
     linkml:imports linkml:annotations,
         linkml:extensions,
         linkml:mappings,
         linkml:types ;
     linkml:metamodel_version "1.7.0" ;
-    linkml:prefixes [ linkml:prefix_prefix "OIO" ;
-            linkml:prefix_reference OIO: ],
-        [ linkml:prefix_prefix "linkml" ;
+    linkml:prefixes [ linkml:prefix_prefix "linkml" ;
             linkml:prefix_reference linkml: ],
-        [ linkml:prefix_prefix "bibo" ;
-            linkml:prefix_reference bibo: ],
-        [ linkml:prefix_prefix "skos" ;
-            linkml:prefix_reference skos: ],
-        [ linkml:prefix_prefix "schema" ;
-            linkml:prefix_reference schema: ],
+        [ linkml:prefix_prefix "OIO" ;
+            linkml:prefix_reference OIO: ],
         [ linkml:prefix_prefix "pav" ;
             linkml:prefix_reference pav: ],
+        [ linkml:prefix_prefix "skos" ;
+            linkml:prefix_reference skos: ],
+        [ linkml:prefix_prefix "bibo" ;
+            linkml:prefix_reference bibo: ],
+        [ linkml:prefix_prefix "schema" ;
+            linkml:prefix_reference schema: ],
         [ linkml:prefix_prefix "oslc" ;
             linkml:prefix_reference oslc: ] ;
     linkml:slots linkml:abstract,
@@ -2349,8 +2351,8 @@ linkml:meta a linkml:SchemaDefinition ;
         linkml:values_from,
         linkml:version ;
     linkml:source_file "meta.yaml" ;
-    linkml:source_file_date "Fri Sep  3 03:47:51 2021"^^xsd:dateTime ;
-    linkml:source_file_size 34566 ;
+    linkml:source_file_date "Fri Sep 17 20:22:48 2021"^^xsd:dateTime ;
+    linkml:source_file_size 34577 ;
     linkml:subsets linkml:owl ;
     linkml:types linkml:boolean,
         linkml:date,

@@ -128,6 +128,7 @@ CREATE TABLE type_definition (
 	base TEXT, 
 	uri TEXT, 
 	repr TEXT, 
+	pattern TEXT, 
 	PRIMARY KEY (name), 
 	FOREIGN KEY(typeof) REFERENCES type_definition (name)
 );
