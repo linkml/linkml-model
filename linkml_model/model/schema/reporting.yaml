@@ -34,19 +34,19 @@ imports:
 # Classes                         #
 #==================================
 classes:
-  report:
+  ValidationReport:
     class_uri: sh:ValidationReport
     description: A report object
     attributes:
       results:
-        range: check_result
+        range: ValidationResult
         multivalued: true
     todos:
       - add prov object
 
-  check_result:
-    class_uri: sh:AbstractResult
-    description: An individual check
+  ValidationResult:
+    class_uri: sh:ValidationResult
+    description: An individual result arising from validation of a data instance using a particular rule
     slots:
       - type
       - subject
@@ -57,32 +57,12 @@ classes:
       - source
       - info
 
-  problem:
-    class_uri: sh:ValidationResult
-    is_a: check_result
-
-  problem_slot_undeclared:
-    is_a: problem
-    description: >-
-      A problem in which an undeclared slot is used
-
-  problem_slot_inapplicable:
-    is_a: problem
-    description: >-
-      A problem in which a slot is used in an instance of a class where the slot is not applicable for that class
-
-  problem_slot_missing:
-    is_a: problem
-    description: >-
-      A problem in which an instance of a class has a required slot which is not filled in
-
-
 #==================================
 # Slots                           #
 #==================================
 slots:
   type:
-    range: uriorcurie
+    range: problem_type
   subject:
     range: nodeidentifier
   instantiates:
@@ -105,6 +85,18 @@ slots:
 # Enumerations                    #
 #==================================
 enums:
+  problem_type:
+    permissible_values:
+      undeclared_slot:
+        description: Applies when a slot is used in data but the slot is undeclared in the datamodel
+      inapplicable_slot:
+        description: Applies when a slot is used in an instance of a class where the slot is not applicable for that class
+      missing_slot_value:
+        description: Applies when an instance of a class has a required slot which is not filled in
+      slot_range_violation:
+        description: Applies when the value of a slot is inconsistent with the declared range
+      parsing_error:
+        description: The data could not be parsed
   severity_options:
     exact_mappings:
       - sh:Severity
