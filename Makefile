@@ -246,7 +246,7 @@ $(PKG_T_SQLDDL)/%.sql: target/sqlddl/%.sql
 	mkdir -p $(PKG_T_SQLDDL)
 	cp $< $@
 target/sqlddl/%.sql: $(SCHEMA_DIR)/%.yaml tdir-sqlddl install
-	$(RUN) gen-sqlddl $(GEN_OPTS) $< > $@
+	$(RUN) gen-sqlddl  --sqla-file target/sqlddl/$*_sqla.py $(GEN_OPTS) $< > $@
 
 # test docs locally.
 docserve: gen-docs
