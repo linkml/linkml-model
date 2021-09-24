@@ -284,6 +284,26 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "title",
+      "definition_uri": "https://w3id.org/linkml/title",
+      "mappings": [
+        "http://purl.org/dc/terms/title"
+      ],
+      "description": "the official title of the element",
+      "in_subset": [
+        "owl"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "Element",
+      "range": "string",
+      "slot_uri": "http://purl.org/dc/terms/title",
+      "owner": "Element",
+      "domain_of": [
+        "Element"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "definition_uri",
       "definition_uri": "https://w3id.org/linkml/definition_uri",
       "description": "the \"native\" URI of the element",
@@ -844,26 +864,6 @@
       "range": "ncname",
       "slot_uri": "https://w3id.org/linkml/emit_prefixes",
       "multivalued": true,
-      "owner": "SchemaDefinition",
-      "domain_of": [
-        "SchemaDefinition"
-      ],
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "title",
-      "definition_uri": "https://w3id.org/linkml/title",
-      "mappings": [
-        "http://purl.org/dc/terms/title"
-      ],
-      "description": "the official title of the schema",
-      "in_subset": [
-        "owl"
-      ],
-      "from_schema": "https://w3id.org/linkml/meta",
-      "domain": "SchemaDefinition",
-      "range": "string",
-      "slot_uri": "http://purl.org/dc/terms/title",
       "owner": "SchemaDefinition",
       "domain_of": [
         "SchemaDefinition"
@@ -2479,6 +2479,7 @@
       ],
       "slots": [
         "name",
+        "title",
         "id_prefixes",
         "definition_uri",
         "aliases",
@@ -2522,6 +2523,7 @@
       ],
       "is_a": "Element",
       "slots": [
+        "title",
         "id_prefixes",
         "definition_uri",
         "aliases",
@@ -2548,7 +2550,6 @@
         "deprecated_element_has_exact_replacement",
         "deprecated_element_has_possible_replacement",
         "id",
-        "title",
         "version",
         "imports",
         "license",
@@ -2581,6 +2582,7 @@
       "is_a": "Element",
       "slots": [
         "name",
+        "title",
         "id_prefixes",
         "definition_uri",
         "aliases",
@@ -2624,6 +2626,7 @@
       "is_a": "Element",
       "slots": [
         "name",
+        "title",
         "id_prefixes",
         "definition_uri",
         "aliases",
@@ -2666,6 +2669,7 @@
       "abstract": true,
       "slots": [
         "name",
+        "title",
         "id_prefixes",
         "definition_uri",
         "aliases",
@@ -2716,6 +2720,7 @@
       "is_a": "Element",
       "slots": [
         "name",
+        "title",
         "id_prefixes",
         "definition_uri",
         "aliases",
@@ -2770,6 +2775,7 @@
       "is_a": "Definition",
       "slots": [
         "name",
+        "title",
         "id_prefixes",
         "definition_uri",
         "aliases",
@@ -2858,6 +2864,7 @@
       "is_a": "Definition",
       "slots": [
         "name",
+        "title",
         "id_prefixes",
         "definition_uri",
         "aliases",
@@ -3079,9 +3086,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "meta.yaml",
-  "source_file_date": "Fri Sep 17 20:22:48 2021",
-  "source_file_size": 34577,
-  "generation_date": "2021-09-17 20:24",
+  "source_file_date": "Fri Sep 24 02:29:20 2021",
+  "source_file_size": 34568,
+  "generation_date": "2021-09-24 02:30",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",

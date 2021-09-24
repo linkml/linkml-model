@@ -16,6 +16,7 @@ CREATE TABLE annotation (
 
 CREATE TABLE class_definition (
 	name TEXT NOT NULL, 
+	title TEXT, 
 	definition_uri TEXT, 
 	local_names TEXT, 
 	extensions TEXT, 
@@ -32,8 +33,8 @@ CREATE TABLE class_definition (
 	abstract BOOLEAN, 
 	mixin BOOLEAN, 
 	created_by TEXT, 
-	created_on TEXT, 
-	last_updated_on TEXT, 
+	created_on DATETIME, 
+	last_updated_on DATETIME, 
 	modified_by TEXT, 
 	status TEXT, 
 	string_serialization TEXT, 
@@ -93,6 +94,7 @@ CREATE TABLE permissible_value (
 
 CREATE TABLE subset_definition (
 	name TEXT NOT NULL, 
+	title TEXT, 
 	definition_uri TEXT, 
 	local_names TEXT, 
 	extensions TEXT, 
@@ -111,6 +113,7 @@ CREATE TABLE subset_definition (
 
 CREATE TABLE type_definition (
 	name TEXT NOT NULL, 
+	title TEXT, 
 	definition_uri TEXT, 
 	local_names TEXT, 
 	extensions TEXT, 
@@ -141,6 +144,7 @@ CREATE TABLE unique_key (
 );
 
 CREATE TABLE schema_definition (
+	title TEXT, 
 	definition_uri TEXT, 
 	local_names TEXT, 
 	extensions TEXT, 
@@ -155,7 +159,6 @@ CREATE TABLE schema_definition (
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
 	id TEXT NOT NULL, 
-	title TEXT, 
 	version TEXT, 
 	license TEXT, 
 	default_prefix TEXT, 
@@ -166,9 +169,9 @@ CREATE TABLE schema_definition (
 	classes TEXT, 
 	metamodel_version TEXT, 
 	source_file TEXT, 
-	source_file_date TEXT, 
+	source_file_date DATETIME, 
 	source_file_size INTEGER, 
-	generation_date TEXT, 
+	generation_date DATETIME, 
 	name TEXT NOT NULL, 
 	PRIMARY KEY (name), 
 	FOREIGN KEY(default_range) REFERENCES type_definition (name)
@@ -176,6 +179,7 @@ CREATE TABLE schema_definition (
 
 CREATE TABLE slot_definition (
 	name TEXT NOT NULL, 
+	title TEXT, 
 	definition_uri TEXT, 
 	local_names TEXT, 
 	extensions TEXT, 
@@ -192,8 +196,8 @@ CREATE TABLE slot_definition (
 	abstract BOOLEAN, 
 	mixin BOOLEAN, 
 	created_by TEXT, 
-	created_on TEXT, 
-	last_updated_on TEXT, 
+	created_on DATETIME, 
+	last_updated_on DATETIME, 
 	modified_by TEXT, 
 	status TEXT, 
 	string_serialization TEXT, 
@@ -524,6 +528,7 @@ CREATE TABLE type_definition_see_also (
 
 CREATE TABLE enum_definition (
 	name TEXT NOT NULL, 
+	title TEXT, 
 	definition_uri TEXT, 
 	local_names TEXT, 
 	extensions TEXT, 
