@@ -126,10 +126,12 @@
 </ul>
 </li>
 <li><a href="../permissible_value_is_a/">permissible_value➞is_a</a>  <sub>0..1</sub><ul>
+<li>Description: specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded</li>
 <li>Range: <a href="./">PermissibleValue</a></li>
 </ul>
 </li>
 <li><a href="../permissible_value_mixins/">permissible_value➞mixins</a>  <sub>0..*</sub><ul>
+<li>Description: List of definitions to be mixed in. Targets may be any definition of the same type</li>
 <li>Range: <a href="./">PermissibleValue</a></li>
 </ul>
 </li>
