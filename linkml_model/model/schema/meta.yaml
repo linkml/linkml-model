@@ -71,6 +71,11 @@ slots:
     in_subset:
       - owl
 
+  conforms_to:
+    domain: element
+    description: An established standard to which the element conforms.
+    slot_uri: dcterms:conformsTo
+
   definition_uri:
     domain: element
     description: the "native" URI of the element
@@ -523,6 +528,8 @@ slots:
     domain: class_definition
     range: boolean
     description: indicator that this is the root class in tree structures
+    notes:
+      - each schema should have at most one tree root
 
   unique_keys:
     domain: class_definition
@@ -702,6 +709,8 @@ slots:
       - identifiers and keys are mutually exclusive.  A given domain cannot have both
 
   designates_type:
+    aliases:
+      - type designator
     domain: slot_definition
     range: boolean
     inherited: true
@@ -712,6 +721,7 @@ slots:
   alias:
     domain: slot_definition
     range: string
+    slot_uri: skos:prefLabel
     description: >-
       the name used for a slot in the context of its owning class.  If present, this is used instead of the actual
       slot name.
@@ -976,6 +986,7 @@ classes:
       - definition_uri
       - aliases
       - local_names
+      - conforms_to
       - mappings
       - exact mappings
       - close mappings
@@ -1131,6 +1142,7 @@ classes:
       - union_of
       - defining_slots
       - tree_root
+      - unique_keys
     slot_usage:
       is_a:
         range: class_definition
@@ -1186,6 +1198,7 @@ classes:
     mixins:
       - extensible
       - annotatable
+      - common_metadata
     slots:
       - unique_key_slots
 
