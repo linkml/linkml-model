@@ -120,6 +120,10 @@
                },
                "type": "array"
             },
+            "conforms_to": {
+               "description": "An established standard to which the element conforms.",
+               "type": "string"
+            },
             "created_by": {
                "description": "agent that created the element",
                "type": "string"
@@ -316,6 +320,13 @@
                },
                "type": "array"
             },
+            "unique_keys": {
+               "description": "Set of unique keys for this slot",
+               "items": {
+                  "$ref": "#/$defs/UniqueKey"
+               },
+               "type": "array"
+            },
             "values_from": {
                "description": "the identifier of a \"value set\" -- a set of identifiers that form the possible values for the range of a slot",
                "items": {
@@ -385,6 +396,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "conforms_to": {
+               "description": "An established standard to which the element conforms.",
+               "type": "string"
             },
             "definition_uri": {
                "description": "the \"native\" URI of the element",
@@ -784,6 +799,10 @@
                },
                "type": "array"
             },
+            "conforms_to": {
+               "description": "An established standard to which the element conforms.",
+               "type": "string"
+            },
             "default_curi_maps": {
                "description": "ordered list of prefixcommon biocontexts to be fetched to resolve id prefixes and inline prefix variables",
                "items": {
@@ -1067,6 +1086,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "conforms_to": {
+               "description": "An established standard to which the element conforms.",
+               "type": "string"
             },
             "created_by": {
                "description": "agent that created the element",
@@ -1397,6 +1420,10 @@
                },
                "type": "array"
             },
+            "conforms_to": {
+               "description": "An established standard to which the element conforms.",
+               "type": "string"
+            },
             "definition_uri": {
                "description": "the \"native\" URI of the element",
                "type": "string"
@@ -1571,6 +1598,10 @@
                },
                "type": "array"
             },
+            "conforms_to": {
+               "description": "An established standard to which the element conforms.",
+               "type": "string"
+            },
             "definition_uri": {
                "description": "the \"native\" URI of the element",
                "type": "string"
@@ -1717,6 +1748,12 @@
          "additionalProperties": false,
          "description": "a collection of slots whose values uniquely identify an instance of a class",
          "properties": {
+            "alt_descriptions": {
+               "items": {
+                  "$ref": "#/$defs/AltDescription"
+               },
+               "type": "array"
+            },
             "annotations": {
                "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
                "items": {
@@ -1724,10 +1761,76 @@
                },
                "type": "array"
             },
+            "comments": {
+               "description": "notes and comments about an element intended for external consumption",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "deprecated": {
+               "description": "Description of why and when this element will no longer be used",
+               "type": "string"
+            },
+            "deprecated_element_has_exact_replacement": {
+               "description": "When an element is deprecated, it can be automatically replaced by this uri or curie",
+               "type": "string"
+            },
+            "deprecated_element_has_possible_replacement": {
+               "description": "When an element is deprecated, it can be potentially replaced by this uri or curie",
+               "type": "string"
+            },
+            "description": {
+               "description": "a description of the element's purpose and use",
+               "type": "string"
+            },
+            "examples": {
+               "description": "example usages of an element",
+               "items": {
+                  "$ref": "#/$defs/Example"
+               },
+               "type": "array"
+            },
             "extensions": {
                "description": "a tag/text tuple attached to an arbitrary element",
                "items": {
                   "$ref": "#/$defs/Extension"
+               },
+               "type": "array"
+            },
+            "from_schema": {
+               "description": "id of the schema that defined the element",
+               "type": "string"
+            },
+            "imported_from": {
+               "description": "the imports entry that this element was derived from.  Empty means primary source",
+               "type": "string"
+            },
+            "in_subset": {
+               "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "notes": {
+               "description": "editorial notes about an element intended for internal consumption",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "see_also": {
+               "description": "a reference",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "todos": {
+               "description": "Outstanding issue that needs resolution",
+               "items": {
+                  "type": "string"
                },
                "type": "array"
             },

@@ -19,6 +19,7 @@ CREATE TABLE class_definition (
 	title TEXT, 
 	definition_uri TEXT, 
 	local_names TEXT, 
+	conforms_to TEXT, 
 	extensions TEXT, 
 	annotations TEXT, 
 	description TEXT, 
@@ -97,6 +98,7 @@ CREATE TABLE subset_definition (
 	title TEXT, 
 	definition_uri TEXT, 
 	local_names TEXT, 
+	conforms_to TEXT, 
 	extensions TEXT, 
 	annotations TEXT, 
 	description TEXT, 
@@ -116,6 +118,7 @@ CREATE TABLE type_definition (
 	title TEXT, 
 	definition_uri TEXT, 
 	local_names TEXT, 
+	conforms_to TEXT, 
 	extensions TEXT, 
 	annotations TEXT, 
 	description TEXT, 
@@ -136,17 +139,11 @@ CREATE TABLE type_definition (
 	FOREIGN KEY(typeof) REFERENCES type_definition (name)
 );
 
-CREATE TABLE unique_key (
-	unique_key_slots TEXT NOT NULL, 
-	extensions TEXT, 
-	annotations TEXT, 
-	PRIMARY KEY (unique_key_slots, extensions, annotations)
-);
-
 CREATE TABLE schema_definition (
 	title TEXT, 
 	definition_uri TEXT, 
 	local_names TEXT, 
+	conforms_to TEXT, 
 	extensions TEXT, 
 	annotations TEXT, 
 	description TEXT, 
@@ -182,6 +179,7 @@ CREATE TABLE slot_definition (
 	title TEXT, 
 	definition_uri TEXT, 
 	local_names TEXT, 
+	conforms_to TEXT, 
 	extensions TEXT, 
 	annotations TEXT, 
 	description TEXT, 
@@ -237,6 +235,28 @@ CREATE TABLE slot_definition (
 	FOREIGN KEY(subproperty_of) REFERENCES slot_definition (name), 
 	FOREIGN KEY(inverse) REFERENCES slot_definition (name), 
 	FOREIGN KEY(is_a) REFERENCES slot_definition (name)
+);
+
+CREATE TABLE unique_key (
+	unique_key_slots TEXT NOT NULL, 
+	extensions TEXT, 
+	annotations TEXT, 
+	description TEXT, 
+	alt_descriptions TEXT, 
+	deprecated TEXT, 
+	todos TEXT, 
+	notes TEXT, 
+	comments TEXT, 
+	examples TEXT, 
+	in_subset TEXT, 
+	from_schema TEXT, 
+	imported_from TEXT, 
+	see_also TEXT, 
+	deprecated_element_has_exact_replacement TEXT, 
+	deprecated_element_has_possible_replacement TEXT, 
+	class_definition_name TEXT, 
+	PRIMARY KEY (unique_key_slots, extensions, annotations, description, alt_descriptions, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, class_definition_name), 
+	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
 );
 
 CREATE TABLE class_definition_id_prefixes (
@@ -531,6 +551,7 @@ CREATE TABLE enum_definition (
 	title TEXT, 
 	definition_uri TEXT, 
 	local_names TEXT, 
+	conforms_to TEXT, 
 	extensions TEXT, 
 	annotations TEXT, 
 	description TEXT, 

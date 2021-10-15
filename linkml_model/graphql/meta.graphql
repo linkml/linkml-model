@@ -25,6 +25,7 @@ type ClassDefinition
     definitionUri: Uriorcurie
     aliases: [String]
     localNames: [LocalName]
+    conformsTo: String
     mappings: [Uriorcurie]
     exactMappings: [Uriorcurie]
     closeMappings: [Uriorcurie]
@@ -63,6 +64,7 @@ type ClassDefinition
     unionOf: [ClassDefinition]
     definingSlots: [SlotDefinition]
     treeRoot: Boolean
+    uniqueKeys: [UniqueKey]
     isA: ClassDefinition
     mixins: [ClassDefinition]
     applyTo: [ClassDefinition]
@@ -93,6 +95,7 @@ interface Definition
     definitionUri: Uriorcurie
     aliases: [String]
     localNames: [LocalName]
+    conformsTo: String
     mappings: [Uriorcurie]
     exactMappings: [Uriorcurie]
     closeMappings: [Uriorcurie]
@@ -136,6 +139,7 @@ type Element implements Extensible, Annotatable, CommonMetadata
     definitionUri: Uriorcurie
     aliases: [String]
     localNames: [LocalName]
+    conformsTo: String
     mappings: [Uriorcurie]
     exactMappings: [Uriorcurie]
     closeMappings: [Uriorcurie]
@@ -167,6 +171,7 @@ type EnumDefinition
     definitionUri: Uriorcurie
     aliases: [String]
     localNames: [LocalName]
+    conformsTo: String
     mappings: [Uriorcurie]
     exactMappings: [Uriorcurie]
     closeMappings: [Uriorcurie]
@@ -255,6 +260,7 @@ type SchemaDefinition
     definitionUri: Uriorcurie
     aliases: [String]
     localNames: [LocalName]
+    conformsTo: String
     mappings: [Uriorcurie]
     exactMappings: [Uriorcurie]
     closeMappings: [Uriorcurie]
@@ -306,6 +312,7 @@ type SlotDefinition
     definitionUri: Uriorcurie
     aliases: [String]
     localNames: [LocalName]
+    conformsTo: String
     mappings: [Uriorcurie]
     exactMappings: [Uriorcurie]
     closeMappings: [Uriorcurie]
@@ -377,6 +384,7 @@ type SubsetDefinition
     definitionUri: Uriorcurie
     aliases: [String]
     localNames: [LocalName]
+    conformsTo: String
     mappings: [Uriorcurie]
     exactMappings: [Uriorcurie]
     closeMappings: [Uriorcurie]
@@ -408,6 +416,7 @@ type TypeDefinition
     definitionUri: Uriorcurie
     aliases: [String]
     localNames: [LocalName]
+    conformsTo: String
     mappings: [Uriorcurie]
     exactMappings: [Uriorcurie]
     closeMappings: [Uriorcurie]
@@ -436,11 +445,24 @@ type TypeDefinition
     pattern: String
   }
 
-type UniqueKey implements Extensible, Annotatable
+type UniqueKey implements Extensible, Annotatable, CommonMetadata
   {
     uniqueKeySlots: [SlotDefinition]!
     extensions: [Extension]
     annotations: [Annotation]
+    description: String
+    altDescriptions: [AltDescription]
+    deprecated: String
+    todos: [String]
+    notes: [String]
+    comments: [String]
+    examples: [Example]
+    inSubset: [SubsetDefinition]
+    fromSchema: Uri
+    importedFrom: String
+    seeAlso: [Uriorcurie]
+    deprecatedElementHasExactReplacement: Uriorcurie
+    deprecatedElementHasPossibleReplacement: Uriorcurie
   }
 
 

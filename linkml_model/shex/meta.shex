@@ -75,6 +75,7 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           <union_of> @<ClassDefinition> * ;
           <defining_slots> @<SlotDefinition> * ;
           <tree_root> @<Boolean> ? ;
+          <unique_keys> @<UniqueKey> * ;
           <mixins> @<ClassDefinition> * ;
           <apply_to> @<ClassDefinition> *
        ) ;
@@ -140,6 +141,7 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           <definition_uri> @<Uriorcurie> ? ;
           skos:altLabel @<String> * ;
           <local_names> @<LocalName> * ;
+          dcterms:conformsTo @<String> ? ;
           skos:mappingRelation @<Uriorcurie> * ;
           skos:exactMatch @<Uriorcurie> * ;
           skos:closeMatch @<Uriorcurie> * ;
@@ -294,7 +296,7 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           <key> @<Boolean> ? ;
           <identifier> @<Boolean> ? ;
           <designates_type> @<Boolean> ? ;
-          <alias> @<String> ? ;
+          skos:prefLabel @<String> ? ;
           <owner> @<Definition> ? ;
           <domain_of> @<ClassDefinition> * ;
           rdfs:subPropertyOf @<SlotDefinition> ? ;
@@ -340,9 +342,24 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           rdf:type [ <Extensible> ] ? ;
           &<Annotatable_tes> ;
           rdf:type [ <Annotatable> ] ? ;
+          &<CommonMetadata_tes> ;
+          rdf:type [ <CommonMetadata> ] ? ;
           <unique_key_slots> @<SlotDefinition> + ;
           <extensions> @<Extension> * ;
-          <annotations> @<Annotation> *
+          <annotations> @<Annotation> * ;
+          skos:definition @<String> ? ;
+          <alt_descriptions> @<AltDescription> * ;
+          <deprecated> @<String> ? ;
+          <todos> @<String> * ;
+          skos:editorialNote @<String> * ;
+          skos:note @<String> * ;
+          <examples> @<Example> * ;
+          oboInOwl:inSubset @<SubsetDefinition> * ;
+          skos:inScheme @<Uri> ? ;
+          <imported_from> @<String> ? ;
+          rdfs:seeAlso @<Uriorcurie> * ;
+          <deprecated_element_has_exact_replacement> @<Uriorcurie> ? ;
+          <deprecated_element_has_possible_replacement> @<Uriorcurie> ?
        ) ;
        rdf:type [ <UniqueKey> ] ?
     )

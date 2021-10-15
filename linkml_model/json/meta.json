@@ -304,6 +304,23 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "conforms_to",
+      "definition_uri": "https://w3id.org/linkml/conforms_to",
+      "mappings": [
+        "http://purl.org/dc/terms/conformsTo"
+      ],
+      "description": "An established standard to which the element conforms.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "Element",
+      "range": "string",
+      "slot_uri": "http://purl.org/dc/terms/conformsTo",
+      "owner": "Element",
+      "domain_of": [
+        "Element"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "definition_uri",
       "definition_uri": "https://w3id.org/linkml/definition_uri",
       "description": "the \"native\" URI of the element",
@@ -1270,6 +1287,9 @@
       "name": "tree_root",
       "definition_uri": "https://w3id.org/linkml/tree_root",
       "description": "indicator that this is the root class in tree structures",
+      "notes": [
+        "each schema should have at most one tree root"
+      ],
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "ClassDefinition",
       "range": "boolean",
@@ -1293,7 +1313,10 @@
       "slot_uri": "https://w3id.org/linkml/unique_keys",
       "multivalued": true,
       "inlined": true,
-      "owner": "unique_keys",
+      "owner": "ClassDefinition",
+      "domain_of": [
+        "ClassDefinition"
+      ],
       "@type": "SlotDefinition"
     },
     {
@@ -1570,6 +1593,9 @@
     {
       "name": "designates_type",
       "definition_uri": "https://w3id.org/linkml/designates_type",
+      "aliases": [
+        "type designator"
+      ],
       "description": "True means that the key slot(s) is used to determine the instantiation (types) relation between objects and a ClassDefinition",
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "SlotDefinition",
@@ -1585,11 +1611,14 @@
     {
       "name": "alias",
       "definition_uri": "https://w3id.org/linkml/alias",
+      "mappings": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ],
       "description": "the name used for a slot in the context of its owning class.  If present, this is used instead of the actual slot name.",
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "SlotDefinition",
       "range": "string",
-      "slot_uri": "https://w3id.org/linkml/alias",
+      "slot_uri": "http://www.w3.org/2004/02/skos/core#prefLabel",
       "owner": "SlotDefinition",
       "domain_of": [
         "SlotDefinition"
@@ -2542,6 +2571,7 @@
         "definition_uri",
         "aliases",
         "local_names",
+        "conforms_to",
         "mappings",
         "exact_mappings",
         "close_mappings",
@@ -2586,6 +2616,7 @@
         "definition_uri",
         "aliases",
         "local_names",
+        "conforms_to",
         "mappings",
         "exact_mappings",
         "close_mappings",
@@ -2645,6 +2676,7 @@
         "definition_uri",
         "aliases",
         "local_names",
+        "conforms_to",
         "mappings",
         "exact_mappings",
         "close_mappings",
@@ -2689,6 +2721,7 @@
         "definition_uri",
         "aliases",
         "local_names",
+        "conforms_to",
         "mappings",
         "exact_mappings",
         "close_mappings",
@@ -2732,6 +2765,7 @@
         "definition_uri",
         "aliases",
         "local_names",
+        "conforms_to",
         "mappings",
         "exact_mappings",
         "close_mappings",
@@ -2783,6 +2817,7 @@
         "definition_uri",
         "aliases",
         "local_names",
+        "conforms_to",
         "mappings",
         "exact_mappings",
         "close_mappings",
@@ -2838,6 +2873,7 @@
         "definition_uri",
         "aliases",
         "local_names",
+        "conforms_to",
         "mappings",
         "exact_mappings",
         "close_mappings",
@@ -2927,6 +2963,7 @@
         "definition_uri",
         "aliases",
         "local_names",
+        "conforms_to",
         "mappings",
         "exact_mappings",
         "close_mappings",
@@ -2965,6 +3002,7 @@
         "union_of",
         "defining_slots",
         "tree_root",
+        "unique_keys",
         "class_definition_is_a",
         "class_definition_mixins",
         "class_definition_apply_to"
@@ -3067,12 +3105,26 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "mixins": [
         "Extensible",
-        "Annotatable"
+        "Annotatable",
+        "CommonMetadata"
       ],
       "slots": [
         "unique_key_slots",
         "extensions",
-        "annotations"
+        "annotations",
+        "description",
+        "alt_descriptions",
+        "deprecated",
+        "todos",
+        "notes",
+        "comments",
+        "examples",
+        "in_subset",
+        "from_schema",
+        "imported_from",
+        "see_also",
+        "deprecated_element_has_exact_replacement",
+        "deprecated_element_has_possible_replacement"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/linkml/UniqueKey",
@@ -3144,9 +3196,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "meta.yaml",
-  "source_file_date": "Sat Oct  9 00:20:22 2021",
-  "source_file_size": 34568,
-  "generation_date": "2021-10-09 00:22",
+  "source_file_date": "Fri Oct 15 21:56:45 2021",
+  "source_file_size": 34904,
+  "generation_date": "2021-10-15 21:58",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",

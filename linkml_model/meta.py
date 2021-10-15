@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-10-09 00:23
+# Generation date: 2021-10-15 21:59
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -190,6 +190,7 @@ class Element(YAMLRoot):
     definition_uri: Optional[Union[str, URIorCURIE]] = None
     aliases: Optional[Union[str, List[str]]] = empty_list()
     local_names: Optional[Union[Dict[Union[str, LocalNameLocalNameSource], Union[dict, "LocalName"]], List[Union[dict, "LocalName"]]]] = empty_dict()
+    conforms_to: Optional[str] = None
     mappings: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     exact_mappings: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     close_mappings: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
@@ -233,6 +234,9 @@ class Element(YAMLRoot):
         self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
 
         self._normalize_inlined_as_dict(slot_name="local_names", slot_type=LocalName, key_name="local_name_source", keyed=True)
+
+        if self.conforms_to is not None and not isinstance(self.conforms_to, str):
+            self.conforms_to = str(self.conforms_to)
 
         if not isinstance(self.mappings, list):
             self.mappings = [self.mappings] if self.mappings is not None else []
@@ -757,6 +761,7 @@ class ClassDefinition(Definition):
     union_of: Optional[Union[Union[str, ClassDefinitionName], List[Union[str, ClassDefinitionName]]]] = empty_list()
     defining_slots: Optional[Union[Union[str, SlotDefinitionName], List[Union[str, SlotDefinitionName]]]] = empty_list()
     tree_root: Optional[Union[bool, Bool]] = None
+    unique_keys: Optional[Union[Union[dict, "UniqueKey"], List[Union[dict, "UniqueKey"]]]] = empty_list()
     is_a: Optional[Union[str, ClassDefinitionName]] = None
     mixins: Optional[Union[Union[str, ClassDefinitionName], List[Union[str, ClassDefinitionName]]]] = empty_list()
     apply_to: Optional[Union[Union[str, ClassDefinitionName], List[Union[str, ClassDefinitionName]]]] = empty_list()
@@ -791,6 +796,8 @@ class ClassDefinition(Definition):
 
         if self.tree_root is not None and not isinstance(self.tree_root, Bool):
             self.tree_root = Bool(self.tree_root)
+
+        self._normalize_inlined_as_dict(slot_name="unique_keys", slot_type=UniqueKey, key_name="unique_key_slots", keyed=False)
 
         if self.is_a is not None and not isinstance(self.is_a, ClassDefinitionName):
             self.is_a = ClassDefinitionName(self.is_a)
@@ -1032,6 +1039,19 @@ class UniqueKey(YAMLRoot):
     unique_key_slots: Union[Union[str, SlotDefinitionName], List[Union[str, SlotDefinitionName]]] = None
     extensions: Optional[Union[Union[dict, Extension], List[Union[dict, Extension]]]] = empty_list()
     annotations: Optional[Union[Union[dict, Annotation], List[Union[dict, Annotation]]]] = empty_list()
+    description: Optional[str] = None
+    alt_descriptions: Optional[Union[Dict[Union[str, AltDescriptionSource], Union[dict, AltDescription]], List[Union[dict, AltDescription]]]] = empty_dict()
+    deprecated: Optional[str] = None
+    todos: Optional[Union[str, List[str]]] = empty_list()
+    notes: Optional[Union[str, List[str]]] = empty_list()
+    comments: Optional[Union[str, List[str]]] = empty_list()
+    examples: Optional[Union[Union[dict, Example], List[Union[dict, Example]]]] = empty_list()
+    in_subset: Optional[Union[Union[str, SubsetDefinitionName], List[Union[str, SubsetDefinitionName]]]] = empty_list()
+    from_schema: Optional[Union[str, URI]] = None
+    imported_from: Optional[str] = None
+    see_also: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    deprecated_element_has_exact_replacement: Optional[Union[str, URIorCURIE]] = None
+    deprecated_element_has_possible_replacement: Optional[Union[str, URIorCURIE]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.unique_key_slots):
@@ -1043,6 +1063,50 @@ class UniqueKey(YAMLRoot):
         self._normalize_inlined_as_dict(slot_name="extensions", slot_type=Extension, key_name="tag", keyed=False)
 
         self._normalize_inlined_as_dict(slot_name="annotations", slot_type=Annotation, key_name="tag", keyed=False)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        self._normalize_inlined_as_dict(slot_name="alt_descriptions", slot_type=AltDescription, key_name="source", keyed=True)
+
+        if self.deprecated is not None and not isinstance(self.deprecated, str):
+            self.deprecated = str(self.deprecated)
+
+        if not isinstance(self.todos, list):
+            self.todos = [self.todos] if self.todos is not None else []
+        self.todos = [v if isinstance(v, str) else str(v) for v in self.todos]
+
+        if not isinstance(self.notes, list):
+            self.notes = [self.notes] if self.notes is not None else []
+        self.notes = [v if isinstance(v, str) else str(v) for v in self.notes]
+
+        if not isinstance(self.comments, list):
+            self.comments = [self.comments] if self.comments is not None else []
+        self.comments = [v if isinstance(v, str) else str(v) for v in self.comments]
+
+        if not isinstance(self.examples, list):
+            self.examples = [self.examples] if self.examples is not None else []
+        self.examples = [v if isinstance(v, Example) else Example(**as_dict(v)) for v in self.examples]
+
+        if not isinstance(self.in_subset, list):
+            self.in_subset = [self.in_subset] if self.in_subset is not None else []
+        self.in_subset = [v if isinstance(v, SubsetDefinitionName) else SubsetDefinitionName(v) for v in self.in_subset]
+
+        if self.from_schema is not None and not isinstance(self.from_schema, URI):
+            self.from_schema = URI(self.from_schema)
+
+        if self.imported_from is not None and not isinstance(self.imported_from, str):
+            self.imported_from = str(self.imported_from)
+
+        if not isinstance(self.see_also, list):
+            self.see_also = [self.see_also] if self.see_also is not None else []
+        self.see_also = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.see_also]
+
+        if self.deprecated_element_has_exact_replacement is not None and not isinstance(self.deprecated_element_has_exact_replacement, URIorCURIE):
+            self.deprecated_element_has_exact_replacement = URIorCURIE(self.deprecated_element_has_exact_replacement)
+
+        if self.deprecated_element_has_possible_replacement is not None and not isinstance(self.deprecated_element_has_possible_replacement, URIorCURIE):
+            self.deprecated_element_has_possible_replacement = URIorCURIE(self.deprecated_element_has_possible_replacement)
 
         super().__post_init__(**kwargs)
 
