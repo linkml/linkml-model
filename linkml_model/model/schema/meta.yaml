@@ -1355,29 +1355,33 @@ classes:
         range: slot_definition
         inlined: true
         description: the redefinition of a slot in the context of the containing class definition.
-    rules:
-      - description: operator is only set when operands are present
-        preconditions:
-          slot_conditions:
-            boolean_operator:
-              value_presence: ABSENT
-        postconditions:
-          slot_conditions:
-            operands:
-              value_presence: ABSENT
-        bidirectional: true
-        open_world: false  
-      - description: slot_conditions are only applicable when operator is set
-        preconditions:
-          slot_conditions:
-            boolean_operator:
-              value_presence: PRESENT
-        postconditions:
-          slot_conditions:
-            slot_conditions:
-              value_presence: ABSENT
-        bidirectional: true
-        open_world: false
+    todos:
+      - add rules that describe rules
+
+    # we can't add rules for rules until rules are in a linkml release
+    # rules:
+    #   - description: operator is only set when operands are present
+    #     preconditions:
+    #       slot_conditions:
+    #         boolean_operator:
+    #           value_presence: ABSENT
+    #     postconditions:
+    #       slot_conditions:
+    #         operands:
+    #           value_presence: ABSENT
+    #     bidirectional: true
+    #     open_world: false  
+    #   - description: slot_conditions are only applicable when operator is set
+    #     preconditions:
+    #       slot_conditions:
+    #         boolean_operator:
+    #           value_presence: PRESENT
+    #     postconditions:
+    #       slot_conditions:
+    #         slot_conditions:
+    #           value_presence: ABSENT
+    #     bidirectional: true
+    #     open_world: false
       
       
   prefix:
