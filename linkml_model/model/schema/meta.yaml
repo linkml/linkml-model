@@ -1341,9 +1341,9 @@ classes:
       
   class_expression:
     description: A boolean expression that can be applied to an instance of a class to yield a truth value
-    string_serialization: "{boolean_operator}({operands})"
+    string_serialization: "{operator}({operands})"
     attributes:
-      boolean_operator:
+      operator:
         range: extended_boolean_type
         required: false
       operands:
@@ -1363,7 +1363,7 @@ classes:
     #   - description: operator is only set when operands are present
     #     preconditions:
     #       slot_conditions:
-    #         boolean_operator:
+    #         operator:
     #           value_presence: ABSENT
     #     postconditions:
     #       slot_conditions:
@@ -1374,7 +1374,7 @@ classes:
     #   - description: slot_conditions are only applicable when operator is set
     #     preconditions:
     #       slot_conditions:
-    #         boolean_operator:
+    #         operator:
     #           value_presence: PRESENT
     #     postconditions:
     #       slot_conditions:
