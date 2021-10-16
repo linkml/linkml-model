@@ -1282,6 +1282,7 @@ classes:
         close_mappings:
           - swrl:body
       postconditions:
+        aliases:
           - then
           - head
           - consequents
@@ -1291,6 +1292,7 @@ classes:
         close_mappings:
           - swrl:body
       elseconditions:
+        aliases:
           - else
         description: an expression that must hold for an instance of the class, if the preconditions no not hold
         range: class_expression
@@ -1450,16 +1452,16 @@ enums:
         description: all operands are true
       not:
         description: none of the operands are true
-        aliases:
-          - complement
+#        aliases:
+#          - complement
       or:
         description: one or more of the operands are true
-        aliases:
-          - anyOf
+#        aliases:
+#          - anyOf
       oneOf:
-        aliases:
-          - xor
-          - disjoint union
+#        aliases:
+#          - xor
+#          - disjoint union
         description: exactly one of the operands are true
         comments:
           - if the number of operands is 2, then this is xor
