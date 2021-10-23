@@ -1,10 +1,11 @@
 id: https://w3id.org/linkml/examples/rules
 title: Rules example
 name: rules
-description: rules
+description: This demonstrates the use of rules to be introduced in linkml 1.2
 license: https://creativecommons.org/publicdomain/zero/1.0/
 see_also:
-  - TODO
+  - https://github.com/orgs/linkml/projects/3
+  - https://github.com/linkml/linkml/issues/75
 
 prefixes:
   linkml: https://w3id.org/linkml/
@@ -44,8 +45,10 @@ slots:
   fiction_status:
   age:
     range: int
+  
   analyte:
     required: true
+    # union ranges: https://github.com/linkml/linkml/issues/215
     any_of:
       - range: MissingValueEnum
       - range: AnalyteEnum

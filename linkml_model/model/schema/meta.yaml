@@ -488,24 +488,29 @@ slots:
         specify both local naming (e.g. subject=disease) and local constraints
 
   range_expression:
-    range: class_expression
+    domain: slot_expression
+    range: anonymous_class_expression
+    description: A range that is described as a boolean expression combining existing ranges
+    comments:
+      - one use for this is being able to describe a range using any_of expressions, for example to combine two enums
     
-  boolean_predicate:
+  boolean_slot:
     abstract: true
     multivalued: true
+    description: A grouping of slots that expression a boolean operator over a list of operands
 
   any_of:
-    is_a: boolean_predicate
+    is_a: boolean_slot
     range: anonymous_slot_expression
     #slot_uri: https://w3id.org/shacl/or
         
   exactly_one_of:
-    is_a: boolean_predicate
+    is_a: boolean_slot
     range: anonymous_slot_expression
     slot_uri: sh:xone
         
   none_of:
-    is_a: boolean_predicate
+    is_a: boolean_slot
     range: anonymous_slot_expression
     #slot_uri: sh:not
         
@@ -1230,8 +1235,12 @@ classes:
       - pv_formula
       - permissible_values
 
+  expression:
+    mixin: true
+    
   slot_expression:
     mixin: true
+    is_a: expression
     slots:
       - range
       - range_expression
@@ -1247,6 +1256,12 @@ classes:
       - all_of
     slot_usage:
       any_of:
+        range: anonymous_slot_expression
+      all_of:
+        range: anonymous_slot_expression
+      exactly_one_of:
+        range: anonymous_slot_expression
+      none_of:
         range: anonymous_slot_expression
 
   anonymous_slot_expression:
@@ -1306,7 +1321,34 @@ classes:
       apply_to:
         range: slot_definition
 
+  class_expression:
+    mixin: true
+    description: A boolean expression that can be used to dynamically determine membership of a class
+    string_serialization: "{operator}({operands})"
+    slots:
+      - any_of
+      - exactly_one_of
+      - none_of
+      - all_of
+      - slot_conditions
+    slot_usage:
+      any_of:
+        range: anonymous_class_expression
+      all_of:
+        range: anonymous_class_expression
+      exactly_one_of:
+        range: anonymous_class_expression
+      none_of:
+        range: anonymous_class_expression
+
+  anonymous_class_expression:
+    is_a: class_expression
+    mixins:
+      - class_expression
+        
   class_definition:
+    mixins:
+      - class_expression
     description: the definition of a class or interface
     aliases:
       - table
@@ -1355,7 +1397,7 @@ classes:
           - antecedents
         slot_uri: sh:condition
         description: an expression that must hold in order for the rule to be applicable to an instance
-        range: class_expression
+        range: anonymous_class_expression
         inlined: true
         close_mappings:
           - swrl:body
@@ -1365,7 +1407,7 @@ classes:
           - head
           - consequents
         description: an expression that must hold for an instance of the class, if the preconditions hold
-        range: class_expression
+        range: anonymous_class_expression
         inlined: true
         close_mappings:
           - swrl:body
@@ -1373,7 +1415,7 @@ classes:
         aliases:
           - else
         description: an expression that must hold for an instance of the class, if the preconditions no not hold
-        range: class_expression
+        range: anonymous_class_expression
         inlined: true
       bidirectional:
         aliases:
@@ -1418,19 +1460,6 @@ classes:
         close_mappings:
           - swrl:body
       
-  class_expression:
-    description: A boolean expression that can be used to dynamically determine membership of a class
-    string_serialization: "{operator}({operands})"
-    slots:
-      - any_of
-      - exactly_one_of
-      - none_of
-      - all_of
-      - slot_conditions
-    slot_usage:
-      any_of:
-        range: class_expression
-
   type_expression:
     description: A boolean expression that can be used to dynamically determine membership of a type
     string_serialization: "{operator}({operands})"
@@ -1441,7 +1470,7 @@ classes:
       #operands:
       #  description: sub-expressions
       #  multivalued: true
-      #  range: class_expression
+      #  range: anonymous_class_expression
       #type_conditions:
       #  multivalued: true
       #  range: type_definition
