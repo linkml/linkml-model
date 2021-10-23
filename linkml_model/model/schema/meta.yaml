@@ -497,43 +497,42 @@ slots:
   boolean_slot:
     abstract: true
     multivalued: true
+    range: expression
     description: A grouping of slots that expression a boolean operator over a list of operands
 
   any_of:
     is_a: boolean_slot
-    range: anonymous_slot_expression
-    #slot_uri: https://w3id.org/shacl/or
+    range: expression
+    exact_mappings:
+      - sh:or
         
   exactly_one_of:
     is_a: boolean_slot
-    range: anonymous_slot_expression
-    slot_uri: sh:xone
+    range: expression
+    exact_mappings:
+      - sh:xone
         
   none_of:
     is_a: boolean_slot
-    range: anonymous_slot_expression
-    #slot_uri: sh:not
+    range: expression
+    exact_mappings:
+      - sh:not
         
   all_of:
-    range: anonymous_slot_expression
-    #slot_uri: https://w3id.org/shacl/and
+    range: expression
+    exact_mappings:
+      - sh:and
         
   rules:
     slot_uri: sh:rule
-    domain: element
+    domain: class_definition
     multivalued: true
     range: class_rule
     inlined: true
     description: the collection of rules that apply to all members of this class
 
-  type_restrictions:
-    multivalued: true
-    range: type_restriction
-    inlined: true
-    description: the collection of atomic type restrictions that apply to members of a type
-    
   classification_rules:
-    domain: element
+    domain: class_definition
     multivalued: true
     range: classification_rule
     inlined: true
@@ -1180,7 +1179,33 @@ classes:
 #      description:
 #        slot_uri: dcterms:description
 
+  type_expression:
+    is_a: expression
+    mixin: true
+    slots:
+      - pattern
+      - equals_string
+      - none_of
+      - exactly_one_of
+      - any_of
+      - all_of
+    slot_usage:
+      any_of:
+        range: anonymous_type_expression
+      all_of:
+        range: anonymous_type_expression
+      exactly_one_of:
+        range: anonymous_type_expression
+      none_of:
+        range: anonymous_type_expression
+
+  anonymous_type_expression:
+    mixins:
+      - type_expression
+      
   type_definition:
+    mixins:
+      - type_expression
     description: A data type definition.
     is_a: element
     slots:
@@ -1188,18 +1213,7 @@ classes:
       - base
       - type_uri
       - repr
-      - pattern
-      - type_restrictions
 
-  type_restriction:
-    description: A restriction that applies to instances of a type
-    comments:
-      - A type restriction '< 100' applies to all instances of number types with values less than one hundred
-    string_serialization: "{operator} {operand}"
-    attributes:
-      #operator:
-      #  range: type_restriction_operator_enum
-      #operand:
 
   subset_definition:
     description: the name and description of a subset
@@ -1381,7 +1395,12 @@ classes:
     close_mappings:
       - owl:Class
 
+  class_level_rule:
+    abstract: true
+    description: A rule that is applied to classes
+    
   class_rule:
+    is_a: class_level_rule
     aliases:
       - if rule
     description: A rule that applies to instances of a class
@@ -1439,13 +1458,14 @@ classes:
       - swrl:Imp
 
   classification_rule:
+    is_a: class_level_rule
     aliases:
       - membership rule
     description: A rule that determines how to automatically classify an instance as a member of a class
     mixins:
       - extensible
-#      - annotatable
-#      - common_metadata
+      - annotatable
+      - common_metadata
     attributes:
       instance_of:
         range: class_definition
@@ -1460,21 +1480,8 @@ classes:
         close_mappings:
           - swrl:body
       
-  type_expression:
-    description: A boolean expression that can be used to dynamically determine membership of a type
-    string_serialization: "{operator}({operands})"
-    attributes:
-      #operator:
-      #  range: extended_boolean_type
-      #  required: false
-      #operands:
-      #  description: sub-expressions
-      #  multivalued: true
-      #  range: anonymous_class_expression
-      #type_conditions:
-      #  multivalued: true
-      #  range: type_definition
-      #  inlined: true
+#  type_expression:
+#    description: A boolean expression that can be used to dynamically determine membership of a type
       
   prefix:
     description: prefix URI tuple
