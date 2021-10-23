@@ -15,6 +15,7 @@ prefixes:
   bibo: http://purl.org/ontology/bibo/
   swrl: http://www.w3.org/2003/11/swrl#
   sh: https://w3id.org/shacl/
+  owl: http://www.w3.org/2002/07/owl#
 
 default_prefix: linkml
 default_range: string
@@ -486,6 +487,32 @@ slots:
         minimal constraints. When this is subclasses, e.g. to disease-phenotype associations then slot usage may
         specify both local naming (e.g. subject=disease) and local constraints
 
+  range_expression:
+    range: class_expression
+    
+  boolean_predicate:
+    abstract: true
+    multivalued: true
+
+  any_of:
+    is_a: boolean_predicate
+    range: anonymous_slot_expression
+    #slot_uri: https://w3id.org/shacl/or
+        
+  exactly_one_of:
+    is_a: boolean_predicate
+    range: anonymous_slot_expression
+    slot_uri: sh:xone
+        
+  none_of:
+    is_a: boolean_predicate
+    range: anonymous_slot_expression
+    #slot_uri: sh:not
+        
+  all_of:
+    range: anonymous_slot_expression
+    #slot_uri: https://w3id.org/shacl/and
+        
   rules:
     slot_uri: sh:rule
     domain: element
@@ -494,6 +521,12 @@ slots:
     inlined: true
     description: the collection of rules that apply to all members of this class
 
+  type_restrictions:
+    multivalued: true
+    range: type_restriction
+    inlined: true
+    description: the collection of atomic type restrictions that apply to members of a type
+    
   classification_rules:
     domain: element
     multivalued: true
@@ -501,6 +534,12 @@ slots:
     inlined: true
     description: the collection of classification rules that apply to all members of this class
 
+  slot_conditions:
+    multivalued: true
+    range: slot_definition
+    inlined: true
+    description: the redefinition of a slot in the context of the containing class definition.
+    
   attributes:
     domain: class_definition
     multivalued: true
@@ -659,25 +698,25 @@ slots:
     comments:
       - if set to true this has the same effect as required=true. In contrast, required=false allows a value to be present
 
-  equals_string_value:
+  equals_string:
     is_a: value_specification_constant
     range: string
     inherited: true
     description: the slot must have range string and the value of the slot must equal the specified value
         
-  equals_integer_value:
+  equals_integer:
     is_a: value_specification_constant
     range: integer
     inherited: true
     description: the slot must have range integer (or subtype of integer) and the value of the slot must equal the specified value
         
-  equals_float_value:
+  equals_float:
     is_a: value_specification_constant
     range: float
     inherited: true
     description: the slot must have range float or double and the value of the slot must equal the specified value
         
-  equals_boolean_value:
+  equals_boolean:
     is_a: value_specification_constant
     range: boolean
     inherited: true
@@ -1103,6 +1142,7 @@ classes:
 
   schema_definition:
     description: "a collection of subset, type, slot and class definitions"
+    tree_root: true
     aliases:
       - data dictionary
     is_a: element
@@ -1144,6 +1184,17 @@ classes:
       - type_uri
       - repr
       - pattern
+      - type_restrictions
+
+  type_restriction:
+    description: A restriction that applies to instances of a type
+    comments:
+      - A type restriction '< 100' applies to all instances of number types with values less than one hundred
+    string_serialization: "{operator} {operand}"
+    attributes:
+      #operator:
+      #  range: type_restriction_operator_enum
+      #operand:
 
   subset_definition:
     description: the name and description of a subset
@@ -1179,6 +1230,29 @@ classes:
       - pv_formula
       - permissible_values
 
+  slot_expression:
+    mixin: true
+    slots:
+      - range
+      - range_expression
+      - required
+      - recommended
+      - minimum_value
+      - maximum_value
+      - pattern
+      - equals_string
+      - none_of
+      - exactly_one_of
+      - any_of
+      - all_of
+    slot_usage:
+      any_of:
+        range: anonymous_slot_expression
+
+  anonymous_slot_expression:
+    mixins:
+      - slot_expression
+    
   slot_definition:
     description: the definition of a property or a slot
     aliases:
@@ -1191,17 +1265,19 @@ classes:
     is_a: definition
     close_mappings:
       - rdf:Property
+    mixins:
+      - slot_expression
     slots:
       - singular_name
       - domain
-      - range
+      #- range
       - slot_uri
       - multivalued
       - inherited
       - readonly
       - ifabsent
-      - required
-      - recommended
+      #- required
+      #- recommended
       - inlined
       - inlined_as_list
       - key
@@ -1217,9 +1293,10 @@ classes:
       - role
       - is_usage_slot
       - usage_slot_name
-      - minimum_value
-      - maximum_value
-      - pattern
+      #- minimum_value
+      #- maximum_value
+      #- pattern
+      #- equals_string
 
     slot_usage:
       is_a:
@@ -1249,6 +1326,7 @@ classes:
       - tree_root
       - unique_keys
       - rules
+      - classification_rules
     slot_usage:
       is_a:
         range: class_definition
@@ -1324,65 +1402,50 @@ classes:
     description: A rule that determines how to automatically classify an instance as a member of a class
     mixins:
       - extensible
-      - annotatable
-      - common_metadata
+#      - annotatable
+#      - common_metadata
     attributes:
-      genus:
+      instance_of:
         range: class_definition
-      preconditions:
+      slot_conditions:
         aliases:
           - differentiae
         slot_uri: sh:condition
         description: an expression that must hold in order for the classification rule to take effect
-        range: class_expression
+        range: slot_definition
         inlined: true
+        multivalued: true
         close_mappings:
           - swrl:body
       
   class_expression:
-    description: A boolean expression that can be applied to an instance of a class to yield a truth value
+    description: A boolean expression that can be used to dynamically determine membership of a class
+    string_serialization: "{operator}({operands})"
+    slots:
+      - any_of
+      - exactly_one_of
+      - none_of
+      - all_of
+      - slot_conditions
+    slot_usage:
+      any_of:
+        range: class_expression
+
+  type_expression:
+    description: A boolean expression that can be used to dynamically determine membership of a type
     string_serialization: "{operator}({operands})"
     attributes:
-      operator:
-        range: extended_boolean_type
-        required: false
-      operands:
-        description: sub-expressions
-        multivalued: true
-        range: class_expression
-      slot_conditions:
-        multivalued: true
-        range: slot_definition
-        inlined: true
-        description: the redefinition of a slot in the context of the containing class definition.
-    todos:
-      - add rules that describe rules
-
-    # we can't add rules for rules until rules are in a linkml release
-    # rules:
-    #   - description: operator is only set when operands are present
-    #     preconditions:
-    #       slot_conditions:
-    #         operator:
-    #           value_presence: ABSENT
-    #     postconditions:
-    #       slot_conditions:
-    #         operands:
-    #           value_presence: ABSENT
-    #     bidirectional: true
-    #     open_world: false  
-    #   - description: slot_conditions are only applicable when operator is set
-    #     preconditions:
-    #       slot_conditions:
-    #         operator:
-    #           value_presence: PRESENT
-    #     postconditions:
-    #       slot_conditions:
-    #         slot_conditions:
-    #           value_presence: ABSENT
-    #     bidirectional: true
-    #     open_world: false
-      
+      #operator:
+      #  range: extended_boolean_type
+      #  required: false
+      #operands:
+      #  description: sub-expressions
+      #  multivalued: true
+      #  range: class_expression
+      #type_conditions:
+      #  multivalued: true
+      #  range: type_definition
+      #  inlined: true
       
   prefix:
     description: prefix URI tuple
@@ -1450,31 +1513,6 @@ enums:
       - Q1: Do we need a CURIEorURIE entry?
       - Q2: Who defines the namespaces for the CURIE form?
 
-  extended_boolean_type:
-    description: boolean operators that can be used with expressions as operands
-    permissible_values:
-      and:
-        description: all operands are true
-      not:
-        description: none of the operands are true
-#        aliases:
-#          - complement
-      or:
-        description: one or more of the operands are true
-#        aliases:
-#          - anyOf
-      oneOf:
-#        aliases:
-#          - xor
-#          - disjoint union
-        description: exactly one of the operands are true
-        comments:
-          - if the number of operands is 2, then this is xor
-          - oneOf with N elements can always be rewritten as a more complex expression with N expressions
-      noneOf:
-        description: none of the operands are true
-        comments:
-          - noneOf can always be written as not(oneOf(...))
       
 
   presence_enum:
@@ -1483,3 +1521,4 @@ enums:
       UNCOMMITTED:
       PRESENT:
       ABSENT:
+
