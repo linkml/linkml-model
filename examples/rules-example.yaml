@@ -45,6 +45,8 @@ slots:
   fiction_status:
   age:
     range: int
+  encodes:
+    range: SeqFeature
   
   analyte:
     required: true
@@ -57,6 +59,18 @@ slots:
     any_of:
       - range: MissingValueEnum
       - range: VitalStatusEnum
+  familial_relationship:
+    abstract: true
+  parents:
+    is_a: familial_relationships
+  ancestors:
+    is_a: familial_relationships
+  children:
+    is_a: familial_relationships
+    inverse: parents
+  descendants:
+    is_a: familial_relationships
+    inverse: ancestors
 
     
 #==================================
@@ -83,9 +97,14 @@ classes:
             telephone:
               pattern: "^\\+1 "
 
-  Gene:
+  
+  SeqFeature:
     slots:
       - id
+      - encodes
+  Gene:
+    is_a: SeqFeature
+    slots:
       - encodes
   NoncodingGene:
     is_a: Gene
@@ -112,12 +131,7 @@ classes:
     classification_rules:
       - instance_of: Sample
         slot_conditions:
-          #analyte:
-          #  equals: '"DNA"'
           analyte:
-            #comparison:
-            #  operator: equals
-            #  equals_string: DNA
             equals_string: DNA
 
             
@@ -130,6 +144,10 @@ classes:
       - vital_status
       - primary_address
       - fiction_status
+      - parents
+      - ancestors
+      - children
+      - descendants
     rules:
       - postconditions:
           slot_conditions:
@@ -154,11 +172,62 @@ classes:
       - postconditions:
           slot_conditions:
             employer_name:
-              #equals_path: "employer/name"
+              equals_expression: "employer/name"
+      - postconditions:
+          slot_conditions:
+            ancestors:
+              has_member:
+                equals_expression: parent
+
+  FunctionalAnnotation:
+    attributes:
+      gene:
+      relation:
+      term:
+      modifiers:
+      evidence_type:
+      references:
+      term_ancestors:
+      term_subsets:
+    rules:
+      - postconditions:
+          none_of:
+            - title: IPI should not be used with GO:0003824 catalytic activity or descendents
+              see_also: [GORULE:0000007]
+              #exact_mappings: [GORULE:0000007]
+              all_of:
+              - slot_conditions:
+                  evidence_type:
+                    equals_string: IPI
+                  term_ancestors:
+                    has_member:
+                      equals_string: GO:0003824
+            - title: No annotations should be made to uninformative high level terms
+              see_also: [GORULE:0000008]
+              any_of:
+                - slot_conditions:
+                    term_subsets:
+                      has_member:
+                        equals_string: gocheck_do_not_annotate
+                - slot_conditions:
+                    term_subsets:
+                      has_member:
+                        equals_string: gocheck_do_not_manually_annotate
+                    evidence_type:
+                      none_of:
+                        - equals_string_in: [IEA, ISS, ISO, IBA]
+            - title: ND evidence code should be to root nodes only, and no terms other than root nodes can have the evidence code ND
+              see_also: [GORULE:0000011]
+              slot_conditions:
+                evidence_type:
+                  equals_string: ND
+                term:
+                  none_of:
+                    - equals_string_in: [GO:0008150, GO:0003674, GO:0005575]
+            
                 
-    
 #==================================
-# Enumes
+# Enums
 #==================================
 
 enums:

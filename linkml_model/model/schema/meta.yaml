@@ -493,35 +493,46 @@ slots:
     description: A range that is described as a boolean expression combining existing ranges
     comments:
       - one use for this is being able to describe a range using any_of expressions, for example to combine two enums
+    status: testing
     
   boolean_slot:
     abstract: true
     multivalued: true
     range: expression
     description: A grouping of slots that expression a boolean operator over a list of operands
+    status: testing
 
   any_of:
+    description: holds if at least one of the expressions hold
     is_a: boolean_slot
     range: expression
     exact_mappings:
       - sh:or
+    status: testing
         
   exactly_one_of:
+    description: holds if only one of the expressions hold
     is_a: boolean_slot
     range: expression
     exact_mappings:
       - sh:xone
+    status: testing
         
   none_of:
+    description: holds if none of the expressions hold
     is_a: boolean_slot
     range: expression
     exact_mappings:
       - sh:not
+    status: testing
         
   all_of:
+    description: holds if all of the expressions hold
+    is_a: boolean_slot
     range: expression
     exact_mappings:
       - sh:and
+    status: testing
         
   rules:
     slot_uri: sh:rule
@@ -530,6 +541,7 @@ slots:
     range: class_rule
     inlined: true
     description: the collection of rules that apply to all members of this class
+    status: testing
 
   classification_rules:
     domain: class_definition
@@ -537,12 +549,14 @@ slots:
     range: classification_rule
     inlined: true
     description: the collection of classification rules that apply to all members of this class
+    status: testing
 
   slot_conditions:
     multivalued: true
     range: slot_definition
     inlined: true
     description: the redefinition of a slot in the context of the containing class definition.
+    status: testing
     
   attributes:
     domain: class_definition
@@ -689,9 +703,13 @@ slots:
 
   value_specification_constant:
     abstract: true
-    description: >-
-      A grouping for slots that can provide a constant value on all instances of a class.
-      These should only be used either (1) for slot_usages on subclasses or (2) in rules
+    description: Grouping for metamodel slots that constrain the a slot value to equal a specified constant
+    status: testing
+    
+  list_value_specification_constant:
+    abstract: true
+    description: Grouping for metamodel slots that constrain members of a multivalued slot value to equal a specified constant
+    status: testing
       
   value_presence:
     is_a: value_specification_constant
@@ -701,30 +719,21 @@ slots:
     description: if true then a value must be present (for lists there must be at least one value). If false then a value must be absent (for lists, must be empty)
     comments:
       - if set to true this has the same effect as required=true. In contrast, required=false allows a value to be present
+    status: unstable
 
   equals_string:
     is_a: value_specification_constant
     range: string
     inherited: true
     description: the slot must have range string and the value of the slot must equal the specified value
+    status: testing
         
-  equals_integer:
+  equals_number:
     is_a: value_specification_constant
-    range: integer
+    range: integer  ## todo, make the range a union
     inherited: true
-    description: the slot must have range integer (or subtype of integer) and the value of the slot must equal the specified value
-        
-  equals_float:
-    is_a: value_specification_constant
-    range: float
-    inherited: true
-    description: the slot must have range float or double and the value of the slot must equal the specified value
-        
-  equals_boolean:
-    is_a: value_specification_constant
-    range: boolean
-    inherited: true
-    description: the slot must have range boolean and the value of the slot must equal the specified value
+    description: the slot must have range of a number and the value of the slot must equal the specified value
+    status: unstable
 
   equals_expression:
     is_a: value_specification_constant
@@ -735,30 +744,50 @@ slots:
       - for example, a 'length' slot may have an equals_expression with value '(end-start)+1'
     todos:
       - specify expression language
-    status: draft
     see_also:
       - https://github.com/linkml/linkml/issues/75
+    status: unstable
 
-  has_members:
+  minimum_cardinality:
     is_a: value_specification_constant
-    range: slot_definition
-    multivalued: true
-    inlined: true
-    description: |-
-      the value of the multiavlued slot includes members with the specified values.
-      this defines a dynamic class with named slots according to matching constraints
+    range: integer
+    inherited: true
+    description: the minimum number of entries for a multivalued slot
+    status: testing
 
-      E.g to state that a list has at least one number <= 3 and one >= 100
-      ```
-      has_members:
-        small_number:
-          maximum_value: 3
-        big_number:
-          minimum_value: 100
-      ```
+  maximum_cardinality:
+    is_a: value_specification_constant
+    range: integer
+    inherited: true
+    description: the maximum number of entries for a multivalued slot
+    status: testing
+
+  equals_string_in:
+    is_a: list_value_specification_constant
+    range: string
+    multivalued: true
+    inherited: true
+    description: the slot must have range string and the value of the slot must equal one of the specified values
+    status: testing
+
+  equals_number_in:
+    is_a: list_value_specification_constant
+    range: integer
+    multivalued: true
+    inherited: true
+    description: the slot must have range number and the value of the slot must equal one of the specified values
+    status: testing
+    
+  has_member:
+    is_a: list_value_specification_constant
+    range: anonymous_slot_expression
+    #multivalued: true
+    inlined: true
+    description: the values of the slot is multivalued with at least one member satisfying the condition
+    status: testing
 
   all_members:
-    is_a: value_specification_constant
+    is_a: list_value_specification_constant
     range: slot_definition
     multivalued: true
     inlined: true
@@ -768,12 +797,15 @@ slots:
 
       E.g to state that all members of a list are between 1 and 10
       ```
-      has_members:
+      all_members:
         x:
           range: integer
           minimum_value: 10
           maximum_value: 10
       ```
+    status: testing
+
+  
       
   singular_name:
     domain: slot_definition
@@ -1108,6 +1140,7 @@ classes:
     slots:
       - description
       - alt_descriptions
+      - title
       - deprecated
       - todos
       - notes
@@ -1129,7 +1162,6 @@ classes:
       - common_metadata
     slots:
       - name
-      - title
       - id_prefixes
       - definition_uri
       - aliases
@@ -1185,6 +1217,8 @@ classes:
     slots:
       - pattern
       - equals_string
+      - equals_string_in
+      - equals_number
       - none_of
       - exactly_one_of
       - any_of
@@ -1251,8 +1285,22 @@ classes:
 
   expression:
     mixin: true
+    abstract: true
+    description: todo
+    status: testing
+
+  anonymous_expression:
+    abstract: true
+    mixins:
+      - expression
+      - extensible
+      - annotatable
+      - common_metadata
+    status: testing
+
     
   slot_expression:
+    description: an expression that constrains the range of values a slot can take
     mixin: true
     is_a: expression
     slots:
@@ -1264,6 +1312,13 @@ classes:
       - maximum_value
       - pattern
       - equals_string
+      - equals_string_in
+      - equals_number
+      - equals_expression
+      - minimum_cardinality
+      - maximum_cardinality
+      - has_member
+      - all_members
       - none_of
       - exactly_one_of
       - any_of
@@ -1277,10 +1332,13 @@ classes:
         range: anonymous_slot_expression
       none_of:
         range: anonymous_slot_expression
+    status: testing
 
   anonymous_slot_expression:
+    is_a: anonymous_expression
     mixins:
       - slot_expression
+    status: testing
     
   slot_definition:
     description: the definition of a property or a slot
@@ -1338,7 +1396,6 @@ classes:
   class_expression:
     mixin: true
     description: A boolean expression that can be used to dynamically determine membership of a class
-    string_serialization: "{operator}({operands})"
     slots:
       - any_of
       - exactly_one_of
@@ -1354,11 +1411,15 @@ classes:
         range: anonymous_class_expression
       none_of:
         range: anonymous_class_expression
+    status: testing
 
   anonymous_class_expression:
-    is_a: class_expression
+    is_a: anonymous_expression
     mixins:
       - class_expression
+    slots:
+      - is_a
+    status: testing
         
   class_definition:
     mixins:
@@ -1398,6 +1459,7 @@ classes:
   class_level_rule:
     abstract: true
     description: A rule that is applied to classes
+    status: testing
     
   class_rule:
     is_a: class_level_rule
@@ -1456,6 +1518,7 @@ classes:
     close_mappings:
       - sh:TripleRule
       - swrl:Imp
+    status: testing
 
   classification_rule:
     is_a: class_level_rule
@@ -1479,9 +1542,7 @@ classes:
         multivalued: true
         close_mappings:
           - swrl:body
-      
-#  type_expression:
-#    description: A boolean expression that can be used to dynamically determine membership of a type
+    status: testing
       
   prefix:
     description: prefix URI tuple
