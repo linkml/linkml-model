@@ -39,6 +39,18 @@
     {
       "prefix_prefix": "bibo",
       "prefix_reference": "http://purl.org/ontology/bibo/"
+    },
+    {
+      "prefix_prefix": "swrl",
+      "prefix_reference": "http://www.w3.org/2003/11/swrl#"
+    },
+    {
+      "prefix_prefix": "sh",
+      "prefix_reference": "https://w3id.org/shacl/"
+    },
+    {
+      "prefix_prefix": "owl",
+      "prefix_reference": "http://www.w3.org/2002/07/owl#"
     }
   ],
   "emit_prefixes": [
@@ -254,6 +266,23 @@
           "description": "The permissible values are the set of FHIR coding elements derived from the code set"
         }
       ]
+    },
+    {
+      "name": "presence_enum",
+      "definition_uri": "https://w3id.org/linkml/PresenceEnum",
+      "description": "enumeration of conditions by which a slot value should be set",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "permissible_values": [
+        {
+          "text": "UNCOMMITTED"
+        },
+        {
+          "text": "PRESENT"
+        },
+        {
+          "text": "ABSENT"
+        }
+      ]
     }
   ],
   "slots": [
@@ -297,9 +326,9 @@
       "domain": "Element",
       "range": "string",
       "slot_uri": "http://purl.org/dc/terms/title",
-      "owner": "Element",
+      "owner": "title",
       "domain_of": [
-        "Element"
+        "CommonMetadata"
       ],
       "@type": "SlotDefinition"
     },
@@ -646,9 +675,10 @@
       "domain": "Definition",
       "range": "Definition",
       "slot_uri": "https://w3id.org/linkml/is_a",
-      "owner": "Definition",
+      "owner": "AnonymousClassExpression",
       "domain_of": [
-        "Definition"
+        "Definition",
+        "AnonymousClassExpression"
       ],
       "@type": "SlotDefinition"
     },
@@ -1199,6 +1229,179 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "range_expression",
+      "definition_uri": "https://w3id.org/linkml/range_expression",
+      "description": "A range that is described as a boolean expression combining existing ranges",
+      "comments": [
+        "one use for this is being able to describe a range using any_of expressions, for example to combine two enums"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "status": "testing",
+      "domain": "SlotExpression",
+      "range": "AnonymousClassExpression",
+      "slot_uri": "https://w3id.org/linkml/range_expression",
+      "inlined": true,
+      "owner": "SlotExpression",
+      "domain_of": [
+        "SlotExpression"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "boolean_slot",
+      "definition_uri": "https://w3id.org/linkml/boolean_slot",
+      "description": "A grouping of slots that expression a boolean operator over a list of operands",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "abstract": true,
+      "status": "testing",
+      "range": "Expression",
+      "slot_uri": "https://w3id.org/linkml/boolean_slot",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "any_of",
+      "definition_uri": "https://w3id.org/linkml/any_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/or"
+      ],
+      "description": "holds if at least one of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "boolean_slot",
+      "status": "testing",
+      "range": "Expression",
+      "slot_uri": "https://w3id.org/linkml/any_of",
+      "multivalued": true,
+      "inlined": true,
+      "owner": "ClassExpression",
+      "domain_of": [
+        "TypeExpression",
+        "SlotExpression",
+        "ClassExpression"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "exactly_one_of",
+      "definition_uri": "https://w3id.org/linkml/exactly_one_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/xone"
+      ],
+      "description": "holds if only one of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "boolean_slot",
+      "status": "testing",
+      "range": "Expression",
+      "slot_uri": "https://w3id.org/linkml/exactly_one_of",
+      "multivalued": true,
+      "inlined": true,
+      "owner": "ClassExpression",
+      "domain_of": [
+        "TypeExpression",
+        "SlotExpression",
+        "ClassExpression"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "none_of",
+      "definition_uri": "https://w3id.org/linkml/none_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/not"
+      ],
+      "description": "holds if none of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "boolean_slot",
+      "status": "testing",
+      "range": "Expression",
+      "slot_uri": "https://w3id.org/linkml/none_of",
+      "multivalued": true,
+      "inlined": true,
+      "owner": "ClassExpression",
+      "domain_of": [
+        "TypeExpression",
+        "SlotExpression",
+        "ClassExpression"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "all_of",
+      "definition_uri": "https://w3id.org/linkml/all_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/and"
+      ],
+      "description": "holds if all of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "boolean_slot",
+      "status": "testing",
+      "range": "Expression",
+      "slot_uri": "https://w3id.org/linkml/all_of",
+      "multivalued": true,
+      "inlined": true,
+      "owner": "ClassExpression",
+      "domain_of": [
+        "TypeExpression",
+        "SlotExpression",
+        "ClassExpression"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "rules",
+      "definition_uri": "https://w3id.org/linkml/rules",
+      "mappings": [
+        "https://w3id.org/shacl/rule"
+      ],
+      "description": "the collection of rules that apply to all members of this class",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "status": "testing",
+      "domain": "ClassDefinition",
+      "range": "ClassRule",
+      "slot_uri": "https://w3id.org/shacl/rule",
+      "multivalued": true,
+      "inlined": true,
+      "owner": "ClassDefinition",
+      "domain_of": [
+        "ClassDefinition"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "classification_rules",
+      "definition_uri": "https://w3id.org/linkml/classification_rules",
+      "description": "the collection of classification rules that apply to all members of this class",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "status": "testing",
+      "domain": "ClassDefinition",
+      "range": "ClassificationRule",
+      "slot_uri": "https://w3id.org/linkml/classification_rules",
+      "multivalued": true,
+      "inlined": true,
+      "owner": "ClassDefinition",
+      "domain_of": [
+        "ClassDefinition"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "slot_conditions",
+      "definition_uri": "https://w3id.org/linkml/slot_conditions",
+      "description": "the redefinition of a slot in the context of the containing class definition.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "status": "testing",
+      "range": "SlotDefinition",
+      "slot_uri": "https://w3id.org/linkml/slot_conditions",
+      "multivalued": true,
+      "inlined": true,
+      "owner": "ClassExpression",
+      "domain_of": [
+        "ClassExpression"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "attributes",
       "definition_uri": "https://w3id.org/linkml/attributes",
       "description": "Inline definition of slots",
@@ -1363,9 +1566,9 @@
       "slot_uri": "https://w3id.org/linkml/range",
       "inherited": true,
       "ifabsent": "default_range",
-      "owner": "SlotDefinition",
+      "owner": "range",
       "domain_of": [
-        "SlotDefinition"
+        "SlotExpression"
       ],
       "@type": "SlotDefinition"
     },
@@ -1448,6 +1651,200 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "value_specification_constant",
+      "definition_uri": "https://w3id.org/linkml/value_specification_constant",
+      "description": "Grouping for metamodel slots that constrain the a slot value to equal a specified constant",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "abstract": true,
+      "status": "testing",
+      "range": "string",
+      "slot_uri": "https://w3id.org/linkml/value_specification_constant",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "list_value_specification_constant",
+      "definition_uri": "https://w3id.org/linkml/list_value_specification_constant",
+      "description": "Grouping for metamodel slots that constrain members of a multivalued slot value to equal a specified constant",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "abstract": true,
+      "status": "testing",
+      "range": "string",
+      "slot_uri": "https://w3id.org/linkml/list_value_specification_constant",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "value_presence",
+      "definition_uri": "https://w3id.org/linkml/value_presence",
+      "description": "if true then a value must be present (for lists there must be at least one value). If false then a value must be absent (for lists, must be empty)",
+      "comments": [
+        "if set to true this has the same effect as required=true. In contrast, required=false allows a value to be present"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "value_specification_constant",
+      "status": "unstable",
+      "domain": "SlotDefinition",
+      "range": "presence_enum",
+      "slot_uri": "https://w3id.org/linkml/value_presence",
+      "inherited": true,
+      "owner": "value_presence",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "equals_string",
+      "definition_uri": "https://w3id.org/linkml/equals_string",
+      "description": "the slot must have range string and the value of the slot must equal the specified value",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "value_specification_constant",
+      "status": "testing",
+      "range": "string",
+      "slot_uri": "https://w3id.org/linkml/equals_string",
+      "inherited": true,
+      "owner": "SlotExpression",
+      "domain_of": [
+        "TypeExpression",
+        "SlotExpression"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "equals_number",
+      "definition_uri": "https://w3id.org/linkml/equals_number",
+      "description": "the slot must have range of a number and the value of the slot must equal the specified value",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "value_specification_constant",
+      "status": "unstable",
+      "range": "integer",
+      "slot_uri": "https://w3id.org/linkml/equals_number",
+      "inherited": true,
+      "owner": "SlotExpression",
+      "domain_of": [
+        "TypeExpression",
+        "SlotExpression"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "equals_expression",
+      "definition_uri": "https://w3id.org/linkml/equals_expression",
+      "description": "the value of the slot must equal the value of the evaluated expression",
+      "todos": [
+        "specify expression language"
+      ],
+      "comments": [
+        "for example, a 'length' slot may have an equals_expression with value '(end-start)+1'"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "see_also": [
+        "https://github.com/linkml/linkml/issues/75"
+      ],
+      "is_a": "value_specification_constant",
+      "status": "unstable",
+      "range": "string",
+      "slot_uri": "https://w3id.org/linkml/equals_expression",
+      "inherited": true,
+      "owner": "SlotExpression",
+      "domain_of": [
+        "SlotExpression"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "minimum_cardinality",
+      "definition_uri": "https://w3id.org/linkml/minimum_cardinality",
+      "description": "the minimum number of entries for a multivalued slot",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "value_specification_constant",
+      "status": "testing",
+      "range": "integer",
+      "slot_uri": "https://w3id.org/linkml/minimum_cardinality",
+      "inherited": true,
+      "owner": "SlotExpression",
+      "domain_of": [
+        "SlotExpression"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "maximum_cardinality",
+      "definition_uri": "https://w3id.org/linkml/maximum_cardinality",
+      "description": "the maximum number of entries for a multivalued slot",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "value_specification_constant",
+      "status": "testing",
+      "range": "integer",
+      "slot_uri": "https://w3id.org/linkml/maximum_cardinality",
+      "inherited": true,
+      "owner": "SlotExpression",
+      "domain_of": [
+        "SlotExpression"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "equals_string_in",
+      "definition_uri": "https://w3id.org/linkml/equals_string_in",
+      "description": "the slot must have range string and the value of the slot must equal one of the specified values",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "list_value_specification_constant",
+      "status": "testing",
+      "range": "string",
+      "slot_uri": "https://w3id.org/linkml/equals_string_in",
+      "multivalued": true,
+      "inherited": true,
+      "owner": "SlotExpression",
+      "domain_of": [
+        "TypeExpression",
+        "SlotExpression"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "equals_number_in",
+      "definition_uri": "https://w3id.org/linkml/equals_number_in",
+      "description": "the slot must have range number and the value of the slot must equal one of the specified values",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "list_value_specification_constant",
+      "status": "testing",
+      "range": "integer",
+      "slot_uri": "https://w3id.org/linkml/equals_number_in",
+      "multivalued": true,
+      "inherited": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "has_member",
+      "definition_uri": "https://w3id.org/linkml/has_member",
+      "description": "the values of the slot is multivalued with at least one member satisfying the condition",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "list_value_specification_constant",
+      "status": "testing",
+      "range": "AnonymousSlotExpression",
+      "slot_uri": "https://w3id.org/linkml/has_member",
+      "inlined": true,
+      "owner": "SlotExpression",
+      "domain_of": [
+        "SlotExpression"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "all_members",
+      "definition_uri": "https://w3id.org/linkml/all_members",
+      "description": "the value of the multiavlued slot is a list where all elements conform to the specified values.\nthis defines a dynamic class with named slots according to matching constraints\n\nE.g to state that all members of a list are between 1 and 10\n```\nall_members:\n  x:\n    range: integer\n    minimum_value: 10\n    maximum_value: 10\n```",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "list_value_specification_constant",
+      "status": "testing",
+      "range": "SlotDefinition",
+      "slot_uri": "https://w3id.org/linkml/all_members",
+      "multivalued": true,
+      "inlined": true,
+      "owner": "SlotExpression",
+      "domain_of": [
+        "SlotExpression"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "singular_name",
       "definition_uri": "https://w3id.org/linkml/singular_name",
       "mappings": [
@@ -1473,9 +1870,9 @@
       "range": "boolean",
       "slot_uri": "https://w3id.org/linkml/required",
       "inherited": true,
-      "owner": "SlotDefinition",
+      "owner": "required",
       "domain_of": [
-        "SlotDefinition"
+        "SlotExpression"
       ],
       "@type": "SlotDefinition"
     },
@@ -1495,9 +1892,9 @@
       "range": "boolean",
       "slot_uri": "https://w3id.org/linkml/recommended",
       "inherited": true,
-      "owner": "SlotDefinition",
+      "owner": "recommended",
       "domain_of": [
-        "SlotDefinition"
+        "SlotExpression"
       ],
       "@type": "SlotDefinition"
     },
@@ -1774,9 +2171,9 @@
       "range": "integer",
       "slot_uri": "https://w3id.org/linkml/minimum_value",
       "inherited": true,
-      "owner": "SlotDefinition",
+      "owner": "minimum_value",
       "domain_of": [
-        "SlotDefinition"
+        "SlotExpression"
       ],
       "@type": "SlotDefinition"
     },
@@ -1789,9 +2186,9 @@
       "range": "integer",
       "slot_uri": "https://w3id.org/linkml/maximum_value",
       "inherited": true,
-      "owner": "SlotDefinition",
+      "owner": "maximum_value",
       "domain_of": [
-        "SlotDefinition"
+        "SlotExpression"
       ],
       "@type": "SlotDefinition"
     },
@@ -1806,8 +2203,8 @@
       "inherited": true,
       "owner": "pattern",
       "domain_of": [
-        "TypeDefinition",
-        "SlotDefinition"
+        "TypeExpression",
+        "SlotExpression"
       ],
       "@type": "SlotDefinition"
     },
@@ -2315,6 +2712,168 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "classRule__preconditions",
+      "aliases": [
+        "if",
+        "body",
+        "antecedents"
+      ],
+      "mappings": [
+        "https://w3id.org/shacl/condition"
+      ],
+      "close_mappings": [
+        "http://www.w3.org/2003/11/swrl#body"
+      ],
+      "description": "an expression that must hold in order for the rule to be applicable to an instance",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "range": "AnonymousClassExpression",
+      "slot_uri": "https://w3id.org/shacl/condition",
+      "inlined": true,
+      "alias": "preconditions",
+      "owner": "ClassRule",
+      "domain_of": [
+        "ClassRule"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "classRule__postconditions",
+      "aliases": [
+        "then",
+        "head",
+        "consequents"
+      ],
+      "close_mappings": [
+        "http://www.w3.org/2003/11/swrl#body"
+      ],
+      "description": "an expression that must hold for an instance of the class, if the preconditions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "range": "AnonymousClassExpression",
+      "slot_uri": "https://w3id.org/linkml/postconditions",
+      "inlined": true,
+      "alias": "postconditions",
+      "owner": "ClassRule",
+      "domain_of": [
+        "ClassRule"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "classRule__elseconditions",
+      "aliases": [
+        "else"
+      ],
+      "description": "an expression that must hold for an instance of the class, if the preconditions no not hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "range": "AnonymousClassExpression",
+      "slot_uri": "https://w3id.org/linkml/elseconditions",
+      "inlined": true,
+      "alias": "elseconditions",
+      "owner": "ClassRule",
+      "domain_of": [
+        "ClassRule"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "classRule__bidirectional",
+      "aliases": [
+        "iff",
+        "if and only if"
+      ],
+      "description": "in addition to preconditions entailing postconditions, the postconditions entail the preconditions",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "range": "boolean",
+      "slot_uri": "https://w3id.org/linkml/bidirectional",
+      "alias": "bidirectional",
+      "owner": "ClassRule",
+      "domain_of": [
+        "ClassRule"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "classRule__open_world",
+      "description": "if true, the the postconditions may be omitted in instance data, but it is valid for an inference engine to add these",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "range": "boolean",
+      "slot_uri": "https://w3id.org/linkml/open_world",
+      "alias": "open_world",
+      "owner": "ClassRule",
+      "domain_of": [
+        "ClassRule"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "classRule__precedence",
+      "mappings": [
+        "https://w3id.org/shacl/order"
+      ],
+      "description": "the relative order in which the rule is applied",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "range": "integer",
+      "slot_uri": "https://w3id.org/shacl/order",
+      "alias": "precedence",
+      "owner": "ClassRule",
+      "domain_of": [
+        "ClassRule"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "classRule__deactivated",
+      "mappings": [
+        "https://w3id.org/shacl/deactivated"
+      ],
+      "description": "a deactivated rule is not executed by the rules engine",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "range": "boolean",
+      "slot_uri": "https://w3id.org/shacl/deactivated",
+      "alias": "deactivated",
+      "owner": "ClassRule",
+      "domain_of": [
+        "ClassRule"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "classificationRule__instance_of",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "range": "ClassDefinition",
+      "slot_uri": "https://w3id.org/linkml/instance_of",
+      "alias": "instance_of",
+      "owner": "ClassificationRule",
+      "domain_of": [
+        "ClassificationRule"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "classificationRule__slot_conditions",
+      "aliases": [
+        "differentiae"
+      ],
+      "mappings": [
+        "https://w3id.org/shacl/condition"
+      ],
+      "close_mappings": [
+        "http://www.w3.org/2003/11/swrl#body"
+      ],
+      "description": "an expression that must hold in order for the classification rule to take effect",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "range": "SlotDefinition",
+      "slot_uri": "https://w3id.org/shacl/condition",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "slot_conditions",
+      "owner": "ClassificationRule",
+      "domain_of": [
+        "ClassificationRule"
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "schema_definition_name",
       "definition_uri": "https://w3id.org/linkml/name",
       "mappings": [
@@ -2342,6 +2901,198 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "name",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "type_expression_any_of",
+      "definition_uri": "https://w3id.org/linkml/any_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/or"
+      ],
+      "description": "holds if at least one of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "any_of",
+      "status": "testing",
+      "domain": "TypeExpression",
+      "range": "AnonymousTypeExpression",
+      "slot_uri": "https://w3id.org/linkml/any_of",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "any_of",
+      "owner": "TypeExpression",
+      "domain_of": [
+        "TypeExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "any_of",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "type_expression_all_of",
+      "definition_uri": "https://w3id.org/linkml/all_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/and"
+      ],
+      "description": "holds if all of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "all_of",
+      "status": "testing",
+      "domain": "TypeExpression",
+      "range": "AnonymousTypeExpression",
+      "slot_uri": "https://w3id.org/linkml/all_of",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "all_of",
+      "owner": "TypeExpression",
+      "domain_of": [
+        "TypeExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "all_of",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "type_expression_exactly_one_of",
+      "definition_uri": "https://w3id.org/linkml/exactly_one_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/xone"
+      ],
+      "description": "holds if only one of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "exactly_one_of",
+      "status": "testing",
+      "domain": "TypeExpression",
+      "range": "AnonymousTypeExpression",
+      "slot_uri": "https://w3id.org/linkml/exactly_one_of",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "exactly_one_of",
+      "owner": "TypeExpression",
+      "domain_of": [
+        "TypeExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "exactly_one_of",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "type_expression_none_of",
+      "definition_uri": "https://w3id.org/linkml/none_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/not"
+      ],
+      "description": "holds if none of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "none_of",
+      "status": "testing",
+      "domain": "TypeExpression",
+      "range": "AnonymousTypeExpression",
+      "slot_uri": "https://w3id.org/linkml/none_of",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "none_of",
+      "owner": "TypeExpression",
+      "domain_of": [
+        "TypeExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "none_of",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "slot_expression_any_of",
+      "definition_uri": "https://w3id.org/linkml/any_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/or"
+      ],
+      "description": "holds if at least one of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "any_of",
+      "status": "testing",
+      "domain": "SlotExpression",
+      "range": "AnonymousSlotExpression",
+      "slot_uri": "https://w3id.org/linkml/any_of",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "any_of",
+      "owner": "SlotExpression",
+      "domain_of": [
+        "SlotExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "any_of",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "slot_expression_all_of",
+      "definition_uri": "https://w3id.org/linkml/all_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/and"
+      ],
+      "description": "holds if all of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "all_of",
+      "status": "testing",
+      "domain": "SlotExpression",
+      "range": "AnonymousSlotExpression",
+      "slot_uri": "https://w3id.org/linkml/all_of",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "all_of",
+      "owner": "SlotExpression",
+      "domain_of": [
+        "SlotExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "all_of",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "slot_expression_exactly_one_of",
+      "definition_uri": "https://w3id.org/linkml/exactly_one_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/xone"
+      ],
+      "description": "holds if only one of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "exactly_one_of",
+      "status": "testing",
+      "domain": "SlotExpression",
+      "range": "AnonymousSlotExpression",
+      "slot_uri": "https://w3id.org/linkml/exactly_one_of",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "exactly_one_of",
+      "owner": "SlotExpression",
+      "domain_of": [
+        "SlotExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "exactly_one_of",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "slot_expression_none_of",
+      "definition_uri": "https://w3id.org/linkml/none_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/not"
+      ],
+      "description": "holds if none of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "none_of",
+      "status": "testing",
+      "domain": "SlotExpression",
+      "range": "AnonymousSlotExpression",
+      "slot_uri": "https://w3id.org/linkml/none_of",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "none_of",
+      "owner": "SlotExpression",
+      "domain_of": [
+        "SlotExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "none_of",
       "@type": "SlotDefinition"
     },
     {
@@ -2411,6 +3162,102 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "class_expression_any_of",
+      "definition_uri": "https://w3id.org/linkml/any_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/or"
+      ],
+      "description": "holds if at least one of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "any_of",
+      "status": "testing",
+      "domain": "ClassExpression",
+      "range": "AnonymousClassExpression",
+      "slot_uri": "https://w3id.org/linkml/any_of",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "any_of",
+      "owner": "ClassExpression",
+      "domain_of": [
+        "ClassExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "any_of",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "class_expression_all_of",
+      "definition_uri": "https://w3id.org/linkml/all_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/and"
+      ],
+      "description": "holds if all of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "all_of",
+      "status": "testing",
+      "domain": "ClassExpression",
+      "range": "AnonymousClassExpression",
+      "slot_uri": "https://w3id.org/linkml/all_of",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "all_of",
+      "owner": "ClassExpression",
+      "domain_of": [
+        "ClassExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "all_of",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "class_expression_exactly_one_of",
+      "definition_uri": "https://w3id.org/linkml/exactly_one_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/xone"
+      ],
+      "description": "holds if only one of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "exactly_one_of",
+      "status": "testing",
+      "domain": "ClassExpression",
+      "range": "AnonymousClassExpression",
+      "slot_uri": "https://w3id.org/linkml/exactly_one_of",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "exactly_one_of",
+      "owner": "ClassExpression",
+      "domain_of": [
+        "ClassExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "exactly_one_of",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "class_expression_none_of",
+      "definition_uri": "https://w3id.org/linkml/none_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/not"
+      ],
+      "description": "holds if none of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "none_of",
+      "status": "testing",
+      "domain": "ClassExpression",
+      "range": "AnonymousClassExpression",
+      "slot_uri": "https://w3id.org/linkml/none_of",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "none_of",
+      "owner": "ClassExpression",
+      "domain_of": [
+        "ClassExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "none_of",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "class_definition_is_a",
       "definition_uri": "https://w3id.org/linkml/is_a",
       "description": "specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
@@ -2477,6 +3324,30 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "class_definition_rules",
+      "definition_uri": "https://w3id.org/linkml/rules",
+      "mappings": [
+        "https://w3id.org/shacl/rule"
+      ],
+      "description": "the collection of rules that apply to all members of this class",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "rules",
+      "status": "testing",
+      "domain": "ClassDefinition",
+      "range": "ClassRule",
+      "slot_uri": "https://w3id.org/shacl/rule",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "rules",
+      "owner": "ClassDefinition",
+      "domain_of": [
+        "ClassDefinition"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "rules",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "permissible_value_is_a",
       "definition_uri": "https://w3id.org/linkml/is_a",
       "description": "specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
@@ -2534,6 +3405,7 @@
       "slots": [
         "description",
         "alt_descriptions",
+        "title",
         "deprecated",
         "todos",
         "notes",
@@ -2566,7 +3438,6 @@
       ],
       "slots": [
         "name",
-        "title",
         "id_prefixes",
         "definition_uri",
         "aliases",
@@ -2582,6 +3453,7 @@
         "annotations",
         "description",
         "alt_descriptions",
+        "title",
         "deprecated",
         "todos",
         "notes",
@@ -2611,7 +3483,6 @@
       ],
       "is_a": "Element",
       "slots": [
-        "title",
         "id_prefixes",
         "definition_uri",
         "aliases",
@@ -2627,6 +3498,7 @@
         "annotations",
         "description",
         "alt_descriptions",
+        "title",
         "deprecated",
         "todos",
         "notes",
@@ -2661,6 +3533,48 @@
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/linkml/SchemaDefinition",
+      "tree_root": true,
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "TypeExpression",
+      "definition_uri": "https://w3id.org/linkml/TypeExpression",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "Expression",
+      "mixin": true,
+      "slots": [
+        "pattern",
+        "equals_string",
+        "equals_string_in",
+        "equals_number",
+        "type_expression_none_of",
+        "type_expression_exactly_one_of",
+        "type_expression_any_of",
+        "type_expression_all_of"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/TypeExpression",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AnonymousTypeExpression",
+      "definition_uri": "https://w3id.org/linkml/AnonymousTypeExpression",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "mixins": [
+        "TypeExpression"
+      ],
+      "slots": [
+        "pattern",
+        "equals_string",
+        "equals_string_in",
+        "equals_number",
+        "type_expression_none_of",
+        "type_expression_exactly_one_of",
+        "type_expression_any_of",
+        "type_expression_all_of"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/AnonymousTypeExpression",
       "@type": "ClassDefinition"
     },
     {
@@ -2669,9 +3583,11 @@
       "description": "A data type definition.",
       "from_schema": "https://w3id.org/linkml/meta",
       "is_a": "Element",
+      "mixins": [
+        "TypeExpression"
+      ],
       "slots": [
         "name",
-        "title",
         "id_prefixes",
         "definition_uri",
         "aliases",
@@ -2687,6 +3603,7 @@
         "annotations",
         "description",
         "alt_descriptions",
+        "title",
         "deprecated",
         "todos",
         "notes",
@@ -2702,7 +3619,14 @@
         "base",
         "type_uri",
         "repr",
-        "pattern"
+        "pattern",
+        "equals_string",
+        "equals_string_in",
+        "equals_number",
+        "type_expression_none_of",
+        "type_expression_exactly_one_of",
+        "type_expression_any_of",
+        "type_expression_all_of"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/linkml/TypeDefinition",
@@ -2716,7 +3640,6 @@
       "is_a": "Element",
       "slots": [
         "name",
-        "title",
         "id_prefixes",
         "definition_uri",
         "aliases",
@@ -2732,6 +3655,7 @@
         "annotations",
         "description",
         "alt_descriptions",
+        "title",
         "deprecated",
         "todos",
         "notes",
@@ -2760,7 +3684,6 @@
       "abstract": true,
       "slots": [
         "name",
-        "title",
         "id_prefixes",
         "definition_uri",
         "aliases",
@@ -2776,6 +3699,7 @@
         "annotations",
         "description",
         "alt_descriptions",
+        "title",
         "deprecated",
         "todos",
         "notes",
@@ -2812,7 +3736,6 @@
       "is_a": "Element",
       "slots": [
         "name",
-        "title",
         "id_prefixes",
         "definition_uri",
         "aliases",
@@ -2828,6 +3751,7 @@
         "annotations",
         "description",
         "alt_descriptions",
+        "title",
         "deprecated",
         "todos",
         "notes",
@@ -2850,6 +3774,135 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "Expression",
+      "definition_uri": "https://w3id.org/linkml/Expression",
+      "description": "todo",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "abstract": true,
+      "mixin": true,
+      "status": "testing",
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/Expression",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AnonymousExpression",
+      "definition_uri": "https://w3id.org/linkml/AnonymousExpression",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "abstract": true,
+      "mixins": [
+        "Expression",
+        "Extensible",
+        "Annotatable",
+        "CommonMetadata"
+      ],
+      "status": "testing",
+      "slots": [
+        "extensions",
+        "annotations",
+        "description",
+        "alt_descriptions",
+        "title",
+        "deprecated",
+        "todos",
+        "notes",
+        "comments",
+        "examples",
+        "in_subset",
+        "from_schema",
+        "imported_from",
+        "see_also",
+        "deprecated_element_has_exact_replacement",
+        "deprecated_element_has_possible_replacement"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/AnonymousExpression",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SlotExpression",
+      "definition_uri": "https://w3id.org/linkml/SlotExpression",
+      "description": "an expression that constrains the range of values a slot can take",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "Expression",
+      "mixin": true,
+      "status": "testing",
+      "slots": [
+        "range",
+        "range_expression",
+        "required",
+        "recommended",
+        "minimum_value",
+        "maximum_value",
+        "pattern",
+        "equals_string",
+        "equals_string_in",
+        "equals_number",
+        "equals_expression",
+        "minimum_cardinality",
+        "maximum_cardinality",
+        "has_member",
+        "all_members",
+        "slot_expression_none_of",
+        "slot_expression_exactly_one_of",
+        "slot_expression_any_of",
+        "slot_expression_all_of"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/SlotExpression",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AnonymousSlotExpression",
+      "definition_uri": "https://w3id.org/linkml/AnonymousSlotExpression",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "AnonymousExpression",
+      "mixins": [
+        "SlotExpression"
+      ],
+      "status": "testing",
+      "slots": [
+        "extensions",
+        "annotations",
+        "description",
+        "alt_descriptions",
+        "title",
+        "deprecated",
+        "todos",
+        "notes",
+        "comments",
+        "examples",
+        "in_subset",
+        "from_schema",
+        "imported_from",
+        "see_also",
+        "deprecated_element_has_exact_replacement",
+        "deprecated_element_has_possible_replacement",
+        "range",
+        "range_expression",
+        "required",
+        "recommended",
+        "minimum_value",
+        "maximum_value",
+        "pattern",
+        "equals_string",
+        "equals_string_in",
+        "equals_number",
+        "equals_expression",
+        "minimum_cardinality",
+        "maximum_cardinality",
+        "has_member",
+        "all_members",
+        "slot_expression_none_of",
+        "slot_expression_exactly_one_of",
+        "slot_expression_any_of",
+        "slot_expression_all_of"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/AnonymousSlotExpression",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "SlotDefinition",
       "definition_uri": "https://w3id.org/linkml/SlotDefinition",
       "aliases": [
@@ -2866,9 +3919,11 @@
       "description": "the definition of a property or a slot",
       "from_schema": "https://w3id.org/linkml/meta",
       "is_a": "Definition",
+      "mixins": [
+        "SlotExpression"
+      ],
       "slots": [
         "name",
-        "title",
         "id_prefixes",
         "definition_uri",
         "aliases",
@@ -2884,6 +3939,7 @@
         "annotations",
         "description",
         "alt_descriptions",
+        "title",
         "deprecated",
         "todos",
         "notes",
@@ -2906,14 +3962,11 @@
         "string_serialization",
         "singular_name",
         "domain",
-        "range",
         "slot_uri",
         "multivalued",
         "inherited",
         "readonly",
         "ifabsent",
-        "required",
-        "recommended",
         "inlined",
         "inlined_as_list",
         "key",
@@ -2929,15 +3982,86 @@
         "role",
         "is_usage_slot",
         "usage_slot_name",
+        "slot_definition_is_a",
+        "slot_definition_mixins",
+        "slot_definition_apply_to",
+        "range",
+        "range_expression",
+        "required",
+        "recommended",
         "minimum_value",
         "maximum_value",
         "pattern",
-        "slot_definition_is_a",
-        "slot_definition_mixins",
-        "slot_definition_apply_to"
+        "equals_string",
+        "equals_string_in",
+        "equals_number",
+        "equals_expression",
+        "minimum_cardinality",
+        "maximum_cardinality",
+        "has_member",
+        "all_members",
+        "slot_expression_none_of",
+        "slot_expression_exactly_one_of",
+        "slot_expression_any_of",
+        "slot_expression_all_of"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/linkml/SlotDefinition",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ClassExpression",
+      "definition_uri": "https://w3id.org/linkml/ClassExpression",
+      "description": "A boolean expression that can be used to dynamically determine membership of a class",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "mixin": true,
+      "status": "testing",
+      "slots": [
+        "class_expression_any_of",
+        "class_expression_exactly_one_of",
+        "class_expression_none_of",
+        "class_expression_all_of",
+        "slot_conditions"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/ClassExpression",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AnonymousClassExpression",
+      "definition_uri": "https://w3id.org/linkml/AnonymousClassExpression",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "AnonymousExpression",
+      "mixins": [
+        "ClassExpression"
+      ],
+      "status": "testing",
+      "slots": [
+        "extensions",
+        "annotations",
+        "description",
+        "alt_descriptions",
+        "title",
+        "deprecated",
+        "todos",
+        "notes",
+        "comments",
+        "examples",
+        "in_subset",
+        "from_schema",
+        "imported_from",
+        "see_also",
+        "deprecated_element_has_exact_replacement",
+        "deprecated_element_has_possible_replacement",
+        "is_a",
+        "class_expression_any_of",
+        "class_expression_exactly_one_of",
+        "class_expression_none_of",
+        "class_expression_all_of",
+        "slot_conditions"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/AnonymousClassExpression",
       "@type": "ClassDefinition"
     },
     {
@@ -2956,9 +4080,11 @@
       "description": "the definition of a class or interface",
       "from_schema": "https://w3id.org/linkml/meta",
       "is_a": "Definition",
+      "mixins": [
+        "ClassExpression"
+      ],
       "slots": [
         "name",
-        "title",
         "id_prefixes",
         "definition_uri",
         "aliases",
@@ -2974,6 +4100,7 @@
         "annotations",
         "description",
         "alt_descriptions",
+        "title",
         "deprecated",
         "todos",
         "notes",
@@ -3003,12 +4130,212 @@
         "defining_slots",
         "tree_root",
         "unique_keys",
+        "class_definition_rules",
+        "classification_rules",
         "class_definition_is_a",
         "class_definition_mixins",
-        "class_definition_apply_to"
+        "class_definition_apply_to",
+        "class_expression_any_of",
+        "class_expression_exactly_one_of",
+        "class_expression_none_of",
+        "class_expression_all_of",
+        "slot_conditions"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/linkml/ClassDefinition",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ClassLevelRule",
+      "definition_uri": "https://w3id.org/linkml/ClassLevelRule",
+      "description": "A rule that is applied to classes",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "abstract": true,
+      "status": "testing",
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/ClassLevelRule",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ClassRule",
+      "definition_uri": "https://w3id.org/linkml/ClassRule",
+      "aliases": [
+        "if rule"
+      ],
+      "close_mappings": [
+        "sh:TripleRule",
+        "swrl:Imp"
+      ],
+      "description": "A rule that applies to instances of a class",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "ClassLevelRule",
+      "mixins": [
+        "Extensible",
+        "Annotatable",
+        "CommonMetadata"
+      ],
+      "status": "testing",
+      "slots": [
+        "classRule__preconditions",
+        "classRule__postconditions",
+        "classRule__elseconditions",
+        "classRule__bidirectional",
+        "classRule__open_world",
+        "classRule__precedence",
+        "classRule__deactivated",
+        "extensions",
+        "annotations",
+        "description",
+        "alt_descriptions",
+        "title",
+        "deprecated",
+        "todos",
+        "notes",
+        "comments",
+        "examples",
+        "in_subset",
+        "from_schema",
+        "imported_from",
+        "see_also",
+        "deprecated_element_has_exact_replacement",
+        "deprecated_element_has_possible_replacement"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "preconditions",
+          "aliases": [
+            "if",
+            "body",
+            "antecedents"
+          ],
+          "close_mappings": [
+            "swrl:body"
+          ],
+          "description": "an expression that must hold in order for the rule to be applicable to an instance",
+          "range": "AnonymousClassExpression",
+          "slot_uri": "sh:condition",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "postconditions",
+          "aliases": [
+            "then",
+            "head",
+            "consequents"
+          ],
+          "close_mappings": [
+            "swrl:body"
+          ],
+          "description": "an expression that must hold for an instance of the class, if the preconditions hold",
+          "range": "AnonymousClassExpression",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "elseconditions",
+          "aliases": [
+            "else"
+          ],
+          "description": "an expression that must hold for an instance of the class, if the preconditions no not hold",
+          "range": "AnonymousClassExpression",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "bidirectional",
+          "aliases": [
+            "iff",
+            "if and only if"
+          ],
+          "description": "in addition to preconditions entailing postconditions, the postconditions entail the preconditions",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "open_world",
+          "description": "if true, the the postconditions may be omitted in instance data, but it is valid for an inference engine to add these",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "precedence",
+          "description": "the relative order in which the rule is applied",
+          "range": "integer",
+          "slot_uri": "sh:order",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "deactivated",
+          "description": "a deactivated rule is not executed by the rules engine",
+          "range": "boolean",
+          "slot_uri": "sh:deactivated",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/linkml/ClassRule",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ClassificationRule",
+      "definition_uri": "https://w3id.org/linkml/ClassificationRule",
+      "aliases": [
+        "membership rule"
+      ],
+      "description": "A rule that determines how to automatically classify an instance as a member of a class",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "ClassLevelRule",
+      "mixins": [
+        "Extensible",
+        "Annotatable",
+        "CommonMetadata"
+      ],
+      "status": "testing",
+      "slots": [
+        "classificationRule__instance_of",
+        "classificationRule__slot_conditions",
+        "extensions",
+        "annotations",
+        "description",
+        "alt_descriptions",
+        "title",
+        "deprecated",
+        "todos",
+        "notes",
+        "comments",
+        "examples",
+        "in_subset",
+        "from_schema",
+        "imported_from",
+        "see_also",
+        "deprecated_element_has_exact_replacement",
+        "deprecated_element_has_possible_replacement"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "instance_of",
+          "range": "ClassDefinition",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "slot_conditions",
+          "aliases": [
+            "differentiae"
+          ],
+          "close_mappings": [
+            "swrl:body"
+          ],
+          "description": "an expression that must hold in order for the classification rule to take effect",
+          "range": "SlotDefinition",
+          "slot_uri": "sh:condition",
+          "multivalued": true,
+          "inlined": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/linkml/ClassificationRule",
       "@type": "ClassDefinition"
     },
     {
@@ -3082,6 +4409,7 @@
         "extensions",
         "annotations",
         "alt_descriptions",
+        "title",
         "deprecated",
         "todos",
         "notes",
@@ -3114,6 +4442,7 @@
         "annotations",
         "description",
         "alt_descriptions",
+        "title",
         "deprecated",
         "todos",
         "notes",
@@ -3196,9 +4525,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "meta.yaml",
-  "source_file_date": "Sat Oct 16 00:00:06 2021",
-  "source_file_size": 34904,
-  "generation_date": "2021-10-16 00:02",
+  "source_file_date": "Tue Oct 26 00:57:15 2021",
+  "source_file_size": 45899,
+  "generation_date": "2021-10-26 00:59",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",

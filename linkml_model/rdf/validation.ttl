@@ -47,45 +47,77 @@
             linkml:exact_mappings "sh:Severity" ;
             linkml:from_schema "https://w3id.org/linkml/reporting" ;
             linkml:name "severity_options" ;
-            linkml:permissible_values [ linkml:meaning "sh:Warning" ;
+            linkml:permissible_values [ linkml:text "FATAL" ],
+                [ linkml:meaning "sh:Violation" ;
+                    linkml:text "ERROR" ],
+                [ linkml:meaning "sh:Warning" ;
                     linkml:text "WARNING" ],
                 [ linkml:meaning "sh:Info" ;
-                    linkml:text "INFO" ],
-                [ linkml:text "FATAL" ],
-                [ linkml:meaning "sh:Violation" ;
-                    linkml:text "ERROR" ] ],
+                    linkml:text "INFO" ] ],
         [ linkml:definition_uri "https://w3id.org/linkml/reportProblemType" ;
             linkml:from_schema "https://w3id.org/linkml/reporting" ;
             linkml:name "problem_type" ;
-            linkml:permissible_values [ linkml:description "Applies when a slot is used in an instance of a class where the slot is not applicable for that class" ;
-                    linkml:text "inapplicable_slot" ],
-                [ linkml:description "Applies when a slot is used in data but the slot is undeclared in the datamodel" ;
-                    linkml:text "undeclared_slot" ],
-                [ linkml:description "The data could not be parsed" ;
+            linkml:permissible_values [ linkml:description "The data could not be parsed" ;
                     linkml:text "parsing_error" ],
                 [ linkml:description "Applies when an instance of a class has a required slot which is not filled in" ;
                     linkml:text "missing_slot_value" ],
+                [ linkml:description "Applies when a slot is used in data but the slot is undeclared in the datamodel" ;
+                    linkml:text "undeclared_slot" ],
                 [ linkml:description "Applies when the value of a slot is inconsistent with the declared range" ;
-                    linkml:text "slot_range_violation" ] ] ;
-    linkml:generation_date "2021-10-16 00:03" ;
+                    linkml:text "slot_range_violation" ],
+                [ linkml:description "Applies when a slot is used in an instance of a class where the slot is not applicable for that class" ;
+                    linkml:text "inapplicable_slot" ] ] ;
+    linkml:generation_date "2021-10-26 01:00" ;
     linkml:id "https://w3id.org/linkml/reporting" ;
     linkml:imports "linkml:types" ;
     linkml:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
     linkml:metamodel_version "1.7.0" ;
     linkml:name "reporting" ;
-    linkml:prefixes [ linkml:prefix_prefix "pav" ;
-            linkml:prefix_reference "http://purl.org/pav/" ],
-        [ linkml:prefix_prefix "sh" ;
+    linkml:prefixes [ linkml:prefix_prefix "sh" ;
             linkml:prefix_reference "https://w3id.org/shacl/" ],
-        [ linkml:prefix_prefix "linkml" ;
-            linkml:prefix_reference "https://w3id.org/linkml/" ],
-        [ linkml:prefix_prefix "schema" ;
-            linkml:prefix_reference "http://schema.org/" ],
         [ linkml:prefix_prefix "reporting" ;
             linkml:prefix_reference "https://w3id.org/linkml/report" ],
+        [ linkml:prefix_prefix "pav" ;
+            linkml:prefix_reference "http://purl.org/pav/" ],
+        [ linkml:prefix_prefix "linkml" ;
+            linkml:prefix_reference "https://w3id.org/linkml/" ],
         [ linkml:prefix_prefix "skos" ;
-            linkml:prefix_reference "http://www.w3.org/2004/02/skos/core#" ] ;
+            linkml:prefix_reference "http://www.w3.org/2004/02/skos/core#" ],
+        [ linkml:prefix_prefix "schema" ;
+            linkml:prefix_reference "http://schema.org/" ] ;
     linkml:slots [ a linkml:SlotDefinition ;
+            linkml:definition_uri "https://w3id.org/linkml/reportsource" ;
+            linkml:domain_of "ValidationResult" ;
+            linkml:from_schema "https://w3id.org/linkml/reporting" ;
+            linkml:name "source" ;
+            linkml:owner "ValidationResult" ;
+            linkml:range "nodeidentifier" ;
+            linkml:slot_uri "https://w3id.org/linkml/reportsource" ],
+        [ a linkml:SlotDefinition ;
+            linkml:definition_uri "https://w3id.org/linkml/reportinfo" ;
+            linkml:domain_of "ValidationResult" ;
+            linkml:from_schema "https://w3id.org/linkml/reporting" ;
+            linkml:name "info" ;
+            linkml:owner "ValidationResult" ;
+            linkml:range "string" ;
+            linkml:slot_uri "https://w3id.org/linkml/reportinfo" ],
+        [ a linkml:SlotDefinition ;
+            linkml:definition_uri "https://w3id.org/linkml/reportobject_str" ;
+            linkml:domain_of "ValidationResult" ;
+            linkml:from_schema "https://w3id.org/linkml/reporting" ;
+            linkml:name "object_str" ;
+            linkml:owner "ValidationResult" ;
+            linkml:range "string" ;
+            linkml:slot_uri "https://w3id.org/linkml/reportobject_str" ],
+        [ a linkml:SlotDefinition ;
+            linkml:definition_uri "https://w3id.org/linkml/reporttype" ;
+            linkml:domain_of "ValidationResult" ;
+            linkml:from_schema "https://w3id.org/linkml/reporting" ;
+            linkml:name "type" ;
+            linkml:owner "ValidationResult" ;
+            linkml:range "problem_type" ;
+            linkml:slot_uri "https://w3id.org/linkml/reporttype" ],
+        [ a linkml:SlotDefinition ;
             linkml:definition_uri "https://w3id.org/linkml/reportsubject" ;
             linkml:domain_of "ValidationResult" ;
             linkml:from_schema "https://w3id.org/linkml/reporting" ;
@@ -102,45 +134,13 @@
             linkml:range "nodeidentifier" ;
             linkml:slot_uri "https://w3id.org/linkml/reportinstantiates" ],
         [ a linkml:SlotDefinition ;
-            linkml:definition_uri "https://w3id.org/linkml/reportobject" ;
+            linkml:definition_uri "https://w3id.org/linkml/reportpredicate" ;
             linkml:domain_of "ValidationResult" ;
             linkml:from_schema "https://w3id.org/linkml/reporting" ;
-            linkml:name "object" ;
+            linkml:name "predicate" ;
             linkml:owner "ValidationResult" ;
             linkml:range "nodeidentifier" ;
-            linkml:slot_uri "https://w3id.org/linkml/reportobject" ],
-        [ a linkml:SlotDefinition ;
-            linkml:definition_uri "https://w3id.org/linkml/reportobject_str" ;
-            linkml:domain_of "ValidationResult" ;
-            linkml:from_schema "https://w3id.org/linkml/reporting" ;
-            linkml:name "object_str" ;
-            linkml:owner "ValidationResult" ;
-            linkml:range "string" ;
-            linkml:slot_uri "https://w3id.org/linkml/reportobject_str" ],
-        [ a linkml:SlotDefinition ;
-            linkml:definition_uri "https://w3id.org/linkml/reportseverity" ;
-            linkml:domain_of "ValidationResult" ;
-            linkml:from_schema "https://w3id.org/linkml/reporting" ;
-            linkml:name "severity" ;
-            linkml:owner "ValidationResult" ;
-            linkml:range "severity_options" ;
-            linkml:slot_uri "https://w3id.org/linkml/reportseverity" ],
-        [ a linkml:SlotDefinition ;
-            linkml:definition_uri "https://w3id.org/linkml/reportinfo" ;
-            linkml:domain_of "ValidationResult" ;
-            linkml:from_schema "https://w3id.org/linkml/reporting" ;
-            linkml:name "info" ;
-            linkml:owner "ValidationResult" ;
-            linkml:range "string" ;
-            linkml:slot_uri "https://w3id.org/linkml/reportinfo" ],
-        [ a linkml:SlotDefinition ;
-            linkml:definition_uri "https://w3id.org/linkml/reporttype" ;
-            linkml:domain_of "ValidationResult" ;
-            linkml:from_schema "https://w3id.org/linkml/reporting" ;
-            linkml:name "type" ;
-            linkml:owner "ValidationResult" ;
-            linkml:range "problem_type" ;
-            linkml:slot_uri "https://w3id.org/linkml/reporttype" ],
+            linkml:slot_uri "https://w3id.org/linkml/reportpredicate" ],
         [ a linkml:SlotDefinition ;
             linkml:alias "results" ;
             linkml:domain_of "ValidationReport" ;
@@ -152,35 +152,77 @@
             linkml:range "ValidationResult" ;
             linkml:slot_uri "https://w3id.org/linkml/reportresults" ],
         [ a linkml:SlotDefinition ;
-            linkml:definition_uri "https://w3id.org/linkml/reportsource" ;
+            linkml:definition_uri "https://w3id.org/linkml/reportobject" ;
             linkml:domain_of "ValidationResult" ;
             linkml:from_schema "https://w3id.org/linkml/reporting" ;
-            linkml:name "source" ;
+            linkml:name "object" ;
             linkml:owner "ValidationResult" ;
             linkml:range "nodeidentifier" ;
-            linkml:slot_uri "https://w3id.org/linkml/reportsource" ],
+            linkml:slot_uri "https://w3id.org/linkml/reportobject" ],
         [ a linkml:SlotDefinition ;
-            linkml:definition_uri "https://w3id.org/linkml/reportpredicate" ;
+            linkml:definition_uri "https://w3id.org/linkml/reportseverity" ;
             linkml:domain_of "ValidationResult" ;
             linkml:from_schema "https://w3id.org/linkml/reporting" ;
-            linkml:name "predicate" ;
+            linkml:name "severity" ;
             linkml:owner "ValidationResult" ;
-            linkml:range "nodeidentifier" ;
-            linkml:slot_uri "https://w3id.org/linkml/reportpredicate" ] ;
+            linkml:range "severity_options" ;
+            linkml:slot_uri "https://w3id.org/linkml/reportseverity" ] ;
     linkml:source_file "validation.yaml" ;
-    linkml:source_file_date "Sat Oct 16 00:00:06 2021" ;
+    linkml:source_file_date "Tue Oct 26 00:57:15 2021" ;
     linkml:source_file_size 2645 ;
     linkml:title "LinkML Report Metamodel" ;
     linkml:types [ a linkml:TypeDefinition ;
-            linkml:base "ElementIdentifier" ;
-            linkml:comments "Used for inheritence and type checking" ;
-            linkml:definition_uri "https://w3id.org/linkml/Objectidentifier" ;
-            linkml:description "A URI or CURIE that represents an object in the model." ;
+            linkml:base "XSDDateTime" ;
+            linkml:definition_uri "https://w3id.org/linkml/Datetime" ;
+            linkml:description "The combination of a date and time" ;
             linkml:from_schema "https://w3id.org/linkml/types" ;
             linkml:imported_from "linkml:types" ;
-            linkml:name "objectidentifier" ;
+            linkml:name "datetime" ;
             linkml:repr "str" ;
-            linkml:uri "http://www.w3.org/ns/shex#iri" ],
+            linkml:uri "http://www.w3.org/2001/XMLSchema#dateTime" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "URIorCURIE" ;
+            linkml:definition_uri "https://w3id.org/linkml/Uriorcurie" ;
+            linkml:description "a URI or a CURIE" ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "uriorcurie" ;
+            linkml:repr "str" ;
+            linkml:uri "http://www.w3.org/2001/XMLSchema#anyURI" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "float" ;
+            linkml:definition_uri "https://w3id.org/linkml/Double" ;
+            linkml:description "A real number that conforms to the xsd:double specification" ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "double" ;
+            linkml:uri "http://www.w3.org/2001/XMLSchema#double" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "NodeIdentifier" ;
+            linkml:definition_uri "https://w3id.org/linkml/Nodeidentifier" ;
+            linkml:description "A URI, CURIE or BNODE that represents a node in a model." ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "nodeidentifier" ;
+            linkml:repr "str" ;
+            linkml:uri "http://www.w3.org/ns/shex#nonLiteral" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "NCName" ;
+            linkml:definition_uri "https://w3id.org/linkml/Ncname" ;
+            linkml:description "Prefix part of CURIE" ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "ncname" ;
+            linkml:repr "str" ;
+            linkml:uri "http://www.w3.org/2001/XMLSchema#string" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "float" ;
+            linkml:definition_uri "https://w3id.org/linkml/Float" ;
+            linkml:description "A real number that conforms to the xsd:float specification" ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "float" ;
+            linkml:uri "http://www.w3.org/2001/XMLSchema#float" ],
         [ a linkml:TypeDefinition ;
             linkml:base "XSDDate" ;
             linkml:definition_uri "https://w3id.org/linkml/Date" ;
@@ -192,30 +234,39 @@
             linkml:repr "str" ;
             linkml:uri "http://www.w3.org/2001/XMLSchema#date" ],
         [ a linkml:TypeDefinition ;
-            linkml:base "float" ;
-            linkml:definition_uri "https://w3id.org/linkml/Float" ;
-            linkml:description "A real number that conforms to the xsd:float specification" ;
+            linkml:base "XSDTime" ;
+            linkml:definition_uri "https://w3id.org/linkml/Time" ;
+            linkml:description "A time object represents a (local) time of day, independent of any particular day" ;
             linkml:from_schema "https://w3id.org/linkml/types" ;
             linkml:imported_from "linkml:types" ;
-            linkml:name "float" ;
-            linkml:uri "http://www.w3.org/2001/XMLSchema#float" ],
-        [ a linkml:TypeDefinition ;
-            linkml:base "URIorCURIE" ;
-            linkml:definition_uri "https://w3id.org/linkml/Uriorcurie" ;
-            linkml:description "a URI or a CURIE" ;
-            linkml:from_schema "https://w3id.org/linkml/types" ;
-            linkml:imported_from "linkml:types" ;
-            linkml:name "uriorcurie" ;
+            linkml:name "time" ;
+            linkml:notes "URI is dateTime because OWL reasoners don't work with straight date or time" ;
             linkml:repr "str" ;
-            linkml:uri "http://www.w3.org/2001/XMLSchema#anyURI" ],
+            linkml:uri "http://www.w3.org/2001/XMLSchema#dateTime" ],
         [ a linkml:TypeDefinition ;
-            linkml:base "NCName" ;
-            linkml:definition_uri "https://w3id.org/linkml/Ncname" ;
-            linkml:description "Prefix part of CURIE" ;
+            linkml:base "Decimal" ;
+            linkml:definition_uri "https://w3id.org/linkml/Decimal" ;
+            linkml:description "A real number with arbitrary precision that conforms to the xsd:decimal specification" ;
             linkml:from_schema "https://w3id.org/linkml/types" ;
             linkml:imported_from "linkml:types" ;
-            linkml:name "ncname" ;
-            linkml:repr "str" ;
+            linkml:name "decimal" ;
+            linkml:uri "http://www.w3.org/2001/XMLSchema#decimal" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "Bool" ;
+            linkml:definition_uri "https://w3id.org/linkml/Boolean" ;
+            linkml:description "A binary (true or false) value" ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "boolean" ;
+            linkml:repr "bool" ;
+            linkml:uri "http://www.w3.org/2001/XMLSchema#boolean" ],
+        [ a linkml:TypeDefinition ;
+            linkml:base "str" ;
+            linkml:definition_uri "https://w3id.org/linkml/String" ;
+            linkml:description "A character string" ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "string" ;
             linkml:uri "http://www.w3.org/2001/XMLSchema#string" ],
         [ a linkml:TypeDefinition ;
             linkml:base "URI" ;
@@ -227,74 +278,23 @@
             linkml:repr "str" ;
             linkml:uri "http://www.w3.org/2001/XMLSchema#anyURI" ],
         [ a linkml:TypeDefinition ;
+            linkml:base "ElementIdentifier" ;
+            linkml:comments "Used for inheritence and type checking" ;
+            linkml:definition_uri "https://w3id.org/linkml/Objectidentifier" ;
+            linkml:description "A URI or CURIE that represents an object in the model." ;
+            linkml:from_schema "https://w3id.org/linkml/types" ;
+            linkml:imported_from "linkml:types" ;
+            linkml:name "objectidentifier" ;
+            linkml:repr "str" ;
+            linkml:uri "http://www.w3.org/ns/shex#iri" ],
+        [ a linkml:TypeDefinition ;
             linkml:base "int" ;
             linkml:definition_uri "https://w3id.org/linkml/Integer" ;
             linkml:description "An integer" ;
             linkml:from_schema "https://w3id.org/linkml/types" ;
             linkml:imported_from "linkml:types" ;
             linkml:name "integer" ;
-            linkml:uri "http://www.w3.org/2001/XMLSchema#integer" ],
-        [ a linkml:TypeDefinition ;
-            linkml:base "Decimal" ;
-            linkml:definition_uri "https://w3id.org/linkml/Decimal" ;
-            linkml:description "A real number with arbitrary precision that conforms to the xsd:decimal specification" ;
-            linkml:from_schema "https://w3id.org/linkml/types" ;
-            linkml:imported_from "linkml:types" ;
-            linkml:name "decimal" ;
-            linkml:uri "http://www.w3.org/2001/XMLSchema#decimal" ],
-        [ a linkml:TypeDefinition ;
-            linkml:base "XSDTime" ;
-            linkml:definition_uri "https://w3id.org/linkml/Time" ;
-            linkml:description "A time object represents a (local) time of day, independent of any particular day" ;
-            linkml:from_schema "https://w3id.org/linkml/types" ;
-            linkml:imported_from "linkml:types" ;
-            linkml:name "time" ;
-            linkml:notes "URI is dateTime because OWL reasoners don't work with straight date or time" ;
-            linkml:repr "str" ;
-            linkml:uri "http://www.w3.org/2001/XMLSchema#dateTime" ],
-        [ a linkml:TypeDefinition ;
-            linkml:base "XSDDateTime" ;
-            linkml:definition_uri "https://w3id.org/linkml/Datetime" ;
-            linkml:description "The combination of a date and time" ;
-            linkml:from_schema "https://w3id.org/linkml/types" ;
-            linkml:imported_from "linkml:types" ;
-            linkml:name "datetime" ;
-            linkml:repr "str" ;
-            linkml:uri "http://www.w3.org/2001/XMLSchema#dateTime" ],
-        [ a linkml:TypeDefinition ;
-            linkml:base "NodeIdentifier" ;
-            linkml:definition_uri "https://w3id.org/linkml/Nodeidentifier" ;
-            linkml:description "A URI, CURIE or BNODE that represents a node in a model." ;
-            linkml:from_schema "https://w3id.org/linkml/types" ;
-            linkml:imported_from "linkml:types" ;
-            linkml:name "nodeidentifier" ;
-            linkml:repr "str" ;
-            linkml:uri "http://www.w3.org/ns/shex#nonLiteral" ],
-        [ a linkml:TypeDefinition ;
-            linkml:base "str" ;
-            linkml:definition_uri "https://w3id.org/linkml/String" ;
-            linkml:description "A character string" ;
-            linkml:from_schema "https://w3id.org/linkml/types" ;
-            linkml:imported_from "linkml:types" ;
-            linkml:name "string" ;
-            linkml:uri "http://www.w3.org/2001/XMLSchema#string" ],
-        [ a linkml:TypeDefinition ;
-            linkml:base "Bool" ;
-            linkml:definition_uri "https://w3id.org/linkml/Boolean" ;
-            linkml:description "A binary (true or false) value" ;
-            linkml:from_schema "https://w3id.org/linkml/types" ;
-            linkml:imported_from "linkml:types" ;
-            linkml:name "boolean" ;
-            linkml:repr "bool" ;
-            linkml:uri "http://www.w3.org/2001/XMLSchema#boolean" ],
-        [ a linkml:TypeDefinition ;
-            linkml:base "float" ;
-            linkml:definition_uri "https://w3id.org/linkml/Double" ;
-            linkml:description "A real number that conforms to the xsd:double specification" ;
-            linkml:from_schema "https://w3id.org/linkml/types" ;
-            linkml:imported_from "linkml:types" ;
-            linkml:name "double" ;
-            linkml:uri "http://www.w3.org/2001/XMLSchema#double" ] .
+            linkml:uri "http://www.w3.org/2001/XMLSchema#integer" ] .
 
 
 
