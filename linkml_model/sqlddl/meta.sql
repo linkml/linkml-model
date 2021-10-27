@@ -124,6 +124,7 @@ CREATE TABLE class_definition (
 	union_of TEXT, 
 	defining_slots TEXT, 
 	tree_root BOOLEAN, 
+	classification_rules TEXT, 
 	is_a TEXT, 
 	mixins TEXT, 
 	apply_to TEXT, 
@@ -254,31 +255,6 @@ CREATE TABLE class_rule (
 	deprecated_element_has_possible_replacement TEXT, 
 	class_definition_name TEXT, 
 	PRIMARY KEY (preconditions, postconditions, elseconditions, bidirectional, open_world, precedence, deactivated, extensions, annotations, description, alt_descriptions, title, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, class_definition_name), 
-	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
-);
-
-CREATE TABLE classification_rule (
-	instance_of TEXT, 
-	slot_conditions TEXT, 
-	extensions TEXT, 
-	annotations TEXT, 
-	description TEXT, 
-	alt_descriptions TEXT, 
-	title TEXT, 
-	deprecated TEXT, 
-	todos TEXT, 
-	notes TEXT, 
-	comments TEXT, 
-	examples TEXT, 
-	in_subset TEXT, 
-	from_schema TEXT, 
-	imported_from TEXT, 
-	see_also TEXT, 
-	deprecated_element_has_exact_replacement TEXT, 
-	deprecated_element_has_possible_replacement TEXT, 
-	class_definition_name TEXT, 
-	PRIMARY KEY (instance_of, slot_conditions, extensions, annotations, description, alt_descriptions, title, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, class_definition_name), 
-	FOREIGN KEY(instance_of) REFERENCES class_definition (name), 
 	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
 );
 

@@ -124,7 +124,6 @@
 <li><a href="AnonymousTypeExpression/">AnonymousTypeExpression</a></li>
 <li><a href="ClassLevelRule/">ClassLevelRule</a> - A rule that is applied to classes<ul>
 <li><a href="ClassRule/">ClassRule</a> - A rule that applies to instances of a class</li>
-<li><a href="ClassificationRule/">ClassificationRule</a> - A rule that determines how to automatically classify an instance as a member of a class</li>
 </ul>
 </li>
 <li><a href="Element/">Element</a> - a named element in the model<ul>
@@ -178,6 +177,7 @@
 </li>
 <li><a href="attributes/">attributes</a> - Inline definition of slots</li>
 <li><a href="base/">base</a> - python base type that implements this type definition</li>
+<li><a href="bidirectional/">bidirectional</a> - in addition to preconditions entailing postconditions, the postconditions entail the preconditions</li>
 <li><a href="boolean_slot/">boolean_slot</a> - A grouping of slots that expression a boolean operator over a list of operands<ul>
 <li><a href="all_of/">all_of</a> - holds if all of the expressions hold<ul>
 <li><a href="class_expression_all_of/">class_expression➞all_of</a></li>
@@ -205,17 +205,8 @@
 </li>
 </ul>
 </li>
-<li><a href="classRule__bidirectional/">➞bidirectional</a> - in addition to preconditions entailing postconditions, the postconditions entail the preconditions</li>
-<li><a href="classRule__deactivated/">➞deactivated</a> - a deactivated rule is not executed by the rules engine</li>
-<li><a href="classRule__elseconditions/">➞elseconditions</a> - an expression that must hold for an instance of the class, if the preconditions no not hold</li>
-<li><a href="classRule__open_world/">➞open_world</a> - if true, the the postconditions may be omitted in instance data, but it is valid for an inference engine to add these</li>
-<li><a href="classRule__postconditions/">➞postconditions</a> - an expression that must hold for an instance of the class, if the preconditions hold</li>
-<li><a href="classRule__precedence/">➞precedence</a> - the relative order in which the rule is applied</li>
-<li><a href="classRule__preconditions/">➞preconditions</a> - an expression that must hold in order for the rule to be applicable to an instance</li>
 <li><a href="class_uri/">class_uri</a> - URI of the class in an RDF environment</li>
 <li><a href="classes/">classes</a> - class definitions</li>
-<li><a href="classificationRule__instance_of/">➞instance_of</a></li>
-<li><a href="classificationRule__slot_conditions/">➞slot_conditions</a> - an expression that must hold in order for the classification rule to take effect</li>
 <li><a href="classification_rules/">classification_rules</a> - the collection of classification rules that apply to all members of this class</li>
 <li><a href="code_set/">code_set</a> - the identifier of an enumeration code set.</li>
 <li><a href="code_set_tag/">code_set_tag</a> - the version tag of the enumeration code set</li>
@@ -224,6 +215,7 @@
 <li><a href="conforms_to/">conforms_to</a> - An established standard to which the element conforms.</li>
 <li><a href="created_by/">created_by</a> - agent that created the element</li>
 <li><a href="created_on/">created_on</a> - time at which the element was created</li>
+<li><a href="deactivated/">deactivated</a> - a deactivated rule is not executed by the rules engine</li>
 <li><a href="default_curi_maps/">default_curi_maps</a> - ordered list of prefixcommon biocontexts to be fetched to resolve id prefixes and inline prefix variables</li>
 <li><a href="default_prefix/">default_prefix</a> - default and base prefix -- used for ':' identifiers, @base and @vocab</li>
 <li><a href="default_range/">default_range</a> - default slot range to be used if range element is omitted from a slot definition</li>
@@ -236,6 +228,7 @@
 <li><a href="designates_type/">designates_type</a> - True means that the key slot(s) is used to determine the instantiation (types) relation between objects and a ClassDefinition</li>
 <li><a href="domain/">domain</a> - defines the type of the subject of the slot.  Given the following slot definition</li>
 <li><a href="domain_of/">domain_of</a> - the class(es) that reference the slot in a "slots" or "slot_usage" context</li>
+<li><a href="elseconditions/">elseconditions</a> - an expression that must hold for an instance of the class, if the preconditions no not hold</li>
 <li><a href="emit_prefixes/">emit_prefixes</a> - a list of Curie prefixes that are used in the representation of instances of the model.  All prefixes in this list are added to the prefix sections of the target models.</li>
 <li><a href="enums/">enums</a> - enumerated ranges</li>
 <li><a href="examples/">examples</a> - example usages of an element</li>
@@ -305,9 +298,13 @@
 </ul>
 </li>
 <li><a href="notes/">notes</a> - editorial notes about an element intended for internal consumption</li>
+<li><a href="open_world/">open_world</a> - if true, the the postconditions may be omitted in instance data, but it is valid for an inference engine to add these</li>
 <li><a href="owner/">owner</a> - the "owner" of the slot. It is the class if it appears in the slots list, otherwise the declaring slot</li>
 <li><a href="pattern/">pattern</a> - the string value of the slot must conform to this regular expression</li>
 <li><a href="permissible_values/">permissible_values</a> - A list of possible values for a slot range</li>
+<li><a href="postconditions/">postconditions</a> - an expression that must hold for an instance of the class, if the preconditions hold</li>
+<li><a href="precedence/">precedence</a> - the relative order in which the rule is applied</li>
+<li><a href="preconditions/">preconditions</a> - an expression that must hold in order for the rule to be applicable to an instance</li>
 <li><a href="prefix_prefix/">prefix_prefix</a> - the nsname (sans ':' for a given prefix)</li>
 <li><a href="prefix_reference/">prefix_reference</a> - A URI associated with a given prefix</li>
 <li><a href="prefixes/">prefixes</a> - prefix / URI definitions to be added to the context beyond those fetched from prefixcommons in id prefixes</li>
@@ -465,5 +462,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2021-10-26 00:59:03.988936+00:00
+Build Date UTC : 2021-10-26 23:58:30.714179+00:00
 -->

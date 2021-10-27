@@ -523,7 +523,7 @@
             "classification_rules": {
                "description": "the collection of classification rules that apply to all members of this class",
                "items": {
-                  "$ref": "#/$defs/ClassificationRule"
+                  "$ref": "#/$defs/AnonymousClassExpression"
                },
                "type": "array"
             },
@@ -854,7 +854,7 @@
             "classification_rules": {
                "description": "the collection of classification rules that apply to all members of this class",
                "items": {
-                  "$ref": "#/$defs/ClassificationRule"
+                  "$ref": "#/$defs/AnonymousClassExpression"
                },
                "type": "array"
             },
@@ -1240,113 +1240,6 @@
          },
          "required": [],
          "title": "ClassRule",
-         "type": "object"
-      },
-      "ClassificationRule": {
-         "additionalProperties": false,
-         "description": "A rule that determines how to automatically classify an instance as a member of a class",
-         "properties": {
-            "alt_descriptions": {
-               "additionalProperties": {
-                  "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
-            },
-            "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
-               },
-               "type": "array"
-            },
-            "comments": {
-               "description": "notes and comments about an element intended for external consumption",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "deprecated": {
-               "description": "Description of why and when this element will no longer be used",
-               "type": "string"
-            },
-            "deprecated_element_has_exact_replacement": {
-               "description": "When an element is deprecated, it can be automatically replaced by this uri or curie",
-               "type": "string"
-            },
-            "deprecated_element_has_possible_replacement": {
-               "description": "When an element is deprecated, it can be potentially replaced by this uri or curie",
-               "type": "string"
-            },
-            "description": {
-               "description": "a description of the element's purpose and use",
-               "type": "string"
-            },
-            "examples": {
-               "description": "example usages of an element",
-               "items": {
-                  "$ref": "#/$defs/Example"
-               },
-               "type": "array"
-            },
-            "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
-               },
-               "type": "array"
-            },
-            "from_schema": {
-               "description": "id of the schema that defined the element",
-               "type": "string"
-            },
-            "imported_from": {
-               "description": "the imports entry that this element was derived from.  Empty means primary source",
-               "type": "string"
-            },
-            "in_subset": {
-               "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "instance_of": {
-               "type": "string"
-            },
-            "notes": {
-               "description": "editorial notes about an element intended for internal consumption",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "see_also": {
-               "description": "a reference",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "slot_conditions": {
-               "additionalProperties": {
-                  "$ref": "#/$defs/SlotDefinition__identifier_optional"
-               },
-               "description": "an expression that must hold in order for the classification rule to take effect"
-            },
-            "title": {
-               "description": "the official title of the element",
-               "type": "string"
-            },
-            "todos": {
-               "description": "Outstanding issue that needs resolution",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            }
-         },
-         "required": [],
-         "title": "ClassificationRule",
          "type": "object"
       },
       "EnumDefinition": {

@@ -174,7 +174,7 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           <tree_root> @<Boolean> ? ;
           <unique_keys> @<UniqueKey> * ;
           sh:rule @<ClassRule> * ;
-          <classification_rules> @<ClassificationRule> * ;
+          <classification_rules> @<AnonymousClassExpression> * ;
           <mixins> @<ClassDefinition> * ;
           <apply_to> @<ClassDefinition> * ;
           <any_of> @<AnonymousClassExpression> * ;
@@ -199,14 +199,12 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
 }
 
 <ClassLevelRule>  (
-    @<ClassRule> OR @<ClassificationRule>
+    {
+       (  $<ClassLevelRule_tes> rdf:type . * ;
+          rdf:type [ <ClassLevelRule> ] ?
+       )
+    } OR @<ClassRule>
 )
-
-<ClassLevelRule_struct> {
-    (  $<ClassLevelRule_tes> rdf:type . * ;
-       rdf:type [ <ClassLevelRule> ] ?
-    )
-}
 
 <ClassRule> CLOSED {
     (  $<ClassRule_tes> (  &<ClassLevelRule_tes> ;
@@ -242,38 +240,6 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           <deprecated_element_has_possible_replacement> @<Uriorcurie> ?
        ) ;
        rdf:type [ <ClassRule> ] ?
-    )
-}
-
-<ClassificationRule> CLOSED {
-    (  $<ClassificationRule_tes> (  &<ClassLevelRule_tes> ;
-          rdf:type [ <ClassLevelRule> ] ? ;
-          &<Extensible_tes> ;
-          rdf:type [ <Extensible> ] ? ;
-          &<Annotatable_tes> ;
-          rdf:type [ <Annotatable> ] ? ;
-          &<CommonMetadata_tes> ;
-          rdf:type [ <CommonMetadata> ] ? ;
-          <instance_of> @<ClassDefinition> ? ;
-          sh:condition @<SlotDefinition> * ;
-          <extensions> @<Extension> * ;
-          <annotations> @<Annotation> * ;
-          skos:definition @<String> ? ;
-          <alt_descriptions> @<AltDescription> * ;
-          dcterms:title @<String> ? ;
-          <deprecated> @<String> ? ;
-          <todos> @<String> * ;
-          skos:editorialNote @<String> * ;
-          skos:note @<String> * ;
-          <examples> @<Example> * ;
-          oboInOwl:inSubset @<SubsetDefinition> * ;
-          skos:inScheme @<Uri> ? ;
-          <imported_from> @<String> ? ;
-          rdfs:seeAlso @<Uriorcurie> * ;
-          <deprecated_element_has_exact_replacement> @<Uriorcurie> ? ;
-          <deprecated_element_has_possible_replacement> @<Uriorcurie> ?
-       ) ;
-       rdf:type [ <ClassificationRule> ] ?
     )
 }
 

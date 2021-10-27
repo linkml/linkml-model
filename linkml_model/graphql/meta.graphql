@@ -163,7 +163,7 @@ type ClassDefinition implements ClassExpression
     treeRoot: Boolean
     uniqueKeys: [UniqueKey]
     rules: [ClassRule]
-    classificationRules: [ClassificationRule]
+    classificationRules: [AnonymousClassExpression]
     isA: ClassDefinition
     mixins: [ClassDefinition]
     applyTo: [ClassDefinition]
@@ -196,28 +196,6 @@ type ClassRule implements Extensible, Annotatable, CommonMetadata
     openWorld: Boolean
     precedence: Integer
     deactivated: Boolean
-    extensions: [Extension]
-    annotations: [Annotation]
-    description: String
-    altDescriptions: [AltDescription]
-    title: String
-    deprecated: String
-    todos: [String]
-    notes: [String]
-    comments: [String]
-    examples: [Example]
-    inSubset: [SubsetDefinition]
-    fromSchema: Uri
-    importedFrom: String
-    seeAlso: [Uriorcurie]
-    deprecatedElementHasExactReplacement: Uriorcurie
-    deprecatedElementHasPossibleReplacement: Uriorcurie
-  }
-
-type ClassificationRule implements Extensible, Annotatable, CommonMetadata
-  {
-    instanceOf: ClassDefinition
-    slotConditions: [SlotDefinition]
     extensions: [Extension]
     annotations: [Annotation]
     description: String
