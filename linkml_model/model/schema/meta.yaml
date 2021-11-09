@@ -665,6 +665,12 @@ slots:
     required: true
     range: slot_definition
     description: list of slot names that form a key
+    
+  slot_names_unique:
+    domain: definition
+    range: boolean
+    description: if true then induced slot names are not created for class_usage and attributs
+    
 
   # -----------------------------------
   # Slot definition slots
@@ -1248,6 +1254,7 @@ classes:
       - source_file_date
       - source_file_size
       - generation_date
+      - slot_names_unique
     see_also:
       - https://en.wikipedia.org/wiki/Data_dictionary
     slot_usage:
@@ -1490,6 +1497,7 @@ classes:
       - unique_keys
       - rules
       - classification_rules
+      - slot_names_unique
     slot_usage:
       is_a:
         range: class_definition
