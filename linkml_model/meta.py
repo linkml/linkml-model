@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-11-09T03:19:26
+# Generation date: 2021-11-13T00:46:04
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -39,6 +39,7 @@ LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 OSLC = CurieNamespace('oslc', 'http://open-services.net/ns/core#')
 OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 PAV = CurieNamespace('pav', 'http://purl.org/pav/')
+QB = CurieNamespace('qb', 'http://purl.org/linked-data/cube#')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
@@ -421,7 +422,7 @@ class SchemaDefinition(Element):
 
 @dataclass
 class AnonymousTypeExpression(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = ["pattern", "equals_string", "equals_string_in", "equals_number"]
+    _inherited_slots: ClassVar[List[str]] = ["pattern", "equals_string", "equals_string_in", "equals_number", "minimum_value", "maximum_value"]
 
     class_class_uri: ClassVar[URIRef] = LINKML.AnonymousTypeExpression
     class_class_curie: ClassVar[str] = "linkml:AnonymousTypeExpression"
@@ -432,6 +433,8 @@ class AnonymousTypeExpression(YAMLRoot):
     equals_string: Optional[str] = None
     equals_string_in: Optional[Union[str, List[str]]] = empty_list()
     equals_number: Optional[int] = None
+    minimum_value: Optional[int] = None
+    maximum_value: Optional[int] = None
     none_of: Optional[Union[Union[dict, "AnonymousTypeExpression"], List[Union[dict, "AnonymousTypeExpression"]]]] = empty_list()
     exactly_one_of: Optional[Union[Union[dict, "AnonymousTypeExpression"], List[Union[dict, "AnonymousTypeExpression"]]]] = empty_list()
     any_of: Optional[Union[Union[dict, "AnonymousTypeExpression"], List[Union[dict, "AnonymousTypeExpression"]]]] = empty_list()
@@ -450,6 +453,12 @@ class AnonymousTypeExpression(YAMLRoot):
 
         if self.equals_number is not None and not isinstance(self.equals_number, int):
             self.equals_number = int(self.equals_number)
+
+        if self.minimum_value is not None and not isinstance(self.minimum_value, int):
+            self.minimum_value = int(self.minimum_value)
+
+        if self.maximum_value is not None and not isinstance(self.maximum_value, int):
+            self.maximum_value = int(self.maximum_value)
 
         if not isinstance(self.none_of, list):
             self.none_of = [self.none_of] if self.none_of is not None else []
@@ -475,7 +484,7 @@ class TypeDefinition(Element):
     """
     A data type definition.
     """
-    _inherited_slots: ClassVar[List[str]] = ["base", "uri", "repr", "pattern", "equals_string", "equals_string_in", "equals_number"]
+    _inherited_slots: ClassVar[List[str]] = ["base", "uri", "repr", "pattern", "equals_string", "equals_string_in", "equals_number", "minimum_value", "maximum_value"]
 
     class_class_uri: ClassVar[URIRef] = LINKML.TypeDefinition
     class_class_curie: ClassVar[str] = "linkml:TypeDefinition"
@@ -491,6 +500,8 @@ class TypeDefinition(Element):
     equals_string: Optional[str] = None
     equals_string_in: Optional[Union[str, List[str]]] = empty_list()
     equals_number: Optional[int] = None
+    minimum_value: Optional[int] = None
+    maximum_value: Optional[int] = None
     none_of: Optional[Union[Union[dict, AnonymousTypeExpression], List[Union[dict, AnonymousTypeExpression]]]] = empty_list()
     exactly_one_of: Optional[Union[Union[dict, AnonymousTypeExpression], List[Union[dict, AnonymousTypeExpression]]]] = empty_list()
     any_of: Optional[Union[Union[dict, AnonymousTypeExpression], List[Union[dict, AnonymousTypeExpression]]]] = empty_list()
@@ -526,6 +537,12 @@ class TypeDefinition(Element):
 
         if self.equals_number is not None and not isinstance(self.equals_number, int):
             self.equals_number = int(self.equals_number)
+
+        if self.minimum_value is not None and not isinstance(self.minimum_value, int):
+            self.minimum_value = int(self.minimum_value)
+
+        if self.maximum_value is not None and not isinstance(self.maximum_value, int):
+            self.maximum_value = int(self.maximum_value)
 
         if not isinstance(self.none_of, list):
             self.none_of = [self.none_of] if self.none_of is not None else []
@@ -694,7 +711,7 @@ class Expression(YAMLRoot):
 
 @dataclass
 class TypeExpression(Expression):
-    _inherited_slots: ClassVar[List[str]] = ["pattern", "equals_string", "equals_string_in", "equals_number"]
+    _inherited_slots: ClassVar[List[str]] = ["pattern", "equals_string", "equals_string_in", "equals_number", "minimum_value", "maximum_value"]
 
     class_class_uri: ClassVar[URIRef] = LINKML.TypeExpression
     class_class_curie: ClassVar[str] = "linkml:TypeExpression"
@@ -705,6 +722,8 @@ class TypeExpression(Expression):
     equals_string: Optional[str] = None
     equals_string_in: Optional[Union[str, List[str]]] = empty_list()
     equals_number: Optional[int] = None
+    minimum_value: Optional[int] = None
+    maximum_value: Optional[int] = None
     none_of: Optional[Union[Union[dict, "AnonymousTypeExpression"], List[Union[dict, "AnonymousTypeExpression"]]]] = empty_list()
     exactly_one_of: Optional[Union[Union[dict, "AnonymousTypeExpression"], List[Union[dict, "AnonymousTypeExpression"]]]] = empty_list()
     any_of: Optional[Union[Union[dict, "AnonymousTypeExpression"], List[Union[dict, "AnonymousTypeExpression"]]]] = empty_list()
@@ -723,6 +742,12 @@ class TypeExpression(Expression):
 
         if self.equals_number is not None and not isinstance(self.equals_number, int):
             self.equals_number = int(self.equals_number)
+
+        if self.minimum_value is not None and not isinstance(self.minimum_value, int):
+            self.minimum_value = int(self.minimum_value)
+
+        if self.maximum_value is not None and not isinstance(self.maximum_value, int):
+            self.maximum_value = int(self.maximum_value)
 
         if not isinstance(self.none_of, list):
             self.none_of = [self.none_of] if self.none_of is not None else []

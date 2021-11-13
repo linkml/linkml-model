@@ -51,6 +51,10 @@
     {
       "prefix_prefix": "owl",
       "prefix_reference": "http://www.w3.org/2002/07/owl#"
+    },
+    {
+      "prefix_prefix": "qb",
+      "prefix_reference": "http://purl.org/linked-data/cube#"
     }
   ],
   "emit_prefixes": [
@@ -2298,6 +2302,7 @@
       "inherited": true,
       "owner": "minimum_value",
       "domain_of": [
+        "TypeExpression",
         "SlotExpression"
       ],
       "range": "integer",
@@ -2313,6 +2318,7 @@
       "inherited": true,
       "owner": "maximum_value",
       "domain_of": [
+        "TypeExpression",
         "SlotExpression"
       ],
       "range": "integer",
@@ -2395,8 +2401,7 @@
       "description": "The uri that defines the possible values for the type definition",
       "comments": [
         "uri is typically drawn from the set of URI's defined in OWL (https://www.w3.org/TR/2012/REC-owl2-syntax-20121211/#Datatype_Maps)",
-        "every root type must have a type uri",
-        "A uri may also have value rdfs:Resource, in which case the rdf serialization will be as a Resource and not a Literal"
+        "every root type must have a type uri"
       ],
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "TypeDefinition",
@@ -3512,6 +3517,8 @@
         "equals_string",
         "equals_string_in",
         "equals_number",
+        "minimum_value",
+        "maximum_value",
         "type_expression_none_of",
         "type_expression_exactly_one_of",
         "type_expression_any_of",
@@ -3533,6 +3540,8 @@
         "equals_string",
         "equals_string_in",
         "equals_number",
+        "minimum_value",
+        "maximum_value",
         "type_expression_none_of",
         "type_expression_exactly_one_of",
         "type_expression_any_of",
@@ -3588,6 +3597,8 @@
         "equals_string",
         "equals_string_in",
         "equals_number",
+        "minimum_value",
+        "maximum_value",
         "type_expression_none_of",
         "type_expression_exactly_one_of",
         "type_expression_any_of",
@@ -3696,6 +3707,9 @@
     {
       "name": "EnumDefinition",
       "definition_uri": "https://w3id.org/linkml/EnumDefinition",
+      "close_mappings": [
+        "qb:HierarchicalCodeList"
+      ],
       "description": "List of values that constrain the range of a slot",
       "from_schema": "https://w3id.org/linkml/meta",
       "is_a": "Element",
@@ -4356,9 +4370,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "meta.yaml",
-  "source_file_date": "2021-11-09T03:16:30",
-  "source_file_size": 45311,
-  "generation_date": "2021-11-09T03:17:57",
+  "source_file_date": "2021-11-13T00:42:17",
+  "source_file_size": 45322,
+  "generation_date": "2021-11-13T00:44:13",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",

@@ -84,11 +84,13 @@ CREATE TABLE anonymous_type_expression (
 	equals_string TEXT, 
 	equals_string_in TEXT, 
 	equals_number INTEGER, 
+	minimum_value INTEGER, 
+	maximum_value INTEGER, 
 	none_of TEXT, 
 	exactly_one_of TEXT, 
 	any_of TEXT, 
 	all_of TEXT, 
-	PRIMARY KEY (pattern, equals_string, equals_string_in, equals_number, none_of, exactly_one_of, any_of, all_of)
+	PRIMARY KEY (pattern, equals_string, equals_string_in, equals_number, minimum_value, maximum_value, none_of, exactly_one_of, any_of, all_of)
 );
 
 CREATE TABLE class_definition (
@@ -221,6 +223,8 @@ CREATE TABLE type_definition (
 	pattern TEXT, 
 	equals_string TEXT, 
 	equals_number INTEGER, 
+	minimum_value INTEGER, 
+	maximum_value INTEGER, 
 	none_of TEXT, 
 	exactly_one_of TEXT, 
 	any_of TEXT, 
