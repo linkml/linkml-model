@@ -16,6 +16,7 @@ prefixes:
   swrl: http://www.w3.org/2003/11/swrl#
   sh: https://w3id.org/shacl/
   owl: http://www.w3.org/2002/07/owl#
+  qb: http://purl.org/linked-data/cube#
 
 default_prefix: linkml
 default_range: string
@@ -1078,7 +1079,6 @@ slots:
     comments:
       - uri is typically drawn from the set of URI's defined in OWL (https://www.w3.org/TR/2012/REC-owl2-syntax-20121211/#Datatype_Maps)
       - every root type must have a type uri
-      - A uri may also have value rdfs:Resource, in which case the rdf serialization will be as a Resource and not a Literal
 
   repr:
     domain: type_definition
@@ -1265,6 +1265,8 @@ classes:
       - equals_string
       - equals_string_in
       - equals_number
+      - minimum_value
+      - maximum_value
       - none_of
       - exactly_one_of
       - any_of
@@ -1328,6 +1330,8 @@ classes:
       - code_set_version
       - pv_formula
       - permissible_values
+    close_mappings:
+      - qb:HierarchicalCodeList
 
   expression:
     mixin: true
