@@ -1582,6 +1582,34 @@ classes:
     slots:
       - unique_key_slots
 
+  represents_relationship:
+    aliases:
+      - is_reified
+    description: true if this class represents a relationship
+    domain: class_definition
+    range: boolean
+    inherited: true
+    status: testing
+    see_also:
+      - rdf:Statement
+    comments:
+      - in the context of Entity-Relationship (ER) modeling, this is used to state that a class models a relationship between entities, and should be drawn with a diamond
+      - in the context of RDF, this should be used when instances of the class are `rdf:Statement`s
+      - in the context of property graphs, this should be used when a class is used to represent an edge that connects nodes
+      
+  relational_role:
+    aliases:
+      - reification_role
+    description: the role a slot on a relationship class plays
+    domain: slot_definition
+    range: relational_role_enum
+    inherited: true
+    status: testing
+    comments:
+      - this should only be used on slots that are applicable to class that represent relationships
+      - in the context of RDF, this should be used for slots that can be modeled using the RDF reification vocabulary
+      - in the context of property graphs, this should be used on edge classes to indicate which slots represent the input and output nodes
+
 
 #==================================
 # Enumerations                    #
@@ -1607,4 +1635,22 @@ enums:
       UNCOMMITTED:
       PRESENT:
       ABSENT:
+
+  relational_role_enum:
+    description: enumeration of roles a slot on a relationship class can play
+    permissible_values:
+      SUBJECT:
+        meaning: rdf:subject
+        exact_mappings:
+          - owl:annotatedSource
+      OBJECT:
+        meaning: rdf:object
+        exact_mappings:
+          - owl:annotatedTarget
+      PREDICATE:
+        meaning: rdf:predicate
+        exact_mappings:
+          - owl:annotatedProperty
+      OTHER_NODE:
+
 
