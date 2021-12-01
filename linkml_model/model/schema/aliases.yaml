@@ -1,0 +1,68 @@
+id: https://w3id.org/linkml/mappings
+title: LinkML Schema Mappings
+name: mappings
+description: LinkML model for mappings
+license: https://creativecommons.org/publicdomain/zero/1.0/
+version: 2.0.0
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  skos: http://www.w3.org/2004/02/skos/core#
+  OIO: http://www.geneontology.org/formats/oboInOwl#
+  IAO: http://purl.obolibrary.org/obo/IAO_
+
+default_curi_maps:
+    - semweb_context
+
+default_prefix: linkml
+default_range: string
+
+emit_prefixes:
+  - linkml
+  - rdf
+  - rdfs
+  - xsd
+  - skos
+  - OIO
+  - IAO
+
+imports:
+  - linkml:types
+  - linkml:meta
+
+classes:
+  alias:
+    slots:
+      - alias_source
+      - alias_name
+      - alias_scope
+
+slots:
+  alias_source:
+    range: string
+
+  alias_name:
+    range: string
+    slot_uri: skos:altLabel
+
+  alias_scope:
+    range: alias_scope_enum
+
+  aliases:
+    range: alias
+    multivalued: true
+
+  preferred_label:
+    domain: slot_definition
+    range: string
+    slot_uri: skos:prefLabel
+    description: >-
+      the name used for a slot in the context of its owning class.  If present, this is used instead of the actual
+      slot name.
+
+enums:
+  alias_scope_enum:
+    permissible_values:
+      narrow:
+      broad:
+      close:

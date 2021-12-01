@@ -411,7 +411,7 @@ slots:
     multivalued: true
     range: slot_definition
     inlined: true
-    alias: slots
+    preferred_label: slots
     description: slot definitions
 
   classes:
@@ -1073,7 +1073,7 @@ slots:
   type_uri:
     domain: type_definition
     range: uriorcurie
-    alias: uri
+    preferred_label: uri
     inherited: true
     description: The uri that defines the possible values for the type definition
     comments:
@@ -1094,13 +1094,13 @@ slots:
       range: string
       required: true
       description: text of an attributed description
-      alias: description
+      preferred_label: description
 
   alt_description_source:
       domain: alt_description
       range: string
       key: true
-      alias: source
+      preferred_label: source
       description: the source of an attributed description
 
   alt_descriptions:
@@ -1119,7 +1119,7 @@ slots:
 
   value_description:
     domain: example
-    alias: description
+    preferred_label: description
     description: description of what the value is doing
 
   examples:
@@ -1420,7 +1420,7 @@ classes:
       - key
       - identifier
       - designates_type
-      - alias
+      - preferred_label
       - owner
       - domain_of
       - subproperty_of
