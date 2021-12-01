@@ -30,13 +30,6 @@ imports:
   - linkml:types
   - linkml:meta
 
-classes:
-  alias:
-    slots:
-      - alias_source
-      - alias_name
-      - alias_scope
-
 slots:
   alias_source:
     range: string
@@ -50,9 +43,6 @@ slots:
   alias_scope:
     range: alias_scope_enum
 
-  aliases:
-    range: alias
-    multivalued: true
 
 #  aliases:
 #    domain: element
@@ -60,14 +50,29 @@ slots:
 #    multivalued: true
 #    slot_uri: skos:altLabel
 
-
-  preferred_label:
+  alias:
     domain: slot_definition
     range: string
     slot_uri: skos:prefLabel
     description: >-
       the name used for a slot in the context of its owning class.  If present, this is used instead of the actual
       slot name.
+
+  aliases:
+    range: alias_definition
+    multivalued: true
+    inlined: true
+
+classes:
+  alias_definition:
+    is_a: element
+    description: >-
+      object that contains meta data about a synonym or alias including where it came from (source)
+      and its scope (narrow, broad, etc.)
+    slots:
+      - alias_source
+      - alias_name
+      - alias_scope
 
 enums:
   alias_scope_enum:

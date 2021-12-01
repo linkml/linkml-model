@@ -227,7 +227,7 @@ slots:
 
   mixin:
     aliases:
-      - trait
+      trait:
     domain: definition
     range: boolean
     description: this slot or class can only be used as a mixin.
@@ -236,7 +236,7 @@ slots:
 
   mixins:
     aliases:
-      - traits
+      traits:
     domain: definition
     multivalued: true
     range: definition
@@ -406,7 +406,7 @@ slots:
     multivalued: true
     range: slot_definition
     inlined: true
-    preferred_label: slots
+    alias: slots
     description: slot definitions
 
   classes:
@@ -532,9 +532,9 @@ slots:
 
   preconditions:
     aliases:
-      - if
-      - body
-      - antecedents
+      if:
+      body:
+      antecedents:
     slot_uri: sh:condition
     description: an expression that must hold in order for the rule to be applicable to an instance
     range: anonymous_class_expression
@@ -543,9 +543,9 @@ slots:
       - swrl:body
   postconditions:
     aliases:
-      - then
-      - head
-      - consequents
+      then:
+      head:
+      consequents:
     description: an expression that must hold for an instance of the class, if the preconditions hold
     range: anonymous_class_expression
     inlined: true
@@ -553,14 +553,14 @@ slots:
       - swrl:body
   elseconditions:
     aliases:
-      - else
+      else:
     description: an expression that must hold for an instance of the class, if the preconditions no not hold
     range: anonymous_class_expression
     inlined: true
   bidirectional:
     aliases:
-      - iff
-      - if and only if
+      iff:
+      if and only if:
     description: in addition to preconditions entailing postconditions, the postconditions entail the preconditions
     range: boolean
   open_world:
@@ -917,10 +917,10 @@ slots:
       True means that the key slot(s) uniquely identify the container. There can be at most one identifier or key per
       container
     aliases:
-      - primary key
-      - ID
-      - UID
-      - code
+      primary key:
+      ID:
+      UID:
+      code:
     see_also:
       - https://en.wikipedia.org/wiki/Identifier
     comments:
@@ -931,7 +931,7 @@ slots:
 
   designates_type:
     aliases:
-      - type designator
+      type designator:
     domain: slot_definition
     range: boolean
     inherited: true
@@ -1068,7 +1068,7 @@ slots:
   type_uri:
     domain: type_definition
     range: uriorcurie
-    preferred_label: uri
+    alias: uri
     inherited: true
     description: The uri that defines the possible values for the type definition
     comments:
@@ -1089,13 +1089,13 @@ slots:
       range: string
       required: true
       description: text of an attributed description
-      preferred_label: description
+      alias: description
 
   alt_description_source:
       domain: alt_description
       range: string
       key: true
-      preferred_label: source
+      alias: source
       description: the source of an attributed description
 
   alt_descriptions:
@@ -1114,7 +1114,7 @@ slots:
 
   value_description:
     domain: example
-    preferred_label: description
+    alias: description
     description: description of what the value is doing
 
   examples:
@@ -1221,7 +1221,7 @@ classes:
     description: "a collection of subset, type, slot and class definitions"
     tree_root: true
     aliases:
-      - data dictionary
+      data dictionary:
     is_a: element
     slots:
       - id
@@ -1388,12 +1388,12 @@ classes:
   slot_definition:
     description: the definition of a property or a slot
     aliases:
-      - slot
-      - field
-      - property
-      - attribute
-      - column
-      - variable
+      slot:
+      field:
+      property:
+      attribute:
+      column:
+      variable:
     is_a: definition
     close_mappings:
       - rdf:Property
@@ -1415,7 +1415,7 @@ classes:
       - key
       - identifier
       - designates_type
-      - preferred_label
+      - alias
       - owner
       - domain_of
       - subproperty_of
@@ -1465,17 +1465,22 @@ classes:
     slots:
       - is_a
     status: testing
-        
+    
   class_definition:
     mixins:
       - class_expression
     description: the definition of a class or interface
     aliases:
-      - table
-      - record
-      - template
-      - message
-      - observation
+      table:
+        alias_name: table
+        # alias_source: linkml
+        # alias_scope: exact
+      record:
+        alias_name: record
+        # alias_source: linkml
+      template:
+      message:
+      observation:
     is_a: definition
     slots:
       - slots
@@ -1509,7 +1514,7 @@ classes:
   class_rule:
     is_a: class_level_rule
     aliases:
-      - if rule
+      if rule:
     description: A rule that applies to instances of a class
     mixins:
       - extensible
