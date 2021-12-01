@@ -34,11 +34,9 @@ slots:
   alias_source:
     range: string
     required: true
-
-  alias_name:
-    range: string
-    slot_uri: skos:altLabel
-    required: true
+    description: >-
+      Can be a URIOrCurie that represents the source of the alias, or it can be a simple string that
+      describes the source of the alias.
 
   alias_scope:
     range: alias_scope_enum
@@ -64,12 +62,21 @@ classes:
       and its scope (narrow, broad, etc.)
     slots:
       - alias_source
-      - alias_name
       - alias_scope
+    slot_usage:
+      name:
+        exact_mappings: skos:altLabel
+        description: >-
+          inherits name from element class, but in the alias_definition class, this name represents
+          a skos:altLabel
+
 
 enums:
   alias_scope_enum:
     permissible_values:
       narrow:
+        meaning: skos:narrowMatch
       broad:
+        meaning: skos:broadMatch
       close:
+        meaning: skos:closeMatch
