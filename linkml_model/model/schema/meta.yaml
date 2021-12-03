@@ -110,6 +110,38 @@ slots:
     in_subset:
       - owl
 
+  alias_source:
+    range: string
+    required: true
+    description: >-
+      Can be a URIOrCurie that represents the source of the alias, or it can be a simple string that
+      describes the source of the alias.
+
+  alias_scope:
+    range: alias_scope_enum
+    description: >-
+      The relatedness of an alias to the element it is aliasing.  alias_scope can be: narrow, broad, exact,
+      related, close, etc.
+
+  alias_name:
+    range: string
+    required: true
+    description: >-
+      The string value of the alias.
+
+  structured_aliases:
+    range: alias_definition
+    multivalued: true
+    inlined: true
+    description: >-
+      A list of alias_definition objects.
+
+  aliases:
+    range: string
+    domain: element
+    multivalued: true
+    slot_uri: skos:altLabel
+    
   deprecated:
     domain: element
     range: string
@@ -227,9 +259,7 @@ slots:
 
   mixin:
     aliases:
-      trait:
-        alias_source: linkml
-        alias_scope: close
+      - trait
     domain: definition
     range: boolean
     description: this slot or class can only be used as a mixin.
@@ -238,7 +268,7 @@ slots:
 
   mixins:
     aliases:
-      traits:
+      - traits
     domain: definition
     multivalued: true
     range: definition
@@ -534,9 +564,9 @@ slots:
 
   preconditions:
     aliases:
-      if:
-      body:
-      antecedents:
+      - if
+      - body
+      - antecedents
     slot_uri: sh:condition
     description: an expression that must hold in order for the rule to be applicable to an instance
     range: anonymous_class_expression
@@ -545,9 +575,9 @@ slots:
       - swrl:body
   postconditions:
     aliases:
-      then:
-      head:
-      consequents:
+      - then
+      - head
+      - consequents
     description: an expression that must hold for an instance of the class, if the preconditions hold
     range: anonymous_class_expression
     inlined: true
@@ -555,14 +585,14 @@ slots:
       - swrl:body
   elseconditions:
     aliases:
-      else:
+      - else
     description: an expression that must hold for an instance of the class, if the preconditions no not hold
     range: anonymous_class_expression
     inlined: true
   bidirectional:
     aliases:
-      iff:
-      if and only if:
+      - iff
+      - if and only if
     description: in addition to preconditions entailing postconditions, the postconditions entail the preconditions
     range: boolean
   open_world:
@@ -919,10 +949,10 @@ slots:
       True means that the key slot(s) uniquely identify the container. There can be at most one identifier or key per
       container
     aliases:
-      primary key:
-      ID:
-      UID:
-      code:
+      - primary key
+      - ID
+      - UID
+      - code
     see_also:
       - https://en.wikipedia.org/wiki/Identifier
     comments:
@@ -933,13 +963,12 @@ slots:
 
   designates_type:
     aliases:
-      type designator:
+      - type designator
     domain: slot_definition
     range: boolean
     inherited: true
     description: >-
       True means that the key slot(s) is used to determine the instantiation (types) relation between objects and a ClassDefinition
-
 
   alias:
     domain: slot_definition
@@ -1223,7 +1252,7 @@ classes:
     description: "a collection of subset, type, slot and class definitions"
     tree_root: true
     aliases:
-      data dictionary:
+      - data dictionary
     is_a: element
     slots:
       - id
@@ -1330,6 +1359,21 @@ classes:
     close_mappings:
       - qb:HierarchicalCodeList
 
+  alias_definition:
+    description: >-
+      object that contains meta data about a synonym or alias including where it came from (source)
+      and its scope (narrow, broad, etc.)
+    slots:
+      - alias_name
+      - alias_source
+      - alias_scope
+    slot_usage:
+      name:
+        exact_mappings: skos:altLabel
+        description: >-
+          inherits name from element class, but in the alias_definition class, this name represents
+          a skos:altLabel
+
   expression:
     mixin: true
     abstract: true
@@ -1390,12 +1434,12 @@ classes:
   slot_definition:
     description: the definition of a property or a slot
     aliases:
-      slot:
-      field:
-      property:
-      attribute:
-      column:
-      variable:
+      - slot
+      - field
+      - property
+      - attribute
+      - column
+      - variable
     is_a: definition
     close_mappings:
       - rdf:Property
@@ -1473,14 +1517,11 @@ classes:
       - class_expression
     description: the definition of a class or interface
     aliases:
-      table:
-        alias_source: linkml
-        alias_scope: exact
-      record:
-        alias_source: linkml
-      template:
-      message:
-      observation:
+      - table
+      - record
+      - template
+      - message
+      - observation
     is_a: definition
     slots:
       - slots
@@ -1514,7 +1555,7 @@ classes:
   class_rule:
     is_a: class_level_rule
     aliases:
-      if rule:
+      - if rule
     description: A rule that applies to instances of a class
     mixins:
       - extensible
@@ -1582,7 +1623,6 @@ classes:
     slots:
       - unique_key_slots
 
-
 #==================================
 # Enumerations                    #
 #==================================
@@ -1599,8 +1639,6 @@ enums:
       - Q1: Do we need a CURIEorURIE entry?
       - Q2: Who defines the namespaces for the CURIE form?
 
-      
-
   presence_enum:
     description: enumeration of conditions by which a slot value should be set
     permissible_values:
@@ -1608,3 +1646,15 @@ enums:
       PRESENT:
       ABSENT:
 
+  alias_scope_enum:
+    permissible_values:
+      narrow:
+        meaning: skos:narrowMatch
+      broad:
+        meaning: skos:broadMatch
+      close:
+        meaning: skos:closeMatch
+      related:
+        meaning: skos:relatedMatch
+      exact:
+        meaning: skos:exactMatch
