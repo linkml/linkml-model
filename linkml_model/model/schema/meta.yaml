@@ -125,8 +125,10 @@ slots:
   alias_name:
     range: string
     required: true
+    exact_mappings: skos:altLabel
     description: >-
-      The string value of the alias.
+      inherits name from element class, but in the alias_definition class, this name represents
+      a skos:altLabel
 
   structured_aliases:
     range: alias_definition
@@ -1366,12 +1368,6 @@ classes:
       - alias_name
       - alias_source
       - alias_scope
-    slot_usage:
-      name:
-        exact_mappings: skos:altLabel
-        description: >-
-          inherits name from element class, but in the alias_definition class, this name represents
-          a skos:altLabel
 
   expression:
     mixin: true
