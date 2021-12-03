@@ -1,5 +1,46 @@
 {
    "$defs": {
+      "AliasDefinition": {
+         "additionalProperties": false,
+         "description": "object that contains meta data about a synonym or alias including where it came from (source) and its scope (narrow, broad, etc.)",
+         "properties": {
+            "alias_name": {
+               "description": "The string value of the alias.",
+               "type": "string"
+            },
+            "alias_scope": {
+               "$ref": "#/$defs/AliasScopeEnum",
+               "description": "The relatedness of an alias to the element it is aliasing.  alias_scope can be: narrow, broad, exact, related, close, etc."
+            },
+            "alias_source": {
+               "description": "Can be a URIOrCurie that represents the source of the alias, or it can be a simple string that describes the source of the alias.",
+               "type": "string"
+            },
+            "name": {
+               "description": "inherits name from element class, but in the alias_definition class, this name represents a skos:altLabel",
+               "type": "string"
+            }
+         },
+         "required": [
+            "alias_name",
+            "alias_source",
+            "name"
+         ],
+         "title": "AliasDefinition",
+         "type": "object"
+      },
+      "AliasScopeEnum": {
+         "description": "",
+         "enum": [
+            "narrow",
+            "broad",
+            "close",
+            "related",
+            "exact"
+         ],
+         "title": "AliasScopeEnum",
+         "type": "string"
+      },
       "AltDescription": {
          "additionalProperties": false,
          "description": "an attributed description",

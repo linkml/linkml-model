@@ -1236,6 +1236,7 @@ classes:
       - id_prefixes
       - definition_uri
       - aliases
+      - structured_aliases
       - local_names
       - conforms_to
       - mappings
@@ -1252,6 +1253,13 @@ classes:
     tree_root: true
     aliases:
       - data dictionary
+    structured_aliases:
+      - alias_name: data dictionary
+        alias_scope: exact
+        alias_source: linkml
+      - alias_name: data dictionary
+        aliase_scope: exact
+        alias_source: alliance
     is_a: element
     slots:
       - id
@@ -1278,9 +1286,6 @@ classes:
     slot_usage:
       name:
         range: ncname
-#    slot_usage:
-#      description:
-#        slot_uri: dcterms:description
 
   type_expression:
     is_a: expression

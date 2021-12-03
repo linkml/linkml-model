@@ -287,6 +287,33 @@
           "text": "ABSENT"
         }
       ]
+    },
+    {
+      "name": "alias_scope_enum",
+      "definition_uri": "https://w3id.org/linkml/AliasScopeEnum",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "permissible_values": [
+        {
+          "text": "narrow",
+          "meaning": "skos:narrowMatch"
+        },
+        {
+          "text": "broad",
+          "meaning": "skos:broadMatch"
+        },
+        {
+          "text": "close",
+          "meaning": "skos:closeMatch"
+        },
+        {
+          "text": "related",
+          "meaning": "skos:relatedMatch"
+        },
+        {
+          "text": "exact",
+          "meaning": "skos:exactMatch"
+        }
+      ]
     }
   ],
   "slots": [
@@ -414,6 +441,58 @@
         "PermissibleValue"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "alias_source",
+      "definition_uri": "https://w3id.org/linkml/alias_source",
+      "description": "Can be a URIOrCurie that represents the source of the alias, or it can be a simple string that describes the source of the alias.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "slot_uri": "https://w3id.org/linkml/alias_source",
+      "owner": "AliasDefinition",
+      "domain_of": [
+        "AliasDefinition"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "alias_scope",
+      "definition_uri": "https://w3id.org/linkml/alias_scope",
+      "description": "The relatedness of an alias to the element it is aliasing.  alias_scope can be: narrow, broad, exact, related, close, etc.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "slot_uri": "https://w3id.org/linkml/alias_scope",
+      "owner": "AliasDefinition",
+      "domain_of": [
+        "AliasDefinition"
+      ],
+      "range": "alias_scope_enum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "alias_name",
+      "definition_uri": "https://w3id.org/linkml/alias_name",
+      "description": "The string value of the alias.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "slot_uri": "https://w3id.org/linkml/alias_name",
+      "owner": "AliasDefinition",
+      "domain_of": [
+        "AliasDefinition"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "structured_aliases",
+      "definition_uri": "https://w3id.org/linkml/structured_aliases",
+      "description": "A list of alias_definition objects.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "slot_uri": "https://w3id.org/linkml/structured_aliases",
+      "multivalued": true,
+      "inlined": true,
+      "range": "AliasDefinition",
       "@type": "SlotDefinition"
     },
     {
@@ -2970,6 +3049,39 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "alias_definition_name",
+      "definition_uri": "https://w3id.org/linkml/name",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#label",
+        "http://schema.org/name"
+      ],
+      "exact_mappings": [
+        "http://www.w3.org/2004/02/skos/core#altLabel"
+      ],
+      "description": "inherits name from element class, but in the alias_definition class, this name represents a skos:altLabel",
+      "in_subset": [
+        "owl"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "see_also": [
+        "https://en.wikipedia.org/wiki/Data_element_name"
+      ],
+      "is_a": "name",
+      "domain": "AliasDefinition",
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#label",
+      "identifier": true,
+      "alias": "name",
+      "owner": "AliasDefinition",
+      "domain_of": [
+        "AliasDefinition"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "name",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "slot_expression_any_of",
       "definition_uri": "https://w3id.org/linkml/any_of",
       "exact_mappings": [
@@ -3753,6 +3865,21 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "AliasDefinition",
+      "definition_uri": "https://w3id.org/linkml/AliasDefinition",
+      "description": "object that contains meta data about a synonym or alias including where it came from (source) and its scope (narrow, broad, etc.)",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "slots": [
+        "alias_name",
+        "alias_source",
+        "alias_scope",
+        "alias_definition_name"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/AliasDefinition",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "Expression",
       "definition_uri": "https://w3id.org/linkml/Expression",
       "description": "todo",
@@ -4370,9 +4497,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "meta.yaml",
-  "source_file_date": "2021-11-13T00:42:17",
-  "source_file_size": 45322,
-  "generation_date": "2021-11-13T00:44:13",
+  "source_file_date": "2021-12-03T09:35:39",
+  "source_file_size": 46730,
+  "generation_date": "2021-12-03T09:39:56",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",

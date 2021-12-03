@@ -123,6 +123,7 @@
 <p>A metamodel for defining linked open data schemas</p>
 <h3 id="classes">Classes</h3>
 <ul>
+<li><a href="AliasDefinition/">AliasDefinition</a> - object that contains meta data about a synonym or alias including where it came from (source) and its scope (narrow, broad, etc.)</li>
 <li><a href="AltDescription/">AltDescription</a> - an attributed description</li>
 <li><a href="AnonymousExpression/">AnonymousExpression</a><ul>
 <li><a href="AnonymousClassExpression/">AnonymousClassExpression</a></li>
@@ -174,6 +175,9 @@
 <ul>
 <li><a href="abstract/">abstract</a> - an abstract class is a high level class or slot that is typically used to group common slots together and cannot be directly instantiated.</li>
 <li><a href="alias/">alias</a> - the name used for a slot in the context of its owning class.  If present, this is used instead of the actual slot name.</li>
+<li><a href="alias_name/">alias_name</a> - The string value of the alias.</li>
+<li><a href="alias_scope/">alias_scope</a> - The relatedness of an alias to the element it is aliasing.  alias_scope can be: narrow, broad, exact, related, close, etc.</li>
+<li><a href="alias_source/">alias_source</a> - Can be a URIOrCurie that represents the source of the alias, or it can be a simple string that describes the source of the alias.</li>
 <li><a href="aliases/">aliases</a></li>
 <li><a href="alt_description_source/">alt_description➞source</a> - the source of an attributed description</li>
 <li><a href="alt_description_text/">alt_description➞description</a> - text of an attributed description</li>
@@ -302,6 +306,7 @@
 <li><a href="modified_by/">modified_by</a> - agent that modified the element</li>
 <li><a href="multivalued/">multivalued</a> - true means that slot can have more than one value</li>
 <li><a href="name/">name</a> - the unique name of the element within the context of the schema.  Name is combined with the default prefix to form the globally unique subject of the target class.<ul>
+<li><a href="alias_definition_name/">alias_definition➞name</a> - inherits name from element class, but in the alias_definition class, this name represents a skos:altLabel</li>
 <li><a href="schema_definition_name/">schema_definition➞name</a></li>
 </ul>
 </li>
@@ -340,6 +345,7 @@
 <li><a href="source_file_size/">source_file_size</a> - size in bytes of the source of the schema</li>
 <li><a href="status/">status</a> - status of the element</li>
 <li><a href="string_serialization/">string_serialization</a> - Used on a slot that stores the string serialization of the containing object. The syntax follows python formatted strings, with slot names enclosed in {}s. These are expanded using the values of those slots.</li>
+<li><a href="structured_aliases/">structured_aliases</a> - A list of alias_definition objects.</li>
 <li><a href="subclass_of/">subclass_of</a> - rdfs:subClassOf to be emitted in OWL generation</li>
 <li><a href="subproperty_of/">subproperty_of</a> - Ontology property which this slot is a subproperty of</li>
 <li><a href="subsets/">subsets</a> - list of subsets referenced in this model</li>
@@ -371,6 +377,7 @@
 </ul>
 <h3 id="enums">Enums</h3>
 <ul>
+<li><a href="alias_scope_enum/">alias_scope_enum</a></li>
 <li><a href="presence_enum/">presence_enum</a> - enumeration of conditions by which a slot value should be set</li>
 <li><a href="pv_formula_options/">pv_formula_options</a> - The formula used to generate the set of permissible values from the code_set values</li>
 </ul>
@@ -470,5 +477,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2021-11-13 00:43:58.127312+00:00
+Build Date UTC : 2021-12-03 17:39:45.356651+00:00
 -->
