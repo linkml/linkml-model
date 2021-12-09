@@ -109,9 +109,37 @@ slots:
     in_subset:
       - owl
 
-  aliases:
-    domain: element
+  alias_source:
+    range: uriorcurie
+    required: true
+    description: >-
+      Can be a URIOrCurie that represents the source of the alias, or it can be a simple string that
+      describes the source of the alias.
+
+  alias_scope:
+    range: alias_scope_enum
+    description: >-
+      The relatedness of an alias to the element it is aliasing.  alias_scope can be: narrow, broad, exact,
+      related, close, etc.
+
+  alias_name:
     range: string
+    required: true
+    exact_mappings: skos:altLabel
+    description: >-
+      inherits name from element class, but in the alias_definition class, this name represents
+      a skos:altLabel
+
+  structured_aliases:
+    range: alias_definition
+    multivalued: true
+    inlined: true
+    description: >-
+      A list of alias_definition objects.
+
+  aliases:
+    range: string
+    domain: element
     multivalued: true
     slot_uri: skos:altLabel
 
@@ -943,7 +971,6 @@ slots:
     description: >-
       True means that the key slot(s) is used to determine the instantiation (types) relation between objects and a ClassDefinition
 
-
   alias:
     domain: slot_definition
     range: string
@@ -1333,6 +1360,15 @@ classes:
     close_mappings:
       - qb:HierarchicalCodeList
 
+  alias_definition:
+    description: >-
+      object that contains meta data about a synonym or alias including where it came from (source)
+      and its scope (narrow, broad, etc.)
+    slots:
+      - alias_name
+      - alias_source
+      - alias_scope
+
   expression:
     mixin: true
     abstract: true
@@ -1470,7 +1506,7 @@ classes:
     slots:
       - is_a
     status: testing
-        
+
   class_definition:
     mixins:
       - class_expression
@@ -1582,7 +1618,6 @@ classes:
     slots:
       - unique_key_slots
 
-
 #==================================
 # Enumerations                    #
 #==================================
@@ -1599,8 +1634,6 @@ enums:
       - Q1: Do we need a CURIEorURIE entry?
       - Q2: Who defines the namespaces for the CURIE form?
 
-      
-
   presence_enum:
     description: enumeration of conditions by which a slot value should be set
     permissible_values:
@@ -1608,3 +1641,15 @@ enums:
       PRESENT:
       ABSENT:
 
+  alias_scope_enum:
+    permissible_values:
+      narrow:
+        meaning: skos:narrowMatch
+      broad:
+        meaning: skos:broadMatch
+      close:
+        meaning: skos:closeMatch
+      related:
+        meaning: skos:relatedMatch
+      exact:
+        meaning: skos:exactMatch
