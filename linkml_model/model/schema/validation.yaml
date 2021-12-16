@@ -63,15 +63,23 @@ classes:
 #==================================
 slots:
   type:
-    range: problem_type
+    #range: problem_type
+    range: nodeidentifier
+    slot_uri: sh:sourceConstraintComponent
   subject:
     range: nodeidentifier
+    slot_uri: sh:focusNode
   instantiates:
     range: nodeidentifier
+    exact_mappings:
+      - sh:sourceShape
   predicate:
     range: nodeidentifier
+    related_mappings:
+      - sh:resultPath
   object:
     range: nodeidentifier
+    slot_uri: sh:value
   object_str:
     range: string
   source:
@@ -96,6 +104,8 @@ enums:
         description: Applies when an instance of a class has a required slot which is not filled in
       slot_range_violation:
         description: Applies when the value of a slot is inconsistent with the declared range
+      max_count_violation:
+        meaning: sh:MaxCountConstraintComponent
       parsing_error:
         description: The data could not be parsed
   severity_options:
