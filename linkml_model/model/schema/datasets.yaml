@@ -16,7 +16,7 @@ prefixes:
   schema: http://schema.org/
   sh: https://w3id.org/shacl/
   void: http://rdfs.org/ns/void#
-  frictonless: https://specs.frictionlessdata.io/
+  frictionless: https://specs.frictionlessdata.io/
   formats: http://www.w3.org/ns/formats/
   csvw: http://www.w3.org/ns/csvw#
   dcat: http://www.w3.org/ns/dcat#
@@ -56,6 +56,7 @@ classes:
       - description
       - conforms_to
       - conforms_to_schema
+      - conforms_to_class
       - version
       - language
       - publisher
@@ -67,6 +68,7 @@ classes:
       - compression
       - was_derived_from
       - page
+      - test_roles
 
   DataPackage:
     aliases:
@@ -119,7 +121,7 @@ classes:
 slots:
   id:
     identifier: true
-    description: the unique name of the dataset
+    description: the unique name of th dataset
     slot_uri: dcterms:identifier
     exact_mappings:
       - schema:name
@@ -194,6 +196,10 @@ slots:
     exact_mappings:
       - frictionless:schema
 
+  conforms_to_class:
+    is_a: conforms_to
+    description: class in schema which the data object instantiates
+      
   profile:
     range: uriorcurie
     exact_mappings:
@@ -219,6 +225,10 @@ slots:
     slot_uri: dcat:distribution
     exact_mappings:
       - schema:distribution
+
+  test_roles:
+    multivalued: true
+    range: TestRole
     
   created_by:
     range: uriorcurie
@@ -270,6 +280,11 @@ slots:
 # Enumerations                    #
 #==================================
 enums:
+
+  TestRole:
+    permissible_values:
+      Example:
+      CounterExample:
 
   MediaTypeEnum:
     exact_mappings:
