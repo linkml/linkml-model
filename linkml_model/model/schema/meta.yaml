@@ -986,11 +986,44 @@ slots:
     description: Ontology property which this slot is a subproperty of
     slot_uri: rdfs:subPropertyOf
 
-  symmetric:
+  relational_logical_characteristic:
+    abstract: true
     domain: slot_definition
     range: boolean
-    description: True means that any instance of  d s r implies that there is also an instance of r s d
+    description: A property of a slot that pertains to its logical properties
 
+  symmetric:
+    is_a: relational_logical_characteristic
+    description: If s is symmetric, and i.s=v, then v.s=i
+    
+  antisymmetric:
+    is_a: relational_logical_characteristic
+    description: If s is antisymmetric, and i.s=v where i is different from v, v.s cannot have value i
+
+  reflexive:
+    is_a: relational_logical_characteristic
+    description: If s is reflexive, then i.s=i for all instances i
+    comments:
+      - it is rare for a property to be reflexive, this characteristic is added for completeness, consider instead locally_reflexive
+
+  locally_reflexive:
+    is_a: relational_logical_characteristic
+    description: If s is locally_reflexive, then i.s=i for all instances i where s if a class slot for the type of i
+
+  transitive:
+    is_a: relational_logical_characteristic
+    description: If s is transitive, and i.s=z, and s.s=j, then i.s=j
+
+  transitive_form_of:
+    range: slot_definition
+    description: If s transitive_form_of d, then (1) s holds whenever d holds (2) s is transitive (3) d holds whenever s holds and there are no intermediates, and s is not reflexive
+    comments:
+      - Example: ancestor_of is the transitive_form_of parent_of
+
+  reflexive_transitive_form_of:
+    is_a: transitive_form_of
+    description: transitive_form_of including the reflexive case
+        
   inverse:
     domain: slot_definition
     range: slot_definition
