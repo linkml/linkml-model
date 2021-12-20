@@ -17,6 +17,7 @@ prefixes:
   sh: https://w3id.org/shacl/
   owl: http://www.w3.org/2002/07/owl#
   qb: http://purl.org/linked-data/cube#
+  prov: http://www.w3.org/ns/prov#
 
 default_prefix: linkml
 default_range: string
@@ -207,6 +208,17 @@ slots:
     slot_uri: bibo:status
     examples:
       - value: "bibo:draft"
+      
+  source:
+    domain: element
+    range: uriorcurie
+    description: A related resource from which the element is derived.
+    slot_uri: dcterms:source
+    close_mappings:
+      - prov:wasDerivedFrom
+      - schema:isBasedOn
+    comments:
+      - The described resource may be derived from the related resource in whole or in part
 
   # --------------------------------------------------------------
   # Slots that are common to slot definition and class definition
@@ -1195,6 +1207,7 @@ classes:
       - in_subset
       - from_schema
       - imported_from
+      - source
       - see_also
       - deprecated element has exact replacement
       - deprecated element has possible replacement
