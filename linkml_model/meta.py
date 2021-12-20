@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-12-20T21:20:49
+# Generation date: 2021-12-20T21:38:04
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -39,6 +39,7 @@ LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 OSLC = CurieNamespace('oslc', 'http://open-services.net/ns/core#')
 OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 PAV = CurieNamespace('pav', 'http://purl.org/pav/')
+PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 QB = CurieNamespace('qb', 'http://purl.org/linked-data/cube#')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
@@ -124,6 +125,7 @@ class CommonMetadata(YAMLRoot):
     in_subset: Optional[Union[Union[str, SubsetDefinitionName], List[Union[str, SubsetDefinitionName]]]] = empty_list()
     from_schema: Optional[Union[str, URI]] = None
     imported_from: Optional[str] = None
+    source: Optional[Union[str, URIorCURIE]] = None
     see_also: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     deprecated_element_has_exact_replacement: Optional[Union[str, URIorCURIE]] = None
     deprecated_element_has_possible_replacement: Optional[Union[str, URIorCURIE]] = None
@@ -165,6 +167,9 @@ class CommonMetadata(YAMLRoot):
 
         if self.imported_from is not None and not isinstance(self.imported_from, str):
             self.imported_from = str(self.imported_from)
+
+        if self.source is not None and not isinstance(self.source, URIorCURIE):
+            self.source = URIorCURIE(self.source)
 
         if not isinstance(self.see_also, list):
             self.see_also = [self.see_also] if self.see_also is not None else []
@@ -216,6 +221,7 @@ class Element(YAMLRoot):
     in_subset: Optional[Union[Union[str, SubsetDefinitionName], List[Union[str, SubsetDefinitionName]]]] = empty_list()
     from_schema: Optional[Union[str, URI]] = None
     imported_from: Optional[str] = None
+    source: Optional[Union[str, URIorCURIE]] = None
     see_also: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     deprecated_element_has_exact_replacement: Optional[Union[str, URIorCURIE]] = None
     deprecated_element_has_possible_replacement: Optional[Union[str, URIorCURIE]] = None
@@ -306,6 +312,9 @@ class Element(YAMLRoot):
 
         if self.imported_from is not None and not isinstance(self.imported_from, str):
             self.imported_from = str(self.imported_from)
+
+        if self.source is not None and not isinstance(self.source, URIorCURIE):
+            self.source = URIorCURIE(self.source)
 
         if not isinstance(self.see_also, list):
             self.see_also = [self.see_also] if self.see_also is not None else []
@@ -790,6 +799,7 @@ class AnonymousExpression(YAMLRoot):
     in_subset: Optional[Union[Union[str, SubsetDefinitionName], List[Union[str, SubsetDefinitionName]]]] = empty_list()
     from_schema: Optional[Union[str, URI]] = None
     imported_from: Optional[str] = None
+    source: Optional[Union[str, URIorCURIE]] = None
     see_also: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     deprecated_element_has_exact_replacement: Optional[Union[str, URIorCURIE]] = None
     deprecated_element_has_possible_replacement: Optional[Union[str, URIorCURIE]] = None
@@ -835,6 +845,9 @@ class AnonymousExpression(YAMLRoot):
 
         if self.imported_from is not None and not isinstance(self.imported_from, str):
             self.imported_from = str(self.imported_from)
+
+        if self.source is not None and not isinstance(self.source, URIorCURIE):
+            self.source = URIorCURIE(self.source)
 
         if not isinstance(self.see_also, list):
             self.see_also = [self.see_also] if self.see_also is not None else []
@@ -1477,6 +1490,7 @@ class ClassRule(ClassLevelRule):
     in_subset: Optional[Union[Union[str, SubsetDefinitionName], List[Union[str, SubsetDefinitionName]]]] = empty_list()
     from_schema: Optional[Union[str, URI]] = None
     imported_from: Optional[str] = None
+    source: Optional[Union[str, URIorCURIE]] = None
     see_also: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     deprecated_element_has_exact_replacement: Optional[Union[str, URIorCURIE]] = None
     deprecated_element_has_possible_replacement: Optional[Union[str, URIorCURIE]] = None
@@ -1543,6 +1557,9 @@ class ClassRule(ClassLevelRule):
 
         if self.imported_from is not None and not isinstance(self.imported_from, str):
             self.imported_from = str(self.imported_from)
+
+        if self.source is not None and not isinstance(self.source, URIorCURIE):
+            self.source = URIorCURIE(self.source)
 
         if not isinstance(self.see_also, list):
             self.see_also = [self.see_also] if self.see_also is not None else []
@@ -1698,6 +1715,7 @@ class PermissibleValue(YAMLRoot):
     in_subset: Optional[Union[Union[str, SubsetDefinitionName], List[Union[str, SubsetDefinitionName]]]] = empty_list()
     from_schema: Optional[Union[str, URI]] = None
     imported_from: Optional[str] = None
+    source: Optional[Union[str, URIorCURIE]] = None
     see_also: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     deprecated_element_has_exact_replacement: Optional[Union[str, URIorCURIE]] = None
     deprecated_element_has_possible_replacement: Optional[Union[str, URIorCURIE]] = None
@@ -1759,6 +1777,9 @@ class PermissibleValue(YAMLRoot):
         if self.imported_from is not None and not isinstance(self.imported_from, str):
             self.imported_from = str(self.imported_from)
 
+        if self.source is not None and not isinstance(self.source, URIorCURIE):
+            self.source = URIorCURIE(self.source)
+
         if not isinstance(self.see_also, list):
             self.see_also = [self.see_also] if self.see_also is not None else []
         self.see_also = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.see_also]
@@ -1798,6 +1819,7 @@ class UniqueKey(YAMLRoot):
     in_subset: Optional[Union[Union[str, SubsetDefinitionName], List[Union[str, SubsetDefinitionName]]]] = empty_list()
     from_schema: Optional[Union[str, URI]] = None
     imported_from: Optional[str] = None
+    source: Optional[Union[str, URIorCURIE]] = None
     see_also: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     deprecated_element_has_exact_replacement: Optional[Union[str, URIorCURIE]] = None
     deprecated_element_has_possible_replacement: Optional[Union[str, URIorCURIE]] = None
@@ -1849,6 +1871,9 @@ class UniqueKey(YAMLRoot):
 
         if self.imported_from is not None and not isinstance(self.imported_from, str):
             self.imported_from = str(self.imported_from)
+
+        if self.source is not None and not isinstance(self.source, URIorCURIE):
+            self.source = URIorCURIE(self.source)
 
         if not isinstance(self.see_also, list):
             self.see_also = [self.see_also] if self.see_also is not None else []

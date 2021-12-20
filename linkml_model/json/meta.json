@@ -55,6 +55,10 @@
     {
       "prefix_prefix": "qb",
       "prefix_reference": "http://purl.org/linked-data/cube#"
+    },
+    {
+      "prefix_prefix": "prov",
+      "prefix_reference": "http://www.w3.org/ns/prov#"
     }
   ],
   "emit_prefixes": [
@@ -666,6 +670,30 @@
       "owner": "status",
       "domain_of": [
         "Definition"
+      ],
+      "range": "uriorcurie",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "source",
+      "definition_uri": "https://w3id.org/linkml/source",
+      "mappings": [
+        "http://purl.org/dc/terms/source"
+      ],
+      "close_mappings": [
+        "http://www.w3.org/ns/prov#wasDerivedFrom",
+        "http://schema.org/isBasedOn"
+      ],
+      "description": "A related resource from which the element is derived.",
+      "comments": [
+        "The described resource may be derived from the related resource in whole or in part"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "Element",
+      "slot_uri": "http://purl.org/dc/terms/source",
+      "owner": "source",
+      "domain_of": [
+        "CommonMetadata"
       ],
       "range": "uriorcurie",
       "@type": "SlotDefinition"
@@ -3384,6 +3412,7 @@
         "in_subset",
         "from_schema",
         "imported_from",
+        "source",
         "see_also",
         "deprecated_element_has_exact_replacement",
         "deprecated_element_has_possible_replacement"
@@ -3432,6 +3461,7 @@
         "in_subset",
         "from_schema",
         "imported_from",
+        "source",
         "see_also",
         "deprecated_element_has_exact_replacement",
         "deprecated_element_has_possible_replacement"
@@ -3477,6 +3507,7 @@
         "in_subset",
         "from_schema",
         "imported_from",
+        "source",
         "see_also",
         "deprecated_element_has_exact_replacement",
         "deprecated_element_has_possible_replacement",
@@ -3586,6 +3617,7 @@
         "in_subset",
         "from_schema",
         "imported_from",
+        "source",
         "see_also",
         "deprecated_element_has_exact_replacement",
         "deprecated_element_has_possible_replacement",
@@ -3640,6 +3672,7 @@
         "in_subset",
         "from_schema",
         "imported_from",
+        "source",
         "see_also",
         "deprecated_element_has_exact_replacement",
         "deprecated_element_has_possible_replacement"
@@ -3684,6 +3717,7 @@
         "in_subset",
         "from_schema",
         "imported_from",
+        "source",
         "see_also",
         "deprecated_element_has_exact_replacement",
         "deprecated_element_has_possible_replacement",
@@ -3739,6 +3773,7 @@
         "in_subset",
         "from_schema",
         "imported_from",
+        "source",
         "see_also",
         "deprecated_element_has_exact_replacement",
         "deprecated_element_has_possible_replacement",
@@ -3790,6 +3825,7 @@
         "in_subset",
         "from_schema",
         "imported_from",
+        "source",
         "see_also",
         "deprecated_element_has_exact_replacement",
         "deprecated_element_has_possible_replacement"
@@ -3854,6 +3890,7 @@
         "in_subset",
         "from_schema",
         "imported_from",
+        "source",
         "see_also",
         "deprecated_element_has_exact_replacement",
         "deprecated_element_has_possible_replacement",
@@ -3927,6 +3964,7 @@
         "in_subset",
         "from_schema",
         "imported_from",
+        "source",
         "see_also",
         "deprecated_element_has_exact_replacement",
         "deprecated_element_has_possible_replacement",
@@ -4029,6 +4067,7 @@
         "in_subset",
         "from_schema",
         "imported_from",
+        "source",
         "see_also",
         "deprecated_element_has_exact_replacement",
         "deprecated_element_has_possible_replacement",
@@ -4088,6 +4127,7 @@
         "in_subset",
         "from_schema",
         "imported_from",
+        "source",
         "see_also",
         "deprecated_element_has_exact_replacement",
         "deprecated_element_has_possible_replacement",
@@ -4175,6 +4215,7 @@
         "in_subset",
         "from_schema",
         "imported_from",
+        "source",
         "see_also",
         "deprecated_element_has_exact_replacement",
         "deprecated_element_has_possible_replacement"
@@ -4263,6 +4304,7 @@
         "in_subset",
         "from_schema",
         "imported_from",
+        "source",
         "see_also",
         "deprecated_element_has_exact_replacement",
         "deprecated_element_has_possible_replacement"
@@ -4296,6 +4338,7 @@
         "in_subset",
         "from_schema",
         "imported_from",
+        "source",
         "see_also",
         "deprecated_element_has_exact_replacement",
         "deprecated_element_has_possible_replacement"
@@ -4370,9 +4413,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "meta.yaml",
-  "source_file_date": "2021-12-20T21:17:00",
-  "source_file_size": 45322,
-  "generation_date": "2021-12-20T21:19:01",
+  "source_file_date": "2021-12-20T21:34:24",
+  "source_file_size": 45710,
+  "generation_date": "2021-12-20T21:36:24",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",
