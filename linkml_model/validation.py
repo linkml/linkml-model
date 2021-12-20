@@ -1,5 +1,5 @@
 # Auto generated from validation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-11-30T19:51:45
+# Generation date: 2021-12-20T21:20:52
 # Schema: reporting
 #
 # id: https://w3id.org/linkml/reporting
@@ -83,7 +83,7 @@ class ValidationResult(YAMLRoot):
     class_name: ClassVar[str] = "ValidationResult"
     class_model_uri: ClassVar[URIRef] = REPORTING.ValidationResult
 
-    type: Optional[Union[str, "ProblemType"]] = None
+    type: Optional[Union[str, NodeIdentifier]] = None
     severity: Optional[Union[str, "SeverityOptions"]] = None
     subject: Optional[Union[str, NodeIdentifier]] = None
     instantiates: Optional[Union[str, NodeIdentifier]] = None
@@ -94,8 +94,8 @@ class ValidationResult(YAMLRoot):
     info: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.type is not None and not isinstance(self.type, ProblemType):
-            self.type = ProblemType(self.type)
+        if self.type is not None and not isinstance(self.type, NodeIdentifier):
+            self.type = NodeIdentifier(self.type)
 
         if self.severity is not None and not isinstance(self.severity, SeverityOptions):
             self.severity = SeverityOptions(self.severity)
@@ -135,6 +135,8 @@ class ProblemType(EnumDefinitionImpl):
                                                            description="Applies when an instance of a class has a required slot which is not filled in")
     slot_range_violation = PermissibleValue(text="slot_range_violation",
                                                                description="Applies when the value of a slot is inconsistent with the declared range")
+    max_count_violation = PermissibleValue(text="max_count_violation",
+                                                             meaning=SH.MaxCountConstraintComponent)
     parsing_error = PermissibleValue(text="parsing_error",
                                                  description="The data could not be parsed")
 
