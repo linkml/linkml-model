@@ -110,26 +110,11 @@ slots:
     in_subset:
       - owl
 
-  alias_source:
-    range: uriorcurie
-    required: true
+  type:
+    range: alias_type_enum
     description: >-
-      Can be a URIOrCurie that represents the source of the alias, or it can be a simple string that
-      describes the source of the alias.
-
-  alias_scope:
-    range: alias_scope_enum
-    description: >-
-      The relatedness of an alias to the element it is aliasing.  alias_scope can be: narrow, broad, exact,
+      The relatedness of an alias to the element it is aliasing.  alias_type can be: narrow, broad, exact,
       related, close, etc.
-
-  alias_name:
-    range: string
-    required: true
-    exact_mappings: skos:altLabel
-    description: >-
-      inherits name from element class, but in the structured_alias slot, this name represents
-      a skos:altLabel
 
   structured_aliases:
     range: structured_alias
@@ -1379,9 +1364,16 @@ classes:
       object that contains meta data about a synonym or alias including where it came from (source)
       and its scope (narrow, broad, etc.)
     slots:
-      - alias_name
+      - name
       - source
       - alias_type
+    slot_usage:
+      name:
+        required: true
+        exact_mappings: skos:altLabel
+        description: >-
+          inherits name from element class, but in the structured_alias slot, this name represents
+          a skos:altLabel
 
   expression:
     mixin: true
@@ -1655,7 +1647,7 @@ enums:
       PRESENT:
       ABSENT:
 
-  alias_scope_enum:
+  alias_type_enum:
     permissible_values:
       narrow:
         meaning: skos:narrowMatch
