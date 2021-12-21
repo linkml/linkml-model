@@ -291,6 +291,37 @@
           "text": "ABSENT"
         }
       ]
+    },
+    {
+      "name": "relational_role_enum",
+      "definition_uri": "https://w3id.org/linkml/RelationalRoleEnum",
+      "description": "enumeration of roles a slot on a relationship class can play",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "permissible_values": [
+        {
+          "text": "SUBJECT",
+          "description": "a slot with this role connects a relationship to its subject/source node",
+          "meaning": "rdf:subject"
+        },
+        {
+          "text": "OBJECT",
+          "description": "a slot with this role connects a relationship to its object/target node",
+          "meaning": "rdf:object"
+        },
+        {
+          "text": "PREDICATE",
+          "description": "a slot with this role connects a relationship to its predicate/property",
+          "meaning": "rdf:predicate"
+        },
+        {
+          "text": "NODE",
+          "description": "a slot with this role connects a symmetric relationship to a node that represents either subject or object node"
+        },
+        {
+          "text": "OTHER_ROLE",
+          "description": "a slot with this role connects a relationship to a node that is not subject/object/predicate"
+        }
+      ]
     }
   ],
   "slots": [
@@ -2261,10 +2292,23 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "relational_logical_characteristic",
+      "definition_uri": "https://w3id.org/linkml/relational_logical_characteristic",
+      "description": "A property of a slot that pertains to its logical properties",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "abstract": true,
+      "domain": "SlotDefinition",
+      "slot_uri": "https://w3id.org/linkml/relational_logical_characteristic",
+      "owner": "relational_logical_characteristic",
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "symmetric",
       "definition_uri": "https://w3id.org/linkml/symmetric",
-      "description": "True means that any instance of  d s r implies that there is also an instance of r s d",
+      "description": "If s is symmetric, and i.s=v, then v.s=i",
       "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "relational_logical_characteristic",
       "domain": "SlotDefinition",
       "slot_uri": "https://w3id.org/linkml/symmetric",
       "owner": "SlotDefinition",
@@ -2272,6 +2316,79 @@
         "SlotDefinition"
       ],
       "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "antisymmetric",
+      "definition_uri": "https://w3id.org/linkml/antisymmetric",
+      "description": "If s is antisymmetric, and i.s=v where i is different from v, v.s cannot have value i",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "relational_logical_characteristic",
+      "domain": "SlotDefinition",
+      "slot_uri": "https://w3id.org/linkml/antisymmetric",
+      "owner": "antisymmetric",
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "reflexive",
+      "definition_uri": "https://w3id.org/linkml/reflexive",
+      "description": "If s is reflexive, then i.s=i for all instances i",
+      "comments": [
+        "it is rare for a property to be reflexive, this characteristic is added for completeness, consider instead locally_reflexive"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "relational_logical_characteristic",
+      "domain": "SlotDefinition",
+      "slot_uri": "https://w3id.org/linkml/reflexive",
+      "owner": "reflexive",
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "locally_reflexive",
+      "definition_uri": "https://w3id.org/linkml/locally_reflexive",
+      "description": "If s is locally_reflexive, then i.s=i for all instances i where s if a class slot for the type of i",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "relational_logical_characteristic",
+      "domain": "SlotDefinition",
+      "slot_uri": "https://w3id.org/linkml/locally_reflexive",
+      "owner": "locally_reflexive",
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "transitive",
+      "definition_uri": "https://w3id.org/linkml/transitive",
+      "description": "If s is transitive, and i.s=z, and s.s=j, then i.s=j",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "relational_logical_characteristic",
+      "domain": "SlotDefinition",
+      "slot_uri": "https://w3id.org/linkml/transitive",
+      "owner": "transitive",
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "transitive_form_of",
+      "definition_uri": "https://w3id.org/linkml/transitive_form_of",
+      "description": "If s transitive_form_of d, then (1) s holds whenever d holds (2) s is transitive (3) d holds whenever s holds and there are no intermediates, and s is not reflexive",
+      "comments": [
+        "{'Example': 'ancestor_of is the transitive_form_of parent_of'}"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "slot_uri": "https://w3id.org/linkml/transitive_form_of",
+      "range": "SlotDefinition",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "reflexive_transitive_form_of",
+      "definition_uri": "https://w3id.org/linkml/reflexive_transitive_form_of",
+      "description": "transitive_form_of including the reflexive case",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "transitive_form_of",
+      "slot_uri": "https://w3id.org/linkml/reflexive_transitive_form_of",
+      "range": "SlotDefinition",
       "@type": "SlotDefinition"
     },
     {
@@ -2651,6 +2768,57 @@
         "Element"
       ],
       "range": "LocalName",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "represents_relationship",
+      "definition_uri": "https://w3id.org/linkml/represents_relationship",
+      "aliases": [
+        "is_reified"
+      ],
+      "description": "true if this class represents a relationship rather than an entity",
+      "comments": [
+        "in the context of Entity-Relationship (ER) modeling, this is used to state that a class models a relationship between entities, and should be drawn with a diamond",
+        "in the context of RDF, this should be used when instances of the class are `rdf:Statement`s",
+        "in the context of property graphs, this should be used when a class is used to represent an edge that connects nodes"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "see_also": [
+        "rdf:Statement"
+      ],
+      "status": "testing",
+      "domain": "ClassDefinition",
+      "slot_uri": "https://w3id.org/linkml/represents_relationship",
+      "inherited": true,
+      "owner": "ClassDefinition",
+      "domain_of": [
+        "ClassDefinition"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "relational_role",
+      "definition_uri": "https://w3id.org/linkml/relational_role",
+      "aliases": [
+        "reification_role"
+      ],
+      "description": "the role a slot on a relationship class plays, for example, the subject, object or predicate roles",
+      "comments": [
+        "this should only be used on slots that are applicable to class that represent relationships",
+        "in the context of RDF, this should be used for slots that can be modeled using the RDF reification vocabulary",
+        "in the context of property graphs, this should be used on edge classes to indicate which slots represent the input and output nodes"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "status": "testing",
+      "domain": "SlotDefinition",
+      "slot_uri": "https://w3id.org/linkml/relational_role",
+      "inherited": true,
+      "owner": "SlotDefinition",
+      "domain_of": [
+        "SlotDefinition"
+      ],
+      "range": "relational_role_enum",
       "@type": "SlotDefinition"
     },
     {
@@ -3999,6 +4167,7 @@
         "role",
         "is_usage_slot",
         "usage_slot_name",
+        "relational_role",
         "slot_definition_is_a",
         "slot_definition_mixins",
         "slot_definition_apply_to",
@@ -4151,6 +4320,7 @@
         "unique_keys",
         "class_definition_rules",
         "classification_rules",
+        "represents_relationship",
         "class_definition_is_a",
         "class_definition_mixins",
         "class_definition_apply_to",
@@ -4413,9 +4583,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "meta.yaml",
-  "source_file_date": "2021-12-20T21:34:24",
-  "source_file_size": 45710,
-  "generation_date": "2021-12-20T21:36:24",
+  "source_file_date": "2021-12-21T17:43:15",
+  "source_file_size": 49529,
+  "generation_date": "2021-12-21T17:45:01",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",

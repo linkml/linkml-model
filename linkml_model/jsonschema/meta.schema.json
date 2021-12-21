@@ -715,6 +715,10 @@
                },
                "type": "array"
             },
+            "represents_relationship": {
+               "description": "true if this class represents a relationship rather than an entity",
+               "type": "boolean"
+            },
             "rules": {
                "description": "the collection of rules that apply to all members of this class",
                "items": {
@@ -1049,6 +1053,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "represents_relationship": {
+               "description": "true if this class represents a relationship rather than an entity",
+               "type": "boolean"
             },
             "rules": {
                "description": "the collection of rules that apply to all members of this class",
@@ -2049,6 +2057,18 @@
          "title": "PvFormulaOptions",
          "type": "string"
       },
+      "RelationalRoleEnum": {
+         "description": "enumeration of roles a slot on a relationship class can play",
+         "enum": [
+            "SUBJECT",
+            "OBJECT",
+            "PREDICATE",
+            "NODE",
+            "OTHER_ROLE"
+         ],
+         "title": "RelationalRoleEnum",
+         "type": "string"
+      },
       "SchemaDefinition": {
          "additionalProperties": false,
          "description": "a collection of subset, type, slot and class definitions",
@@ -2672,6 +2692,10 @@
                },
                "type": "array"
             },
+            "relational_role": {
+               "$ref": "#/$defs/RelationalRoleEnum",
+               "description": "the role a slot on a relationship class plays, for example, the subject, object or predicate roles"
+            },
             "required": {
                "description": "true means that the slot must be present in the loaded definition",
                "type": "boolean"
@@ -2712,7 +2736,7 @@
                "type": "string"
             },
             "symmetric": {
-               "description": "True means that any instance of  d s r implies that there is also an instance of r s d",
+               "description": "If s is symmetric, and i.s=v, then v.s=i",
                "type": "boolean"
             },
             "title": {
@@ -3091,6 +3115,10 @@
                },
                "type": "array"
             },
+            "relational_role": {
+               "$ref": "#/$defs/RelationalRoleEnum",
+               "description": "the role a slot on a relationship class plays, for example, the subject, object or predicate roles"
+            },
             "required": {
                "description": "true means that the slot must be present in the loaded definition",
                "type": "boolean"
@@ -3131,7 +3159,7 @@
                "type": "string"
             },
             "symmetric": {
-               "description": "True means that any instance of  d s r implies that there is also an instance of r s d",
+               "description": "If s is symmetric, and i.s=v, then v.s=i",
                "type": "boolean"
             },
             "title": {
