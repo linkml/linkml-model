@@ -1,0 +1,73 @@
+id: https://w3id.org/linkml/examples/relational
+title: Relational example
+name: relational
+description: This demonstrates the use of relational roles to be introduced in linkml 1.2
+license: https://creativecommons.org/publicdomain/zero/1.0/
+see_also:
+  - https://github.com/linkml/linkml-model/pull/61
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  ex: https://w3id.org/linkml/examples/relational/
+  skos: http://www.w3.org/2004/02/skos/core#
+  pav: http://purl.org/pav/
+  schema: http://schema.org/
+  sh: https://w3id.org/shacl/
+
+default_prefix: ex
+default_range: string
+
+default_curi_maps:
+    - semweb_context
+
+emit_prefixes:
+  - linkml
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+imports:
+  - linkml:types
+
+#==================================
+# Classes                         #
+#==================================
+
+classes:
+  Person:
+    slots:
+      - id
+      - relationships
+  Relationship:
+    abstract: true
+    represents_relationship: true
+    slots:
+      - type
+  FamilialRelationship:
+    is_a: Relationship
+    slots:
+      - family_member
+  FriendshipRelationship:
+    is_a: Relationship
+    slots:
+      - between
+
+#==================================
+# Slots                           #
+#==================================
+
+slots:
+  id:
+    identifier: true
+  type:
+#    relational_role: PREDICATE
+  family_member:
+#    relational_role: OBJECT
+  between:
+    multivalued: true
+#    relational_role: NODE
+  relationships:
+    multivalued: true
+    range: Relationship
+    
