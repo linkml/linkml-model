@@ -127,15 +127,15 @@ slots:
     required: true
     exact_mappings: skos:altLabel
     description: >-
-      inherits name from element class, but in the alias_definition class, this name represents
+      inherits name from element class, but in the structured_alias slot, this name represents
       a skos:altLabel
 
   structured_aliases:
-    range: alias_definition
+    range: structured_alias
     multivalued: true
     inlined: true
     description: >-
-      A list of alias_definition objects.
+      A list of structured_alias objects.
 
   aliases:
     range: string
@@ -1246,6 +1246,7 @@ classes:
       - related mappings
       - narrow mappings
       - broad mappings
+      - structured_aliases
     see_also:
       - https://en.wikipedia.org/wiki/Data_element
 
@@ -1360,14 +1361,14 @@ classes:
     close_mappings:
       - qb:HierarchicalCodeList
 
-  alias_definition:
+  structured_alias:
     description: >-
       object that contains meta data about a synonym or alias including where it came from (source)
       and its scope (narrow, broad, etc.)
     slots:
       - alias_name
-      - alias_source
-      - alias_scope
+      - source
+      - alias_type
 
   expression:
     mixin: true
