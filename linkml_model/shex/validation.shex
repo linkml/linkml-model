@@ -41,12 +41,12 @@ reporting:ValidationReport CLOSED {
 }
 
 reporting:ValidationResult CLOSED {
-    (  $reporting:ValidationResult_tes (  reporting:type @reporting:ProblemType ? ;
+    (  $reporting:ValidationResult_tes (  sh:sourceConstraintComponent @linkml:Nodeidentifier ? ;
           reporting:severity @reporting:SeverityOptions ? ;
-          reporting:subject @linkml:Nodeidentifier ? ;
+          sh:focusNode @linkml:Nodeidentifier ? ;
           reporting:instantiates @linkml:Nodeidentifier ? ;
           reporting:predicate @linkml:Nodeidentifier ? ;
-          reporting:object @linkml:Nodeidentifier ? ;
+          sh:value @linkml:Nodeidentifier ? ;
           reporting:object_str @linkml:String ? ;
           reporting:source @linkml:Nodeidentifier ? ;
           reporting:info @linkml:String ?

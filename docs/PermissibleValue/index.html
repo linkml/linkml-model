@@ -102,7 +102,7 @@
                 <h1 id="class-permissible_value">Class: permissible_value</h1>
 <p>a permissible value, accompanied by intended text and an optional mapping to a concept URI</p>
 <p>URI: <a href="https://w3id.org/linkml/PermissibleValue">linkml:PermissibleValue</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[SubsetDefinition],[PermissibleValue]&lt;mixins%200..*-%20[PermissibleValue&#124;text:string;description:string%20%3F;meaning:uriorcurie%20%3F;title:string%20%3F;deprecated:string%20%3F;todos:string%20*;notes:string%20*;comments:string%20*;from_schema:uri%20%3F;imported_from:string%20%3F;see_also:uriorcurie%20*;deprecated_element_has_exact_replacement:uriorcurie%20%3F;deprecated_element_has_possible_replacement:uriorcurie%20%3F],[PermissibleValue]&lt;is_a%200..1-%20[PermissibleValue],[EnumDefinition]++-%20permissible_values%200..*&gt;[PermissibleValue],[PermissibleValue]uses%20-.-&gt;[Extensible],[PermissibleValue]uses%20-.-&gt;[Annotatable],[PermissibleValue]uses%20-.-&gt;[CommonMetadata],[Extension],[Extensible],[Example],[EnumDefinition],[CommonMetadata],[Annotation],[Annotatable],[AltDescription]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[SubsetDefinition],[PermissibleValue]&lt;mixins%200..*-%20[PermissibleValue&#124;text:string;description:string%20%3F;meaning:uriorcurie%20%3F;title:string%20%3F;deprecated:string%20%3F;todos:string%20*;notes:string%20*;comments:string%20*;from_schema:uri%20%3F;imported_from:string%20%3F;see_also:uriorcurie%20*;deprecated_element_has_exact_replacement:uriorcurie%20%3F;deprecated_element_has_possible_replacement:uriorcurie%20%3F],[PermissibleValue]&lt;is_a%200..1-%20[PermissibleValue],[EnumDefinition]++-%20permissible_values%200..*&gt;[PermissibleValue],[PermissibleValue]uses%20-.-&gt;[Extensible],[PermissibleValue]uses%20-.-&gt;[Annotatable],[PermissibleValue]uses%20-.-&gt;[CommonMetadata],[Extension],[Extensible],[Example],[EnumDefinition],[CommonMetadata],[Annotation],[Annotatable],[AltDescription]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[SubsetDefinition],[PermissibleValue]&lt;mixins%200..*-%20[PermissibleValue&#124;text:string;description:string%20%3F;meaning:uriorcurie%20%3F;title:string%20%3F;deprecated:string%20%3F;todos:string%20*;notes:string%20*;comments:string%20*;from_schema:uri%20%3F;imported_from:string%20%3F;source:uriorcurie%20%3F;see_also:uriorcurie%20*;deprecated_element_has_exact_replacement:uriorcurie%20%3F;deprecated_element_has_possible_replacement:uriorcurie%20%3F],[PermissibleValue]&lt;is_a%200..1-%20[PermissibleValue],[EnumDefinition]++-%20permissible_values%200..*&gt;[PermissibleValue],[PermissibleValue]uses%20-.-&gt;[Extensible],[PermissibleValue]uses%20-.-&gt;[Annotatable],[PermissibleValue]uses%20-.-&gt;[CommonMetadata],[Extension],[Extensible],[Example],[EnumDefinition],[CommonMetadata],[Annotation],[Annotatable],[AltDescription]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[SubsetDefinition],[PermissibleValue]&lt;mixins%200..*-%20[PermissibleValue&#124;text:string;description:string%20%3F;meaning:uriorcurie%20%3F;title:string%20%3F;deprecated:string%20%3F;todos:string%20*;notes:string%20*;comments:string%20*;from_schema:uri%20%3F;imported_from:string%20%3F;source:uriorcurie%20%3F;see_also:uriorcurie%20*;deprecated_element_has_exact_replacement:uriorcurie%20%3F;deprecated_element_has_possible_replacement:uriorcurie%20%3F],[PermissibleValue]&lt;is_a%200..1-%20[PermissibleValue],[EnumDefinition]++-%20permissible_values%200..*&gt;[PermissibleValue],[PermissibleValue]uses%20-.-&gt;[Extensible],[PermissibleValue]uses%20-.-&gt;[Annotatable],[PermissibleValue]uses%20-.-&gt;[CommonMetadata],[Extension],[Extensible],[Example],[EnumDefinition],[CommonMetadata],[Annotation],[Annotatable],[AltDescription]" /></a></p>
 <h2 id="uses-mixin">Uses Mixin</h2>
 <ul>
 <li>mixin: <a href="../Extensible/">Extensible</a> - mixin for classes that support extension</li>
@@ -245,6 +245,14 @@
 </ul>
 <h3 id="mixed-in-from-common_metadata_10">Mixed in from common_metadata:</h3>
 <ul>
+<li><a href="../source/">source</a>  <sub>0..1</sub><ul>
+<li>Description: A related resource from which the element is derived.</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-common_metadata_11">Mixed in from common_metadata:</h3>
+<ul>
 <li><a href="../see_also/">see_also</a>  <sub>0..*</sub><ul>
 <li>Description: a reference</li>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
@@ -252,7 +260,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="mixed-in-from-common_metadata_11">Mixed in from common_metadata:</h3>
+<h3 id="mixed-in-from-common_metadata_12">Mixed in from common_metadata:</h3>
 <ul>
 <li><a href="../deprecated_element_has_exact_replacement/">deprecated element has exact replacement</a>  <sub>0..1</sub><ul>
 <li>Description: When an element is deprecated, it can be automatically replaced by this uri or curie</li>
@@ -260,7 +268,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="mixed-in-from-common_metadata_12">Mixed in from common_metadata:</h3>
+<h3 id="mixed-in-from-common_metadata_13">Mixed in from common_metadata:</h3>
 <ul>
 <li><a href="../deprecated_element_has_possible_replacement/">deprecated element has possible replacement</a>  <sub>0..1</sub><ul>
 <li>Description: When an element is deprecated, it can be potentially replaced by this uri or curie</li>
