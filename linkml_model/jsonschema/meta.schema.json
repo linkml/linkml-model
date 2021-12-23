@@ -708,6 +708,10 @@
                },
                "type": "array"
             },
+            "precedence": {
+               "description": "the relative order in which the element occurs",
+               "type": "integer"
+            },
             "related_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have related meaning.",
                "items": {
@@ -1047,6 +1051,10 @@
                },
                "type": "array"
             },
+            "precedence": {
+               "description": "the relative order in which the element occurs",
+               "type": "integer"
+            },
             "related_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have related meaning.",
                "items": {
@@ -1244,7 +1252,7 @@
                "description": "an expression that must hold for an instance of the class, if the preconditions hold"
             },
             "precedence": {
-               "description": "the relative order in which the rule is applied",
+               "description": "the relative order in which the element occurs",
                "type": "integer"
             },
             "preconditions": {
@@ -1435,6 +1443,10 @@
                   "$ref": "#/$defs/PermissibleValue__identifier_optional"
                },
                "description": "A list of possible values for a slot range"
+            },
+            "precedence": {
+               "description": "the relative order in which the element occurs",
+               "type": "integer"
             },
             "pv_formula": {
                "$ref": "#/$defs/PvFormulaOptions",
@@ -1633,6 +1645,10 @@
                   "$ref": "#/$defs/PermissibleValue__identifier_optional"
                },
                "description": "A list of possible values for a slot range"
+            },
+            "precedence": {
+               "description": "the relative order in which the element occurs",
+               "type": "integer"
             },
             "pv_formula": {
                "$ref": "#/$defs/PvFormulaOptions",
@@ -2267,6 +2283,10 @@
                },
                "type": "array"
             },
+            "precedence": {
+               "description": "the relative order in which the element occurs",
+               "type": "integer"
+            },
             "prefixes": {
                "additionalProperties": {
                   "$ref": "#/$defs/Prefix__identifier_optional"
@@ -2576,6 +2596,10 @@
                "description": "indicates that any instance, i,  the domain of this slot will include an assert of i s range",
                "type": "boolean"
             },
+            "is_grouping_slot": {
+               "description": "true if this slot is a grouping slot",
+               "type": "boolean"
+            },
             "is_usage_slot": {
                "description": "True means that this slot was defined in a slot_usage situation",
                "type": "boolean"
@@ -2669,6 +2693,10 @@
                "description": "the string value of the slot must conform to this regular expression",
                "type": "string"
             },
+            "precedence": {
+               "description": "the relative order in which the element occurs",
+               "type": "integer"
+            },
             "range": {
                "description": "defines the type of the object of the slot.  Given the following slot definition\n  S1:\n    domain: C1\n    range:  C2\nthe declaration\n  X:\n    S1: Y\n\nimplicitly asserts Y is an instance of C2\n",
                "type": "string"
@@ -2713,6 +2741,10 @@
             },
             "singular_name": {
                "description": "a name that is used in the singular form",
+               "type": "string"
+            },
+            "slot_group": {
+               "description": "allows for grouping of related slots into a grouping slot that serves the role of a group",
                "type": "string"
             },
             "slot_uri": {
@@ -2999,6 +3031,10 @@
                "description": "indicates that any instance, i,  the domain of this slot will include an assert of i s range",
                "type": "boolean"
             },
+            "is_grouping_slot": {
+               "description": "true if this slot is a grouping slot",
+               "type": "boolean"
+            },
             "is_usage_slot": {
                "description": "True means that this slot was defined in a slot_usage situation",
                "type": "boolean"
@@ -3092,6 +3128,10 @@
                "description": "the string value of the slot must conform to this regular expression",
                "type": "string"
             },
+            "precedence": {
+               "description": "the relative order in which the element occurs",
+               "type": "integer"
+            },
             "range": {
                "description": "defines the type of the object of the slot.  Given the following slot definition\n  S1:\n    domain: C1\n    range:  C2\nthe declaration\n  X:\n    S1: Y\n\nimplicitly asserts Y is an instance of C2\n",
                "type": "string"
@@ -3136,6 +3176,10 @@
             },
             "singular_name": {
                "description": "a name that is used in the singular form",
+               "type": "string"
+            },
+            "slot_group": {
+               "description": "allows for grouping of related slots into a grouping slot that serves the role of a group",
                "type": "string"
             },
             "slot_uri": {
@@ -3329,6 +3373,10 @@
                },
                "type": "array"
             },
+            "precedence": {
+               "description": "the relative order in which the element occurs",
+               "type": "integer"
+            },
             "related_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have related meaning.",
                "items": {
@@ -3504,6 +3552,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "precedence": {
+               "description": "the relative order in which the element occurs",
+               "type": "integer"
             },
             "related_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have related meaning.",
@@ -3737,6 +3789,10 @@
             "pattern": {
                "description": "the string value of the slot must conform to this regular expression",
                "type": "string"
+            },
+            "precedence": {
+               "description": "the relative order in which the element occurs",
+               "type": "integer"
             },
             "related_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have related meaning.",
@@ -3984,6 +4040,10 @@
             "pattern": {
                "description": "the string value of the slot must conform to this regular expression",
                "type": "string"
+            },
+            "precedence": {
+               "description": "the relative order in which the element occurs",
+               "type": "integer"
             },
             "related_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have related meaning.",

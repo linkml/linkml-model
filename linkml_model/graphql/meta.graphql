@@ -133,6 +133,7 @@ type ClassDefinition implements ClassExpression
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
+    precedence: Integer
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -255,6 +256,7 @@ interface Definition
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
+    precedence: Integer
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -300,6 +302,7 @@ type Element implements Extensible, Annotatable, CommonMetadata
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
+    precedence: Integer
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -333,6 +336,7 @@ type EnumDefinition
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
+    precedence: Integer
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -429,6 +433,7 @@ type SchemaDefinition
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
+    precedence: Integer
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -482,6 +487,7 @@ type SlotDefinition implements SlotExpression
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
+    precedence: Integer
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -531,6 +537,8 @@ type SlotDefinition implements SlotExpression
     isUsageSlot: Boolean
     usageSlotName: String
     relationalRole: RelationalRoleEnum
+    slotGroup: SlotDefinition
+    isGroupingSlot: Boolean
     isA: SlotDefinition
     mixins: [SlotDefinition]
     applyTo: [SlotDefinition]
@@ -592,6 +600,7 @@ type SubsetDefinition
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
+    precedence: Integer
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -625,6 +634,7 @@ type TypeDefinition implements TypeExpression
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
+    precedence: Integer
     extensions: [Extension]
     annotations: [Annotation]
     description: String

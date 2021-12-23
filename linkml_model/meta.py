@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-12-21T17:46:44
+# Generation date: 2021-12-23T20:25:15
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -208,6 +208,7 @@ class Element(YAMLRoot):
     related_mappings: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     narrow_mappings: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     broad_mappings: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    precedence: Optional[int] = None
     extensions: Optional[Union[Union[dict, Extension], List[Union[dict, Extension]]]] = empty_list()
     annotations: Optional[Union[Union[dict, Annotation], List[Union[dict, Annotation]]]] = empty_list()
     description: Optional[str] = None
@@ -271,6 +272,9 @@ class Element(YAMLRoot):
         if not isinstance(self.broad_mappings, list):
             self.broad_mappings = [self.broad_mappings] if self.broad_mappings is not None else []
         self.broad_mappings = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.broad_mappings]
+
+        if self.precedence is not None and not isinstance(self.precedence, int):
+            self.precedence = int(self.precedence)
 
         self._normalize_inlined_as_dict(slot_name="extensions", slot_type=Extension, key_name="tag", keyed=False)
 
@@ -1089,6 +1093,8 @@ class SlotDefinition(Definition):
     is_usage_slot: Optional[Union[bool, Bool]] = None
     usage_slot_name: Optional[str] = None
     relational_role: Optional[Union[str, "RelationalRoleEnum"]] = None
+    slot_group: Optional[Union[str, SlotDefinitionName]] = None
+    is_grouping_slot: Optional[Union[bool, Bool]] = None
     is_a: Optional[Union[str, SlotDefinitionName]] = None
     mixins: Optional[Union[Union[str, SlotDefinitionName], List[Union[str, SlotDefinitionName]]]] = empty_list()
     apply_to: Optional[Union[Union[str, SlotDefinitionName], List[Union[str, SlotDefinitionName]]]] = empty_list()
@@ -1187,6 +1193,12 @@ class SlotDefinition(Definition):
 
         if self.relational_role is not None and not isinstance(self.relational_role, RelationalRoleEnum):
             self.relational_role = RelationalRoleEnum(self.relational_role)
+
+        if self.slot_group is not None and not isinstance(self.slot_group, SlotDefinitionName):
+            self.slot_group = SlotDefinitionName(self.slot_group)
+
+        if self.is_grouping_slot is not None and not isinstance(self.is_grouping_slot, Bool):
+            self.is_grouping_slot = Bool(self.is_grouping_slot)
 
         if self.is_a is not None and not isinstance(self.is_a, SlotDefinitionName):
             self.is_a = SlotDefinitionName(self.is_a)
