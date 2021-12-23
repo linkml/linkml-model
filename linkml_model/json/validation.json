@@ -228,6 +228,10 @@
           "description": "Applies when the value of a slot is inconsistent with the declared range"
         },
         {
+          "text": "max_count_violation",
+          "meaning": "sh:MaxCountConstraintComponent"
+        },
+        {
           "text": "parsing_error",
           "description": "The data could not be parsed"
         }
@@ -263,20 +267,26 @@
     {
       "name": "type",
       "definition_uri": "https://w3id.org/linkml/reporttype",
+      "mappings": [
+        "https://w3id.org/shacl/sourceConstraintComponent"
+      ],
       "from_schema": "https://w3id.org/linkml/reporting",
-      "slot_uri": "https://w3id.org/linkml/reporttype",
+      "slot_uri": "https://w3id.org/shacl/sourceConstraintComponent",
       "owner": "ValidationResult",
       "domain_of": [
         "ValidationResult"
       ],
-      "range": "problem_type",
+      "range": "nodeidentifier",
       "@type": "SlotDefinition"
     },
     {
       "name": "subject",
       "definition_uri": "https://w3id.org/linkml/reportsubject",
+      "mappings": [
+        "https://w3id.org/shacl/focusNode"
+      ],
       "from_schema": "https://w3id.org/linkml/reporting",
-      "slot_uri": "https://w3id.org/linkml/reportsubject",
+      "slot_uri": "https://w3id.org/shacl/focusNode",
       "owner": "ValidationResult",
       "domain_of": [
         "ValidationResult"
@@ -287,6 +297,9 @@
     {
       "name": "instantiates",
       "definition_uri": "https://w3id.org/linkml/reportinstantiates",
+      "exact_mappings": [
+        "https://w3id.org/shacl/sourceShape"
+      ],
       "from_schema": "https://w3id.org/linkml/reporting",
       "slot_uri": "https://w3id.org/linkml/reportinstantiates",
       "owner": "ValidationResult",
@@ -299,6 +312,9 @@
     {
       "name": "predicate",
       "definition_uri": "https://w3id.org/linkml/reportpredicate",
+      "related_mappings": [
+        "https://w3id.org/shacl/resultPath"
+      ],
       "from_schema": "https://w3id.org/linkml/reporting",
       "slot_uri": "https://w3id.org/linkml/reportpredicate",
       "owner": "ValidationResult",
@@ -311,8 +327,11 @@
     {
       "name": "object",
       "definition_uri": "https://w3id.org/linkml/reportobject",
+      "mappings": [
+        "https://w3id.org/shacl/value"
+      ],
       "from_schema": "https://w3id.org/linkml/reporting",
-      "slot_uri": "https://w3id.org/linkml/reportobject",
+      "slot_uri": "https://w3id.org/shacl/value",
       "owner": "ValidationResult",
       "domain_of": [
         "ValidationResult"
@@ -436,9 +455,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "validation.yaml",
-  "source_file_date": "2021-11-09T03:16:30",
-  "source_file_size": 2645,
-  "generation_date": "2021-11-09T03:17:51",
+  "source_file_date": "2021-12-21T17:43:15",
+  "source_file_size": 2927,
+  "generation_date": "2021-12-21T17:45:03",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",

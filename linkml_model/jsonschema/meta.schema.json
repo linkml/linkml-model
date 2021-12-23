@@ -193,6 +193,10 @@
                },
                "description": "the redefinition of a slot in the context of the containing class definition."
             },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
+            },
             "title": {
                "description": "the official title of the element",
                "type": "string"
@@ -384,6 +388,10 @@
                },
                "type": "array"
             },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
+            },
             "title": {
                "description": "the official title of the element",
                "type": "string"
@@ -439,6 +447,14 @@
                   "$ref": "#/$defs/AnonymousTypeExpression"
                },
                "type": "array"
+            },
+            "maximum_value": {
+               "description": "for slots with ranges of type number, the value must be equal to or lowe than this",
+               "type": "integer"
+            },
+            "minimum_value": {
+               "description": "for slots with ranges of type number, the value must be equal to or higher than this",
+               "type": "integer"
             },
             "none_of": {
                "description": "holds if none of the expressions hold",
@@ -699,6 +715,10 @@
                },
                "type": "array"
             },
+            "represents_relationship": {
+               "description": "true if this class represents a relationship rather than an entity",
+               "type": "boolean"
+            },
             "rules": {
                "description": "the collection of rules that apply to all members of this class",
                "items": {
@@ -731,6 +751,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
             },
             "status": {
                "description": "status of the element",
@@ -1030,6 +1054,10 @@
                },
                "type": "array"
             },
+            "represents_relationship": {
+               "description": "true if this class represents a relationship rather than an entity",
+               "type": "boolean"
+            },
             "rules": {
                "description": "the collection of rules that apply to all members of this class",
                "items": {
@@ -1062,6 +1090,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
             },
             "status": {
                "description": "status of the element",
@@ -1225,6 +1257,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
             },
             "title": {
                "description": "the official title of the element",
@@ -1417,6 +1453,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
             },
             "title": {
                "description": "the official title of the element",
@@ -1611,6 +1651,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
             },
             "title": {
                "description": "the official title of the element",
@@ -1808,6 +1852,10 @@
                },
                "type": "array"
             },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
+            },
             "text": {
                "type": "string"
             },
@@ -1926,6 +1974,10 @@
                },
                "type": "array"
             },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
+            },
             "text": {
                "type": "string"
             },
@@ -2003,6 +2055,18 @@
             "FHIR_CODING"
          ],
          "title": "PvFormulaOptions",
+         "type": "string"
+      },
+      "RelationalRoleEnum": {
+         "description": "enumeration of roles a slot on a relationship class can play",
+         "enum": [
+            "SUBJECT",
+            "OBJECT",
+            "PREDICATE",
+            "NODE",
+            "OTHER_ROLE"
+         ],
+         "title": "RelationalRoleEnum",
          "type": "string"
       },
       "SchemaDefinition": {
@@ -2228,6 +2292,10 @@
                   "$ref": "#/$defs/SlotDefinition__identifier_optional"
                },
                "description": "slot definitions"
+            },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
             },
             "source_file": {
                "description": "name, uri or description of the source of the schema",
@@ -2624,6 +2692,10 @@
                },
                "type": "array"
             },
+            "relational_role": {
+               "$ref": "#/$defs/RelationalRoleEnum",
+               "description": "the role a slot on a relationship class plays, for example, the subject, object or predicate roles"
+            },
             "required": {
                "description": "true means that the slot must be present in the loaded definition",
                "type": "boolean"
@@ -2647,6 +2719,10 @@
                "description": "predicate of this slot for semantic web application",
                "type": "string"
             },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
+            },
             "status": {
                "description": "status of the element",
                "type": "string"
@@ -2660,7 +2736,7 @@
                "type": "string"
             },
             "symmetric": {
-               "description": "True means that any instance of  d s r implies that there is also an instance of r s d",
+               "description": "If s is symmetric, and i.s=v, then v.s=i",
                "type": "boolean"
             },
             "title": {
@@ -3039,6 +3115,10 @@
                },
                "type": "array"
             },
+            "relational_role": {
+               "$ref": "#/$defs/RelationalRoleEnum",
+               "description": "the role a slot on a relationship class plays, for example, the subject, object or predicate roles"
+            },
             "required": {
                "description": "true means that the slot must be present in the loaded definition",
                "type": "boolean"
@@ -3062,6 +3142,10 @@
                "description": "predicate of this slot for semantic web application",
                "type": "string"
             },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
+            },
             "status": {
                "description": "status of the element",
                "type": "string"
@@ -3075,7 +3159,7 @@
                "type": "string"
             },
             "symmetric": {
-               "description": "True means that any instance of  d s r implies that there is also an instance of r s d",
+               "description": "If s is symmetric, and i.s=v, then v.s=i",
                "type": "boolean"
             },
             "title": {
@@ -3259,6 +3343,10 @@
                },
                "type": "array"
             },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
+            },
             "title": {
                "description": "the official title of the element",
                "type": "string"
@@ -3430,6 +3518,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
             },
             "title": {
                "description": "the official title of the element",
@@ -3609,6 +3701,14 @@
                },
                "type": "array"
             },
+            "maximum_value": {
+               "description": "for slots with ranges of type number, the value must be equal to or lowe than this",
+               "type": "integer"
+            },
+            "minimum_value": {
+               "description": "for slots with ranges of type number, the value must be equal to or higher than this",
+               "type": "integer"
+            },
             "name": {
                "description": "the unique name of the element within the context of the schema.  Name is combined with the default prefix to form the globally unique subject of the target class.",
                "type": "string"
@@ -3655,6 +3755,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
             },
             "title": {
                "description": "the official title of the element",
@@ -3844,6 +3948,14 @@
                },
                "type": "array"
             },
+            "maximum_value": {
+               "description": "for slots with ranges of type number, the value must be equal to or lowe than this",
+               "type": "integer"
+            },
+            "minimum_value": {
+               "description": "for slots with ranges of type number, the value must be equal to or higher than this",
+               "type": "integer"
+            },
             "name": {
                "description": "the unique name of the element within the context of the schema.  Name is combined with the default prefix to form the globally unique subject of the target class.",
                "type": "string"
@@ -3890,6 +4002,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
             },
             "title": {
                "description": "the official title of the element",
@@ -3996,6 +4112,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
             },
             "title": {
                "description": "the official title of the element",

@@ -32,6 +32,7 @@ type AnonymousClassExpression implements ClassExpression
     inSubset: [SubsetDefinition]
     fromSchema: Uri
     importedFrom: String
+    source: Uriorcurie
     seeAlso: [Uriorcurie]
     deprecatedElementHasExactReplacement: Uriorcurie
     deprecatedElementHasPossibleReplacement: Uriorcurie
@@ -58,6 +59,7 @@ type AnonymousExpression implements Expression, Extensible, Annotatable, CommonM
     inSubset: [SubsetDefinition]
     fromSchema: Uri
     importedFrom: String
+    source: Uriorcurie
     seeAlso: [Uriorcurie]
     deprecatedElementHasExactReplacement: Uriorcurie
     deprecatedElementHasPossibleReplacement: Uriorcurie
@@ -78,6 +80,7 @@ type AnonymousSlotExpression implements SlotExpression
     inSubset: [SubsetDefinition]
     fromSchema: Uri
     importedFrom: String
+    source: Uriorcurie
     seeAlso: [Uriorcurie]
     deprecatedElementHasExactReplacement: Uriorcurie
     deprecatedElementHasPossibleReplacement: Uriorcurie
@@ -108,6 +111,8 @@ type AnonymousTypeExpression implements TypeExpression
     equalsString: String
     equalsStringIn: [String]
     equalsNumber: Integer
+    minimumValue: Integer
+    maximumValue: Integer
     noneOf: [AnonymousTypeExpression]
     exactlyOneOf: [AnonymousTypeExpression]
     anyOf: [AnonymousTypeExpression]
@@ -141,6 +146,7 @@ type ClassDefinition implements ClassExpression
     inSubset: [SubsetDefinition]
     fromSchema: Uri
     importedFrom: String
+    source: Uriorcurie
     seeAlso: [Uriorcurie]
     deprecatedElementHasExactReplacement: Uriorcurie
     deprecatedElementHasPossibleReplacement: Uriorcurie
@@ -164,6 +170,7 @@ type ClassDefinition implements ClassExpression
     uniqueKeys: [UniqueKey]
     rules: [ClassRule]
     classificationRules: [AnonymousClassExpression]
+    representsRelationship: Boolean
     isA: ClassDefinition
     mixins: [ClassDefinition]
     applyTo: [ClassDefinition]
@@ -209,6 +216,7 @@ type ClassRule implements Extensible, Annotatable, CommonMetadata
     inSubset: [SubsetDefinition]
     fromSchema: Uri
     importedFrom: String
+    source: Uriorcurie
     seeAlso: [Uriorcurie]
     deprecatedElementHasExactReplacement: Uriorcurie
     deprecatedElementHasPossibleReplacement: Uriorcurie
@@ -227,6 +235,7 @@ interface CommonMetadata
     inSubset: [SubsetDefinition]
     fromSchema: Uri
     importedFrom: String
+    source: Uriorcurie
     seeAlso: [Uriorcurie]
     deprecatedElementHasExactReplacement: Uriorcurie
     deprecatedElementHasPossibleReplacement: Uriorcurie
@@ -259,6 +268,7 @@ interface Definition
     inSubset: [SubsetDefinition]
     fromSchema: Uri
     importedFrom: String
+    source: Uriorcurie
     seeAlso: [Uriorcurie]
     deprecatedElementHasExactReplacement: Uriorcurie
     deprecatedElementHasPossibleReplacement: Uriorcurie
@@ -303,6 +313,7 @@ type Element implements Extensible, Annotatable, CommonMetadata
     inSubset: [SubsetDefinition]
     fromSchema: Uri
     importedFrom: String
+    source: Uriorcurie
     seeAlso: [Uriorcurie]
     deprecatedElementHasExactReplacement: Uriorcurie
     deprecatedElementHasPossibleReplacement: Uriorcurie
@@ -335,6 +346,7 @@ type EnumDefinition
     inSubset: [SubsetDefinition]
     fromSchema: Uri
     importedFrom: String
+    source: Uriorcurie
     seeAlso: [Uriorcurie]
     deprecatedElementHasExactReplacement: Uriorcurie
     deprecatedElementHasPossibleReplacement: Uriorcurie
@@ -392,6 +404,7 @@ type PermissibleValue implements Extensible, Annotatable, CommonMetadata
     inSubset: [SubsetDefinition]
     fromSchema: Uri
     importedFrom: String
+    source: Uriorcurie
     seeAlso: [Uriorcurie]
     deprecatedElementHasExactReplacement: Uriorcurie
     deprecatedElementHasPossibleReplacement: Uriorcurie
@@ -429,6 +442,7 @@ type SchemaDefinition
     inSubset: [SubsetDefinition]
     fromSchema: Uri
     importedFrom: String
+    source: Uriorcurie
     seeAlso: [Uriorcurie]
     deprecatedElementHasExactReplacement: Uriorcurie
     deprecatedElementHasPossibleReplacement: Uriorcurie
@@ -481,6 +495,7 @@ type SlotDefinition implements SlotExpression
     inSubset: [SubsetDefinition]
     fromSchema: Uri
     importedFrom: String
+    source: Uriorcurie
     seeAlso: [Uriorcurie]
     deprecatedElementHasExactReplacement: Uriorcurie
     deprecatedElementHasPossibleReplacement: Uriorcurie
@@ -515,6 +530,7 @@ type SlotDefinition implements SlotExpression
     role: String
     isUsageSlot: Boolean
     usageSlotName: String
+    relationalRole: RelationalRoleEnum
     isA: SlotDefinition
     mixins: [SlotDefinition]
     applyTo: [SlotDefinition]
@@ -589,6 +605,7 @@ type SubsetDefinition
     inSubset: [SubsetDefinition]
     fromSchema: Uri
     importedFrom: String
+    source: Uriorcurie
     seeAlso: [Uriorcurie]
     deprecatedElementHasExactReplacement: Uriorcurie
     deprecatedElementHasPossibleReplacement: Uriorcurie
@@ -621,6 +638,7 @@ type TypeDefinition implements TypeExpression
     inSubset: [SubsetDefinition]
     fromSchema: Uri
     importedFrom: String
+    source: Uriorcurie
     seeAlso: [Uriorcurie]
     deprecatedElementHasExactReplacement: Uriorcurie
     deprecatedElementHasPossibleReplacement: Uriorcurie
@@ -632,6 +650,8 @@ type TypeDefinition implements TypeExpression
     equalsString: String
     equalsStringIn: [String]
     equalsNumber: Integer
+    minimumValue: Integer
+    maximumValue: Integer
     noneOf: [AnonymousTypeExpression]
     exactlyOneOf: [AnonymousTypeExpression]
     anyOf: [AnonymousTypeExpression]
@@ -644,6 +664,8 @@ interface TypeExpression
     equalsString: String
     equalsStringIn: [String]
     equalsNumber: Integer
+    minimumValue: Integer
+    maximumValue: Integer
     noneOf: [AnonymousTypeExpression]
     exactlyOneOf: [AnonymousTypeExpression]
     anyOf: [AnonymousTypeExpression]
@@ -666,6 +688,7 @@ type UniqueKey implements Extensible, Annotatable, CommonMetadata
     inSubset: [SubsetDefinition]
     fromSchema: Uri
     importedFrom: String
+    source: Uriorcurie
     seeAlso: [Uriorcurie]
     deprecatedElementHasExactReplacement: Uriorcurie
     deprecatedElementHasPossibleReplacement: Uriorcurie

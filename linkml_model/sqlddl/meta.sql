@@ -28,6 +28,7 @@ CREATE TABLE anonymous_class_expression (
 	in_subset TEXT, 
 	from_schema TEXT, 
 	imported_from TEXT, 
+	source TEXT, 
 	see_also TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
@@ -37,7 +38,7 @@ CREATE TABLE anonymous_class_expression (
 	none_of TEXT, 
 	all_of TEXT, 
 	slot_conditions TEXT, 
-	PRIMARY KEY (extensions, annotations, description, alt_descriptions, title, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, is_a, any_of, exactly_one_of, none_of, all_of, slot_conditions)
+	PRIMARY KEY (extensions, annotations, description, alt_descriptions, title, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, source, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, is_a, any_of, exactly_one_of, none_of, all_of, slot_conditions)
 );
 
 CREATE TABLE anonymous_slot_expression (
@@ -54,6 +55,7 @@ CREATE TABLE anonymous_slot_expression (
 	in_subset TEXT, 
 	from_schema TEXT, 
 	imported_from TEXT, 
+	source TEXT, 
 	see_also TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
@@ -76,7 +78,7 @@ CREATE TABLE anonymous_slot_expression (
 	exactly_one_of TEXT, 
 	any_of TEXT, 
 	all_of TEXT, 
-	PRIMARY KEY (extensions, annotations, description, alt_descriptions, title, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, range, range_expression, required, recommended, minimum_value, maximum_value, pattern, equals_string, equals_string_in, equals_number, equals_expression, minimum_cardinality, maximum_cardinality, has_member, all_members, none_of, exactly_one_of, any_of, all_of)
+	PRIMARY KEY (extensions, annotations, description, alt_descriptions, title, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, source, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, range, range_expression, required, recommended, minimum_value, maximum_value, pattern, equals_string, equals_string_in, equals_number, equals_expression, minimum_cardinality, maximum_cardinality, has_member, all_members, none_of, exactly_one_of, any_of, all_of)
 );
 
 CREATE TABLE anonymous_type_expression (
@@ -84,11 +86,13 @@ CREATE TABLE anonymous_type_expression (
 	equals_string TEXT, 
 	equals_string_in TEXT, 
 	equals_number INTEGER, 
+	minimum_value INTEGER, 
+	maximum_value INTEGER, 
 	none_of TEXT, 
 	exactly_one_of TEXT, 
 	any_of TEXT, 
 	all_of TEXT, 
-	PRIMARY KEY (pattern, equals_string, equals_string_in, equals_number, none_of, exactly_one_of, any_of, all_of)
+	PRIMARY KEY (pattern, equals_string, equals_string_in, equals_number, minimum_value, maximum_value, none_of, exactly_one_of, any_of, all_of)
 );
 
 CREATE TABLE class_definition (
@@ -106,6 +110,7 @@ CREATE TABLE class_definition (
 	in_subset TEXT, 
 	from_schema TEXT, 
 	imported_from TEXT, 
+	source TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
 	abstract BOOLEAN, 
@@ -125,6 +130,7 @@ CREATE TABLE class_definition (
 	defining_slots TEXT, 
 	tree_root BOOLEAN, 
 	classification_rules TEXT, 
+	represents_relationship BOOLEAN, 
 	is_a TEXT, 
 	mixins TEXT, 
 	apply_to TEXT, 
@@ -171,6 +177,7 @@ CREATE TABLE permissible_value (
 	in_subset TEXT, 
 	from_schema TEXT, 
 	imported_from TEXT, 
+	source TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
 	PRIMARY KEY (text), 
@@ -192,6 +199,7 @@ CREATE TABLE subset_definition (
 	in_subset TEXT, 
 	from_schema TEXT, 
 	imported_from TEXT, 
+	source TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
 	PRIMARY KEY (name)
@@ -212,6 +220,7 @@ CREATE TABLE type_definition (
 	in_subset TEXT, 
 	from_schema TEXT, 
 	imported_from TEXT, 
+	source TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
 	typeof TEXT, 
@@ -221,6 +230,8 @@ CREATE TABLE type_definition (
 	pattern TEXT, 
 	equals_string TEXT, 
 	equals_number INTEGER, 
+	minimum_value INTEGER, 
+	maximum_value INTEGER, 
 	none_of TEXT, 
 	exactly_one_of TEXT, 
 	any_of TEXT, 
@@ -250,11 +261,12 @@ CREATE TABLE class_rule (
 	in_subset TEXT, 
 	from_schema TEXT, 
 	imported_from TEXT, 
+	source TEXT, 
 	see_also TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
 	class_definition_name TEXT, 
-	PRIMARY KEY (preconditions, postconditions, elseconditions, bidirectional, open_world, precedence, deactivated, extensions, annotations, description, alt_descriptions, title, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, class_definition_name), 
+	PRIMARY KEY (preconditions, postconditions, elseconditions, bidirectional, open_world, precedence, deactivated, extensions, annotations, description, alt_descriptions, title, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, source, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, class_definition_name), 
 	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
 );
 
@@ -272,6 +284,7 @@ CREATE TABLE schema_definition (
 	in_subset TEXT, 
 	from_schema TEXT, 
 	imported_from TEXT, 
+	source TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
 	id TEXT NOT NULL, 
@@ -308,6 +321,7 @@ CREATE TABLE slot_definition (
 	in_subset TEXT, 
 	from_schema TEXT, 
 	imported_from TEXT, 
+	source TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
 	abstract BOOLEAN, 
@@ -340,6 +354,7 @@ CREATE TABLE slot_definition (
 	role TEXT, 
 	is_usage_slot BOOLEAN, 
 	usage_slot_name TEXT, 
+	relational_role VARCHAR(10), 
 	is_a TEXT, 
 	mixins TEXT, 
 	apply_to TEXT, 
@@ -383,11 +398,12 @@ CREATE TABLE unique_key (
 	in_subset TEXT, 
 	from_schema TEXT, 
 	imported_from TEXT, 
+	source TEXT, 
 	see_also TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
 	class_definition_name TEXT, 
-	PRIMARY KEY (unique_key_slots, extensions, annotations, description, alt_descriptions, title, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, class_definition_name), 
+	PRIMARY KEY (unique_key_slots, extensions, annotations, description, alt_descriptions, title, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, source, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, class_definition_name), 
 	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
 );
 
@@ -700,6 +716,7 @@ CREATE TABLE enum_definition (
 	in_subset TEXT, 
 	from_schema TEXT, 
 	imported_from TEXT, 
+	source TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
 	code_set TEXT, 

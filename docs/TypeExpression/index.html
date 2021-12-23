@@ -101,7 +101,7 @@
               
                 <h1 id="class-type_expression">Class: type_expression</h1>
 <p>URI: <a href="https://w3id.org/linkml/TypeExpression">linkml:TypeExpression</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[AnonymousTypeExpression]&lt;all_of%200..*-++[TypeExpression&#124;pattern:string%20%3F;equals_string:string%20%3F;equals_string_in:string%20*;equals_number:integer%20%3F],[AnonymousTypeExpression]&lt;any_of%200..*-++[TypeExpression],[AnonymousTypeExpression]&lt;exactly_one_of%200..*-++[TypeExpression],[AnonymousTypeExpression]&lt;none_of%200..*-++[TypeExpression],[TypeDefinition]uses%20-.-&gt;[TypeExpression],[AnonymousTypeExpression]uses%20-.-&gt;[TypeExpression],[Expression]^-[TypeExpression],[TypeDefinition],[Expression],[AnonymousTypeExpression]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[AnonymousTypeExpression]&lt;all_of%200..*-++[TypeExpression&#124;pattern:string%20%3F;equals_string:string%20%3F;equals_string_in:string%20*;equals_number:integer%20%3F],[AnonymousTypeExpression]&lt;any_of%200..*-++[TypeExpression],[AnonymousTypeExpression]&lt;exactly_one_of%200..*-++[TypeExpression],[AnonymousTypeExpression]&lt;none_of%200..*-++[TypeExpression],[TypeDefinition]uses%20-.-&gt;[TypeExpression],[AnonymousTypeExpression]uses%20-.-&gt;[TypeExpression],[Expression]^-[TypeExpression],[TypeDefinition],[Expression],[AnonymousTypeExpression]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[AnonymousTypeExpression]&lt;all_of%200..*-++[TypeExpression&#124;pattern:string%20%3F;equals_string:string%20%3F;equals_string_in:string%20*;equals_number:integer%20%3F;minimum_value:integer%20%3F;maximum_value:integer%20%3F],[AnonymousTypeExpression]&lt;any_of%200..*-++[TypeExpression],[AnonymousTypeExpression]&lt;exactly_one_of%200..*-++[TypeExpression],[AnonymousTypeExpression]&lt;none_of%200..*-++[TypeExpression],[TypeDefinition]uses%20-.-&gt;[TypeExpression],[AnonymousTypeExpression]uses%20-.-&gt;[TypeExpression],[Expression]^-[TypeExpression],[TypeDefinition],[Expression],[AnonymousTypeExpression]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[AnonymousTypeExpression]&lt;all_of%200..*-++[TypeExpression&#124;pattern:string%20%3F;equals_string:string%20%3F;equals_string_in:string%20*;equals_number:integer%20%3F;minimum_value:integer%20%3F;maximum_value:integer%20%3F],[AnonymousTypeExpression]&lt;any_of%200..*-++[TypeExpression],[AnonymousTypeExpression]&lt;exactly_one_of%200..*-++[TypeExpression],[AnonymousTypeExpression]&lt;none_of%200..*-++[TypeExpression],[TypeDefinition]uses%20-.-&gt;[TypeExpression],[AnonymousTypeExpression]uses%20-.-&gt;[TypeExpression],[Expression]^-[TypeExpression],[TypeDefinition],[Expression],[AnonymousTypeExpression]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../Expression/">Expression</a> - todo</li>
@@ -132,6 +132,16 @@
 </li>
 <li><a href="../equals_number/">equals_number</a>  <sub>0..1</sub><ul>
 <li>Description: the slot must have range of a number and the value of the slot must equal the specified value</li>
+<li>Range: <a href="../Integer/">Integer</a></li>
+</ul>
+</li>
+<li><a href="../minimum_value/">minimum_value</a>  <sub>0..1</sub><ul>
+<li>Description: for slots with ranges of type number, the value must be equal to or higher than this</li>
+<li>Range: <a href="../Integer/">Integer</a></li>
+</ul>
+</li>
+<li><a href="../maximum_value/">maximum_value</a>  <sub>0..1</sub><ul>
+<li>Description: for slots with ranges of type number, the value must be equal to or lowe than this</li>
 <li>Range: <a href="../Integer/">Integer</a></li>
 </ul>
 </li>

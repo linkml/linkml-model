@@ -321,7 +321,17 @@
 <li><a href="range_expression/">range_expression</a> - A range that is described as a boolean expression combining existing ranges</li>
 <li><a href="readonly/">readonly</a> - If present, slot is read only.  Text explains why</li>
 <li><a href="recommended/">recommended</a> - true means that the slot should be present in the loaded definition, but this is not required</li>
+<li><a href="relational_logical_characteristic/">relational_logical_characteristic</a> - A property of a slot that pertains to its logical properties<ul>
+<li><a href="antisymmetric/">antisymmetric</a> - If s is antisymmetric, and i.s=v where i is different from v, v.s cannot have value i</li>
+<li><a href="locally_reflexive/">locally_reflexive</a> - If s is locally_reflexive, then i.s=i for all instances i where s if a class slot for the type of i</li>
+<li><a href="reflexive/">reflexive</a> - If s is reflexive, then i.s=i for all instances i</li>
+<li><a href="symmetric/">symmetric</a> - If s is symmetric, and i.s=v, then v.s=i</li>
+<li><a href="transitive/">transitive</a> - If s is transitive, and i.s=z, and s.s=j, then i.s=j</li>
+</ul>
+</li>
+<li><a href="relational_role/">relational_role</a> - the role a slot on a relationship class plays, for example, the subject, object or predicate roles</li>
 <li><a href="repr/">repr</a> - the name of the python object that implements this type definition</li>
+<li><a href="represents_relationship/">represents_relationship</a> - true if this class represents a relationship rather than an entity</li>
 <li><a href="required/">required</a> - true means that the slot must be present in the loaded definition</li>
 <li><a href="role/">role</a> - the role played by the slot range</li>
 <li><a href="rules/">rules</a> - the collection of rules that apply to all members of this class<ul>
@@ -335,6 +345,7 @@
 <li><a href="slot_uri/">slot_uri</a> - predicate of this slot for semantic web application</li>
 <li><a href="slot_usage/">slot_usage</a> - the redefinition of a slot in the context of the containing class definition.</li>
 <li><a href="slots/">slots</a> - list of slot names that are applicable to a class</li>
+<li><a href="source/">source</a> - A related resource from which the element is derived.</li>
 <li><a href="source_file/">source_file</a> - name, uri or description of the source of the schema</li>
 <li><a href="source_file_date/">source_file_date</a> - modification date of the source of the schema</li>
 <li><a href="source_file_size/">source_file_size</a> - size in bytes of the source of the schema</li>
@@ -343,10 +354,13 @@
 <li><a href="subclass_of/">subclass_of</a> - rdfs:subClassOf to be emitted in OWL generation</li>
 <li><a href="subproperty_of/">subproperty_of</a> - Ontology property which this slot is a subproperty of</li>
 <li><a href="subsets/">subsets</a> - list of subsets referenced in this model</li>
-<li><a href="symmetric/">symmetric</a> - True means that any instance of  d s r implies that there is also an instance of r s d</li>
 <li><a href="text/">text</a></li>
 <li><a href="title/">title</a> - the official title of the element</li>
 <li><a href="todos/">todos</a> - Outstanding issue that needs resolution</li>
+<li><a href="transitive_form_of/">transitive_form_of</a> - If s transitive_form_of d, then (1) s holds whenever d holds (2) s is transitive (3) d holds whenever s holds and there are no intermediates, and s is not reflexive<ul>
+<li><a href="reflexive_transitive_form_of/">reflexive_transitive_form_of</a> - transitive_form_of including the reflexive case</li>
+</ul>
+</li>
 <li><a href="tree_root/">tree_root</a> - indicator that this is the root class in tree structures</li>
 <li><a href="type_uri/">type_definition➞uri</a> - The uri that defines the possible values for the type definition</li>
 <li><a href="typeof/">typeof</a> - Names a parent type</li>
@@ -373,6 +387,7 @@
 <ul>
 <li><a href="presence_enum/">presence_enum</a> - enumeration of conditions by which a slot value should be set</li>
 <li><a href="pv_formula_options/">pv_formula_options</a> - The formula used to generate the set of permissible values from the code_set values</li>
+<li><a href="relational_role_enum/">relational_role_enum</a> - enumeration of roles a slot on a relationship class can play</li>
 </ul>
 <h3 id="subsets">Subsets</h3>
 <ul>
@@ -470,5 +485,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2021-11-09 03:17:45.759798+00:00
+Build Date UTC : 2021-12-21 17:44:51.476616+00:00
 -->

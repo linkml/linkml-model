@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-11-09T03:19:26
+# Generation date: 2021-12-21T17:46:44
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -39,6 +39,8 @@ LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 OSLC = CurieNamespace('oslc', 'http://open-services.net/ns/core#')
 OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 PAV = CurieNamespace('pav', 'http://purl.org/pav/')
+PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
+QB = CurieNamespace('qb', 'http://purl.org/linked-data/cube#')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
@@ -123,6 +125,7 @@ class CommonMetadata(YAMLRoot):
     in_subset: Optional[Union[Union[str, SubsetDefinitionName], List[Union[str, SubsetDefinitionName]]]] = empty_list()
     from_schema: Optional[Union[str, URI]] = None
     imported_from: Optional[str] = None
+    source: Optional[Union[str, URIorCURIE]] = None
     see_also: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     deprecated_element_has_exact_replacement: Optional[Union[str, URIorCURIE]] = None
     deprecated_element_has_possible_replacement: Optional[Union[str, URIorCURIE]] = None
@@ -164,6 +167,9 @@ class CommonMetadata(YAMLRoot):
 
         if self.imported_from is not None and not isinstance(self.imported_from, str):
             self.imported_from = str(self.imported_from)
+
+        if self.source is not None and not isinstance(self.source, URIorCURIE):
+            self.source = URIorCURIE(self.source)
 
         if not isinstance(self.see_also, list):
             self.see_also = [self.see_also] if self.see_also is not None else []
@@ -215,6 +221,7 @@ class Element(YAMLRoot):
     in_subset: Optional[Union[Union[str, SubsetDefinitionName], List[Union[str, SubsetDefinitionName]]]] = empty_list()
     from_schema: Optional[Union[str, URI]] = None
     imported_from: Optional[str] = None
+    source: Optional[Union[str, URIorCURIE]] = None
     see_also: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     deprecated_element_has_exact_replacement: Optional[Union[str, URIorCURIE]] = None
     deprecated_element_has_possible_replacement: Optional[Union[str, URIorCURIE]] = None
@@ -305,6 +312,9 @@ class Element(YAMLRoot):
 
         if self.imported_from is not None and not isinstance(self.imported_from, str):
             self.imported_from = str(self.imported_from)
+
+        if self.source is not None and not isinstance(self.source, URIorCURIE):
+            self.source = URIorCURIE(self.source)
 
         if not isinstance(self.see_also, list):
             self.see_also = [self.see_also] if self.see_also is not None else []
@@ -421,7 +431,7 @@ class SchemaDefinition(Element):
 
 @dataclass
 class AnonymousTypeExpression(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = ["pattern", "equals_string", "equals_string_in", "equals_number"]
+    _inherited_slots: ClassVar[List[str]] = ["pattern", "equals_string", "equals_string_in", "equals_number", "minimum_value", "maximum_value"]
 
     class_class_uri: ClassVar[URIRef] = LINKML.AnonymousTypeExpression
     class_class_curie: ClassVar[str] = "linkml:AnonymousTypeExpression"
@@ -432,6 +442,8 @@ class AnonymousTypeExpression(YAMLRoot):
     equals_string: Optional[str] = None
     equals_string_in: Optional[Union[str, List[str]]] = empty_list()
     equals_number: Optional[int] = None
+    minimum_value: Optional[int] = None
+    maximum_value: Optional[int] = None
     none_of: Optional[Union[Union[dict, "AnonymousTypeExpression"], List[Union[dict, "AnonymousTypeExpression"]]]] = empty_list()
     exactly_one_of: Optional[Union[Union[dict, "AnonymousTypeExpression"], List[Union[dict, "AnonymousTypeExpression"]]]] = empty_list()
     any_of: Optional[Union[Union[dict, "AnonymousTypeExpression"], List[Union[dict, "AnonymousTypeExpression"]]]] = empty_list()
@@ -450,6 +462,12 @@ class AnonymousTypeExpression(YAMLRoot):
 
         if self.equals_number is not None and not isinstance(self.equals_number, int):
             self.equals_number = int(self.equals_number)
+
+        if self.minimum_value is not None and not isinstance(self.minimum_value, int):
+            self.minimum_value = int(self.minimum_value)
+
+        if self.maximum_value is not None and not isinstance(self.maximum_value, int):
+            self.maximum_value = int(self.maximum_value)
 
         if not isinstance(self.none_of, list):
             self.none_of = [self.none_of] if self.none_of is not None else []
@@ -475,7 +493,7 @@ class TypeDefinition(Element):
     """
     A data type definition.
     """
-    _inherited_slots: ClassVar[List[str]] = ["base", "uri", "repr", "pattern", "equals_string", "equals_string_in", "equals_number"]
+    _inherited_slots: ClassVar[List[str]] = ["base", "uri", "repr", "pattern", "equals_string", "equals_string_in", "equals_number", "minimum_value", "maximum_value"]
 
     class_class_uri: ClassVar[URIRef] = LINKML.TypeDefinition
     class_class_curie: ClassVar[str] = "linkml:TypeDefinition"
@@ -491,6 +509,8 @@ class TypeDefinition(Element):
     equals_string: Optional[str] = None
     equals_string_in: Optional[Union[str, List[str]]] = empty_list()
     equals_number: Optional[int] = None
+    minimum_value: Optional[int] = None
+    maximum_value: Optional[int] = None
     none_of: Optional[Union[Union[dict, AnonymousTypeExpression], List[Union[dict, AnonymousTypeExpression]]]] = empty_list()
     exactly_one_of: Optional[Union[Union[dict, AnonymousTypeExpression], List[Union[dict, AnonymousTypeExpression]]]] = empty_list()
     any_of: Optional[Union[Union[dict, AnonymousTypeExpression], List[Union[dict, AnonymousTypeExpression]]]] = empty_list()
@@ -526,6 +546,12 @@ class TypeDefinition(Element):
 
         if self.equals_number is not None and not isinstance(self.equals_number, int):
             self.equals_number = int(self.equals_number)
+
+        if self.minimum_value is not None and not isinstance(self.minimum_value, int):
+            self.minimum_value = int(self.minimum_value)
+
+        if self.maximum_value is not None and not isinstance(self.maximum_value, int):
+            self.maximum_value = int(self.maximum_value)
 
         if not isinstance(self.none_of, list):
             self.none_of = [self.none_of] if self.none_of is not None else []
@@ -694,7 +720,7 @@ class Expression(YAMLRoot):
 
 @dataclass
 class TypeExpression(Expression):
-    _inherited_slots: ClassVar[List[str]] = ["pattern", "equals_string", "equals_string_in", "equals_number"]
+    _inherited_slots: ClassVar[List[str]] = ["pattern", "equals_string", "equals_string_in", "equals_number", "minimum_value", "maximum_value"]
 
     class_class_uri: ClassVar[URIRef] = LINKML.TypeExpression
     class_class_curie: ClassVar[str] = "linkml:TypeExpression"
@@ -705,6 +731,8 @@ class TypeExpression(Expression):
     equals_string: Optional[str] = None
     equals_string_in: Optional[Union[str, List[str]]] = empty_list()
     equals_number: Optional[int] = None
+    minimum_value: Optional[int] = None
+    maximum_value: Optional[int] = None
     none_of: Optional[Union[Union[dict, "AnonymousTypeExpression"], List[Union[dict, "AnonymousTypeExpression"]]]] = empty_list()
     exactly_one_of: Optional[Union[Union[dict, "AnonymousTypeExpression"], List[Union[dict, "AnonymousTypeExpression"]]]] = empty_list()
     any_of: Optional[Union[Union[dict, "AnonymousTypeExpression"], List[Union[dict, "AnonymousTypeExpression"]]]] = empty_list()
@@ -723,6 +751,12 @@ class TypeExpression(Expression):
 
         if self.equals_number is not None and not isinstance(self.equals_number, int):
             self.equals_number = int(self.equals_number)
+
+        if self.minimum_value is not None and not isinstance(self.minimum_value, int):
+            self.minimum_value = int(self.minimum_value)
+
+        if self.maximum_value is not None and not isinstance(self.maximum_value, int):
+            self.maximum_value = int(self.maximum_value)
 
         if not isinstance(self.none_of, list):
             self.none_of = [self.none_of] if self.none_of is not None else []
@@ -765,6 +799,7 @@ class AnonymousExpression(YAMLRoot):
     in_subset: Optional[Union[Union[str, SubsetDefinitionName], List[Union[str, SubsetDefinitionName]]]] = empty_list()
     from_schema: Optional[Union[str, URI]] = None
     imported_from: Optional[str] = None
+    source: Optional[Union[str, URIorCURIE]] = None
     see_also: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     deprecated_element_has_exact_replacement: Optional[Union[str, URIorCURIE]] = None
     deprecated_element_has_possible_replacement: Optional[Union[str, URIorCURIE]] = None
@@ -810,6 +845,9 @@ class AnonymousExpression(YAMLRoot):
 
         if self.imported_from is not None and not isinstance(self.imported_from, str):
             self.imported_from = str(self.imported_from)
+
+        if self.source is not None and not isinstance(self.source, URIorCURIE):
+            self.source = URIorCURIE(self.source)
 
         if not isinstance(self.see_also, list):
             self.see_also = [self.see_also] if self.see_also is not None else []
@@ -1020,7 +1058,7 @@ class SlotDefinition(Definition):
     """
     the definition of a property or a slot
     """
-    _inherited_slots: ClassVar[List[str]] = ["domain", "multivalued", "inherited", "readonly", "ifabsent", "inlined", "inlined_as_list", "key", "identifier", "designates_type", "role", "range", "required", "recommended", "minimum_value", "maximum_value", "pattern", "equals_string", "equals_string_in", "equals_number", "equals_expression", "minimum_cardinality", "maximum_cardinality"]
+    _inherited_slots: ClassVar[List[str]] = ["domain", "multivalued", "inherited", "readonly", "ifabsent", "inlined", "inlined_as_list", "key", "identifier", "designates_type", "role", "relational_role", "range", "required", "recommended", "minimum_value", "maximum_value", "pattern", "equals_string", "equals_string_in", "equals_number", "equals_expression", "minimum_cardinality", "maximum_cardinality"]
 
     class_class_uri: ClassVar[URIRef] = LINKML.SlotDefinition
     class_class_curie: ClassVar[str] = "linkml:SlotDefinition"
@@ -1050,6 +1088,7 @@ class SlotDefinition(Definition):
     role: Optional[str] = None
     is_usage_slot: Optional[Union[bool, Bool]] = None
     usage_slot_name: Optional[str] = None
+    relational_role: Optional[Union[str, "RelationalRoleEnum"]] = None
     is_a: Optional[Union[str, SlotDefinitionName]] = None
     mixins: Optional[Union[Union[str, SlotDefinitionName], List[Union[str, SlotDefinitionName]]]] = empty_list()
     apply_to: Optional[Union[Union[str, SlotDefinitionName], List[Union[str, SlotDefinitionName]]]] = empty_list()
@@ -1145,6 +1184,9 @@ class SlotDefinition(Definition):
 
         if self.usage_slot_name is not None and not isinstance(self.usage_slot_name, str):
             self.usage_slot_name = str(self.usage_slot_name)
+
+        if self.relational_role is not None and not isinstance(self.relational_role, RelationalRoleEnum):
+            self.relational_role = RelationalRoleEnum(self.relational_role)
 
         if self.is_a is not None and not isinstance(self.is_a, SlotDefinitionName):
             self.is_a = SlotDefinitionName(self.is_a)
@@ -1307,7 +1349,7 @@ class ClassDefinition(Definition):
     """
     the definition of a class or interface
     """
-    _inherited_slots: ClassVar[List[str]] = ["defining_slots"]
+    _inherited_slots: ClassVar[List[str]] = ["defining_slots", "represents_relationship"]
 
     class_class_uri: ClassVar[URIRef] = LINKML.ClassDefinition
     class_class_curie: ClassVar[str] = "linkml:ClassDefinition"
@@ -1326,6 +1368,7 @@ class ClassDefinition(Definition):
     unique_keys: Optional[Union[Union[dict, "UniqueKey"], List[Union[dict, "UniqueKey"]]]] = empty_list()
     rules: Optional[Union[Union[dict, "ClassRule"], List[Union[dict, "ClassRule"]]]] = empty_list()
     classification_rules: Optional[Union[Union[dict, AnonymousClassExpression], List[Union[dict, AnonymousClassExpression]]]] = empty_list()
+    represents_relationship: Optional[Union[bool, Bool]] = None
     is_a: Optional[Union[str, ClassDefinitionName]] = None
     mixins: Optional[Union[Union[str, ClassDefinitionName], List[Union[str, ClassDefinitionName]]]] = empty_list()
     apply_to: Optional[Union[Union[str, ClassDefinitionName], List[Union[str, ClassDefinitionName]]]] = empty_list()
@@ -1375,6 +1418,9 @@ class ClassDefinition(Definition):
         if not isinstance(self.classification_rules, list):
             self.classification_rules = [self.classification_rules] if self.classification_rules is not None else []
         self.classification_rules = [v if isinstance(v, AnonymousClassExpression) else AnonymousClassExpression(**as_dict(v)) for v in self.classification_rules]
+
+        if self.represents_relationship is not None and not isinstance(self.represents_relationship, Bool):
+            self.represents_relationship = Bool(self.represents_relationship)
 
         if self.is_a is not None and not isinstance(self.is_a, ClassDefinitionName):
             self.is_a = ClassDefinitionName(self.is_a)
@@ -1452,6 +1498,7 @@ class ClassRule(ClassLevelRule):
     in_subset: Optional[Union[Union[str, SubsetDefinitionName], List[Union[str, SubsetDefinitionName]]]] = empty_list()
     from_schema: Optional[Union[str, URI]] = None
     imported_from: Optional[str] = None
+    source: Optional[Union[str, URIorCURIE]] = None
     see_also: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     deprecated_element_has_exact_replacement: Optional[Union[str, URIorCURIE]] = None
     deprecated_element_has_possible_replacement: Optional[Union[str, URIorCURIE]] = None
@@ -1518,6 +1565,9 @@ class ClassRule(ClassLevelRule):
 
         if self.imported_from is not None and not isinstance(self.imported_from, str):
             self.imported_from = str(self.imported_from)
+
+        if self.source is not None and not isinstance(self.source, URIorCURIE):
+            self.source = URIorCURIE(self.source)
 
         if not isinstance(self.see_also, list):
             self.see_also = [self.see_also] if self.see_also is not None else []
@@ -1673,6 +1723,7 @@ class PermissibleValue(YAMLRoot):
     in_subset: Optional[Union[Union[str, SubsetDefinitionName], List[Union[str, SubsetDefinitionName]]]] = empty_list()
     from_schema: Optional[Union[str, URI]] = None
     imported_from: Optional[str] = None
+    source: Optional[Union[str, URIorCURIE]] = None
     see_also: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     deprecated_element_has_exact_replacement: Optional[Union[str, URIorCURIE]] = None
     deprecated_element_has_possible_replacement: Optional[Union[str, URIorCURIE]] = None
@@ -1734,6 +1785,9 @@ class PermissibleValue(YAMLRoot):
         if self.imported_from is not None and not isinstance(self.imported_from, str):
             self.imported_from = str(self.imported_from)
 
+        if self.source is not None and not isinstance(self.source, URIorCURIE):
+            self.source = URIorCURIE(self.source)
+
         if not isinstance(self.see_also, list):
             self.see_also = [self.see_also] if self.see_also is not None else []
         self.see_also = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.see_also]
@@ -1773,6 +1827,7 @@ class UniqueKey(YAMLRoot):
     in_subset: Optional[Union[Union[str, SubsetDefinitionName], List[Union[str, SubsetDefinitionName]]]] = empty_list()
     from_schema: Optional[Union[str, URI]] = None
     imported_from: Optional[str] = None
+    source: Optional[Union[str, URIorCURIE]] = None
     see_also: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     deprecated_element_has_exact_replacement: Optional[Union[str, URIorCURIE]] = None
     deprecated_element_has_possible_replacement: Optional[Union[str, URIorCURIE]] = None
@@ -1825,6 +1880,9 @@ class UniqueKey(YAMLRoot):
         if self.imported_from is not None and not isinstance(self.imported_from, str):
             self.imported_from = str(self.imported_from)
 
+        if self.source is not None and not isinstance(self.source, URIorCURIE):
+            self.source = URIorCURIE(self.source)
+
         if not isinstance(self.see_also, list):
             self.see_also = [self.see_also] if self.see_also is not None else []
         self.see_also = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.see_also]
@@ -1868,6 +1926,29 @@ class PresenceEnum(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="PresenceEnum",
         description="enumeration of conditions by which a slot value should be set",
+    )
+
+class RelationalRoleEnum(EnumDefinitionImpl):
+    """
+    enumeration of roles a slot on a relationship class can play
+    """
+    SUBJECT = PermissibleValue(text="SUBJECT",
+                                     description="a slot with this role connects a relationship to its subject/source node",
+                                     meaning=RDF.subject)
+    OBJECT = PermissibleValue(text="OBJECT",
+                                   description="a slot with this role connects a relationship to its object/target node",
+                                   meaning=RDF.object)
+    PREDICATE = PermissibleValue(text="PREDICATE",
+                                         description="a slot with this role connects a relationship to its predicate/property",
+                                         meaning=RDF.predicate)
+    NODE = PermissibleValue(text="NODE",
+                               description="a slot with this role connects a symmetric relationship to a node that represents either subject or object node")
+    OTHER_ROLE = PermissibleValue(text="OTHER_ROLE",
+                                           description="a slot with this role connects a relationship to a node that is not subject/object/predicate")
+
+    _defn = EnumDefinition(
+        name="RelationalRoleEnum",
+        description="enumeration of roles a slot on a relationship class can play",
     )
 
 # Slots
