@@ -1,0 +1,66 @@
+id: test
+name: test
+
+slots:
+  subject_id:
+    path_rule:
+      traverse: subject
+      range_expression:
+        is_a: entity
+      followed_by:
+        traverse: id
+  subject_label:
+    path_rule:
+      traverse: subject
+      range_expression:
+        is_a: entity
+      followed_by:
+        traverse: label
+  object_ancestor_id:
+    path_rule:
+      traverse: object
+      range_expression:
+        is_a: entity
+      followed_by:
+        traverse: ancestor
+        followed_by:
+          traverse: id
+  object_part_of_ancestor_id:
+    path_rule:
+      traverse: object
+      range_expression:
+        is_a: entity
+      followed_by:
+        traverse: subject
+        reversed: true
+        range_expression:
+          is_a: AncestorEdge
+          slot_conditions:
+            predicate:
+              equals_string: part_of
+        followed_by:
+          traverse: object
+  self_path:
+    path_rule: {}
+    reflexive: true
+  self_if_entity:
+    path_rule:
+      range_expression:
+        is_a: entity
+  or_path_example:
+    path_rule:
+      description: a|b|c
+      any_of:
+        - traverse: slot_a
+        - traverse: slot_b
+        - traverse: slot_c
+  or_path_example2:
+    path_rule:
+      description: a|b|c/d
+      any_of:
+        - traverse: slot_a
+        - traverse: slot_b
+        - traverse: slot_c
+          followed_by:
+            traverse: d
+  

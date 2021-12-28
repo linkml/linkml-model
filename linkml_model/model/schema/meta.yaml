@@ -1010,15 +1010,21 @@ slots:
     is_a: relational_logical_characteristic
     description: If s is symmetric, and i.s=v, then v.s=i
     
-  antisymmetric:
+  asymmetric:
     is_a: relational_logical_characteristic
     description: If s is antisymmetric, and i.s=v where i is different from v, v.s cannot have value i
+    comments:
+      - asymmetry is the combination of antisymmetry and irreflexivity
 
   reflexive:
     is_a: relational_logical_characteristic
     description: If s is reflexive, then i.s=i for all instances i
     comments:
       - it is rare for a property to be reflexive, this characteristic is added for completeness, consider instead locally_reflexive
+
+  irreflexive:
+    is_a: relational_logical_characteristic
+    description: If s is irreflexive, then there exists no i such i.s=i
 
   locally_reflexive:
     is_a: relational_logical_characteristic
@@ -1240,6 +1246,22 @@ slots:
     close_mappings:
       - sh:PropertyGroup
 
+  # paths
+
+  followed_by:
+    description: in a sequential list, this indicates the next member
+    range: expression
+  reversed:
+    description: true if the slot is to be inversed
+    range: boolean
+  traverse:
+    description: the slot to traverse
+    range: slot_definition
+  path_rule:
+    description: a rule for inferring a slot assignment based on evaluating a path through a sequence of slot assignemnts
+    domain: slot_definition
+    range: path_expression
+      
   # -----------------------------------
   # Relational Roles
   # -----------------------------------
@@ -1253,6 +1275,7 @@ slots:
     status: testing
     see_also:
       - rdf:Statement
+      - https://patterns.dataincubator.org/book/qualified-relation.html
     comments:
       - in the context of Entity-Relationship (ER) modeling, this is used to state that a class models a relationship between entities, and should be drawn with a diamond
       - in the context of RDF, this should be used when instances of the class are `rdf:Statement`s
@@ -1433,7 +1456,7 @@ classes:
   expression:
     mixin: true
     abstract: true
-    description: todo
+    description: general mixin for any class that can represent some form of expression
     status: testing
 
   anonymous_expression:
@@ -1444,6 +1467,35 @@ classes:
       - annotatable
       - common_metadata
     status: testing
+
+  path_expression:
+    description: An expression that describes an abstract path from an object to another through a sequence of slot lookups
+    mixins:
+      - expression
+      - extensible
+      - annotatable
+      - common_metadata
+    status: testing
+    slots:
+      - followed_by
+      - none_of
+      - any_of
+      - all_of
+      - exactly_one_of
+      - reversed
+      - traverse
+      - range_expression
+    slot_usage:
+      followed_by:
+        range: path_expression
+      any_of:
+        range: path_expression
+      exactly_one_of:
+        range: path_expression
+      none_of:
+        range: path_expression
+      all_of:
+        range: path_expression
 
     
   slot_expression:
@@ -1519,14 +1571,22 @@ classes:
       - domain_of
       - subproperty_of
       - symmetric
+      - reflexive
+      - locally_reflexive
+      - irreflexive
+      - asymmetric
+      - transitive
       - inverse
       - is_class_field
+      - transitive_form_of
+      - reflexive_transitive_form_of
       - role
       - is_usage_slot
       - usage_slot_name
       - relational_role
       - slot_group
       - is_grouping_slot
+      - path_rule
 
     slot_usage:
       is_a:
