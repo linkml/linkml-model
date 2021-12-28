@@ -131,6 +131,7 @@ CREATE TABLE class_definition (
 	defining_slots TEXT, 
 	tree_root BOOLEAN, 
 	classification_rules TEXT, 
+	slot_names_unique BOOLEAN, 
 	represents_relationship BOOLEAN, 
 	is_a TEXT, 
 	mixins TEXT, 
@@ -305,6 +306,7 @@ CREATE TABLE schema_definition (
 	source_file_date DATETIME, 
 	source_file_size INTEGER, 
 	generation_date DATETIME, 
+	slot_names_unique BOOLEAN, 
 	name TEXT NOT NULL, 
 	PRIMARY KEY (name), 
 	FOREIGN KEY(default_range) REFERENCES type_definition (name)

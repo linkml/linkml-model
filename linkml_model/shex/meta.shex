@@ -178,6 +178,7 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           <unique_keys> @<UniqueKey> * ;
           sh1:rule @<ClassRule> * ;
           <classification_rules> @<AnonymousClassExpression> * ;
+          <slot_names_unique> @<Boolean> ? ;
           <represents_relationship> @<Boolean> ? ;
           <mixins> @<ClassDefinition> * ;
           <apply_to> @<ClassDefinition> * ;
@@ -492,7 +493,8 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           <source_file> @<String> ? ;
           <source_file_date> @<Datetime> ? ;
           <source_file_size> @<Integer> ? ;
-          <generation_date> @<Datetime> ?
+          <generation_date> @<Datetime> ? ;
+          <slot_names_unique> @<Boolean> ?
        ) ;
        rdf:type [ <SchemaDefinition> ]
     )

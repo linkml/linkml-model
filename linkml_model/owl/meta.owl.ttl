@@ -44,11 +44,11 @@ linkml:meta a owl:Ontology ;
     dcterms:title "LinkML Schema Metamodel" ;
     pav:version "2.0.0" ;
     skos:definition "A metamodel for defining linked open data schemas" ;
-    linkml:generation_date "2021-12-28T22:39:47" ;
+    linkml:generation_date "2021-12-28T23:39:22" ;
     linkml:metamodel_version "1.7.0" ;
     linkml:source_file "meta.yaml" ;
-    linkml:source_file_date "2021-12-28T22:37:26" ;
-    linkml:source_file_size 51672 .
+    linkml:source_file_date "2021-12-28T23:36:45" ;
+    linkml:source_file_size 51901 .
 
 linkml:topValue a owl:DatatypeProperty ;
     rdfs:label "value" .
@@ -194,47 +194,80 @@ linkml:ClassRule a owl:Class,
     rdfs:label "class_rule" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty dcterms:source ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Extension ;
-            owl:onProperty linkml:extensions ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:open_world ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:bidirectional ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:deprecated ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty skos:note ],
+            owl:allValuesFrom linkml:SubsetDefinition ;
+            owl:onProperty OIO:inSubset ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:AnonymousClassExpression ;
             owl:onProperty sh1:condition ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty sh1:deactivated ],
+            owl:onClass linkml:AnonymousClassExpression ;
+            owl:onProperty linkml:elseconditions ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Example ;
+            owl:onProperty linkml:examples ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:todos ],
+            owl:onProperty skos:note ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Annotation ;
+            owl:onProperty linkml:annotations ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:bidirectional ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty sh1:order ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:AltDescription ;
             owl:onProperty linkml:alt_descriptions ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:SubsetDefinition ;
-            owl:onProperty OIO:inSubset ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:imported_from ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty skos:editorialNote ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:AnonymousClassExpression ;
+            owl:onProperty linkml:postconditions ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:open_world ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:todos ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Extension ;
+            owl:onProperty linkml:extensions ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty sh1:deactivated ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:title ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty skos:definition ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uri ;
+            owl:onProperty skos:inScheme ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty linkml:deprecated_element_has_possible_replacement ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Uriorcurie ;
@@ -244,41 +277,8 @@ linkml:ClassRule a owl:Class,
             owl:onProperty rdfs:seeAlso ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:imported_from ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:AnonymousClassExpression ;
-            owl:onProperty linkml:elseconditions ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:AnonymousClassExpression ;
-            owl:onProperty linkml:postconditions ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Uriorcurie ;
-            owl:onProperty linkml:deprecated_element_has_possible_replacement ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Annotation ;
-            owl:onProperty linkml:annotations ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty skos:editorialNote ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uri ;
-            owl:onProperty skos:inScheme ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty dcterms:title ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty sh1:order ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Example ;
-            owl:onProperty linkml:examples ],
+            owl:onProperty dcterms:source ],
         linkml:Annotatable,
         linkml:ClassLevelRule,
         linkml:CommonMetadata,
@@ -945,56 +945,50 @@ linkml:AnonymousExpression a owl:Class,
     rdfs:label "anonymous_expression" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:imported_from ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AltDescription ;
-            owl:onProperty linkml:alt_descriptions ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Annotation ;
-            owl:onProperty linkml:annotations ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:todos ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty skos:editorialNote ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty dcterms:title ],
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty linkml:deprecated_element_has_exact_replacement ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Extension ;
             owl:onProperty linkml:extensions ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:deprecated ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Example ;
-            owl:onProperty linkml:examples ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty rdfs:seeAlso ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uri ;
-            owl:onProperty skos:inScheme ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty skos:note ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty skos:definition ],
+            owl:onProperty dcterms:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AltDescription ;
+            owl:onProperty linkml:alt_descriptions ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:deprecated ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Uriorcurie ;
             owl:onProperty linkml:deprecated_element_has_possible_replacement ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty rdfs:seeAlso ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty linkml:deprecated_element_has_exact_replacement ],
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:imported_from ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Annotation ;
+            owl:onProperty linkml:annotations ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uri ;
+            owl:onProperty skos:inScheme ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty skos:definition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Example ;
+            owl:onProperty linkml:examples ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:SubsetDefinition ;
             owl:onProperty OIO:inSubset ],
@@ -1002,6 +996,12 @@ linkml:AnonymousExpression a owl:Class,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Uriorcurie ;
             owl:onProperty dcterms:source ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty skos:editorialNote ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:todos ],
         linkml:Annotatable,
         linkml:CommonMetadata,
         linkml:Expression,
@@ -1016,9 +1016,15 @@ linkml:TypeExpression a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "type_expression" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousTypeExpression ;
+            owl:onProperty linkml:none_of ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousTypeExpression ;
+            owl:onProperty linkml:exactly_one_of ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
-            owl:onProperty linkml:equals_number ],
+            owl:onProperty linkml:minimum_value ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -1028,30 +1034,31 @@ linkml:TypeExpression a owl:Class,
             owl:onProperty linkml:equals_string_in ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:AnonymousTypeExpression ;
-            owl:onProperty linkml:exactly_one_of ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousTypeExpression ;
             owl:onProperty linkml:any_of ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:equals_string ],
+            owl:onClass linkml:Integer ;
+            owl:onProperty linkml:equals_number ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
             owl:onProperty linkml:maximum_value ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty linkml:minimum_value ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:AnonymousTypeExpression ;
             owl:onProperty linkml:all_of ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousTypeExpression ;
-            owl:onProperty linkml:none_of ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:equals_string ],
         linkml:Expression,
         linkml:mixin .
+
+linkml:slot_names_unique a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "slot_names_unique" ;
+    rdfs:domain linkml:Definition ;
+    rdfs:range linkml:Boolean ;
+    skos:definition "if true then induced/mangled slot names are not created for class_usage and attributes" .
 
 linkml:slots a owl:ObjectProperty,
         linkml:SlotDefinition .
@@ -1084,19 +1091,19 @@ linkml:ClassExpression a owl:Class,
     rdfs:label "class_expression" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom linkml:AnonymousClassExpression ;
-            owl:onProperty linkml:exactly_one_of ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousClassExpression ;
-            owl:onProperty linkml:none_of ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousClassExpression ;
             owl:onProperty linkml:any_of ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:AnonymousClassExpression ;
             owl:onProperty linkml:all_of ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousClassExpression ;
+            owl:onProperty linkml:none_of ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:SlotDefinition ;
             owl:onProperty linkml:slot_conditions ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousClassExpression ;
+            owl:onProperty linkml:exactly_one_of ],
         linkml:mixin ;
     skos:definition "A boolean expression that can be used to dynamically determine membership of a class" .
 
@@ -1104,67 +1111,8 @@ linkml:SlotExpression a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "slot_expression" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:equals_string ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousSlotExpression ;
-            owl:onProperty linkml:all_of ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:SlotDefinition ;
-            owl:onProperty linkml:all_members ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:equals_expression ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousSlotExpression ;
-            owl:onProperty linkml:exactly_one_of ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty linkml:maximum_value ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:AnonymousSlotExpression ;
-            owl:onProperty linkml:has_member ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Element ;
-            owl:onProperty linkml:range ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty linkml:maximum_cardinality ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:AnonymousClassExpression ;
-            owl:onProperty linkml:range_expression ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:AnonymousSlotExpression ;
             owl:onProperty linkml:any_of ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousSlotExpression ;
-            owl:onProperty linkml:none_of ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:equals_string_in ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:required ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:recommended ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty linkml:minimum_value ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty linkml:minimum_cardinality ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -1172,7 +1120,66 @@ linkml:SlotExpression a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
+            owl:onProperty linkml:minimum_cardinality ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty linkml:minimum_value ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:equals_string_in ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:AnonymousSlotExpression ;
+            owl:onProperty linkml:has_member ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:SlotDefinition ;
+            owl:onProperty linkml:all_members ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Element ;
+            owl:onProperty linkml:range ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
             owl:onProperty linkml:equals_number ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:equals_expression ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty linkml:maximum_value ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousSlotExpression ;
+            owl:onProperty linkml:exactly_one_of ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:equals_string ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:recommended ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:required ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousSlotExpression ;
+            owl:onProperty linkml:none_of ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousSlotExpression ;
+            owl:onProperty linkml:all_of ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:AnonymousClassExpression ;
+            owl:onProperty linkml:range_expression ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty linkml:maximum_cardinality ],
         linkml:Expression,
         linkml:mixin ;
     skos:definition "an expression that constrains the range of values a slot can take" .
@@ -1181,30 +1188,30 @@ linkml:UniqueKey a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "unique_key" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty rdfs:seeAlso ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AltDescription ;
-            owl:onProperty linkml:alt_descriptions ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:todos ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty dcterms:source ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty skos:definition ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Uriorcurie ;
-            owl:onProperty linkml:deprecated_element_has_exact_replacement ],
+            owl:onProperty dcterms:source ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Annotation ;
+            owl:onProperty linkml:annotations ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty linkml:deprecated ],
+            owl:onProperty linkml:imported_from ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Extension ;
+            owl:onProperty linkml:extensions ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Example ;
+            owl:onProperty linkml:examples ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:title ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:SubsetDefinition ;
             owl:onProperty OIO:inSubset ],
@@ -1219,32 +1226,32 @@ linkml:UniqueKey a owl:Class,
             owl:onClass linkml:Uriorcurie ;
             owl:onProperty linkml:deprecated_element_has_possible_replacement ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Example ;
-            owl:onProperty linkml:examples ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Annotation ;
-            owl:onProperty linkml:annotations ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty skos:note ],
+            owl:onProperty linkml:todos ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Extension ;
-            owl:onProperty linkml:extensions ],
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty rdfs:seeAlso ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:deprecated ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Uri ;
             owl:onProperty skos:inScheme ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:imported_from ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty dcterms:title ],
+            owl:allValuesFrom linkml:AltDescription ;
+            owl:onProperty linkml:alt_descriptions ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty skos:editorialNote ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty linkml:deprecated_element_has_exact_replacement ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty skos:note ],
         linkml:Annotatable,
         linkml:CommonMetadata,
         linkml:Extensible ;
@@ -1344,12 +1351,12 @@ linkml:LocalName a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "local_name" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty skos:altLabel ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:onClass linkml:Ncname ;
             owl:onProperty linkml:local_name_source ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty skos:altLabel ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "an attributed label" .
 
@@ -1374,12 +1381,12 @@ linkml:Prefix a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "prefix" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:Uri ;
-            owl:onProperty linkml:prefix_reference ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
             owl:onClass linkml:Ncname ;
             owl:onProperty linkml:prefix_prefix ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Uri ;
+            owl:onProperty linkml:prefix_reference ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "prefix URI tuple" .
 
@@ -1402,25 +1409,68 @@ linkml:PermissibleValue a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "permissible_value" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:imported_from ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:SubsetDefinition ;
             owl:onProperty OIO:inSubset ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Example ;
             owl:onProperty linkml:examples ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:todos ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:imported_from ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty linkml:deprecated_element_has_exact_replacement ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AltDescription ;
+            owl:onProperty linkml:alt_descriptions ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty skos:editorialNote ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Annotation ;
+            owl:onProperty linkml:annotations ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Extension ;
+            owl:onProperty linkml:extensions ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty skos:note ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:deprecated ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uri ;
+            owl:onProperty skos:inScheme ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty skos:definition ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty linkml:deprecated_element_has_possible_replacement ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Uriorcurie ;
             owl:onProperty linkml:meaning ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty dcterms:source ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:text ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty rdfs:seeAlso ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:todos ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:PermissibleValue ;
@@ -1430,51 +1480,8 @@ linkml:PermissibleValue a owl:Class,
             owl:onClass linkml:String ;
             owl:onProperty dcterms:title ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty linkml:deprecated_element_has_exact_replacement ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty skos:note ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uri ;
-            owl:onProperty skos:inScheme ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty linkml:deprecated_element_has_possible_replacement ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty skos:definition ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AltDescription ;
-            owl:onProperty linkml:alt_descriptions ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty dcterms:source ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Annotation ;
-            owl:onProperty linkml:annotations ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:PermissibleValue ;
             owl:onProperty linkml:mixins ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:text ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:deprecated ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty rdfs:seeAlso ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Extension ;
-            owl:onProperty linkml:extensions ],
         linkml:Annotatable,
         linkml:CommonMetadata,
         linkml:Extensible ;
@@ -1598,47 +1605,29 @@ linkml:CommonMetadata a owl:Class,
     rdfs:label "common_metadata" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uri ;
-            owl:onProperty skos:inScheme ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty linkml:deprecated_element_has_exact_replacement ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty skos:definition ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty skos:note ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Uriorcurie ;
             owl:onProperty linkml:deprecated_element_has_possible_replacement ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:todos ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty rdfs:seeAlso ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Example ;
-            owl:onProperty linkml:examples ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:imported_from ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty skos:editorialNote ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty dcterms:source ],
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:deprecated ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uri ;
+            owl:onProperty skos:inScheme ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty dcterms:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Example ;
+            owl:onProperty linkml:examples ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty skos:note ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:AltDescription ;
             owl:onProperty linkml:alt_descriptions ],
@@ -1646,9 +1635,27 @@ linkml:CommonMetadata a owl:Class,
             owl:allValuesFrom linkml:SubsetDefinition ;
             owl:onProperty OIO:inSubset ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:todos ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty linkml:deprecated ],
+            owl:onProperty skos:definition ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty dcterms:source ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:imported_from ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty rdfs:seeAlso ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty linkml:deprecated_element_has_exact_replacement ],
         linkml:mixin ;
     skos:definition "Generic metadata shared across definitions" .
 
@@ -1657,23 +1664,23 @@ linkml:EnumDefinition a owl:Class,
     rdfs:label "enum_definition" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <http://UNKNOWN.org/pv_formula_options> ;
-            owl:onProperty linkml:pv_formula ],
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:code_set_tag ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:code_set_version ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:code_set_tag ],
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty linkml:code_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:PermissibleValue ;
             owl:onProperty linkml:permissible_values ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty linkml:code_set ],
+            owl:onClass <http://UNKNOWN.org/pv_formula_options> ;
+            owl:onProperty linkml:pv_formula ],
         linkml:Element ;
     skos:closeMatch qb:HierarchicalCodeList ;
     skos:definition "List of values that constrain the range of a slot" .
@@ -1682,30 +1689,27 @@ linkml:PathExpression a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "path_expression" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty skos:note ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Extension ;
-            owl:onProperty linkml:extensions ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:deprecated ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:PathExpression ;
-            owl:onProperty linkml:followed_by ],
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty linkml:deprecated_element_has_possible_replacement ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Uri ;
             owl:onProperty skos:inScheme ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty skos:definition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:PathExpression ;
+            owl:onProperty linkml:any_of ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:todos ],
+            owl:onProperty skos:note ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:AnonymousClassExpression ;
-            owl:onProperty linkml:range_expression ],
+            owl:onClass linkml:PathExpression ;
+            owl:onProperty linkml:followed_by ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -1715,59 +1719,62 @@ linkml:PathExpression a owl:Class,
             owl:onClass linkml:Uriorcurie ;
             owl:onProperty dcterms:source ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty skos:definition ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:reversed ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:AltDescription ;
             owl:onProperty linkml:alt_descriptions ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty linkml:deprecated_element_has_possible_replacement ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:SlotDefinition ;
-            owl:onProperty linkml:traverse ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty linkml:deprecated_element_has_exact_replacement ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty rdfs:seeAlso ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty dcterms:title ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty skos:editorialNote ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:PathExpression ;
-            owl:onProperty linkml:all_of ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:PathExpression ;
-            owl:onProperty linkml:none_of ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:SubsetDefinition ;
-            owl:onProperty OIO:inSubset ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:PathExpression ;
-            owl:onProperty linkml:exactly_one_of ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Annotation ;
             owl:onProperty linkml:annotations ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:PathExpression ;
-            owl:onProperty linkml:any_of ],
+            owl:onProperty linkml:all_of ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:SubsetDefinition ;
+            owl:onProperty OIO:inSubset ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:todos ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Example ;
             owl:onProperty linkml:examples ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Extension ;
+            owl:onProperty linkml:extensions ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty rdfs:seeAlso ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty linkml:deprecated_element_has_exact_replacement ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:deprecated ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:PathExpression ;
+            owl:onProperty linkml:none_of ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty skos:editorialNote ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:SlotDefinition ;
+            owl:onProperty linkml:traverse ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:PathExpression ;
+            owl:onProperty linkml:exactly_one_of ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:reversed ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:title ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:AnonymousClassExpression ;
+            owl:onProperty linkml:range_expression ],
         linkml:Annotatable,
         linkml:CommonMetadata,
         linkml:Expression,
@@ -1908,11 +1915,18 @@ linkml:TypeDefinition a owl:Class,
     rdfs:label "type_definition" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty linkml:maximum_value ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:base ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:AnonymousTypeExpression ;
-            owl:onProperty linkml:any_of ],
+            owl:onProperty linkml:exactly_one_of ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousTypeExpression ;
+            owl:onProperty linkml:none_of ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Uriorcurie ;
@@ -1920,21 +1934,14 @@ linkml:TypeDefinition a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
-            owl:onProperty linkml:maximum_value ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousTypeExpression ;
-            owl:onProperty linkml:none_of ],
+            owl:onProperty linkml:equals_number ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:equals_string ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty linkml:minimum_value ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:AnonymousTypeExpression ;
-            owl:onProperty linkml:exactly_one_of ],
+            owl:onProperty linkml:all_of ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -1943,6 +1950,9 @@ linkml:TypeDefinition a owl:Class,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:repr ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousTypeExpression ;
+            owl:onProperty linkml:any_of ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:TypeDefinition ;
@@ -1953,10 +1963,7 @@ linkml:TypeDefinition a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
-            owl:onProperty linkml:equals_number ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousTypeExpression ;
-            owl:onProperty linkml:all_of ],
+            owl:onProperty linkml:minimum_value ],
         linkml:Element,
         linkml:TypeExpression ;
     skos:definition "A data type definition." .
@@ -1978,39 +1985,39 @@ linkml:AnonymousTypeExpression a owl:Class,
     rdfs:label "anonymous_type_expression" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom linkml:AnonymousTypeExpression ;
-            owl:onProperty linkml:all_of ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:pattern ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousTypeExpression ;
             owl:onProperty linkml:any_of ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
-            owl:onProperty linkml:equals_number ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
             owl:onProperty linkml:maximum_value ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousTypeExpression ;
-            owl:onProperty linkml:exactly_one_of ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:equals_string_in ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
             owl:onProperty linkml:minimum_value ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:AnonymousTypeExpression ;
-            owl:onProperty linkml:none_of ],
+            owl:onProperty linkml:exactly_one_of ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:pattern ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty linkml:equals_number ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousTypeExpression ;
+            owl:onProperty linkml:all_of ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:equals_string ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:equals_string_in ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousTypeExpression ;
+            owl:onProperty linkml:none_of ],
         linkml:TypeExpression .
 
 linkml:Extension a owl:Class,
@@ -2035,14 +2042,21 @@ linkml:Definition a owl:Class,
     rdfs:seeAlso "https://en.wikipedia.org/wiki/Data_element_definition" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom linkml:Definition ;
+            owl:onProperty linkml:apply_to ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Definition ;
             owl:onProperty linkml:mixins ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:string_serialization ],
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty bibo:status ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Uriorcurie ;
             owl:onProperty linkml:values_from ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:abstract ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Definition ;
@@ -2050,7 +2064,19 @@ linkml:Definition a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Uriorcurie ;
-            owl:onProperty bibo:status ],
+            owl:onProperty pav:createdBy ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:mixin ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:string_serialization ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Datetime ;
+            owl:onProperty pav:lastUpdatedOn ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Datetime ;
@@ -2059,25 +2085,6 @@ linkml:Definition a owl:Class,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Uriorcurie ;
             owl:onProperty oslc:modifiedBy ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:mixin ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Definition ;
-            owl:onProperty linkml:apply_to ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Datetime ;
-            owl:onProperty pav:lastUpdatedOn ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:abstract ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty pav:createdBy ],
         linkml:Element ;
     skos:definition "base class for definitions" .
 
@@ -2086,74 +2093,74 @@ linkml:AnonymousSlotExpression a owl:Class,
     rdfs:label "anonymous_slot_expression" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:AnonymousSlotExpression ;
-            owl:onProperty linkml:has_member ],
+            owl:onClass linkml:Integer ;
+            owl:onProperty linkml:maximum_value ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:required ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:equals_string ],
+            owl:onClass linkml:Integer ;
+            owl:onProperty linkml:minimum_value ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:AnonymousSlotExpression ;
-            owl:onProperty linkml:exactly_one_of ],
+            owl:onProperty linkml:any_of ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty linkml:equals_number ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:AnonymousSlotExpression ;
             owl:onProperty linkml:all_of ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty linkml:pattern ],
+            owl:onProperty linkml:equals_expression ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty linkml:equals_number ],
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:equals_string ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty linkml:minimum_cardinality ],
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:required ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:AnonymousClassExpression ;
+            owl:onProperty linkml:range_expression ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Element ;
             owl:onProperty linkml:range ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:equals_string_in ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:SlotDefinition ;
-            owl:onProperty linkml:all_members ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty linkml:minimum_value ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
             owl:onProperty linkml:maximum_cardinality ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:AnonymousSlotExpression ;
+            owl:onProperty linkml:has_member ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Boolean ;
             owl:onProperty linkml:recommended ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:AnonymousClassExpression ;
-            owl:onProperty linkml:range_expression ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousSlotExpression ;
-            owl:onProperty linkml:any_of ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:equals_string_in ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:AnonymousSlotExpression ;
             owl:onProperty linkml:none_of ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty linkml:equals_expression ],
+            owl:onProperty linkml:pattern ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:SlotDefinition ;
+            owl:onProperty linkml:all_members ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Integer ;
-            owl:onProperty linkml:maximum_value ],
+            owl:onProperty linkml:minimum_cardinality ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousSlotExpression ;
+            owl:onProperty linkml:exactly_one_of ],
         linkml:AnonymousExpression,
         linkml:SlotExpression .
 
@@ -2164,30 +2171,66 @@ linkml:SchemaDefinition a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty linkml:source_file ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:metamodel_version ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty linkml:imports ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Ncname ;
-            owl:onProperty linkml:emit_prefixes ],
+            owl:onProperty pav:version ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty linkml:default_curi_maps ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Prefix ;
-            owl:onProperty linkml:prefixes ],
+            owl:allValuesFrom linkml:SubsetDefinition ;
+            owl:onProperty linkml:subsets ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:EnumDefinition ;
-            owl:onProperty linkml:enums ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:license ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:TypeDefinition ;
+            owl:onProperty linkml:default_range ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Datetime ;
             owl:onProperty linkml:generation_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:EnumDefinition ;
+            owl:onProperty linkml:enums ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Prefix ;
+            owl:onProperty linkml:prefixes ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty linkml:source_file_size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Ncname ;
+            owl:onProperty linkml:emit_prefixes ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:slot_names_unique ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:TypeDefinition ;
+            owl:onProperty linkml:types ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty linkml:imports ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:default_prefix ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:SlotDefinition ;
+            owl:onProperty linkml:slots ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:source_file ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:ClassDefinition ;
+            owl:onProperty linkml:classes ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Datetime ;
+            owl:onProperty linkml:source_file_date ],
         [ a owl:Restriction ;
             owl:onClass linkml:Uri ;
             owl:onProperty linkml:id ;
@@ -2195,43 +2238,11 @@ linkml:SchemaDefinition a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty dcterms:license ],
+            owl:onProperty linkml:metamodel_version ],
         [ a owl:Restriction ;
             owl:onClass linkml:Ncname ;
             owl:onProperty rdfs:label ;
             owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:default_prefix ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:SubsetDefinition ;
-            owl:onProperty linkml:subsets ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:ClassDefinition ;
-            owl:onProperty linkml:classes ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:TypeDefinition ;
-            owl:onProperty linkml:default_range ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:SlotDefinition ;
-            owl:onProperty linkml:slots ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty pav:version ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Datetime ;
-            owl:onProperty linkml:source_file_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:TypeDefinition ;
-            owl:onProperty linkml:types ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty linkml:source_file_size ],
         linkml:Element ;
     skos:altLabel "data dictionary" ;
     skos:definition "a collection of subset, type, slot and class definitions" .
@@ -2240,24 +2251,24 @@ linkml:AnonymousClassExpression a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "anonymous_class_expression" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousClassExpression ;
+            owl:onProperty linkml:any_of ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Definition ;
             owl:onProperty linkml:is_a ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:AnonymousClassExpression ;
-            owl:onProperty linkml:none_of ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousClassExpression ;
-            owl:onProperty linkml:exactly_one_of ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousClassExpression ;
-            owl:onProperty linkml:any_of ],
+            owl:onProperty linkml:all_of ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:SlotDefinition ;
             owl:onProperty linkml:slot_conditions ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:AnonymousClassExpression ;
-            owl:onProperty linkml:all_of ],
+            owl:onProperty linkml:exactly_one_of ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousClassExpression ;
+            owl:onProperty linkml:none_of ],
         linkml:AnonymousExpression,
         linkml:ClassExpression .
 
@@ -2266,107 +2277,107 @@ linkml:Element a owl:Class,
     rdfs:label "element" ;
     rdfs:seeAlso "https://en.wikipedia.org/wiki/Data_element" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:todos ],
+            owl:allValuesFrom linkml:AltDescription ;
+            owl:onProperty linkml:alt_descriptions ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty skos:closeMatch ],
+            owl:allValuesFrom linkml:Ncname ;
+            owl:onProperty linkml:id_prefixes ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty skos:altLabel ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty linkml:deprecated_element_has_exact_replacement ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Example ;
             owl:onProperty linkml:examples ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty skos:relatedMatch ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty rdfs:label ;
-            owl:qualifiedCardinality 1 ],
+            owl:onProperty skos:mappingRelation ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Uriorcurie ;
-            owl:onProperty dcterms:source ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty skos:exactMatch ],
+            owl:onProperty linkml:definition_uri ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Uriorcurie ;
             owl:onProperty skos:broadMatch ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:LocalName ;
+            owl:onProperty linkml:local_names ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Uriorcurie ;
             owl:onProperty rdfs:seeAlso ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty linkml:deprecated_element_has_possible_replacement ],
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:deprecated ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Extension ;
             owl:onProperty linkml:extensions ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty skos:note ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AltDescription ;
-            owl:onProperty linkml:alt_descriptions ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty dcterms:title ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty sh1:order ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:todos ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Uriorcurie ;
-            owl:onProperty linkml:deprecated_element_has_exact_replacement ],
+            owl:onProperty dcterms:source ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty skos:closeMatch ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty linkml:deprecated_element_has_possible_replacement ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty skos:relatedMatch ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty skos:narrowMatch ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:conformsTo ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty rdfs:label ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:SubsetDefinition ;
+            owl:onProperty OIO:inSubset ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty skos:definition ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty sh1:order ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Annotation ;
-            owl:onProperty linkml:annotations ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Uri ;
             owl:onProperty skos:inScheme ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty linkml:definition_uri ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty dcterms:conformsTo ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:imported_from ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:LocalName ;
-            owl:onProperty linkml:local_names ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:SubsetDefinition ;
-            owl:onProperty OIO:inSubset ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty skos:mappingRelation ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:deprecated ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty skos:narrowMatch ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty skos:note ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty skos:editorialNote ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Ncname ;
-            owl:onProperty linkml:id_prefixes ],
+            owl:allValuesFrom linkml:Annotation ;
+            owl:onProperty linkml:annotations ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty skos:altLabel ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty skos:exactMatch ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:imported_from ],
         linkml:Annotatable,
         linkml:CommonMetadata,
         linkml:Extensible ;
@@ -2376,70 +2387,74 @@ linkml:ClassDefinition a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "class_definition" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:tree_root ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:ClassRule ;
-            owl:onProperty sh1:rule ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:ClassDefinition ;
-            owl:onProperty linkml:union_of ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousClassExpression ;
-            owl:onProperty linkml:none_of ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousClassExpression ;
-            owl:onProperty linkml:any_of ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty rdfs:subClassOf ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:SlotDefinition ;
-            owl:onProperty linkml:slot_conditions ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:SlotDefinition ;
-            owl:onProperty linkml:attributes ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:SlotDefinition ;
-            owl:onProperty linkml:defining_slots ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:SlotDefinition ;
-            owl:onProperty linkml:slot_usage ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousClassExpression ;
-            owl:onProperty linkml:classification_rules ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:ClassDefinition ;
-            owl:onProperty linkml:apply_to ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:UniqueKey ;
-            owl:onProperty linkml:unique_keys ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:SlotDefinition ;
             owl:onProperty linkml:slots ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:slot_names_unique ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:AnonymousClassExpression ;
             owl:onProperty linkml:all_of ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:ClassDefinition ;
-            owl:onProperty linkml:is_a ],
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:tree_root ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:AnonymousClassExpression ;
             owl:onProperty linkml:exactly_one_of ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:ClassDefinition ;
+            owl:onProperty linkml:union_of ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty linkml:class_uri ],
+            owl:onClass linkml:ClassDefinition ;
+            owl:onProperty linkml:is_a ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Boolean ;
             owl:onProperty linkml:represents_relationship ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:ClassRule ;
+            owl:onProperty sh1:rule ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty linkml:class_uri ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousClassExpression ;
+            owl:onProperty linkml:any_of ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:ClassDefinition ;
             owl:onProperty linkml:mixins ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:SlotDefinition ;
+            owl:onProperty linkml:slot_usage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:SlotDefinition ;
+            owl:onProperty linkml:defining_slots ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty rdfs:subClassOf ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:ClassDefinition ;
+            owl:onProperty linkml:apply_to ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:SlotDefinition ;
+            owl:onProperty linkml:attributes ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousClassExpression ;
+            owl:onProperty linkml:none_of ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:SlotDefinition ;
+            owl:onProperty linkml:slot_conditions ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:UniqueKey ;
+            owl:onProperty linkml:unique_keys ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousClassExpression ;
+            owl:onProperty linkml:classification_rules ],
         linkml:ClassExpression,
         linkml:Definition ;
     skos:altLabel "message",
@@ -2455,28 +2470,44 @@ linkml:SlotDefinition a owl:Class,
     rdfs:label "slot_definition" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:SlotDefinition ;
-            owl:onProperty owl:inverseOf ],
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:reflexive ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousSlotExpression ;
+            owl:onProperty linkml:exactly_one_of ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:AnonymousSlotExpression ;
+            owl:onProperty linkml:has_member ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:ClassDefinition ;
+            owl:onProperty linkml:domain_of ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty skos:prefLabel ],
+            owl:onProperty linkml:role ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <http://UNKNOWN.org/relational_role_enum> ;
+            owl:onProperty linkml:relational_role ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousSlotExpression ;
+            owl:onProperty linkml:all_of ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:ClassDefinition ;
+            owl:onProperty linkml:domain ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousSlotExpression ;
+            owl:onProperty linkml:none_of ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:usage_slot_name ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:SlotDefinition ;
-            owl:onProperty rdfs:subPropertyOf ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:key ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty linkml:minimum_value ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty linkml:maximum_cardinality ],
+            owl:onProperty sh1:group ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Boolean ;
@@ -2484,44 +2515,11 @@ linkml:SlotDefinition a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:is_class_field ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
             owl:onProperty linkml:designates_type ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:AnonymousClassExpression ;
-            owl:onProperty linkml:range_expression ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:SlotDefinition ;
-            owl:onProperty linkml:apply_to ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:transitive ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousSlotExpression ;
-            owl:onProperty linkml:any_of ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty linkml:equals_number ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:role ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Element ;
-            owl:onProperty linkml:range ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml:equals_string_in ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:inlined_as_list ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:multivalued ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Definition ;
@@ -2532,107 +2530,27 @@ linkml:SlotDefinition a owl:Class,
             owl:onProperty linkml:symmetric ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:ClassDefinition ;
-            owl:onProperty linkml:domain ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty linkml:maximum_value ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Integer ;
-            owl:onProperty linkml:minimum_cardinality ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty skos:altLabel ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousSlotExpression ;
-            owl:onProperty linkml:none_of ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:PathExpression ;
-            owl:onProperty linkml:path_rule ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:usage_slot_name ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:locally_reflexive ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousSlotExpression ;
-            owl:onProperty linkml:all_of ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:AnonymousSlotExpression ;
-            owl:onProperty linkml:has_member ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:identifier ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:SlotDefinition ;
-            owl:onProperty linkml:transitive_form_of ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:ClassDefinition ;
-            owl:onProperty linkml:domain_of ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty linkml:slot_uri ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <http://UNKNOWN.org/relational_role_enum> ;
-            owl:onProperty linkml:relational_role ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:required ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:equals_expression ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:is_usage_slot ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:SlotDefinition ;
-            owl:onProperty linkml:mixins ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:reflexive ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:SlotDefinition ;
             owl:onProperty linkml:reflexive_transitive_form_of ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:AnonymousSlotExpression ;
-            owl:onProperty linkml:exactly_one_of ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty linkml:readonly ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:irreflexive ],
+            owl:onClass linkml:Integer ;
+            owl:onProperty linkml:maximum_cardinality ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:SlotDefinition ;
-            owl:onProperty sh1:group ],
+            owl:onProperty rdfs:subPropertyOf ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:equals_string ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:SlotDefinition ;
             owl:onProperty linkml:is_a ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:inlined ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml:equals_string_in ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Boolean ;
@@ -2640,30 +2558,127 @@ linkml:SlotDefinition a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:asymmetric ],
+            owl:onProperty linkml:recommended ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:ifabsent ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:asymmetric ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty linkml:equals_number ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:multivalued ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:inlined_as_list ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:transitive ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:AnonymousClassExpression ;
+            owl:onProperty linkml:range_expression ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty linkml:equals_string ],
+            owl:onProperty linkml:readonly ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:AnonymousSlotExpression ;
+            owl:onProperty linkml:any_of ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:is_class_field ],
+            owl:onProperty linkml:irreflexive ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:SlotDefinition ;
+            owl:onProperty linkml:transitive_form_of ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Boolean ;
-            owl:onProperty linkml:recommended ],
+            owl:onProperty linkml:is_usage_slot ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:locally_reflexive ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty linkml:pattern ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty linkml:equals_expression ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty skos:prefLabel ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty linkml:minimum_cardinality ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:SlotDefinition ;
+            owl:onProperty linkml:apply_to ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty linkml:maximum_value ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:identifier ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty linkml:minimum_value ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:inlined ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:SlotDefinition ;
             owl:onProperty linkml:all_members ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty skos:altLabel ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:SlotDefinition ;
+            owl:onProperty owl:inverseOf ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:SlotDefinition ;
+            owl:onProperty linkml:mixins ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:required ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Element ;
+            owl:onProperty linkml:range ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty linkml:slot_uri ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Boolean ;
+            owl:onProperty linkml:key ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:PathExpression ;
+            owl:onProperty linkml:path_rule ],
         linkml:Definition,
         linkml:SlotExpression ;
     skos:altLabel "attribute",

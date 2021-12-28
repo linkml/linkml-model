@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-12-28T22:40:46
+# Generation date: 2021-12-28T23:40:30
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -365,6 +365,7 @@ class SchemaDefinition(Element):
     source_file_date: Optional[Union[str, XSDDateTime]] = None
     source_file_size: Optional[int] = None
     generation_date: Optional[Union[str, XSDDateTime]] = None
+    slot_names_unique: Optional[Union[bool, Bool]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.default_prefix is None:
@@ -429,6 +430,9 @@ class SchemaDefinition(Element):
 
         if self.generation_date is not None and not isinstance(self.generation_date, XSDDateTime):
             self.generation_date = XSDDateTime(self.generation_date)
+
+        if self.slot_names_unique is not None and not isinstance(self.slot_names_unique, Bool):
+            self.slot_names_unique = Bool(self.slot_names_unique)
 
         super().__post_init__(**kwargs)
 
@@ -1536,6 +1540,7 @@ class ClassDefinition(Definition):
     unique_keys: Optional[Union[Union[dict, "UniqueKey"], List[Union[dict, "UniqueKey"]]]] = empty_list()
     rules: Optional[Union[Union[dict, "ClassRule"], List[Union[dict, "ClassRule"]]]] = empty_list()
     classification_rules: Optional[Union[Union[dict, AnonymousClassExpression], List[Union[dict, AnonymousClassExpression]]]] = empty_list()
+    slot_names_unique: Optional[Union[bool, Bool]] = None
     represents_relationship: Optional[Union[bool, Bool]] = None
     is_a: Optional[Union[str, ClassDefinitionName]] = None
     mixins: Optional[Union[Union[str, ClassDefinitionName], List[Union[str, ClassDefinitionName]]]] = empty_list()
@@ -1586,6 +1591,9 @@ class ClassDefinition(Definition):
         if not isinstance(self.classification_rules, list):
             self.classification_rules = [self.classification_rules] if self.classification_rules is not None else []
         self.classification_rules = [v if isinstance(v, AnonymousClassExpression) else AnonymousClassExpression(**as_dict(v)) for v in self.classification_rules]
+
+        if self.slot_names_unique is not None and not isinstance(self.slot_names_unique, Bool):
+            self.slot_names_unique = Bool(self.slot_names_unique)
 
         if self.represents_relationship is not None and not isinstance(self.represents_relationship, Bool):
             self.represents_relationship = Bool(self.represents_relationship)
