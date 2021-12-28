@@ -389,6 +389,35 @@ type LocalName
     localNameValue: String!
   }
 
+type PathExpression implements Expression, Extensible, Annotatable, CommonMetadata
+  {
+    followedBy: PathExpression
+    noneOf: [PathExpression]
+    anyOf: [PathExpression]
+    allOf: [PathExpression]
+    exactlyOneOf: [PathExpression]
+    reversed: Boolean
+    traverse: SlotDefinition
+    rangeExpression: AnonymousClassExpression
+    extensions: [Extension]
+    annotations: [Annotation]
+    description: String
+    altDescriptions: [AltDescription]
+    title: String
+    deprecated: String
+    todos: [String]
+    notes: [String]
+    comments: [String]
+    examples: [Example]
+    inSubset: [SubsetDefinition]
+    fromSchema: Uri
+    importedFrom: String
+    source: Uriorcurie
+    seeAlso: [Uriorcurie]
+    deprecatedElementHasExactReplacement: Uriorcurie
+    deprecatedElementHasPossibleReplacement: Uriorcurie
+  }
+
 type PermissibleValue implements Extensible, Annotatable, CommonMetadata
   {
     text: String!
@@ -531,14 +560,22 @@ type SlotDefinition implements SlotExpression
     domainOf: [ClassDefinition]
     subpropertyOf: SlotDefinition
     symmetric: Boolean
+    reflexive: Boolean
+    locallyReflexive: Boolean
+    irreflexive: Boolean
+    asymmetric: Boolean
+    transitive: Boolean
     inverse: SlotDefinition
     isClassField: Boolean
+    transitiveFormOf: SlotDefinition
+    reflexiveTransitiveFormOf: SlotDefinition
     role: String
     isUsageSlot: Boolean
     usageSlotName: String
     relationalRole: RelationalRoleEnum
     slotGroup: SlotDefinition
     isGroupingSlot: Boolean
+    pathRule: PathExpression
     isA: SlotDefinition
     mixins: [SlotDefinition]
     applyTo: [SlotDefinition]

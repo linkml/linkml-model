@@ -152,6 +152,7 @@
 </ul>
 </li>
 <li><a href="LocalName/">LocalName</a> - an attributed label</li>
+<li><a href="PathExpression/">PathExpression</a> - An expression that describes an abstract path from an object to another through a sequence of slot lookups</li>
 <li><a href="PermissibleValue/">PermissibleValue</a> - a permissible value, accompanied by intended text and an optional mapping to a concept URI</li>
 <li><a href="Prefix/">Prefix</a> - prefix URI tuple</li>
 <li><a href="UniqueKey/">UniqueKey</a> - a collection of slots whose values uniquely identify an instance of a class</li>
@@ -161,7 +162,7 @@
 <li><a href="Annotatable/">Annotatable</a> - mixin for classes that support annotations</li>
 <li><a href="ClassExpression/">ClassExpression</a> - A boolean expression that can be used to dynamically determine membership of a class</li>
 <li><a href="CommonMetadata/">CommonMetadata</a> - Generic metadata shared across definitions</li>
-<li><a href="Expression/">Expression</a> - todo<ul>
+<li><a href="Expression/">Expression</a> - general mixin for any class that can represent some form of expression<ul>
 <li><a href="SlotExpression/">SlotExpression</a> - an expression that constrains the range of values a slot can take</li>
 <li><a href="TypeExpression/">TypeExpression</a></li>
 </ul>
@@ -189,24 +190,28 @@
 <li><a href="boolean_slot/">boolean_slot</a> - A grouping of slots that expression a boolean operator over a list of operands<ul>
 <li><a href="all_of/">all_of</a> - holds if all of the expressions hold<ul>
 <li><a href="class_expression_all_of/">class_expression➞all_of</a></li>
+<li><a href="path_expression_all_of/">path_expression➞all_of</a></li>
 <li><a href="slot_expression_all_of/">slot_expression➞all_of</a></li>
 <li><a href="type_expression_all_of/">type_expression➞all_of</a></li>
 </ul>
 </li>
 <li><a href="any_of/">any_of</a> - holds if at least one of the expressions hold<ul>
 <li><a href="class_expression_any_of/">class_expression➞any_of</a></li>
+<li><a href="path_expression_any_of/">path_expression➞any_of</a></li>
 <li><a href="slot_expression_any_of/">slot_expression➞any_of</a></li>
 <li><a href="type_expression_any_of/">type_expression➞any_of</a></li>
 </ul>
 </li>
 <li><a href="exactly_one_of/">exactly_one_of</a> - holds if only one of the expressions hold<ul>
 <li><a href="class_expression_exactly_one_of/">class_expression➞exactly_one_of</a></li>
+<li><a href="path_expression_exactly_one_of/">path_expression➞exactly_one_of</a></li>
 <li><a href="slot_expression_exactly_one_of/">slot_expression➞exactly_one_of</a></li>
 <li><a href="type_expression_exactly_one_of/">type_expression➞exactly_one_of</a></li>
 </ul>
 </li>
 <li><a href="none_of/">none_of</a> - holds if none of the expressions hold<ul>
 <li><a href="class_expression_none_of/">class_expression➞none_of</a></li>
+<li><a href="path_expression_none_of/">path_expression➞none_of</a></li>
 <li><a href="slot_expression_none_of/">slot_expression➞none_of</a></li>
 <li><a href="type_expression_none_of/">type_expression➞none_of</a></li>
 </ul>
@@ -244,6 +249,10 @@
 <li><a href="extension_value/">extension➞value</a> - the actual annotation</li>
 <li><a href="extensions/">extensions</a> - a tag/text tuple attached to an arbitrary element<ul>
 <li><a href="annotations/">annotations</a> - a collection of tag/text tuples with the semantics of OWL Annotation</li>
+</ul>
+</li>
+<li><a href="followed_by/">followed_by</a> - in a sequential list, this indicates the next member<ul>
+<li><a href="path_expression_followed_by/">path_expression➞followed_by</a></li>
 </ul>
 </li>
 <li><a href="from_schema/">from_schema</a> - id of the schema that defined the element</li>
@@ -309,6 +318,7 @@
 <li><a href="notes/">notes</a> - editorial notes about an element intended for internal consumption</li>
 <li><a href="open_world/">open_world</a> - if true, the the postconditions may be omitted in instance data, but it is valid for an inference engine to add these</li>
 <li><a href="owner/">owner</a> - the "owner" of the slot. It is the class if it appears in the slots list, otherwise the declaring slot</li>
+<li><a href="path_rule/">path_rule</a> - a rule for inferring a slot assignment based on evaluating a path through a sequence of slot assignemnts</li>
 <li><a href="pattern/">pattern</a> - the string value of the slot must conform to this regular expression</li>
 <li><a href="permissible_values/">permissible_values</a> - A list of possible values for a slot range</li>
 <li><a href="postconditions/">postconditions</a> - an expression that must hold for an instance of the class, if the preconditions hold</li>
@@ -323,7 +333,8 @@
 <li><a href="readonly/">readonly</a> - If present, slot is read only.  Text explains why</li>
 <li><a href="recommended/">recommended</a> - true means that the slot should be present in the loaded definition, but this is not required</li>
 <li><a href="relational_logical_characteristic/">relational_logical_characteristic</a> - A property of a slot that pertains to its logical properties<ul>
-<li><a href="antisymmetric/">antisymmetric</a> - If s is antisymmetric, and i.s=v where i is different from v, v.s cannot have value i</li>
+<li><a href="asymmetric/">asymmetric</a> - If s is antisymmetric, and i.s=v where i is different from v, v.s cannot have value i</li>
+<li><a href="irreflexive/">irreflexive</a> - If s is irreflexive, then there exists no i such i.s=i</li>
 <li><a href="locally_reflexive/">locally_reflexive</a> - If s is locally_reflexive, then i.s=i for all instances i where s if a class slot for the type of i</li>
 <li><a href="reflexive/">reflexive</a> - If s is reflexive, then i.s=i for all instances i</li>
 <li><a href="symmetric/">symmetric</a> - If s is symmetric, and i.s=v, then v.s=i</li>
@@ -334,6 +345,7 @@
 <li><a href="repr/">repr</a> - the name of the python object that implements this type definition</li>
 <li><a href="represents_relationship/">represents_relationship</a> - true if this class represents a relationship rather than an entity</li>
 <li><a href="required/">required</a> - true means that the slot must be present in the loaded definition</li>
+<li><a href="reversed/">reversed</a> - true if the slot is to be inversed</li>
 <li><a href="role/">role</a> - the role played by the slot range</li>
 <li><a href="rules/">rules</a> - the collection of rules that apply to all members of this class<ul>
 <li><a href="class_definition_rules/">class_definition➞rules</a></li>
@@ -363,6 +375,7 @@
 <li><a href="reflexive_transitive_form_of/">reflexive_transitive_form_of</a> - transitive_form_of including the reflexive case</li>
 </ul>
 </li>
+<li><a href="traverse/">traverse</a> - the slot to traverse</li>
 <li><a href="tree_root/">tree_root</a> - indicator that this is the root class in tree structures</li>
 <li><a href="type_uri/">type_definition➞uri</a> - The uri that defines the possible values for the type definition</li>
 <li><a href="typeof/">typeof</a> - Names a parent type</li>
@@ -487,5 +500,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2021-12-23 20:23:25.382461+00:00
+Build Date UTC : 2021-12-28 22:39:01.072316+00:00
 -->

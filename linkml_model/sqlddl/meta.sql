@@ -354,14 +354,22 @@ CREATE TABLE slot_definition (
 	domain_of TEXT, 
 	subproperty_of TEXT, 
 	symmetric BOOLEAN, 
+	reflexive BOOLEAN, 
+	locally_reflexive BOOLEAN, 
+	irreflexive BOOLEAN, 
+	asymmetric BOOLEAN, 
+	transitive BOOLEAN, 
 	inverse TEXT, 
 	is_class_field BOOLEAN, 
+	transitive_form_of TEXT, 
+	reflexive_transitive_form_of TEXT, 
 	role TEXT, 
 	is_usage_slot BOOLEAN, 
 	usage_slot_name TEXT, 
 	relational_role VARCHAR(10), 
 	slot_group TEXT, 
 	is_grouping_slot BOOLEAN, 
+	path_rule TEXT, 
 	is_a TEXT, 
 	mixins TEXT, 
 	apply_to TEXT, 
@@ -387,6 +395,8 @@ CREATE TABLE slot_definition (
 	FOREIGN KEY(domain) REFERENCES class_definition (name), 
 	FOREIGN KEY(subproperty_of) REFERENCES slot_definition (name), 
 	FOREIGN KEY(inverse) REFERENCES slot_definition (name), 
+	FOREIGN KEY(transitive_form_of) REFERENCES slot_definition (name), 
+	FOREIGN KEY(reflexive_transitive_form_of) REFERENCES slot_definition (name), 
 	FOREIGN KEY(slot_group) REFERENCES slot_definition (name), 
 	FOREIGN KEY(is_a) REFERENCES slot_definition (name)
 );
@@ -736,6 +746,36 @@ CREATE TABLE enum_definition (
 	schema_definition_name TEXT, 
 	PRIMARY KEY (name), 
 	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (name)
+);
+
+CREATE TABLE path_expression (
+	followed_by TEXT, 
+	none_of TEXT, 
+	any_of TEXT, 
+	all_of TEXT, 
+	exactly_one_of TEXT, 
+	reversed BOOLEAN, 
+	traverse TEXT, 
+	range_expression TEXT, 
+	extensions TEXT, 
+	annotations TEXT, 
+	description TEXT, 
+	alt_descriptions TEXT, 
+	title TEXT, 
+	deprecated TEXT, 
+	todos TEXT, 
+	notes TEXT, 
+	comments TEXT, 
+	examples TEXT, 
+	in_subset TEXT, 
+	from_schema TEXT, 
+	imported_from TEXT, 
+	source TEXT, 
+	see_also TEXT, 
+	deprecated_element_has_exact_replacement TEXT, 
+	deprecated_element_has_possible_replacement TEXT, 
+	PRIMARY KEY (followed_by, none_of, any_of, all_of, exactly_one_of, reversed, traverse, range_expression, extensions, annotations, description, alt_descriptions, title, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, source, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement), 
+	FOREIGN KEY(traverse) REFERENCES slot_definition (name)
 );
 
 CREATE TABLE prefix (

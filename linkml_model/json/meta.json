@@ -1309,6 +1309,7 @@
       "inlined": true,
       "owner": "SlotExpression",
       "domain_of": [
+        "PathExpression",
         "SlotExpression"
       ],
       "range": "AnonymousClassExpression",
@@ -1343,6 +1344,7 @@
       "owner": "ClassExpression",
       "domain_of": [
         "TypeExpression",
+        "PathExpression",
         "SlotExpression",
         "ClassExpression"
       ],
@@ -1365,6 +1367,7 @@
       "owner": "ClassExpression",
       "domain_of": [
         "TypeExpression",
+        "PathExpression",
         "SlotExpression",
         "ClassExpression"
       ],
@@ -1387,6 +1390,7 @@
       "owner": "ClassExpression",
       "domain_of": [
         "TypeExpression",
+        "PathExpression",
         "SlotExpression",
         "ClassExpression"
       ],
@@ -1409,6 +1413,7 @@
       "owner": "ClassExpression",
       "domain_of": [
         "TypeExpression",
+        "PathExpression",
         "SlotExpression",
         "ClassExpression"
       ],
@@ -2327,14 +2332,20 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "antisymmetric",
-      "definition_uri": "https://w3id.org/linkml/antisymmetric",
+      "name": "asymmetric",
+      "definition_uri": "https://w3id.org/linkml/asymmetric",
       "description": "If s is antisymmetric, and i.s=v where i is different from v, v.s cannot have value i",
+      "comments": [
+        "asymmetry is the combination of antisymmetry and irreflexivity"
+      ],
       "from_schema": "https://w3id.org/linkml/meta",
       "is_a": "relational_logical_characteristic",
       "domain": "SlotDefinition",
-      "slot_uri": "https://w3id.org/linkml/antisymmetric",
-      "owner": "antisymmetric",
+      "slot_uri": "https://w3id.org/linkml/asymmetric",
+      "owner": "SlotDefinition",
+      "domain_of": [
+        "SlotDefinition"
+      ],
       "range": "boolean",
       "@type": "SlotDefinition"
     },
@@ -2349,7 +2360,25 @@
       "is_a": "relational_logical_characteristic",
       "domain": "SlotDefinition",
       "slot_uri": "https://w3id.org/linkml/reflexive",
-      "owner": "reflexive",
+      "owner": "SlotDefinition",
+      "domain_of": [
+        "SlotDefinition"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "irreflexive",
+      "definition_uri": "https://w3id.org/linkml/irreflexive",
+      "description": "If s is irreflexive, then there exists no i such i.s=i",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "relational_logical_characteristic",
+      "domain": "SlotDefinition",
+      "slot_uri": "https://w3id.org/linkml/irreflexive",
+      "owner": "SlotDefinition",
+      "domain_of": [
+        "SlotDefinition"
+      ],
       "range": "boolean",
       "@type": "SlotDefinition"
     },
@@ -2361,7 +2390,10 @@
       "is_a": "relational_logical_characteristic",
       "domain": "SlotDefinition",
       "slot_uri": "https://w3id.org/linkml/locally_reflexive",
-      "owner": "locally_reflexive",
+      "owner": "SlotDefinition",
+      "domain_of": [
+        "SlotDefinition"
+      ],
       "range": "boolean",
       "@type": "SlotDefinition"
     },
@@ -2373,7 +2405,10 @@
       "is_a": "relational_logical_characteristic",
       "domain": "SlotDefinition",
       "slot_uri": "https://w3id.org/linkml/transitive",
-      "owner": "transitive",
+      "owner": "SlotDefinition",
+      "domain_of": [
+        "SlotDefinition"
+      ],
       "range": "boolean",
       "@type": "SlotDefinition"
     },
@@ -2386,6 +2421,10 @@
       ],
       "from_schema": "https://w3id.org/linkml/meta",
       "slot_uri": "https://w3id.org/linkml/transitive_form_of",
+      "owner": "SlotDefinition",
+      "domain_of": [
+        "SlotDefinition"
+      ],
       "range": "SlotDefinition",
       "@type": "SlotDefinition"
     },
@@ -2396,6 +2435,10 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "is_a": "transitive_form_of",
       "slot_uri": "https://w3id.org/linkml/reflexive_transitive_form_of",
+      "owner": "SlotDefinition",
+      "domain_of": [
+        "SlotDefinition"
+      ],
       "range": "SlotDefinition",
       "@type": "SlotDefinition"
     },
@@ -2823,6 +2866,61 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "followed_by",
+      "definition_uri": "https://w3id.org/linkml/followed_by",
+      "description": "in a sequential list, this indicates the next member",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "slot_uri": "https://w3id.org/linkml/followed_by",
+      "inlined": true,
+      "owner": "PathExpression",
+      "domain_of": [
+        "PathExpression"
+      ],
+      "range": "Expression",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "reversed",
+      "definition_uri": "https://w3id.org/linkml/reversed",
+      "description": "true if the slot is to be inversed",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "slot_uri": "https://w3id.org/linkml/reversed",
+      "owner": "PathExpression",
+      "domain_of": [
+        "PathExpression"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "traverse",
+      "definition_uri": "https://w3id.org/linkml/traverse",
+      "description": "the slot to traverse",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "slot_uri": "https://w3id.org/linkml/traverse",
+      "owner": "PathExpression",
+      "domain_of": [
+        "PathExpression"
+      ],
+      "range": "SlotDefinition",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "path_rule",
+      "definition_uri": "https://w3id.org/linkml/path_rule",
+      "description": "a rule for inferring a slot assignment based on evaluating a path through a sequence of slot assignemnts",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "SlotDefinition",
+      "slot_uri": "https://w3id.org/linkml/path_rule",
+      "inlined": true,
+      "owner": "SlotDefinition",
+      "domain_of": [
+        "SlotDefinition"
+      ],
+      "range": "PathExpression",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "represents_relationship",
       "definition_uri": "https://w3id.org/linkml/represents_relationship",
       "aliases": [
@@ -2836,7 +2934,8 @@
       ],
       "from_schema": "https://w3id.org/linkml/meta",
       "see_also": [
-        "rdf:Statement"
+        "rdf:Statement",
+        "https://patterns.dataincubator.org/book/qualified-relation.html"
       ],
       "status": "testing",
       "domain": "ClassDefinition",
@@ -3046,6 +3145,7 @@
       "imported_from": "linkml:extensions",
       "domain": "Extension",
       "slot_uri": "https://w3id.org/linkml/tag",
+      "key": true,
       "alias": "tag",
       "owner": "Extension",
       "domain_of": [
@@ -3217,6 +3317,121 @@
       "is_usage_slot": true,
       "usage_slot_name": "none_of",
       "range": "AnonymousTypeExpression",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "path_expression_followed_by",
+      "definition_uri": "https://w3id.org/linkml/followed_by",
+      "description": "in a sequential list, this indicates the next member",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "followed_by",
+      "domain": "PathExpression",
+      "slot_uri": "https://w3id.org/linkml/followed_by",
+      "inlined": true,
+      "alias": "followed_by",
+      "owner": "PathExpression",
+      "domain_of": [
+        "PathExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "followed_by",
+      "range": "PathExpression",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "path_expression_any_of",
+      "definition_uri": "https://w3id.org/linkml/any_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/or"
+      ],
+      "description": "holds if at least one of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "any_of",
+      "status": "testing",
+      "domain": "PathExpression",
+      "slot_uri": "https://w3id.org/linkml/any_of",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "any_of",
+      "owner": "PathExpression",
+      "domain_of": [
+        "PathExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "any_of",
+      "range": "PathExpression",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "path_expression_exactly_one_of",
+      "definition_uri": "https://w3id.org/linkml/exactly_one_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/xone"
+      ],
+      "description": "holds if only one of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "exactly_one_of",
+      "status": "testing",
+      "domain": "PathExpression",
+      "slot_uri": "https://w3id.org/linkml/exactly_one_of",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "exactly_one_of",
+      "owner": "PathExpression",
+      "domain_of": [
+        "PathExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "exactly_one_of",
+      "range": "PathExpression",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "path_expression_none_of",
+      "definition_uri": "https://w3id.org/linkml/none_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/not"
+      ],
+      "description": "holds if none of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "none_of",
+      "status": "testing",
+      "domain": "PathExpression",
+      "slot_uri": "https://w3id.org/linkml/none_of",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "none_of",
+      "owner": "PathExpression",
+      "domain_of": [
+        "PathExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "none_of",
+      "range": "PathExpression",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "path_expression_all_of",
+      "definition_uri": "https://w3id.org/linkml/all_of",
+      "exact_mappings": [
+        "https://w3id.org/shacl/and"
+      ],
+      "description": "holds if all of the expressions hold",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "all_of",
+      "status": "testing",
+      "domain": "PathExpression",
+      "slot_uri": "https://w3id.org/linkml/all_of",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "all_of",
+      "owner": "PathExpression",
+      "domain_of": [
+        "PathExpression"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "all_of",
+      "range": "PathExpression",
       "@type": "SlotDefinition"
     },
     {
@@ -4018,7 +4233,7 @@
     {
       "name": "Expression",
       "definition_uri": "https://w3id.org/linkml/Expression",
-      "description": "todo",
+      "description": "general mixin for any class that can represent some form of expression",
       "from_schema": "https://w3id.org/linkml/meta",
       "abstract": true,
       "mixin": true,
@@ -4060,6 +4275,49 @@
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/linkml/AnonymousExpression",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "PathExpression",
+      "definition_uri": "https://w3id.org/linkml/PathExpression",
+      "description": "An expression that describes an abstract path from an object to another through a sequence of slot lookups",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "mixins": [
+        "Expression",
+        "Extensible",
+        "Annotatable",
+        "CommonMetadata"
+      ],
+      "status": "testing",
+      "slots": [
+        "path_expression_followed_by",
+        "path_expression_none_of",
+        "path_expression_any_of",
+        "path_expression_all_of",
+        "path_expression_exactly_one_of",
+        "reversed",
+        "traverse",
+        "range_expression",
+        "extensions",
+        "annotations",
+        "description",
+        "alt_descriptions",
+        "title",
+        "deprecated",
+        "todos",
+        "notes",
+        "comments",
+        "examples",
+        "in_subset",
+        "from_schema",
+        "imported_from",
+        "source",
+        "see_also",
+        "deprecated_element_has_exact_replacement",
+        "deprecated_element_has_possible_replacement"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/PathExpression",
       "@type": "ClassDefinition"
     },
     {
@@ -4223,14 +4481,22 @@
         "domain_of",
         "subproperty_of",
         "symmetric",
+        "reflexive",
+        "locally_reflexive",
+        "irreflexive",
+        "asymmetric",
+        "transitive",
         "inverse",
         "is_class_field",
+        "transitive_form_of",
+        "reflexive_transitive_form_of",
         "role",
         "is_usage_slot",
         "usage_slot_name",
         "relational_role",
         "slot_group",
         "is_grouping_slot",
+        "path_rule",
         "slot_definition_is_a",
         "slot_definition_mixins",
         "slot_definition_apply_to",
@@ -4647,9 +4913,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "meta.yaml",
-  "source_file_date": "2021-12-23T20:21:48",
-  "source_file_size": 49989,
-  "generation_date": "2021-12-23T20:23:36",
+  "source_file_date": "2021-12-28T22:37:26",
+  "source_file_size": 51672,
+  "generation_date": "2021-12-28T22:39:12",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",

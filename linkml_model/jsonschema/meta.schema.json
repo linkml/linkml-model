@@ -44,18 +44,16 @@
          "description": "a tag/value pair with the semantics of OWL Annotation",
          "properties": {
             "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
                },
-               "type": "array"
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
             },
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "tag": {
                "description": "a tag associated with an extension",
@@ -68,6 +66,37 @@
          },
          "required": [
             "tag",
+            "value"
+         ],
+         "title": "Annotation",
+         "type": "object"
+      },
+      "Annotation__identifier_optional": {
+         "additionalProperties": false,
+         "description": "a tag/value pair with the semantics of OWL Annotation",
+         "properties": {
+            "annotations": {
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
+               },
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
+            },
+            "extensions": {
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
+               },
+               "description": "a tag/text tuple attached to an arbitrary element"
+            },
+            "tag": {
+               "description": "a tag associated with an extension",
+               "type": "string"
+            },
+            "value": {
+               "description": "the actual annotation",
+               "type": "string"
+            }
+         },
+         "required": [
             "value"
          ],
          "title": "Annotation",
@@ -90,11 +119,10 @@
                }
             },
             "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
                },
-               "type": "array"
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
             },
             "any_of": {
                "description": "holds if at least one of the expressions hold",
@@ -141,11 +169,10 @@
                "type": "array"
             },
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "from_schema": {
                "description": "id of the schema that defined the element",
@@ -236,11 +263,10 @@
                }
             },
             "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
                },
-               "type": "array"
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
             },
             "any_of": {
                "description": "holds if at least one of the expressions hold",
@@ -306,11 +332,10 @@
                "type": "array"
             },
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "from_schema": {
                "description": "id of the schema that defined the element",
@@ -499,11 +524,10 @@
                }
             },
             "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
                },
-               "type": "array"
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
             },
             "any_of": {
                "description": "holds if at least one of the expressions hold",
@@ -619,11 +643,10 @@
                "type": "array"
             },
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "from_schema": {
                "description": "id of the schema that defined the element",
@@ -842,11 +865,10 @@
                }
             },
             "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
                },
-               "type": "array"
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
             },
             "any_of": {
                "description": "holds if at least one of the expressions hold",
@@ -962,11 +984,10 @@
                "type": "array"
             },
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "from_schema": {
                "description": "id of the schema that defined the element",
@@ -1166,11 +1187,10 @@
                }
             },
             "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
                },
-               "type": "array"
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
             },
             "bidirectional": {
                "description": "in addition to preconditions entailing postconditions, the postconditions entail the preconditions",
@@ -1215,11 +1235,10 @@
                "type": "array"
             },
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "from_schema": {
                "description": "id of the schema that defined the element",
@@ -1302,11 +1321,10 @@
                }
             },
             "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
                },
-               "type": "array"
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
             },
             "broad_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have broader meaning.",
@@ -1380,11 +1398,10 @@
                "type": "array"
             },
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "from_schema": {
                "description": "id of the schema that defined the element",
@@ -1504,11 +1521,10 @@
                }
             },
             "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
                },
-               "type": "array"
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
             },
             "broad_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have broader meaning.",
@@ -1582,11 +1598,10 @@
                "type": "array"
             },
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "from_schema": {
                "description": "id of the schema that defined the element",
@@ -1710,11 +1725,10 @@
          "description": "a tag/value pair used to add non-model information to an entry",
          "properties": {
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "tag": {
                "description": "a tag associated with an extension",
@@ -1727,6 +1741,31 @@
          },
          "required": [
             "tag",
+            "value"
+         ],
+         "title": "Extension",
+         "type": "object"
+      },
+      "Extension__identifier_optional": {
+         "additionalProperties": false,
+         "description": "a tag/value pair used to add non-model information to an entry",
+         "properties": {
+            "extensions": {
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
+               },
+               "description": "a tag/text tuple attached to an arbitrary element"
+            },
+            "tag": {
+               "description": "a tag associated with an extension",
+               "type": "string"
+            },
+            "value": {
+               "description": "the actual annotation",
+               "type": "string"
+            }
+         },
+         "required": [
             "value"
          ],
          "title": "Extension",
@@ -1771,6 +1810,150 @@
          "title": "LocalName",
          "type": "object"
       },
+      "PathExpression": {
+         "additionalProperties": false,
+         "description": "An expression that describes an abstract path from an object to another through a sequence of slot lookups",
+         "properties": {
+            "all_of": {
+               "description": "holds if all of the expressions hold",
+               "items": {
+                  "$ref": "#/$defs/PathExpression"
+               },
+               "type": "array"
+            },
+            "alt_descriptions": {
+               "additionalProperties": {
+                  "$ref": "#/$defs/AltDescription__identifier_optional"
+               }
+            },
+            "annotations": {
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
+               },
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
+            },
+            "any_of": {
+               "description": "holds if at least one of the expressions hold",
+               "items": {
+                  "$ref": "#/$defs/PathExpression"
+               },
+               "type": "array"
+            },
+            "comments": {
+               "description": "notes and comments about an element intended for external consumption",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "deprecated": {
+               "description": "Description of why and when this element will no longer be used",
+               "type": "string"
+            },
+            "deprecated_element_has_exact_replacement": {
+               "description": "When an element is deprecated, it can be automatically replaced by this uri or curie",
+               "type": "string"
+            },
+            "deprecated_element_has_possible_replacement": {
+               "description": "When an element is deprecated, it can be potentially replaced by this uri or curie",
+               "type": "string"
+            },
+            "description": {
+               "description": "a description of the element's purpose and use",
+               "type": "string"
+            },
+            "exactly_one_of": {
+               "description": "holds if only one of the expressions hold",
+               "items": {
+                  "$ref": "#/$defs/PathExpression"
+               },
+               "type": "array"
+            },
+            "examples": {
+               "description": "example usages of an element",
+               "items": {
+                  "$ref": "#/$defs/Example"
+               },
+               "type": "array"
+            },
+            "extensions": {
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
+               },
+               "description": "a tag/text tuple attached to an arbitrary element"
+            },
+            "followed_by": {
+               "$ref": "#/$defs/PathExpression",
+               "description": "in a sequential list, this indicates the next member"
+            },
+            "from_schema": {
+               "description": "id of the schema that defined the element",
+               "type": "string"
+            },
+            "imported_from": {
+               "description": "the imports entry that this element was derived from.  Empty means primary source",
+               "type": "string"
+            },
+            "in_subset": {
+               "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "none_of": {
+               "description": "holds if none of the expressions hold",
+               "items": {
+                  "$ref": "#/$defs/PathExpression"
+               },
+               "type": "array"
+            },
+            "notes": {
+               "description": "editorial notes about an element intended for internal consumption",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "range_expression": {
+               "$ref": "#/$defs/AnonymousClassExpression",
+               "description": "A range that is described as a boolean expression combining existing ranges"
+            },
+            "reversed": {
+               "description": "true if the slot is to be inversed",
+               "type": "boolean"
+            },
+            "see_also": {
+               "description": "a reference",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
+            },
+            "title": {
+               "description": "the official title of the element",
+               "type": "string"
+            },
+            "todos": {
+               "description": "Outstanding issue that needs resolution",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "traverse": {
+               "description": "the slot to traverse",
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "PathExpression",
+         "type": "object"
+      },
       "PermissibleValue": {
          "additionalProperties": false,
          "description": "a permissible value, accompanied by intended text and an optional mapping to a concept URI",
@@ -1781,11 +1964,10 @@
                }
             },
             "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
                },
-               "type": "array"
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
             },
             "comments": {
                "description": "notes and comments about an element intended for external consumption",
@@ -1818,11 +2000,10 @@
                "type": "array"
             },
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "from_schema": {
                "description": "id of the schema that defined the element",
@@ -1903,11 +2084,10 @@
                }
             },
             "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
                },
-               "type": "array"
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
             },
             "comments": {
                "description": "notes and comments about an element intended for external consumption",
@@ -1940,11 +2120,10 @@
                "type": "array"
             },
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "from_schema": {
                "description": "id of the schema that defined the element",
@@ -2101,11 +2280,10 @@
                }
             },
             "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
                },
-               "type": "array"
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
             },
             "broad_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have broader meaning.",
@@ -2201,11 +2379,10 @@
                "type": "array"
             },
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "from_schema": {
                "description": "id of the schema that defined the element",
@@ -2402,11 +2579,10 @@
                }
             },
             "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
                },
-               "type": "array"
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
             },
             "any_of": {
                "description": "holds if at least one of the expressions hold",
@@ -2421,6 +2597,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "asymmetric": {
+               "description": "If s is antisymmetric, and i.s=v where i is different from v, v.s cannot have value i",
+               "type": "boolean"
             },
             "broad_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have broader meaning.",
@@ -2532,11 +2712,10 @@
                "type": "array"
             },
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "from_schema": {
                "description": "id of the schema that defined the element",
@@ -2588,6 +2767,10 @@
                "description": "indicates that any instance of d s r implies that there is also an instance of r s' d",
                "type": "string"
             },
+            "irreflexive": {
+               "description": "If s is irreflexive, then there exists no i such i.s=i",
+               "type": "boolean"
+            },
             "is_a": {
                "description": "specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
                "type": "string"
@@ -2617,6 +2800,10 @@
                "additionalProperties": {
                   "$ref": "#/$defs/LocalName__identifier_optional"
                }
+            },
+            "locally_reflexive": {
+               "description": "If s is locally_reflexive, then i.s=i for all instances i where s if a class slot for the type of i",
+               "type": "boolean"
             },
             "mappings": {
                "description": "A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.",
@@ -2689,6 +2876,10 @@
                "description": "the \"owner\" of the slot. It is the class if it appears in the slots list, otherwise the declaring slot",
                "type": "string"
             },
+            "path_rule": {
+               "$ref": "#/$defs/PathExpression",
+               "description": "a rule for inferring a slot assignment based on evaluating a path through a sequence of slot assignemnts"
+            },
             "pattern": {
                "description": "the string value of the slot must conform to this regular expression",
                "type": "string"
@@ -2712,6 +2903,14 @@
             "recommended": {
                "description": "true means that the slot should be present in the loaded definition, but this is not required",
                "type": "boolean"
+            },
+            "reflexive": {
+               "description": "If s is reflexive, then i.s=i for all instances i",
+               "type": "boolean"
+            },
+            "reflexive_transitive_form_of": {
+               "description": "transitive_form_of including the reflexive case",
+               "type": "string"
             },
             "related_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have related meaning.",
@@ -2781,6 +2980,14 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "transitive": {
+               "description": "If s is transitive, and i.s=z, and s.s=j, then i.s=j",
+               "type": "boolean"
+            },
+            "transitive_form_of": {
+               "description": "If s transitive_form_of d, then (1) s holds whenever d holds (2) s is transitive (3) d holds whenever s holds and there are no intermediates, and s is not reflexive",
+               "type": "string"
             },
             "usage_slot_name": {
                "description": "The name of the slot referenced in the slot_usage",
@@ -2837,11 +3044,10 @@
                }
             },
             "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
                },
-               "type": "array"
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
             },
             "any_of": {
                "description": "holds if at least one of the expressions hold",
@@ -2856,6 +3062,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "asymmetric": {
+               "description": "If s is antisymmetric, and i.s=v where i is different from v, v.s cannot have value i",
+               "type": "boolean"
             },
             "broad_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have broader meaning.",
@@ -2967,11 +3177,10 @@
                "type": "array"
             },
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "from_schema": {
                "description": "id of the schema that defined the element",
@@ -3023,6 +3232,10 @@
                "description": "indicates that any instance of d s r implies that there is also an instance of r s' d",
                "type": "string"
             },
+            "irreflexive": {
+               "description": "If s is irreflexive, then there exists no i such i.s=i",
+               "type": "boolean"
+            },
             "is_a": {
                "description": "specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
                "type": "string"
@@ -3052,6 +3265,10 @@
                "additionalProperties": {
                   "$ref": "#/$defs/LocalName__identifier_optional"
                }
+            },
+            "locally_reflexive": {
+               "description": "If s is locally_reflexive, then i.s=i for all instances i where s if a class slot for the type of i",
+               "type": "boolean"
             },
             "mappings": {
                "description": "A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.",
@@ -3124,6 +3341,10 @@
                "description": "the \"owner\" of the slot. It is the class if it appears in the slots list, otherwise the declaring slot",
                "type": "string"
             },
+            "path_rule": {
+               "$ref": "#/$defs/PathExpression",
+               "description": "a rule for inferring a slot assignment based on evaluating a path through a sequence of slot assignemnts"
+            },
             "pattern": {
                "description": "the string value of the slot must conform to this regular expression",
                "type": "string"
@@ -3147,6 +3368,14 @@
             "recommended": {
                "description": "true means that the slot should be present in the loaded definition, but this is not required",
                "type": "boolean"
+            },
+            "reflexive": {
+               "description": "If s is reflexive, then i.s=i for all instances i",
+               "type": "boolean"
+            },
+            "reflexive_transitive_form_of": {
+               "description": "transitive_form_of including the reflexive case",
+               "type": "string"
             },
             "related_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have related meaning.",
@@ -3217,6 +3446,14 @@
                },
                "type": "array"
             },
+            "transitive": {
+               "description": "If s is transitive, and i.s=z, and s.s=j, then i.s=j",
+               "type": "boolean"
+            },
+            "transitive_form_of": {
+               "description": "If s transitive_form_of d, then (1) s holds whenever d holds (2) s is transitive (3) d holds whenever s holds and there are no intermediates, and s is not reflexive",
+               "type": "string"
+            },
             "usage_slot_name": {
                "description": "The name of the slot referenced in the slot_usage",
                "type": "string"
@@ -3249,11 +3486,10 @@
                }
             },
             "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
                },
-               "type": "array"
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
             },
             "broad_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have broader meaning.",
@@ -3315,11 +3551,10 @@
                "type": "array"
             },
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "from_schema": {
                "description": "id of the schema that defined the element",
@@ -3429,11 +3664,10 @@
                }
             },
             "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
                },
-               "type": "array"
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
             },
             "broad_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have broader meaning.",
@@ -3495,11 +3729,10 @@
                "type": "array"
             },
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "from_schema": {
                "description": "id of the schema that defined the element",
@@ -3614,11 +3847,10 @@
                }
             },
             "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
                },
-               "type": "array"
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
             },
             "any_of": {
                "description": "holds if at least one of the expressions hold",
@@ -3713,11 +3945,10 @@
                "type": "array"
             },
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "from_schema": {
                "description": "id of the schema that defined the element",
@@ -3865,11 +4096,10 @@
                }
             },
             "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
                },
-               "type": "array"
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
             },
             "any_of": {
                "description": "holds if at least one of the expressions hold",
@@ -3964,11 +4194,10 @@
                "type": "array"
             },
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "from_schema": {
                "description": "id of the schema that defined the element",
@@ -4101,11 +4330,10 @@
                }
             },
             "annotations": {
-               "description": "a collection of tag/text tuples with the semantics of OWL Annotation",
-               "items": {
-                  "$ref": "#/$defs/Annotation"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
                },
-               "type": "array"
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
             },
             "comments": {
                "description": "notes and comments about an element intended for external consumption",
@@ -4138,11 +4366,10 @@
                "type": "array"
             },
             "extensions": {
-               "description": "a tag/text tuple attached to an arbitrary element",
-               "items": {
-                  "$ref": "#/$defs/Extension"
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
                },
-               "type": "array"
+               "description": "a tag/text tuple attached to an arbitrary element"
             },
             "from_schema": {
                "description": "id of the schema that defined the element",
