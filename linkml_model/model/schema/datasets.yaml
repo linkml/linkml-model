@@ -10,7 +10,7 @@ see_also:
 
 prefixes:
   linkml: https://w3id.org/linkml/
-  datasets: https://w3id.org/linkml/report
+  datasets: https://w3id.org/linkml/datasets/
   skos: http://www.w3.org/2004/02/skos/core#
   pav: http://purl.org/pav/
   schema: http://schema.org/
@@ -21,6 +21,9 @@ prefixes:
   csvw: http://www.w3.org/ns/csvw#
   dcat: http://www.w3.org/ns/dcat#
   mediatypes: https://www.iana.org/assignments/media-types/
+  comp: http://semweb.mmlab.be/ns/rml-compression#
+  rmlt: http://semweb.mmlab.be/ns/rml-target#
+  rfc: https://www.rfc-editor.org/rfc/
 
 default_prefix: datasets
 default_range: string
@@ -170,8 +173,11 @@ slots:
   format:
     range: FormatEnum
     slot_uri: dcterms:format
+    exact_mappings:
+      - rmlt:serialization
 
   compression:
+    slot_uri: rmlt:compression
 
   encoding:
   hash:
@@ -345,3 +351,23 @@ enums:
         meaning: formats:TriG
       YAML:
       JSON:
+        meaning: rfc:rfc7159
+
+  CompressionEnum:
+    exact_mappings:
+      - comp:Compression
+    permissible_values:
+      gzip:
+        meaning: comp:gzip
+        description: Represents GZip file compression.        
+      zip:
+        meaning: comp:zip
+        description: Represents Zip file compression.
+     targzip:
+        meaning: comp:targzip
+        description: Represents TarGZip file compression.
+      tarxz:
+        meaning: comp:tarxz
+        description: Represents TarXz file compression.
+
+      
