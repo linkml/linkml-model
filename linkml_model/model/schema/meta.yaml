@@ -672,6 +672,12 @@ slots:
     exact_mappings:
       - owl:hasKey
 
+  unique_key_name:
+    domain: unique_key
+    key: true
+    required: true
+    description: name of the unique key
+    
   unique_key_slots:
     domain: unique_key
     multivalued: true
@@ -1742,6 +1748,7 @@ classes:
       - annotatable
       - common_metadata
     slots:
+      - unique_key_name
       - unique_key_slots
 
 
