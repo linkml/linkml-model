@@ -154,6 +154,7 @@
 <li><a href="LocalName/">LocalName</a> - an attributed label</li>
 <li><a href="PermissibleValue/">PermissibleValue</a> - a permissible value, accompanied by intended text and an optional mapping to a concept URI</li>
 <li><a href="Prefix/">Prefix</a> - prefix URI tuple</li>
+<li><a href="StructuredAlias/">StructuredAlias</a> - object that contains meta data about a synonym or alias including where it came from (source) and its scope (narrow, broad, etc.)</li>
 <li><a href="UniqueKey/">UniqueKey</a> - a collection of slots whose values uniquely identify an instance of a class</li>
 </ul>
 <h3 id="mixins">Mixins</h3>
@@ -303,6 +304,7 @@
 <li><a href="multivalued/">multivalued</a> - true means that slot can have more than one value</li>
 <li><a href="name/">name</a> - the unique name of the element within the context of the schema.  Name is combined with the default prefix to form the globally unique subject of the target class.<ul>
 <li><a href="schema_definition_name/">schema_definition➞name</a></li>
+<li><a href="structured_alias_name/">structured_alias➞name</a> - inherits name from element class, but in the structured_alias slot, this name represents a skos:altLabel</li>
 </ul>
 </li>
 <li><a href="notes/">notes</a> - editorial notes about an element intended for internal consumption</li>
@@ -341,6 +343,7 @@
 <li><a href="source_file_size/">source_file_size</a> - size in bytes of the source of the schema</li>
 <li><a href="status/">status</a> - status of the element</li>
 <li><a href="string_serialization/">string_serialization</a> - Used on a slot that stores the string serialization of the containing object. The syntax follows python formatted strings, with slot names enclosed in {}s. These are expanded using the values of those slots.</li>
+<li><a href="structured_aliases/">structured_aliases</a> - A list of structured_alias objects.</li>
 <li><a href="subclass_of/">subclass_of</a> - rdfs:subClassOf to be emitted in OWL generation</li>
 <li><a href="subproperty_of/">subproperty_of</a> - Ontology property which this slot is a subproperty of</li>
 <li><a href="subsets/">subsets</a> - list of subsets referenced in this model</li>
@@ -349,6 +352,7 @@
 <li><a href="title/">title</a> - the official title of the element</li>
 <li><a href="todos/">todos</a> - Outstanding issue that needs resolution</li>
 <li><a href="tree_root/">tree_root</a> - indicator that this is the root class in tree structures</li>
+<li><a href="type/">type</a> - The relatedness of an alias to the element it is aliasing.  type can be: narrow, broad, exact, related, close, etc.</li>
 <li><a href="type_uri/">type_definition➞uri</a> - The uri that defines the possible values for the type definition</li>
 <li><a href="typeof/">typeof</a> - Names a parent type</li>
 <li><a href="types/">types</a> - data types used in the model</li>
@@ -374,6 +378,7 @@
 <ul>
 <li><a href="presence_enum/">presence_enum</a> - enumeration of conditions by which a slot value should be set</li>
 <li><a href="pv_formula_options/">pv_formula_options</a> - The formula used to generate the set of permissible values from the code_set values</li>
+<li><a href="type_enum/">type_enum</a></li>
 </ul>
 <h3 id="subsets">Subsets</h3>
 <ul>
@@ -471,5 +476,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2021-12-20 21:36:13.149067+00:00
+Build Date UTC : 2021-12-21 17:30:48.519898+00:00
 -->

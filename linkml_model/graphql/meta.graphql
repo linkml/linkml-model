@@ -133,6 +133,7 @@ type ClassDefinition implements ClassExpression
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
+    structuredAliases: [StructuredAlias]
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -254,6 +255,7 @@ interface Definition
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
+    structuredAliases: [StructuredAlias]
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -299,6 +301,7 @@ type Element implements Extensible, Annotatable, CommonMetadata
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
+    structuredAliases: [StructuredAlias]
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -332,6 +335,7 @@ type EnumDefinition
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
+    structuredAliases: [StructuredAlias]
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -428,6 +432,7 @@ type SchemaDefinition
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
+    structuredAliases: [StructuredAlias]
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -481,6 +486,7 @@ type SlotDefinition implements SlotExpression
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
+    structuredAliases: [StructuredAlias]
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -576,6 +582,13 @@ interface SlotExpression
     allOf: [AnonymousSlotExpression]
   }
 
+type StructuredAlias
+  {
+    name: String!
+    source: Uriorcurie
+    type: TypeEnum
+  }
+
 type SubsetDefinition
   {
     name: String!
@@ -590,6 +603,7 @@ type SubsetDefinition
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
+    structuredAliases: [StructuredAlias]
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -623,6 +637,7 @@ type TypeDefinition implements TypeExpression
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
+    structuredAliases: [StructuredAlias]
     extensions: [Extension]
     annotations: [Annotation]
     description: String

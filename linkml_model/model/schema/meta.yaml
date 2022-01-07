@@ -221,7 +221,21 @@ slots:
     slot_uri: bibo:status
     examples:
       - value: "bibo:draft"
-      
+
+  alias_name:
+    range: string
+    required: true
+    exact_mappings: skos:altLabel
+    description: >-
+      inherits name from element class, but in the alias_definition class, this name represents
+      a skos:altLabel
+
+  alias_type:
+    range: alias_type_enum
+    description: >-
+      The relatedness of an alias to the element it is aliasing.  alias_scope can be: narrow, broad, exact,
+      related, close, etc.
+
   source:
     domain: element
     range: uriorcurie
@@ -1364,9 +1378,9 @@ classes:
       object that contains meta data about a synonym or alias including where it came from (source)
       and its scope (narrow, broad, etc.)
     slots:
-      - name
+      - alias_name
       - source
-      - type
+      - alias_type
     slot_usage:
       name:
         required: true
@@ -1647,7 +1661,7 @@ enums:
       PRESENT:
       ABSENT:
 
-  type_enum:
+  alias_type_enum:
     permissible_values:
       narrow:
         meaning: skos:narrowMatch
