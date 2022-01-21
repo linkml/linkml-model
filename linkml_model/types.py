@@ -1,5 +1,5 @@
 # Auto generated from types.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-12-20T21:37:57
+# Generation date: 2021-12-28T23:40:22
 # Schema: types
 #
 # id: https://w3id.org/linkml/types

@@ -133,7 +133,7 @@ type ClassDefinition implements ClassExpression
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
-    structuredAliases: [StructuredAlias]
+    precedence: Integer
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -171,6 +171,8 @@ type ClassDefinition implements ClassExpression
     uniqueKeys: [UniqueKey]
     rules: [ClassRule]
     classificationRules: [AnonymousClassExpression]
+    slotNamesUnique: Boolean
+    representsRelationship: Boolean
     isA: ClassDefinition
     mixins: [ClassDefinition]
     applyTo: [ClassDefinition]
@@ -255,7 +257,7 @@ interface Definition
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
-    structuredAliases: [StructuredAlias]
+    precedence: Integer
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -301,7 +303,7 @@ type Element implements Extensible, Annotatable, CommonMetadata
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
-    structuredAliases: [StructuredAlias]
+    precedence: Integer
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -335,7 +337,7 @@ type EnumDefinition
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
-    structuredAliases: [StructuredAlias]
+    precedence: Integer
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -388,6 +390,35 @@ type LocalName
     localNameValue: String!
   }
 
+type PathExpression implements Expression, Extensible, Annotatable, CommonMetadata
+  {
+    followedBy: PathExpression
+    noneOf: [PathExpression]
+    anyOf: [PathExpression]
+    allOf: [PathExpression]
+    exactlyOneOf: [PathExpression]
+    reversed: Boolean
+    traverse: SlotDefinition
+    rangeExpression: AnonymousClassExpression
+    extensions: [Extension]
+    annotations: [Annotation]
+    description: String
+    altDescriptions: [AltDescription]
+    title: String
+    deprecated: String
+    todos: [String]
+    notes: [String]
+    comments: [String]
+    examples: [Example]
+    inSubset: [SubsetDefinition]
+    fromSchema: Uri
+    importedFrom: String
+    source: Uriorcurie
+    seeAlso: [Uriorcurie]
+    deprecatedElementHasExactReplacement: Uriorcurie
+    deprecatedElementHasPossibleReplacement: Uriorcurie
+  }
+
 type PermissibleValue implements Extensible, Annotatable, CommonMetadata
   {
     text: String!
@@ -432,7 +463,7 @@ type SchemaDefinition
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
-    structuredAliases: [StructuredAlias]
+    precedence: Integer
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -469,6 +500,7 @@ type SchemaDefinition
     sourceFileDate: Datetime
     sourceFileSize: Integer
     generationDate: Datetime
+    slotNamesUnique: Boolean
     name: Ncname!
   }
 
@@ -486,7 +518,7 @@ type SlotDefinition implements SlotExpression
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
-    structuredAliases: [StructuredAlias]
+    precedence: Integer
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -530,11 +562,22 @@ type SlotDefinition implements SlotExpression
     domainOf: [ClassDefinition]
     subpropertyOf: SlotDefinition
     symmetric: Boolean
+    reflexive: Boolean
+    locallyReflexive: Boolean
+    irreflexive: Boolean
+    asymmetric: Boolean
+    transitive: Boolean
     inverse: SlotDefinition
     isClassField: Boolean
+    transitiveFormOf: SlotDefinition
+    reflexiveTransitiveFormOf: SlotDefinition
     role: String
     isUsageSlot: Boolean
     usageSlotName: String
+    relationalRole: RelationalRoleEnum
+    slotGroup: SlotDefinition
+    isGroupingSlot: Boolean
+    pathRule: PathExpression
     isA: SlotDefinition
     mixins: [SlotDefinition]
     applyTo: [SlotDefinition]
@@ -603,7 +646,7 @@ type SubsetDefinition
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
-    structuredAliases: [StructuredAlias]
+    precedence: Integer
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -637,7 +680,7 @@ type TypeDefinition implements TypeExpression
     relatedMappings: [Uriorcurie]
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
-    structuredAliases: [StructuredAlias]
+    precedence: Integer
     extensions: [Extension]
     annotations: [Annotation]
     description: String

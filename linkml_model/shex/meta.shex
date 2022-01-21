@@ -1,14 +1,14 @@
 BASE <https://w3id.org/linkml/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX pav: <http://purl.org/pav/>
 PREFIX oslc: <http://open-services.net/ns/core#>
 PREFIX bibo: <http://purl.org/ontology/bibo/>
-PREFIX sh: <https://w3id.org/shacl/>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX sh1: <https://w3id.org/shacl/>
 PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
 
 
@@ -61,7 +61,7 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           rdf:type [ <Annotatable> ] ? ;
           <annotations> @<Annotation> *
        ) ;
-       rdf:type [ <Annotation> ] ?
+       rdf:type [ <Annotation> ]
     )
 }
 
@@ -176,8 +176,10 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           <defining_slots> @<SlotDefinition> * ;
           <tree_root> @<Boolean> ? ;
           <unique_keys> @<UniqueKey> * ;
-          sh:rule @<ClassRule> * ;
+          sh1:rule @<ClassRule> * ;
           <classification_rules> @<AnonymousClassExpression> * ;
+          <slot_names_unique> @<Boolean> ? ;
+          <represents_relationship> @<Boolean> ? ;
           <mixins> @<ClassDefinition> * ;
           <apply_to> @<ClassDefinition> * ;
           <any_of> @<AnonymousClassExpression> * ;
@@ -218,13 +220,13 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           rdf:type [ <Annotatable> ] ? ;
           &<CommonMetadata_tes> ;
           rdf:type [ <CommonMetadata> ] ? ;
-          sh:condition @<AnonymousClassExpression> ? ;
+          sh1:condition @<AnonymousClassExpression> ? ;
           <postconditions> @<AnonymousClassExpression> ? ;
           <elseconditions> @<AnonymousClassExpression> ? ;
           <bidirectional> @<Boolean> ? ;
           <open_world> @<Boolean> ? ;
-          sh:order @<Integer> ? ;
-          sh:deactivated @<Boolean> ? ;
+          sh1:order @<Integer> ? ;
+          sh1:deactivated @<Boolean> ? ;
           <extensions> @<Extension> * ;
           <annotations> @<Annotation> * ;
           skos:definition @<String> ? ;
@@ -313,6 +315,7 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:relatedMatch @<Uriorcurie> * ;
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
+          sh1:order @<Integer> ? ;
           <extensions> @<Extension> * ;
           <annotations> @<Annotation> * ;
           skos:definition @<String> ? ;
@@ -378,7 +381,7 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
              <value> @<String> ;
              <extensions> @<Extension> *
           ) ;
-          rdf:type [ <Extension> ] ?
+          rdf:type [ <Extension> ]
        )
     } OR @<Annotation>
 )
@@ -388,6 +391,45 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:altLabel @<String>
        ) ;
        rdf:type [ <LocalName> ]
+    )
+}
+
+<PathExpression> CLOSED {
+    (  $<PathExpression_tes> (  &<Expression_tes> ;
+          rdf:type [ <Expression> ] ? ;
+          &<Extensible_tes> ;
+          rdf:type [ <Extensible> ] ? ;
+          &<Annotatable_tes> ;
+          rdf:type [ <Annotatable> ] ? ;
+          &<CommonMetadata_tes> ;
+          rdf:type [ <CommonMetadata> ] ? ;
+          <followed_by> @<PathExpression> ? ;
+          <none_of> @<PathExpression> * ;
+          <any_of> @<PathExpression> * ;
+          <all_of> @<PathExpression> * ;
+          <exactly_one_of> @<PathExpression> * ;
+          <reversed> @<Boolean> ? ;
+          <traverse> @<SlotDefinition> ? ;
+          <range_expression> @<AnonymousClassExpression> ? ;
+          <extensions> @<Extension> * ;
+          <annotations> @<Annotation> * ;
+          skos:definition @<String> ? ;
+          <alt_descriptions> @<AltDescription> * ;
+          dcterms:title @<String> ? ;
+          <deprecated> @<String> ? ;
+          <todos> @<String> * ;
+          skos:editorialNote @<String> * ;
+          skos:note @<String> * ;
+          <examples> @<Example> * ;
+          oboInOwl:inSubset @<SubsetDefinition> * ;
+          skos:inScheme @<Uri> ? ;
+          <imported_from> @<String> ? ;
+          dcterms:source @<Uriorcurie> ? ;
+          rdfs:seeAlso @<Uriorcurie> * ;
+          <deprecated_element_has_exact_replacement> @<Uriorcurie> ? ;
+          <deprecated_element_has_possible_replacement> @<Uriorcurie> ?
+       ) ;
+       rdf:type [ <PathExpression> ] ?
     )
 }
 
@@ -451,7 +493,8 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           <source_file> @<String> ? ;
           <source_file_date> @<Datetime> ? ;
           <source_file_size> @<Integer> ? ;
-          <generation_date> @<Datetime> ?
+          <generation_date> @<Datetime> ? ;
+          <slot_names_unique> @<Boolean> ?
        ) ;
        rdf:type [ <SchemaDefinition> ]
     )
@@ -479,11 +522,22 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           <domain_of> @<ClassDefinition> * ;
           rdfs:subPropertyOf @<SlotDefinition> ? ;
           <symmetric> @<Boolean> ? ;
+          <reflexive> @<Boolean> ? ;
+          <locally_reflexive> @<Boolean> ? ;
+          <irreflexive> @<Boolean> ? ;
+          <asymmetric> @<Boolean> ? ;
+          <transitive> @<Boolean> ? ;
           owl:inverseOf @<SlotDefinition> ? ;
           <is_class_field> @<Boolean> ? ;
+          <transitive_form_of> @<SlotDefinition> ? ;
+          <reflexive_transitive_form_of> @<SlotDefinition> ? ;
           <role> @<String> ? ;
           <is_usage_slot> @<Boolean> ? ;
           <usage_slot_name> @<String> ? ;
+          <relational_role> @<RelationalRoleEnum> ? ;
+          sh1:group @<SlotDefinition> ? ;
+          <is_grouping_slot> @<Boolean> ? ;
+          <path_rule> @<PathExpression> ? ;
           <mixins> @<SlotDefinition> * ;
           <apply_to> @<SlotDefinition> * ;
           <range> @<Element> ? ;

@@ -48,6 +48,11 @@ slots:
     range: int
   encodes:
     range: SeqFeature
+  owns:
+    range: Product
+    multivalued: true
+  manufactured_by:
+    range: Organization
   
   analyte:
     required: true
@@ -64,14 +69,17 @@ slots:
     abstract: true
   parents:
     is_a: familial_relationships
+    irreflexive: true
   ancestors:
     is_a: familial_relationships
+    transitive_form_of: parents
   children:
     is_a: familial_relationships
     inverse: parents
   descendants:
     is_a: familial_relationships
     inverse: ancestors
+    transitive_form_of: children
 
     
 #==================================
@@ -147,7 +155,24 @@ classes:
       - ancestors
       - children
       - descendants
+      - owns
     rules:
+      - preconditions:
+          slot_conditions:
+            age:
+              maximum_value: 18
+        postconditions:
+          none_of:
+            - slot_conditions:
+                owns:
+                  range_expression:
+                    is_a: Car
+        description: Only an adult can be owner of a car.
+        #annotations:
+        #  OCL: "context Person inv: self.age<18 implies self.cars->isEmpty()"
+        see_also:
+          - https://en.wikipedia.org/wiki/Object_Constraint_Language#Alternatives
+          
       - postconditions:
           slot_conditions:
             fiction_status:
@@ -168,16 +193,52 @@ classes:
                         any_of:
                           - equals_string: Narnia
                           - equals_string: Lilliput
+                            
       - postconditions:
           slot_conditions:
             employer_name:
               equals_expression: "employer/name"
+              
       - postconditions:
           slot_conditions:
             ancestors:
               has_member:
                 equals_expression: parent
 
+  Organization:
+    slots:
+      - id
+      - name
+      
+  Product:
+    slots:
+      - id
+      - manufactured_by
+
+  Car:
+    is_a: Product
+
+  Container:
+    tree_root: true
+    attributes:
+      persons:
+        range: Person
+        multivalued: true
+    rules:
+      - postconditions:
+          slot_conditions:
+            persons:
+              has_member:
+                range_expression:
+                  slot_conditions:
+                    owns:
+                      range_expression:
+                        is_a: Car
+        description: There is at least one Person which owns a car.
+        #annotations:
+        #  OCL: "context Person inv: Person.allInstances()->exists(p | p.cars->size() > 0)"
+        
+      
   FunctionalAnnotation:
     attributes:
       gene:
