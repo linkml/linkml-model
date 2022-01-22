@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-12-28T23:40:30
+# Generation date: 2022-01-22T01:10:53
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -99,6 +99,10 @@ class AltDescriptionSource(extended_str):
 
 
 class PermissibleValueText(extended_str):
+    pass
+
+
+class UniqueKeyUniqueKeyName(extended_str):
     pass
 
 
@@ -1231,6 +1235,8 @@ class SlotDefinition(Definition):
     slot_group: Optional[Union[str, SlotDefinitionName]] = None
     is_grouping_slot: Optional[Union[bool, Bool]] = None
     path_rule: Optional[Union[dict, PathExpression]] = None
+    disjoint_with: Optional[Union[Union[str, SlotDefinitionName], List[Union[str, SlotDefinitionName]]]] = empty_list()
+    children_are_mutually_disjoint: Optional[Union[bool, Bool]] = None
     is_a: Optional[Union[str, SlotDefinitionName]] = None
     mixins: Optional[Union[Union[str, SlotDefinitionName], List[Union[str, SlotDefinitionName]]]] = empty_list()
     apply_to: Optional[Union[Union[str, SlotDefinitionName], List[Union[str, SlotDefinitionName]]]] = empty_list()
@@ -1359,6 +1365,13 @@ class SlotDefinition(Definition):
 
         if self.path_rule is not None and not isinstance(self.path_rule, PathExpression):
             self.path_rule = PathExpression(**as_dict(self.path_rule))
+
+        if not isinstance(self.disjoint_with, list):
+            self.disjoint_with = [self.disjoint_with] if self.disjoint_with is not None else []
+        self.disjoint_with = [v if isinstance(v, SlotDefinitionName) else SlotDefinitionName(v) for v in self.disjoint_with]
+
+        if self.children_are_mutually_disjoint is not None and not isinstance(self.children_are_mutually_disjoint, Bool):
+            self.children_are_mutually_disjoint = Bool(self.children_are_mutually_disjoint)
 
         if self.is_a is not None and not isinstance(self.is_a, SlotDefinitionName):
             self.is_a = SlotDefinitionName(self.is_a)
@@ -1537,11 +1550,13 @@ class ClassDefinition(Definition):
     union_of: Optional[Union[Union[str, ClassDefinitionName], List[Union[str, ClassDefinitionName]]]] = empty_list()
     defining_slots: Optional[Union[Union[str, SlotDefinitionName], List[Union[str, SlotDefinitionName]]]] = empty_list()
     tree_root: Optional[Union[bool, Bool]] = None
-    unique_keys: Optional[Union[Union[dict, "UniqueKey"], List[Union[dict, "UniqueKey"]]]] = empty_list()
+    unique_keys: Optional[Union[Dict[Union[str, UniqueKeyUniqueKeyName], Union[dict, "UniqueKey"]], List[Union[dict, "UniqueKey"]]]] = empty_dict()
     rules: Optional[Union[Union[dict, "ClassRule"], List[Union[dict, "ClassRule"]]]] = empty_list()
     classification_rules: Optional[Union[Union[dict, AnonymousClassExpression], List[Union[dict, AnonymousClassExpression]]]] = empty_list()
     slot_names_unique: Optional[Union[bool, Bool]] = None
     represents_relationship: Optional[Union[bool, Bool]] = None
+    disjoint_with: Optional[Union[Union[str, ClassDefinitionName], List[Union[str, ClassDefinitionName]]]] = empty_list()
+    children_are_mutually_disjoint: Optional[Union[bool, Bool]] = None
     is_a: Optional[Union[str, ClassDefinitionName]] = None
     mixins: Optional[Union[Union[str, ClassDefinitionName], List[Union[str, ClassDefinitionName]]]] = empty_list()
     apply_to: Optional[Union[Union[str, ClassDefinitionName], List[Union[str, ClassDefinitionName]]]] = empty_list()
@@ -1582,7 +1597,7 @@ class ClassDefinition(Definition):
         if self.tree_root is not None and not isinstance(self.tree_root, Bool):
             self.tree_root = Bool(self.tree_root)
 
-        self._normalize_inlined_as_dict(slot_name="unique_keys", slot_type=UniqueKey, key_name="unique_key_slots", keyed=False)
+        self._normalize_inlined_as_dict(slot_name="unique_keys", slot_type=UniqueKey, key_name="unique_key_name", keyed=True)
 
         if not isinstance(self.rules, list):
             self.rules = [self.rules] if self.rules is not None else []
@@ -1597,6 +1612,13 @@ class ClassDefinition(Definition):
 
         if self.represents_relationship is not None and not isinstance(self.represents_relationship, Bool):
             self.represents_relationship = Bool(self.represents_relationship)
+
+        if not isinstance(self.disjoint_with, list):
+            self.disjoint_with = [self.disjoint_with] if self.disjoint_with is not None else []
+        self.disjoint_with = [v if isinstance(v, ClassDefinitionName) else ClassDefinitionName(v) for v in self.disjoint_with]
+
+        if self.children_are_mutually_disjoint is not None and not isinstance(self.children_are_mutually_disjoint, Bool):
+            self.children_are_mutually_disjoint = Bool(self.children_are_mutually_disjoint)
 
         if self.is_a is not None and not isinstance(self.is_a, ClassDefinitionName):
             self.is_a = ClassDefinitionName(self.is_a)
@@ -1989,6 +2011,7 @@ class UniqueKey(YAMLRoot):
     class_name: ClassVar[str] = "unique_key"
     class_model_uri: ClassVar[URIRef] = LINKML.UniqueKey
 
+    unique_key_name: Union[str, UniqueKeyUniqueKeyName] = None
     unique_key_slots: Union[Union[str, SlotDefinitionName], List[Union[str, SlotDefinitionName]]] = None
     extensions: Optional[Union[Dict[Union[str, ExtensionTag], Union[dict, Extension]], List[Union[dict, Extension]]]] = empty_dict()
     annotations: Optional[Union[Dict[Union[str, AnnotationTag], Union[dict, Annotation]], List[Union[dict, Annotation]]]] = empty_dict()
@@ -2009,6 +2032,11 @@ class UniqueKey(YAMLRoot):
     deprecated_element_has_possible_replacement: Optional[Union[str, URIorCURIE]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.unique_key_name):
+            self.MissingRequiredField("unique_key_name")
+        if not isinstance(self.unique_key_name, UniqueKeyUniqueKeyName):
+            self.unique_key_name = UniqueKeyUniqueKeyName(self.unique_key_name)
+
         if self._is_empty(self.unique_key_slots):
             self.MissingRequiredField("unique_key_slots")
         if not isinstance(self.unique_key_slots, list):

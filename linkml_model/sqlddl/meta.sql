@@ -133,6 +133,8 @@ CREATE TABLE class_definition (
 	classification_rules TEXT, 
 	slot_names_unique BOOLEAN, 
 	represents_relationship BOOLEAN, 
+	disjoint_with TEXT, 
+	children_are_mutually_disjoint BOOLEAN, 
 	is_a TEXT, 
 	mixins TEXT, 
 	apply_to TEXT, 
@@ -372,6 +374,8 @@ CREATE TABLE slot_definition (
 	slot_group TEXT, 
 	is_grouping_slot BOOLEAN, 
 	path_rule TEXT, 
+	disjoint_with TEXT, 
+	children_are_mutually_disjoint BOOLEAN, 
 	is_a TEXT, 
 	mixins TEXT, 
 	apply_to TEXT, 
@@ -404,6 +408,7 @@ CREATE TABLE slot_definition (
 );
 
 CREATE TABLE unique_key (
+	unique_key_name TEXT NOT NULL, 
 	unique_key_slots TEXT NOT NULL, 
 	extensions TEXT, 
 	annotations TEXT, 
@@ -423,7 +428,7 @@ CREATE TABLE unique_key (
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
 	class_definition_name TEXT, 
-	PRIMARY KEY (unique_key_slots, extensions, annotations, description, alt_descriptions, title, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, source, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, class_definition_name), 
+	PRIMARY KEY (unique_key_name, unique_key_slots, extensions, annotations, description, alt_descriptions, title, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, source, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, class_definition_name), 
 	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
 );
 

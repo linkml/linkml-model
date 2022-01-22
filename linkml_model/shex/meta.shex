@@ -180,6 +180,8 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           <classification_rules> @<AnonymousClassExpression> * ;
           <slot_names_unique> @<Boolean> ? ;
           <represents_relationship> @<Boolean> ? ;
+          <disjoint_with> @<ClassDefinition> * ;
+          <children_are_mutually_disjoint> @<Boolean> ? ;
           <mixins> @<ClassDefinition> * ;
           <apply_to> @<ClassDefinition> * ;
           <any_of> @<AnonymousClassExpression> * ;
@@ -538,6 +540,8 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           sh1:group @<SlotDefinition> ? ;
           <is_grouping_slot> @<Boolean> ? ;
           <path_rule> @<PathExpression> ? ;
+          <disjoint_with> @<SlotDefinition> * ;
+          <children_are_mutually_disjoint> @<Boolean> ? ;
           <mixins> @<SlotDefinition> * ;
           <apply_to> @<SlotDefinition> * ;
           <range> @<Element> ? ;
@@ -648,6 +652,7 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           rdf:type [ <Annotatable> ] ? ;
           &<CommonMetadata_tes> ;
           rdf:type [ <CommonMetadata> ] ? ;
+          <unique_key_name> @<String> ;
           <unique_key_slots> @<SlotDefinition> + ;
           <extensions> @<Extension> * ;
           <annotations> @<Annotation> * ;
@@ -667,7 +672,7 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           <deprecated_element_has_exact_replacement> @<Uriorcurie> ? ;
           <deprecated_element_has_possible_replacement> @<Uriorcurie> ?
        ) ;
-       rdf:type [ <UniqueKey> ] ?
+       rdf:type [ <UniqueKey> ]
     )
 }
 

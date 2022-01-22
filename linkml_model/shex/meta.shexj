@@ -914,6 +914,20 @@
                      },
                      {
                         "type": "TripleConstraint",
+                        "predicate": "https://w3id.org/linkml/disjoint_with",
+                        "valueExpr": "https://w3id.org/linkml/ClassDefinition",
+                        "min": 0,
+                        "max": -1
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "https://w3id.org/linkml/children_are_mutually_disjoint",
+                        "valueExpr": "https://w3id.org/linkml/Boolean",
+                        "min": 0,
+                        "max": 1
+                     },
+                     {
+                        "type": "TripleConstraint",
                         "predicate": "https://w3id.org/linkml/mixins",
                         "valueExpr": "https://w3id.org/linkml/ClassDefinition",
                         "min": 0,
@@ -3058,6 +3072,20 @@
                      },
                      {
                         "type": "TripleConstraint",
+                        "predicate": "https://w3id.org/linkml/disjoint_with",
+                        "valueExpr": "https://w3id.org/linkml/SlotDefinition",
+                        "min": 0,
+                        "max": -1
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "https://w3id.org/linkml/children_are_mutually_disjoint",
+                        "valueExpr": "https://w3id.org/linkml/Boolean",
+                        "min": 0,
+                        "max": 1
+                     },
+                     {
+                        "type": "TripleConstraint",
                         "predicate": "https://w3id.org/linkml/mixins",
                         "valueExpr": "https://w3id.org/linkml/SlotDefinition",
                         "min": 0,
@@ -3737,6 +3765,13 @@
                      },
                      {
                         "type": "TripleConstraint",
+                        "predicate": "https://w3id.org/linkml/unique_key_name",
+                        "valueExpr": "https://w3id.org/linkml/String",
+                        "min": 1,
+                        "max": 1
+                     },
+                     {
+                        "type": "TripleConstraint",
                         "predicate": "https://w3id.org/linkml/unique_key_slots",
                         "valueExpr": "https://w3id.org/linkml/SlotDefinition",
                         "min": 1,
@@ -3872,7 +3907,7 @@
                         "https://w3id.org/linkml/UniqueKey"
                      ]
                   },
-                  "min": 0
+                  "min": 1
                }
             ]
          }

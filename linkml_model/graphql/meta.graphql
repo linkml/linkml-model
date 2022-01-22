@@ -173,6 +173,8 @@ type ClassDefinition implements ClassExpression
     classificationRules: [AnonymousClassExpression]
     slotNamesUnique: Boolean
     representsRelationship: Boolean
+    disjointWith: [ClassDefinition]
+    childrenAreMutuallyDisjoint: Boolean
     isA: ClassDefinition
     mixins: [ClassDefinition]
     applyTo: [ClassDefinition]
@@ -578,6 +580,8 @@ type SlotDefinition implements SlotExpression
     slotGroup: SlotDefinition
     isGroupingSlot: Boolean
     pathRule: PathExpression
+    disjointWith: [SlotDefinition]
+    childrenAreMutuallyDisjoint: Boolean
     isA: SlotDefinition
     mixins: [SlotDefinition]
     applyTo: [SlotDefinition]
@@ -723,6 +727,7 @@ interface TypeExpression
 
 type UniqueKey implements Extensible, Annotatable, CommonMetadata
   {
+    uniqueKeyName: String!
     uniqueKeySlots: [SlotDefinition]!
     extensions: [Extension]
     annotations: [Annotation]
