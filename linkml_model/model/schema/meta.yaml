@@ -614,8 +614,14 @@ slots:
   open_world:
     description: if true, the the postconditions may be omitted in instance data, but it is valid for an inference engine to add these
     range: boolean
-  precedence:
-    description: the relative order in which the element occurs
+  rank:
+    aliases:
+      - order
+      - precedence
+      - display order
+    description: the relative order in which the element occurs, lower values are given precedence
+    comments:
+      - the rank of an element does not affect the semantics
     slot_uri: sh:order
     range: integer
   deactivated:
@@ -797,7 +803,7 @@ slots:
     inherited: true
     description:  |-
       function that provides a default value for the slot.  Possible values for this slot are defined in
-      biolink.utils.ifabsent_functions.default_library:
+      linkml.utils.ifabsent_functions.default_library:
         * [Tt]rue -- boolean True
         * [Ff]alse -- boolean False
         * int(value) -- integer value
@@ -1147,10 +1153,26 @@ slots:
     description: for slots with ranges of type number, the value must be equal to or lowe than this
     inherited: true
 
+  interpolated:
+    domain: pattern_expression
+    range: boolean
+    description: if true then the pattern is first string interpolated
+
+  partial_match:
+    domain: pattern_expression
+    range: boolean
+    description: if true then the pattern must match the whole string, as if enclosed in ^...$
+
   pattern:
     domain: definition
     range: string
-    description: the string value of the slot must conform to this regular expression
+    description: the string value of the slot must conform to this regular expression expressed in the string
+    inherited: true
+
+  structured_pattern:
+    domain: definition
+    range: pattern_expression
+    description: the string value of the slot must conform to the regular expression in the pattern expression
     inherited: true
 
   string_serialization:
@@ -1282,6 +1304,30 @@ slots:
     inlined: true
     description: prefix / URI definitions to be added to the context beyond those fetched from prefixcommons in id prefixes
 
+  # -----------------------------------
+  # Slots for settings
+  # -----------------------------------
+  setting_key:
+    domain: setting
+    range: ncname
+    key: true
+    description: the variable name for a setting
+
+  setting_value:
+    domain: setting
+    range: string
+    required: true
+    description: The value assigned for a setting
+
+  settings:
+    domain: schema_definition
+    range: setting
+    multivalued: true
+    inlined: true
+    description: A collection of global variable settings
+    comments:
+      - global variables are used in string interpolation
+    
 
   # -----------------------------------
   # Slots for local_name
@@ -1313,7 +1359,7 @@ slots:
     range_expression:
       slot_conditions:
         - is_grouping_slot:
-            equals_expression: true
+            equals_expression: True
 
   is_grouping_slot:
     domain: slot_definition
@@ -1414,7 +1460,7 @@ classes:
       - related mappings
       - narrow mappings
       - broad mappings
-      - precedence
+      - rank
     see_also:
       - https://en.wikipedia.org/wiki/Data_element
 
@@ -1445,6 +1491,7 @@ classes:
       - source_file_size
       - generation_date
       - slot_names_unique
+      - settings
     see_also:
       - https://en.wikipedia.org/wiki/Data_dictionary
     slot_usage:
@@ -1459,6 +1506,7 @@ classes:
     mixin: true
     slots:
       - pattern
+      - structured_pattern      
       - equals_string
       - equals_string_in
       - equals_number
@@ -1587,6 +1635,7 @@ classes:
       - minimum_value
       - maximum_value
       - pattern
+      - structured_pattern      
       - equals_string
       - equals_string_in
       - equals_number
@@ -1765,12 +1814,29 @@ classes:
       - elseconditions
       - bidirectional
       - open_world
-      - precedence
+      - order
       - deactivated
     close_mappings:
       - sh:TripleRule
       - swrl:Imp
     status: testing
+
+  pattern_expression:
+    description: a regular expression pattern used to evaluate conformance of a string
+    mixins:
+      - extensible
+      - annotatable
+      - common_metadata
+    slots:
+      - pattern
+      - interpolated
+      - partial_match
+      
+  setting:
+    description: assignment of a key to a value
+    slots:
+      - setting_key
+      - setting_value
 
   prefix:
     description: prefix URI tuple
