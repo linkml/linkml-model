@@ -49,9 +49,16 @@ classes:
     is_a: ChemicalEntity
     unique_keys:
       main:
+        description: An isotope is uniquely identifier by atomic and neutron number
         unique_key_slots:
           - atomic_number
           - neutron_number
+      symbol:
+        description: An isotope is uniquely identifier by its symbol
+        notes:
+          - we could have opted to use a simple key slot here as this is not a compound key but this allows us to annotate the key
+        unique_key_slots:
+          - symbol
           
 
 #==================================
