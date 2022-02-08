@@ -61,13 +61,13 @@ slots:
   height:
     range: string
     structured_pattern:
-      pattern: "{float} {unit.length}"
+      syntax: "{float} {unit.length}"
       interpolated: true   ## all {...}s are replaced using settings
       partial_match: false
   weight:
     range: string
     structured_pattern:
-      pattern: "{float} {unit.weight}"
+      syntax: "{float} {unit.weight}"
       interpolated: true
       partial_match: false  ## implicit ^...$
 
@@ -79,7 +79,7 @@ types:
   EmailString:
     typeof: string
     structured_pattern:
-      pattern: "{email}"
+      syntax: "{email}"
       interpolated: true
       partial_match: false  ## implicit ^...$
     

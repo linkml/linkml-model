@@ -46,7 +46,6 @@ subsets:
   owl:
     description: Set of slots that appear in the OWL representation of a model
 
-
 #==================================
 # Slots                           #
 #==================================
@@ -944,6 +943,14 @@ slots:
     see_also:
       - https://github.com/linkml/linkml/issues/177
 
+  inapplicable:
+    domain: slot_definition
+    range: boolean
+    inherited: true
+    description: true means that the slot must not be present
+    comments:
+      - By default all slots are applicable. The main use case for this slot is as an override in a subclass
+
   inlined:
     domain: slot_definition
     range: boolean
@@ -1167,6 +1174,12 @@ slots:
     domain: definition
     range: string
     description: the string value of the slot must conform to this regular expression expressed in the string
+    inherited: true
+
+  syntax:
+    domain: structured_pattern
+    range: string
+    description: the string value of the slot must conform to this regular expression expressed in the string. May be interpolated.
     inherited: true
 
   structured_pattern:
@@ -1420,6 +1433,7 @@ slots:
 # Classes                         #
 #==================================
 classes:
+
   common_metadata:
     description: Generic metadata shared across definitions
     mixin: true
@@ -1828,7 +1842,7 @@ classes:
       - annotatable
       - common_metadata
     slots:
-      - pattern
+      - syntax
       - interpolated
       - partial_match
       
@@ -1889,8 +1903,6 @@ classes:
     slots:
       - unique_key_name
       - unique_key_slots
-
-
 
 #==================================
 # Enumerations                    #
