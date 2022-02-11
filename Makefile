@@ -154,7 +154,7 @@ $(PKG_T_JSON_SCHEMA)/%.schema.json: target/json_schema/%.schema.json
 	cp $< $@
 
 target/json_schema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-json_schema install
-	$(RUN) gen-json-schema $(GEN_OPTS) -t transaction $< > $@
+	$(RUN) gen-json-schema $(GEN_OPTS) -t schema_definition $< > $@
 
 # ---------------------------------------
 # ShEx
