@@ -104,6 +104,8 @@ classes:
       - encoding
       - bytes
       - hash
+      - md5
+      - sha256
       - dialect
 
   FormatDialect:
@@ -175,6 +177,12 @@ slots:
 
   encoding:
   hash:
+    notes:
+      - we recommend using a more specific slot such as shas256 or md5
+  sha265:
+    is_a: hash
+  md5:
+    is_a: hash
     
   media_type:
     #range: MediaTypeEnum
