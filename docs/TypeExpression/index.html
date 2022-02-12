@@ -101,7 +101,7 @@
               
                 <h1 id="class-type_expression">Class: type_expression</h1>
 <p>URI: <a href="https://w3id.org/linkml/TypeExpression">linkml:TypeExpression</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[AnonymousTypeExpression]&lt;all_of%200..*-++[TypeExpression&#124;pattern:string%20%3F;equals_string:string%20%3F;equals_string_in:string%20*;equals_number:integer%20%3F;minimum_value:integer%20%3F;maximum_value:integer%20%3F],[AnonymousTypeExpression]&lt;any_of%200..*-++[TypeExpression],[AnonymousTypeExpression]&lt;exactly_one_of%200..*-++[TypeExpression],[AnonymousTypeExpression]&lt;none_of%200..*-++[TypeExpression],[TypeDefinition]uses%20-.-&gt;[TypeExpression],[AnonymousTypeExpression]uses%20-.-&gt;[TypeExpression],[Expression]^-[TypeExpression],[TypeDefinition],[Expression],[AnonymousTypeExpression]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[AnonymousTypeExpression]&lt;all_of%200..*-++[TypeExpression&#124;pattern:string%20%3F;equals_string:string%20%3F;equals_string_in:string%20*;equals_number:integer%20%3F;minimum_value:integer%20%3F;maximum_value:integer%20%3F],[AnonymousTypeExpression]&lt;any_of%200..*-++[TypeExpression],[AnonymousTypeExpression]&lt;exactly_one_of%200..*-++[TypeExpression],[AnonymousTypeExpression]&lt;none_of%200..*-++[TypeExpression],[TypeDefinition]uses%20-.-&gt;[TypeExpression],[AnonymousTypeExpression]uses%20-.-&gt;[TypeExpression],[Expression]^-[TypeExpression],[TypeDefinition],[Expression],[AnonymousTypeExpression]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[AnonymousTypeExpression]&lt;all_of%200..*-++[TypeExpression&#124;pattern:string%20%3F;equals_string:string%20%3F;equals_string_in:string%20*;equals_number:integer%20%3F;minimum_value:integer%20%3F;maximum_value:integer%20%3F],[AnonymousTypeExpression]&lt;any_of%200..*-++[TypeExpression],[AnonymousTypeExpression]&lt;exactly_one_of%200..*-++[TypeExpression],[AnonymousTypeExpression]&lt;none_of%200..*-++[TypeExpression],[PatternExpression]&lt;structured_pattern%200..1-++[TypeExpression],[TypeDefinition]uses%20-.-&gt;[TypeExpression],[AnonymousTypeExpression]uses%20-.-&gt;[TypeExpression],[Expression]^-[TypeExpression],[TypeDefinition],[PatternExpression],[Expression],[AnonymousTypeExpression]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[AnonymousTypeExpression]&lt;all_of%200..*-++[TypeExpression&#124;pattern:string%20%3F;equals_string:string%20%3F;equals_string_in:string%20*;equals_number:integer%20%3F;minimum_value:integer%20%3F;maximum_value:integer%20%3F],[AnonymousTypeExpression]&lt;any_of%200..*-++[TypeExpression],[AnonymousTypeExpression]&lt;exactly_one_of%200..*-++[TypeExpression],[AnonymousTypeExpression]&lt;none_of%200..*-++[TypeExpression],[PatternExpression]&lt;structured_pattern%200..1-++[TypeExpression],[TypeDefinition]uses%20-.-&gt;[TypeExpression],[AnonymousTypeExpression]uses%20-.-&gt;[TypeExpression],[Expression]^-[TypeExpression],[TypeDefinition],[PatternExpression],[Expression],[AnonymousTypeExpression]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../Expression/">Expression</a> - general mixin for any class that can represent some form of expression</li>
@@ -116,8 +116,13 @@
 <h3 id="own">Own</h3>
 <ul>
 <li><a href="../pattern/">pattern</a>  <sub>0..1</sub><ul>
-<li>Description: the string value of the slot must conform to this regular expression</li>
+<li>Description: the string value of the slot must conform to this regular expression expressed in the string</li>
 <li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../structured_pattern/">structured_pattern</a>  <sub>0..1</sub><ul>
+<li>Description: the string value of the slot must conform to the regular expression in the pattern expression</li>
+<li>Range: <a href="../PatternExpression/">PatternExpression</a></li>
 </ul>
 </li>
 <li><a href="../equals_string/">equals_string</a>  <sub>0..1</sub><ul>

@@ -1,3 +1,5 @@
+/* metamodel_version: 1.7.0 */
+/* version: 2.0.0 */
 
 
 CREATE TABLE alt_description (
@@ -66,6 +68,7 @@ CREATE TABLE anonymous_slot_expression (
 	minimum_value INTEGER, 
 	maximum_value INTEGER, 
 	pattern TEXT, 
+	structured_pattern TEXT, 
 	equals_string TEXT, 
 	equals_string_in TEXT, 
 	equals_number INTEGER, 
@@ -78,11 +81,12 @@ CREATE TABLE anonymous_slot_expression (
 	exactly_one_of TEXT, 
 	any_of TEXT, 
 	all_of TEXT, 
-	PRIMARY KEY (extensions, annotations, description, alt_descriptions, title, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, source, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, range, range_expression, required, recommended, minimum_value, maximum_value, pattern, equals_string, equals_string_in, equals_number, equals_expression, minimum_cardinality, maximum_cardinality, has_member, all_members, none_of, exactly_one_of, any_of, all_of)
+	PRIMARY KEY (extensions, annotations, description, alt_descriptions, title, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, source, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, range, range_expression, required, recommended, minimum_value, maximum_value, pattern, structured_pattern, equals_string, equals_string_in, equals_number, equals_expression, minimum_cardinality, maximum_cardinality, has_member, all_members, none_of, exactly_one_of, any_of, all_of)
 );
 
 CREATE TABLE anonymous_type_expression (
 	pattern TEXT, 
+	structured_pattern TEXT, 
 	equals_string TEXT, 
 	equals_string_in TEXT, 
 	equals_number INTEGER, 
@@ -92,7 +96,7 @@ CREATE TABLE anonymous_type_expression (
 	exactly_one_of TEXT, 
 	any_of TEXT, 
 	all_of TEXT, 
-	PRIMARY KEY (pattern, equals_string, equals_string_in, equals_number, minimum_value, maximum_value, none_of, exactly_one_of, any_of, all_of)
+	PRIMARY KEY (pattern, structured_pattern, equals_string, equals_string_in, equals_number, minimum_value, maximum_value, none_of, exactly_one_of, any_of, all_of)
 );
 
 CREATE TABLE class_definition (
@@ -100,7 +104,7 @@ CREATE TABLE class_definition (
 	definition_uri TEXT, 
 	local_names TEXT, 
 	conforms_to TEXT, 
-	precedence INTEGER, 
+	rank INTEGER, 
 	extensions TEXT, 
 	annotations TEXT, 
 	description TEXT, 
@@ -166,6 +170,30 @@ CREATE TABLE local_name (
 	PRIMARY KEY (local_name_source, local_name_value)
 );
 
+CREATE TABLE pattern_expression (
+	syntax TEXT, 
+	interpolated BOOLEAN, 
+	partial_match BOOLEAN, 
+	extensions TEXT, 
+	annotations TEXT, 
+	description TEXT, 
+	alt_descriptions TEXT, 
+	title TEXT, 
+	deprecated TEXT, 
+	todos TEXT, 
+	notes TEXT, 
+	comments TEXT, 
+	examples TEXT, 
+	in_subset TEXT, 
+	from_schema TEXT, 
+	imported_from TEXT, 
+	source TEXT, 
+	see_also TEXT, 
+	deprecated_element_has_exact_replacement TEXT, 
+	deprecated_element_has_possible_replacement TEXT, 
+	PRIMARY KEY (syntax, interpolated, partial_match, extensions, annotations, description, alt_descriptions, title, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, source, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement)
+);
+
 CREATE TABLE permissible_value (
 	text TEXT NOT NULL, 
 	description TEXT, 
@@ -193,7 +221,7 @@ CREATE TABLE subset_definition (
 	definition_uri TEXT, 
 	local_names TEXT, 
 	conforms_to TEXT, 
-	precedence INTEGER, 
+	rank INTEGER, 
 	extensions TEXT, 
 	annotations TEXT, 
 	description TEXT, 
@@ -215,7 +243,7 @@ CREATE TABLE type_definition (
 	definition_uri TEXT, 
 	local_names TEXT, 
 	conforms_to TEXT, 
-	precedence INTEGER, 
+	rank INTEGER, 
 	extensions TEXT, 
 	annotations TEXT, 
 	description TEXT, 
@@ -234,6 +262,7 @@ CREATE TABLE type_definition (
 	uri TEXT, 
 	repr TEXT, 
 	pattern TEXT, 
+	structured_pattern TEXT, 
 	equals_string TEXT, 
 	equals_number INTEGER, 
 	minimum_value INTEGER, 
@@ -252,7 +281,7 @@ CREATE TABLE class_rule (
 	elseconditions TEXT, 
 	bidirectional BOOLEAN, 
 	open_world BOOLEAN, 
-	precedence INTEGER, 
+	rank INTEGER, 
 	deactivated BOOLEAN, 
 	extensions TEXT, 
 	annotations TEXT, 
@@ -272,7 +301,7 @@ CREATE TABLE class_rule (
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
 	class_definition_name TEXT, 
-	PRIMARY KEY (preconditions, postconditions, elseconditions, bidirectional, open_world, precedence, deactivated, extensions, annotations, description, alt_descriptions, title, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, source, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, class_definition_name), 
+	PRIMARY KEY (preconditions, postconditions, elseconditions, bidirectional, open_world, rank, deactivated, extensions, annotations, description, alt_descriptions, title, deprecated, todos, notes, comments, examples, in_subset, from_schema, imported_from, source, see_also, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, class_definition_name), 
 	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
 );
 
@@ -280,7 +309,7 @@ CREATE TABLE schema_definition (
 	definition_uri TEXT, 
 	local_names TEXT, 
 	conforms_to TEXT, 
-	precedence INTEGER, 
+	rank INTEGER, 
 	extensions TEXT, 
 	annotations TEXT, 
 	description TEXT, 
@@ -319,7 +348,7 @@ CREATE TABLE slot_definition (
 	definition_uri TEXT, 
 	local_names TEXT, 
 	conforms_to TEXT, 
-	precedence INTEGER, 
+	rank INTEGER, 
 	extensions TEXT, 
 	annotations TEXT, 
 	description TEXT, 
@@ -386,6 +415,7 @@ CREATE TABLE slot_definition (
 	minimum_value INTEGER, 
 	maximum_value INTEGER, 
 	pattern TEXT, 
+	structured_pattern TEXT, 
 	equals_string TEXT, 
 	equals_number INTEGER, 
 	equals_expression TEXT, 
@@ -731,7 +761,7 @@ CREATE TABLE enum_definition (
 	definition_uri TEXT, 
 	local_names TEXT, 
 	conforms_to TEXT, 
-	precedence INTEGER, 
+	rank INTEGER, 
 	extensions TEXT, 
 	annotations TEXT, 
 	description TEXT, 
@@ -790,6 +820,14 @@ CREATE TABLE prefix (
 	prefix_reference TEXT NOT NULL, 
 	schema_definition_name TEXT, 
 	PRIMARY KEY (prefix_prefix, prefix_reference, schema_definition_name), 
+	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (name)
+);
+
+CREATE TABLE setting (
+	setting_key TEXT NOT NULL, 
+	setting_value TEXT NOT NULL, 
+	schema_definition_name TEXT, 
+	PRIMARY KEY (setting_key, setting_value, schema_definition_name), 
 	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (name)
 );
 

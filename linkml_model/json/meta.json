@@ -1562,12 +1562,20 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "precedence",
-      "definition_uri": "https://w3id.org/linkml/precedence",
+      "name": "rank",
+      "definition_uri": "https://w3id.org/linkml/rank",
+      "aliases": [
+        "order",
+        "precedence",
+        "display order"
+      ],
       "mappings": [
         "https://w3id.org/shacl/order"
       ],
-      "description": "the relative order in which the element occurs",
+      "description": "the relative order in which the element occurs, lower values are given precedence",
+      "comments": [
+        "the rank of an element does not affect the semantics"
+      ],
       "from_schema": "https://w3id.org/linkml/meta",
       "slot_uri": "https://w3id.org/shacl/order",
       "owner": "ClassRule",
@@ -1927,7 +1935,7 @@
       "close_mappings": [
         "https://w3id.org/shacl/defaultValue"
       ],
-      "description": "function that provides a default value for the slot.  Possible values for this slot are defined in\nbiolink.utils.ifabsent_functions.default_library:\n  * [Tt]rue -- boolean True\n  * [Ff]alse -- boolean False\n  * int(value) -- integer value\n  * str(value) -- string value\n  * default_range -- schema default range\n  * bnode -- blank node identifier\n  * slot_uri -- URI for the slot\n  * class_curie -- CURIE for the containing class\n  * class_uri -- URI for the containing class",
+      "description": "function that provides a default value for the slot.  Possible values for this slot are defined in\nlinkml.utils.ifabsent_functions.default_library:\n  * [Tt]rue -- boolean True\n  * [Ff]alse -- boolean False\n  * int(value) -- integer value\n  * str(value) -- string value\n  * default_range -- schema default range\n  * bnode -- blank node identifier\n  * slot_uri -- URI for the slot\n  * class_curie -- CURIE for the containing class\n  * class_uri -- URI for the containing class",
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "SlotDefinition",
       "slot_uri": "https://w3id.org/linkml/ifabsent",
@@ -2184,6 +2192,21 @@
       "domain_of": [
         "SlotExpression"
       ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "inapplicable",
+      "definition_uri": "https://w3id.org/linkml/inapplicable",
+      "description": "true means that the slot must not be present",
+      "comments": [
+        "By default all slots are applicable. The main use case for this slot is as an override in a subclass"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "SlotDefinition",
+      "slot_uri": "https://w3id.org/linkml/inapplicable",
+      "inherited": true,
+      "owner": "inapplicable",
       "range": "boolean",
       "@type": "SlotDefinition"
     },
@@ -2660,9 +2683,37 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "interpolated",
+      "definition_uri": "https://w3id.org/linkml/interpolated",
+      "description": "if true then the pattern is first string interpolated",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "PatternExpression",
+      "slot_uri": "https://w3id.org/linkml/interpolated",
+      "owner": "PatternExpression",
+      "domain_of": [
+        "PatternExpression"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "partial_match",
+      "definition_uri": "https://w3id.org/linkml/partial_match",
+      "description": "if true then the pattern must match the whole string, as if enclosed in ^...$",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "PatternExpression",
+      "slot_uri": "https://w3id.org/linkml/partial_match",
+      "owner": "PatternExpression",
+      "domain_of": [
+        "PatternExpression"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "pattern",
       "definition_uri": "https://w3id.org/linkml/pattern",
-      "description": "the string value of the slot must conform to this regular expression",
+      "description": "the string value of the slot must conform to this regular expression expressed in the string",
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "Definition",
       "slot_uri": "https://w3id.org/linkml/pattern",
@@ -2673,6 +2724,38 @@
         "SlotExpression"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "syntax",
+      "definition_uri": "https://w3id.org/linkml/syntax",
+      "description": "the string value of the slot must conform to this regular expression expressed in the string. May be interpolated.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "PatternExpression",
+      "slot_uri": "https://w3id.org/linkml/syntax",
+      "inherited": true,
+      "owner": "PatternExpression",
+      "domain_of": [
+        "PatternExpression"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "structured_pattern",
+      "definition_uri": "https://w3id.org/linkml/structured_pattern",
+      "description": "the string value of the slot must conform to the regular expression in the pattern expression",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "Definition",
+      "slot_uri": "https://w3id.org/linkml/structured_pattern",
+      "inherited": true,
+      "inlined": true,
+      "owner": "structured_pattern",
+      "domain_of": [
+        "TypeExpression",
+        "SlotExpression"
+      ],
+      "range": "PatternExpression",
       "@type": "SlotDefinition"
     },
     {
@@ -2912,6 +2995,56 @@
         "SchemaDefinition"
       ],
       "range": "Prefix",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "setting_key",
+      "definition_uri": "https://w3id.org/linkml/setting_key",
+      "description": "the variable name for a setting",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "Setting",
+      "slot_uri": "https://w3id.org/linkml/setting_key",
+      "key": true,
+      "owner": "Setting",
+      "domain_of": [
+        "Setting"
+      ],
+      "range": "ncname",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "setting_value",
+      "definition_uri": "https://w3id.org/linkml/setting_value",
+      "description": "The value assigned for a setting",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "Setting",
+      "slot_uri": "https://w3id.org/linkml/setting_value",
+      "owner": "Setting",
+      "domain_of": [
+        "Setting"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "settings",
+      "definition_uri": "https://w3id.org/linkml/settings",
+      "description": "A collection of global variable settings",
+      "comments": [
+        "global variables are used in string interpolation"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "SchemaDefinition",
+      "slot_uri": "https://w3id.org/linkml/settings",
+      "multivalued": true,
+      "inlined": true,
+      "owner": "SchemaDefinition",
+      "domain_of": [
+        "SchemaDefinition"
+      ],
+      "range": "Setting",
       "@type": "SlotDefinition"
     },
     {
@@ -4075,7 +4208,7 @@
         "related_mappings",
         "narrow_mappings",
         "broad_mappings",
-        "precedence",
+        "rank",
         "extensions",
         "annotations",
         "description",
@@ -4122,7 +4255,7 @@
         "related_mappings",
         "narrow_mappings",
         "broad_mappings",
-        "precedence",
+        "rank",
         "extensions",
         "annotations",
         "description",
@@ -4160,6 +4293,7 @@
         "source_file_size",
         "generation_date",
         "slot_names_unique",
+        "settings",
         "schema_definition_name"
       ],
       "slot_usage": {},
@@ -4175,6 +4309,7 @@
       "mixin": true,
       "slots": [
         "pattern",
+        "structured_pattern",
         "equals_string",
         "equals_string_in",
         "equals_number",
@@ -4198,6 +4333,7 @@
       ],
       "slots": [
         "pattern",
+        "structured_pattern",
         "equals_string",
         "equals_string_in",
         "equals_number",
@@ -4234,7 +4370,7 @@
         "related_mappings",
         "narrow_mappings",
         "broad_mappings",
-        "precedence",
+        "rank",
         "extensions",
         "annotations",
         "description",
@@ -4257,6 +4393,7 @@
         "type_uri",
         "repr",
         "pattern",
+        "structured_pattern",
         "equals_string",
         "equals_string_in",
         "equals_number",
@@ -4290,7 +4427,7 @@
         "related_mappings",
         "narrow_mappings",
         "broad_mappings",
-        "precedence",
+        "rank",
         "extensions",
         "annotations",
         "description",
@@ -4336,7 +4473,7 @@
         "related_mappings",
         "narrow_mappings",
         "broad_mappings",
-        "precedence",
+        "rank",
         "extensions",
         "annotations",
         "description",
@@ -4393,7 +4530,7 @@
         "related_mappings",
         "narrow_mappings",
         "broad_mappings",
-        "precedence",
+        "rank",
         "extensions",
         "annotations",
         "description",
@@ -4527,6 +4664,7 @@
         "minimum_value",
         "maximum_value",
         "pattern",
+        "structured_pattern",
         "equals_string",
         "equals_string_in",
         "equals_number",
@@ -4578,6 +4716,7 @@
         "minimum_value",
         "maximum_value",
         "pattern",
+        "structured_pattern",
         "equals_string",
         "equals_string_in",
         "equals_number",
@@ -4628,7 +4767,7 @@
         "related_mappings",
         "narrow_mappings",
         "broad_mappings",
-        "precedence",
+        "rank",
         "extensions",
         "annotations",
         "description",
@@ -4700,6 +4839,7 @@
         "minimum_value",
         "maximum_value",
         "pattern",
+        "structured_pattern",
         "equals_string",
         "equals_string_in",
         "equals_number",
@@ -4805,7 +4945,7 @@
         "related_mappings",
         "narrow_mappings",
         "broad_mappings",
-        "precedence",
+        "rank",
         "extensions",
         "annotations",
         "description",
@@ -4896,7 +5036,7 @@
         "elseconditions",
         "bidirectional",
         "open_world",
-        "precedence",
+        "rank",
         "deactivated",
         "extensions",
         "annotations",
@@ -4918,6 +5058,55 @@
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/linkml/ClassRule",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "PatternExpression",
+      "definition_uri": "https://w3id.org/linkml/PatternExpression",
+      "description": "a regular expression pattern used to evaluate conformance of a string",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "mixins": [
+        "Extensible",
+        "Annotatable",
+        "CommonMetadata"
+      ],
+      "slots": [
+        "syntax",
+        "interpolated",
+        "partial_match",
+        "extensions",
+        "annotations",
+        "description",
+        "alt_descriptions",
+        "title",
+        "deprecated",
+        "todos",
+        "notes",
+        "comments",
+        "examples",
+        "in_subset",
+        "from_schema",
+        "imported_from",
+        "source",
+        "see_also",
+        "deprecated_element_has_exact_replacement",
+        "deprecated_element_has_possible_replacement"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/PatternExpression",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Setting",
+      "definition_uri": "https://w3id.org/linkml/Setting",
+      "description": "assignment of a key to a value",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "slots": [
+        "setting_key",
+        "setting_value"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/Setting",
       "@type": "ClassDefinition"
     },
     {
@@ -5113,9 +5302,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "meta.yaml",
-  "source_file_date": "2022-01-22T01:07:33",
-  "source_file_size": 53722,
-  "generation_date": "2022-01-22T01:09:11",
+  "source_file_date": "2022-02-12T00:00:32",
+  "source_file_size": 55929,
+  "generation_date": "2022-02-12T00:02:36",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",

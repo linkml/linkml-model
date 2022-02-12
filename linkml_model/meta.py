@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-01-22T01:10:53
+# Generation date: 2022-02-12T00:04:32
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -27,6 +27,7 @@ from .types import Boolean, Datetime, Integer, Ncname, String, Uri, Uriorcurie
 from linkml_runtime.utils.metamodelcore import Bool, NCName, URI, URIorCURIE, XSDDateTime
 
 metamodel_version = "1.7.0"
+version = "2.0.0"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -83,6 +84,10 @@ class SlotDefinitionName(DefinitionName):
 
 
 class ClassDefinitionName(DefinitionName):
+    pass
+
+
+class SettingSettingKey(NCName):
     pass
 
 
@@ -212,7 +217,7 @@ class Element(YAMLRoot):
     related_mappings: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     narrow_mappings: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     broad_mappings: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    precedence: Optional[int] = None
+    rank: Optional[int] = None
     extensions: Optional[Union[Dict[Union[str, ExtensionTag], Union[dict, Extension]], List[Union[dict, Extension]]]] = empty_dict()
     annotations: Optional[Union[Dict[Union[str, AnnotationTag], Union[dict, Annotation]], List[Union[dict, Annotation]]]] = empty_dict()
     description: Optional[str] = None
@@ -277,8 +282,8 @@ class Element(YAMLRoot):
             self.broad_mappings = [self.broad_mappings] if self.broad_mappings is not None else []
         self.broad_mappings = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.broad_mappings]
 
-        if self.precedence is not None and not isinstance(self.precedence, int):
-            self.precedence = int(self.precedence)
+        if self.rank is not None and not isinstance(self.rank, int):
+            self.rank = int(self.rank)
 
         self._normalize_inlined_as_dict(slot_name="extensions", slot_type=Extension, key_name="tag", keyed=True)
 
@@ -370,6 +375,7 @@ class SchemaDefinition(Element):
     source_file_size: Optional[int] = None
     generation_date: Optional[Union[str, XSDDateTime]] = None
     slot_names_unique: Optional[Union[bool, Bool]] = None
+    settings: Optional[Union[Dict[Union[str, SettingSettingKey], Union[dict, "Setting"]], List[Union[dict, "Setting"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.default_prefix is None:
@@ -438,12 +444,14 @@ class SchemaDefinition(Element):
         if self.slot_names_unique is not None and not isinstance(self.slot_names_unique, Bool):
             self.slot_names_unique = Bool(self.slot_names_unique)
 
+        self._normalize_inlined_as_dict(slot_name="settings", slot_type=Setting, key_name="setting_key", keyed=True)
+
         super().__post_init__(**kwargs)
 
 
 @dataclass
 class AnonymousTypeExpression(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = ["pattern", "equals_string", "equals_string_in", "equals_number", "minimum_value", "maximum_value"]
+    _inherited_slots: ClassVar[List[str]] = ["pattern", "structured_pattern", "equals_string", "equals_string_in", "equals_number", "minimum_value", "maximum_value"]
 
     class_class_uri: ClassVar[URIRef] = LINKML.AnonymousTypeExpression
     class_class_curie: ClassVar[str] = "linkml:AnonymousTypeExpression"
@@ -451,6 +459,7 @@ class AnonymousTypeExpression(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = LINKML.AnonymousTypeExpression
 
     pattern: Optional[str] = None
+    structured_pattern: Optional[Union[dict, "PatternExpression"]] = None
     equals_string: Optional[str] = None
     equals_string_in: Optional[Union[str, List[str]]] = empty_list()
     equals_number: Optional[int] = None
@@ -464,6 +473,9 @@ class AnonymousTypeExpression(YAMLRoot):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.pattern is not None and not isinstance(self.pattern, str):
             self.pattern = str(self.pattern)
+
+        if self.structured_pattern is not None and not isinstance(self.structured_pattern, PatternExpression):
+            self.structured_pattern = PatternExpression(**as_dict(self.structured_pattern))
 
         if self.equals_string is not None and not isinstance(self.equals_string, str):
             self.equals_string = str(self.equals_string)
@@ -505,7 +517,7 @@ class TypeDefinition(Element):
     """
     A data type definition.
     """
-    _inherited_slots: ClassVar[List[str]] = ["base", "uri", "repr", "pattern", "equals_string", "equals_string_in", "equals_number", "minimum_value", "maximum_value"]
+    _inherited_slots: ClassVar[List[str]] = ["base", "uri", "repr", "pattern", "structured_pattern", "equals_string", "equals_string_in", "equals_number", "minimum_value", "maximum_value"]
 
     class_class_uri: ClassVar[URIRef] = LINKML.TypeDefinition
     class_class_curie: ClassVar[str] = "linkml:TypeDefinition"
@@ -518,6 +530,7 @@ class TypeDefinition(Element):
     uri: Optional[Union[str, URIorCURIE]] = None
     repr: Optional[str] = None
     pattern: Optional[str] = None
+    structured_pattern: Optional[Union[dict, "PatternExpression"]] = None
     equals_string: Optional[str] = None
     equals_string_in: Optional[Union[str, List[str]]] = empty_list()
     equals_number: Optional[int] = None
@@ -548,6 +561,9 @@ class TypeDefinition(Element):
 
         if self.pattern is not None and not isinstance(self.pattern, str):
             self.pattern = str(self.pattern)
+
+        if self.structured_pattern is not None and not isinstance(self.structured_pattern, PatternExpression):
+            self.structured_pattern = PatternExpression(**as_dict(self.structured_pattern))
 
         if self.equals_string is not None and not isinstance(self.equals_string, str):
             self.equals_string = str(self.equals_string)
@@ -732,7 +748,7 @@ class Expression(YAMLRoot):
 
 @dataclass
 class TypeExpression(Expression):
-    _inherited_slots: ClassVar[List[str]] = ["pattern", "equals_string", "equals_string_in", "equals_number", "minimum_value", "maximum_value"]
+    _inherited_slots: ClassVar[List[str]] = ["pattern", "structured_pattern", "equals_string", "equals_string_in", "equals_number", "minimum_value", "maximum_value"]
 
     class_class_uri: ClassVar[URIRef] = LINKML.TypeExpression
     class_class_curie: ClassVar[str] = "linkml:TypeExpression"
@@ -740,6 +756,7 @@ class TypeExpression(Expression):
     class_model_uri: ClassVar[URIRef] = LINKML.TypeExpression
 
     pattern: Optional[str] = None
+    structured_pattern: Optional[Union[dict, "PatternExpression"]] = None
     equals_string: Optional[str] = None
     equals_string_in: Optional[Union[str, List[str]]] = empty_list()
     equals_number: Optional[int] = None
@@ -753,6 +770,9 @@ class TypeExpression(Expression):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.pattern is not None and not isinstance(self.pattern, str):
             self.pattern = str(self.pattern)
+
+        if self.structured_pattern is not None and not isinstance(self.structured_pattern, PatternExpression):
+            self.structured_pattern = PatternExpression(**as_dict(self.structured_pattern))
 
         if self.equals_string is not None and not isinstance(self.equals_string, str):
             self.equals_string = str(self.equals_string)
@@ -1003,7 +1023,7 @@ class SlotExpression(Expression):
     """
     an expression that constrains the range of values a slot can take
     """
-    _inherited_slots: ClassVar[List[str]] = ["range", "required", "recommended", "minimum_value", "maximum_value", "pattern", "equals_string", "equals_string_in", "equals_number", "equals_expression", "minimum_cardinality", "maximum_cardinality"]
+    _inherited_slots: ClassVar[List[str]] = ["range", "required", "recommended", "minimum_value", "maximum_value", "pattern", "structured_pattern", "equals_string", "equals_string_in", "equals_number", "equals_expression", "minimum_cardinality", "maximum_cardinality"]
 
     class_class_uri: ClassVar[URIRef] = LINKML.SlotExpression
     class_class_curie: ClassVar[str] = "linkml:SlotExpression"
@@ -1017,6 +1037,7 @@ class SlotExpression(Expression):
     minimum_value: Optional[int] = None
     maximum_value: Optional[int] = None
     pattern: Optional[str] = None
+    structured_pattern: Optional[Union[dict, "PatternExpression"]] = None
     equals_string: Optional[str] = None
     equals_string_in: Optional[Union[str, List[str]]] = empty_list()
     equals_number: Optional[int] = None
@@ -1051,6 +1072,9 @@ class SlotExpression(Expression):
 
         if self.pattern is not None and not isinstance(self.pattern, str):
             self.pattern = str(self.pattern)
+
+        if self.structured_pattern is not None and not isinstance(self.structured_pattern, PatternExpression):
+            self.structured_pattern = PatternExpression(**as_dict(self.structured_pattern))
 
         if self.equals_string is not None and not isinstance(self.equals_string, str):
             self.equals_string = str(self.equals_string)
@@ -1097,7 +1121,7 @@ class SlotExpression(Expression):
 
 @dataclass
 class AnonymousSlotExpression(AnonymousExpression):
-    _inherited_slots: ClassVar[List[str]] = ["range", "required", "recommended", "minimum_value", "maximum_value", "pattern", "equals_string", "equals_string_in", "equals_number", "equals_expression", "minimum_cardinality", "maximum_cardinality"]
+    _inherited_slots: ClassVar[List[str]] = ["range", "required", "recommended", "minimum_value", "maximum_value", "pattern", "structured_pattern", "equals_string", "equals_string_in", "equals_number", "equals_expression", "minimum_cardinality", "maximum_cardinality"]
 
     class_class_uri: ClassVar[URIRef] = LINKML.AnonymousSlotExpression
     class_class_curie: ClassVar[str] = "linkml:AnonymousSlotExpression"
@@ -1111,6 +1135,7 @@ class AnonymousSlotExpression(AnonymousExpression):
     minimum_value: Optional[int] = None
     maximum_value: Optional[int] = None
     pattern: Optional[str] = None
+    structured_pattern: Optional[Union[dict, "PatternExpression"]] = None
     equals_string: Optional[str] = None
     equals_string_in: Optional[Union[str, List[str]]] = empty_list()
     equals_number: Optional[int] = None
@@ -1145,6 +1170,9 @@ class AnonymousSlotExpression(AnonymousExpression):
 
         if self.pattern is not None and not isinstance(self.pattern, str):
             self.pattern = str(self.pattern)
+
+        if self.structured_pattern is not None and not isinstance(self.structured_pattern, PatternExpression):
+            self.structured_pattern = PatternExpression(**as_dict(self.structured_pattern))
 
         if self.equals_string is not None and not isinstance(self.equals_string, str):
             self.equals_string = str(self.equals_string)
@@ -1194,7 +1222,7 @@ class SlotDefinition(Definition):
     """
     the definition of a property or a slot
     """
-    _inherited_slots: ClassVar[List[str]] = ["domain", "multivalued", "inherited", "readonly", "ifabsent", "inlined", "inlined_as_list", "key", "identifier", "designates_type", "role", "relational_role", "range", "required", "recommended", "minimum_value", "maximum_value", "pattern", "equals_string", "equals_string_in", "equals_number", "equals_expression", "minimum_cardinality", "maximum_cardinality"]
+    _inherited_slots: ClassVar[List[str]] = ["domain", "multivalued", "inherited", "readonly", "ifabsent", "inlined", "inlined_as_list", "key", "identifier", "designates_type", "role", "relational_role", "range", "required", "recommended", "minimum_value", "maximum_value", "pattern", "structured_pattern", "equals_string", "equals_string_in", "equals_number", "equals_expression", "minimum_cardinality", "maximum_cardinality"]
 
     class_class_uri: ClassVar[URIRef] = LINKML.SlotDefinition
     class_class_curie: ClassVar[str] = "linkml:SlotDefinition"
@@ -1247,6 +1275,7 @@ class SlotDefinition(Definition):
     minimum_value: Optional[int] = None
     maximum_value: Optional[int] = None
     pattern: Optional[str] = None
+    structured_pattern: Optional[Union[dict, "PatternExpression"]] = None
     equals_string: Optional[str] = None
     equals_string_in: Optional[Union[str, List[str]]] = empty_list()
     equals_number: Optional[int] = None
@@ -1404,6 +1433,9 @@ class SlotDefinition(Definition):
 
         if self.pattern is not None and not isinstance(self.pattern, str):
             self.pattern = str(self.pattern)
+
+        if self.structured_pattern is not None and not isinstance(self.structured_pattern, PatternExpression):
+            self.structured_pattern = PatternExpression(**as_dict(self.structured_pattern))
 
         if self.equals_string is not None and not isinstance(self.equals_string, str):
             self.equals_string = str(self.equals_string)
@@ -1681,7 +1713,7 @@ class ClassRule(ClassLevelRule):
     elseconditions: Optional[Union[dict, AnonymousClassExpression]] = None
     bidirectional: Optional[Union[bool, Bool]] = None
     open_world: Optional[Union[bool, Bool]] = None
-    precedence: Optional[int] = None
+    rank: Optional[int] = None
     deactivated: Optional[Union[bool, Bool]] = None
     extensions: Optional[Union[Dict[Union[str, ExtensionTag], Union[dict, Extension]], List[Union[dict, Extension]]]] = empty_dict()
     annotations: Optional[Union[Dict[Union[str, AnnotationTag], Union[dict, Annotation]], List[Union[dict, Annotation]]]] = empty_dict()
@@ -1717,8 +1749,8 @@ class ClassRule(ClassLevelRule):
         if self.open_world is not None and not isinstance(self.open_world, Bool):
             self.open_world = Bool(self.open_world)
 
-        if self.precedence is not None and not isinstance(self.precedence, int):
-            self.precedence = int(self.precedence)
+        if self.rank is not None and not isinstance(self.rank, int):
+            self.rank = int(self.rank)
 
         if self.deactivated is not None and not isinstance(self.deactivated, Bool):
             self.deactivated = Bool(self.deactivated)
@@ -1776,6 +1808,135 @@ class ClassRule(ClassLevelRule):
 
         if self.deprecated_element_has_possible_replacement is not None and not isinstance(self.deprecated_element_has_possible_replacement, URIorCURIE):
             self.deprecated_element_has_possible_replacement = URIorCURIE(self.deprecated_element_has_possible_replacement)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class PatternExpression(YAMLRoot):
+    """
+    a regular expression pattern used to evaluate conformance of a string
+    """
+    _inherited_slots: ClassVar[List[str]] = ["syntax"]
+
+    class_class_uri: ClassVar[URIRef] = LINKML.PatternExpression
+    class_class_curie: ClassVar[str] = "linkml:PatternExpression"
+    class_name: ClassVar[str] = "pattern_expression"
+    class_model_uri: ClassVar[URIRef] = LINKML.PatternExpression
+
+    syntax: Optional[str] = None
+    interpolated: Optional[Union[bool, Bool]] = None
+    partial_match: Optional[Union[bool, Bool]] = None
+    extensions: Optional[Union[Dict[Union[str, ExtensionTag], Union[dict, Extension]], List[Union[dict, Extension]]]] = empty_dict()
+    annotations: Optional[Union[Dict[Union[str, AnnotationTag], Union[dict, Annotation]], List[Union[dict, Annotation]]]] = empty_dict()
+    description: Optional[str] = None
+    alt_descriptions: Optional[Union[Dict[Union[str, AltDescriptionSource], Union[dict, "AltDescription"]], List[Union[dict, "AltDescription"]]]] = empty_dict()
+    title: Optional[str] = None
+    deprecated: Optional[str] = None
+    todos: Optional[Union[str, List[str]]] = empty_list()
+    notes: Optional[Union[str, List[str]]] = empty_list()
+    comments: Optional[Union[str, List[str]]] = empty_list()
+    examples: Optional[Union[Union[dict, "Example"], List[Union[dict, "Example"]]]] = empty_list()
+    in_subset: Optional[Union[Union[str, SubsetDefinitionName], List[Union[str, SubsetDefinitionName]]]] = empty_list()
+    from_schema: Optional[Union[str, URI]] = None
+    imported_from: Optional[str] = None
+    source: Optional[Union[str, URIorCURIE]] = None
+    see_also: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    deprecated_element_has_exact_replacement: Optional[Union[str, URIorCURIE]] = None
+    deprecated_element_has_possible_replacement: Optional[Union[str, URIorCURIE]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.syntax is not None and not isinstance(self.syntax, str):
+            self.syntax = str(self.syntax)
+
+        if self.interpolated is not None and not isinstance(self.interpolated, Bool):
+            self.interpolated = Bool(self.interpolated)
+
+        if self.partial_match is not None and not isinstance(self.partial_match, Bool):
+            self.partial_match = Bool(self.partial_match)
+
+        self._normalize_inlined_as_dict(slot_name="extensions", slot_type=Extension, key_name="tag", keyed=True)
+
+        self._normalize_inlined_as_dict(slot_name="annotations", slot_type=Annotation, key_name="tag", keyed=True)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        self._normalize_inlined_as_dict(slot_name="alt_descriptions", slot_type=AltDescription, key_name="source", keyed=True)
+
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if self.deprecated is not None and not isinstance(self.deprecated, str):
+            self.deprecated = str(self.deprecated)
+
+        if not isinstance(self.todos, list):
+            self.todos = [self.todos] if self.todos is not None else []
+        self.todos = [v if isinstance(v, str) else str(v) for v in self.todos]
+
+        if not isinstance(self.notes, list):
+            self.notes = [self.notes] if self.notes is not None else []
+        self.notes = [v if isinstance(v, str) else str(v) for v in self.notes]
+
+        if not isinstance(self.comments, list):
+            self.comments = [self.comments] if self.comments is not None else []
+        self.comments = [v if isinstance(v, str) else str(v) for v in self.comments]
+
+        if not isinstance(self.examples, list):
+            self.examples = [self.examples] if self.examples is not None else []
+        self.examples = [v if isinstance(v, Example) else Example(**as_dict(v)) for v in self.examples]
+
+        if not isinstance(self.in_subset, list):
+            self.in_subset = [self.in_subset] if self.in_subset is not None else []
+        self.in_subset = [v if isinstance(v, SubsetDefinitionName) else SubsetDefinitionName(v) for v in self.in_subset]
+
+        if self.from_schema is not None and not isinstance(self.from_schema, URI):
+            self.from_schema = URI(self.from_schema)
+
+        if self.imported_from is not None and not isinstance(self.imported_from, str):
+            self.imported_from = str(self.imported_from)
+
+        if self.source is not None and not isinstance(self.source, URIorCURIE):
+            self.source = URIorCURIE(self.source)
+
+        if not isinstance(self.see_also, list):
+            self.see_also = [self.see_also] if self.see_also is not None else []
+        self.see_also = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.see_also]
+
+        if self.deprecated_element_has_exact_replacement is not None and not isinstance(self.deprecated_element_has_exact_replacement, URIorCURIE):
+            self.deprecated_element_has_exact_replacement = URIorCURIE(self.deprecated_element_has_exact_replacement)
+
+        if self.deprecated_element_has_possible_replacement is not None and not isinstance(self.deprecated_element_has_possible_replacement, URIorCURIE):
+            self.deprecated_element_has_possible_replacement = URIorCURIE(self.deprecated_element_has_possible_replacement)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Setting(YAMLRoot):
+    """
+    assignment of a key to a value
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = LINKML.Setting
+    class_class_curie: ClassVar[str] = "linkml:Setting"
+    class_name: ClassVar[str] = "setting"
+    class_model_uri: ClassVar[URIRef] = LINKML.Setting
+
+    setting_key: Union[str, SettingSettingKey] = None
+    setting_value: str = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.setting_key):
+            self.MissingRequiredField("setting_key")
+        if not isinstance(self.setting_key, SettingSettingKey):
+            self.setting_key = SettingSettingKey(self.setting_key)
+
+        if self._is_empty(self.setting_value):
+            self.MissingRequiredField("setting_value")
+        if not isinstance(self.setting_value, str):
+            self.setting_value = str(self.setting_value)
 
         super().__post_init__(**kwargs)
 
