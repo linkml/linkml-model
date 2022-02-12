@@ -1,5 +1,5 @@
 # Auto generated from datasets.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-12T00:04:27
+# Generation date: 2022-02-12T01:52:45
 # Schema: datasets
 #
 # id: https://w3id.org/linkml/datasets
@@ -215,6 +215,8 @@ class DataResource(Information):
     encoding: Optional[str] = None
     bytes: Optional[int] = None
     hash: Optional[str] = None
+    md5: Optional[str] = None
+    sha256: Optional[str] = None
     dialect: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -246,6 +248,12 @@ class DataResource(Information):
 
         if self.hash is not None and not isinstance(self.hash, str):
             self.hash = str(self.hash)
+
+        if self.md5 is not None and not isinstance(self.md5, str):
+            self.md5 = str(self.md5)
+
+        if self.sha256 is not None and not isinstance(self.sha256, str):
+            self.sha256 = str(self.sha256)
 
         if self.dialect is not None and not isinstance(self.dialect, str):
             self.dialect = str(self.dialect)

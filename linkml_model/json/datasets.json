@@ -594,8 +594,37 @@
     {
       "name": "hash",
       "definition_uri": "https://w3id.org/linkml/reporthash",
+      "notes": [
+        "we recommend using a more specific slot such as sha256 or md5"
+      ],
       "from_schema": "https://w3id.org/linkml/datasets",
       "slot_uri": "https://w3id.org/linkml/reporthash",
+      "owner": "DataResource",
+      "domain_of": [
+        "DataResource"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sha256",
+      "definition_uri": "https://w3id.org/linkml/reportsha256",
+      "from_schema": "https://w3id.org/linkml/datasets",
+      "is_a": "hash",
+      "slot_uri": "https://w3id.org/linkml/reportsha256",
+      "owner": "DataResource",
+      "domain_of": [
+        "DataResource"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "md5",
+      "definition_uri": "https://w3id.org/linkml/reportmd5",
+      "from_schema": "https://w3id.org/linkml/datasets",
+      "is_a": "hash",
+      "slot_uri": "https://w3id.org/linkml/reportmd5",
       "owner": "DataResource",
       "domain_of": [
         "DataResource"
@@ -1068,6 +1097,8 @@
         "encoding",
         "bytes",
         "hash",
+        "md5",
+        "sha256",
         "dialect"
       ],
       "slot_usage": {},
@@ -1115,9 +1146,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "datasets.yaml",
-  "source_file_date": "2022-02-12T00:00:32",
-  "source_file_size": 7649,
-  "generation_date": "2022-02-12T00:02:31",
+  "source_file_date": "2022-02-12T01:49:22",
+  "source_file_size": 7804,
+  "generation_date": "2022-02-12T01:51:04",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",
