@@ -1,5 +1,5 @@
 # Auto generated from datasets.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-12-28T23:40:23
+# Generation date: 2022-02-12T01:52:45
 # Schema: datasets
 #
 # id: https://w3id.org/linkml/datasets
@@ -25,6 +25,7 @@ from .types import Datetime, Integer, String, Uri, Uriorcurie
 from linkml_runtime.utils.metamodelcore import URI, URIorCURIE, XSDDateTime
 
 metamodel_version = "1.7.0"
+version = None
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -214,6 +215,8 @@ class DataResource(Information):
     encoding: Optional[str] = None
     bytes: Optional[int] = None
     hash: Optional[str] = None
+    md5: Optional[str] = None
+    sha256: Optional[str] = None
     dialect: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -245,6 +248,12 @@ class DataResource(Information):
 
         if self.hash is not None and not isinstance(self.hash, str):
             self.hash = str(self.hash)
+
+        if self.md5 is not None and not isinstance(self.md5, str):
+            self.md5 = str(self.md5)
+
+        if self.sha256 is not None and not isinstance(self.sha256, str):
+            self.sha256 = str(self.sha256)
 
         if self.dialect is not None and not isinstance(self.dialect, str):
             self.dialect = str(self.dialect)

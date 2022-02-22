@@ -102,7 +102,7 @@
                 <h1 id="class-unique_key">Class: unique_key</h1>
 <p>a collection of slots whose values uniquely identify an instance of a class</p>
 <p>URI: <a href="https://w3id.org/linkml/UniqueKey">linkml:UniqueKey</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[SlotDefinition]&lt;unique_key_slots%201..*-%20[UniqueKey&#124;description:string%20%3F;title:string%20%3F;deprecated:string%20%3F;todos:string%20*;notes:string%20*;comments:string%20*;from_schema:uri%20%3F;imported_from:string%20%3F;source:uriorcurie%20%3F;see_also:uriorcurie%20*;deprecated_element_has_exact_replacement:uriorcurie%20%3F;deprecated_element_has_possible_replacement:uriorcurie%20%3F],[ClassDefinition]++-%20unique_keys%200..*&gt;[UniqueKey],[UniqueKey]uses%20-.-&gt;[Extensible],[UniqueKey]uses%20-.-&gt;[Annotatable],[UniqueKey]uses%20-.-&gt;[CommonMetadata],[SubsetDefinition],[SlotDefinition],[Extension],[Extensible],[Example],[CommonMetadata],[ClassDefinition],[Annotation],[Annotatable],[AltDescription]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[SlotDefinition]&lt;unique_key_slots%201..*-%20[UniqueKey&#124;description:string%20%3F;title:string%20%3F;deprecated:string%20%3F;todos:string%20*;notes:string%20*;comments:string%20*;from_schema:uri%20%3F;imported_from:string%20%3F;source:uriorcurie%20%3F;see_also:uriorcurie%20*;deprecated_element_has_exact_replacement:uriorcurie%20%3F;deprecated_element_has_possible_replacement:uriorcurie%20%3F],[ClassDefinition]++-%20unique_keys%200..*&gt;[UniqueKey],[UniqueKey]uses%20-.-&gt;[Extensible],[UniqueKey]uses%20-.-&gt;[Annotatable],[UniqueKey]uses%20-.-&gt;[CommonMetadata],[SubsetDefinition],[SlotDefinition],[Extension],[Extensible],[Example],[CommonMetadata],[ClassDefinition],[Annotation],[Annotatable],[AltDescription]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[SlotDefinition]&lt;unique_key_slots%201..*-%20[UniqueKey&#124;unique_key_name(pk):string;description:string%20%3F;title:string%20%3F;deprecated:string%20%3F;todos:string%20*;notes:string%20*;comments:string%20*;from_schema:uri%20%3F;imported_from:string%20%3F;source:uriorcurie%20%3F;see_also:uriorcurie%20*;deprecated_element_has_exact_replacement:uriorcurie%20%3F;deprecated_element_has_possible_replacement:uriorcurie%20%3F],[ClassDefinition]++-%20unique_keys%200..*&gt;[UniqueKey],[UniqueKey]uses%20-.-&gt;[Extensible],[UniqueKey]uses%20-.-&gt;[Annotatable],[UniqueKey]uses%20-.-&gt;[CommonMetadata],[SubsetDefinition],[SlotDefinition],[Extension],[Extensible],[Example],[CommonMetadata],[ClassDefinition],[Annotation],[Annotatable],[AltDescription]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[SlotDefinition]&lt;unique_key_slots%201..*-%20[UniqueKey&#124;unique_key_name(pk):string;description:string%20%3F;title:string%20%3F;deprecated:string%20%3F;todos:string%20*;notes:string%20*;comments:string%20*;from_schema:uri%20%3F;imported_from:string%20%3F;source:uriorcurie%20%3F;see_also:uriorcurie%20*;deprecated_element_has_exact_replacement:uriorcurie%20%3F;deprecated_element_has_possible_replacement:uriorcurie%20%3F],[ClassDefinition]++-%20unique_keys%200..*&gt;[UniqueKey],[UniqueKey]uses%20-.-&gt;[Extensible],[UniqueKey]uses%20-.-&gt;[Annotatable],[UniqueKey]uses%20-.-&gt;[CommonMetadata],[SubsetDefinition],[SlotDefinition],[Extension],[Extensible],[Example],[CommonMetadata],[ClassDefinition],[Annotation],[Annotatable],[AltDescription]" /></a></p>
 <h2 id="uses-mixin">Uses Mixin</h2>
 <ul>
 <li>mixin: <a href="../Extensible/">Extensible</a> - mixin for classes that support extension</li>
@@ -116,6 +116,11 @@
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
+<li><a href="../unique_key_name/">unique_key_name</a>  <sub>1..1</sub><ul>
+<li>Description: name of the unique key</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
 <li><a href="../unique_key_slots/">unique_key_slots</a>  <sub>1..*</sub><ul>
 <li>Description: list of slot names that form a key</li>
 <li>Range: <a href="../SlotDefinition/">SlotDefinition</a></li>

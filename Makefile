@@ -154,7 +154,7 @@ $(PKG_T_JSON_SCHEMA)/%.schema.json: target/json_schema/%.schema.json
 	cp $< $@
 
 target/json_schema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-json_schema install
-	$(RUN) gen-json-schema $(GEN_OPTS) -t transaction $< > $@
+	$(RUN) gen-json-schema $(GEN_OPTS) -t schema_definition $< > $@
 
 # ---------------------------------------
 # ShEx
@@ -255,7 +255,7 @@ docserve: gen-docs
 # ---------------------------------------
 # VALIDATION
 # ---------------------------------------
-EXAMPLES = relational-roles rules slot-group path
+EXAMPLES = relational-roles rules slot-group path unique-key
 
 all-validate: $(patsubst %, validate-%, $(EXAMPLES))
 validate-%: examples/%-example.yaml

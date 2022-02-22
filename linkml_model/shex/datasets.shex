@@ -1,3 +1,4 @@
+# metamodel_version: 1.7.0
 BASE <https://w3id.org/linkml/report/>
 PREFIX csvw: <http://www.w3.org/ns/csvw#>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
@@ -57,6 +58,8 @@ datasets:DataResource CLOSED {
           datasets:encoding @linkml:String ? ;
           dcat:byteSize @linkml:Integer ? ;
           datasets:hash @linkml:String ? ;
+          datasets:md5 @linkml:String ? ;
+          datasets:sha256 @linkml:String ? ;
           csvw:dialect @linkml:String ?
        ) ;
        rdf:type [ dcat:Distribution ]

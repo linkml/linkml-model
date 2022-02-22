@@ -1,5 +1,5 @@
 # Auto generated from validation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-12-28T23:40:33
+# Generation date: 2022-02-12T01:52:43
 # Schema: reporting
 #
 # id: https://w3id.org/linkml/reporting
@@ -25,6 +25,7 @@ from .types import Nodeidentifier, String
 from linkml_runtime.utils.metamodelcore import NodeIdentifier
 
 metamodel_version = "1.7.0"
+version = None
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs

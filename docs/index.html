@@ -119,7 +119,9 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="meta-schema">meta schema</h1>
+                <h1 id="meta">meta</h1>
+<p><strong>metamodel version:</strong> 1.7.0</p>
+<p><strong>version:</strong> 2.0.0</p>
 <p>A metamodel for defining linked open data schemas</p>
 <h3 id="classes">Classes</h3>
 <ul>
@@ -153,9 +155,11 @@
 </li>
 <li><a href="LocalName/">LocalName</a> - an attributed label</li>
 <li><a href="PathExpression/">PathExpression</a> - An expression that describes an abstract path from an object to another through a sequence of slot lookups</li>
+<li><a href="PatternExpression/">PatternExpression</a> - a regular expression pattern used to evaluate conformance of a string</li>
 <li><a href="PermissibleValue/">PermissibleValue</a> - a permissible value, accompanied by intended text and an optional mapping to a concept URI</li>
 <li><a href="Prefix/">Prefix</a> - prefix URI tuple</li>
 <li><a href="StructuredAlias/">StructuredAlias</a> - object that contains meta data about a synonym or alias including where it came from (source) and its scope (narrow, broad, etc.)</li>
+<li><a href="Setting/">Setting</a> - assignment of a key to a value</li>
 <li><a href="UniqueKey/">UniqueKey</a> - a collection of slots whose values uniquely identify an instance of a class</li>
 </ul>
 <h3 id="mixins">Mixins</h3>
@@ -219,6 +223,7 @@
 </li>
 </ul>
 </li>
+<li><a href="children_are_mutually_disjoint/">children_are_mutually_disjoint</a> - If true then all direct is_a children are mutually disjoint and share no instances in common</li>
 <li><a href="class_uri/">class_uri</a> - URI of the class in an RDF environment</li>
 <li><a href="classes/">classes</a> - class definitions</li>
 <li><a href="classification_rules/">classification_rules</a> - the collection of classification rules that apply to all members of this class</li>
@@ -240,6 +245,11 @@
 <li><a href="deprecated_element_has_possible_replacement/">deprecated element has possible replacement</a> - When an element is deprecated, it can be potentially replaced by this uri or curie</li>
 <li><a href="description/">description</a> - a description of the element's purpose and use</li>
 <li><a href="designates_type/">designates_type</a> - True means that the key slot(s) is used to determine the instantiation (types) relation between objects and a ClassDefinition</li>
+<li><a href="disjoint_with/">disjoint_with</a> - Two classes are disjoint if they have no instances in common, two slots are disjoint if they can never hold between the same two instances<ul>
+<li><a href="class_definition_disjoint_with/">class_definition➞disjoint_with</a></li>
+<li><a href="slot_definition_disjoint_with/">slot_definition➞disjoint_with</a></li>
+</ul>
+</li>
 <li><a href="domain/">domain</a> - defines the type of the subject of the slot.  Given the following slot definition</li>
 <li><a href="domain_of/">domain_of</a> - the class(es) that reference the slot in a "slots" or "slot_usage" context</li>
 <li><a href="elseconditions/">elseconditions</a> - an expression that must hold for an instance of the class, if the preconditions no not hold</li>
@@ -265,9 +275,11 @@
 <li><a href="imported_from/">imported_from</a> - the imports entry that this element was derived from.  Empty means primary source</li>
 <li><a href="imports/">imports</a> - other schemas that are included in this schema</li>
 <li><a href="in_subset/">in_subset</a> - used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)</li>
+<li><a href="inapplicable/">inapplicable</a> - true means that the slot must not be present</li>
 <li><a href="inherited/">inherited</a> - true means that the <em>value</em> of a slot is inherited by subclasses</li>
 <li><a href="inlined/">inlined</a> - True means that keyed or identified slot appears in an outer structure by value.  False means that only the key or identifier for the slot appears within the domain, referencing a structure that appears elsewhere.</li>
 <li><a href="inlined_as_list/">inlined_as_list</a> - True means that an inlined slot is represented as a list of range instances.  False means that an inlined slot is represented as a dictionary, whose key is the slot key or identifier and whose value is the range instance.</li>
+<li><a href="interpolated/">interpolated</a> - if true then the pattern is first string interpolated</li>
 <li><a href="inverse/">inverse</a> - indicates that any instance of d s r implies that there is also an instance of r s' d</li>
 <li><a href="is_a/">is_a</a> - specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded<ul>
 <li><a href="class_definition_is_a/">class_definition➞is_a</a></li>
@@ -319,12 +331,13 @@
 </li>
 <li><a href="notes/">notes</a> - editorial notes about an element intended for internal consumption</li>
 <li><a href="open_world/">open_world</a> - if true, the the postconditions may be omitted in instance data, but it is valid for an inference engine to add these</li>
+<li><a href="owned_by/">owned_by</a> - agent that owns or is the steward of the element</li>
 <li><a href="owner/">owner</a> - the "owner" of the slot. It is the class if it appears in the slots list, otherwise the declaring slot</li>
+<li><a href="partial_match/">partial_match</a> - if true then the pattern must match the whole string, as if enclosed in ^...$</li>
 <li><a href="path_rule/">path_rule</a> - a rule for inferring a slot assignment based on evaluating a path through a sequence of slot assignemnts</li>
-<li><a href="pattern/">pattern</a> - the string value of the slot must conform to this regular expression</li>
+<li><a href="pattern/">pattern</a> - the string value of the slot must conform to this regular expression expressed in the string</li>
 <li><a href="permissible_values/">permissible_values</a> - A list of possible values for a slot range</li>
 <li><a href="postconditions/">postconditions</a> - an expression that must hold for an instance of the class, if the preconditions hold</li>
-<li><a href="precedence/">precedence</a> - the relative order in which the element occurs</li>
 <li><a href="preconditions/">preconditions</a> - an expression that must hold in order for the rule to be applicable to an instance</li>
 <li><a href="prefix_prefix/">prefix_prefix</a> - the nsname (sans ':' for a given prefix)</li>
 <li><a href="prefix_reference/">prefix_reference</a> - A URI associated with a given prefix</li>
@@ -332,6 +345,7 @@
 <li><a href="pv_formula/">pv_formula</a> - Defines the specific formula to be used to generate the permissible values.</li>
 <li><a href="range/">range</a> - defines the type of the object of the slot.  Given the following slot definition</li>
 <li><a href="range_expression/">range_expression</a> - A range that is described as a boolean expression combining existing ranges</li>
+<li><a href="rank/">rank</a> - the relative order in which the element occurs, lower values are given precedence</li>
 <li><a href="readonly/">readonly</a> - If present, slot is read only.  Text explains why</li>
 <li><a href="recommended/">recommended</a> - true means that the slot should be present in the loaded definition, but this is not required</li>
 <li><a href="relational_logical_characteristic/">relational_logical_characteristic</a> - A property of a slot that pertains to its logical properties<ul>
@@ -354,6 +368,9 @@
 </ul>
 </li>
 <li><a href="see_also/">see_also</a> - a reference</li>
+<li><a href="setting_key/">setting_key</a> - the variable name for a setting</li>
+<li><a href="setting_value/">setting_value</a> - The value assigned for a setting</li>
+<li><a href="settings/">settings</a> - A collection of global variable settings</li>
 <li><a href="singular_name/">singular_name</a> - a name that is used in the singular form</li>
 <li><a href="slot_conditions/">slot_conditions</a> - the redefinition of a slot in the context of the containing class definition.</li>
 <li><a href="slot_definitions/">schema_definition➞slots</a> - slot definitions</li>
@@ -369,9 +386,11 @@
 <li><a href="status/">status</a> - status of the element</li>
 <li><a href="string_serialization/">string_serialization</a> - Used on a slot that stores the string serialization of the containing object. The syntax follows python formatted strings, with slot names enclosed in {}s. These are expanded using the values of those slots.</li>
 <li><a href="structured_aliases/">structured_aliases</a> - A list of structured_alias objects.</li>
+<li><a href="structured_pattern/">structured_pattern</a> - the string value of the slot must conform to the regular expression in the pattern expression</li>
 <li><a href="subclass_of/">subclass_of</a> - rdfs:subClassOf to be emitted in OWL generation</li>
 <li><a href="subproperty_of/">subproperty_of</a> - Ontology property which this slot is a subproperty of</li>
 <li><a href="subsets/">subsets</a> - list of subsets referenced in this model</li>
+<li><a href="syntax/">syntax</a> - the string value of the slot must conform to this regular expression expressed in the string. May be interpolated.</li>
 <li><a href="text/">text</a></li>
 <li><a href="title/">title</a> - the official title of the element</li>
 <li><a href="todos/">todos</a> - Outstanding issue that needs resolution</li>
@@ -386,6 +405,7 @@
 <li><a href="typeof/">typeof</a> - Names a parent type</li>
 <li><a href="types/">types</a> - data types used in the model</li>
 <li><a href="union_of/">union_of</a> - indicates that the domain class consists exactly of the members of the classes in the range</li>
+<li><a href="unique_key_name/">unique_key_name</a> - name of the unique key</li>
 <li><a href="unique_key_slots/">unique_key_slots</a> - list of slot names that form a key</li>
 <li><a href="unique_keys/">unique_keys</a> - Set of unique keys for this slot</li>
 <li><a href="usage_slot_name/">usage_slot_name</a> - The name of the slot referenced in the slot_usage</li>
@@ -505,5 +525,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2021-12-28 23:38:28.775680+00:00
+Build Date UTC : 2022-02-12 01:50:57.377117+00:00
 -->
