@@ -831,10 +831,10 @@ slots:
       necessary and sufficient conditions that can be transformed into an OWL equivalence axiom
 
   union_of:
-    domain: class_definition
-    range: class_definition
+    domain: element
+    range: element
     multivalued: true
-    description: indicates that the domain class consists exactly of the members of the classes in the range
+    description: indicates that the domain element consists exactly of the members of the element in the range
     notes:
       - this only applies in the OWL generation
 
@@ -1813,9 +1813,12 @@ classes:
       - base
       - type_uri
       - repr
+      - union_of
+    slot_usage:
+      union_of:
+        range: type_definition
     in_subset:
       - basic
-
 
   subset_definition:
     description: the name and description of a subset
@@ -2001,6 +2004,7 @@ classes:
       - path_rule
       - disjoint_with
       - children_are_mutually_disjoint
+      - union_of
     slot_usage:
       is_a:
         range: slot_definition
@@ -2010,6 +2014,8 @@ classes:
         range: slot_definition
       disjoint_with:
         range: slot_definition
+      union_of:
+        range: type_definition
     in_subset:
       - basic
 
@@ -2078,6 +2084,8 @@ classes:
       rules:
         range: class_rule
       disjoint_with:
+        range: class_definition
+      union_of:
         range: class_definition
     close_mappings:
       - owl:Class
