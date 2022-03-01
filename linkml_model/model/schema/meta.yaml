@@ -157,6 +157,19 @@ slots:
     in_subset:
       - basic
 
+  type:
+    range: type_enum
+    description: >-
+      The relatedness of an alias to the element it is aliasing.  type can be: narrow, broad, exact,
+      related, close, etc.
+
+  structured_aliases:
+    range: structured_alias
+    multivalued: true
+    inlined: true
+    description: >-
+      A list of structured_alias objects.
+
   aliases:
     aliases:
       - synonyms
@@ -165,6 +178,7 @@ slots:
       - designations
     domain: element
     range: string
+    domain: element
     multivalued: true
     slot_uri: skos:altLabel
     in_subset:
@@ -298,7 +312,21 @@ slots:
       - https://www.hl7.org/fhir/versions.html#std-process  ## Draft, Trial Use, Normative, Informative, Deprecated
     in_subset:
       - basic
-      
+
+  alias_name:
+    range: string
+    required: true
+    exact_mappings: skos:altLabel
+    description: >-
+      inherits name from element class, but in the alias_definition class, this name represents
+      a skos:altLabel
+
+  alias_type:
+    range: alias_type_enum
+    description: >-
+      The relatedness of an alias to the element it is aliasing.  alias_scope can be: narrow, broad, exact,
+      related, close, etc.
+
   source:
     aliases:
       - origin
@@ -1861,6 +1889,22 @@ classes:
       - relational_model
       - object_oriented
 
+  structured_alias:
+    description: >-
+      object that contains meta data about a synonym or alias including where it came from (source)
+      and its scope (narrow, broad, etc.)
+    slots:
+      - alias_name
+      - source
+      - alias_type
+    slot_usage:
+      name:
+        required: true
+        exact_mappings: skos:altLabel
+        description: >-
+          inherits name from element class, but in the structured_alias slot, this name represents
+          a skos:altLabel
+
   expression:
     mixin: true
     abstract: true
@@ -2040,7 +2084,7 @@ classes:
     slots:
       - is_a
     status: testing
-        
+
   class_definition:
     mixins:
       - class_expression
