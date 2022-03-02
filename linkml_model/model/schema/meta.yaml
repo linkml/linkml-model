@@ -30,6 +30,7 @@ version: 2.0.0
 prefixes:
   linkml: https://w3id.org/linkml/
   skos: http://www.w3.org/2004/02/skos/core#
+  skosxl: http://www.w3.org/2008/05/skos-xl#
   OIO: http://www.geneontology.org/formats/oboInOwl#
   pav: http://purl.org/pav/
   oslc: http://open-services.net/ns/core#
@@ -40,6 +41,7 @@ prefixes:
   owl: http://www.w3.org/2002/07/owl#
   qb: http://purl.org/linked-data/cube#
   prov: http://www.w3.org/ns/prov#
+  vann: https://vocab.org/vann/
 
 default_prefix: linkml
 default_range: string
@@ -123,6 +125,26 @@ slots:
       - owl
       - basic
 
+  categories:
+    range: uriorcurie
+    singular_name: category
+    slot_uri: dcterms:subject
+    multivalued: true
+    description: >-
+      controlled terms used to categorize an element
+    in_subset:
+      - basic
+
+  keywords:
+    domain: element
+    singular_name: keyword
+    description: Keywords or tags used to describe the element
+    slot_uri: schema:keywords
+    range: string
+    multivalued: true
+    in_subset:
+      - basic
+
   definition_uri:
     domain: element
     description: the "native" URI of the element
@@ -153,17 +175,15 @@ slots:
     domain: element
     description: a description of the element's purpose and use
     slot_uri: skos:definition
+    exact_mappings:
+      - dcterms:description
+      - schema:description
     recommended: true
     in_subset:
       - basic
 
-  type:
-    range: type_enum
-    description: >-
-      The relatedness of an alias to the element it is aliasing.  type can be: narrow, broad, exact,
-      related, close, etc.
-
   structured_aliases:
+    slot_uri: skosxl:altLabel
     range: structured_alias
     multivalued: true
     inlined: true
@@ -178,9 +198,10 @@ slots:
       - designations
     domain: element
     range: string
-    domain: element
     multivalued: true
     slot_uri: skos:altLabel
+    exact_mappings:
+      - schema:alternateName
     in_subset:
       - basic
 
@@ -188,6 +209,8 @@ slots:
     domain: element
     range: string
     description: Description of why and when this element will no longer be used
+    close_mappings:
+      - owl:deprecated
     in_subset:
       - basic
 
@@ -213,6 +236,8 @@ slots:
     multivalued: true
     description: notes and comments about an element intended for external consumption
     slot_uri: skos:note
+    exact_mappings:
+      - rdfs:comment
     in_subset:
       - owl
       - basic
@@ -313,20 +338,32 @@ slots:
     in_subset:
       - basic
 
-  alias_name:
+  literal_form:
+    aliases:
+      - alias_name
+      - string_value
+    domain: structured_alias
     range: string
     required: true
-    exact_mappings: skos:altLabel
+    slot_uri: skosxl:literalForm
     description: >-
-      inherits name from element class, but in the alias_definition class, this name represents
-      a skos:altLabel
+      The literal lexical form of a structured alias
 
-  alias_type:
-    range: alias_type_enum
+  alias_predicate:
+    alias: predicate
+    recommended: true
+    slot_uri: rdf:predicate
+    domain: structured_alias
+    range: alias_predicate_enum
     description: >-
-      The relatedness of an alias to the element it is aliasing.  alias_scope can be: narrow, broad, exact,
-      related, close, etc.
+      The relationship between an element and its alias 
 
+  in_language:
+    slot_uri: schema:inLanguage
+    range: string
+    notes:
+      -  Use a string from IETF BCP 47
+        
   source:
     aliases:
       - origin
@@ -579,6 +616,8 @@ slots:
     range: subset_definition
     inlined: true
     description: list of subsets referenced in this model
+    exact_mappings:
+      - OIO:hasSubset
     in_subset:
       - basic
 
@@ -1551,11 +1590,14 @@ slots:
       - basic
 
   examples:
+    singular_name: example
     domain: element
     multivalued: true
     range: example
     inlined: true
     description: example usages of an element
+    close_mappings:
+      - vann:example
     in_subset:
       - owl
       - basic
@@ -1725,6 +1767,7 @@ classes:
       - from_schema
       - imported_from
       - source
+      - in_language
       - see_also
       - deprecated element has exact replacement
       - deprecated element has possible replacement
@@ -1746,6 +1789,7 @@ classes:
       - id_prefixes
       - definition_uri
       - aliases
+      - structured_aliases
       - local_names
       - conforms_to
       - mappings
@@ -1788,6 +1832,8 @@ classes:
       - generation_date
       - slot_names_unique
       - settings
+      - categories
+      - keywords
     see_also:
       - https://en.wikipedia.org/wiki/Data_dictionary
     slot_usage:
@@ -1893,17 +1939,24 @@ classes:
     description: >-
       object that contains meta data about a synonym or alias including where it came from (source)
       and its scope (narrow, broad, etc.)
+    class_uri: skosxl:Label
+    mixins:
+      - expression
+      - extensible
+      - annotatable
+      - common_metadata
     slots:
-      - alias_name
-      - source
-      - alias_type
+      - literal_form
+      - alias_predicate
+      - categories
     slot_usage:
-      name:
-        required: true
-        exact_mappings: skos:altLabel
+      categories:
         description: >-
-          inherits name from element class, but in the structured_alias slot, this name represents
-          a skos:altLabel
+          The category or categories of an alias. This can be drawn from any relevant vocabulary
+        examples:
+          - value: "https://w3id.org/mod#acronym"
+            description: An acronym
+
 
   expression:
     mixin: true
@@ -2303,3 +2356,13 @@ enums:
         description: a slot with this role connects a relationship to a node that is not subject/object/predicate
 
 
+  alias_predicate_enum:
+    permissible_values:
+      EXACT_SYNONYM:
+        meaning: skos:exactMatch
+      RELATED_SYNONYM:
+        meaning: skos:relatedMatch
+      BROAD_SYNONYM:
+        meaning: skos:broaderMatch
+      NARROW_SYNONYM:
+        meaning: skos:narrowerMatch
