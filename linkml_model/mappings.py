@@ -1,5 +1,5 @@
 # Auto generated from mappings.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-02T04:09:36
+# Generation date: 2022-03-02T04:21:54
 # Schema: mappings
 #
 # id: https://w3id.org/linkml/mappings
