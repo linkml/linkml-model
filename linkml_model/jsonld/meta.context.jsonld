@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from meta.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-22T19:00:33\n    Schema: meta\n    metamodel version: 1.7.0\n    model version: 2.0.0\n    \n    id: https://w3id.org/linkml/meta\n    description: A metamodel for defining linked open data schemas\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from meta.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-03-02T04:07:48\n    Schema: meta\n    metamodel version: 1.7.0\n    model version: 2.0.0\n    \n    id: https://w3id.org/linkml/meta\n    description: The metamodel for schemas defined using the Linked Data Modeling Language framework.\n\nFor more information on LinkML, see [linkml.io](https://linkml.io)\n\nCore metaclasses:\n\n* [SchemaDefinition](https://w3id.org/linkml/SchemaDefinition)\n* [ClassDefinition](https://w3id.org/linkml/ClassDefinition)\n* [SlotDefinition](https://w3id.org/linkml/SlotDefinition)\n\nEvery LinkML model instantiates SchemaDefinition, all classes in\nthe model instantiate ClassDefinition, and so on\n\nNote that the LinkML metamodel instantiates itself.\n\nFor a non-normative introduction to LinkML schemas, see the tutorial\nand schema guide on [linkml.io/linkml].\n\nFor canonical reference documentation on any metamodel construct,\nrefer to the official URI for each construct, e.g.\n[https://w3id.org/linkml/is_a](https://w3id.org/linkml/is_a)\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "IAO": {
          "@id": "http://purl.obolibrary.org/obo/IAO_",
@@ -19,7 +19,9 @@
       "schema": "http://schema.org/",
       "sh": "https://w3id.org/shacl/",
       "skos": "http://www.w3.org/2004/02/skos/core#",
+      "skosxl": "http://www.w3.org/2008/05/skos-xl#",
       "swrl": "http://www.w3.org/2003/11/swrl#",
+      "vann": "https://vocab.org/vann/",
       "xsd": "http://www.w3.org/2001/XMLSchema#",
       "@vocab": "https://w3id.org/linkml/",
       "abstract": {
@@ -27,6 +29,15 @@
       },
       "alias": {
          "@id": "skos:prefLabel"
+      },
+      "predicate": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "rdf:predicate"
       },
       "aliases": {
          "@id": "skos:altLabel"
@@ -64,6 +75,10 @@
       "broad_mappings": {
          "@type": "@id",
          "@id": "skos:broadMatch"
+      },
+      "categories": {
+         "@type": "@id",
+         "@id": "dcterms:subject"
       },
       "children_are_mutually_disjoint": {
          "@type": "xsd:boolean"
@@ -179,8 +194,17 @@
       "identifier": {
          "@type": "xsd:boolean"
       },
+      "import_from": {
+         "@type": "@id"
+      },
+      "import_map": {
+         "@type": "@id"
+      },
       "imports": {
          "@type": "@id"
+      },
+      "in_language": {
+         "@id": "schema:inLanguage"
       },
       "in_subset": {
          "@type": "@id",
@@ -223,12 +247,24 @@
       "key": {
          "@type": "xsd:boolean"
       },
+      "keywords": {
+         "@id": "schema:keywords"
+      },
       "last_updated_on": {
          "@type": "xsd:dateTime",
          "@id": "pav:lastUpdatedOn"
       },
       "license": {
          "@id": "dcterms:license"
+      },
+      "list_elements_ordered": {
+         "@type": "xsd:boolean"
+      },
+      "list_elements_unique": {
+         "@type": "xsd:boolean"
+      },
+      "literal_form": {
+         "@id": "skosxl:literalForm"
       },
       "local_name_value": {
          "@id": "skos:altLabel"
@@ -375,6 +411,9 @@
       "settings": {
          "@type": "@id"
       },
+      "shared": {
+         "@type": "xsd:boolean"
+      },
       "singular_name": {
          "@id": "skos:altLabel"
       },
@@ -410,6 +449,13 @@
       "status": {
          "@type": "@id",
          "@id": "bibo:status"
+      },
+      "structured_aliases": {
+         "@type": "@id",
+         "@id": "skosxl:altLabel"
+      },
+      "structured_imports": {
+         "@type": "@id"
       },
       "structured_pattern": {
          "@type": "@id"
@@ -478,6 +524,9 @@
       },
       "version": {
          "@id": "pav:version"
+      },
+      "StructuredAlias": {
+         "@id": "skosxl:Label"
       }
    }
 }

@@ -1,5 +1,16 @@
 {
    "$defs": {
+      "AliasPredicateEnum": {
+         "description": "",
+         "enum": [
+            "EXACT_SYNONYM",
+            "RELATED_SYNONYM",
+            "BROAD_SYNONYM",
+            "NARROW_SYNONYM"
+         ],
+         "title": "AliasPredicateEnum",
+         "type": "string"
+      },
       "AltDescription": {
          "additionalProperties": false,
          "description": "an attributed description",
@@ -182,6 +193,9 @@
                "description": "the imports entry that this element was derived from.  Empty means primary source",
                "type": "string"
             },
+            "in_language": {
+               "type": "string"
+            },
             "in_subset": {
                "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
                "items": {
@@ -347,6 +361,9 @@
             },
             "imported_from": {
                "description": "the imports entry that this element was derived from.  Empty means primary source",
+               "type": "string"
+            },
+            "in_language": {
                "type": "string"
             },
             "in_subset": {
@@ -682,6 +699,9 @@
                "description": "the imports entry that this element was derived from.  Empty means primary source",
                "type": "string"
             },
+            "in_language": {
+               "type": "string"
+            },
             "in_subset": {
                "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
                "items": {
@@ -813,6 +833,13 @@
             "string_serialization": {
                "description": "Used on a slot that stores the string serialization of the containing object. The syntax follows python formatted strings, with slot names enclosed in {}s. These are expanded using the values of those slots.\nWe call the slot with the serialization the s-slot, the slots used in the {}s are v-slots. If both s-slots and v-slots are populated on an object then the value of the s-slot should correspond to the expansion.\nImplementations of frameworks may choose to use this property to either (a) PARSE: implement automated normalizations by parsing denormalized strings into complex objects (b) GENERARE: implement automated to_string labeling of complex objects\nFor example, a Measurement class may have 3 fields: unit, value, and string_value. The string_value slot may have a string_serialization of {value}{unit} such that if unit=cm and value=2, the value of string_value shouldd be 2cm",
                "type": "string"
+            },
+            "structured_aliases": {
+               "description": "A list of structured_alias objects.",
+               "items": {
+                  "$ref": "#/$defs/StructuredAlias"
+               },
+               "type": "array"
             },
             "subclass_of": {
                "description": "rdfs:subClassOf to be emitted in OWL generation",
@@ -1037,6 +1064,9 @@
                "description": "the imports entry that this element was derived from.  Empty means primary source",
                "type": "string"
             },
+            "in_language": {
+               "type": "string"
+            },
             "in_subset": {
                "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
                "items": {
@@ -1169,6 +1199,13 @@
                "description": "Used on a slot that stores the string serialization of the containing object. The syntax follows python formatted strings, with slot names enclosed in {}s. These are expanded using the values of those slots.\nWe call the slot with the serialization the s-slot, the slots used in the {}s are v-slots. If both s-slots and v-slots are populated on an object then the value of the s-slot should correspond to the expansion.\nImplementations of frameworks may choose to use this property to either (a) PARSE: implement automated normalizations by parsing denormalized strings into complex objects (b) GENERARE: implement automated to_string labeling of complex objects\nFor example, a Measurement class may have 3 fields: unit, value, and string_value. The string_value slot may have a string_serialization of {value}{unit} such that if unit=cm and value=2, the value of string_value shouldd be 2cm",
                "type": "string"
             },
+            "structured_aliases": {
+               "description": "A list of structured_alias objects.",
+               "items": {
+                  "$ref": "#/$defs/StructuredAlias"
+               },
+               "type": "array"
+            },
             "subclass_of": {
                "description": "rdfs:subClassOf to be emitted in OWL generation",
                "type": "string"
@@ -1282,6 +1319,9 @@
             },
             "imported_from": {
                "description": "the imports entry that this element was derived from.  Empty means primary source",
+               "type": "string"
+            },
+            "in_language": {
                "type": "string"
             },
             "in_subset": {
@@ -1454,6 +1494,9 @@
                "description": "the imports entry that this element was derived from.  Empty means primary source",
                "type": "string"
             },
+            "in_language": {
+               "type": "string"
+            },
             "in_subset": {
                "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
                "items": {
@@ -1522,6 +1565,13 @@
             "source": {
                "description": "A related resource from which the element is derived.",
                "type": "string"
+            },
+            "structured_aliases": {
+               "description": "A list of structured_alias objects.",
+               "items": {
+                  "$ref": "#/$defs/StructuredAlias"
+               },
+               "type": "array"
             },
             "title": {
                "description": "the official title of the element",
@@ -1654,6 +1704,9 @@
                "description": "the imports entry that this element was derived from.  Empty means primary source",
                "type": "string"
             },
+            "in_language": {
+               "type": "string"
+            },
             "in_subset": {
                "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
                "items": {
@@ -1722,6 +1775,13 @@
             "source": {
                "description": "A related resource from which the element is derived.",
                "type": "string"
+            },
+            "structured_aliases": {
+               "description": "A list of structured_alias objects.",
+               "items": {
+                  "$ref": "#/$defs/StructuredAlias"
+               },
+               "type": "array"
             },
             "title": {
                "description": "the official title of the element",
@@ -1805,6 +1865,122 @@
             "value"
          ],
          "title": "Extension",
+         "type": "object"
+      },
+      "ImportExpression": {
+         "additionalProperties": false,
+         "description": "an expression describing an import",
+         "properties": {
+            "alt_descriptions": {
+               "additionalProperties": {
+                  "$ref": "#/$defs/AltDescription__identifier_optional"
+               }
+            },
+            "annotations": {
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
+               },
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
+            },
+            "comments": {
+               "description": "notes and comments about an element intended for external consumption",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "deprecated": {
+               "description": "Description of why and when this element will no longer be used",
+               "type": "string"
+            },
+            "deprecated_element_has_exact_replacement": {
+               "description": "When an element is deprecated, it can be automatically replaced by this uri or curie",
+               "type": "string"
+            },
+            "deprecated_element_has_possible_replacement": {
+               "description": "When an element is deprecated, it can be potentially replaced by this uri or curie",
+               "type": "string"
+            },
+            "description": {
+               "description": "a description of the element's purpose and use",
+               "type": "string"
+            },
+            "examples": {
+               "description": "example usages of an element",
+               "items": {
+                  "$ref": "#/$defs/Example"
+               },
+               "type": "array"
+            },
+            "extensions": {
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
+               },
+               "description": "a tag/text tuple attached to an arbitrary element"
+            },
+            "from_schema": {
+               "description": "id of the schema that defined the element",
+               "type": "string"
+            },
+            "import_as": {
+               "type": "string"
+            },
+            "import_from": {
+               "type": "string"
+            },
+            "import_map": {
+               "additionalProperties": {
+                  "$ref": "#/$defs/Setting__identifier_optional"
+               }
+            },
+            "imported_from": {
+               "description": "the imports entry that this element was derived from.  Empty means primary source",
+               "type": "string"
+            },
+            "in_language": {
+               "type": "string"
+            },
+            "in_subset": {
+               "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "notes": {
+               "description": "editorial notes about an element intended for internal consumption",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "see_also": {
+               "description": "a reference",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
+            },
+            "title": {
+               "description": "the official title of the element",
+               "type": "string"
+            },
+            "todos": {
+               "description": "Outstanding issue that needs resolution",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "import_from"
+         ],
+         "title": "ImportExpression",
          "type": "object"
       },
       "LocalName": {
@@ -1930,6 +2106,9 @@
                "description": "the imports entry that this element was derived from.  Empty means primary source",
                "type": "string"
             },
+            "in_language": {
+               "type": "string"
+            },
             "in_subset": {
                "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
                "items": {
@@ -2049,6 +2228,9 @@
                "description": "the imports entry that this element was derived from.  Empty means primary source",
                "type": "string"
             },
+            "in_language": {
+               "type": "string"
+            },
             "in_subset": {
                "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
                "items": {
@@ -2159,6 +2341,9 @@
             },
             "imported_from": {
                "description": "the imports entry that this element was derived from.  Empty means primary source",
+               "type": "string"
+            },
+            "in_language": {
                "type": "string"
             },
             "in_subset": {
@@ -2279,6 +2464,9 @@
             },
             "imported_from": {
                "description": "the imports entry that this element was derived from.  Empty means primary source",
+               "type": "string"
+            },
+            "in_language": {
                "type": "string"
             },
             "in_subset": {
@@ -2440,6 +2628,13 @@
                },
                "type": "array"
             },
+            "categories": {
+               "description": "controlled terms used to categorize an element",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "classes": {
                "additionalProperties": {
                   "$ref": "#/$defs/ClassDefinition__identifier_optional"
@@ -2563,8 +2758,18 @@
                },
                "type": "array"
             },
+            "in_language": {
+               "type": "string"
+            },
             "in_subset": {
                "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "keywords": {
+               "description": "Keywords or tags used to describe the element",
                "items": {
                   "type": "string"
                },
@@ -2664,6 +2869,13 @@
             "source_file_size": {
                "description": "size in bytes of the source of the schema",
                "type": "integer"
+            },
+            "structured_aliases": {
+               "description": "A list of structured_alias objects.",
+               "items": {
+                  "$ref": "#/$defs/StructuredAlias"
+               },
+               "type": "array"
             },
             "subsets": {
                "additionalProperties": {
@@ -2952,6 +3164,9 @@
                "description": "the imports entry that this element was derived from.  Empty means primary source",
                "type": "string"
             },
+            "in_language": {
+               "type": "string"
+            },
             "in_subset": {
                "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
                "items": {
@@ -3003,6 +3218,14 @@
                "description": "time at which the element was last updated",
                "format": "date-time",
                "type": "string"
+            },
+            "list_elements_ordered": {
+               "description": "If True, then the order of elements of a multivalued slot is guaranteed to be preserved. If False, the order may still be preserved but this is not guaranteed",
+               "type": "boolean"
+            },
+            "list_elements_unique": {
+               "description": "If True, then there must be no duplicates in the elements of a multivalued slot",
+               "type": "boolean"
             },
             "local_names": {
                "additionalProperties": {
@@ -3146,6 +3369,10 @@
                },
                "type": "array"
             },
+            "shared": {
+               "description": "If True, then the relationship between the slot domain and range is many to one or many to many",
+               "type": "boolean"
+            },
             "singular_name": {
                "description": "a name that is used in the singular form",
                "type": "string"
@@ -3169,6 +3396,13 @@
             "string_serialization": {
                "description": "Used on a slot that stores the string serialization of the containing object. The syntax follows python formatted strings, with slot names enclosed in {}s. These are expanded using the values of those slots.\nWe call the slot with the serialization the s-slot, the slots used in the {}s are v-slots. If both s-slots and v-slots are populated on an object then the value of the s-slot should correspond to the expansion.\nImplementations of frameworks may choose to use this property to either (a) PARSE: implement automated normalizations by parsing denormalized strings into complex objects (b) GENERARE: implement automated to_string labeling of complex objects\nFor example, a Measurement class may have 3 fields: unit, value, and string_value. The string_value slot may have a string_serialization of {value}{unit} such that if unit=cm and value=2, the value of string_value shouldd be 2cm",
                "type": "string"
+            },
+            "structured_aliases": {
+               "description": "A list of structured_alias objects.",
+               "items": {
+                  "$ref": "#/$defs/StructuredAlias"
+               },
+               "type": "array"
             },
             "structured_pattern": {
                "$ref": "#/$defs/PatternExpression",
@@ -3432,6 +3666,9 @@
                "description": "the imports entry that this element was derived from.  Empty means primary source",
                "type": "string"
             },
+            "in_language": {
+               "type": "string"
+            },
             "in_subset": {
                "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
                "items": {
@@ -3483,6 +3720,14 @@
                "description": "time at which the element was last updated",
                "format": "date-time",
                "type": "string"
+            },
+            "list_elements_ordered": {
+               "description": "If True, then the order of elements of a multivalued slot is guaranteed to be preserved. If False, the order may still be preserved but this is not guaranteed",
+               "type": "boolean"
+            },
+            "list_elements_unique": {
+               "description": "If True, then there must be no duplicates in the elements of a multivalued slot",
+               "type": "boolean"
             },
             "local_names": {
                "additionalProperties": {
@@ -3626,6 +3871,10 @@
                },
                "type": "array"
             },
+            "shared": {
+               "description": "If True, then the relationship between the slot domain and range is many to one or many to many",
+               "type": "boolean"
+            },
             "singular_name": {
                "description": "a name that is used in the singular form",
                "type": "string"
@@ -3649,6 +3898,13 @@
             "string_serialization": {
                "description": "Used on a slot that stores the string serialization of the containing object. The syntax follows python formatted strings, with slot names enclosed in {}s. These are expanded using the values of those slots.\nWe call the slot with the serialization the s-slot, the slots used in the {}s are v-slots. If both s-slots and v-slots are populated on an object then the value of the s-slot should correspond to the expansion.\nImplementations of frameworks may choose to use this property to either (a) PARSE: implement automated normalizations by parsing denormalized strings into complex objects (b) GENERARE: implement automated to_string labeling of complex objects\nFor example, a Measurement class may have 3 fields: unit, value, and string_value. The string_value slot may have a string_serialization of {value}{unit} such that if unit=cm and value=2, the value of string_value shouldd be 2cm",
                "type": "string"
+            },
+            "structured_aliases": {
+               "description": "A list of structured_alias objects.",
+               "items": {
+                  "$ref": "#/$defs/StructuredAlias"
+               },
+               "type": "array"
             },
             "structured_pattern": {
                "$ref": "#/$defs/PatternExpression",
@@ -3695,6 +3951,126 @@
          },
          "required": [],
          "title": "SlotDefinition",
+         "type": "object"
+      },
+      "StructuredAlias": {
+         "additionalProperties": false,
+         "description": "object that contains meta data about a synonym or alias including where it came from (source) and its scope (narrow, broad, etc.)",
+         "properties": {
+            "alt_descriptions": {
+               "additionalProperties": {
+                  "$ref": "#/$defs/AltDescription__identifier_optional"
+               }
+            },
+            "annotations": {
+               "additionalProperties": {
+                  "$ref": "#/$defs/Annotation__identifier_optional"
+               },
+               "description": "a collection of tag/text tuples with the semantics of OWL Annotation"
+            },
+            "categories": {
+               "description": "The category or categories of an alias. This can be drawn from any relevant vocabulary",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "comments": {
+               "description": "notes and comments about an element intended for external consumption",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "deprecated": {
+               "description": "Description of why and when this element will no longer be used",
+               "type": "string"
+            },
+            "deprecated_element_has_exact_replacement": {
+               "description": "When an element is deprecated, it can be automatically replaced by this uri or curie",
+               "type": "string"
+            },
+            "deprecated_element_has_possible_replacement": {
+               "description": "When an element is deprecated, it can be potentially replaced by this uri or curie",
+               "type": "string"
+            },
+            "description": {
+               "description": "a description of the element's purpose and use",
+               "type": "string"
+            },
+            "examples": {
+               "description": "example usages of an element",
+               "items": {
+                  "$ref": "#/$defs/Example"
+               },
+               "type": "array"
+            },
+            "extensions": {
+               "additionalProperties": {
+                  "$ref": "#/$defs/Extension__identifier_optional"
+               },
+               "description": "a tag/text tuple attached to an arbitrary element"
+            },
+            "from_schema": {
+               "description": "id of the schema that defined the element",
+               "type": "string"
+            },
+            "imported_from": {
+               "description": "the imports entry that this element was derived from.  Empty means primary source",
+               "type": "string"
+            },
+            "in_language": {
+               "type": "string"
+            },
+            "in_subset": {
+               "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "literal_form": {
+               "description": "The literal lexical form of a structured alias",
+               "type": "string"
+            },
+            "notes": {
+               "description": "editorial notes about an element intended for internal consumption",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "predicate": {
+               "$ref": "#/$defs/AliasPredicateEnum",
+               "description": "The relationship between an element and its alias "
+            },
+            "see_also": {
+               "description": "a reference",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "source": {
+               "description": "A related resource from which the element is derived.",
+               "type": "string"
+            },
+            "title": {
+               "description": "the official title of the element",
+               "type": "string"
+            },
+            "todos": {
+               "description": "Outstanding issue that needs resolution",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "literal_form"
+         ],
+         "title": "StructuredAlias",
          "type": "object"
       },
       "SubsetDefinition": {
@@ -3798,6 +4174,9 @@
                "description": "the imports entry that this element was derived from.  Empty means primary source",
                "type": "string"
             },
+            "in_language": {
+               "type": "string"
+            },
             "in_subset": {
                "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
                "items": {
@@ -3856,6 +4235,13 @@
             "source": {
                "description": "A related resource from which the element is derived.",
                "type": "string"
+            },
+            "structured_aliases": {
+               "description": "A list of structured_alias objects.",
+               "items": {
+                  "$ref": "#/$defs/StructuredAlias"
+               },
+               "type": "array"
             },
             "title": {
                "description": "the official title of the element",
@@ -3976,6 +4362,9 @@
                "description": "the imports entry that this element was derived from.  Empty means primary source",
                "type": "string"
             },
+            "in_language": {
+               "type": "string"
+            },
             "in_subset": {
                "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
                "items": {
@@ -4034,6 +4423,13 @@
             "source": {
                "description": "A related resource from which the element is derived.",
                "type": "string"
+            },
+            "structured_aliases": {
+               "description": "A list of structured_alias objects.",
+               "items": {
+                  "$ref": "#/$defs/StructuredAlias"
+               },
+               "type": "array"
             },
             "title": {
                "description": "the official title of the element",
@@ -4192,6 +4588,9 @@
                "description": "the imports entry that this element was derived from.  Empty means primary source",
                "type": "string"
             },
+            "in_language": {
+               "type": "string"
+            },
             "in_subset": {
                "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
                "items": {
@@ -4273,6 +4672,13 @@
             "source": {
                "description": "A related resource from which the element is derived.",
                "type": "string"
+            },
+            "structured_aliases": {
+               "description": "A list of structured_alias objects.",
+               "items": {
+                  "$ref": "#/$defs/StructuredAlias"
+               },
+               "type": "array"
             },
             "structured_pattern": {
                "$ref": "#/$defs/PatternExpression",
@@ -4445,6 +4851,9 @@
                "description": "the imports entry that this element was derived from.  Empty means primary source",
                "type": "string"
             },
+            "in_language": {
+               "type": "string"
+            },
             "in_subset": {
                "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
                "items": {
@@ -4526,6 +4935,13 @@
             "source": {
                "description": "A related resource from which the element is derived.",
                "type": "string"
+            },
+            "structured_aliases": {
+               "description": "A list of structured_alias objects.",
+               "items": {
+                  "$ref": "#/$defs/StructuredAlias"
+               },
+               "type": "array"
             },
             "structured_pattern": {
                "$ref": "#/$defs/PatternExpression",
@@ -4612,6 +5028,9 @@
             },
             "imported_from": {
                "description": "the imports entry that this element was derived from.  Empty means primary source",
+               "type": "string"
+            },
+            "in_language": {
                "type": "string"
             },
             "in_subset": {
@@ -4728,6 +5147,9 @@
                "description": "the imports entry that this element was derived from.  Empty means primary source",
                "type": "string"
             },
+            "in_language": {
+               "type": "string"
+            },
             "in_subset": {
                "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
                "items": {
@@ -4807,6 +5229,13 @@
       },
       "broad_mappings": {
          "description": "A list of terms from different schemas or terminology systems that have broader meaning.",
+         "items": {
+            "type": "string"
+         },
+         "type": "array"
+      },
+      "categories": {
+         "description": "controlled terms used to categorize an element",
          "items": {
             "type": "string"
          },
@@ -4935,8 +5364,18 @@
          },
          "type": "array"
       },
+      "in_language": {
+         "type": "string"
+      },
       "in_subset": {
          "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+         "items": {
+            "type": "string"
+         },
+         "type": "array"
+      },
+      "keywords": {
+         "description": "Keywords or tags used to describe the element",
          "items": {
             "type": "string"
          },
@@ -5036,6 +5475,13 @@
       "source_file_size": {
          "description": "size in bytes of the source of the schema",
          "type": "integer"
+      },
+      "structured_aliases": {
+         "description": "A list of structured_alias objects.",
+         "items": {
+            "$ref": "#/$defs/StructuredAlias"
+         },
+         "type": "array"
       },
       "subsets": {
          "additionalProperties": {

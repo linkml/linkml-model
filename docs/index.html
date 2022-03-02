@@ -122,7 +122,22 @@
                 <h1 id="meta">meta</h1>
 <p><strong>metamodel version:</strong> 1.7.0</p>
 <p><strong>version:</strong> 2.0.0</p>
-<p>A metamodel for defining linked open data schemas</p>
+<p>The metamodel for schemas defined using the Linked Data Modeling Language framework.</p>
+<p>For more information on LinkML, see <a href="https://linkml.io">linkml.io</a></p>
+<p>Core metaclasses:</p>
+<ul>
+<li><a href="https://w3id.org/linkml/SchemaDefinition">SchemaDefinition</a></li>
+<li><a href="https://w3id.org/linkml/ClassDefinition">ClassDefinition</a></li>
+<li><a href="https://w3id.org/linkml/SlotDefinition">SlotDefinition</a></li>
+</ul>
+<p>Every LinkML model instantiates SchemaDefinition, all classes in
+the model instantiate ClassDefinition, and so on</p>
+<p>Note that the LinkML metamodel instantiates itself.</p>
+<p>For a non-normative introduction to LinkML schemas, see the tutorial
+and schema guide on [linkml.io/linkml].</p>
+<p>For canonical reference documentation on any metamodel construct,
+refer to the official URI for each construct, e.g.
+<a href="https://w3id.org/linkml/is_a">https://w3id.org/linkml/is_a</a></p>
 <h3 id="classes">Classes</h3>
 <ul>
 <li><a href="AltDescription/">AltDescription</a> - an attributed description</li>
@@ -153,13 +168,14 @@
 <li><a href="Annotation/">Annotation</a> - a tag/value pair with the semantics of OWL Annotation</li>
 </ul>
 </li>
+<li><a href="ImportExpression/">ImportExpression</a> - an expression describing an import</li>
 <li><a href="LocalName/">LocalName</a> - an attributed label</li>
 <li><a href="PathExpression/">PathExpression</a> - An expression that describes an abstract path from an object to another through a sequence of slot lookups</li>
 <li><a href="PatternExpression/">PatternExpression</a> - a regular expression pattern used to evaluate conformance of a string</li>
 <li><a href="PermissibleValue/">PermissibleValue</a> - a permissible value, accompanied by intended text and an optional mapping to a concept URI</li>
 <li><a href="Prefix/">Prefix</a> - prefix URI tuple</li>
-<li><a href="StructuredAlias/">StructuredAlias</a> - object that contains meta data about a synonym or alias including where it came from (source) and its scope (narrow, broad, etc.)</li>
 <li><a href="Setting/">Setting</a> - assignment of a key to a value</li>
+<li><a href="StructuredAlias/">StructuredAlias</a> - object that contains meta data about a synonym or alias including where it came from (source) and its scope (narrow, broad, etc.)</li>
 <li><a href="UniqueKey/">UniqueKey</a> - a collection of slots whose values uniquely identify an instance of a class</li>
 </ul>
 <h3 id="mixins">Mixins</h3>
@@ -180,6 +196,7 @@
 <ul>
 <li><a href="abstract/">abstract</a> - an abstract class is a high level class or slot that is typically used to group common slots together and cannot be directly instantiated.</li>
 <li><a href="alias/">alias</a> - the name used for a slot in the context of its owning class.  If present, this is used instead of the actual slot name.</li>
+<li><a href="alias_predicate/">structured_alias➞predicate</a> - The relationship between an element and its alias </li>
 <li><a href="aliases/">aliases</a></li>
 <li><a href="alt_description_source/">alt_description➞source</a> - the source of an attributed description</li>
 <li><a href="alt_description_text/">alt_description➞description</a> - text of an attributed description</li>
@@ -221,6 +238,10 @@
 <li><a href="type_expression_none_of/">type_expression➞none_of</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="categories/">categories</a> - controlled terms used to categorize an element<ul>
+<li><a href="structured_alias_categories/">structured_alias➞categories</a> - The category or categories of an alias. This can be drawn from any relevant vocabulary</li>
 </ul>
 </li>
 <li><a href="children_are_mutually_disjoint/">children_are_mutually_disjoint</a> - If true then all direct is_a children are mutually disjoint and share no instances in common</li>
@@ -272,8 +293,12 @@
 <li><a href="id_prefixes/">id_prefixes</a> - the identifier of this class or slot must begin with the URIs referenced by this prefix</li>
 <li><a href="identifier/">identifier</a> - True means that the key slot(s) uniquely identify the container. There can be at most one identifier or key per container</li>
 <li><a href="ifabsent/">ifabsent</a> - function that provides a default value for the slot.  Possible values for this slot are defined in</li>
+<li><a href="importExpression__import_as/">➞import_as</a></li>
+<li><a href="importExpression__import_from/">➞import_from</a></li>
+<li><a href="importExpression__import_map/">➞import_map</a></li>
 <li><a href="imported_from/">imported_from</a> - the imports entry that this element was derived from.  Empty means primary source</li>
 <li><a href="imports/">imports</a> - other schemas that are included in this schema</li>
+<li><a href="in_language/">in_language</a></li>
 <li><a href="in_subset/">in_subset</a> - used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)</li>
 <li><a href="inapplicable/">inapplicable</a> - true means that the slot must not be present</li>
 <li><a href="inherited/">inherited</a> - true means that the <em>value</em> of a slot is inherited by subclasses</li>
@@ -291,15 +316,25 @@
 <li><a href="is_grouping_slot/">is_grouping_slot</a> - true if this slot is a grouping slot</li>
 <li><a href="is_usage_slot/">is_usage_slot</a> - True means that this slot was defined in a slot_usage situation</li>
 <li><a href="key/">key</a> - True means that the key slot(s) uniquely identify the container.</li>
+<li><a href="keywords/">keywords</a> - Keywords or tags used to describe the element</li>
 <li><a href="last_updated_on/">last_updated_on</a> - time at which the element was last updated</li>
 <li><a href="license/">license</a> - license for the schema</li>
+<li><a href="list_elements_ordered/">list_elements_ordered</a> - If True, then the order of elements of a multivalued slot is guaranteed to be preserved. If False, the order may still be preserved but this is not guaranteed</li>
+<li><a href="list_elements_unique/">list_elements_unique</a> - If True, then there must be no duplicates in the elements of a multivalued slot</li>
 <li><a href="list_value_specification_constant/">list_value_specification_constant</a> - Grouping for metamodel slots that constrain members of a multivalued slot value to equal a specified constant<ul>
 <li><a href="all_members/">all_members</a> - the value of the multiavlued slot is a list where all elements conform to the specified values.</li>
+<li><a href="equals_expression/">equals_expression</a> - the value of the slot must equal the value of the evaluated expression</li>
+<li><a href="equals_number/">equals_number</a> - the slot must have range of a number and the value of the slot must equal the specified value</li>
 <li><a href="equals_number_in/">equals_number_in</a> - the slot must have range number and the value of the slot must equal one of the specified values</li>
+<li><a href="equals_string/">equals_string</a> - the slot must have range string and the value of the slot must equal the specified value</li>
 <li><a href="equals_string_in/">equals_string_in</a> - the slot must have range string and the value of the slot must equal one of the specified values</li>
 <li><a href="has_member/">has_member</a> - the values of the slot is multivalued with at least one member satisfying the condition</li>
+<li><a href="maximum_cardinality/">maximum_cardinality</a> - the maximum number of entries for a multivalued slot</li>
+<li><a href="minimum_cardinality/">minimum_cardinality</a> - the minimum number of entries for a multivalued slot</li>
+<li><a href="value_presence/">value_presence</a> - if true then a value must be present (for lists there must be at least one value). If false then a value must be absent (for lists, must be empty)</li>
 </ul>
 </li>
+<li><a href="literal_form/">literal_form</a> - The literal lexical form of a structured alias</li>
 <li><a href="local_name_source/">local_name_source</a> - the ncname of the source of the name</li>
 <li><a href="local_name_value/">local_name_value</a> - a name assigned to an element in a given ontology</li>
 <li><a href="local_names/">local_names</a></li>
@@ -326,7 +361,6 @@
 <li><a href="multivalued/">multivalued</a> - true means that slot can have more than one value</li>
 <li><a href="name/">name</a> - the unique name of the element within the context of the schema.  Name is combined with the default prefix to form the globally unique subject of the target class.<ul>
 <li><a href="schema_definition_name/">schema_definition➞name</a></li>
-<li><a href="structured_alias_name/">structured_alias➞name</a> - inherits name from element class, but in the structured_alias slot, this name represents a skos:altLabel</li>
 </ul>
 </li>
 <li><a href="notes/">notes</a> - editorial notes about an element intended for internal consumption</li>
@@ -371,6 +405,7 @@
 <li><a href="setting_key/">setting_key</a> - the variable name for a setting</li>
 <li><a href="setting_value/">setting_value</a> - The value assigned for a setting</li>
 <li><a href="settings/">settings</a> - A collection of global variable settings</li>
+<li><a href="shared/">shared</a> - If True, then the relationship between the slot domain and range is many to one or many to many</li>
 <li><a href="singular_name/">singular_name</a> - a name that is used in the singular form</li>
 <li><a href="slot_conditions/">slot_conditions</a> - the redefinition of a slot in the context of the containing class definition.</li>
 <li><a href="slot_definitions/">schema_definition➞slots</a> - slot definitions</li>
@@ -386,6 +421,7 @@
 <li><a href="status/">status</a> - status of the element</li>
 <li><a href="string_serialization/">string_serialization</a> - Used on a slot that stores the string serialization of the containing object. The syntax follows python formatted strings, with slot names enclosed in {}s. These are expanded using the values of those slots.</li>
 <li><a href="structured_aliases/">structured_aliases</a> - A list of structured_alias objects.</li>
+<li><a href="structured_imports/">structured_imports</a> - other schemas that are included in this schema</li>
 <li><a href="structured_pattern/">structured_pattern</a> - the string value of the slot must conform to the regular expression in the pattern expression</li>
 <li><a href="subclass_of/">subclass_of</a> - rdfs:subClassOf to be emitted in OWL generation</li>
 <li><a href="subproperty_of/">subproperty_of</a> - Ontology property which this slot is a subproperty of</li>
@@ -400,7 +436,6 @@
 </li>
 <li><a href="traverse/">traverse</a> - the slot to traverse</li>
 <li><a href="tree_root/">tree_root</a> - indicator that this is the root class in tree structures</li>
-<li><a href="type/">type</a> - The relatedness of an alias to the element it is aliasing.  type can be: narrow, broad, exact, related, close, etc.</li>
 <li><a href="type_uri/">type_definition➞uri</a> - The uri that defines the possible values for the type definition</li>
 <li><a href="typeof/">typeof</a> - Names a parent type</li>
 <li><a href="types/">types</a> - data types used in the model</li>
@@ -411,27 +446,24 @@
 <li><a href="usage_slot_name/">usage_slot_name</a> - The name of the slot referenced in the slot_usage</li>
 <li><a href="value/">value</a> - example value</li>
 <li><a href="value_description/">example➞description</a> - description of what the value is doing</li>
-<li><a href="value_specification_constant/">value_specification_constant</a> - Grouping for metamodel slots that constrain the a slot value to equal a specified constant<ul>
-<li><a href="equals_expression/">equals_expression</a> - the value of the slot must equal the value of the evaluated expression</li>
-<li><a href="equals_number/">equals_number</a> - the slot must have range of a number and the value of the slot must equal the specified value</li>
-<li><a href="equals_string/">equals_string</a> - the slot must have range string and the value of the slot must equal the specified value</li>
-<li><a href="maximum_cardinality/">maximum_cardinality</a> - the maximum number of entries for a multivalued slot</li>
-<li><a href="minimum_cardinality/">minimum_cardinality</a> - the minimum number of entries for a multivalued slot</li>
-<li><a href="value_presence/">value_presence</a> - if true then a value must be present (for lists there must be at least one value). If false then a value must be absent (for lists, must be empty)</li>
-</ul>
-</li>
+<li><a href="value_specification_constant/">value_specification_constant</a> - Grouping for metamodel slots that constrain the a slot value to equal a specified constant</li>
 <li><a href="values_from/">values_from</a> - the identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot</li>
 <li><a href="version/">version</a> - particular version of schema</li>
 </ul>
 <h3 id="enums">Enums</h3>
 <ul>
+<li><a href="alias_predicate_enum/">alias_predicate_enum</a></li>
 <li><a href="presence_enum/">presence_enum</a> - enumeration of conditions by which a slot value should be set</li>
 <li><a href="pv_formula_options/">pv_formula_options</a> - The formula used to generate the set of permissible values from the code_set values</li>
 <li><a href="relational_role_enum/">relational_role_enum</a> - enumeration of roles a slot on a relationship class can play</li>
 </ul>
 <h3 id="subsets">Subsets</h3>
 <ul>
+<li><a href="Basic/">Basic</a> - An extension of minimal that is a basic subset that can be implemented by a broad variety of tools</li>
+<li><a href="Minimal/">Minimal</a> - Minimal set of slots for defining a model</li>
+<li><a href="ObjectOriented/">ObjectOriented</a> - The set of constructs that have an equivalent in a minimal object oriented metamodel</li>
 <li><a href="Owl/">Owl</a> - Set of slots that appear in the OWL representation of a model</li>
+<li><a href="RelationalModel/">RelationalModel</a> - The set of constructs that have an equivalent in the classic relational mode as defined by Codd</li>
 </ul>
 <h3 id="types">Types</h3>
 <h4 id="built-in">Built in</h4>
@@ -525,5 +557,5 @@
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-02-22 19:00:11.149626+00:00
+Build Date UTC : 2022-03-02 04:07:21.745417+00:00
 -->
