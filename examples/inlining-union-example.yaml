@@ -1,0 +1,33 @@
+id: https://w3id.org/linkml/examples/inlining-union
+name: inlining-union
+license: https://creativecommons.org/publicdomain/zero/1.0/
+see_also:
+  - https://github.com/linkml/linkml/issues/664
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  ex: https://w3id.org/linkml/examples/inlining-union
+
+default_prefix: ex
+default_range: string
+
+default_curi_maps:
+    - semweb_context
+
+
+imports:
+  - linkml:types
+
+#==================================
+# Classes                         #
+#==================================
+
+classes:
+  Foo:
+
+slots:
+  my_slot:
+    range: Foo
+    any_of:
+      - inlined: true
+      - inlined: false

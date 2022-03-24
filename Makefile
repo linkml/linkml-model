@@ -255,7 +255,7 @@ docserve: gen-docs
 # ---------------------------------------
 # VALIDATION
 # ---------------------------------------
-EXAMPLES = relational-roles rules slot-group path unique-key
+EXAMPLES = relational-roles rules slot-group path unique-key inlining-union
 
 all-validate: $(patsubst %, validate-%, $(EXAMPLES))
 validate-%: examples/%-example.yaml
