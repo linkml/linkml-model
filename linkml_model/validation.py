@@ -1,5 +1,5 @@
 # Auto generated from validation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-02T06:06:39
+# Generation date: 2022-04-02T00:30:02
 # Schema: reporting
 #
 # id: https://w3id.org/linkml/reporting

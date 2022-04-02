@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-03-02T06:06:51
+# Generation date: 2022-04-02T00:30:06
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -1171,7 +1171,7 @@ class SlotExpression(Expression):
     """
     an expression that constrains the range of values a slot can take
     """
-    _inherited_slots: ClassVar[List[str]] = ["range", "required", "recommended", "minimum_value", "maximum_value", "pattern", "structured_pattern", "equals_string", "equals_string_in", "equals_number", "equals_expression", "minimum_cardinality", "maximum_cardinality"]
+    _inherited_slots: ClassVar[List[str]] = ["range", "required", "recommended", "inlined", "inlined_as_list", "minimum_value", "maximum_value", "pattern", "structured_pattern", "equals_string", "equals_string_in", "equals_number", "equals_expression", "minimum_cardinality", "maximum_cardinality"]
 
     class_class_uri: ClassVar[URIRef] = LINKML.SlotExpression
     class_class_curie: ClassVar[str] = "linkml:SlotExpression"
@@ -1182,6 +1182,8 @@ class SlotExpression(Expression):
     range_expression: Optional[Union[dict, "AnonymousClassExpression"]] = None
     required: Optional[Union[bool, Bool]] = None
     recommended: Optional[Union[bool, Bool]] = None
+    inlined: Optional[Union[bool, Bool]] = None
+    inlined_as_list: Optional[Union[bool, Bool]] = None
     minimum_value: Optional[int] = None
     maximum_value: Optional[int] = None
     pattern: Optional[str] = None
@@ -1211,6 +1213,12 @@ class SlotExpression(Expression):
 
         if self.recommended is not None and not isinstance(self.recommended, Bool):
             self.recommended = Bool(self.recommended)
+
+        if self.inlined is not None and not isinstance(self.inlined, Bool):
+            self.inlined = Bool(self.inlined)
+
+        if self.inlined_as_list is not None and not isinstance(self.inlined_as_list, Bool):
+            self.inlined_as_list = Bool(self.inlined_as_list)
 
         if self.minimum_value is not None and not isinstance(self.minimum_value, int):
             self.minimum_value = int(self.minimum_value)
@@ -1269,7 +1277,7 @@ class SlotExpression(Expression):
 
 @dataclass
 class AnonymousSlotExpression(AnonymousExpression):
-    _inherited_slots: ClassVar[List[str]] = ["range", "required", "recommended", "minimum_value", "maximum_value", "pattern", "structured_pattern", "equals_string", "equals_string_in", "equals_number", "equals_expression", "minimum_cardinality", "maximum_cardinality"]
+    _inherited_slots: ClassVar[List[str]] = ["range", "required", "recommended", "inlined", "inlined_as_list", "minimum_value", "maximum_value", "pattern", "structured_pattern", "equals_string", "equals_string_in", "equals_number", "equals_expression", "minimum_cardinality", "maximum_cardinality"]
 
     class_class_uri: ClassVar[URIRef] = LINKML.AnonymousSlotExpression
     class_class_curie: ClassVar[str] = "linkml:AnonymousSlotExpression"
@@ -1280,6 +1288,8 @@ class AnonymousSlotExpression(AnonymousExpression):
     range_expression: Optional[Union[dict, "AnonymousClassExpression"]] = None
     required: Optional[Union[bool, Bool]] = None
     recommended: Optional[Union[bool, Bool]] = None
+    inlined: Optional[Union[bool, Bool]] = None
+    inlined_as_list: Optional[Union[bool, Bool]] = None
     minimum_value: Optional[int] = None
     maximum_value: Optional[int] = None
     pattern: Optional[str] = None
@@ -1309,6 +1319,12 @@ class AnonymousSlotExpression(AnonymousExpression):
 
         if self.recommended is not None and not isinstance(self.recommended, Bool):
             self.recommended = Bool(self.recommended)
+
+        if self.inlined is not None and not isinstance(self.inlined, Bool):
+            self.inlined = Bool(self.inlined)
+
+        if self.inlined_as_list is not None and not isinstance(self.inlined_as_list, Bool):
+            self.inlined_as_list = Bool(self.inlined_as_list)
 
         if self.minimum_value is not None and not isinstance(self.minimum_value, int):
             self.minimum_value = int(self.minimum_value)
@@ -1370,7 +1386,7 @@ class SlotDefinition(Definition):
     """
     the definition of a property or a slot
     """
-    _inherited_slots: ClassVar[List[str]] = ["domain", "multivalued", "inherited", "readonly", "ifabsent", "inlined", "inlined_as_list", "list_elements_unique", "list_elements_ordered", "shared", "key", "identifier", "designates_type", "role", "relational_role", "range", "required", "recommended", "minimum_value", "maximum_value", "pattern", "structured_pattern", "equals_string", "equals_string_in", "equals_number", "equals_expression", "minimum_cardinality", "maximum_cardinality"]
+    _inherited_slots: ClassVar[List[str]] = ["domain", "multivalued", "inherited", "readonly", "ifabsent", "list_elements_unique", "list_elements_ordered", "shared", "key", "identifier", "designates_type", "role", "relational_role", "range", "required", "recommended", "inlined", "inlined_as_list", "minimum_value", "maximum_value", "pattern", "structured_pattern", "equals_string", "equals_string_in", "equals_number", "equals_expression", "minimum_cardinality", "maximum_cardinality"]
 
     class_class_uri: ClassVar[URIRef] = LINKML.SlotDefinition
     class_class_curie: ClassVar[str] = "linkml:SlotDefinition"
@@ -1385,8 +1401,6 @@ class SlotDefinition(Definition):
     inherited: Optional[Union[bool, Bool]] = None
     readonly: Optional[str] = None
     ifabsent: Optional[str] = None
-    inlined: Optional[Union[bool, Bool]] = None
-    inlined_as_list: Optional[Union[bool, Bool]] = None
     list_elements_unique: Optional[Union[bool, Bool]] = None
     list_elements_ordered: Optional[Union[bool, Bool]] = None
     shared: Optional[Union[bool, Bool]] = None
@@ -1423,6 +1437,8 @@ class SlotDefinition(Definition):
     range_expression: Optional[Union[dict, "AnonymousClassExpression"]] = None
     required: Optional[Union[bool, Bool]] = None
     recommended: Optional[Union[bool, Bool]] = None
+    inlined: Optional[Union[bool, Bool]] = None
+    inlined_as_list: Optional[Union[bool, Bool]] = None
     minimum_value: Optional[int] = None
     maximum_value: Optional[int] = None
     pattern: Optional[str] = None
@@ -1466,12 +1482,6 @@ class SlotDefinition(Definition):
 
         if self.ifabsent is not None and not isinstance(self.ifabsent, str):
             self.ifabsent = str(self.ifabsent)
-
-        if self.inlined is not None and not isinstance(self.inlined, Bool):
-            self.inlined = Bool(self.inlined)
-
-        if self.inlined_as_list is not None and not isinstance(self.inlined_as_list, Bool):
-            self.inlined_as_list = Bool(self.inlined_as_list)
 
         if self.list_elements_unique is not None and not isinstance(self.list_elements_unique, Bool):
             self.list_elements_unique = Bool(self.list_elements_unique)
@@ -1584,6 +1594,12 @@ class SlotDefinition(Definition):
 
         if self.recommended is not None and not isinstance(self.recommended, Bool):
             self.recommended = Bool(self.recommended)
+
+        if self.inlined is not None and not isinstance(self.inlined, Bool):
+            self.inlined = Bool(self.inlined)
+
+        if self.inlined_as_list is not None and not isinstance(self.inlined_as_list, Bool):
+            self.inlined_as_list = Bool(self.inlined_as_list)
 
         if self.minimum_value is not None and not isinstance(self.minimum_value, int):
             self.minimum_value = int(self.minimum_value)
