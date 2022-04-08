@@ -146,7 +146,7 @@ target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql install
 # ---------------------------------------
 # JSON Schema
 # ---------------------------------------
-gen-jsonschema: $(patsubst %, $(PKG_T_JSON_SCHEMA)/%.schema.json, $(SCHEMA_NAMES))
+gen-jsonschema:
 .PHONY: gen-jsonschema
 
 $(PKG_T_JSON_SCHEMA)/%.schema.json: target/json_schema/%.schema.json
@@ -154,7 +154,8 @@ $(PKG_T_JSON_SCHEMA)/%.schema.json: target/json_schema/%.schema.json
 	cp $< $@
 
 target/json_schema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-json_schema install
-	$(RUN) gen-json-schema $(GEN_OPTS) -t schema_definition $< > $@
+	echo "Fix me seymore"
+	# $(RUN) gen-json-schema $(GEN_OPTS) -t schema_definition $< > $@
 
 # ---------------------------------------
 # ShEx
