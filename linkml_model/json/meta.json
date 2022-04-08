@@ -8,7 +8,16 @@
     "linkml:types",
     "linkml:mappings",
     "linkml:extensions",
-    "linkml:annotations"
+    "linkml:annotations",
+    "tccm:valuesetcatalogentry",
+    "../core/localidentifiers",
+    "../core/references",
+    "../core/resourcedescription",
+    "../core/datatypes",
+    "../core/prefixes",
+    "../core/valuesets",
+    "../core/uritypes",
+    "../core/entrydescription"
   ],
   "license": "https://creativecommons.org/publicdomain/zero/1.0/",
   "prefixes": [
@@ -67,6 +76,10 @@
     {
       "prefix_prefix": "vann",
       "prefix_reference": "https://vocab.org/vann/"
+    },
+    {
+      "prefix_prefix": "tccm",
+      "prefix_reference": "https://hotecosystem.org/tccm/"
     }
   ],
   "emit_prefixes": [
@@ -280,6 +293,252 @@
       "uri": "http://www.w3.org/ns/shex#nonLiteral",
       "repr": "str",
       "@type": "TypeDefinition"
+    },
+    {
+      "name": "CodeSystemName",
+      "definition_uri": "https://hotecosystem.org/tccm/CodeSystemName",
+      "description": "A local identifier for a CodeSystem.",
+      "from_schema": "https://hotecosystem.org/tccm/localidentifiers",
+      "imported_from": "../core/localidentifiers",
+      "typeof": "LocalIdentifier",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "CodeSystemVersionName",
+      "definition_uri": "https://hotecosystem.org/tccm/CodeSystemVersionName",
+      "description": "A local identifier for a CodeSystemVersion.",
+      "from_schema": "https://hotecosystem.org/tccm/localidentifiers",
+      "imported_from": "../core/localidentifiers",
+      "typeof": "LocalIdentifier",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "ConceptDomainName",
+      "definition_uri": "https://hotecosystem.org/tccm/ConceptDomainName",
+      "description": "A local identifier for a ConceptDomain.",
+      "from_schema": "https://hotecosystem.org/tccm/localidentifiers",
+      "imported_from": "../core/localidentifiers",
+      "typeof": "LocalIdentifier",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "MapName",
+      "definition_uri": "https://hotecosystem.org/tccm/MapName",
+      "description": "A local identifier for a Map.",
+      "from_schema": "https://hotecosystem.org/tccm/localidentifiers",
+      "imported_from": "../core/localidentifiers",
+      "typeof": "LocalIdentifier",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "MapVersionName",
+      "definition_uri": "https://hotecosystem.org/tccm/MapVersionName",
+      "description": "A local identifier for a MapVersion.",
+      "from_schema": "https://hotecosystem.org/tccm/localidentifiers",
+      "imported_from": "../core/localidentifiers",
+      "typeof": "LocalIdentifier",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "ValueSetName",
+      "definition_uri": "https://hotecosystem.org/tccm/ValueSetName",
+      "description": "A local identifier for a ValueSet.",
+      "from_schema": "https://hotecosystem.org/tccm/localidentifiers",
+      "imported_from": "../core/localidentifiers",
+      "typeof": "LocalIdentifier",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "VersionTagName",
+      "definition_uri": "https://hotecosystem.org/tccm/VersionTagName",
+      "description": "A local identifier for a VersionTag.",
+      "from_schema": "https://hotecosystem.org/tccm/localidentifiers",
+      "imported_from": "../core/localidentifiers",
+      "typeof": "LocalIdentifier",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "AmountOfTime",
+      "definition_uri": "https://hotecosystem.org/tccm/AmountOfTime",
+      "description": "A quantity of time. AmountOfTime is used exclusively to represent service timeout limits.",
+      "notes": [
+        "A formal Duration implementation is needed at some point.  String is too weak..."
+      ],
+      "from_schema": "https://hotecosystem.org/tccm/datatype",
+      "imported_from": "../core/datatypes",
+      "typeof": "string",
+      "base": "str",
+      "uri": "https://www.w3.org/TR/owl-time/time#Duration",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "DateAndTime",
+      "definition_uri": "https://hotecosystem.org/tccm/DateAndTime",
+      "description": "Represents an \u201cInstant\u201d as defined in the OWL Time Specification . Implementations must be able to support\ntemporal units of second, minute, hour, day, month, and year, and be able to represent and compare instances\nrepresented in any of these units. DateAndTime can only provide a partial ordering and, as a consequence, is\nnever used as an index, unique identifier, or to sequence data or events.",
+      "alt_descriptions": [
+        {
+          "source": "http://www.w3.org/TR/owl-time/",
+          "description": "OWL Time Specification",
+          "@type": "AltDescription"
+        }
+      ],
+      "notes": [
+        "A formal XSDdateTimeStamp implementation is needed at some point.  String is too weak..."
+      ],
+      "from_schema": "https://hotecosystem.org/tccm/datatype",
+      "imported_from": "../core/datatypes",
+      "typeof": "string",
+      "base": "str",
+      "uri": "https://www.w3.org/TR/owl-time/time#Instant",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "LocalIdentifier",
+      "definition_uri": "https://hotecosystem.org/tccm/LocalIdentifier",
+      "description": "An identifier that uniquely references a class, individual, property, or other resource within the context of a\nspecific TCCM service implementation. LocalIdentifier syntax must match the PNAME LN\nproduction as defined in the SPARQL Query Specification . LocalIdentifiers may begin with leading digits,\nwhere XML Local Identifiers and NameSpaceIdentifiers may not.",
+      "notes": [
+        "We may want to tighten this definition up to meet the `irelative-ref` pattern --\nsee: https://www.w3.org/TR/curie/#s_syntax and https://www.ietf.org/rfc/rfc3987.txt"
+      ],
+      "from_schema": "https://hotecosystem.org/tccm/datatype",
+      "imported_from": "../core/datatypes",
+      "typeof": "string",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "MatchStrength",
+      "definition_uri": "https://hotecosystem.org/tccm/MatchStrength",
+      "description": "Represents the relative strength of the result of a search. Represented as a real number R such that 0.0 <\nMatchStrength < 1.0.",
+      "notes": [
+        "this type should be strengthened"
+      ],
+      "from_schema": "https://hotecosystem.org/tccm/datatype",
+      "imported_from": "../core/datatypes",
+      "typeof": "double",
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#double",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "NamespaceIdentifier",
+      "definition_uri": "https://hotecosystem.org/tccm/NamespaceIdentifier",
+      "description": "An identifier that uniquely references the scoping namespace of an Entity (class, role, or individual)\nwithin the context of a TCCM service. NameSpaceIdentifier syntax must match the PNAME NS production as defined\nin the SPARQL Query Specification - meaning that it must begin with an alphabetic character",
+      "from_schema": "https://hotecosystem.org/tccm/datatype",
+      "imported_from": "../core/datatypes",
+      "base": "NCName",
+      "uri": "http://www.w3.org/2001/XMLSchema#NMTOKEN",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "NaturalNumber",
+      "definition_uri": "https://hotecosystem.org/tccm/NaturalNumber",
+      "description": "A non-negative integer (N). NaturalNumber is used exclusively for representing quantities in this specification.",
+      "from_schema": "https://hotecosystem.org/tccm/datatype",
+      "imported_from": "../core/datatypes",
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "PersistentURI",
+      "definition_uri": "https://hotecosystem.org/tccm/PersistentURI",
+      "description": "A Universal Resource Identifier (URI) that persists across service instances. PersistentURIs have enduring\nreference and meaning.",
+      "from_schema": "https://hotecosystem.org/tccm",
+      "imported_from": "../core/uritypes",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "LocalURI",
+      "definition_uri": "https://hotecosystem.org/tccm/LocalURI",
+      "description": "A URI or handle whose scope is local to the implementing service. LocalURI cannot be used as a permanent\nidentifier in a message or a data record.",
+      "from_schema": "https://hotecosystem.org/tccm",
+      "imported_from": "../core/uritypes",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "ChangeSetURI",
+      "definition_uri": "https://hotecosystem.org/tccm/ChangeSetURI",
+      "description": "The unique identifier of a set of change instructions that can potentially transform the contents of a TCCM\nservice instance from one state to another.",
+      "from_schema": "https://hotecosystem.org/tccm",
+      "imported_from": "../core/uritypes",
+      "typeof": "PersistentURI",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "DocumentURI",
+      "definition_uri": "https://hotecosystem.org/tccm/DocumentURI",
+      "description": "A reference to a \u201cwork\u201d in the bibliographic sense. It is not necessary that a Document URI be directly or\nindirectly resolvable to a digital resource - it may simply be the name of a book, publication, or other\nabstraction.",
+      "from_schema": "https://hotecosystem.org/tccm",
+      "imported_from": "../core/uritypes",
+      "typeof": "PersistentURI",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "ExternalURI",
+      "definition_uri": "https://hotecosystem.org/tccm/ExternalURI",
+      "description": "A URI that names a unique resource. CTS2 implementations should never assume that ExternalURI is resolvable\nvia an http: GET operation - ExternalURIs should always be passed as parameters to service implementations\nto get the sanctioned equivalent in a given service context.",
+      "from_schema": "https://hotecosystem.org/tccm",
+      "imported_from": "../core/uritypes",
+      "typeof": "PersistentURI",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "ServiceURI",
+      "definition_uri": "https://hotecosystem.org/tccm/ServiceURI",
+      "description": "The URI or CURIE of a service implementation",
+      "from_schema": "https://hotecosystem.org/tccm",
+      "imported_from": "../core/uritypes",
+      "typeof": "LocalURI",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "RenderingURI",
+      "definition_uri": "https://hotecosystem.org/tccm/RenderingURI",
+      "description": "A URI or handle that is directly readable by a specific instance of a TCCM service implementation. RenderingURI\nmust resolve to Changeable CTS2 element.",
+      "from_schema": "https://hotecosystem.org/tccm",
+      "imported_from": "../core/uritypes",
+      "typeof": "LocalURI",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "DirectoryURI",
+      "definition_uri": "https://hotecosystem.org/tccm/DirectoryURI",
+      "description": "The unique name of a query that when executed results in a list of resources that, in the context of a given\nservice, satisfy the query.",
+      "from_schema": "https://hotecosystem.org/tccm",
+      "imported_from": "../core/uritypes",
+      "typeof": "LocalURI",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "@type": "TypeDefinition"
     }
   ],
   "enums": [
@@ -380,6 +639,258 @@
           "meaning": "skos:narrowerMatch"
         }
       ]
+    },
+    {
+      "name": "ASSOCIATION",
+      "definition_uri": "https://hotecosystem.org/tccm/ASSOCIATION",
+      "description": "A formal \u201csemantic\u201d assertion about a named entity, in the form of subject, predicate, and object including any\nprovenance, qualifiers, or internal BNODEs.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "BINDING_QUALIFIER",
+      "definition_uri": "https://hotecosystem.org/tccm/BINDINGQUALIFIER",
+      "description": "An assertion about the semantics of a concept domain / value set binding. This model element exists specifically\nto address section 2.4.2.23 of the HL7 SFM14, which needs a qualifier that indicates whether the binding is\n\u201coverall,\u201d \u201cminimal,\u201d or \u201cmaximum.\u201d\n\nThe TCCM specification does not formally define the semantics of the various possible BINDING_QUALIFIER elements:\nit is up to specific implementations and service clients to interpret the meaning of the specific binding\nqualifiers that may be represented in references of this type.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "CASE_SIGNIFICANCE",
+      "definition_uri": "https://hotecosystem.org/tccm/CASESIGNIFICANCE",
+      "description": "Identifies the significance of case in a term or designation.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "CODE_SYSTEM_CATEGORY",
+      "definition_uri": "https://hotecosystem.org/tccm/CODESYSTEMCATEGORY",
+      "description": "The general category of a code system (flat list, subject heading system, taxonomy, thesaurus, classification,\nterminology, description logic ontology, first order predicate logic, etc.) (same as\nKnowledgeRepresentationParadigm: OMV 5.8).",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "CODE_SYSTEM",
+      "definition_uri": "https://hotecosystem.org/tccm/CODESYSTEM",
+      "description": "A collection of metadata about the provenance, use, and distribution of a code system or ontology.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "CODE_SYSTEM_VERSION",
+      "definition_uri": "https://hotecosystem.org/tccm/CODESYSTEMVERSION",
+      "description": "A collection of metadata about content and distribution format of a particular version or release of a code system.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "CONCEPT_DOMAIN",
+      "definition_uri": "https://hotecosystem.org/tccm/CONCEPTDOMAIN",
+      "description": "The description of the conceptual domain of a field in a message, column in a database, field on a form, etc.\nEquivalent to the ISO 11179-3 \u201cData Element Concept.\u201d",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "CONTEXT",
+      "definition_uri": "https://hotecosystem.org/tccm/CONTEXT",
+      "description": "External and environmental factors that serve to discriminate among multiple possible selections. While it is\nassumed that the specific contexts referenced by CONTEXT are represented by entity descriptions contained in\nsome ontology or coding scheme, the CTS2 specification does not recommend any targets. Note, however, the TCCM\ncontext is intended to represent the notion of \u201cjurisdictional domain\u201d or \u201crealm\u201d as described in the HL7 CTS2 SFM .",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "DESIGNATION_FIDELITY",
+      "definition_uri": "https://hotecosystem.org/tccm/DESIGNATIONFIDELITY",
+      "description": "Identifies how well a particular designation represents the intended meaning of the referenced entity. TCCM\nimplementations may consider using the SKOS16 semantic relations to represent this relationship.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "DESIGNATION_TYPE",
+      "definition_uri": "https://hotecosystem.org/tccm/DESIGNATIONTYPE",
+      "description": "The particular form or type of a given designation: can be \u201cshort name,\u201d \u201clong name,\u201d \u201cabbreviation,\u201d \u201ceponym.\u201d",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "FORMALITY_LEVEL",
+      "definition_uri": "https://hotecosystem.org/tccm/FORMALITYLEVEL",
+      "description": "The level of formality of an ontology (OMV 5.9).",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "FORMAT",
+      "definition_uri": "https://hotecosystem.org/tccm/FORMAT",
+      "description": "A particular way that information is encoded for storage in a computer file",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "LANGUAGE",
+      "definition_uri": "https://hotecosystem.org/tccm/LANGUAGE",
+      "description": "A spoken or written language intended for human consumption.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "MATCH_ALGORITHM",
+      "definition_uri": "https://hotecosystem.org/tccm/MATCHALGORITHM",
+      "description": "A predicate that determines whether an entity resource qualities for membership in a set based on supplied\nmatching criteria.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "MAP",
+      "definition_uri": "https://hotecosystem.org/tccm/MAP",
+      "description": "A set of rules that associate a set of entity references from one domain into those in another.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "MAP_CORRELATION",
+      "definition_uri": "https://hotecosystem.org/tccm/MAPCORRELATION",
+      "description": "An assertion about the strength or significance of a specific rule in a Map.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "MAP_VERSION",
+      "definition_uri": "https://hotecosystem.org/tccm/MAPVERSION",
+      "description": "The state of a Map at a given point in time.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "MODEL_ATTRIBUTE",
+      "definition_uri": "https://hotecosystem.org/tccm/MODELATTRIBUTE",
+      "description": "An attribute defined in CTS2 information model.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "NAMESPACE",
+      "definition_uri": "https://hotecosystem.org/tccm/NAMESPACE",
+      "description": "A reference to a conceptual space that groups identifiers to avoid conflict with items that have the same name but different meanings.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "ONTOLOGY_ENGINEERING_METHODOLOGY",
+      "definition_uri": "https://hotecosystem.org/tccm/ONTOLOGYENGINEERINGMETHODOLOGY",
+      "description": "Information about the ontology engineering methodology (OMV 5.4) (sic).",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "ONTOLOGY_ENGINEERING_TOOL",
+      "definition_uri": "https://hotecosystem.org/tccm/ONTOLOGYENGINEERINGTOOL",
+      "description": "A tool used to create the ontology (OMV 5.5).",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "ONTOLOGY_DOMAIN",
+      "definition_uri": "https://hotecosystem.org/tccm/ONTOLOGYDOMAIN",
+      "description": "While the domain can refer to any topic ontology it is advised to use one of the established general purpose\ntopic hierarchy like DMOZ or domain specific topic like ACM for the computer science domain. Only this way it can\nbe ensured that meaningful information about the relation of the domains of two separate ontologies can be\ndeduced (OMV 5.1 1)(sic).",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "ONTOLOGY_LANGUAGE",
+      "definition_uri": "https://hotecosystem.org/tccm/ONTOLOGYLANGUAGE",
+      "description": "Information about the language in which the ontology is implemented (OMV 5.7).",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "ONTOLOGY_SYNTAX",
+      "definition_uri": "https://hotecosystem.org/tccm/ONTOLOGYSYNTAX",
+      "description": "Information about the syntax used by an ontology (OMV 5.6).",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "ONTOLOGY_TASK",
+      "definition_uri": "https://hotecosystem.org/tccm/ONTOLOGYTASK",
+      "description": "Information about the task the ontology was intended to be used for (OMV 5.10).",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "ONTOLOGY_TYPE",
+      "definition_uri": "https://hotecosystem.org/tccm/ONTOLOGYTYPE",
+      "description": "Categorizes ontologies (OMV 5.2).",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "PREDICATE",
+      "definition_uri": "https://hotecosystem.org/tccm/PREDICATE",
+      "description": "A property or relation between entities.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "REASONING_ALGORITHM",
+      "definition_uri": "https://hotecosystem.org/tccm/REASONINGALGORITHM",
+      "description": "A set of formal rules that allow the deduction of additional assertions from a\nsupplied list of axioms.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "RESOURCE TYPE",
+      "definition_uri": "https://hotecosystem.org/tccm/RESOURCETYPE",
+      "description": "A class of which a referencing resource is an instance of.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "ROLE",
+      "definition_uri": "https://hotecosystem.org/tccm/ROLE",
+      "description": "A role that a SOURCE can play in the construction or dissemination of a terminological resource.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "SOURCE",
+      "definition_uri": "https://hotecosystem.org/tccm/SOURCE",
+      "description": "An individual, organization, or bibliographic reference.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "STATEMENT",
+      "definition_uri": "https://hotecosystem.org/tccm/STATEMENT",
+      "description": "An atomic assertion about a CTS2 resource.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "STATUS",
+      "definition_uri": "https://hotecosystem.org/tccm/STATUS",
+      "description": "The state of a resource or other entry in an external workflow.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "VALUE_SET",
+      "definition_uri": "https://hotecosystem.org/tccm/VALUESET",
+      "description": "A set of entity references.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "VALUE_SET_DEFINITION",
+      "definition_uri": "https://hotecosystem.org/tccm/VALUESETDEFINITION",
+      "description": "A set of rules that can be applied to specified versions or one or more code systems to yield a set of entity\nreferences.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
+    },
+    {
+      "name": "VERSION_TAG",
+      "definition_uri": "https://hotecosystem.org/tccm/VERSIONTAG",
+      "description": "An identifier that can be assigned to resource versions by a service implementation to identify their state\nin the service workflow. Examples might include \u201cdevelopment,\u201d \u201ctest,\u201d \u201cproduction,\u201d etc.",
+      "from_schema": "https://hotecosystem.org/tccm/ValueSets",
+      "imported_from": "../core/valuesets"
     }
   ],
   "slots": [
@@ -4038,6 +4549,585 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "valueSetCatalogEntry__valueSetName",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "tccm:valuesetcatalogentry",
+      "slot_uri": "https://w3id.org/linkml/valueSetName",
+      "alias": "valueSetName",
+      "owner": "ValueSetCatalogEntry",
+      "domain_of": [
+        "ValueSetCatalogEntry"
+      ],
+      "range": "ValueSetName",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "valueSetCatalogEntry__definitions",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "tccm:valuesetcatalogentry",
+      "slot_uri": "https://w3id.org/linkml/definitions",
+      "multivalued": true,
+      "alias": "definitions",
+      "owner": "ValueSetCatalogEntry",
+      "domain_of": [
+        "ValueSetCatalogEntry"
+      ],
+      "range": "ValueSetDefinitionReference",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "valueSetCatalogEntry__currentDefinition",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "tccm:valuesetcatalogentry",
+      "slot_uri": "https://w3id.org/linkml/currentDefinition",
+      "alias": "currentDefinition",
+      "owner": "ValueSetCatalogEntry",
+      "domain_of": [
+        "ValueSetCatalogEntry"
+      ],
+      "range": "ValueSetDefinitionReference",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "valueSetCatalogEntry__currentResolution",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "tccm:valuesetcatalogentry",
+      "slot_uri": "https://w3id.org/linkml/currentResolution",
+      "alias": "currentResolution",
+      "owner": "ValueSetCatalogEntry",
+      "domain_of": [
+        "ValueSetCatalogEntry"
+      ],
+      "range": "RenderingURI",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "nameAndMeaningReference__name",
+      "description": "An identifier that uniquely names the reference within the context of the particular reference type.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/references",
+      "slot_uri": "https://w3id.org/linkml/name",
+      "key": true,
+      "alias": "name",
+      "owner": "NameAndMeaningReference",
+      "domain_of": [
+        "NameAndMeaningReference"
+      ],
+      "range": "LocalIdentifier",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "nameAndMeaningReference__synopsis",
+      "description": "A summary of the role and purpose of the actual reference",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/references",
+      "slot_uri": "https://w3id.org/linkml/synopsis",
+      "alias": "synopsis",
+      "owner": "NameAndMeaningReference",
+      "domain_of": [
+        "NameAndMeaningReference"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "nameAndMeaningReference__uri",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/references",
+      "slot_uri": "https://w3id.org/linkml/uri",
+      "alias": "uri",
+      "owner": "NameAndMeaningReference",
+      "domain_of": [
+        "NameAndMeaningReference"
+      ],
+      "range": "ExternalURI",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "nameAndMeaningReference__href",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/references",
+      "slot_uri": "https://w3id.org/linkml/href",
+      "alias": "href",
+      "owner": "NameAndMeaningReference",
+      "domain_of": [
+        "NameAndMeaningReference"
+      ],
+      "range": "RenderingURI",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "codeSystemVersionReference__codeSystem",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/references",
+      "slot_uri": "https://w3id.org/linkml/codeSystem",
+      "alias": "codeSystem",
+      "owner": "CodeSystemVersionReference",
+      "domain_of": [
+        "CodeSystemVersionReference"
+      ],
+      "range": "CodeSystemReference",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mapVersionReference__map",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/references",
+      "slot_uri": "https://w3id.org/linkml/map",
+      "alias": "map",
+      "owner": "MapVersionReference",
+      "domain_of": [
+        "MapVersionReference"
+      ],
+      "range": "MapReference",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "predicateReference__uri",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/references",
+      "slot_uri": "https://w3id.org/linkml/uri",
+      "alias": "uri",
+      "owner": "PredicateReference",
+      "domain_of": [
+        "PredicateReference"
+      ],
+      "range": "ExternalURI",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "predicateReference__name",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/references",
+      "slot_uri": "https://w3id.org/linkml/name",
+      "alias": "name",
+      "owner": "PredicateReference",
+      "domain_of": [
+        "PredicateReference"
+      ],
+      "range": "LocalIdentifier",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "predicateReference__href",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/references",
+      "slot_uri": "https://w3id.org/linkml/href",
+      "alias": "href",
+      "owner": "PredicateReference",
+      "domain_of": [
+        "PredicateReference"
+      ],
+      "range": "RenderingURI",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "predicateReference__designation",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/references",
+      "slot_uri": "https://w3id.org/linkml/designation",
+      "alias": "designation",
+      "owner": "PredicateReference",
+      "domain_of": [
+        "PredicateReference"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sourceAndRoleReference__role",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/references",
+      "slot_uri": "https://w3id.org/linkml/role",
+      "alias": "role",
+      "owner": "SourceAndRoleReference",
+      "domain_of": [
+        "SourceAndRoleReference"
+      ],
+      "range": "RoleReference",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sourceAndRoleReference__bibliographicLink",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/references",
+      "slot_uri": "https://w3id.org/linkml/bibliographicLink",
+      "inlined": true,
+      "alias": "bibliographicLink",
+      "owner": "SourceAndRoleReference",
+      "domain_of": [
+        "SourceAndRoleReference"
+      ],
+      "range": "OpaqueData",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resourceDescription__describedResourceType",
+      "description": "Enumeration of possible types",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/describedResourceType",
+      "alias": "describedResourceType",
+      "owner": "ResourceDescription",
+      "domain_of": [
+        "ResourceDescription"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resourceDescription__resourceSynopsis",
+      "description": "A textual summary of the resource - what it is, what it is for, etc.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/resourceSynopsis",
+      "alias": "resourceSynopsis",
+      "owner": "ResourceDescription",
+      "domain_of": [
+        "ResourceDescription"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resourceDescription__resourceID",
+      "description": "A local identifier that uniquely names the resource within the context of the describedResourceType and\nimplementing service. As an example, this might be \u201cSCT\u201d for the SNOMED-CT code system, \u201cSCT-2010AA\u201d for a\nSNOMED-CT code system version.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/id",
+      "key": true,
+      "alias": "id",
+      "owner": "ResourceDescription",
+      "domain_of": [
+        "ResourceDescription"
+      ],
+      "range": "LocalIdentifier",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resourceDescription__about",
+      "description": "The (or a) definitive URI that represents the resource being described. Note that this is NOT the URI of the\nresource description in the TCCM or other format, but of the resource itself. As an example, the about URI\nfor the Wine ontology would be \u201chttp://www.w3.org/TR/2003/PR-owl-guide-2003 1209/wine#.\u201d The NCI Thesaurus\nhas, among others, the about URI of http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#. HL7 uses ISO Object\nIdentifiers (OIDs) to label resources so, from the HL7 perspective, the about URI of the NCI Thesaurus would\nbe \u201curn:oid:2.16.840. 1.113883.3.26.1.1\u201d",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/about",
+      "alias": "about",
+      "owner": "ResourceDescription",
+      "domain_of": [
+        "ResourceDescription"
+      ],
+      "range": "ExternalURI",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resourceDescription__formalName",
+      "description": "The formal or officially assigned name of this resource, if any.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/formalName",
+      "alias": "formalName",
+      "owner": "ResourceDescription",
+      "domain_of": [
+        "ResourceDescription"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resourceDescription__keyword",
+      "description": "Additional identifiers that are used to index and locate the resource.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/keyword",
+      "multivalued": true,
+      "alias": "keyword",
+      "owner": "ResourceDescription",
+      "domain_of": [
+        "ResourceDescription"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resourceDescription__additionalDocumentation",
+      "description": "A reference to a document that provide additional information about the resource.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/additionalDocumentation",
+      "multivalued": true,
+      "alias": "additionalDocumentation",
+      "owner": "ResourceDescription",
+      "domain_of": [
+        "ResourceDescription"
+      ],
+      "range": "PersistentURI",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resourceDescription__rights",
+      "description": "Copyright and IP information. Note that rights applies to the source resource, not the CTS2 rendering.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/rights",
+      "alias": "rights",
+      "owner": "ResourceDescription",
+      "domain_of": [
+        "ResourceDescription"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resourceDescription__alternateID",
+      "description": "An alternative identifier that uniquely names this resource in other environments as contexts.\nAs an example, if a resource had both an ISO Object Identifier and a DNS name, the DNS name might be assigned\nas the entryID of the resource by one service while the ISO OID would be recorded as an alternateURI using\nthe \u201curn:oid\u201d prefix. Note that alternateIds can be added or removed during resource updates.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/alternateID",
+      "alias": "alternateID",
+      "owner": "ResourceDescription",
+      "domain_of": [
+        "ResourceDescription"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sourceAndNotation__sourceAndNotationDescription",
+      "description": "A textual description of where the specified resource version was derived from. This parameter\nmust be supplied if a reasonable PersistentURI for the source document is not available.\nrange: string",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/sourceAndNotationDescription",
+      "alias": "sourceAndNotationDescription",
+      "owner": "SourceAndNotation",
+      "domain_of": [
+        "SourceAndNotation"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sourceAndNotation__sourceDocument",
+      "description": "A persistentURI that references the document from which the resource version was derived. This URI may be\nresolvable to a digital resource or may be the name of a book, publication, or other external document.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/sourceDocument",
+      "alias": "sourceDocument",
+      "owner": "SourceAndNotation",
+      "domain_of": [
+        "SourceAndNotation"
+      ],
+      "range": "PersistentURI",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sourceAndNotation__sourceLanguage",
+      "description": "The formal language, if any, that the source for the resource version is expressed in. Examples include\nCommon Logic, OWL, OWL-DL, CLAML26, etc.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/sourceLanguage",
+      "alias": "sourceLanguage",
+      "owner": "SourceAndNotation",
+      "domain_of": [
+        "SourceAndNotation"
+      ],
+      "range": "OntologyLanguageReference",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sourceAndNotation__sourceDocumentSyntax",
+      "description": "The syntax of the source of the resource version, if known. Examples might include rdf/xml, Turtle,\nManchester Syntax, CSV, etc.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/sourceDocumentSyntax",
+      "alias": "sourceDocumentSyntax",
+      "owner": "SourceAndNotation",
+      "domain_of": [
+        "SourceAndNotation"
+      ],
+      "range": "OntologySyntaxReference",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "abstractResourceDescription__releaseDocumentation",
+      "description": "Documentation about the frequency and nature of releases (version) of this resource.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/releaseDocumentation",
+      "alias": "releaseDocumentation",
+      "owner": "AbstractResourceDescription",
+      "domain_of": [
+        "AbstractResourceDescription"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "abstractResourceDescription__releaseFormat",
+      "description": "A format and notation that the releases (versions) of this resource are published in.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/releaseFormat",
+      "multivalued": true,
+      "inlined": true,
+      "alias": "releaseFormat",
+      "owner": "AbstractResourceDescription",
+      "domain_of": [
+        "AbstractResourceDescription"
+      ],
+      "range": "SourceAndNotation",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resourceVersionDescription__documentURI",
+      "description": "A URI that identifies the specific version, language, and notation of the about resource. This URI needs to be constructed in such a way that, if necessary, it will be possible to differentiate resource versions that were loaded from different document syntaxes. As an example, if an image of a wine ontology was loaded from a resource that was in Manchester Syntax, it should be given a different URI than the image loaded from the RDF/XML syntax. The reasoning behind this is, even in cases where different syntaxes are 100% compatible the transformation into the TCCM model may not be identical.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/documentURI",
+      "alias": "documentURI",
+      "owner": "ResourceVersionDescription",
+      "domain_of": [
+        "ResourceVersionDescription"
+      ],
+      "range": "DocumentURI",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resourceVersionDescription__sourceAndNotation",
+      "description": "A description of where the (or a) source of the version may be found, what format and language it is\navailable in, etc.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/sourceAndNotation",
+      "inlined": true,
+      "alias": "sourceAndNotation",
+      "owner": "ResourceVersionDescription",
+      "domain_of": [
+        "ResourceVersionDescription"
+      ],
+      "range": "SourceAndNotation",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resourceVersionDescription__predecessor",
+      "description": "A reference to the name and URI version of the resource from which this current version is derived - the\nversion of the resource that immediately preceded it.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/predecessor",
+      "alias": "predecessor",
+      "owner": "ResourceVersionDescription",
+      "domain_of": [
+        "ResourceVersionDescription"
+      ],
+      "range": "NameAndMeaningReference",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resourceVersionDescription__officialResourceVersionID",
+      "description": "An official label or identifier that was assigned to this version by its publisher",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/officialResourceVersionID",
+      "alias": "officialResourceVersionID",
+      "owner": "ResourceVersionDescription",
+      "domain_of": [
+        "ResourceVersionDescription"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resourceVersionDescription__officialReleaseDate",
+      "description": "The date that this version of the resource officially became available.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/officialReleaseDate",
+      "alias": "officialReleaseDate",
+      "owner": "ResourceVersionDescription",
+      "domain_of": [
+        "ResourceVersionDescription"
+      ],
+      "range": "DateAndTime",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "resourceVersionDescription__officialActivationDate",
+      "description": "The date that this version of the resource is stated by its publishers to go into effect.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/resourcedescription",
+      "slot_uri": "https://w3id.org/linkml/officialActivationDate",
+      "alias": "officialActivationDate",
+      "owner": "ResourceVersionDescription",
+      "domain_of": [
+        "ResourceVersionDescription"
+      ],
+      "range": "DateAndTime",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "opaqueData__format",
+      "description": "The format or encoding for value. This is typically recorded as the URI of a Mime Type",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/entrydescription",
+      "slot_uri": "https://w3id.org/linkml/format",
+      "inlined": true,
+      "alias": "format",
+      "owner": "OpaqueData",
+      "domain_of": [
+        "OpaqueData"
+      ],
+      "range": "FormatReference",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "opaqueData__schema",
+      "description": "If the format of the document involves an XML encoding, this contains the URI of a document that carries\nthe corresponding XML Schema or DTD.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/entrydescription",
+      "slot_uri": "https://w3id.org/linkml/schema",
+      "inlined": true,
+      "alias": "schema",
+      "owner": "OpaqueData",
+      "domain_of": [
+        "OpaqueData"
+      ],
+      "range": "DocumentURI",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "opaqueData__language",
+      "description": "A reference to the written or spoken language used in value.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/entrydescription",
+      "slot_uri": "https://w3id.org/linkml/language",
+      "inlined": true,
+      "alias": "language",
+      "owner": "OpaqueData",
+      "domain_of": [
+        "OpaqueData"
+      ],
+      "range": "LanguageReference",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "opaqueData__value",
+      "description": "The instance value. Note that instance value should be encoded in such a way that it allows embedded\nstructures. As an example, in XML Schema, this encoding should be to xs:anyType or an equivalent.",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "imported_from": "../core/entrydescription",
+      "slot_uri": "https://w3id.org/linkml/value",
+      "alias": "value",
+      "owner": "OpaqueData",
+      "domain_of": [
+        "OpaqueData"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "schema_definition_name",
       "definition_uri": "https://w3id.org/linkml/name",
       "aliases": [
@@ -6071,19 +7161,1109 @@
       "slot_usage": {},
       "class_uri": "https://w3id.org/linkml/Annotation",
       "@type": "ClassDefinition"
+    },
+    {
+      "name": "ValueSetCatalogEntryOrReference",
+      "definition_uri": "https://hotecosystem.org/tccm/ValueSetCatalogEntryOrReference",
+      "description": "Either a description of ana abstract value set or a reference to an official entry",
+      "from_schema": "https://hotecosystem.org/tccm/valuesetcatalogentry",
+      "imported_from": "tccm:valuesetcatalogentry",
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/ValueSetCatalogEntryOrReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ValueSetDescription",
+      "definition_uri": "https://hotecosystem.org/tccm/ValueSetDescription",
+      "description": "A description of a value",
+      "from_schema": "https://hotecosystem.org/tccm/valuesetcatalogentry",
+      "imported_from": "tccm:valuesetcatalogentry",
+      "is_a": "ValueSetCatalogEntryOrReference",
+      "mixins": [
+        "NameAndMeaningReference"
+      ],
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/ValueSetDescription",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ValueSetCatalogEntry",
+      "definition_uri": "https://hotecosystem.org/tccm/ValueSetCatalogEntry",
+      "description": "A ValueSetCatalogEntry carries information about the creators, distributors, purpose, use, etc. about a value set.\nThe catalog does not carry the actual definition of a value set as (a) this may vary over time and (b) it is\npossible for more than one definition to be in use at any given point in time.",
+      "from_schema": "https://hotecosystem.org/tccm/valuesetcatalogentry",
+      "imported_from": "tccm:valuesetcatalogentry",
+      "is_a": "ValueSetCatalogEntryOrReference",
+      "mixins": [
+        "AbstractResourceDescription"
+      ],
+      "slots": [
+        "valueSetCatalogEntry__valueSetName",
+        "valueSetCatalogEntry__definitions",
+        "valueSetCatalogEntry__currentDefinition",
+        "valueSetCatalogEntry__currentResolution",
+        "resourceDescription__describedResourceType",
+        "resourceDescription__resourceSynopsis",
+        "resourceDescription__resourceID",
+        "resourceDescription__about",
+        "resourceDescription__formalName",
+        "resourceDescription__keyword",
+        "resourceDescription__additionalDocumentation",
+        "resourceDescription__rights",
+        "resourceDescription__alternateID",
+        "extensions",
+        "annotations",
+        "abstractResourceDescription__releaseDocumentation",
+        "abstractResourceDescription__releaseFormat"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "valueSetName",
+          "range": "ValueSetName",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "definitions",
+          "multivalued": true,
+          "range": "ValueSetDefinitionReference",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "currentDefinition",
+          "range": "ValueSetDefinitionReference",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "currentResolution",
+          "range": "RenderingURI",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://hotecosystem.org/tccm/ValueSetCatalogEntry",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "NameAndMeaningReference",
+      "definition_uri": "https://hotecosystem.org/tccm/NameAndMeaningReference",
+      "description": "A NameAndMeaningReference consists of a local identifier that references a unique meaning within the context of\na given domain in a TCCM service instance and a globally unique URI that identifies the intended meaning of the\nidentifier.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "name",
+          "description": "An identifier that uniquely names the reference within the context of the particular reference type.",
+          "key": true,
+          "range": "LocalIdentifier",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "synopsis",
+          "description": "A summary of the role and purpose of the actual reference",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "uri",
+          "range": "ExternalURI",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "href",
+          "range": "RenderingURI",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://hotecosystem.org/tccm/NameAndMeaningReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AssociationReference",
+      "definition_uri": "https://hotecosystem.org/tccm/AssociationReference",
+      "description": "A name or identifier that uniquely names an association instance in a code system.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/AssociationReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "BindingQualifierReference",
+      "definition_uri": "https://hotecosystem.org/tccm/BindingQualifierReference",
+      "description": "A reference to an entity that describes the role that a given value set binding plays for a concept domain. T\nypical values represent \u201coverall,\u201d \u201cminimum\u201d or \u201cmaximum,\u201d the significance of which can be found in H\nL7 Version 3 documentation.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/BindingQualifierReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "CaseSignificanceReference",
+      "definition_uri": "https://hotecosystem.org/tccm/CaseSignificanceReference",
+      "description": "A reference to an entity that describes significance of the case in term or designation.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/CaseSignificanceReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "CodeSystemCategoryReference",
+      "definition_uri": "https://hotecosystem.org/tccm/CodeSystemCategoryReference",
+      "description": "A reference to information about a paradigm model used to create an ontology (a.k.a. knowledge\nrepresentation paradigm).",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/CodeSystemCategoryReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "CodeSystemReference",
+      "definition_uri": "https://hotecosystem.org/tccm/CodeSystemReference",
+      "description": "A reference to a code system or ontology.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/CodeSystemReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "CodeSystemVersionReference",
+      "definition_uri": "https://hotecosystem.org/tccm/CodeSystemVersionReference",
+      "description": "A reference to a specific version of code system and, if known, the code system which it is a version of.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href",
+        "codeSystemVersionReference__codeSystem"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "codeSystem",
+          "range": "CodeSystemReference",
+          "required": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://hotecosystem.org/tccm/CodeSystemVersionReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ConceptDomainReference",
+      "definition_uri": "https://hotecosystem.org/tccm/ConceptDomainReference",
+      "description": "A reference to a concept domain.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/ConceptDomainReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ContextReference",
+      "definition_uri": "https://hotecosystem.org/tccm/ContextReference",
+      "description": "A reference to a realm or context.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/ContextReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DesignationFidelityReference",
+      "definition_uri": "https://hotecosystem.org/tccm/DesignationFidelityReference",
+      "description": "A reference to a description about designation faithfulness or accuracy.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/DesignationFidelityReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DesignationTypeReference",
+      "definition_uri": "https://hotecosystem.org/tccm/DesignationTypeReference",
+      "description": "A reference to a designation type or form such as \u201cshort name,\u201d \u201cabbreviation,\u201d \u201ceponym.\u201d",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/DesignationTypeReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "FormalityLevelReference",
+      "definition_uri": "https://hotecosystem.org/tccm/FormalityLevelReference",
+      "description": "A reference to a description of the relative formality an ontology.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/FormalityLevelReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "FormatReference",
+      "definition_uri": "https://hotecosystem.org/tccm/FormatReference",
+      "description": "A reference to a particular way that information is encoded for storage or transmission.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/FormatReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "LanguageReference",
+      "definition_uri": "https://hotecosystem.org/tccm/LanguageReference",
+      "description": "A reference to a spoken or written human language.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/LanguageReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "MapCorrelationReference",
+      "definition_uri": "https://hotecosystem.org/tccm/MapCorrelationReference",
+      "description": "A reference to a way that the source and target in a map can be related or assessed.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/MapCorrelationReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "MapReference",
+      "definition_uri": "https://hotecosystem.org/tccm/MapReference",
+      "description": "A reference to an abstract map.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/MapReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "MapVersionReference",
+      "definition_uri": "https://hotecosystem.org/tccm/MapVersionReference",
+      "description": "A reference to a map version and the corresponding map, if known.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href",
+        "mapVersionReference__map"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "map",
+          "range": "MapReference",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://hotecosystem.org/tccm/MapVersionReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "MatchAlgorithmReference",
+      "definition_uri": "https://hotecosystem.org/tccm/MatchAlgorithmReference",
+      "description": "A reference to an algorithm used for selecting and filtering data.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/MatchAlgorithmReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ModelAttributeReference",
+      "definition_uri": "https://hotecosystem.org/tccm/ModelAttributeReference",
+      "description": "A reference to an attribute defined in the CTS2 specification.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/ModelAttributeReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "NamespaceReference",
+      "definition_uri": "https://hotecosystem.org/tccm/NamespaceReference",
+      "description": "A reference to a conceptual space that groups identifiers to avoid conflict with items that have the same name\nbut different meanings.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/NamespaceReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OntologyDomainReference",
+      "definition_uri": "https://hotecosystem.org/tccm/OntologyDomainReference",
+      "description": "A reference to a subject domain for an ontology.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/OntologyDomainReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OntologyEngineeringMethodologyReference",
+      "definition_uri": "https://hotecosystem.org/tccm/OntologyEngineeringMethodologyReference",
+      "description": "A reference to a method model that can be used to create an ontology.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/OntologyEngineeringMethodologyReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OntologyEngineeringToolReference",
+      "definition_uri": "https://hotecosystem.org/tccm/OntologyEngineeringToolReference",
+      "description": "A reference to a tool that can be used to create an ontology.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/OntologyEngineeringToolReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OntologyLanguageReference",
+      "definition_uri": "https://hotecosystem.org/tccm/OntologyLanguageReference",
+      "description": "A reference to a language in which an ontology may be implemented.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/OntologyLanguageReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OntologySyntaxReference",
+      "definition_uri": "https://hotecosystem.org/tccm/OntologySyntaxReference",
+      "description": "A reference to a syntax in which an ontology may be represented.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/OntologySyntaxReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OntologyTaskReference",
+      "definition_uri": "https://hotecosystem.org/tccm/OntologyTaskReference",
+      "description": "A reference to a purpose for which an ontology can be designed.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/OntologyTaskReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OntologyTypeReference",
+      "definition_uri": "https://hotecosystem.org/tccm/OntologyTypeReference",
+      "description": "A reference to the nature of the content of an ontology.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/OntologyTypeReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "PredicateReference",
+      "definition_uri": "https://hotecosystem.org/tccm/PredicateReference",
+      "description": "An EntityReference that serves the role of predicate. Note that this varies slightly from the base class of\nNameAndMeaningReference because the name attribute is a namespace/name combination rather than a simple name\nscoped exclusively by the domain.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "slots": [
+        "predicateReference__uri",
+        "predicateReference__name",
+        "predicateReference__href",
+        "predicateReference__designation"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "uri",
+          "range": "ExternalURI",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "name",
+          "range": "LocalIdentifier",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "href",
+          "range": "RenderingURI",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "designation",
+          "range": "string",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://hotecosystem.org/tccm/PredicateReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ReasoningAlgorithmReference",
+      "definition_uri": "https://hotecosystem.org/tccm/ReasoningAlgorithmReference",
+      "description": "A reference to a formal algorithm for making inferences about an ontology.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/ReasoningAlgorithmReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "RoleReference",
+      "definition_uri": "https://hotecosystem.org/tccm/RoleReference",
+      "description": "A reference to a role that an individual, organization, or bibliographic reference can play in the construction\nof a resource or resource component.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/RoleReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SourceAndRoleReference",
+      "definition_uri": "https://hotecosystem.org/tccm/SourceAndRoleReference",
+      "description": "A reference to a source that also includes the role that the source played and/or fixes the particular chapter,\npage, or other element within the reference.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href",
+        "sourceAndRoleReference__role",
+        "sourceAndRoleReference__bibliographicLink"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "role",
+          "range": "RoleReference",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "bibliographicLink",
+          "range": "OpaqueData",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://hotecosystem.org/tccm/SourceAndRoleReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SourceReference",
+      "definition_uri": "https://hotecosystem.org/tccm/SourceReference",
+      "description": "A reference to an individual, organization of bibliographic reference.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/SourceReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "StatusReference",
+      "definition_uri": "https://hotecosystem.org/tccm/StatusReference",
+      "description": "A reference to a state in an external ontology authoring workflow.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/StatusReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ValueSetDefinitionReference",
+      "definition_uri": "https://hotecosystem.org/tccm/ValueSetDefinitionReference",
+      "description": "A reference to a set of rules for constructing a value set along with the corresponding value set if known.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/ValueSetDefinitionReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ValueSetReference",
+      "definition_uri": "https://hotecosystem.org/tccm/ValueSetReference",
+      "description": "A reference to a named set of entity references.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/ValueSetReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "VersionTagReference",
+      "definition_uri": "https://hotecosystem.org/tccm/VersionTagReference",
+      "description": "A reference to a tag that can be assigned to versionable resources within the context of a service implementation.",
+      "from_schema": "https://hotecosystem.org/tccm/references",
+      "imported_from": "../core/references",
+      "is_a": "NameAndMeaningReference",
+      "slots": [
+        "nameAndMeaningReference__name",
+        "nameAndMeaningReference__synopsis",
+        "nameAndMeaningReference__uri",
+        "nameAndMeaningReference__href"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/VersionTagReference",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ResourceDescription",
+      "definition_uri": "https://hotecosystem.org/tccm/ResourceDescription",
+      "description": "ResourceDescription represents the shared characteristics common to both abstract and resource version\ndescriptions. ResourceDescription is an abstract type and, as such, cannot be directly created. Resource\ndescriptions are Changeable, meaning that they have identity and can be created, updated, and deleted.",
+      "from_schema": "https://hotecosystem.org/tccm/resourcedescription",
+      "imported_from": "../core/resourcedescription",
+      "abstract": true,
+      "mixins": [
+        "Extensible",
+        "Annotatable"
+      ],
+      "slots": [
+        "resourceDescription__describedResourceType",
+        "resourceDescription__resourceSynopsis",
+        "resourceDescription__resourceID",
+        "resourceDescription__about",
+        "resourceDescription__formalName",
+        "resourceDescription__keyword",
+        "resourceDescription__additionalDocumentation",
+        "resourceDescription__rights",
+        "resourceDescription__alternateID",
+        "extensions",
+        "annotations"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "describedResourceType",
+          "description": "Enumeration of possible types",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "resourceSynopsis",
+          "description": "A textual summary of the resource - what it is, what it is for, etc.",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "resourceID",
+          "description": "A local identifier that uniquely names the resource within the context of the describedResourceType and\nimplementing service. As an example, this might be \u201cSCT\u201d for the SNOMED-CT code system, \u201cSCT-2010AA\u201d for a\nSNOMED-CT code system version.",
+          "key": true,
+          "alias": "id",
+          "range": "LocalIdentifier",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "about",
+          "description": "The (or a) definitive URI that represents the resource being described. Note that this is NOT the URI of the\nresource description in the TCCM or other format, but of the resource itself. As an example, the about URI\nfor the Wine ontology would be \u201chttp://www.w3.org/TR/2003/PR-owl-guide-2003 1209/wine#.\u201d The NCI Thesaurus\nhas, among others, the about URI of http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#. HL7 uses ISO Object\nIdentifiers (OIDs) to label resources so, from the HL7 perspective, the about URI of the NCI Thesaurus would\nbe \u201curn:oid:2.16.840. 1.113883.3.26.1.1\u201d",
+          "range": "ExternalURI",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "formalName",
+          "description": "The formal or officially assigned name of this resource, if any.",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "keyword",
+          "description": "Additional identifiers that are used to index and locate the resource.",
+          "multivalued": true,
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "additionalDocumentation",
+          "description": "A reference to a document that provide additional information about the resource.",
+          "multivalued": true,
+          "range": "PersistentURI",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "rights",
+          "description": "Copyright and IP information. Note that rights applies to the source resource, not the CTS2 rendering.",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "alternateID",
+          "description": "An alternative identifier that uniquely names this resource in other environments as contexts.\nAs an example, if a resource had both an ISO Object Identifier and a DNS name, the DNS name might be assigned\nas the entryID of the resource by one service while the ISO OID would be recorded as an alternateURI using\nthe \u201curn:oid\u201d prefix. Note that alternateIds can be added or removed during resource updates.",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://hotecosystem.org/tccm/ResourceDescription",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SourceAndNotation",
+      "definition_uri": "https://hotecosystem.org/tccm/SourceAndNotation",
+      "description": "Format and notation that some or all the releases (versions) of this resource are published in",
+      "from_schema": "https://hotecosystem.org/tccm/resourcedescription",
+      "imported_from": "../core/resourcedescription",
+      "slots": [
+        "sourceAndNotation__sourceAndNotationDescription",
+        "sourceAndNotation__sourceDocument",
+        "sourceAndNotation__sourceLanguage",
+        "sourceAndNotation__sourceDocumentSyntax"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "sourceAndNotationDescription",
+          "description": "A textual description of where the specified resource version was derived from. This parameter\nmust be supplied if a reasonable PersistentURI for the source document is not available.\nrange: string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sourceDocument",
+          "description": "A persistentURI that references the document from which the resource version was derived. This URI may be\nresolvable to a digital resource or may be the name of a book, publication, or other external document.",
+          "range": "PersistentURI",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sourceLanguage",
+          "description": "The formal language, if any, that the source for the resource version is expressed in. Examples include\nCommon Logic, OWL, OWL-DL, CLAML26, etc.",
+          "range": "OntologyLanguageReference",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sourceDocumentSyntax",
+          "description": "The syntax of the source of the resource version, if known. Examples might include rdf/xml, Turtle,\nManchester Syntax, CSV, etc.",
+          "range": "OntologySyntaxReference",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://hotecosystem.org/tccm/SourceAndNotation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AbstractResourceDescription",
+      "definition_uri": "https://hotecosystem.org/tccm/AbstractResourceDescription",
+      "description": "The description of the characteristics of a resource that are independent of the resource content.",
+      "from_schema": "https://hotecosystem.org/tccm/resourcedescription",
+      "imported_from": "../core/resourcedescription",
+      "is_a": "ResourceDescription",
+      "abstract": true,
+      "slots": [
+        "resourceDescription__describedResourceType",
+        "resourceDescription__resourceSynopsis",
+        "resourceDescription__resourceID",
+        "resourceDescription__about",
+        "resourceDescription__formalName",
+        "resourceDescription__keyword",
+        "resourceDescription__additionalDocumentation",
+        "resourceDescription__rights",
+        "resourceDescription__alternateID",
+        "extensions",
+        "annotations",
+        "abstractResourceDescription__releaseDocumentation",
+        "abstractResourceDescription__releaseFormat"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "releaseDocumentation",
+          "description": "Documentation about the frequency and nature of releases (version) of this resource.",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "releaseFormat",
+          "description": "A format and notation that the releases (versions) of this resource are published in.",
+          "multivalued": true,
+          "range": "SourceAndNotation",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://hotecosystem.org/tccm/AbstractResourceDescription",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ResourceVersionDescription",
+      "definition_uri": "https://hotecosystem.org/tccm/ResourceVersionDescription",
+      "description": "Information about the source, format, release date, version identifier, etc. of a specific version of an\nabstract resource.",
+      "from_schema": "https://hotecosystem.org/tccm/resourcedescription",
+      "imported_from": "../core/resourcedescription",
+      "is_a": "ResourceDescription",
+      "abstract": true,
+      "slots": [
+        "resourceDescription__describedResourceType",
+        "resourceDescription__resourceSynopsis",
+        "resourceDescription__resourceID",
+        "resourceDescription__about",
+        "resourceDescription__formalName",
+        "resourceDescription__keyword",
+        "resourceDescription__additionalDocumentation",
+        "resourceDescription__rights",
+        "resourceDescription__alternateID",
+        "extensions",
+        "annotations",
+        "resourceVersionDescription__documentURI",
+        "resourceVersionDescription__sourceAndNotation",
+        "resourceVersionDescription__predecessor",
+        "resourceVersionDescription__officialResourceVersionID",
+        "resourceVersionDescription__officialReleaseDate",
+        "resourceVersionDescription__officialActivationDate"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "documentURI",
+          "description": "A URI that identifies the specific version, language, and notation of the about resource. This URI needs to be constructed in such a way that, if necessary, it will be possible to differentiate resource versions that were loaded from different document syntaxes. As an example, if an image of a wine ontology was loaded from a resource that was in Manchester Syntax, it should be given a different URI than the image loaded from the RDF/XML syntax. The reasoning behind this is, even in cases where different syntaxes are 100% compatible the transformation into the TCCM model may not be identical.",
+          "range": "DocumentURI",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sourceAndNotation",
+          "description": "A description of where the (or a) source of the version may be found, what format and language it is\navailable in, etc.",
+          "range": "SourceAndNotation",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "predecessor",
+          "description": "A reference to the name and URI version of the resource from which this current version is derived - the\nversion of the resource that immediately preceded it.",
+          "range": "NameAndMeaningReference",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "officialResourceVersionID",
+          "description": "An official label or identifier that was assigned to this version by its publisher",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "officialReleaseDate",
+          "description": "The date that this version of the resource officially became available.",
+          "range": "DateAndTime",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "officialActivationDate",
+          "description": "The date that this version of the resource is stated by its publishers to go into effect.",
+          "range": "DateAndTime",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://hotecosystem.org/tccm/ResourceVersionDescription",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OpaqueData",
+      "definition_uri": "https://hotecosystem.org/tccm/OpaqueData",
+      "description": "Opaque data is the equivalent of an ASN.1 External Type or the XML Schema anyType . An OpaqueData instance\nmay represent text with an optional spoken or written language code or a formal structure such as embedded HTML,\nXML, or MIME encoded data. When a formal structure is included, its type should be specified in the format\nattribute and, when the type is an XML variant, the corresponding schema (or DTD) should be included in the\nschema parameter.\n\nThe OpaqueData data type must be encoded in such a way that the content can be represented by a character string.\nBinary data is not permitted, although hyperlinks to binary data are.",
+      "from_schema": "https://hotecosystem.org/tccm/entrydescription",
+      "imported_from": "../core/entrydescription",
+      "slots": [
+        "opaqueData__format",
+        "opaqueData__schema",
+        "opaqueData__language",
+        "opaqueData__value"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "format",
+          "description": "The format or encoding for value. This is typically recorded as the URI of a Mime Type",
+          "inlined": true,
+          "range": "FormatReference",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "schema",
+          "description": "If the format of the document involves an XML encoding, this contains the URI of a document that carries\nthe corresponding XML Schema or DTD.",
+          "inlined": true,
+          "range": "DocumentURI",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "language",
+          "description": "A reference to the written or spoken language used in value.",
+          "inlined": true,
+          "range": "LanguageReference",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "value",
+          "description": "The instance value. Note that instance value should be encoded in such a way that it allows embedded\nstructures. As an example, in XML Schema, this encoding should be to xs:anyType or an equivalent.",
+          "range": "string",
+          "required": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://hotecosystem.org/tccm/OpaqueData",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "EntryDescription",
+      "definition_uri": "https://hotecosystem.org/tccm/EntryDescription",
+      "description": "EntryDescription is a subclass of OpaqueData. The purpose behind this is that there are certain textual fields\nthat some CTS2 service implementations may want to constrain. As an example, Designation text is of type\nEntryDescription, but implementations may want to restrict the OpaqueData value attribute to a simple string\nrather than xs: anyType. When OpaqueData appears directly as a model element, implementations must be able to\nsupport the full OpaqueData model. EntryDescription, however, may be constrained by implementations or\nspecialized PSM.",
+      "from_schema": "https://hotecosystem.org/tccm/entrydescription",
+      "imported_from": "../core/entrydescription",
+      "is_a": "OpaqueData",
+      "slots": [
+        "opaqueData__format",
+        "opaqueData__schema",
+        "opaqueData__language",
+        "opaqueData__value"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://hotecosystem.org/tccm/EntryDescription",
+      "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "meta.yaml",
-  "source_file_date": "2022-03-02T06:01:45",
-  "source_file_size": 65186,
-  "generation_date": "2022-03-02T06:04:11",
+  "source_file_date": "2022-04-08T14:10:25",
+  "source_file_size": 65079,
+  "generation_date": "2022-04-08T14:31:23",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",
     "https://w3id.org/linkml/mappings.context.jsonld",
     "https://w3id.org/linkml/extensions.context.jsonld",
     "https://w3id.org/linkml/annotations.context.jsonld",
+    "file:///Users/hsolbrig/git/linkml/linkml-model/linkml_model/model/valueset/valuesetcatalogentry.context.jsonld",
+    "../core/localidentifiers.context.jsonld",
+    "../core/references.context.jsonld",
+    "../core/resourcedescription.context.jsonld",
+    "../core/datatypes.context.jsonld",
+    "../core/prefixes.context.jsonld",
+    "../core/valuesets.context.jsonld",
+    "../core/uritypes.context.jsonld",
+    "../core/entrydescription.context.jsonld",
     {
       "@base": "https://w3id.org/linkml/"
     }

@@ -23,7 +23,7 @@ description: |-
   For canonical reference documentation on any metamodel construct,
   refer to the official URI for each construct, e.g.
   [https://w3id.org/linkml/is_a](https://w3id.org/linkml/is_a)
-  
+
 license: https://creativecommons.org/publicdomain/zero/1.0/
 version: 2.0.0
 
@@ -42,6 +42,7 @@ prefixes:
   qb: http://purl.org/linked-data/cube#
   prov: http://www.w3.org/ns/prov#
   vann: https://vocab.org/vann/
+  tccm: https://hotecosystem.org/tccm/
 
 default_prefix: linkml
 default_range: string
@@ -65,6 +66,7 @@ imports:
   - linkml:mappings
   - linkml:extensions
   - linkml:annotations
+  - tccm:valuesetcatalogentry
 
 subsets:
   owl:
@@ -363,7 +365,7 @@ slots:
     range: string
     notes:
       -  Use a string from IETF BCP 47
-        
+
   source:
     aliases:
       - origin
@@ -745,7 +747,7 @@ slots:
     description: A range that is described as a boolean expression combining existing ranges
     comments:
       - one use for this is being able to describe a range using any_of expressions, for example to combine two enums
-    
+
   boolean_slot:
     abstract: true
     multivalued: true
@@ -758,21 +760,21 @@ slots:
     range: expression
     exact_mappings:
       - sh:or
-        
+
   exactly_one_of:
     description: holds if only one of the expressions hold
     is_a: boolean_slot
     range: expression
     exact_mappings:
       - sh:xone
-        
+
   none_of:
     description: holds if none of the expressions hold
     is_a: boolean_slot
     range: expression
     exact_mappings:
       - sh:not
-        
+
   all_of:
     description: holds if all of the expressions hold
     is_a: boolean_slot
@@ -833,7 +835,7 @@ slots:
     description: a deactivated rule is not executed by the rules engine
     slot_uri: sh:deactivated
     range: boolean
-    
+
   rules:
     slot_uri: sh:rule
     domain: class_definition
@@ -854,7 +856,7 @@ slots:
     range: slot_definition
     inlined: true
     description: the redefinition of a slot in the context of the containing class definition.
-    
+
   attributes:
     domain: class_definition
     multivalued: true
@@ -934,7 +936,7 @@ slots:
     in_subset:
       - basic
       - relational_model
-    
+
   unique_key_slots:
     domain: unique_key
     multivalued: true
@@ -944,12 +946,12 @@ slots:
     in_subset:
       - basic
       - relational_model
-    
+
   slot_names_unique:
     domain: definition
     range: boolean
     description: if true then induced/mangled slot names are not created for class_usage and attributes
-    
+
 
   # -----------------------------------
   # Slot definition slots
@@ -1052,12 +1054,12 @@ slots:
     abstract: true
     description: Grouping for metamodel slots that constrain the a slot value to equal a specified constant
     status: testing
-    
+
   list_value_specification_constant:
     abstract: true
     description: Grouping for metamodel slots that constrain members of a multivalued slot value to equal a specified constant
     status: testing
-      
+
   value_presence:
     is_a: list_value_specification_constant
     domain: slot_definition
@@ -1074,7 +1076,7 @@ slots:
     inherited: true
     description: the slot must have range string and the value of the slot must equal the specified value
     status: testing
-        
+
   equals_number:
     is_a: list_value_specification_constant
     range: integer  ## todo, make the range a union
@@ -1124,7 +1126,7 @@ slots:
     inherited: true
     description: the slot must have range number and the value of the slot must equal one of the specified values
     status: testing
-    
+
   has_member:
     is_a: list_value_specification_constant
     range: anonymous_slot_expression
@@ -1230,7 +1232,7 @@ slots:
       order may still be preserved but this is not guaranteed
     comments:
       - should only be used with multivalued slots
-        
+
   list_elements_unique:
     domain: slot_definition
     range: boolean
@@ -1249,7 +1251,7 @@ slots:
     inherited: true
     description: >-
       If True, then the relationship between the slot domain and range is many to one or many to many
-      
+
   key:
     domain: slot_definition
     range: boolean
@@ -1363,7 +1365,7 @@ slots:
     description: If s is symmetric, and i.s=v, then v.s=i
     close_mappings:
       - owl:SymmetricProperty
-    
+
   asymmetric:
     is_a: relational_logical_characteristic
     description: If s is antisymmetric, and i.s=v where i is different from v, v.s cannot have value i
@@ -1405,7 +1407,7 @@ slots:
   reflexive_transitive_form_of:
     is_a: transitive_form_of
     description: transitive_form_of including the reflexive case
-        
+
   inverse:
     domain: slot_definition
     range: slot_definition
@@ -1657,7 +1659,7 @@ slots:
   # -----------------------------------
   # Slots for import expressions
   # -----------------------------------
-      
+
   import_from:
     domain: import_expression
     required: true
@@ -1729,7 +1731,7 @@ slots:
     description: a rule for inferring a slot assignment based on evaluating a path through a sequence of slot assignemnts
     domain: slot_definition
     range: path_expression
-      
+
   # -----------------------------------
   # Relational Roles
   # -----------------------------------
@@ -1748,7 +1750,7 @@ slots:
       - in the context of Entity-Relationship (ER) modeling, this is used to state that a class models a relationship between entities, and should be drawn with a diamond
       - in the context of RDF, this should be used when instances of the class are `rdf:Statement`s
       - in the context of property graphs, this should be used when a class is used to represent an edge that connects nodes
-      
+
   relational_role:
     aliases:
       - reification_role
@@ -1761,7 +1763,7 @@ slots:
       - this should only be used on slots that are applicable to class that represent relationships
       - in the context of RDF, this should be used for slots that can be modeled using the RDF reification vocabulary
       - in the context of property graphs, this should be used on edge classes to indicate which slots represent the input and output nodes
-    
+
 #==================================
 # Classes                         #
 #==================================
@@ -1863,13 +1865,13 @@ classes:
       - basic
       - relational_model
       - object_oriented
-      
+
   type_expression:
     is_a: expression
     mixin: true
     slots:
       - pattern
-      - structured_pattern      
+      - structured_pattern
       - equals_string
       - equals_string_in
       - equals_number
@@ -1892,7 +1894,7 @@ classes:
   anonymous_type_expression:
     mixins:
       - type_expression
-      
+
   type_definition:
     mixins:
       - type_expression
@@ -2018,7 +2020,7 @@ classes:
       all_of:
         range: path_expression
 
-    
+
   slot_expression:
     description: an expression that constrains the range of values a slot can take
     mixin: true
@@ -2031,7 +2033,7 @@ classes:
       - minimum_value
       - maximum_value
       - pattern
-      - structured_pattern      
+      - structured_pattern
       - equals_string
       - equals_string_in
       - equals_number
@@ -2060,7 +2062,7 @@ classes:
     mixins:
       - slot_expression
     status: testing
-    
+
   slot_definition:
     description: the definition of a property or a slot
     aliases:
@@ -2204,7 +2206,7 @@ classes:
     abstract: true
     description: A rule that is applied to classes
     status: testing
-    
+
   class_rule:
     is_a: class_level_rule
     aliases:
@@ -2237,7 +2239,7 @@ classes:
       - syntax
       - interpolated
       - partial_match
-      
+
   import_expression:
     description: an expression describing an import
     status: testing
@@ -2249,7 +2251,7 @@ classes:
       - import_from
       - import_as
       - import_map
-      
+
   setting:
     description: assignment of a key to a value
     slots:

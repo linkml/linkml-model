@@ -29,7 +29,7 @@ PKG_T_DOCS = $(MODEL_DOCS_DIR)
 PKG_T_PYTHON = $(PKG_DIR)
 
 # Global generation options
-GEN_OPTS = --log_level WARNING
+GEN_OPTS = --log_level WARNING --importmap linkml_model/model/import_map.json
 ENV = export PIPENV_VENV_IN_PROJECT=true && export PIPENV_PIPFILE=make-venv/Pipfile && export PIPENV_IGNORE_VIRTUALENVS=1
 RUN = $(ENV) && pipenv run
 

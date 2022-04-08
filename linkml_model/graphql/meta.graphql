@@ -1,5 +1,22 @@
 # metamodel_version: 1.7.0
 # version: 2.0.0
+interface AbstractResourceDescription
+  {
+    describedResourceType: String
+    resourceSynopsis: String
+    id: LocalIdentifier!
+    about: ExternalURI!
+    formalName: String
+    keyword: [String]
+    additionalDocumentation: [PersistentURI]
+    rights: String
+    alternateID: String
+    extensions: [Extension]
+    annotations: [Annotation]
+    releaseDocumentation: String
+    releaseFormat: [SourceAndNotation]
+  }
+
 type AltDescription
   {
     source: String!
@@ -126,6 +143,30 @@ type AnonymousTypeExpression implements TypeExpression
     allOf: [AnonymousTypeExpression]
   }
 
+type AssociationReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type BindingQualifierReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type CaseSignificanceReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
 type ClassDefinition implements ClassExpression
   {
     name: String!
@@ -236,6 +277,31 @@ type ClassRule implements Extensible, Annotatable, CommonMetadata
     deprecatedElementHasPossibleReplacement: Uriorcurie
   }
 
+type CodeSystemCategoryReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type CodeSystemReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type CodeSystemVersionReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+    codeSystem: CodeSystemReference!
+  }
+
 interface CommonMetadata
   {
     description: String
@@ -254,6 +320,22 @@ interface CommonMetadata
     seeAlso: [Uriorcurie]
     deprecatedElementHasExactReplacement: Uriorcurie
     deprecatedElementHasPossibleReplacement: Uriorcurie
+  }
+
+type ConceptDomainReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type ContextReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
   }
 
 interface Definition
@@ -304,6 +386,22 @@ interface Definition
     stringSerialization: String
   }
 
+type DesignationFidelityReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type DesignationTypeReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
 type Element implements Extensible, Annotatable, CommonMetadata
   {
     name: String!
@@ -338,6 +436,14 @@ type Element implements Extensible, Annotatable, CommonMetadata
     seeAlso: [Uriorcurie]
     deprecatedElementHasExactReplacement: Uriorcurie
     deprecatedElementHasPossibleReplacement: Uriorcurie
+  }
+
+type EntryDescription
+  {
+    format: FormatReference
+    schema: DocumentURI
+    language: LanguageReference
+    value: String!
   }
 
 type EnumDefinition
@@ -403,6 +509,22 @@ type Extension
     extensions: [Extension]
   }
 
+type FormalityLevelReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type FormatReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
 type ImportExpression implements Extensible, Annotatable, CommonMetadata
   {
     importFrom: Uriorcurie!
@@ -428,10 +550,139 @@ type ImportExpression implements Extensible, Annotatable, CommonMetadata
     deprecatedElementHasPossibleReplacement: Uriorcurie
   }
 
+type LanguageReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
 type LocalName
   {
     localNameSource: Ncname!
     localNameValue: String!
+  }
+
+type MapCorrelationReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type MapReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type MapVersionReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+    map: MapReference
+  }
+
+type MatchAlgorithmReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type ModelAttributeReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type NameAndMeaningReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type NamespaceReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type OntologyDomainReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type OntologyEngineeringMethodologyReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type OntologyEngineeringToolReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type OntologyLanguageReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type OntologySyntaxReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type OntologyTaskReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type OntologyTypeReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type OpaqueData
+  {
+    format: FormatReference
+    schema: DocumentURI
+    language: LanguageReference
+    value: String!
   }
 
 type PathExpression implements Expression, Extensible, Annotatable, CommonMetadata
@@ -515,10 +766,70 @@ type PermissibleValue implements Extensible, Annotatable, CommonMetadata
     deprecatedElementHasPossibleReplacement: Uriorcurie
   }
 
+type PredicateReference
+  {
+    uri: ExternalURI!
+    name: LocalIdentifier
+    href: RenderingURI
+    designation: String
+  }
+
 type Prefix
   {
     prefixPrefix: Ncname!
     prefixReference: Uri!
+  }
+
+type ReasoningAlgorithmReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type ResourceDescription implements Extensible, Annotatable
+  {
+    describedResourceType: String
+    resourceSynopsis: String
+    id: LocalIdentifier!
+    about: ExternalURI!
+    formalName: String
+    keyword: [String]
+    additionalDocumentation: [PersistentURI]
+    rights: String
+    alternateID: String
+    extensions: [Extension]
+    annotations: [Annotation]
+  }
+
+interface ResourceVersionDescription
+  {
+    describedResourceType: String
+    resourceSynopsis: String
+    id: LocalIdentifier!
+    about: ExternalURI!
+    formalName: String
+    keyword: [String]
+    additionalDocumentation: [PersistentURI]
+    rights: String
+    alternateID: String
+    extensions: [Extension]
+    annotations: [Annotation]
+    documentURI: DocumentURI
+    sourceAndNotation: SourceAndNotation
+    predecessor: NameAndMeaningReference
+    officialResourceVersionID: String
+    officialReleaseDate: DateAndTime
+    officialActivationDate: DateAndTime
+  }
+
+type RoleReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
   }
 
 type SchemaDefinition
@@ -716,6 +1027,40 @@ interface SlotExpression
     allOf: [AnonymousSlotExpression]
   }
 
+type SourceAndNotation
+  {
+    sourceAndNotationDescription: String
+    sourceDocument: PersistentURI
+    sourceLanguage: OntologyLanguageReference
+    sourceDocumentSyntax: OntologySyntaxReference
+  }
+
+type SourceAndRoleReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+    role: RoleReference
+    bibliographicLink: OpaqueData
+  }
+
+type SourceReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type StatusReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
 type StructuredAlias implements Expression, Extensible, Annotatable, CommonMetadata
   {
     literalForm: String!
@@ -865,6 +1210,63 @@ type UniqueKey implements Extensible, Annotatable, CommonMetadata
     seeAlso: [Uriorcurie]
     deprecatedElementHasExactReplacement: Uriorcurie
     deprecatedElementHasPossibleReplacement: Uriorcurie
+  }
+
+type ValueSetCatalogEntry implements AbstractResourceDescription
+  {
+    valueSetName: ValueSetName!
+    definitions: [ValueSetDefinitionReference]
+    currentDefinition: ValueSetDefinitionReference
+    currentResolution: RenderingURI
+    describedResourceType: String
+    resourceSynopsis: String
+    id: LocalIdentifier!
+    about: ExternalURI!
+    formalName: String
+    keyword: [String]
+    additionalDocumentation: [PersistentURI]
+    rights: String
+    alternateID: String
+    extensions: [Extension]
+    annotations: [Annotation]
+    releaseDocumentation: String
+    releaseFormat: [SourceAndNotation]
+  }
+
+type ValueSetCatalogEntryOrReference
+  {
+  }
+
+type ValueSetDefinitionReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type ValueSetDescription implements NameAndMeaningReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type ValueSetReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
+  }
+
+type VersionTagReference
+  {
+    name: LocalIdentifier!
+    synopsis: String
+    uri: ExternalURI
+    href: RenderingURI
   }
 
 
