@@ -9,11 +9,11 @@
 --     * Slot: in_language Description: 
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
+--     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 -- # Class: "element" Description: "a named element in the model"
 --     * Slot: name Description: the unique name of the element within the context of the schema.  Name is combined with the default prefix to form the globally unique subject of the target class.
 --     * Slot: definition_uri Description: the "native" URI of the element
 --     * Slot: conforms_to Description: An established standard to which the element conforms.
---     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: description Description: a description of the element's purpose and use
 --     * Slot: title Description: the official title of the element
 --     * Slot: deprecated Description: Description of why and when this element will no longer be used
@@ -23,6 +23,7 @@
 --     * Slot: in_language Description: 
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
+--     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 -- # Class: "schema_definition" Description: "a collection of subset, type, slot and class definitions"
 --     * Slot: id Description: The official schema URI
 --     * Slot: version Description: particular version of schema
@@ -38,7 +39,6 @@
 --     * Slot: name Description: the unique name of the element within the context of the schema.  Name is combined with the default prefix to form the globally unique subject of the target class.
 --     * Slot: definition_uri Description: the "native" URI of the element
 --     * Slot: conforms_to Description: An established standard to which the element conforms.
---     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: description Description: a description of the element's purpose and use
 --     * Slot: title Description: the official title of the element
 --     * Slot: deprecated Description: Description of why and when this element will no longer be used
@@ -48,6 +48,7 @@
 --     * Slot: in_language Description: 
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
+--     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 -- # Class: "type_expression" Description: ""
 --     * Slot: id Description: 
 --     * Slot: pattern Description: the string value of the slot must conform to this regular expression expressed in the string
@@ -77,7 +78,6 @@
 --     * Slot: name Description: the unique name of the element within the context of the schema.  Name is combined with the default prefix to form the globally unique subject of the target class.
 --     * Slot: definition_uri Description: the "native" URI of the element
 --     * Slot: conforms_to Description: An established standard to which the element conforms.
---     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: description Description: a description of the element's purpose and use
 --     * Slot: title Description: the official title of the element
 --     * Slot: deprecated Description: Description of why and when this element will no longer be used
@@ -87,13 +87,13 @@
 --     * Slot: in_language Description: 
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
+--     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: schema_definition_name Description: Autocreated FK slot
 --     * Slot: structured_pattern_id Description: the string value of the slot must conform to the regular expression in the pattern expression
 -- # Class: "subset_definition" Description: "the name and description of a subset"
 --     * Slot: name Description: the unique name of the element within the context of the schema.  Name is combined with the default prefix to form the globally unique subject of the target class.
 --     * Slot: definition_uri Description: the "native" URI of the element
 --     * Slot: conforms_to Description: An established standard to which the element conforms.
---     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: description Description: a description of the element's purpose and use
 --     * Slot: title Description: the official title of the element
 --     * Slot: deprecated Description: Description of why and when this element will no longer be used
@@ -103,6 +103,7 @@
 --     * Slot: in_language Description: 
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
+--     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: schema_definition_name Description: Autocreated FK slot
 -- # Class: "definition" Description: "base class for definitions"
 --     * Slot: is_a Description: specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded
@@ -117,7 +118,6 @@
 --     * Slot: name Description: the unique name of the element within the context of the schema.  Name is combined with the default prefix to form the globally unique subject of the target class.
 --     * Slot: definition_uri Description: the "native" URI of the element
 --     * Slot: conforms_to Description: An established standard to which the element conforms.
---     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: description Description: a description of the element's purpose and use
 --     * Slot: title Description: the official title of the element
 --     * Slot: deprecated Description: Description of why and when this element will no longer be used
@@ -127,6 +127,7 @@
 --     * Slot: in_language Description: 
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
+--     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 -- # Class: "enum_definition" Description: "List of values that constrain the range of a slot"
 --     * Slot: code_set Description: the identifier of an enumeration code set.
 --     * Slot: code_set_tag Description: the version tag of the enumeration code set
@@ -135,7 +136,6 @@
 --     * Slot: name Description: the unique name of the element within the context of the schema.  Name is combined with the default prefix to form the globally unique subject of the target class.
 --     * Slot: definition_uri Description: the "native" URI of the element
 --     * Slot: conforms_to Description: An established standard to which the element conforms.
---     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: description Description: a description of the element's purpose and use
 --     * Slot: title Description: the official title of the element
 --     * Slot: deprecated Description: Description of why and when this element will no longer be used
@@ -145,6 +145,7 @@
 --     * Slot: in_language Description: 
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
+--     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: schema_definition_name Description: Autocreated FK slot
 -- # Class: "structured_alias" Description: "object that contains meta data about a synonym or alias including where it came from (source) and its scope (narrow, broad, etc.)"
 --     * Slot: id Description: 
@@ -159,14 +160,26 @@
 --     * Slot: in_language Description: 
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
+--     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
+--     * Slot: common_metadata_id Description: Autocreated FK slot
 --     * Slot: element_name Description: Autocreated FK slot
 --     * Slot: schema_definition_name Description: Autocreated FK slot
 --     * Slot: type_definition_name Description: Autocreated FK slot
 --     * Slot: subset_definition_name Description: Autocreated FK slot
 --     * Slot: definition_name Description: Autocreated FK slot
 --     * Slot: enum_definition_name Description: Autocreated FK slot
+--     * Slot: structured_alias_id Description: Autocreated FK slot
+--     * Slot: anonymous_expression_id Description: Autocreated FK slot
+--     * Slot: path_expression_id Description: Autocreated FK slot
+--     * Slot: anonymous_slot_expression_id Description: Autocreated FK slot
 --     * Slot: slot_definition_name Description: Autocreated FK slot
+--     * Slot: anonymous_class_expression_id Description: Autocreated FK slot
 --     * Slot: class_definition_name Description: Autocreated FK slot
+--     * Slot: class_rule_id Description: Autocreated FK slot
+--     * Slot: pattern_expression_id Description: Autocreated FK slot
+--     * Slot: import_expression_id Description: Autocreated FK slot
+--     * Slot: permissible_value_text Description: Autocreated FK slot
+--     * Slot: unique_key_unique_key_name Description: Autocreated FK slot
 -- # Class: "expression" Description: "general mixin for any class that can represent some form of expression"
 --     * Slot: id Description: 
 -- # Class: "anonymous_expression" Description: ""
@@ -180,6 +193,7 @@
 --     * Slot: in_language Description: 
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
+--     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 -- # Class: "path_expression" Description: "An expression that describes an abstract path from an object to another through a sequence of slot lookups"
 --     * Slot: id Description: 
 --     * Slot: reversed Description: true if the slot is to be inversed
@@ -193,6 +207,7 @@
 --     * Slot: in_language Description: 
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
+--     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: followed_by_id Description: in a sequential list, this indicates the next member
 --     * Slot: range_expression_id Description: A range that is described as a boolean expression combining existing ranges
 -- # Class: "slot_expression" Description: "an expression that constrains the range of values a slot can take"
@@ -237,6 +252,7 @@
 --     * Slot: in_language Description: 
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
+--     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: range_expression_id Description: A range that is described as a boolean expression combining existing ranges
 --     * Slot: structured_pattern_id Description: the string value of the slot must conform to the regular expression in the pattern expression
 --     * Slot: has_member_id Description: the values of the slot is multivalued with at least one member satisfying the condition
@@ -299,7 +315,6 @@
 --     * Slot: name Description: the unique name of the element within the context of the schema.  Name is combined with the default prefix to form the globally unique subject of the target class.
 --     * Slot: definition_uri Description: the "native" URI of the element
 --     * Slot: conforms_to Description: An established standard to which the element conforms.
---     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: description Description: a description of the element's purpose and use
 --     * Slot: title Description: the official title of the element
 --     * Slot: deprecated Description: Description of why and when this element will no longer be used
@@ -309,6 +324,7 @@
 --     * Slot: in_language Description: 
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
+--     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: schema_definition_name Description: Autocreated FK slot
 --     * Slot: slot_expression_id Description: Autocreated FK slot
 --     * Slot: anonymous_slot_expression_id Description: Autocreated FK slot
@@ -334,6 +350,7 @@
 --     * Slot: in_language Description: 
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
+--     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: class_definition_name Description: Autocreated FK slot
 -- # Class: "class_definition" Description: "the definition of a class or interface"
 --     * Slot: class_uri Description: URI of the class in an RDF environment
@@ -354,7 +371,6 @@
 --     * Slot: name Description: the unique name of the element within the context of the schema.  Name is combined with the default prefix to form the globally unique subject of the target class.
 --     * Slot: definition_uri Description: the "native" URI of the element
 --     * Slot: conforms_to Description: An established standard to which the element conforms.
---     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: description Description: a description of the element's purpose and use
 --     * Slot: title Description: the official title of the element
 --     * Slot: deprecated Description: Description of why and when this element will no longer be used
@@ -364,6 +380,7 @@
 --     * Slot: in_language Description: 
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
+--     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: schema_definition_name Description: Autocreated FK slot
 -- # Class: "class_level_rule" Description: "A rule that is applied to classes"
 --     * Slot: id Description: 
@@ -400,6 +417,7 @@
 --     * Slot: in_language Description: 
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
+--     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 -- # Class: "import_expression" Description: "an expression describing an import"
 --     * Slot: id Description: 
 --     * Slot: import_from Description: 
@@ -413,6 +431,7 @@
 --     * Slot: in_language Description: 
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
+--     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 -- # Class: "setting" Description: "assignment of a key to a value"
 --     * Slot: setting_key Description: the variable name for a setting
 --     * Slot: setting_value Description: The value assigned for a setting
@@ -490,6 +509,7 @@
 --     * Slot: in_language Description: 
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
+--     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: enum_definition_name Description: Autocreated FK slot
 -- # Class: "unique_key" Description: "a collection of slots whose values uniquely identify an instance of a class"
 --     * Slot: unique_key_name Description: name of the unique key
@@ -502,6 +522,7 @@
 --     * Slot: in_language Description: 
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
+--     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: class_definition_name Description: Autocreated FK slot
 -- # Class: "annotatable" Description: "mixin for classes that support annotations"
 --     * Slot: id Description: 
@@ -569,9 +590,45 @@
 -- # Class: "common_metadata_see_also" Description: ""
 --     * Slot: common_metadata_id Description: Autocreated FK slot
 --     * Slot: see_also Description: a reference
+-- # Class: "common_metadata_aliases" Description: ""
+--     * Slot: common_metadata_id Description: Autocreated FK slot
+--     * Slot: aliases Description: 
+-- # Class: "common_metadata_mappings" Description: ""
+--     * Slot: common_metadata_id Description: Autocreated FK slot
+--     * Slot: mappings Description: A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.
+-- # Class: "common_metadata_exact_mappings" Description: ""
+--     * Slot: common_metadata_id Description: Autocreated FK slot
+--     * Slot: exact_mappings Description: A list of terms from different schemas or terminology systems that have identical meaning.
+-- # Class: "common_metadata_close_mappings" Description: ""
+--     * Slot: common_metadata_id Description: Autocreated FK slot
+--     * Slot: close_mappings Description: A list of terms from different schemas or terminology systems that have close meaning.
+-- # Class: "common_metadata_related_mappings" Description: ""
+--     * Slot: common_metadata_id Description: Autocreated FK slot
+--     * Slot: related_mappings Description: A list of terms from different schemas or terminology systems that have related meaning.
+-- # Class: "common_metadata_narrow_mappings" Description: ""
+--     * Slot: common_metadata_id Description: Autocreated FK slot
+--     * Slot: narrow_mappings Description: A list of terms from different schemas or terminology systems that have narrower meaning.
+-- # Class: "common_metadata_broad_mappings" Description: ""
+--     * Slot: common_metadata_id Description: Autocreated FK slot
+--     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
 -- # Class: "element_id_prefixes" Description: ""
 --     * Slot: element_name Description: Autocreated FK slot
 --     * Slot: id_prefixes Description: the identifier of this class or slot must begin with the URIs referenced by this prefix
+-- # Class: "element_todos" Description: ""
+--     * Slot: element_name Description: Autocreated FK slot
+--     * Slot: todos Description: Outstanding issue that needs resolution
+-- # Class: "element_notes" Description: ""
+--     * Slot: element_name Description: Autocreated FK slot
+--     * Slot: notes Description: editorial notes about an element intended for internal consumption
+-- # Class: "element_comments" Description: ""
+--     * Slot: element_name Description: Autocreated FK slot
+--     * Slot: comments Description: notes and comments about an element intended for external consumption
+-- # Class: "element_in_subset" Description: ""
+--     * Slot: element_name Description: Autocreated FK slot
+--     * Slot: in_subset Description: used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)
+-- # Class: "element_see_also" Description: ""
+--     * Slot: element_name Description: Autocreated FK slot
+--     * Slot: see_also Description: a reference
 -- # Class: "element_aliases" Description: ""
 --     * Slot: element_name Description: Autocreated FK slot
 --     * Slot: aliases Description: 
@@ -593,21 +650,6 @@
 -- # Class: "element_broad_mappings" Description: ""
 --     * Slot: element_name Description: Autocreated FK slot
 --     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
--- # Class: "element_todos" Description: ""
---     * Slot: element_name Description: Autocreated FK slot
---     * Slot: todos Description: Outstanding issue that needs resolution
--- # Class: "element_notes" Description: ""
---     * Slot: element_name Description: Autocreated FK slot
---     * Slot: notes Description: editorial notes about an element intended for internal consumption
--- # Class: "element_comments" Description: ""
---     * Slot: element_name Description: Autocreated FK slot
---     * Slot: comments Description: notes and comments about an element intended for external consumption
--- # Class: "element_in_subset" Description: ""
---     * Slot: element_name Description: Autocreated FK slot
---     * Slot: in_subset Description: used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)
--- # Class: "element_see_also" Description: ""
---     * Slot: element_name Description: Autocreated FK slot
---     * Slot: see_also Description: a reference
 -- # Class: "schema_definition_imports" Description: ""
 --     * Slot: schema_definition_name Description: Autocreated FK slot
 --     * Slot: imports Description: other schemas that are included in this schema
@@ -626,6 +668,21 @@
 -- # Class: "schema_definition_id_prefixes" Description: ""
 --     * Slot: schema_definition_name Description: Autocreated FK slot
 --     * Slot: id_prefixes Description: the identifier of this class or slot must begin with the URIs referenced by this prefix
+-- # Class: "schema_definition_todos" Description: ""
+--     * Slot: schema_definition_name Description: Autocreated FK slot
+--     * Slot: todos Description: Outstanding issue that needs resolution
+-- # Class: "schema_definition_notes" Description: ""
+--     * Slot: schema_definition_name Description: Autocreated FK slot
+--     * Slot: notes Description: editorial notes about an element intended for internal consumption
+-- # Class: "schema_definition_comments" Description: ""
+--     * Slot: schema_definition_name Description: Autocreated FK slot
+--     * Slot: comments Description: notes and comments about an element intended for external consumption
+-- # Class: "schema_definition_in_subset" Description: ""
+--     * Slot: schema_definition_name Description: Autocreated FK slot
+--     * Slot: in_subset Description: used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)
+-- # Class: "schema_definition_see_also" Description: ""
+--     * Slot: schema_definition_name Description: Autocreated FK slot
+--     * Slot: see_also Description: a reference
 -- # Class: "schema_definition_aliases" Description: ""
 --     * Slot: schema_definition_name Description: Autocreated FK slot
 --     * Slot: aliases Description: 
@@ -647,21 +704,6 @@
 -- # Class: "schema_definition_broad_mappings" Description: ""
 --     * Slot: schema_definition_name Description: Autocreated FK slot
 --     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
--- # Class: "schema_definition_todos" Description: ""
---     * Slot: schema_definition_name Description: Autocreated FK slot
---     * Slot: todos Description: Outstanding issue that needs resolution
--- # Class: "schema_definition_notes" Description: ""
---     * Slot: schema_definition_name Description: Autocreated FK slot
---     * Slot: notes Description: editorial notes about an element intended for internal consumption
--- # Class: "schema_definition_comments" Description: ""
---     * Slot: schema_definition_name Description: Autocreated FK slot
---     * Slot: comments Description: notes and comments about an element intended for external consumption
--- # Class: "schema_definition_in_subset" Description: ""
---     * Slot: schema_definition_name Description: Autocreated FK slot
---     * Slot: in_subset Description: used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)
--- # Class: "schema_definition_see_also" Description: ""
---     * Slot: schema_definition_name Description: Autocreated FK slot
---     * Slot: see_also Description: a reference
 -- # Class: "type_expression_equals_string_in" Description: ""
 --     * Slot: type_expression_id Description: Autocreated FK slot
 --     * Slot: equals_string_in Description: the slot must have range string and the value of the slot must equal one of the specified values
@@ -710,6 +752,21 @@
 -- # Class: "type_definition_id_prefixes" Description: ""
 --     * Slot: type_definition_name Description: Autocreated FK slot
 --     * Slot: id_prefixes Description: the identifier of this class or slot must begin with the URIs referenced by this prefix
+-- # Class: "type_definition_todos" Description: ""
+--     * Slot: type_definition_name Description: Autocreated FK slot
+--     * Slot: todos Description: Outstanding issue that needs resolution
+-- # Class: "type_definition_notes" Description: ""
+--     * Slot: type_definition_name Description: Autocreated FK slot
+--     * Slot: notes Description: editorial notes about an element intended for internal consumption
+-- # Class: "type_definition_comments" Description: ""
+--     * Slot: type_definition_name Description: Autocreated FK slot
+--     * Slot: comments Description: notes and comments about an element intended for external consumption
+-- # Class: "type_definition_in_subset" Description: ""
+--     * Slot: type_definition_name Description: Autocreated FK slot
+--     * Slot: in_subset Description: used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)
+-- # Class: "type_definition_see_also" Description: ""
+--     * Slot: type_definition_name Description: Autocreated FK slot
+--     * Slot: see_also Description: a reference
 -- # Class: "type_definition_aliases" Description: ""
 --     * Slot: type_definition_name Description: Autocreated FK slot
 --     * Slot: aliases Description: 
@@ -731,24 +788,24 @@
 -- # Class: "type_definition_broad_mappings" Description: ""
 --     * Slot: type_definition_name Description: Autocreated FK slot
 --     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
--- # Class: "type_definition_todos" Description: ""
---     * Slot: type_definition_name Description: Autocreated FK slot
---     * Slot: todos Description: Outstanding issue that needs resolution
--- # Class: "type_definition_notes" Description: ""
---     * Slot: type_definition_name Description: Autocreated FK slot
---     * Slot: notes Description: editorial notes about an element intended for internal consumption
--- # Class: "type_definition_comments" Description: ""
---     * Slot: type_definition_name Description: Autocreated FK slot
---     * Slot: comments Description: notes and comments about an element intended for external consumption
--- # Class: "type_definition_in_subset" Description: ""
---     * Slot: type_definition_name Description: Autocreated FK slot
---     * Slot: in_subset Description: used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)
--- # Class: "type_definition_see_also" Description: ""
---     * Slot: type_definition_name Description: Autocreated FK slot
---     * Slot: see_also Description: a reference
 -- # Class: "subset_definition_id_prefixes" Description: ""
 --     * Slot: subset_definition_name Description: Autocreated FK slot
 --     * Slot: id_prefixes Description: the identifier of this class or slot must begin with the URIs referenced by this prefix
+-- # Class: "subset_definition_todos" Description: ""
+--     * Slot: subset_definition_name Description: Autocreated FK slot
+--     * Slot: todos Description: Outstanding issue that needs resolution
+-- # Class: "subset_definition_notes" Description: ""
+--     * Slot: subset_definition_name Description: Autocreated FK slot
+--     * Slot: notes Description: editorial notes about an element intended for internal consumption
+-- # Class: "subset_definition_comments" Description: ""
+--     * Slot: subset_definition_name Description: Autocreated FK slot
+--     * Slot: comments Description: notes and comments about an element intended for external consumption
+-- # Class: "subset_definition_in_subset" Description: ""
+--     * Slot: subset_definition_name Description: Autocreated FK slot
+--     * Slot: in_subset Description: used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)
+-- # Class: "subset_definition_see_also" Description: ""
+--     * Slot: subset_definition_name Description: Autocreated FK slot
+--     * Slot: see_also Description: a reference
 -- # Class: "subset_definition_aliases" Description: ""
 --     * Slot: subset_definition_name Description: Autocreated FK slot
 --     * Slot: aliases Description: 
@@ -770,21 +827,6 @@
 -- # Class: "subset_definition_broad_mappings" Description: ""
 --     * Slot: subset_definition_name Description: Autocreated FK slot
 --     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
--- # Class: "subset_definition_todos" Description: ""
---     * Slot: subset_definition_name Description: Autocreated FK slot
---     * Slot: todos Description: Outstanding issue that needs resolution
--- # Class: "subset_definition_notes" Description: ""
---     * Slot: subset_definition_name Description: Autocreated FK slot
---     * Slot: notes Description: editorial notes about an element intended for internal consumption
--- # Class: "subset_definition_comments" Description: ""
---     * Slot: subset_definition_name Description: Autocreated FK slot
---     * Slot: comments Description: notes and comments about an element intended for external consumption
--- # Class: "subset_definition_in_subset" Description: ""
---     * Slot: subset_definition_name Description: Autocreated FK slot
---     * Slot: in_subset Description: used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)
--- # Class: "subset_definition_see_also" Description: ""
---     * Slot: subset_definition_name Description: Autocreated FK slot
---     * Slot: see_also Description: a reference
 -- # Class: "definition_mixins" Description: ""
 --     * Slot: definition_name Description: Autocreated FK slot
 --     * Slot: mixins Description: List of definitions to be mixed in. Targets may be any definition of the same type
@@ -797,6 +839,21 @@
 -- # Class: "definition_id_prefixes" Description: ""
 --     * Slot: definition_name Description: Autocreated FK slot
 --     * Slot: id_prefixes Description: the identifier of this class or slot must begin with the URIs referenced by this prefix
+-- # Class: "definition_todos" Description: ""
+--     * Slot: definition_name Description: Autocreated FK slot
+--     * Slot: todos Description: Outstanding issue that needs resolution
+-- # Class: "definition_notes" Description: ""
+--     * Slot: definition_name Description: Autocreated FK slot
+--     * Slot: notes Description: editorial notes about an element intended for internal consumption
+-- # Class: "definition_comments" Description: ""
+--     * Slot: definition_name Description: Autocreated FK slot
+--     * Slot: comments Description: notes and comments about an element intended for external consumption
+-- # Class: "definition_in_subset" Description: ""
+--     * Slot: definition_name Description: Autocreated FK slot
+--     * Slot: in_subset Description: used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)
+-- # Class: "definition_see_also" Description: ""
+--     * Slot: definition_name Description: Autocreated FK slot
+--     * Slot: see_also Description: a reference
 -- # Class: "definition_aliases" Description: ""
 --     * Slot: definition_name Description: Autocreated FK slot
 --     * Slot: aliases Description: 
@@ -818,24 +875,24 @@
 -- # Class: "definition_broad_mappings" Description: ""
 --     * Slot: definition_name Description: Autocreated FK slot
 --     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
--- # Class: "definition_todos" Description: ""
---     * Slot: definition_name Description: Autocreated FK slot
---     * Slot: todos Description: Outstanding issue that needs resolution
--- # Class: "definition_notes" Description: ""
---     * Slot: definition_name Description: Autocreated FK slot
---     * Slot: notes Description: editorial notes about an element intended for internal consumption
--- # Class: "definition_comments" Description: ""
---     * Slot: definition_name Description: Autocreated FK slot
---     * Slot: comments Description: notes and comments about an element intended for external consumption
--- # Class: "definition_in_subset" Description: ""
---     * Slot: definition_name Description: Autocreated FK slot
---     * Slot: in_subset Description: used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)
--- # Class: "definition_see_also" Description: ""
---     * Slot: definition_name Description: Autocreated FK slot
---     * Slot: see_also Description: a reference
 -- # Class: "enum_definition_id_prefixes" Description: ""
 --     * Slot: enum_definition_name Description: Autocreated FK slot
 --     * Slot: id_prefixes Description: the identifier of this class or slot must begin with the URIs referenced by this prefix
+-- # Class: "enum_definition_todos" Description: ""
+--     * Slot: enum_definition_name Description: Autocreated FK slot
+--     * Slot: todos Description: Outstanding issue that needs resolution
+-- # Class: "enum_definition_notes" Description: ""
+--     * Slot: enum_definition_name Description: Autocreated FK slot
+--     * Slot: notes Description: editorial notes about an element intended for internal consumption
+-- # Class: "enum_definition_comments" Description: ""
+--     * Slot: enum_definition_name Description: Autocreated FK slot
+--     * Slot: comments Description: notes and comments about an element intended for external consumption
+-- # Class: "enum_definition_in_subset" Description: ""
+--     * Slot: enum_definition_name Description: Autocreated FK slot
+--     * Slot: in_subset Description: used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)
+-- # Class: "enum_definition_see_also" Description: ""
+--     * Slot: enum_definition_name Description: Autocreated FK slot
+--     * Slot: see_also Description: a reference
 -- # Class: "enum_definition_aliases" Description: ""
 --     * Slot: enum_definition_name Description: Autocreated FK slot
 --     * Slot: aliases Description: 
@@ -857,21 +914,6 @@
 -- # Class: "enum_definition_broad_mappings" Description: ""
 --     * Slot: enum_definition_name Description: Autocreated FK slot
 --     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
--- # Class: "enum_definition_todos" Description: ""
---     * Slot: enum_definition_name Description: Autocreated FK slot
---     * Slot: todos Description: Outstanding issue that needs resolution
--- # Class: "enum_definition_notes" Description: ""
---     * Slot: enum_definition_name Description: Autocreated FK slot
---     * Slot: notes Description: editorial notes about an element intended for internal consumption
--- # Class: "enum_definition_comments" Description: ""
---     * Slot: enum_definition_name Description: Autocreated FK slot
---     * Slot: comments Description: notes and comments about an element intended for external consumption
--- # Class: "enum_definition_in_subset" Description: ""
---     * Slot: enum_definition_name Description: Autocreated FK slot
---     * Slot: in_subset Description: used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)
--- # Class: "enum_definition_see_also" Description: ""
---     * Slot: enum_definition_name Description: Autocreated FK slot
---     * Slot: see_also Description: a reference
 -- # Class: "structured_alias_category" Description: ""
 --     * Slot: structured_alias_id Description: Autocreated FK slot
 --     * Slot: category Description: The category or categories of an alias. This can be drawn from any relevant vocabulary
@@ -890,6 +932,27 @@
 -- # Class: "structured_alias_see_also" Description: ""
 --     * Slot: structured_alias_id Description: Autocreated FK slot
 --     * Slot: see_also Description: a reference
+-- # Class: "structured_alias_aliases" Description: ""
+--     * Slot: structured_alias_id Description: Autocreated FK slot
+--     * Slot: aliases Description: 
+-- # Class: "structured_alias_mappings" Description: ""
+--     * Slot: structured_alias_id Description: Autocreated FK slot
+--     * Slot: mappings Description: A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.
+-- # Class: "structured_alias_exact_mappings" Description: ""
+--     * Slot: structured_alias_id Description: Autocreated FK slot
+--     * Slot: exact_mappings Description: A list of terms from different schemas or terminology systems that have identical meaning.
+-- # Class: "structured_alias_close_mappings" Description: ""
+--     * Slot: structured_alias_id Description: Autocreated FK slot
+--     * Slot: close_mappings Description: A list of terms from different schemas or terminology systems that have close meaning.
+-- # Class: "structured_alias_related_mappings" Description: ""
+--     * Slot: structured_alias_id Description: Autocreated FK slot
+--     * Slot: related_mappings Description: A list of terms from different schemas or terminology systems that have related meaning.
+-- # Class: "structured_alias_narrow_mappings" Description: ""
+--     * Slot: structured_alias_id Description: Autocreated FK slot
+--     * Slot: narrow_mappings Description: A list of terms from different schemas or terminology systems that have narrower meaning.
+-- # Class: "structured_alias_broad_mappings" Description: ""
+--     * Slot: structured_alias_id Description: Autocreated FK slot
+--     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
 -- # Class: "anonymous_expression_todos" Description: ""
 --     * Slot: anonymous_expression_id Description: Autocreated FK slot
 --     * Slot: todos Description: Outstanding issue that needs resolution
@@ -905,6 +968,27 @@
 -- # Class: "anonymous_expression_see_also" Description: ""
 --     * Slot: anonymous_expression_id Description: Autocreated FK slot
 --     * Slot: see_also Description: a reference
+-- # Class: "anonymous_expression_aliases" Description: ""
+--     * Slot: anonymous_expression_id Description: Autocreated FK slot
+--     * Slot: aliases Description: 
+-- # Class: "anonymous_expression_mappings" Description: ""
+--     * Slot: anonymous_expression_id Description: Autocreated FK slot
+--     * Slot: mappings Description: A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.
+-- # Class: "anonymous_expression_exact_mappings" Description: ""
+--     * Slot: anonymous_expression_id Description: Autocreated FK slot
+--     * Slot: exact_mappings Description: A list of terms from different schemas or terminology systems that have identical meaning.
+-- # Class: "anonymous_expression_close_mappings" Description: ""
+--     * Slot: anonymous_expression_id Description: Autocreated FK slot
+--     * Slot: close_mappings Description: A list of terms from different schemas or terminology systems that have close meaning.
+-- # Class: "anonymous_expression_related_mappings" Description: ""
+--     * Slot: anonymous_expression_id Description: Autocreated FK slot
+--     * Slot: related_mappings Description: A list of terms from different schemas or terminology systems that have related meaning.
+-- # Class: "anonymous_expression_narrow_mappings" Description: ""
+--     * Slot: anonymous_expression_id Description: Autocreated FK slot
+--     * Slot: narrow_mappings Description: A list of terms from different schemas or terminology systems that have narrower meaning.
+-- # Class: "anonymous_expression_broad_mappings" Description: ""
+--     * Slot: anonymous_expression_id Description: Autocreated FK slot
+--     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
 -- # Class: "path_expression_none_of" Description: ""
 --     * Slot: path_expression_id Description: Autocreated FK slot
 --     * Slot: none_of_id Description: holds if none of the expressions hold
@@ -932,6 +1016,27 @@
 -- # Class: "path_expression_see_also" Description: ""
 --     * Slot: path_expression_id Description: Autocreated FK slot
 --     * Slot: see_also Description: a reference
+-- # Class: "path_expression_aliases" Description: ""
+--     * Slot: path_expression_id Description: Autocreated FK slot
+--     * Slot: aliases Description: 
+-- # Class: "path_expression_mappings" Description: ""
+--     * Slot: path_expression_id Description: Autocreated FK slot
+--     * Slot: mappings Description: A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.
+-- # Class: "path_expression_exact_mappings" Description: ""
+--     * Slot: path_expression_id Description: Autocreated FK slot
+--     * Slot: exact_mappings Description: A list of terms from different schemas or terminology systems that have identical meaning.
+-- # Class: "path_expression_close_mappings" Description: ""
+--     * Slot: path_expression_id Description: Autocreated FK slot
+--     * Slot: close_mappings Description: A list of terms from different schemas or terminology systems that have close meaning.
+-- # Class: "path_expression_related_mappings" Description: ""
+--     * Slot: path_expression_id Description: Autocreated FK slot
+--     * Slot: related_mappings Description: A list of terms from different schemas or terminology systems that have related meaning.
+-- # Class: "path_expression_narrow_mappings" Description: ""
+--     * Slot: path_expression_id Description: Autocreated FK slot
+--     * Slot: narrow_mappings Description: A list of terms from different schemas or terminology systems that have narrower meaning.
+-- # Class: "path_expression_broad_mappings" Description: ""
+--     * Slot: path_expression_id Description: Autocreated FK slot
+--     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
 -- # Class: "slot_expression_equals_string_in" Description: ""
 --     * Slot: slot_expression_id Description: Autocreated FK slot
 --     * Slot: equals_string_in Description: the slot must have range string and the value of the slot must equal one of the specified values
@@ -977,6 +1082,27 @@
 -- # Class: "anonymous_slot_expression_see_also" Description: ""
 --     * Slot: anonymous_slot_expression_id Description: Autocreated FK slot
 --     * Slot: see_also Description: a reference
+-- # Class: "anonymous_slot_expression_aliases" Description: ""
+--     * Slot: anonymous_slot_expression_id Description: Autocreated FK slot
+--     * Slot: aliases Description: 
+-- # Class: "anonymous_slot_expression_mappings" Description: ""
+--     * Slot: anonymous_slot_expression_id Description: Autocreated FK slot
+--     * Slot: mappings Description: A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.
+-- # Class: "anonymous_slot_expression_exact_mappings" Description: ""
+--     * Slot: anonymous_slot_expression_id Description: Autocreated FK slot
+--     * Slot: exact_mappings Description: A list of terms from different schemas or terminology systems that have identical meaning.
+-- # Class: "anonymous_slot_expression_close_mappings" Description: ""
+--     * Slot: anonymous_slot_expression_id Description: Autocreated FK slot
+--     * Slot: close_mappings Description: A list of terms from different schemas or terminology systems that have close meaning.
+-- # Class: "anonymous_slot_expression_related_mappings" Description: ""
+--     * Slot: anonymous_slot_expression_id Description: Autocreated FK slot
+--     * Slot: related_mappings Description: A list of terms from different schemas or terminology systems that have related meaning.
+-- # Class: "anonymous_slot_expression_narrow_mappings" Description: ""
+--     * Slot: anonymous_slot_expression_id Description: Autocreated FK slot
+--     * Slot: narrow_mappings Description: A list of terms from different schemas or terminology systems that have narrower meaning.
+-- # Class: "anonymous_slot_expression_broad_mappings" Description: ""
+--     * Slot: anonymous_slot_expression_id Description: Autocreated FK slot
+--     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
 -- # Class: "slot_definition_domain_of" Description: ""
 --     * Slot: slot_definition_name Description: Autocreated FK slot
 --     * Slot: domain_of Description: the class(es) that reference the slot in a "slots" or "slot_usage" context
@@ -1010,6 +1136,21 @@
 -- # Class: "slot_definition_id_prefixes" Description: ""
 --     * Slot: slot_definition_name Description: Autocreated FK slot
 --     * Slot: id_prefixes Description: the identifier of this class or slot must begin with the URIs referenced by this prefix
+-- # Class: "slot_definition_todos" Description: ""
+--     * Slot: slot_definition_name Description: Autocreated FK slot
+--     * Slot: todos Description: Outstanding issue that needs resolution
+-- # Class: "slot_definition_notes" Description: ""
+--     * Slot: slot_definition_name Description: Autocreated FK slot
+--     * Slot: notes Description: editorial notes about an element intended for internal consumption
+-- # Class: "slot_definition_comments" Description: ""
+--     * Slot: slot_definition_name Description: Autocreated FK slot
+--     * Slot: comments Description: notes and comments about an element intended for external consumption
+-- # Class: "slot_definition_in_subset" Description: ""
+--     * Slot: slot_definition_name Description: Autocreated FK slot
+--     * Slot: in_subset Description: used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)
+-- # Class: "slot_definition_see_also" Description: ""
+--     * Slot: slot_definition_name Description: Autocreated FK slot
+--     * Slot: see_also Description: a reference
 -- # Class: "slot_definition_aliases" Description: ""
 --     * Slot: slot_definition_name Description: Autocreated FK slot
 --     * Slot: aliases Description: 
@@ -1031,21 +1172,6 @@
 -- # Class: "slot_definition_broad_mappings" Description: ""
 --     * Slot: slot_definition_name Description: Autocreated FK slot
 --     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
--- # Class: "slot_definition_todos" Description: ""
---     * Slot: slot_definition_name Description: Autocreated FK slot
---     * Slot: todos Description: Outstanding issue that needs resolution
--- # Class: "slot_definition_notes" Description: ""
---     * Slot: slot_definition_name Description: Autocreated FK slot
---     * Slot: notes Description: editorial notes about an element intended for internal consumption
--- # Class: "slot_definition_comments" Description: ""
---     * Slot: slot_definition_name Description: Autocreated FK slot
---     * Slot: comments Description: notes and comments about an element intended for external consumption
--- # Class: "slot_definition_in_subset" Description: ""
---     * Slot: slot_definition_name Description: Autocreated FK slot
---     * Slot: in_subset Description: used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)
--- # Class: "slot_definition_see_also" Description: ""
---     * Slot: slot_definition_name Description: Autocreated FK slot
---     * Slot: see_also Description: a reference
 -- # Class: "class_expression_any_of" Description: ""
 --     * Slot: class_expression_id Description: Autocreated FK slot
 --     * Slot: any_of_id Description: holds if at least one of the expressions hold
@@ -1085,6 +1211,27 @@
 -- # Class: "anonymous_class_expression_see_also" Description: ""
 --     * Slot: anonymous_class_expression_id Description: Autocreated FK slot
 --     * Slot: see_also Description: a reference
+-- # Class: "anonymous_class_expression_aliases" Description: ""
+--     * Slot: anonymous_class_expression_id Description: Autocreated FK slot
+--     * Slot: aliases Description: 
+-- # Class: "anonymous_class_expression_mappings" Description: ""
+--     * Slot: anonymous_class_expression_id Description: Autocreated FK slot
+--     * Slot: mappings Description: A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.
+-- # Class: "anonymous_class_expression_exact_mappings" Description: ""
+--     * Slot: anonymous_class_expression_id Description: Autocreated FK slot
+--     * Slot: exact_mappings Description: A list of terms from different schemas or terminology systems that have identical meaning.
+-- # Class: "anonymous_class_expression_close_mappings" Description: ""
+--     * Slot: anonymous_class_expression_id Description: Autocreated FK slot
+--     * Slot: close_mappings Description: A list of terms from different schemas or terminology systems that have close meaning.
+-- # Class: "anonymous_class_expression_related_mappings" Description: ""
+--     * Slot: anonymous_class_expression_id Description: Autocreated FK slot
+--     * Slot: related_mappings Description: A list of terms from different schemas or terminology systems that have related meaning.
+-- # Class: "anonymous_class_expression_narrow_mappings" Description: ""
+--     * Slot: anonymous_class_expression_id Description: Autocreated FK slot
+--     * Slot: narrow_mappings Description: A list of terms from different schemas or terminology systems that have narrower meaning.
+-- # Class: "anonymous_class_expression_broad_mappings" Description: ""
+--     * Slot: anonymous_class_expression_id Description: Autocreated FK slot
+--     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
 -- # Class: "class_definition_slots" Description: ""
 --     * Slot: class_definition_name Description: Autocreated FK slot
 --     * Slot: slots Description: list of slot names that are applicable to a class
@@ -1121,6 +1268,21 @@
 -- # Class: "class_definition_id_prefixes" Description: ""
 --     * Slot: class_definition_name Description: Autocreated FK slot
 --     * Slot: id_prefixes Description: the identifier of this class or slot must begin with the URIs referenced by this prefix
+-- # Class: "class_definition_todos" Description: ""
+--     * Slot: class_definition_name Description: Autocreated FK slot
+--     * Slot: todos Description: Outstanding issue that needs resolution
+-- # Class: "class_definition_notes" Description: ""
+--     * Slot: class_definition_name Description: Autocreated FK slot
+--     * Slot: notes Description: editorial notes about an element intended for internal consumption
+-- # Class: "class_definition_comments" Description: ""
+--     * Slot: class_definition_name Description: Autocreated FK slot
+--     * Slot: comments Description: notes and comments about an element intended for external consumption
+-- # Class: "class_definition_in_subset" Description: ""
+--     * Slot: class_definition_name Description: Autocreated FK slot
+--     * Slot: in_subset Description: used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)
+-- # Class: "class_definition_see_also" Description: ""
+--     * Slot: class_definition_name Description: Autocreated FK slot
+--     * Slot: see_also Description: a reference
 -- # Class: "class_definition_aliases" Description: ""
 --     * Slot: class_definition_name Description: Autocreated FK slot
 --     * Slot: aliases Description: 
@@ -1142,21 +1304,6 @@
 -- # Class: "class_definition_broad_mappings" Description: ""
 --     * Slot: class_definition_name Description: Autocreated FK slot
 --     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
--- # Class: "class_definition_todos" Description: ""
---     * Slot: class_definition_name Description: Autocreated FK slot
---     * Slot: todos Description: Outstanding issue that needs resolution
--- # Class: "class_definition_notes" Description: ""
---     * Slot: class_definition_name Description: Autocreated FK slot
---     * Slot: notes Description: editorial notes about an element intended for internal consumption
--- # Class: "class_definition_comments" Description: ""
---     * Slot: class_definition_name Description: Autocreated FK slot
---     * Slot: comments Description: notes and comments about an element intended for external consumption
--- # Class: "class_definition_in_subset" Description: ""
---     * Slot: class_definition_name Description: Autocreated FK slot
---     * Slot: in_subset Description: used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)
--- # Class: "class_definition_see_also" Description: ""
---     * Slot: class_definition_name Description: Autocreated FK slot
---     * Slot: see_also Description: a reference
 -- # Class: "class_rule_todos" Description: ""
 --     * Slot: class_rule_id Description: Autocreated FK slot
 --     * Slot: todos Description: Outstanding issue that needs resolution
@@ -1172,6 +1319,27 @@
 -- # Class: "class_rule_see_also" Description: ""
 --     * Slot: class_rule_id Description: Autocreated FK slot
 --     * Slot: see_also Description: a reference
+-- # Class: "class_rule_aliases" Description: ""
+--     * Slot: class_rule_id Description: Autocreated FK slot
+--     * Slot: aliases Description: 
+-- # Class: "class_rule_mappings" Description: ""
+--     * Slot: class_rule_id Description: Autocreated FK slot
+--     * Slot: mappings Description: A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.
+-- # Class: "class_rule_exact_mappings" Description: ""
+--     * Slot: class_rule_id Description: Autocreated FK slot
+--     * Slot: exact_mappings Description: A list of terms from different schemas or terminology systems that have identical meaning.
+-- # Class: "class_rule_close_mappings" Description: ""
+--     * Slot: class_rule_id Description: Autocreated FK slot
+--     * Slot: close_mappings Description: A list of terms from different schemas or terminology systems that have close meaning.
+-- # Class: "class_rule_related_mappings" Description: ""
+--     * Slot: class_rule_id Description: Autocreated FK slot
+--     * Slot: related_mappings Description: A list of terms from different schemas or terminology systems that have related meaning.
+-- # Class: "class_rule_narrow_mappings" Description: ""
+--     * Slot: class_rule_id Description: Autocreated FK slot
+--     * Slot: narrow_mappings Description: A list of terms from different schemas or terminology systems that have narrower meaning.
+-- # Class: "class_rule_broad_mappings" Description: ""
+--     * Slot: class_rule_id Description: Autocreated FK slot
+--     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
 -- # Class: "pattern_expression_todos" Description: ""
 --     * Slot: pattern_expression_id Description: Autocreated FK slot
 --     * Slot: todos Description: Outstanding issue that needs resolution
@@ -1187,6 +1355,27 @@
 -- # Class: "pattern_expression_see_also" Description: ""
 --     * Slot: pattern_expression_id Description: Autocreated FK slot
 --     * Slot: see_also Description: a reference
+-- # Class: "pattern_expression_aliases" Description: ""
+--     * Slot: pattern_expression_id Description: Autocreated FK slot
+--     * Slot: aliases Description: 
+-- # Class: "pattern_expression_mappings" Description: ""
+--     * Slot: pattern_expression_id Description: Autocreated FK slot
+--     * Slot: mappings Description: A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.
+-- # Class: "pattern_expression_exact_mappings" Description: ""
+--     * Slot: pattern_expression_id Description: Autocreated FK slot
+--     * Slot: exact_mappings Description: A list of terms from different schemas or terminology systems that have identical meaning.
+-- # Class: "pattern_expression_close_mappings" Description: ""
+--     * Slot: pattern_expression_id Description: Autocreated FK slot
+--     * Slot: close_mappings Description: A list of terms from different schemas or terminology systems that have close meaning.
+-- # Class: "pattern_expression_related_mappings" Description: ""
+--     * Slot: pattern_expression_id Description: Autocreated FK slot
+--     * Slot: related_mappings Description: A list of terms from different schemas or terminology systems that have related meaning.
+-- # Class: "pattern_expression_narrow_mappings" Description: ""
+--     * Slot: pattern_expression_id Description: Autocreated FK slot
+--     * Slot: narrow_mappings Description: A list of terms from different schemas or terminology systems that have narrower meaning.
+-- # Class: "pattern_expression_broad_mappings" Description: ""
+--     * Slot: pattern_expression_id Description: Autocreated FK slot
+--     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
 -- # Class: "import_expression_todos" Description: ""
 --     * Slot: import_expression_id Description: Autocreated FK slot
 --     * Slot: todos Description: Outstanding issue that needs resolution
@@ -1202,6 +1391,27 @@
 -- # Class: "import_expression_see_also" Description: ""
 --     * Slot: import_expression_id Description: Autocreated FK slot
 --     * Slot: see_also Description: a reference
+-- # Class: "import_expression_aliases" Description: ""
+--     * Slot: import_expression_id Description: Autocreated FK slot
+--     * Slot: aliases Description: 
+-- # Class: "import_expression_mappings" Description: ""
+--     * Slot: import_expression_id Description: Autocreated FK slot
+--     * Slot: mappings Description: A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.
+-- # Class: "import_expression_exact_mappings" Description: ""
+--     * Slot: import_expression_id Description: Autocreated FK slot
+--     * Slot: exact_mappings Description: A list of terms from different schemas or terminology systems that have identical meaning.
+-- # Class: "import_expression_close_mappings" Description: ""
+--     * Slot: import_expression_id Description: Autocreated FK slot
+--     * Slot: close_mappings Description: A list of terms from different schemas or terminology systems that have close meaning.
+-- # Class: "import_expression_related_mappings" Description: ""
+--     * Slot: import_expression_id Description: Autocreated FK slot
+--     * Slot: related_mappings Description: A list of terms from different schemas or terminology systems that have related meaning.
+-- # Class: "import_expression_narrow_mappings" Description: ""
+--     * Slot: import_expression_id Description: Autocreated FK slot
+--     * Slot: narrow_mappings Description: A list of terms from different schemas or terminology systems that have narrower meaning.
+-- # Class: "import_expression_broad_mappings" Description: ""
+--     * Slot: import_expression_id Description: Autocreated FK slot
+--     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
 -- # Class: "permissible_value_todos" Description: ""
 --     * Slot: permissible_value_text Description: Autocreated FK slot
 --     * Slot: todos Description: Outstanding issue that needs resolution
@@ -1217,6 +1427,27 @@
 -- # Class: "permissible_value_see_also" Description: ""
 --     * Slot: permissible_value_text Description: Autocreated FK slot
 --     * Slot: see_also Description: a reference
+-- # Class: "permissible_value_aliases" Description: ""
+--     * Slot: permissible_value_text Description: Autocreated FK slot
+--     * Slot: aliases Description: 
+-- # Class: "permissible_value_mappings" Description: ""
+--     * Slot: permissible_value_text Description: Autocreated FK slot
+--     * Slot: mappings Description: A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.
+-- # Class: "permissible_value_exact_mappings" Description: ""
+--     * Slot: permissible_value_text Description: Autocreated FK slot
+--     * Slot: exact_mappings Description: A list of terms from different schemas or terminology systems that have identical meaning.
+-- # Class: "permissible_value_close_mappings" Description: ""
+--     * Slot: permissible_value_text Description: Autocreated FK slot
+--     * Slot: close_mappings Description: A list of terms from different schemas or terminology systems that have close meaning.
+-- # Class: "permissible_value_related_mappings" Description: ""
+--     * Slot: permissible_value_text Description: Autocreated FK slot
+--     * Slot: related_mappings Description: A list of terms from different schemas or terminology systems that have related meaning.
+-- # Class: "permissible_value_narrow_mappings" Description: ""
+--     * Slot: permissible_value_text Description: Autocreated FK slot
+--     * Slot: narrow_mappings Description: A list of terms from different schemas or terminology systems that have narrower meaning.
+-- # Class: "permissible_value_broad_mappings" Description: ""
+--     * Slot: permissible_value_text Description: Autocreated FK slot
+--     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
 -- # Class: "unique_key_unique_key_slots" Description: ""
 --     * Slot: unique_key_unique_key_name Description: Autocreated FK slot
 --     * Slot: unique_key_slots Description: list of slot names that form a key
@@ -1235,6 +1466,27 @@
 -- # Class: "unique_key_see_also" Description: ""
 --     * Slot: unique_key_unique_key_name Description: Autocreated FK slot
 --     * Slot: see_also Description: a reference
+-- # Class: "unique_key_aliases" Description: ""
+--     * Slot: unique_key_unique_key_name Description: Autocreated FK slot
+--     * Slot: aliases Description: 
+-- # Class: "unique_key_mappings" Description: ""
+--     * Slot: unique_key_unique_key_name Description: Autocreated FK slot
+--     * Slot: mappings Description: A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.
+-- # Class: "unique_key_exact_mappings" Description: ""
+--     * Slot: unique_key_unique_key_name Description: Autocreated FK slot
+--     * Slot: exact_mappings Description: A list of terms from different schemas or terminology systems that have identical meaning.
+-- # Class: "unique_key_close_mappings" Description: ""
+--     * Slot: unique_key_unique_key_name Description: Autocreated FK slot
+--     * Slot: close_mappings Description: A list of terms from different schemas or terminology systems that have close meaning.
+-- # Class: "unique_key_related_mappings" Description: ""
+--     * Slot: unique_key_unique_key_name Description: Autocreated FK slot
+--     * Slot: related_mappings Description: A list of terms from different schemas or terminology systems that have related meaning.
+-- # Class: "unique_key_narrow_mappings" Description: ""
+--     * Slot: unique_key_unique_key_name Description: Autocreated FK slot
+--     * Slot: narrow_mappings Description: A list of terms from different schemas or terminology systems that have narrower meaning.
+-- # Class: "unique_key_broad_mappings" Description: ""
+--     * Slot: unique_key_unique_key_name Description: Autocreated FK slot
+--     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
 
 CREATE TABLE common_metadata (
 	id INTEGER, 
@@ -1247,13 +1499,13 @@ CREATE TABLE common_metadata (
 	in_language TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
+	rank INTEGER, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE element (
 	name TEXT, 
 	definition_uri TEXT, 
 	conforms_to TEXT, 
-	rank INTEGER, 
 	description TEXT, 
 	title TEXT, 
 	deprecated TEXT, 
@@ -1263,6 +1515,7 @@ CREATE TABLE element (
 	in_language TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
+	rank INTEGER, 
 	PRIMARY KEY (name)
 );
 CREATE TABLE schema_definition (
@@ -1280,7 +1533,6 @@ CREATE TABLE schema_definition (
 	name TEXT, 
 	definition_uri TEXT, 
 	conforms_to TEXT, 
-	rank INTEGER, 
 	description TEXT, 
 	title TEXT, 
 	deprecated TEXT, 
@@ -1290,6 +1542,7 @@ CREATE TABLE schema_definition (
 	in_language TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
+	rank INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(default_range) REFERENCES type_definition (name)
 );
@@ -1306,7 +1559,6 @@ CREATE TABLE type_definition (
 	name TEXT, 
 	definition_uri TEXT, 
 	conforms_to TEXT, 
-	rank INTEGER, 
 	description TEXT, 
 	title TEXT, 
 	deprecated TEXT, 
@@ -1316,6 +1568,7 @@ CREATE TABLE type_definition (
 	in_language TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
+	rank INTEGER, 
 	schema_definition_name TEXT, 
 	structured_pattern_id TEXT, 
 	PRIMARY KEY (name), 
@@ -1336,7 +1589,6 @@ CREATE TABLE definition (
 	name TEXT, 
 	definition_uri TEXT, 
 	conforms_to TEXT, 
-	rank INTEGER, 
 	description TEXT, 
 	title TEXT, 
 	deprecated TEXT, 
@@ -1346,6 +1598,7 @@ CREATE TABLE definition (
 	in_language TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
+	rank INTEGER, 
 	PRIMARY KEY (name), 
 	FOREIGN KEY(is_a) REFERENCES definition (name)
 );
@@ -1364,6 +1617,7 @@ CREATE TABLE anonymous_expression (
 	in_language TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
+	rank INTEGER, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE path_expression (
@@ -1379,6 +1633,7 @@ CREATE TABLE path_expression (
 	in_language TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
+	rank INTEGER, 
 	followed_by_id TEXT, 
 	range_expression_id TEXT, 
 	PRIMARY KEY (id), 
@@ -1445,7 +1700,6 @@ CREATE TABLE slot_definition (
 	name TEXT, 
 	definition_uri TEXT, 
 	conforms_to TEXT, 
-	rank INTEGER, 
 	description TEXT, 
 	title TEXT, 
 	deprecated TEXT, 
@@ -1455,6 +1709,7 @@ CREATE TABLE slot_definition (
 	in_language TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
+	rank INTEGER, 
 	schema_definition_name TEXT, 
 	slot_expression_id TEXT, 
 	anonymous_slot_expression_id TEXT, 
@@ -1510,6 +1765,7 @@ CREATE TABLE pattern_expression (
 	in_language TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
+	rank INTEGER, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE import_expression (
@@ -1525,6 +1781,7 @@ CREATE TABLE import_expression (
 	in_language TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
+	rank INTEGER, 
 	PRIMARY KEY (id)
 );
 CREATE TABLE annotatable (
@@ -1561,7 +1818,6 @@ CREATE TABLE subset_definition (
 	name TEXT, 
 	definition_uri TEXT, 
 	conforms_to TEXT, 
-	rank INTEGER, 
 	description TEXT, 
 	title TEXT, 
 	deprecated TEXT, 
@@ -1571,6 +1827,7 @@ CREATE TABLE subset_definition (
 	in_language TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
+	rank INTEGER, 
 	schema_definition_name TEXT, 
 	PRIMARY KEY (name), 
 	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id)
@@ -1583,7 +1840,6 @@ CREATE TABLE enum_definition (
 	name TEXT, 
 	definition_uri TEXT, 
 	conforms_to TEXT, 
-	rank INTEGER, 
 	description TEXT, 
 	title TEXT, 
 	deprecated TEXT, 
@@ -1593,6 +1849,7 @@ CREATE TABLE enum_definition (
 	in_language TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
+	rank INTEGER, 
 	schema_definition_name TEXT, 
 	PRIMARY KEY (name), 
 	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id)
@@ -1616,7 +1873,6 @@ CREATE TABLE class_definition (
 	name TEXT, 
 	definition_uri TEXT, 
 	conforms_to TEXT, 
-	rank INTEGER, 
 	description TEXT, 
 	title TEXT, 
 	deprecated TEXT, 
@@ -1626,6 +1882,7 @@ CREATE TABLE class_definition (
 	in_language TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
+	rank INTEGER, 
 	schema_definition_name TEXT, 
 	PRIMARY KEY (name), 
 	FOREIGN KEY(is_a) REFERENCES class_definition (name), 
@@ -1671,10 +1928,76 @@ CREATE TABLE common_metadata_see_also (
 	PRIMARY KEY (common_metadata_id, see_also), 
 	FOREIGN KEY(common_metadata_id) REFERENCES common_metadata (id)
 );
+CREATE TABLE common_metadata_aliases (
+	common_metadata_id TEXT, 
+	aliases TEXT, 
+	PRIMARY KEY (common_metadata_id, aliases), 
+	FOREIGN KEY(common_metadata_id) REFERENCES common_metadata (id)
+);
+CREATE TABLE common_metadata_mappings (
+	common_metadata_id TEXT, 
+	mappings TEXT, 
+	PRIMARY KEY (common_metadata_id, mappings), 
+	FOREIGN KEY(common_metadata_id) REFERENCES common_metadata (id)
+);
+CREATE TABLE common_metadata_exact_mappings (
+	common_metadata_id TEXT, 
+	exact_mappings TEXT, 
+	PRIMARY KEY (common_metadata_id, exact_mappings), 
+	FOREIGN KEY(common_metadata_id) REFERENCES common_metadata (id)
+);
+CREATE TABLE common_metadata_close_mappings (
+	common_metadata_id TEXT, 
+	close_mappings TEXT, 
+	PRIMARY KEY (common_metadata_id, close_mappings), 
+	FOREIGN KEY(common_metadata_id) REFERENCES common_metadata (id)
+);
+CREATE TABLE common_metadata_related_mappings (
+	common_metadata_id TEXT, 
+	related_mappings TEXT, 
+	PRIMARY KEY (common_metadata_id, related_mappings), 
+	FOREIGN KEY(common_metadata_id) REFERENCES common_metadata (id)
+);
+CREATE TABLE common_metadata_narrow_mappings (
+	common_metadata_id TEXT, 
+	narrow_mappings TEXT, 
+	PRIMARY KEY (common_metadata_id, narrow_mappings), 
+	FOREIGN KEY(common_metadata_id) REFERENCES common_metadata (id)
+);
+CREATE TABLE common_metadata_broad_mappings (
+	common_metadata_id TEXT, 
+	broad_mappings TEXT, 
+	PRIMARY KEY (common_metadata_id, broad_mappings), 
+	FOREIGN KEY(common_metadata_id) REFERENCES common_metadata (id)
+);
 CREATE TABLE element_id_prefixes (
 	element_name TEXT, 
 	id_prefixes TEXT, 
 	PRIMARY KEY (element_name, id_prefixes), 
+	FOREIGN KEY(element_name) REFERENCES element (name)
+);
+CREATE TABLE element_todos (
+	element_name TEXT, 
+	todos TEXT, 
+	PRIMARY KEY (element_name, todos), 
+	FOREIGN KEY(element_name) REFERENCES element (name)
+);
+CREATE TABLE element_notes (
+	element_name TEXT, 
+	notes TEXT, 
+	PRIMARY KEY (element_name, notes), 
+	FOREIGN KEY(element_name) REFERENCES element (name)
+);
+CREATE TABLE element_comments (
+	element_name TEXT, 
+	comments TEXT, 
+	PRIMARY KEY (element_name, comments), 
+	FOREIGN KEY(element_name) REFERENCES element (name)
+);
+CREATE TABLE element_see_also (
+	element_name TEXT, 
+	see_also TEXT, 
+	PRIMARY KEY (element_name, see_also), 
 	FOREIGN KEY(element_name) REFERENCES element (name)
 );
 CREATE TABLE element_aliases (
@@ -1719,30 +2042,6 @@ CREATE TABLE element_broad_mappings (
 	PRIMARY KEY (element_name, broad_mappings), 
 	FOREIGN KEY(element_name) REFERENCES element (name)
 );
-CREATE TABLE element_todos (
-	element_name TEXT, 
-	todos TEXT, 
-	PRIMARY KEY (element_name, todos), 
-	FOREIGN KEY(element_name) REFERENCES element (name)
-);
-CREATE TABLE element_notes (
-	element_name TEXT, 
-	notes TEXT, 
-	PRIMARY KEY (element_name, notes), 
-	FOREIGN KEY(element_name) REFERENCES element (name)
-);
-CREATE TABLE element_comments (
-	element_name TEXT, 
-	comments TEXT, 
-	PRIMARY KEY (element_name, comments), 
-	FOREIGN KEY(element_name) REFERENCES element (name)
-);
-CREATE TABLE element_see_also (
-	element_name TEXT, 
-	see_also TEXT, 
-	PRIMARY KEY (element_name, see_also), 
-	FOREIGN KEY(element_name) REFERENCES element (name)
-);
 CREATE TABLE schema_definition_imports (
 	schema_definition_name TEXT, 
 	imports TEXT, 
@@ -1777,6 +2076,30 @@ CREATE TABLE schema_definition_id_prefixes (
 	schema_definition_name TEXT, 
 	id_prefixes TEXT, 
 	PRIMARY KEY (schema_definition_name, id_prefixes), 
+	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id)
+);
+CREATE TABLE schema_definition_todos (
+	schema_definition_name TEXT, 
+	todos TEXT, 
+	PRIMARY KEY (schema_definition_name, todos), 
+	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id)
+);
+CREATE TABLE schema_definition_notes (
+	schema_definition_name TEXT, 
+	notes TEXT, 
+	PRIMARY KEY (schema_definition_name, notes), 
+	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id)
+);
+CREATE TABLE schema_definition_comments (
+	schema_definition_name TEXT, 
+	comments TEXT, 
+	PRIMARY KEY (schema_definition_name, comments), 
+	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id)
+);
+CREATE TABLE schema_definition_see_also (
+	schema_definition_name TEXT, 
+	see_also TEXT, 
+	PRIMARY KEY (schema_definition_name, see_also), 
 	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id)
 );
 CREATE TABLE schema_definition_aliases (
@@ -1821,30 +2144,6 @@ CREATE TABLE schema_definition_broad_mappings (
 	PRIMARY KEY (schema_definition_name, broad_mappings), 
 	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id)
 );
-CREATE TABLE schema_definition_todos (
-	schema_definition_name TEXT, 
-	todos TEXT, 
-	PRIMARY KEY (schema_definition_name, todos), 
-	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id)
-);
-CREATE TABLE schema_definition_notes (
-	schema_definition_name TEXT, 
-	notes TEXT, 
-	PRIMARY KEY (schema_definition_name, notes), 
-	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id)
-);
-CREATE TABLE schema_definition_comments (
-	schema_definition_name TEXT, 
-	comments TEXT, 
-	PRIMARY KEY (schema_definition_name, comments), 
-	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id)
-);
-CREATE TABLE schema_definition_see_also (
-	schema_definition_name TEXT, 
-	see_also TEXT, 
-	PRIMARY KEY (schema_definition_name, see_also), 
-	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id)
-);
 CREATE TABLE type_definition_equals_string_in (
 	type_definition_name TEXT, 
 	equals_string_in TEXT, 
@@ -1855,6 +2154,30 @@ CREATE TABLE type_definition_id_prefixes (
 	type_definition_name TEXT, 
 	id_prefixes TEXT, 
 	PRIMARY KEY (type_definition_name, id_prefixes), 
+	FOREIGN KEY(type_definition_name) REFERENCES type_definition (name)
+);
+CREATE TABLE type_definition_todos (
+	type_definition_name TEXT, 
+	todos TEXT, 
+	PRIMARY KEY (type_definition_name, todos), 
+	FOREIGN KEY(type_definition_name) REFERENCES type_definition (name)
+);
+CREATE TABLE type_definition_notes (
+	type_definition_name TEXT, 
+	notes TEXT, 
+	PRIMARY KEY (type_definition_name, notes), 
+	FOREIGN KEY(type_definition_name) REFERENCES type_definition (name)
+);
+CREATE TABLE type_definition_comments (
+	type_definition_name TEXT, 
+	comments TEXT, 
+	PRIMARY KEY (type_definition_name, comments), 
+	FOREIGN KEY(type_definition_name) REFERENCES type_definition (name)
+);
+CREATE TABLE type_definition_see_also (
+	type_definition_name TEXT, 
+	see_also TEXT, 
+	PRIMARY KEY (type_definition_name, see_also), 
 	FOREIGN KEY(type_definition_name) REFERENCES type_definition (name)
 );
 CREATE TABLE type_definition_aliases (
@@ -1899,30 +2222,6 @@ CREATE TABLE type_definition_broad_mappings (
 	PRIMARY KEY (type_definition_name, broad_mappings), 
 	FOREIGN KEY(type_definition_name) REFERENCES type_definition (name)
 );
-CREATE TABLE type_definition_todos (
-	type_definition_name TEXT, 
-	todos TEXT, 
-	PRIMARY KEY (type_definition_name, todos), 
-	FOREIGN KEY(type_definition_name) REFERENCES type_definition (name)
-);
-CREATE TABLE type_definition_notes (
-	type_definition_name TEXT, 
-	notes TEXT, 
-	PRIMARY KEY (type_definition_name, notes), 
-	FOREIGN KEY(type_definition_name) REFERENCES type_definition (name)
-);
-CREATE TABLE type_definition_comments (
-	type_definition_name TEXT, 
-	comments TEXT, 
-	PRIMARY KEY (type_definition_name, comments), 
-	FOREIGN KEY(type_definition_name) REFERENCES type_definition (name)
-);
-CREATE TABLE type_definition_see_also (
-	type_definition_name TEXT, 
-	see_also TEXT, 
-	PRIMARY KEY (type_definition_name, see_also), 
-	FOREIGN KEY(type_definition_name) REFERENCES type_definition (name)
-);
 CREATE TABLE definition_mixins (
 	definition_name TEXT, 
 	mixins TEXT, 
@@ -1947,6 +2246,30 @@ CREATE TABLE definition_id_prefixes (
 	definition_name TEXT, 
 	id_prefixes TEXT, 
 	PRIMARY KEY (definition_name, id_prefixes), 
+	FOREIGN KEY(definition_name) REFERENCES definition (name)
+);
+CREATE TABLE definition_todos (
+	definition_name TEXT, 
+	todos TEXT, 
+	PRIMARY KEY (definition_name, todos), 
+	FOREIGN KEY(definition_name) REFERENCES definition (name)
+);
+CREATE TABLE definition_notes (
+	definition_name TEXT, 
+	notes TEXT, 
+	PRIMARY KEY (definition_name, notes), 
+	FOREIGN KEY(definition_name) REFERENCES definition (name)
+);
+CREATE TABLE definition_comments (
+	definition_name TEXT, 
+	comments TEXT, 
+	PRIMARY KEY (definition_name, comments), 
+	FOREIGN KEY(definition_name) REFERENCES definition (name)
+);
+CREATE TABLE definition_see_also (
+	definition_name TEXT, 
+	see_also TEXT, 
+	PRIMARY KEY (definition_name, see_also), 
 	FOREIGN KEY(definition_name) REFERENCES definition (name)
 );
 CREATE TABLE definition_aliases (
@@ -1991,30 +2314,6 @@ CREATE TABLE definition_broad_mappings (
 	PRIMARY KEY (definition_name, broad_mappings), 
 	FOREIGN KEY(definition_name) REFERENCES definition (name)
 );
-CREATE TABLE definition_todos (
-	definition_name TEXT, 
-	todos TEXT, 
-	PRIMARY KEY (definition_name, todos), 
-	FOREIGN KEY(definition_name) REFERENCES definition (name)
-);
-CREATE TABLE definition_notes (
-	definition_name TEXT, 
-	notes TEXT, 
-	PRIMARY KEY (definition_name, notes), 
-	FOREIGN KEY(definition_name) REFERENCES definition (name)
-);
-CREATE TABLE definition_comments (
-	definition_name TEXT, 
-	comments TEXT, 
-	PRIMARY KEY (definition_name, comments), 
-	FOREIGN KEY(definition_name) REFERENCES definition (name)
-);
-CREATE TABLE definition_see_also (
-	definition_name TEXT, 
-	see_also TEXT, 
-	PRIMARY KEY (definition_name, see_also), 
-	FOREIGN KEY(definition_name) REFERENCES definition (name)
-);
 CREATE TABLE anonymous_expression_todos (
 	anonymous_expression_id TEXT, 
 	todos TEXT, 
@@ -2037,6 +2336,48 @@ CREATE TABLE anonymous_expression_see_also (
 	anonymous_expression_id TEXT, 
 	see_also TEXT, 
 	PRIMARY KEY (anonymous_expression_id, see_also), 
+	FOREIGN KEY(anonymous_expression_id) REFERENCES anonymous_expression (id)
+);
+CREATE TABLE anonymous_expression_aliases (
+	anonymous_expression_id TEXT, 
+	aliases TEXT, 
+	PRIMARY KEY (anonymous_expression_id, aliases), 
+	FOREIGN KEY(anonymous_expression_id) REFERENCES anonymous_expression (id)
+);
+CREATE TABLE anonymous_expression_mappings (
+	anonymous_expression_id TEXT, 
+	mappings TEXT, 
+	PRIMARY KEY (anonymous_expression_id, mappings), 
+	FOREIGN KEY(anonymous_expression_id) REFERENCES anonymous_expression (id)
+);
+CREATE TABLE anonymous_expression_exact_mappings (
+	anonymous_expression_id TEXT, 
+	exact_mappings TEXT, 
+	PRIMARY KEY (anonymous_expression_id, exact_mappings), 
+	FOREIGN KEY(anonymous_expression_id) REFERENCES anonymous_expression (id)
+);
+CREATE TABLE anonymous_expression_close_mappings (
+	anonymous_expression_id TEXT, 
+	close_mappings TEXT, 
+	PRIMARY KEY (anonymous_expression_id, close_mappings), 
+	FOREIGN KEY(anonymous_expression_id) REFERENCES anonymous_expression (id)
+);
+CREATE TABLE anonymous_expression_related_mappings (
+	anonymous_expression_id TEXT, 
+	related_mappings TEXT, 
+	PRIMARY KEY (anonymous_expression_id, related_mappings), 
+	FOREIGN KEY(anonymous_expression_id) REFERENCES anonymous_expression (id)
+);
+CREATE TABLE anonymous_expression_narrow_mappings (
+	anonymous_expression_id TEXT, 
+	narrow_mappings TEXT, 
+	PRIMARY KEY (anonymous_expression_id, narrow_mappings), 
+	FOREIGN KEY(anonymous_expression_id) REFERENCES anonymous_expression (id)
+);
+CREATE TABLE anonymous_expression_broad_mappings (
+	anonymous_expression_id TEXT, 
+	broad_mappings TEXT, 
+	PRIMARY KEY (anonymous_expression_id, broad_mappings), 
 	FOREIGN KEY(anonymous_expression_id) REFERENCES anonymous_expression (id)
 );
 CREATE TABLE path_expression_none_of (
@@ -2091,6 +2432,48 @@ CREATE TABLE path_expression_see_also (
 	PRIMARY KEY (path_expression_id, see_also), 
 	FOREIGN KEY(path_expression_id) REFERENCES path_expression (id)
 );
+CREATE TABLE path_expression_aliases (
+	path_expression_id TEXT, 
+	aliases TEXT, 
+	PRIMARY KEY (path_expression_id, aliases), 
+	FOREIGN KEY(path_expression_id) REFERENCES path_expression (id)
+);
+CREATE TABLE path_expression_mappings (
+	path_expression_id TEXT, 
+	mappings TEXT, 
+	PRIMARY KEY (path_expression_id, mappings), 
+	FOREIGN KEY(path_expression_id) REFERENCES path_expression (id)
+);
+CREATE TABLE path_expression_exact_mappings (
+	path_expression_id TEXT, 
+	exact_mappings TEXT, 
+	PRIMARY KEY (path_expression_id, exact_mappings), 
+	FOREIGN KEY(path_expression_id) REFERENCES path_expression (id)
+);
+CREATE TABLE path_expression_close_mappings (
+	path_expression_id TEXT, 
+	close_mappings TEXT, 
+	PRIMARY KEY (path_expression_id, close_mappings), 
+	FOREIGN KEY(path_expression_id) REFERENCES path_expression (id)
+);
+CREATE TABLE path_expression_related_mappings (
+	path_expression_id TEXT, 
+	related_mappings TEXT, 
+	PRIMARY KEY (path_expression_id, related_mappings), 
+	FOREIGN KEY(path_expression_id) REFERENCES path_expression (id)
+);
+CREATE TABLE path_expression_narrow_mappings (
+	path_expression_id TEXT, 
+	narrow_mappings TEXT, 
+	PRIMARY KEY (path_expression_id, narrow_mappings), 
+	FOREIGN KEY(path_expression_id) REFERENCES path_expression (id)
+);
+CREATE TABLE path_expression_broad_mappings (
+	path_expression_id TEXT, 
+	broad_mappings TEXT, 
+	PRIMARY KEY (path_expression_id, broad_mappings), 
+	FOREIGN KEY(path_expression_id) REFERENCES path_expression (id)
+);
 CREATE TABLE slot_definition_disjoint_with (
 	slot_definition_name TEXT, 
 	disjoint_with TEXT, 
@@ -2128,6 +2511,30 @@ CREATE TABLE slot_definition_id_prefixes (
 	slot_definition_name TEXT, 
 	id_prefixes TEXT, 
 	PRIMARY KEY (slot_definition_name, id_prefixes), 
+	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name)
+);
+CREATE TABLE slot_definition_todos (
+	slot_definition_name TEXT, 
+	todos TEXT, 
+	PRIMARY KEY (slot_definition_name, todos), 
+	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name)
+);
+CREATE TABLE slot_definition_notes (
+	slot_definition_name TEXT, 
+	notes TEXT, 
+	PRIMARY KEY (slot_definition_name, notes), 
+	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name)
+);
+CREATE TABLE slot_definition_comments (
+	slot_definition_name TEXT, 
+	comments TEXT, 
+	PRIMARY KEY (slot_definition_name, comments), 
+	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name)
+);
+CREATE TABLE slot_definition_see_also (
+	slot_definition_name TEXT, 
+	see_also TEXT, 
+	PRIMARY KEY (slot_definition_name, see_also), 
 	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name)
 );
 CREATE TABLE slot_definition_aliases (
@@ -2172,30 +2579,6 @@ CREATE TABLE slot_definition_broad_mappings (
 	PRIMARY KEY (slot_definition_name, broad_mappings), 
 	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name)
 );
-CREATE TABLE slot_definition_todos (
-	slot_definition_name TEXT, 
-	todos TEXT, 
-	PRIMARY KEY (slot_definition_name, todos), 
-	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name)
-);
-CREATE TABLE slot_definition_notes (
-	slot_definition_name TEXT, 
-	notes TEXT, 
-	PRIMARY KEY (slot_definition_name, notes), 
-	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name)
-);
-CREATE TABLE slot_definition_comments (
-	slot_definition_name TEXT, 
-	comments TEXT, 
-	PRIMARY KEY (slot_definition_name, comments), 
-	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name)
-);
-CREATE TABLE slot_definition_see_also (
-	slot_definition_name TEXT, 
-	see_also TEXT, 
-	PRIMARY KEY (slot_definition_name, see_also), 
-	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name)
-);
 CREATE TABLE pattern_expression_todos (
 	pattern_expression_id TEXT, 
 	todos TEXT, 
@@ -2218,6 +2601,48 @@ CREATE TABLE pattern_expression_see_also (
 	pattern_expression_id TEXT, 
 	see_also TEXT, 
 	PRIMARY KEY (pattern_expression_id, see_also), 
+	FOREIGN KEY(pattern_expression_id) REFERENCES pattern_expression (id)
+);
+CREATE TABLE pattern_expression_aliases (
+	pattern_expression_id TEXT, 
+	aliases TEXT, 
+	PRIMARY KEY (pattern_expression_id, aliases), 
+	FOREIGN KEY(pattern_expression_id) REFERENCES pattern_expression (id)
+);
+CREATE TABLE pattern_expression_mappings (
+	pattern_expression_id TEXT, 
+	mappings TEXT, 
+	PRIMARY KEY (pattern_expression_id, mappings), 
+	FOREIGN KEY(pattern_expression_id) REFERENCES pattern_expression (id)
+);
+CREATE TABLE pattern_expression_exact_mappings (
+	pattern_expression_id TEXT, 
+	exact_mappings TEXT, 
+	PRIMARY KEY (pattern_expression_id, exact_mappings), 
+	FOREIGN KEY(pattern_expression_id) REFERENCES pattern_expression (id)
+);
+CREATE TABLE pattern_expression_close_mappings (
+	pattern_expression_id TEXT, 
+	close_mappings TEXT, 
+	PRIMARY KEY (pattern_expression_id, close_mappings), 
+	FOREIGN KEY(pattern_expression_id) REFERENCES pattern_expression (id)
+);
+CREATE TABLE pattern_expression_related_mappings (
+	pattern_expression_id TEXT, 
+	related_mappings TEXT, 
+	PRIMARY KEY (pattern_expression_id, related_mappings), 
+	FOREIGN KEY(pattern_expression_id) REFERENCES pattern_expression (id)
+);
+CREATE TABLE pattern_expression_narrow_mappings (
+	pattern_expression_id TEXT, 
+	narrow_mappings TEXT, 
+	PRIMARY KEY (pattern_expression_id, narrow_mappings), 
+	FOREIGN KEY(pattern_expression_id) REFERENCES pattern_expression (id)
+);
+CREATE TABLE pattern_expression_broad_mappings (
+	pattern_expression_id TEXT, 
+	broad_mappings TEXT, 
+	PRIMARY KEY (pattern_expression_id, broad_mappings), 
 	FOREIGN KEY(pattern_expression_id) REFERENCES pattern_expression (id)
 );
 CREATE TABLE import_expression_todos (
@@ -2244,36 +2669,47 @@ CREATE TABLE import_expression_see_also (
 	PRIMARY KEY (import_expression_id, see_also), 
 	FOREIGN KEY(import_expression_id) REFERENCES import_expression (id)
 );
-CREATE TABLE structured_alias (
-	id INTEGER, 
-	literal_form TEXT NOT NULL, 
-	predicate VARCHAR(15), 
-	description TEXT, 
-	title TEXT, 
-	deprecated TEXT, 
-	from_schema TEXT, 
-	imported_from TEXT, 
-	source TEXT, 
-	in_language TEXT, 
-	deprecated_element_has_exact_replacement TEXT, 
-	deprecated_element_has_possible_replacement TEXT, 
-	element_name TEXT, 
-	schema_definition_name TEXT, 
-	type_definition_name TEXT, 
-	subset_definition_name TEXT, 
-	definition_name TEXT, 
-	enum_definition_name TEXT, 
-	slot_definition_name TEXT, 
-	class_definition_name TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(element_name) REFERENCES element (name), 
-	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id), 
-	FOREIGN KEY(type_definition_name) REFERENCES type_definition (name), 
-	FOREIGN KEY(subset_definition_name) REFERENCES subset_definition (name), 
-	FOREIGN KEY(definition_name) REFERENCES definition (name), 
-	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name), 
-	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name), 
-	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
+CREATE TABLE import_expression_aliases (
+	import_expression_id TEXT, 
+	aliases TEXT, 
+	PRIMARY KEY (import_expression_id, aliases), 
+	FOREIGN KEY(import_expression_id) REFERENCES import_expression (id)
+);
+CREATE TABLE import_expression_mappings (
+	import_expression_id TEXT, 
+	mappings TEXT, 
+	PRIMARY KEY (import_expression_id, mappings), 
+	FOREIGN KEY(import_expression_id) REFERENCES import_expression (id)
+);
+CREATE TABLE import_expression_exact_mappings (
+	import_expression_id TEXT, 
+	exact_mappings TEXT, 
+	PRIMARY KEY (import_expression_id, exact_mappings), 
+	FOREIGN KEY(import_expression_id) REFERENCES import_expression (id)
+);
+CREATE TABLE import_expression_close_mappings (
+	import_expression_id TEXT, 
+	close_mappings TEXT, 
+	PRIMARY KEY (import_expression_id, close_mappings), 
+	FOREIGN KEY(import_expression_id) REFERENCES import_expression (id)
+);
+CREATE TABLE import_expression_related_mappings (
+	import_expression_id TEXT, 
+	related_mappings TEXT, 
+	PRIMARY KEY (import_expression_id, related_mappings), 
+	FOREIGN KEY(import_expression_id) REFERENCES import_expression (id)
+);
+CREATE TABLE import_expression_narrow_mappings (
+	import_expression_id TEXT, 
+	narrow_mappings TEXT, 
+	PRIMARY KEY (import_expression_id, narrow_mappings), 
+	FOREIGN KEY(import_expression_id) REFERENCES import_expression (id)
+);
+CREATE TABLE import_expression_broad_mappings (
+	import_expression_id TEXT, 
+	broad_mappings TEXT, 
+	PRIMARY KEY (import_expression_id, broad_mappings), 
+	FOREIGN KEY(import_expression_id) REFERENCES import_expression (id)
 );
 CREATE TABLE anonymous_class_expression (
 	id INTEGER, 
@@ -2287,6 +2723,7 @@ CREATE TABLE anonymous_class_expression (
 	in_language TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
+	rank INTEGER, 
 	class_definition_name TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(is_a) REFERENCES definition (name), 
@@ -2325,6 +2762,7 @@ CREATE TABLE permissible_value (
 	in_language TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
+	rank INTEGER, 
 	enum_definition_name TEXT, 
 	PRIMARY KEY (text), 
 	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name)
@@ -2340,8 +2778,9 @@ CREATE TABLE unique_key (
 	in_language TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
+	rank INTEGER, 
 	class_definition_name TEXT, 
-	PRIMARY KEY (unique_key_name, description, title, deprecated, from_schema, imported_from, source, in_language, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, class_definition_name), 
+	PRIMARY KEY (unique_key_name, description, title, deprecated, from_schema, imported_from, source, in_language, deprecated_element_has_exact_replacement, deprecated_element_has_possible_replacement, rank, class_definition_name), 
 	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
 );
 CREATE TABLE common_metadata_in_subset (
@@ -2474,6 +2913,37 @@ CREATE TABLE subset_definition_id_prefixes (
 	PRIMARY KEY (subset_definition_name, id_prefixes), 
 	FOREIGN KEY(subset_definition_name) REFERENCES subset_definition (name)
 );
+CREATE TABLE subset_definition_todos (
+	subset_definition_name TEXT, 
+	todos TEXT, 
+	PRIMARY KEY (subset_definition_name, todos), 
+	FOREIGN KEY(subset_definition_name) REFERENCES subset_definition (name)
+);
+CREATE TABLE subset_definition_notes (
+	subset_definition_name TEXT, 
+	notes TEXT, 
+	PRIMARY KEY (subset_definition_name, notes), 
+	FOREIGN KEY(subset_definition_name) REFERENCES subset_definition (name)
+);
+CREATE TABLE subset_definition_comments (
+	subset_definition_name TEXT, 
+	comments TEXT, 
+	PRIMARY KEY (subset_definition_name, comments), 
+	FOREIGN KEY(subset_definition_name) REFERENCES subset_definition (name)
+);
+CREATE TABLE subset_definition_in_subset (
+	subset_definition_name TEXT, 
+	in_subset TEXT, 
+	PRIMARY KEY (subset_definition_name, in_subset), 
+	FOREIGN KEY(subset_definition_name) REFERENCES subset_definition (name), 
+	FOREIGN KEY(in_subset) REFERENCES subset_definition (name)
+);
+CREATE TABLE subset_definition_see_also (
+	subset_definition_name TEXT, 
+	see_also TEXT, 
+	PRIMARY KEY (subset_definition_name, see_also), 
+	FOREIGN KEY(subset_definition_name) REFERENCES subset_definition (name)
+);
 CREATE TABLE subset_definition_aliases (
 	subset_definition_name TEXT, 
 	aliases TEXT, 
@@ -2516,37 +2986,6 @@ CREATE TABLE subset_definition_broad_mappings (
 	PRIMARY KEY (subset_definition_name, broad_mappings), 
 	FOREIGN KEY(subset_definition_name) REFERENCES subset_definition (name)
 );
-CREATE TABLE subset_definition_todos (
-	subset_definition_name TEXT, 
-	todos TEXT, 
-	PRIMARY KEY (subset_definition_name, todos), 
-	FOREIGN KEY(subset_definition_name) REFERENCES subset_definition (name)
-);
-CREATE TABLE subset_definition_notes (
-	subset_definition_name TEXT, 
-	notes TEXT, 
-	PRIMARY KEY (subset_definition_name, notes), 
-	FOREIGN KEY(subset_definition_name) REFERENCES subset_definition (name)
-);
-CREATE TABLE subset_definition_comments (
-	subset_definition_name TEXT, 
-	comments TEXT, 
-	PRIMARY KEY (subset_definition_name, comments), 
-	FOREIGN KEY(subset_definition_name) REFERENCES subset_definition (name)
-);
-CREATE TABLE subset_definition_in_subset (
-	subset_definition_name TEXT, 
-	in_subset TEXT, 
-	PRIMARY KEY (subset_definition_name, in_subset), 
-	FOREIGN KEY(subset_definition_name) REFERENCES subset_definition (name), 
-	FOREIGN KEY(in_subset) REFERENCES subset_definition (name)
-);
-CREATE TABLE subset_definition_see_also (
-	subset_definition_name TEXT, 
-	see_also TEXT, 
-	PRIMARY KEY (subset_definition_name, see_also), 
-	FOREIGN KEY(subset_definition_name) REFERENCES subset_definition (name)
-);
 CREATE TABLE definition_in_subset (
 	definition_name TEXT, 
 	in_subset TEXT, 
@@ -2558,6 +2997,37 @@ CREATE TABLE enum_definition_id_prefixes (
 	enum_definition_name TEXT, 
 	id_prefixes TEXT, 
 	PRIMARY KEY (enum_definition_name, id_prefixes), 
+	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name)
+);
+CREATE TABLE enum_definition_todos (
+	enum_definition_name TEXT, 
+	todos TEXT, 
+	PRIMARY KEY (enum_definition_name, todos), 
+	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name)
+);
+CREATE TABLE enum_definition_notes (
+	enum_definition_name TEXT, 
+	notes TEXT, 
+	PRIMARY KEY (enum_definition_name, notes), 
+	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name)
+);
+CREATE TABLE enum_definition_comments (
+	enum_definition_name TEXT, 
+	comments TEXT, 
+	PRIMARY KEY (enum_definition_name, comments), 
+	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name)
+);
+CREATE TABLE enum_definition_in_subset (
+	enum_definition_name TEXT, 
+	in_subset TEXT, 
+	PRIMARY KEY (enum_definition_name, in_subset), 
+	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name), 
+	FOREIGN KEY(in_subset) REFERENCES subset_definition (name)
+);
+CREATE TABLE enum_definition_see_also (
+	enum_definition_name TEXT, 
+	see_also TEXT, 
+	PRIMARY KEY (enum_definition_name, see_also), 
 	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name)
 );
 CREATE TABLE enum_definition_aliases (
@@ -2600,37 +3070,6 @@ CREATE TABLE enum_definition_broad_mappings (
 	enum_definition_name TEXT, 
 	broad_mappings TEXT, 
 	PRIMARY KEY (enum_definition_name, broad_mappings), 
-	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name)
-);
-CREATE TABLE enum_definition_todos (
-	enum_definition_name TEXT, 
-	todos TEXT, 
-	PRIMARY KEY (enum_definition_name, todos), 
-	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name)
-);
-CREATE TABLE enum_definition_notes (
-	enum_definition_name TEXT, 
-	notes TEXT, 
-	PRIMARY KEY (enum_definition_name, notes), 
-	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name)
-);
-CREATE TABLE enum_definition_comments (
-	enum_definition_name TEXT, 
-	comments TEXT, 
-	PRIMARY KEY (enum_definition_name, comments), 
-	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name)
-);
-CREATE TABLE enum_definition_in_subset (
-	enum_definition_name TEXT, 
-	in_subset TEXT, 
-	PRIMARY KEY (enum_definition_name, in_subset), 
-	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name), 
-	FOREIGN KEY(in_subset) REFERENCES subset_definition (name)
-);
-CREATE TABLE enum_definition_see_also (
-	enum_definition_name TEXT, 
-	see_also TEXT, 
-	PRIMARY KEY (enum_definition_name, see_also), 
 	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name)
 );
 CREATE TABLE anonymous_expression_in_subset (
@@ -2715,6 +3154,37 @@ CREATE TABLE class_definition_id_prefixes (
 	PRIMARY KEY (class_definition_name, id_prefixes), 
 	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
 );
+CREATE TABLE class_definition_todos (
+	class_definition_name TEXT, 
+	todos TEXT, 
+	PRIMARY KEY (class_definition_name, todos), 
+	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
+);
+CREATE TABLE class_definition_notes (
+	class_definition_name TEXT, 
+	notes TEXT, 
+	PRIMARY KEY (class_definition_name, notes), 
+	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
+);
+CREATE TABLE class_definition_comments (
+	class_definition_name TEXT, 
+	comments TEXT, 
+	PRIMARY KEY (class_definition_name, comments), 
+	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
+);
+CREATE TABLE class_definition_in_subset (
+	class_definition_name TEXT, 
+	in_subset TEXT, 
+	PRIMARY KEY (class_definition_name, in_subset), 
+	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name), 
+	FOREIGN KEY(in_subset) REFERENCES subset_definition (name)
+);
+CREATE TABLE class_definition_see_also (
+	class_definition_name TEXT, 
+	see_also TEXT, 
+	PRIMARY KEY (class_definition_name, see_also), 
+	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
+);
 CREATE TABLE class_definition_aliases (
 	class_definition_name TEXT, 
 	aliases TEXT, 
@@ -2757,37 +3227,6 @@ CREATE TABLE class_definition_broad_mappings (
 	PRIMARY KEY (class_definition_name, broad_mappings), 
 	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
 );
-CREATE TABLE class_definition_todos (
-	class_definition_name TEXT, 
-	todos TEXT, 
-	PRIMARY KEY (class_definition_name, todos), 
-	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
-);
-CREATE TABLE class_definition_notes (
-	class_definition_name TEXT, 
-	notes TEXT, 
-	PRIMARY KEY (class_definition_name, notes), 
-	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
-);
-CREATE TABLE class_definition_comments (
-	class_definition_name TEXT, 
-	comments TEXT, 
-	PRIMARY KEY (class_definition_name, comments), 
-	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
-);
-CREATE TABLE class_definition_in_subset (
-	class_definition_name TEXT, 
-	in_subset TEXT, 
-	PRIMARY KEY (class_definition_name, in_subset), 
-	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name), 
-	FOREIGN KEY(in_subset) REFERENCES subset_definition (name)
-);
-CREATE TABLE class_definition_see_also (
-	class_definition_name TEXT, 
-	see_also TEXT, 
-	PRIMARY KEY (class_definition_name, see_also), 
-	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
-);
 CREATE TABLE pattern_expression_in_subset (
 	pattern_expression_id TEXT, 
 	in_subset TEXT, 
@@ -2826,6 +3265,7 @@ CREATE TABLE anonymous_slot_expression (
 	in_language TEXT, 
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
+	rank INTEGER, 
 	range_expression_id TEXT, 
 	structured_pattern_id TEXT, 
 	has_member_id TEXT, 
@@ -2859,43 +3299,6 @@ CREATE TABLE class_rule (
 	FOREIGN KEY(preconditions_id) REFERENCES anonymous_class_expression (id), 
 	FOREIGN KEY(postconditions_id) REFERENCES anonymous_class_expression (id), 
 	FOREIGN KEY(elseconditions_id) REFERENCES anonymous_class_expression (id)
-);
-CREATE TABLE structured_alias_category (
-	structured_alias_id TEXT, 
-	category TEXT, 
-	PRIMARY KEY (structured_alias_id, category), 
-	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id)
-);
-CREATE TABLE structured_alias_todos (
-	structured_alias_id TEXT, 
-	todos TEXT, 
-	PRIMARY KEY (structured_alias_id, todos), 
-	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id)
-);
-CREATE TABLE structured_alias_notes (
-	structured_alias_id TEXT, 
-	notes TEXT, 
-	PRIMARY KEY (structured_alias_id, notes), 
-	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id)
-);
-CREATE TABLE structured_alias_comments (
-	structured_alias_id TEXT, 
-	comments TEXT, 
-	PRIMARY KEY (structured_alias_id, comments), 
-	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id)
-);
-CREATE TABLE structured_alias_in_subset (
-	structured_alias_id TEXT, 
-	in_subset TEXT, 
-	PRIMARY KEY (structured_alias_id, in_subset), 
-	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id), 
-	FOREIGN KEY(in_subset) REFERENCES subset_definition (name)
-);
-CREATE TABLE structured_alias_see_also (
-	structured_alias_id TEXT, 
-	see_also TEXT, 
-	PRIMARY KEY (structured_alias_id, see_also), 
-	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id)
 );
 CREATE TABLE class_expression_any_of (
 	class_expression_id TEXT, 
@@ -2984,6 +3387,48 @@ CREATE TABLE anonymous_class_expression_see_also (
 	PRIMARY KEY (anonymous_class_expression_id, see_also), 
 	FOREIGN KEY(anonymous_class_expression_id) REFERENCES anonymous_class_expression (id)
 );
+CREATE TABLE anonymous_class_expression_aliases (
+	anonymous_class_expression_id TEXT, 
+	aliases TEXT, 
+	PRIMARY KEY (anonymous_class_expression_id, aliases), 
+	FOREIGN KEY(anonymous_class_expression_id) REFERENCES anonymous_class_expression (id)
+);
+CREATE TABLE anonymous_class_expression_mappings (
+	anonymous_class_expression_id TEXT, 
+	mappings TEXT, 
+	PRIMARY KEY (anonymous_class_expression_id, mappings), 
+	FOREIGN KEY(anonymous_class_expression_id) REFERENCES anonymous_class_expression (id)
+);
+CREATE TABLE anonymous_class_expression_exact_mappings (
+	anonymous_class_expression_id TEXT, 
+	exact_mappings TEXT, 
+	PRIMARY KEY (anonymous_class_expression_id, exact_mappings), 
+	FOREIGN KEY(anonymous_class_expression_id) REFERENCES anonymous_class_expression (id)
+);
+CREATE TABLE anonymous_class_expression_close_mappings (
+	anonymous_class_expression_id TEXT, 
+	close_mappings TEXT, 
+	PRIMARY KEY (anonymous_class_expression_id, close_mappings), 
+	FOREIGN KEY(anonymous_class_expression_id) REFERENCES anonymous_class_expression (id)
+);
+CREATE TABLE anonymous_class_expression_related_mappings (
+	anonymous_class_expression_id TEXT, 
+	related_mappings TEXT, 
+	PRIMARY KEY (anonymous_class_expression_id, related_mappings), 
+	FOREIGN KEY(anonymous_class_expression_id) REFERENCES anonymous_class_expression (id)
+);
+CREATE TABLE anonymous_class_expression_narrow_mappings (
+	anonymous_class_expression_id TEXT, 
+	narrow_mappings TEXT, 
+	PRIMARY KEY (anonymous_class_expression_id, narrow_mappings), 
+	FOREIGN KEY(anonymous_class_expression_id) REFERENCES anonymous_class_expression (id)
+);
+CREATE TABLE anonymous_class_expression_broad_mappings (
+	anonymous_class_expression_id TEXT, 
+	broad_mappings TEXT, 
+	PRIMARY KEY (anonymous_class_expression_id, broad_mappings), 
+	FOREIGN KEY(anonymous_class_expression_id) REFERENCES anonymous_class_expression (id)
+);
 CREATE TABLE class_definition_any_of (
 	class_definition_name TEXT, 
 	any_of_id TEXT, 
@@ -3043,6 +3488,48 @@ CREATE TABLE permissible_value_see_also (
 	PRIMARY KEY (permissible_value_text, see_also), 
 	FOREIGN KEY(permissible_value_text) REFERENCES permissible_value (text)
 );
+CREATE TABLE permissible_value_aliases (
+	permissible_value_text TEXT, 
+	aliases TEXT, 
+	PRIMARY KEY (permissible_value_text, aliases), 
+	FOREIGN KEY(permissible_value_text) REFERENCES permissible_value (text)
+);
+CREATE TABLE permissible_value_mappings (
+	permissible_value_text TEXT, 
+	mappings TEXT, 
+	PRIMARY KEY (permissible_value_text, mappings), 
+	FOREIGN KEY(permissible_value_text) REFERENCES permissible_value (text)
+);
+CREATE TABLE permissible_value_exact_mappings (
+	permissible_value_text TEXT, 
+	exact_mappings TEXT, 
+	PRIMARY KEY (permissible_value_text, exact_mappings), 
+	FOREIGN KEY(permissible_value_text) REFERENCES permissible_value (text)
+);
+CREATE TABLE permissible_value_close_mappings (
+	permissible_value_text TEXT, 
+	close_mappings TEXT, 
+	PRIMARY KEY (permissible_value_text, close_mappings), 
+	FOREIGN KEY(permissible_value_text) REFERENCES permissible_value (text)
+);
+CREATE TABLE permissible_value_related_mappings (
+	permissible_value_text TEXT, 
+	related_mappings TEXT, 
+	PRIMARY KEY (permissible_value_text, related_mappings), 
+	FOREIGN KEY(permissible_value_text) REFERENCES permissible_value (text)
+);
+CREATE TABLE permissible_value_narrow_mappings (
+	permissible_value_text TEXT, 
+	narrow_mappings TEXT, 
+	PRIMARY KEY (permissible_value_text, narrow_mappings), 
+	FOREIGN KEY(permissible_value_text) REFERENCES permissible_value (text)
+);
+CREATE TABLE permissible_value_broad_mappings (
+	permissible_value_text TEXT, 
+	broad_mappings TEXT, 
+	PRIMARY KEY (permissible_value_text, broad_mappings), 
+	FOREIGN KEY(permissible_value_text) REFERENCES permissible_value (text)
+);
 CREATE TABLE unique_key_unique_key_slots (
 	unique_key_unique_key_name TEXT, 
 	unique_key_slots TEXT NOT NULL, 
@@ -3081,6 +3568,102 @@ CREATE TABLE unique_key_see_also (
 	PRIMARY KEY (unique_key_unique_key_name, see_also), 
 	FOREIGN KEY(unique_key_unique_key_name) REFERENCES unique_key (unique_key_name)
 );
+CREATE TABLE unique_key_aliases (
+	unique_key_unique_key_name TEXT, 
+	aliases TEXT, 
+	PRIMARY KEY (unique_key_unique_key_name, aliases), 
+	FOREIGN KEY(unique_key_unique_key_name) REFERENCES unique_key (unique_key_name)
+);
+CREATE TABLE unique_key_mappings (
+	unique_key_unique_key_name TEXT, 
+	mappings TEXT, 
+	PRIMARY KEY (unique_key_unique_key_name, mappings), 
+	FOREIGN KEY(unique_key_unique_key_name) REFERENCES unique_key (unique_key_name)
+);
+CREATE TABLE unique_key_exact_mappings (
+	unique_key_unique_key_name TEXT, 
+	exact_mappings TEXT, 
+	PRIMARY KEY (unique_key_unique_key_name, exact_mappings), 
+	FOREIGN KEY(unique_key_unique_key_name) REFERENCES unique_key (unique_key_name)
+);
+CREATE TABLE unique_key_close_mappings (
+	unique_key_unique_key_name TEXT, 
+	close_mappings TEXT, 
+	PRIMARY KEY (unique_key_unique_key_name, close_mappings), 
+	FOREIGN KEY(unique_key_unique_key_name) REFERENCES unique_key (unique_key_name)
+);
+CREATE TABLE unique_key_related_mappings (
+	unique_key_unique_key_name TEXT, 
+	related_mappings TEXT, 
+	PRIMARY KEY (unique_key_unique_key_name, related_mappings), 
+	FOREIGN KEY(unique_key_unique_key_name) REFERENCES unique_key (unique_key_name)
+);
+CREATE TABLE unique_key_narrow_mappings (
+	unique_key_unique_key_name TEXT, 
+	narrow_mappings TEXT, 
+	PRIMARY KEY (unique_key_unique_key_name, narrow_mappings), 
+	FOREIGN KEY(unique_key_unique_key_name) REFERENCES unique_key (unique_key_name)
+);
+CREATE TABLE unique_key_broad_mappings (
+	unique_key_unique_key_name TEXT, 
+	broad_mappings TEXT, 
+	PRIMARY KEY (unique_key_unique_key_name, broad_mappings), 
+	FOREIGN KEY(unique_key_unique_key_name) REFERENCES unique_key (unique_key_name)
+);
+CREATE TABLE structured_alias (
+	id INTEGER, 
+	literal_form TEXT NOT NULL, 
+	predicate VARCHAR(15), 
+	description TEXT, 
+	title TEXT, 
+	deprecated TEXT, 
+	from_schema TEXT, 
+	imported_from TEXT, 
+	source TEXT, 
+	in_language TEXT, 
+	deprecated_element_has_exact_replacement TEXT, 
+	deprecated_element_has_possible_replacement TEXT, 
+	rank INTEGER, 
+	common_metadata_id TEXT, 
+	element_name TEXT, 
+	schema_definition_name TEXT, 
+	type_definition_name TEXT, 
+	subset_definition_name TEXT, 
+	definition_name TEXT, 
+	enum_definition_name TEXT, 
+	structured_alias_id TEXT, 
+	anonymous_expression_id TEXT, 
+	path_expression_id TEXT, 
+	anonymous_slot_expression_id TEXT, 
+	slot_definition_name TEXT, 
+	anonymous_class_expression_id TEXT, 
+	class_definition_name TEXT, 
+	class_rule_id TEXT, 
+	pattern_expression_id TEXT, 
+	import_expression_id TEXT, 
+	permissible_value_text TEXT, 
+	unique_key_unique_key_name TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(common_metadata_id) REFERENCES common_metadata (id), 
+	FOREIGN KEY(element_name) REFERENCES element (name), 
+	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id), 
+	FOREIGN KEY(type_definition_name) REFERENCES type_definition (name), 
+	FOREIGN KEY(subset_definition_name) REFERENCES subset_definition (name), 
+	FOREIGN KEY(definition_name) REFERENCES definition (name), 
+	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name), 
+	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id), 
+	FOREIGN KEY(anonymous_expression_id) REFERENCES anonymous_expression (id), 
+	FOREIGN KEY(path_expression_id) REFERENCES path_expression (id), 
+	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id), 
+	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name), 
+	FOREIGN KEY(anonymous_class_expression_id) REFERENCES anonymous_class_expression (id), 
+	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name), 
+	FOREIGN KEY(class_rule_id) REFERENCES class_rule (id), 
+	FOREIGN KEY(pattern_expression_id) REFERENCES pattern_expression (id), 
+	FOREIGN KEY(import_expression_id) REFERENCES import_expression (id), 
+	FOREIGN KEY(permissible_value_text) REFERENCES permissible_value (text), 
+	FOREIGN KEY(unique_key_unique_key_name) REFERENCES unique_key (unique_key_name)
+);
 CREATE TABLE slot_expression (
 	id INTEGER, 
 	range TEXT, 
@@ -3104,6 +3687,214 @@ CREATE TABLE slot_expression (
 	FOREIGN KEY(range_expression_id) REFERENCES anonymous_class_expression (id), 
 	FOREIGN KEY(structured_pattern_id) REFERENCES pattern_expression (id), 
 	FOREIGN KEY(has_member_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE anonymous_slot_expression_equals_string_in (
+	anonymous_slot_expression_id TEXT, 
+	equals_string_in TEXT, 
+	PRIMARY KEY (anonymous_slot_expression_id, equals_string_in), 
+	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE anonymous_slot_expression_none_of (
+	anonymous_slot_expression_id TEXT, 
+	none_of_id TEXT, 
+	PRIMARY KEY (anonymous_slot_expression_id, none_of_id), 
+	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id), 
+	FOREIGN KEY(none_of_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE anonymous_slot_expression_exactly_one_of (
+	anonymous_slot_expression_id TEXT, 
+	exactly_one_of_id TEXT, 
+	PRIMARY KEY (anonymous_slot_expression_id, exactly_one_of_id), 
+	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id), 
+	FOREIGN KEY(exactly_one_of_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE anonymous_slot_expression_any_of (
+	anonymous_slot_expression_id TEXT, 
+	any_of_id TEXT, 
+	PRIMARY KEY (anonymous_slot_expression_id, any_of_id), 
+	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id), 
+	FOREIGN KEY(any_of_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE anonymous_slot_expression_all_of (
+	anonymous_slot_expression_id TEXT, 
+	all_of_id TEXT, 
+	PRIMARY KEY (anonymous_slot_expression_id, all_of_id), 
+	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id), 
+	FOREIGN KEY(all_of_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE anonymous_slot_expression_todos (
+	anonymous_slot_expression_id TEXT, 
+	todos TEXT, 
+	PRIMARY KEY (anonymous_slot_expression_id, todos), 
+	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE anonymous_slot_expression_notes (
+	anonymous_slot_expression_id TEXT, 
+	notes TEXT, 
+	PRIMARY KEY (anonymous_slot_expression_id, notes), 
+	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE anonymous_slot_expression_comments (
+	anonymous_slot_expression_id TEXT, 
+	comments TEXT, 
+	PRIMARY KEY (anonymous_slot_expression_id, comments), 
+	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE anonymous_slot_expression_in_subset (
+	anonymous_slot_expression_id TEXT, 
+	in_subset TEXT, 
+	PRIMARY KEY (anonymous_slot_expression_id, in_subset), 
+	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id), 
+	FOREIGN KEY(in_subset) REFERENCES subset_definition (name)
+);
+CREATE TABLE anonymous_slot_expression_see_also (
+	anonymous_slot_expression_id TEXT, 
+	see_also TEXT, 
+	PRIMARY KEY (anonymous_slot_expression_id, see_also), 
+	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE anonymous_slot_expression_aliases (
+	anonymous_slot_expression_id TEXT, 
+	aliases TEXT, 
+	PRIMARY KEY (anonymous_slot_expression_id, aliases), 
+	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE anonymous_slot_expression_mappings (
+	anonymous_slot_expression_id TEXT, 
+	mappings TEXT, 
+	PRIMARY KEY (anonymous_slot_expression_id, mappings), 
+	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE anonymous_slot_expression_exact_mappings (
+	anonymous_slot_expression_id TEXT, 
+	exact_mappings TEXT, 
+	PRIMARY KEY (anonymous_slot_expression_id, exact_mappings), 
+	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE anonymous_slot_expression_close_mappings (
+	anonymous_slot_expression_id TEXT, 
+	close_mappings TEXT, 
+	PRIMARY KEY (anonymous_slot_expression_id, close_mappings), 
+	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE anonymous_slot_expression_related_mappings (
+	anonymous_slot_expression_id TEXT, 
+	related_mappings TEXT, 
+	PRIMARY KEY (anonymous_slot_expression_id, related_mappings), 
+	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE anonymous_slot_expression_narrow_mappings (
+	anonymous_slot_expression_id TEXT, 
+	narrow_mappings TEXT, 
+	PRIMARY KEY (anonymous_slot_expression_id, narrow_mappings), 
+	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE anonymous_slot_expression_broad_mappings (
+	anonymous_slot_expression_id TEXT, 
+	broad_mappings TEXT, 
+	PRIMARY KEY (anonymous_slot_expression_id, broad_mappings), 
+	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE slot_definition_none_of (
+	slot_definition_name TEXT, 
+	none_of_id TEXT, 
+	PRIMARY KEY (slot_definition_name, none_of_id), 
+	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name), 
+	FOREIGN KEY(none_of_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE slot_definition_exactly_one_of (
+	slot_definition_name TEXT, 
+	exactly_one_of_id TEXT, 
+	PRIMARY KEY (slot_definition_name, exactly_one_of_id), 
+	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name), 
+	FOREIGN KEY(exactly_one_of_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE slot_definition_any_of (
+	slot_definition_name TEXT, 
+	any_of_id TEXT, 
+	PRIMARY KEY (slot_definition_name, any_of_id), 
+	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name), 
+	FOREIGN KEY(any_of_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE slot_definition_all_of (
+	slot_definition_name TEXT, 
+	all_of_id TEXT, 
+	PRIMARY KEY (slot_definition_name, all_of_id), 
+	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name), 
+	FOREIGN KEY(all_of_id) REFERENCES anonymous_slot_expression (id)
+);
+CREATE TABLE class_rule_todos (
+	class_rule_id TEXT, 
+	todos TEXT, 
+	PRIMARY KEY (class_rule_id, todos), 
+	FOREIGN KEY(class_rule_id) REFERENCES class_rule (id)
+);
+CREATE TABLE class_rule_notes (
+	class_rule_id TEXT, 
+	notes TEXT, 
+	PRIMARY KEY (class_rule_id, notes), 
+	FOREIGN KEY(class_rule_id) REFERENCES class_rule (id)
+);
+CREATE TABLE class_rule_comments (
+	class_rule_id TEXT, 
+	comments TEXT, 
+	PRIMARY KEY (class_rule_id, comments), 
+	FOREIGN KEY(class_rule_id) REFERENCES class_rule (id)
+);
+CREATE TABLE class_rule_in_subset (
+	class_rule_id TEXT, 
+	in_subset TEXT, 
+	PRIMARY KEY (class_rule_id, in_subset), 
+	FOREIGN KEY(class_rule_id) REFERENCES class_rule (id), 
+	FOREIGN KEY(in_subset) REFERENCES subset_definition (name)
+);
+CREATE TABLE class_rule_see_also (
+	class_rule_id TEXT, 
+	see_also TEXT, 
+	PRIMARY KEY (class_rule_id, see_also), 
+	FOREIGN KEY(class_rule_id) REFERENCES class_rule (id)
+);
+CREATE TABLE class_rule_aliases (
+	class_rule_id TEXT, 
+	aliases TEXT, 
+	PRIMARY KEY (class_rule_id, aliases), 
+	FOREIGN KEY(class_rule_id) REFERENCES class_rule (id)
+);
+CREATE TABLE class_rule_mappings (
+	class_rule_id TEXT, 
+	mappings TEXT, 
+	PRIMARY KEY (class_rule_id, mappings), 
+	FOREIGN KEY(class_rule_id) REFERENCES class_rule (id)
+);
+CREATE TABLE class_rule_exact_mappings (
+	class_rule_id TEXT, 
+	exact_mappings TEXT, 
+	PRIMARY KEY (class_rule_id, exact_mappings), 
+	FOREIGN KEY(class_rule_id) REFERENCES class_rule (id)
+);
+CREATE TABLE class_rule_close_mappings (
+	class_rule_id TEXT, 
+	close_mappings TEXT, 
+	PRIMARY KEY (class_rule_id, close_mappings), 
+	FOREIGN KEY(class_rule_id) REFERENCES class_rule (id)
+);
+CREATE TABLE class_rule_related_mappings (
+	class_rule_id TEXT, 
+	related_mappings TEXT, 
+	PRIMARY KEY (class_rule_id, related_mappings), 
+	FOREIGN KEY(class_rule_id) REFERENCES class_rule (id)
+);
+CREATE TABLE class_rule_narrow_mappings (
+	class_rule_id TEXT, 
+	narrow_mappings TEXT, 
+	PRIMARY KEY (class_rule_id, narrow_mappings), 
+	FOREIGN KEY(class_rule_id) REFERENCES class_rule (id)
+);
+CREATE TABLE class_rule_broad_mappings (
+	class_rule_id TEXT, 
+	broad_mappings TEXT, 
+	PRIMARY KEY (class_rule_id, broad_mappings), 
+	FOREIGN KEY(class_rule_id) REFERENCES class_rule (id)
 );
 CREATE TABLE example (
 	id INTEGER, 
@@ -3237,129 +4028,118 @@ CREATE TABLE annotation (
 	FOREIGN KEY(annotatable_id) REFERENCES annotatable (id), 
 	FOREIGN KEY(annotation_tag) REFERENCES annotation (tag)
 );
-CREATE TABLE anonymous_slot_expression_equals_string_in (
-	anonymous_slot_expression_id TEXT, 
+CREATE TABLE structured_alias_category (
+	structured_alias_id TEXT, 
+	category TEXT, 
+	PRIMARY KEY (structured_alias_id, category), 
+	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id)
+);
+CREATE TABLE structured_alias_todos (
+	structured_alias_id TEXT, 
+	todos TEXT, 
+	PRIMARY KEY (structured_alias_id, todos), 
+	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id)
+);
+CREATE TABLE structured_alias_notes (
+	structured_alias_id TEXT, 
+	notes TEXT, 
+	PRIMARY KEY (structured_alias_id, notes), 
+	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id)
+);
+CREATE TABLE structured_alias_comments (
+	structured_alias_id TEXT, 
+	comments TEXT, 
+	PRIMARY KEY (structured_alias_id, comments), 
+	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id)
+);
+CREATE TABLE structured_alias_in_subset (
+	structured_alias_id TEXT, 
+	in_subset TEXT, 
+	PRIMARY KEY (structured_alias_id, in_subset), 
+	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id), 
+	FOREIGN KEY(in_subset) REFERENCES subset_definition (name)
+);
+CREATE TABLE structured_alias_see_also (
+	structured_alias_id TEXT, 
+	see_also TEXT, 
+	PRIMARY KEY (structured_alias_id, see_also), 
+	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id)
+);
+CREATE TABLE structured_alias_aliases (
+	structured_alias_id TEXT, 
+	aliases TEXT, 
+	PRIMARY KEY (structured_alias_id, aliases), 
+	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id)
+);
+CREATE TABLE structured_alias_mappings (
+	structured_alias_id TEXT, 
+	mappings TEXT, 
+	PRIMARY KEY (structured_alias_id, mappings), 
+	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id)
+);
+CREATE TABLE structured_alias_exact_mappings (
+	structured_alias_id TEXT, 
+	exact_mappings TEXT, 
+	PRIMARY KEY (structured_alias_id, exact_mappings), 
+	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id)
+);
+CREATE TABLE structured_alias_close_mappings (
+	structured_alias_id TEXT, 
+	close_mappings TEXT, 
+	PRIMARY KEY (structured_alias_id, close_mappings), 
+	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id)
+);
+CREATE TABLE structured_alias_related_mappings (
+	structured_alias_id TEXT, 
+	related_mappings TEXT, 
+	PRIMARY KEY (structured_alias_id, related_mappings), 
+	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id)
+);
+CREATE TABLE structured_alias_narrow_mappings (
+	structured_alias_id TEXT, 
+	narrow_mappings TEXT, 
+	PRIMARY KEY (structured_alias_id, narrow_mappings), 
+	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id)
+);
+CREATE TABLE structured_alias_broad_mappings (
+	structured_alias_id TEXT, 
+	broad_mappings TEXT, 
+	PRIMARY KEY (structured_alias_id, broad_mappings), 
+	FOREIGN KEY(structured_alias_id) REFERENCES structured_alias (id)
+);
+CREATE TABLE slot_expression_equals_string_in (
+	slot_expression_id TEXT, 
 	equals_string_in TEXT, 
-	PRIMARY KEY (anonymous_slot_expression_id, equals_string_in), 
-	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id)
+	PRIMARY KEY (slot_expression_id, equals_string_in), 
+	FOREIGN KEY(slot_expression_id) REFERENCES slot_expression (id)
 );
-CREATE TABLE anonymous_slot_expression_none_of (
-	anonymous_slot_expression_id TEXT, 
+CREATE TABLE slot_expression_none_of (
+	slot_expression_id TEXT, 
 	none_of_id TEXT, 
-	PRIMARY KEY (anonymous_slot_expression_id, none_of_id), 
-	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id), 
+	PRIMARY KEY (slot_expression_id, none_of_id), 
+	FOREIGN KEY(slot_expression_id) REFERENCES slot_expression (id), 
 	FOREIGN KEY(none_of_id) REFERENCES anonymous_slot_expression (id)
 );
-CREATE TABLE anonymous_slot_expression_exactly_one_of (
-	anonymous_slot_expression_id TEXT, 
+CREATE TABLE slot_expression_exactly_one_of (
+	slot_expression_id TEXT, 
 	exactly_one_of_id TEXT, 
-	PRIMARY KEY (anonymous_slot_expression_id, exactly_one_of_id), 
-	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id), 
+	PRIMARY KEY (slot_expression_id, exactly_one_of_id), 
+	FOREIGN KEY(slot_expression_id) REFERENCES slot_expression (id), 
 	FOREIGN KEY(exactly_one_of_id) REFERENCES anonymous_slot_expression (id)
 );
-CREATE TABLE anonymous_slot_expression_any_of (
-	anonymous_slot_expression_id TEXT, 
+CREATE TABLE slot_expression_any_of (
+	slot_expression_id TEXT, 
 	any_of_id TEXT, 
-	PRIMARY KEY (anonymous_slot_expression_id, any_of_id), 
-	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id), 
+	PRIMARY KEY (slot_expression_id, any_of_id), 
+	FOREIGN KEY(slot_expression_id) REFERENCES slot_expression (id), 
 	FOREIGN KEY(any_of_id) REFERENCES anonymous_slot_expression (id)
 );
-CREATE TABLE anonymous_slot_expression_all_of (
-	anonymous_slot_expression_id TEXT, 
+CREATE TABLE slot_expression_all_of (
+	slot_expression_id TEXT, 
 	all_of_id TEXT, 
-	PRIMARY KEY (anonymous_slot_expression_id, all_of_id), 
-	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id), 
+	PRIMARY KEY (slot_expression_id, all_of_id), 
+	FOREIGN KEY(slot_expression_id) REFERENCES slot_expression (id), 
 	FOREIGN KEY(all_of_id) REFERENCES anonymous_slot_expression (id)
-);
-CREATE TABLE anonymous_slot_expression_todos (
-	anonymous_slot_expression_id TEXT, 
-	todos TEXT, 
-	PRIMARY KEY (anonymous_slot_expression_id, todos), 
-	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id)
-);
-CREATE TABLE anonymous_slot_expression_notes (
-	anonymous_slot_expression_id TEXT, 
-	notes TEXT, 
-	PRIMARY KEY (anonymous_slot_expression_id, notes), 
-	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id)
-);
-CREATE TABLE anonymous_slot_expression_comments (
-	anonymous_slot_expression_id TEXT, 
-	comments TEXT, 
-	PRIMARY KEY (anonymous_slot_expression_id, comments), 
-	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id)
-);
-CREATE TABLE anonymous_slot_expression_in_subset (
-	anonymous_slot_expression_id TEXT, 
-	in_subset TEXT, 
-	PRIMARY KEY (anonymous_slot_expression_id, in_subset), 
-	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id), 
-	FOREIGN KEY(in_subset) REFERENCES subset_definition (name)
-);
-CREATE TABLE anonymous_slot_expression_see_also (
-	anonymous_slot_expression_id TEXT, 
-	see_also TEXT, 
-	PRIMARY KEY (anonymous_slot_expression_id, see_also), 
-	FOREIGN KEY(anonymous_slot_expression_id) REFERENCES anonymous_slot_expression (id)
-);
-CREATE TABLE slot_definition_none_of (
-	slot_definition_name TEXT, 
-	none_of_id TEXT, 
-	PRIMARY KEY (slot_definition_name, none_of_id), 
-	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name), 
-	FOREIGN KEY(none_of_id) REFERENCES anonymous_slot_expression (id)
-);
-CREATE TABLE slot_definition_exactly_one_of (
-	slot_definition_name TEXT, 
-	exactly_one_of_id TEXT, 
-	PRIMARY KEY (slot_definition_name, exactly_one_of_id), 
-	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name), 
-	FOREIGN KEY(exactly_one_of_id) REFERENCES anonymous_slot_expression (id)
-);
-CREATE TABLE slot_definition_any_of (
-	slot_definition_name TEXT, 
-	any_of_id TEXT, 
-	PRIMARY KEY (slot_definition_name, any_of_id), 
-	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name), 
-	FOREIGN KEY(any_of_id) REFERENCES anonymous_slot_expression (id)
-);
-CREATE TABLE slot_definition_all_of (
-	slot_definition_name TEXT, 
-	all_of_id TEXT, 
-	PRIMARY KEY (slot_definition_name, all_of_id), 
-	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name), 
-	FOREIGN KEY(all_of_id) REFERENCES anonymous_slot_expression (id)
-);
-CREATE TABLE class_rule_todos (
-	class_rule_id TEXT, 
-	todos TEXT, 
-	PRIMARY KEY (class_rule_id, todos), 
-	FOREIGN KEY(class_rule_id) REFERENCES class_rule (id)
-);
-CREATE TABLE class_rule_notes (
-	class_rule_id TEXT, 
-	notes TEXT, 
-	PRIMARY KEY (class_rule_id, notes), 
-	FOREIGN KEY(class_rule_id) REFERENCES class_rule (id)
-);
-CREATE TABLE class_rule_comments (
-	class_rule_id TEXT, 
-	comments TEXT, 
-	PRIMARY KEY (class_rule_id, comments), 
-	FOREIGN KEY(class_rule_id) REFERENCES class_rule (id)
-);
-CREATE TABLE class_rule_in_subset (
-	class_rule_id TEXT, 
-	in_subset TEXT, 
-	PRIMARY KEY (class_rule_id, in_subset), 
-	FOREIGN KEY(class_rule_id) REFERENCES class_rule (id), 
-	FOREIGN KEY(in_subset) REFERENCES subset_definition (name)
-);
-CREATE TABLE class_rule_see_also (
-	class_rule_id TEXT, 
-	see_also TEXT, 
-	PRIMARY KEY (class_rule_id, see_also), 
-	FOREIGN KEY(class_rule_id) REFERENCES class_rule (id)
 );
 CREATE TABLE extension (
 	tag TEXT NOT NULL, 
@@ -3407,38 +4187,4 @@ CREATE TABLE extension (
 	FOREIGN KEY(annotation_tag) REFERENCES annotation (tag), 
 	FOREIGN KEY(extension_tag) REFERENCES extension (tag), 
 	FOREIGN KEY(extensible_id) REFERENCES extensible (id)
-);
-CREATE TABLE slot_expression_equals_string_in (
-	slot_expression_id TEXT, 
-	equals_string_in TEXT, 
-	PRIMARY KEY (slot_expression_id, equals_string_in), 
-	FOREIGN KEY(slot_expression_id) REFERENCES slot_expression (id)
-);
-CREATE TABLE slot_expression_none_of (
-	slot_expression_id TEXT, 
-	none_of_id TEXT, 
-	PRIMARY KEY (slot_expression_id, none_of_id), 
-	FOREIGN KEY(slot_expression_id) REFERENCES slot_expression (id), 
-	FOREIGN KEY(none_of_id) REFERENCES anonymous_slot_expression (id)
-);
-CREATE TABLE slot_expression_exactly_one_of (
-	slot_expression_id TEXT, 
-	exactly_one_of_id TEXT, 
-	PRIMARY KEY (slot_expression_id, exactly_one_of_id), 
-	FOREIGN KEY(slot_expression_id) REFERENCES slot_expression (id), 
-	FOREIGN KEY(exactly_one_of_id) REFERENCES anonymous_slot_expression (id)
-);
-CREATE TABLE slot_expression_any_of (
-	slot_expression_id TEXT, 
-	any_of_id TEXT, 
-	PRIMARY KEY (slot_expression_id, any_of_id), 
-	FOREIGN KEY(slot_expression_id) REFERENCES slot_expression (id), 
-	FOREIGN KEY(any_of_id) REFERENCES anonymous_slot_expression (id)
-);
-CREATE TABLE slot_expression_all_of (
-	slot_expression_id TEXT, 
-	all_of_id TEXT, 
-	PRIMARY KEY (slot_expression_id, all_of_id), 
-	FOREIGN KEY(slot_expression_id) REFERENCES slot_expression (id), 
-	FOREIGN KEY(all_of_id) REFERENCES anonymous_slot_expression (id)
 );

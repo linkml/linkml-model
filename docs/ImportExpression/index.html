@@ -86,7 +86,7 @@
                 <h1 id="class-import_expression">Class: import_expression</h1>
 <p>an expression describing an import</p>
 <p>URI: <a href="https://w3id.org/linkml/ImportExpression">linkml:ImportExpression</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[SubsetDefinition],[Setting],[SchemaDefinition],[Setting]&lt;import_map%200..*-++[ImportExpression&#124;import_from:uriorcurie;import_as:ncname%20%3F;description:string%20%3F;title:string%20%3F;deprecated:string%20%3F;todos:string%20*;notes:string%20*;comments:string%20*;from_schema:uri%20%3F;imported_from:string%20%3F;source:uriorcurie%20%3F;in_language:string%20%3F;see_also:uriorcurie%20*;deprecated_element_has_exact_replacement:uriorcurie%20%3F;deprecated_element_has_possible_replacement:uriorcurie%20%3F],[ImportExpression]uses%20-.-&gt;[Extensible],[ImportExpression]uses%20-.-&gt;[Annotatable],[ImportExpression]uses%20-.-&gt;[CommonMetadata],[Extension],[Extensible],[Example],[CommonMetadata],[Annotation],[Annotatable],[AltDescription]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[SubsetDefinition],[Setting],[SchemaDefinition],[Setting]&lt;import_map%200..*-++[ImportExpression&#124;import_from:uriorcurie;import_as:ncname%20%3F;description:string%20%3F;title:string%20%3F;deprecated:string%20%3F;todos:string%20*;notes:string%20*;comments:string%20*;from_schema:uri%20%3F;imported_from:string%20%3F;source:uriorcurie%20%3F;in_language:string%20%3F;see_also:uriorcurie%20*;deprecated_element_has_exact_replacement:uriorcurie%20%3F;deprecated_element_has_possible_replacement:uriorcurie%20%3F],[ImportExpression]uses%20-.-&gt;[Extensible],[ImportExpression]uses%20-.-&gt;[Annotatable],[ImportExpression]uses%20-.-&gt;[CommonMetadata],[Extension],[Extensible],[Example],[CommonMetadata],[Annotation],[Annotatable],[AltDescription]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[SubsetDefinition],[StructuredAlias],[Setting],[SchemaDefinition],[Setting]&lt;import_map%200..*-++[ImportExpression&#124;import_from:uriorcurie;import_as:ncname%20%3F;description:string%20%3F;title:string%20%3F;deprecated:string%20%3F;todos:string%20*;notes:string%20*;comments:string%20*;from_schema:uri%20%3F;imported_from:string%20%3F;source:uriorcurie%20%3F;in_language:string%20%3F;see_also:uriorcurie%20*;deprecated_element_has_exact_replacement:uriorcurie%20%3F;deprecated_element_has_possible_replacement:uriorcurie%20%3F;aliases:string%20*;mappings:uriorcurie%20*;exact_mappings:uriorcurie%20*;close_mappings:uriorcurie%20*;related_mappings:uriorcurie%20*;narrow_mappings:uriorcurie%20*;broad_mappings:uriorcurie%20*;rank:integer%20%3F],[ImportExpression]uses%20-.-&gt;[Extensible],[ImportExpression]uses%20-.-&gt;[Annotatable],[ImportExpression]uses%20-.-&gt;[CommonMetadata],[Extension],[Extensible],[Example],[CommonMetadata],[Annotation],[Annotatable],[AltDescription]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[SubsetDefinition],[StructuredAlias],[Setting],[SchemaDefinition],[Setting]&lt;import_map%200..*-++[ImportExpression&#124;import_from:uriorcurie;import_as:ncname%20%3F;description:string%20%3F;title:string%20%3F;deprecated:string%20%3F;todos:string%20*;notes:string%20*;comments:string%20*;from_schema:uri%20%3F;imported_from:string%20%3F;source:uriorcurie%20%3F;in_language:string%20%3F;see_also:uriorcurie%20*;deprecated_element_has_exact_replacement:uriorcurie%20%3F;deprecated_element_has_possible_replacement:uriorcurie%20%3F;aliases:string%20*;mappings:uriorcurie%20*;exact_mappings:uriorcurie%20*;close_mappings:uriorcurie%20*;related_mappings:uriorcurie%20*;narrow_mappings:uriorcurie%20*;broad_mappings:uriorcurie%20*;rank:integer%20%3F],[ImportExpression]uses%20-.-&gt;[Extensible],[ImportExpression]uses%20-.-&gt;[Annotatable],[ImportExpression]uses%20-.-&gt;[CommonMetadata],[Extension],[Extensible],[Example],[CommonMetadata],[Annotation],[Annotatable],[AltDescription]" /></a></p>
 <h2 id="uses-mixin">Uses Mixin</h2>
 <ul>
 <li>mixin: <a href="../Extensible/">Extensible</a> - mixin for classes that support extension</li>
@@ -263,6 +263,79 @@
 <li><a href="../deprecated_element_has_possible_replacement/">deprecated element has possible replacement</a>  <sub>0..1</sub><ul>
 <li>Description: When an element is deprecated, it can be potentially replaced by this uri or curie</li>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-common_metadata_16">Mixed in from common_metadata:</h3>
+<ul>
+<li><a href="../aliases/">aliases</a>  <sub>0..*</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+<li>in subsets: (basic)</li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-common_metadata_17">Mixed in from common_metadata:</h3>
+<ul>
+<li><a href="../structured_aliases/">structured_aliases</a>  <sub>0..*</sub><ul>
+<li>Description: A list of structured_alias objects.</li>
+<li>Range: <a href="../StructuredAlias/">StructuredAlias</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-common_metadata_18">Mixed in from common_metadata:</h3>
+<ul>
+<li><a href="../mappings/">mappings</a>  <sub>0..*</sub><ul>
+<li>Description: A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-common_metadata_19">Mixed in from common_metadata:</h3>
+<ul>
+<li><a href="../exact_mappings/">exact mappings</a>  <sub>0..*</sub><ul>
+<li>Description: A list of terms from different schemas or terminology systems that have identical meaning.</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-common_metadata_20">Mixed in from common_metadata:</h3>
+<ul>
+<li><a href="../close_mappings/">close mappings</a>  <sub>0..*</sub><ul>
+<li>Description: A list of terms from different schemas or terminology systems that have close meaning.</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-common_metadata_21">Mixed in from common_metadata:</h3>
+<ul>
+<li><a href="../related_mappings/">related mappings</a>  <sub>0..*</sub><ul>
+<li>Description: A list of terms from different schemas or terminology systems that have related meaning.</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-common_metadata_22">Mixed in from common_metadata:</h3>
+<ul>
+<li><a href="../narrow_mappings/">narrow mappings</a>  <sub>0..*</sub><ul>
+<li>Description: A list of terms from different schemas or terminology systems that have narrower meaning.</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-common_metadata_23">Mixed in from common_metadata:</h3>
+<ul>
+<li><a href="../broad_mappings/">broad mappings</a>  <sub>0..*</sub><ul>
+<li>Description: A list of terms from different schemas or terminology systems that have broader meaning.</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-common_metadata_24">Mixed in from common_metadata:</h3>
+<ul>
+<li><a href="../rank/">rank</a>  <sub>0..1</sub><ul>
+<li>Description: the relative order in which the element occurs, lower values are given precedence</li>
+<li>Range: <a href="../Integer/">Integer</a></li>
+<li>in subsets: (basic)</li>
 </ul>
 </li>
 </ul>
