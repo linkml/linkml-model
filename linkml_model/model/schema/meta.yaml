@@ -1048,6 +1048,12 @@ slots:
     close_mappings:
       - sh:defaultValue
 
+  implicit_prefix:
+    domain: slot_expression
+    range: string
+    description: >-
+      Causes the slot value to be interpreted as a uriorcurie after prefixing with this string
+
   value_specification_constant:
     abstract: true
     description: Grouping for metamodel slots that constrain the a slot value to equal a specified constant
@@ -2033,7 +2039,8 @@ classes:
       - minimum_value
       - maximum_value
       - pattern
-      - structured_pattern      
+      - structured_pattern
+      - implicit_prefix
       - equals_string
       - equals_string_in
       - equals_number
