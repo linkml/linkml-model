@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-30T01:16:48
+# Generation date: 2022-05-14T03:32:06
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -1356,6 +1356,7 @@ class SlotExpression(Expression):
     maximum_value: Optional[int] = None
     pattern: Optional[str] = None
     structured_pattern: Optional[Union[dict, "PatternExpression"]] = None
+    implicit_prefix: Optional[str] = None
     equals_string: Optional[str] = None
     equals_string_in: Optional[Union[str, List[str]]] = empty_list()
     equals_number: Optional[int] = None
@@ -1399,6 +1400,9 @@ class SlotExpression(Expression):
 
         if self.structured_pattern is not None and not isinstance(self.structured_pattern, PatternExpression):
             self.structured_pattern = PatternExpression(**as_dict(self.structured_pattern))
+
+        if self.implicit_prefix is not None and not isinstance(self.implicit_prefix, str):
+            self.implicit_prefix = str(self.implicit_prefix)
 
         if self.equals_string is not None and not isinstance(self.equals_string, str):
             self.equals_string = str(self.equals_string)
@@ -1462,6 +1466,7 @@ class AnonymousSlotExpression(AnonymousExpression):
     maximum_value: Optional[int] = None
     pattern: Optional[str] = None
     structured_pattern: Optional[Union[dict, "PatternExpression"]] = None
+    implicit_prefix: Optional[str] = None
     equals_string: Optional[str] = None
     equals_string_in: Optional[Union[str, List[str]]] = empty_list()
     equals_number: Optional[int] = None
@@ -1505,6 +1510,9 @@ class AnonymousSlotExpression(AnonymousExpression):
 
         if self.structured_pattern is not None and not isinstance(self.structured_pattern, PatternExpression):
             self.structured_pattern = PatternExpression(**as_dict(self.structured_pattern))
+
+        if self.implicit_prefix is not None and not isinstance(self.implicit_prefix, str):
+            self.implicit_prefix = str(self.implicit_prefix)
 
         if self.equals_string is not None and not isinstance(self.equals_string, str):
             self.equals_string = str(self.equals_string)
@@ -1611,6 +1619,7 @@ class SlotDefinition(Definition):
     maximum_value: Optional[int] = None
     pattern: Optional[str] = None
     structured_pattern: Optional[Union[dict, "PatternExpression"]] = None
+    implicit_prefix: Optional[str] = None
     equals_string: Optional[str] = None
     equals_string_in: Optional[Union[str, List[str]]] = empty_list()
     equals_number: Optional[int] = None
@@ -1780,6 +1789,9 @@ class SlotDefinition(Definition):
 
         if self.structured_pattern is not None and not isinstance(self.structured_pattern, PatternExpression):
             self.structured_pattern = PatternExpression(**as_dict(self.structured_pattern))
+
+        if self.implicit_prefix is not None and not isinstance(self.implicit_prefix, str):
+            self.implicit_prefix = str(self.implicit_prefix)
 
         if self.equals_string is not None and not isinstance(self.equals_string, str):
             self.equals_string = str(self.equals_string)

@@ -220,6 +220,7 @@
 --     * Slot: minimum_value Description: for slots with ranges of type number, the value must be equal to or higher than this
 --     * Slot: maximum_value Description: for slots with ranges of type number, the value must be equal to or lowe than this
 --     * Slot: pattern Description: the string value of the slot must conform to this regular expression expressed in the string
+--     * Slot: implicit_prefix Description: Causes the slot value to be interpreted as a uriorcurie after prefixing with this string
 --     * Slot: equals_string Description: the slot must have range string and the value of the slot must equal the specified value
 --     * Slot: equals_number Description: the slot must have range of a number and the value of the slot must equal the specified value
 --     * Slot: equals_expression Description: the value of the slot must equal the value of the evaluated expression
@@ -238,6 +239,7 @@
 --     * Slot: minimum_value Description: for slots with ranges of type number, the value must be equal to or higher than this
 --     * Slot: maximum_value Description: for slots with ranges of type number, the value must be equal to or lowe than this
 --     * Slot: pattern Description: the string value of the slot must conform to this regular expression expressed in the string
+--     * Slot: implicit_prefix Description: Causes the slot value to be interpreted as a uriorcurie after prefixing with this string
 --     * Slot: equals_string Description: the slot must have range string and the value of the slot must equal the specified value
 --     * Slot: equals_number Description: the slot must have range of a number and the value of the slot must equal the specified value
 --     * Slot: equals_expression Description: the value of the slot must equal the value of the evaluated expression
@@ -298,6 +300,7 @@
 --     * Slot: minimum_value Description: for slots with ranges of type number, the value must be equal to or higher than this
 --     * Slot: maximum_value Description: for slots with ranges of type number, the value must be equal to or lowe than this
 --     * Slot: pattern Description: the string value of the slot must conform to this regular expression expressed in the string
+--     * Slot: implicit_prefix Description: Causes the slot value to be interpreted as a uriorcurie after prefixing with this string
 --     * Slot: equals_string Description: the slot must have range string and the value of the slot must equal the specified value
 --     * Slot: equals_number Description: the slot must have range of a number and the value of the slot must equal the specified value
 --     * Slot: equals_expression Description: the value of the slot must equal the value of the evaluated expression
@@ -1683,6 +1686,7 @@ CREATE TABLE slot_definition (
 	minimum_value INTEGER, 
 	maximum_value INTEGER, 
 	pattern TEXT, 
+	implicit_prefix TEXT, 
 	equals_string TEXT, 
 	equals_number INTEGER, 
 	equals_expression TEXT, 
@@ -3251,6 +3255,7 @@ CREATE TABLE anonymous_slot_expression (
 	minimum_value INTEGER, 
 	maximum_value INTEGER, 
 	pattern TEXT, 
+	implicit_prefix TEXT, 
 	equals_string TEXT, 
 	equals_number INTEGER, 
 	equals_expression TEXT, 
@@ -3674,6 +3679,7 @@ CREATE TABLE slot_expression (
 	minimum_value INTEGER, 
 	maximum_value INTEGER, 
 	pattern TEXT, 
+	implicit_prefix TEXT, 
 	equals_string TEXT, 
 	equals_number INTEGER, 
 	equals_expression TEXT, 
