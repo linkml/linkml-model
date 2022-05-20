@@ -739,6 +739,10 @@ slots:
     in_subset:
       - basic
 
+  enum_range:
+    range: enum_expression
+    description: An inlined enumeration
+
   range_expression:
     domain: slot_expression
     range: anonymous_class_expression
@@ -1941,15 +1945,20 @@ classes:
     in_subset:
       - basic
 
-  enum_definition:
-    description: List of values that constrain the range of a slot
-    is_a: element
+  enum_expression:
+    is_a: expression
     slots:
       - code_set
       - code_set_tag
       - code_set_version
       - pv_formula
       - permissible_values
+    
+  enum_definition:
+    description: List of values that constrain the range of a slot
+    is_a: element
+    mixins:
+      - enum_expression
     close_mappings:
       - qb:HierarchicalCodeList
     in_subset:
@@ -2032,6 +2041,7 @@ classes:
     slots:
       - range
       - range_expression
+      - enum_range
       - required
       - recommended
       - inlined
