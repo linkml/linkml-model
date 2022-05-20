@@ -450,7 +450,12 @@ slots:
     multivalued: true
     range: uriorcurie
     description: >-
-      the identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot
+      The identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot.
+      Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term
+      while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration
+      in that in an enumeration, the values of the enumeration are listed directly in the model itself.
+      Setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an
+      enumerated list of possible values in every serialization of the model.
 
   # -----------------------------------
   # Enum definition slots
@@ -1344,7 +1349,18 @@ slots:
   subproperty_of:
     domain: slot_definition
     range: slot_definition
-    description: Ontology property which this slot is a subproperty of
+    description: >-
+      Ontology property which this slot is a subproperty of.  Note: setting this property on a slot
+      does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values
+      in every serialization of the model.
+    examples:
+      - value: RO:HOM0000001
+        description: >-
+          this is the RO term for "in homology relationship with", and used as a value of subproperty of this means
+          that any ontological child (related to RO:HOM0000001 via an is_a relationship), is a valid value for the slot
+          that declares this with the subproperty_of tag.  This differs from the 'values_from' meta model component
+          in that 'values_from' requires the id of a value set (said another way, if an entire ontology had a curie/identifier
+          that was the identifier for the entire ontology, then that identifier would be used in 'values_from.')
     slot_uri: rdfs:subPropertyOf
 
   disjoint_with:
