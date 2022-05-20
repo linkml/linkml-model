@@ -1,107 +1,175 @@
 # Translation of instance graphs
 
-This section describes how a conceptual LinkML instance graph is translated to different concrete representations.
+This section describes how LinkML instances are translated to different formats and data models.
+
+- Conversion *from* LinkML instances to another format is called *serialization* or *dumping*
+- Conversion *to* LinkML instances from another format is called *parsing* or *loading*
 
 The reference implementation is the [linkml-runtime](https://github.com/linkml/linkml-runtime/) but other implementations that conform to this specification are valid.
 
-The translations fall into three categories:
+## Translation of instances to JSON or YAML
 
- - translations to other tree representations (JSON, YAML, and OO)
- - translations to graph representations (RDF, RDF*/Property Graphs)
- - translations to relational or tabular representations
+- Serialization to JSON takes as input:
+    - a (root) instance
+- Parsing from JSON takes as input:
+    - a JSON document
+    - a target ClassDefinitionName
+    - a SchemaDefinition
 
-For translation to RDF graphs, we provide two normative equivalent specifications. (1) A direct translation (2) a translation via two intermediates (i) a JSON file which is identical to the JSON transformation (ii) a JSON-LD context that is merged with the JSON file
+### Instances of ClassDefinition
 
-## Translation of instance graphs to JSON or YAML
+Given an instance `i` of a ClassDefinition:
 
-|condition `Tr(i)`|translation|
-|---|---|
-|`i` is a List|[Tr(i1), ..., Tr(i_n)] OR dict, see below|
-|`instantiates(i) ∈ MC`|CompoundInstance(i)|
-|`instantiates(i) ∈ Ref(MC)`|Type(IdentifierSlot(MC).range)|
-|`instantiates(i) ∈ EC`|Type(string)|
-|`instantiates(i) ∈ TC`|Type(TC)|
+*ClassDefinitionName*( `s1=v1`, ..., `sn=v2` )
 
-Type function:
+This is translated to
 
-|Input|YAML|JSON|
-|---|---|---|
-|integer|integer|integer|
-...
-
-When translating a CompoundInstance:
-
- * Create an empty dict `{}`
- * For each `s,V in A(i)`
-    * Add a key-value (s, Tr(V)) to dict
-
-TODO: describe lossiness when instantiation info is lost
-
-### Lists vs Dicts
-
- * All lists are translated to lists or dicts
- * Only lists of instances, where instances have identifiers, may be translated to dicts
- * If `inlined_as_list` is set this forces inlining as lists of instances
-
-
-### Inlining
-
-## Translation of instance graphs to Instance Oriented representation
-
-### Inlining
-
-## Translation of instance graphs to RDF graphs (direct)
-
-### Collapsing of References
-
-## Translation of instance graphs to RDF graphs (via JSON-LD)
-
-## Translation of instance graphs to RDF* and property graphs
-
-# Generation of prefixmaps from LinkML instances and schemas
-
-
-
-Values for schema element slots _may_ be IRIs, and these _may_ be specified as CURIEs. CURIEs are shortform representations of URIs, and _must_ be specified as `PREFIX:LocalID`, where the prefix has an associated URI base. The prefix _must_ be declared in one of several ways:
-
- * a [prefixes](https://w3id.org/linkml/meta/prefixes) dictionary, where the keys are prefixes and the values are URI bases.
-
-Example (Informative):
-
-```yaml
-prefixes:
-  linkml: https://w3id.org/linkml/
-  wgs: http://www.w3.org/2003/01/geo/wgs84_pos#
-  qud: http://qudt.org/1.1/schema/qudt#
+```json
+{
+   Tr(s1) = Tr(v1),
+   ...,
+   Tr(s2) = Tr(v2)           
+}
 ```
 
-The CURIE `wgs:lat` will exand to http://www.w3.org/2003/01/geo/wgs84_pos#lat.
+Note this is potentially lossy, as the type is dropped
 
-* an external CURIE map specified via a [default_curi_maps](https://w3id.org/linkml/meta/default_curi_maps) section.
+When parsing, if this is the root instance, then the target ClassDefinition is used
 
-Example (Informative):
+If this is not the root instance, then the type is inferred from the root of the parent slot in the derived schema
 
-```
-default_curi_maps:
-  - semweb_context
-```
+Optionally, this type is deepened if `C.type_designator` is not None - the value of this slot is used to
+set the target ClassDefinitionName
 
-* prefixes from public standard global namespaces used in the model (e.g. rdf) are indicated under the [emit_prefixes](https://w3id.org/linkml/meta/emit_prefixes) section.
+### Instances of None
 
-Example (Informative):
+The parent slot is omitted
 
-```
-emit_prefixes:
-  - rdf
-  - rdfs
-  - xsd
-  - skos
-```
+### Instances of Collection
 
-* a default prefix within a given schema is generally also declared by a value for the [default_prefix](https://w3id.org/linkml/meta/default_prefix) tag:
-
-Example (Informative):
+If the parent slot `s.inlined_as_list=True`
 
 ```
-default_prefix: ex
+{
+   IdVal(member1): 
+      Tr(member1) - IdField(member1)
+   ...
+   IdVal(memberN): 
+      Tr(memberN) - IdField(memberN)
+}
 ```
+
+otherwise:
+
+```json
+[
+   Tr(member_1),
+   ...
+   Tr(member_n),
+]
+```
+
+### Instances of TypeDefinition
+
+The direct value is used
+
+### Instances of EnumDefinition
+
+The direct value is used
+
+### Instances of ClassDefinitionReference
+
+The direct value is used
+
+## Translation to RDF
+
+Two RDF translations are provided:
+
+- A *direct* translation
+- Translation via JSON-LD, which combines
+    1. Translation of a LinkML **SchemaDefinition** to a **JSON-LD Context**
+    2. The standard translation of LinkML instances to JSON
+   
+Both translations make use of the **prefixes** provided in the schema
+
+The semantic content of both is equivalent. 
+
+### Mapping of CURIEs to URIs
+
+LinkML provides standard types:
+
+- Curie
+- Uri
+- CurieOrUri
+
+The syntax for a CURIE is defined by [W3C CURIE Syntax 1.0](https://www.w3.org/TR/curie/)
+
+**curie**       :=   [ [ **prefix** ] ':' ] **reference**
+
+**prefix**      :=   **[NCName](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName)**
+
+**reference**   :=   **[irelative-ref](https://www.ietf.org/rfc/rfc3987.txt)**
+
+We define a function **CurieToUri**(`x`) that maps (expands) a CurieOrUri to a Uri
+
+If `x` is already a Uri, then `x` is returned, otherwise the following procedure is followed
+
+To expand a CURIE with an explicit prefix to a URI using a schema `m`, first `m.prefixes` is consulted for `m.prefixes[prefix]`.
+
+If this is present, then `m.prefixes[prefix].prefix_reference` is uses as the **Base URI**
+
+If this is not present, then `m.prefixes[m.default_prefix].prefix_reference` is used as the Base URI
+
+to obtain the URI, the Base URI is concatenated with the **reference**
+
+If the CURIE has no explicit prefix, and the CURIE is value of a slot `s`, then `s.implicit_prefix` is used
+
+### Direct Translation of instance graphs to RDF
+
+A translation **Tr** operates on an instance `i`, in the context of a derived schema `m*`
+
+#### Instances of ClassDefinition
+
+If `i` is an instance of a ClassDefinition, then **Tr**(i) is as follows:
+
+*ClassDefinitionName*( `s1=v1`, ..., `sn=v2` )
+
+We assign a value to `subject` which will be either an IRI, or a **blank node**
+
+- If **IdVal**(`i`) is None, the subject is assigned a blank node
+- Otherwise `subject` = **CurieToUri**(**IdVal**(`i`)) 
+
+We assign a value `object` for the type of `i`. This will be equivalent to the `c.class_uri` in `m*`
+
+This is used to generate a triple (`subject` rdf:type **CurieToUri**(`object`))   
+
+For each `s=v` in the assignments where `s.identifier=True` does not hold, and `v` is not **None**, we generate a triple
+
+(`subject` TrSlot(s) Tr(v))
+
+Here **TrSlot**(`s`) = **CurieToUri**(`s.slot_uri`)
+
+#### Instances of TypeDefinition
+
+If `i` is an instance of a TypeDefinition of type `t`
+then **Tr**(i) is translated to an RDF literal, with datatype  **CurieToUri**(t.uri)
+
+#### Instances of EnumDefinition
+
+If `i` is an instance of a EnumDefinition, then **Tr**(i) is as follows:
+
+If i corresponds to a PermissibleValue with `pv.meaning` that is not None, then
+**Tr**(i) = **CurieToUri**(pv.meaning)
+
+#### Instances of ClassDefinitionReference
+
+If `i` is an instance of a ClassDefinitionReference
+then **Tr**(i) = **CurieToUri**(i.value)
+
+### Translation of instance graphs to RDF graphs (via JSON-LD)
+
+To be specified
+
+### Translation of instance graphs to RDF* and property graphs
+
+To be specified
