@@ -118,6 +118,7 @@ type AnonymousSlotExpression implements SlotExpression
     rank: Integer
     range: Element
     rangeExpression: AnonymousClassExpression
+    enumRange: EnumExpression
     required: Boolean
     recommended: Boolean
     inlined: Boolean
@@ -387,7 +388,7 @@ type Element implements Extensible, Annotatable, CommonMetadata
     rank: Integer
   }
 
-type EnumDefinition
+type EnumDefinition implements EnumExpression
   {
     name: String!
     idPrefixes: [Ncname]
@@ -421,6 +422,15 @@ type EnumDefinition
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
     rank: Integer
+    codeSet: Uriorcurie
+    codeSetTag: String
+    codeSetVersion: String
+    pvFormula: PvFormulaOptions
+    permissibleValues: [PermissibleValue]
+  }
+
+type EnumExpression
+  {
     codeSet: Uriorcurie
     codeSetTag: String
     codeSetVersion: String
@@ -753,6 +763,7 @@ type SlotDefinition implements SlotExpression
     applyTo: [SlotDefinition]
     range: Element
     rangeExpression: AnonymousClassExpression
+    enumRange: EnumExpression
     required: Boolean
     recommended: Boolean
     inlined: Boolean
@@ -780,6 +791,7 @@ interface SlotExpression
   {
     range: Element
     rangeExpression: AnonymousClassExpression
+    enumRange: EnumExpression
     required: Boolean
     recommended: Boolean
     inlined: Boolean
@@ -970,6 +982,24 @@ type UniqueKey implements Extensible, Annotatable, CommonMetadata
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
     rank: Integer
+  }
+
+type ValidationReport
+  {
+    results: [ValidationResult]
+  }
+
+type ValidationResult
+  {
+    type: Nodeidentifier
+    severity: SeverityOptions
+    subject: Nodeidentifier
+    instantiates: Nodeidentifier
+    predicate: Nodeidentifier
+    object: Nodeidentifier
+    objectStr: String
+    nodeSource: Nodeidentifier
+    info: String
   }
 
 

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Introduction - LinkML Model</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Introduction";
+        var mkdocs_page_input_path = "specification/01introduction.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-2SYBSJVZ23"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-2SYBSJVZ23');
+      </script>
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> LinkML Model
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../home/">About</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Specification</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../00preamble/">Preface</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Introduction</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#audience">Audience</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conventions-and-terminology">Conventions and terminology</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bnf">BNF</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#outline">Outline</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#part-1-introduction">Part 1: Introduction</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#part-2-structure-and-syntax-of-instances">Part 2: Structure and Syntax of Instances</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#part-3-structure-of-schemas">Part 3: Structure of Schemas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#part-4-derived-schemas-and-schema-semantics">Part 4: Derived Schemas and Schema Semantics</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#part-5-validation-of-instance-data">Part 5: Validation of Instance Data</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#part-6-mapping-of-instance-data">Part 6: Mapping of Instance Data</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02instances/">Instances</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03schemas/">Schema Datamodel</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04derived-schemas/">Derived Schemas</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05validation/">Instance Validation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06mapping/">Mapping of Instances</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Metamodel</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">LinkML Model</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Specification &raquo;</li><li>Introduction</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="introduction">Introduction</h1>
+<p>This document is a functional draft specification for the Linked Data Modeling Language (LinkML).</p>
+<p>LinkML is a data modeling language for describing the structure of a collection of <em>instances</em>, 
+where instances are tree-like object oriented structures. Each instance instantiates a class from the LinkML <em>metamodel</em>. This is either a <em>primitive</em> class such as a scalar type, reference, enumeration, or a <em>class</em> class, which is associated with slot-value <em>assignments</em>.</p>
+<p>LinkML schemas also specify <em>rules</em> for determining if instances conform to a the schema, and for adding additional implicit information to an instance collection.</p>
+<p>LinkML is independent of any programming language, and independent of
+any concrete form for serializing instances of schemas. Mappings are
+provided for serializing instances as JSON, YAML, RDF, flat tables, or
+relational models, or for mapping to programming language structures,
+but are independent of any of these. Schemas are typically expressed
+using the YAML serialization, but this specification is independent of
+that serialization.</p>
+<p>LinkML is self-describing, and any LinkML schema is itself a collection instances that instantiates elements in a special schema called the <em>LinkML metamodel</em>.</p>
+<h2 id="audience">Audience</h2>
+<p>This document is intended for LinkML tool and framework implementors, and is intended to provide formal clarity about
+the structure and semantics of LinkML.</p>
+<p>For a more lightweight introduction, consult the material on the main <a href="https://linkml.io">LinkML site</a>,
+including the LinkML tutorial.</p>
+<h2 id="conventions-and-terminology">Conventions and terminology</h2>
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="https://datatracker.ietf.org/doc/html/rfc2119">RFC 2119</a>.</p>
+<h2 id="bnf">BNF</h2>
+<p>Grammars in this document are written using the BNF notation, summarized below:</p>
+<table>
+<thead>
+<tr>
+<th>Construct</th>
+<th>Syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>terminal symbols</td>
+<td>enclosed in single quotes</td>
+</tr>
+<tr>
+<td>a set of terminal symbols described in English</td>
+<td>italic</td>
+</tr>
+<tr>
+<td>nonterminal symbols</td>
+<td>boldface</td>
+</tr>
+<tr>
+<td>zero or more</td>
+<td>curly braces</td>
+</tr>
+<tr>
+<td>zero or one</td>
+<td>square brackets</td>
+</tr>
+<tr>
+<td>alternative</td>
+<td>vertical bar</td>
+</tr>
+</tbody>
+</table>
+<p>We also include a meta-production rule for expressing comma-delimited lists</p>
+<pre><code>&lt;NT&gt;List ::= [ &lt;NT&gt; { ',' &lt;NT&gt;List } ]
+</code></pre>
+<h2 id="outline">Outline</h2>
+<p>The specification is organized in 6 parts. The parts cannot be read independently, as each part builds on
+concepts introduced in previous parts.</p>
+<h3 id="part-1-introduction">Part 1: Introduction</h3>
+<p>This section. Provides background information and preliminary definitions</p>
+<h3 id="part-2-structure-and-syntax-of-instances">Part 2: Structure and Syntax of Instances</h3>
+<p>This specifies what an instance is in the context of LinkML.</p>
+<p>The instance data model is shown as UML. A normative functional-style syntax is provided for instances, and this syntax is used throughout the
+specification.</p>
+<p>This also introduces a path accessor syntax for specifying how to traverse LinkML instances.</p>
+<h3 id="part-3-structure-of-schemas">Part 3: Structure of Schemas</h3>
+<p>This section specifies the core elements of a LinkML schema.</p>
+<h3 id="part-4-derived-schemas-and-schema-semantics">Part 4: Derived Schemas and Schema Semantics</h3>
+<p>This section specifies rules for inferring derived schemas, which can be used for purposes such as validation.</p>
+<h3 id="part-5-validation-of-instance-data">Part 5: Validation of Instance Data</h3>
+<p>This section specifies the procedure for validating LinkML instances using a derived schema</p>
+<h3 id="part-6-mapping-of-instance-data">Part 6: Mapping of Instance Data</h3>
+<p>This section specifies how LinkML instances are mapped to other data models and syntaxes, including:</p>
+<ul>
+<li>JSON/YAML</li>
+<li>RDF</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../00preamble/" class="btn btn-neutral float-left" title="Preface"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../02instances/" class="btn btn-neutral float-right" title="Instances">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../00preamble/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../02instances/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

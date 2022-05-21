@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Instances - LinkML Model</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Instances";
+        var mkdocs_page_input_path = "specification/02instances.md";
+        var mkdocs_page_url = null;
+      </script>
+<script defer="" src="../../js/jquery-3.6.0.min.js"></script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-2SYBSJVZ23"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-2SYBSJVZ23');
+      </script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> LinkML Model
+        </a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../home/">About</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Specification</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../00preamble/">Preface</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01introduction/">Introduction</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="./">Instances</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#functional-instance-syntax-and-structure">Functional Instance Syntax and Structure</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#instances">Instances</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#instances-of-classdefinition">instances of ClassDefinition</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#primitive-instances">Primitive Instances</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#atomic-values">Atomic Values</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#collections">Collections</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#none-null-instances">None (Null) instances</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#definition-names">Definition Names</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#identity-conditions">Identity conditions</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#instance-serializations">Instance Serializations</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#instance-accessor-syntax">Instance Accessor Syntax</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../03schemas/">Schema Datamodel</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04derived-schemas/">Derived Schemas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05validation/">Instance Validation</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06mapping/">Mapping of Instances</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Metamodel</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">LinkML Model</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a alt="Docs" class="icon icon-home" href="../.."></a> »</li>
+<li>Specification »</li><li>Instances</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="linkml-instances">LinkML Instances</h1>
+<h2 id="functional-instance-syntax-and-structure">Functional Instance Syntax and Structure</h2>
+<p>This specification provides a grammar for a functional syntax for
+expressing LinkML instances. This syntax is not intended for data
+exchange, but instead for defining the structure of LinkML
+instances. Mappings are provided later for other serializations.</p>
+<h3 id="instances">Instances</h3>
+<p>An instance is either one of four <em>definition</em> types, or a list of instances, or the special token <code>None</code>:</p>
+<blockquote>
+<p><strong>Instance</strong> := <strong>None</strong> | <strong>ClassDefinitionInstance</strong> | <strong>TypeDefinitionInstance</strong> | <strong>EnumDefinitionInstance</strong> | <strong>ClassDefinitionReferenceInstance</strong> | <strong>CollectionInstance</strong></p>
+</blockquote>
+<div class="mermaid">classDiagram
+    Instance &lt;|-- ClassDefinitionInstance
+    Instance &lt;|-- AtomicInstance
+    AtomicInstance &lt;|-- ClassDefinitionReferenceInstance
+    AtomicInstance &lt;|-- TypeDefinitionInstance
+    AtomicInstance &lt;|-- EnumDefinitionInstance
+    Instance &lt;|-- CollectionInstance
+    Instance &lt;-- None
+
+</div>
+<h3 id="instances-of-classdefinition">instances of ClassDefinition</h3>
+<p>A <strong>ClassDefinitionInstance</strong> is a pair consisting of (1) a
+ClassDefinition <em>Name</em> and (2) zero to many <em>Assignments</em>*, where each
+assignment is a pair of a slot (attribute) and an instance value.</p>
+<p><strong>ClassDefinitionInstance</strong> := <strong>ClassDefinitionName</strong> '(' &lt;<strong>Assignment</strong>&gt;List ')'</p>
+<p><strong>Assignment</strong> := <strong>SlotName</strong> '=' <strong>Instance</strong></p>
+<div class="mermaid">classDiagram
+    Instance &lt;|-- ClassDefinitionInstance
+    ClassDefinitionInstance "0..*" *--&gt; Assignment
+    Assignment "1" --&gt; Instance
+
+    class ClassDefinitionInstance {
+      +ClassDefinitionName type
+      +Assignment assignments
+    }
+    class Assignment {
+      +SlotDefinitionName slot
+      +Instance value
+    }
+</div>
+<p>No SlotName can appear twice in any ClassDefinitionInstance (i.e. SlotName is a key)</p>
+<p>For example, given a class name <strong>Person</strong>, a ClassDefinition instance might look like:</p>
+<pre><code class="language-python">Person(id=...,
+       name=...,
+       &lt;other slot-value assignments&gt;)
+</code></pre>
+<p>The set of permitted slots for a class is defined by LinkML
+<em>schema</em>. An instance can be syntactically valid (i.e conforming to the
+grammar defined in this section) while structurally invalid (i.e not
+conforming to a schema).</p>
+<h3 id="primitive-instances">Primitive Instances</h3>
+<p>There are 3 types of primitive instances, each is a pair consisting of (1) the definition name and (2) an atomic value</p>
+<p><strong>TypeDefinitionInstance</strong> := <strong>TypeDefinitionName</strong> '(' <strong>AtomicValue</strong> ')'</p>
+<p><strong>EnumDefinitionInstance</strong> := <strong>EnumDefinitionName</strong> '(' <strong>AtomicValue</strong> ')'</p>
+<p><strong>ClassDefinitionReferenceInstance</strong> := <strong>ClassDefinitionReferenceName</strong> '(' <strong>AtomicValue</strong> ')'</p>
+<div class="mermaid">classDiagram
+    Instance &lt;|-- AtomicInstance
+    AtomicInstance &lt;|-- ClassDefinitionReferenceInstance
+    AtomicInstance &lt;|-- TypeDefinitionInstance
+    AtomicInstance &lt;|-- EnumDefinitionInstance
+    class Instance {
+
+    }
+    class AtomicInstance {
+      +AtomicValue value
+    }
+    class ClassDefinitionReferenceInstance {
+      +ClassDefinitionName type
+    }
+    class TypeDefinitionInstance {
+      +TypeDefinitionName type
+    }
+    class EnumDefinitionInstance {
+      +EnumDefinitionName type
+    }
+</div>
+<p>For example, given a type name <strong>PhoneNumber</strong>, a TypeDefinition instance might look like: </p>
+<pre><code class="language-python">PhoneNumber("+1 800 555 0100")
+</code></pre>
+<p>And given a ClassDefinitionReference <strong>PersonId</strong>, a ClassDefinitionReference instance might look like: </p>
+<pre><code class="language-python">PersonId("SSN:456")
+</code></pre>
+<p>This MAY be the same string used to identify an instance of a ClassDefinition <code>Person(id="SSN:456")</code>, but this is not required.</p>
+<p>The semantics of these primitive instance types are defined by a <em>schema</em></p>
+<h3 id="atomic-values">Atomic Values</h3>
+<p>An atomic value is either a string or number or boolean, where numbers can be floating points, decimals, or integers.</p>
+<p><strong>AtomicValue</strong> := <strong>StringValue</strong> | <strong>NumberValue</strong> | <strong>BooleanValue</strong></p>
+<p><strong>StringValue</strong> := <em>a finite sequence of characters in which " (U+22) and \ (U+5C) occur only in pairs of the form \" (U+5C, U+22) and \ (U+5C, U+5C), enclosed in a pair of " (U+22) characters</em></p>
+<p><strong>NumberValue</strong> := <strong>FloatingPointValue</strong> | <strong>DecimalValue</strong> | <strong>IntegerValue</strong></p>
+<p><strong>FloatingPointValue</strong> ::= [ '+' | '-'] ( <strong>Digits</strong> ['.'<strong>Digits</strong>] [ <strong>Exponent</strong> ] | '.' <strong>Digits</strong> [ <strong>Exponent</strong> ]) ( 'f' | 'F' )</p>
+<p><strong>Exponent</strong> ::= ('e' | 'E') ['+' | '-'] <strong>Digits</strong></p>
+<p><strong>DecimalValue</strong> ::= ['+' | '-'] <strong>Digits</strong> '.' <strong>Digits</strong> </p>
+<p><strong>IntegerValue</strong> ::= ['+' | '-'] <strong>Digits</strong></p>
+<p><strong>NonNegativeInteger</strong> ::= <strong>Zero</strong> | <strong>PositiveInteger</strong></p>
+<p><strong>PositiveInteger</strong> ::= <strong>NonZero</strong> { <strong>Digit</strong> }</p>
+<p><strong>Digits</strong> ::= <strong>Digit</strong> { <strong>Digit</strong> }</p>
+<p><strong>Digit</strong> ::= <strong>Zero</strong> | <strong>NonZero</strong></p>
+<p><strong>NonZero</strong> := '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'</p>
+<p><strong>Zero</strong> ::= '0'</p>
+<p><strong>BooleanValue</strong> ::= 'True' | 'False'</p>
+<p>Examples of atomic values are:</p>
+<ul>
+<li><code>180.2</code> -- a DecimalValue</li>
+<li><code>5</code> -- an IntegerValue</li>
+<li><code>"Alex"</code> -- a StringValue</li>
+</ul>
+<h3 id="collections">Collections</h3>
+<p>A collection is zero or more instances, serialized as a comma-delimited list:</p>
+<p><strong>CollectionInstance</strong> := '[' &lt;<strong>Instance</strong>&gt;List ']'</p>
+<div class="mermaid">
+classDiagram
+Instance &lt;|-- CollectionInstance
+CollectionInstance "0..*" --&gt; Instance
+</div>
+<p>Examples of lists:</p>
+<ul>
+<li><code>[String("A"), String("B"), Integer(5)]</code> -- a list of primitive instances</li>
+<li><code>[Person(name=...), Person(name=...)]</code> -- a list of class instances</li>
+<li><code>[]</code> -- an empty list</li>
+</ul>
+<h3 id="none-null-instances">None (Null) instances</h3>
+<p>A special symbol is included to indicate null or missing values</p>
+<p><strong>None</strong> := 'None'</p>
+<p>An assignment of a slot to None is equivalent to omitting that assigment. I.e. the following two instance serializations are equivalent:</p>
+<pre><code>Person(address=None)
+</code></pre>
+<pre><code>Person()
+</code></pre>
+<h3 id="definition-names">Definition Names</h3>
+<p>Definition names are used to unambiguously indicate definitions specified in a schema</p>
+<p><strong>ClassDefinitionName</strong> := <strong>Name</strong></p>
+<p><strong>ClassDefinitionReferenceName</strong> := <strong>Name</strong></p>
+<p><strong>TypeDefinitionName</strong> := <strong>Name</strong></p>
+<p><strong>EnumDefinitionName</strong> := <strong>Name</strong></p>
+<p><strong>SlotDefinitionName</strong> := <strong>Name</strong></p>
+<p><strong>Name</strong> := <em>a finite sequence of characters matching the PN_LOCAL production of [SPARQL] and not matching any of the keyword terminals of the syntax</em></p>
+<p>Note that the grammar needs a table mapping names to types in order to
+unambiguously parse a serialization in functional syntax</p>
+<p>names must not be shared across definition types</p>
+<h3 id="example">Example</h3>
+<p>The following is an example of an instance of a ClassDefinition called <strong>Person</strong>:</p>
+<pre><code class="language-python">Person(
+  id=String("SSN:123"),
+  name=String("Alex"),
+  aliases=[String("Alexandra")],
+  address=None,
+  phone=PhoneNumber("+1 800 555 0100"),
+  height=
+    Measurement(value=Decimal(170.2)
+                unit=UnitCode("cm")),
+  relationships=[
+    FamilialRelationship(
+      type=RelationshipType("SIBLING_OF"),
+      related_to=PersonId("SSN:456")
+    )
+  ]
+)                
+</code></pre>
+<p>See (YAML-Mapping)[#YAML-Mapping] for an example of the equivalent structure expressed in YAML.</p>
+<p>Parsing this requires a table that maps definition names to schema element types:</p>
+<table>
+<thead>
+<tr>
+<th>Definition Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Person</td>
+<td>ClassDefinition</td>
+</tr>
+<tr>
+<td>Measurement</td>
+<td>ClassDefinition</td>
+</tr>
+<tr>
+<td>FamilialRelationship</td>
+<td>ClassDefinition</td>
+</tr>
+<tr>
+<td>UnitCode</td>
+<td>EnumDefinition</td>
+</tr>
+<tr>
+<td>Person</td>
+<td>ClassDefinition</td>
+</tr>
+</tbody>
+</table>
+<h2 id="identity-conditions">Identity conditions</h2>
+<p>For two instances <code>i</code> and <code>j</code> to be identical they must be of the same metatype.</p>
+<p>Identity conditions for two primitive instances are satisfied if both DefinitionName and AtomicValue match</p>
+<p><strong>None</strong> is identical to itself</p>
+<p>Two collections are identical if they are of the same length and each member of <code>i</code> is identical to at least one member of <code>j</code></p>
+<p>Two ClassDefinition instances are identical if the instantiated ClassDefinitionName is identical and each non-None assignment
+in <em>i</em> is identical an assignment in <code>j</code> and, and each non-None assignment in <code>j</code> is identical to an assignment in <code>i</code></p>
+<p>Two assignments are identical if the slot name is the same, and the value is identical</p>
+<h2 id="instance-serializations">Instance Serializations</h2>
+<p>The abstract syntax provided here is intended as a normative syntax for the purposes
+of specifying the semantics of LinkML.</p>
+<p>See future sections for details on how this functional syntax maps to other serialization
+syntaxes and models such as JSON and RDF.</p>
+<h2 id="instance-accessor-syntax">Instance Accessor Syntax</h2>
+<p>For a given instance <code>i</code>, <em>accessor</em> syntax can be used to dereference values.</p>
+<p><strong>Path</strong> := <strong>Source</strong> { <strong>PathExtension</strong> }</p>
+<p><strong>PathExtension</strong> := '.' <strong>SlotDefinitionName</strong> | '[' <strong>Identifier</strong> ']'</p>
+<p>To interpret an accessor for a given instance <em>i</em>:</p>
+<ul>
+<li>if the path extension is <code>.&lt;s&gt;</code> then <em>i</em> must be a ClassDefinition instance, and the value is equal to the value of the slot assignment for slot <code>s</code></li>
+<li>if the path extension is <code>[&lt;id&gt;]</code> then <em>i</em> must be a Collection instance, and the value is equals to the member of that list that has a slot with the role of <em>identifier</em> whose value is <code>&lt;id&gt;</code></li>
+</ul>
+<p>For example, if <em>i</em> is equal to the Person instance in the example above:</p>
+<ul>
+<li><code>i.id</code> == <code>String("SSN:123")</code></li>
+<li><code>i.height.unit</code> == <code>String("cm")</code></li>
+</ul>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../01introduction/" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../03schemas/" title="Schema Datamodel">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../01introduction/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../03schemas/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script>var base_url = '../..';</script>
+<script defer="" src="../../js/theme_extra.js"></script>
+<script defer="" src="../../js/theme.js"></script>
+<script defer="" src="../../search/main.js"></script>
+<script defer="">
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Schema Datamodel - LinkML Model</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Schema Datamodel";
+        var mkdocs_page_input_path = "specification/03schemas.md";
+        var mkdocs_page_url = null;
+      </script>
+<script defer="" src="../../js/jquery-3.6.0.min.js"></script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-2SYBSJVZ23"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-2SYBSJVZ23');
+      </script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> LinkML Model
+        </a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../home/">About</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Specification</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../00preamble/">Preface</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01introduction/">Introduction</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02instances/">Instances</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="./">Schema Datamodel</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#schema-basics">Schema Basics</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#elements-and-expressions">Elements and Expressions</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#metaclasses">Metaclasses</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#classdefinition">ClassDefinition</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#slotdefinition">SlotDefinition</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#enumdefinition">EnumDefinition</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#typedefinition">TypeDefinition</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#classdefinitionreferences">ClassDefinitionReferences</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#other-schema-elements">Other Schema Elements</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#prefixes">Prefixes</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#composition-of-expressions">Composition of Expressions</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#built-in-and-defined-types">Built in and defined types</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04derived-schemas/">Derived Schemas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05validation/">Instance Validation</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06mapping/">Mapping of Instances</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Metamodel</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">LinkML Model</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a alt="Docs" class="icon icon-home" href="../.."></a> »</li>
+<li>Specification »</li><li>Schema Datamodel</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="linkml-schemas">LinkML Schemas</h1>
+<p>This section describes the <em>structure</em> of a LinkML schema. </p>
+<h2 id="schema-basics">Schema Basics</h2>
+<p>A LinkML <strong>schema</strong> specifies rules and structural conformance conditions for <em>instances</em>. Schemas allow for:</p>
+<ul>
+<li>parsing of instance <strong>serializations</strong> to LinkML instance structures</li>
+<li>structurally and semantically validating LinkML instance structures</li>
+<li>inferring missing values in LinkML instance structures</li>
+</ul>
+<p>Every LinkML schema <code>m</code> is itself an instance of a special class <code>SchemaDefinition</code> that forms part of a special schema called the <em>LinkML metamodel</em> (abbreviated <code>MM</code>).
+There is exactly one metamodel.</p>
+<p>In this specification:</p>
+<ul>
+<li>Classes in <code>MM</code> are called Metaclasses</li>
+<li>Slots in <code>MM</code> are called Metaslots</li>
+</ul>
+<p>The metamodel is itself expressed in LinkML, and the latest version can be browsed online</p>
+<ul>
+<li><a href="https://w3id.org/linkml/SchemaDefinition">SchemaDefinition</a></li>
+</ul>
+<p>A schema is canonically represented in YAML. This representation is the YAML serialization of a SchemaDefinition instance following the rules for YAML
+serialization in the mapping section.</p>
+<p>This specification specifies the <em>minimal elements</em> necessary to specify the behavior of LinkML schemas. Schemas may have additional
+elements provided in the metamodel.</p>
+<p>Formally a schema <code>m</code> consists at least of the following <em>elements</em>:</p>
+<ul>
+<li>class definitions <code>MC = {c1,...}</code>, which group <em>instances</em></li>
+<li>slot definitions <code>MS = {s1, ...}</code>, which describe how instances relate to other instances</li>
+<li>enum definitions <code>ME = {e1, ...}</code>, enumerated values (value sets)</li>
+<li>Enum definitions <code>MT = {t1, ...}</code>, scalar/atomic Enums, such as integers, strings</li>
+<li>subset definitions <code>MP = {ss1, ..}</code>, which partition model elements into groupings or views</li>
+<li>URI prefixes <code>MU = {prefix1, ..}</code>, which partition model elements into groupings or views</li>
+<li>imports <code>MI = {imp1, ..}</code>, which reference schemas that are reused</li>
+<li>class definition references <code>MR = {r1,...}</code>, which group <em>pointers to instances</em></li>
+<li>model-level metadata</li>
+</ul>
+<p>These are stored in the SchemaDefinition instance as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Element</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>m.classes</code></td>
+<td><code>MC</code></td>
+</tr>
+<tr>
+<td><code>m.slots</code></td>
+<td><code>MS</code></td>
+</tr>
+<tr>
+<td><code>m.enums</code></td>
+<td><code>ME</code></td>
+</tr>
+<tr>
+<td><code>m.Enums</code></td>
+<td><code>MT</code></td>
+</tr>
+<tr>
+<td><code>m.subsets</code></td>
+<td><code>MP</code></td>
+</tr>
+<tr>
+<td><code>m.imports</code></td>
+<td><code>MI</code></td>
+</tr>
+<tr>
+<td><code>m.prefixes</code></td>
+<td><code>MU</code></td>
+</tr>
+<tr>
+<td><code>m.&lt;metaslot&gt;</code></td>
+<td>model-level metadata</td>
+</tr>
+</tbody>
+</table>
+<p>the high level schema can be depicted as:</p>
+<div class="mermaid">classDiagram
+    SchemaDefinition "*"--&gt;ClassDefinition: classes
+    SchemaDefinition "*"--&gt;SlotDefinition: slots
+    SchemaDefinition "*"--&gt;EnumDefinition: enums
+    SchemaDefinition "*"--&gt;EnumDefinition: Enums
+    SchemaDefinition "*"--&gt;SubsetDefinition: subsets
+    SchemaDefinition "*"--&gt;Prefix: prefixes
+    ClassDefinition --|&gt; Element
+    SlotDefinition --|&gt; Element
+    EnumDefinition --|&gt; Element
+    EnumDefinition --|&gt; Element
+    class SchemaDefinition {
+      +Uri id
+      +NcName name
+      +UriOrCurie[] imports
+      +Ncname default_prefix
+      +Uri default_range
+    }
+</div>
+<p>The metamodel makes use of the standard <em>types</em> library, see below</p>
+<p>For example, consider a schema that models representations of individual people and organizations they belong to may include a class definition <code>Person</code>, and slot definitions for <code>name</code>, <code>address</code>, <code>relationships</code> and so on.</p>
+<p>Because schemas, are instances of the metamodel, this hypothetical schema may be serialized in functional instance syntax as follows:</p>
+<pre><code>SchemaDefinition(
+  id=String('http://example.org/organization'),
+  classes=[
+    ClassDefinition(
+      name=String("Person"),
+      slots=[
+        String("id"),
+        String("name"),
+        String("height"),
+        String("age"),
+        ...
+      ]
+    ),
+    ClassDefinition(
+      name=String("Organization"),
+      slots=[
+        String("id"),
+        ...
+      ]
+    ),
+    ...
+  ],
+  slots=[
+    SlotDefinition(
+      name=String("id"),
+      identifier=True,
+      description=String("..."),
+      range=String("String"),
+      ...
+    ),
+    SlotDefinition(
+      name=String("name"),
+      description=String("..."),
+      range=String("String"),
+      ...
+    )
+  ],
+  enums=[
+     EnumDefinition(
+       name=String("JobCode"),
+       permissible_values=[...],
+     )
+  ],
+  Enums=[
+     EnumDefinition(
+       name=String("Date"),
+       ...
+     ),
+     EnumDefinition(
+       name=String("String"),
+       ...
+     ),
+  ]
+)  
+</code></pre>
+<p>This maps to:</p>
+<table>
+<thead>
+<tr>
+<th>Example Model: Organization Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MC</code> Classes: <em>Person</em>, <em>Organization</em>, <em>Address</em>, ...</td>
+</tr>
+<tr>
+<td><code>MS</code> Slots: <em>id</em>, <em>name</em>, <em>date_of_birth</em>, <em>employed_at</em>, <em>lives_at</em>, ...</td>
+</tr>
+<tr>
+<td><code>ME</code> Enums: <em>JobCode</em>, ...</td>
+</tr>
+<tr>
+<td><code>MT</code> Enums: <em>Date</em>, <em>String</em>, ...</td>
+</tr>
+</tbody>
+</table>
+<p>To help understand the basic concepts, it can be helpful to think about analogous structures in other frameworks.
+However, it should be understood these are not equivalents.</p>
+<ul>
+<li>ClassDefinitions are analogous to: <ul>
+<li><a href="https://en.wikipedia.org/wiki/Class_(computer_programming)">classes</a> in object-oriented languages </li>
+<li>tables in relational databases and spreadsheets</li>
+<li>owl:Class entities in RDFS/OWL</li>
+</ul>
+</li>
+<li>SlotDefinitions are analogous to:<ul>
+<li><a href="https://en.wikipedia.org/wiki/Attribute_(computing)">attributes</a> in object-oriented languages</li>
+<li>columns or fields in relational databases and spreadsheets</li>
+<li>properties in JSON-Schema</li>
+<li>rdf:Property entities in RDFS/OWL</li>
+</ul>
+</li>
+<li>EnumDefinitions are analogous to:<ul>
+<li><a href="https://en.wikipedia.org/wiki/Enumerated_Enum">enumerated Enums</a> in programming languages and some relational systems</li>
+<li>Note however that in LinkML enums are optionally backed by stronger semantics with enum elements (permissible values) mapped to vocabularies or ontologies</li>
+</ul>
+</li>
+<li>EnumDefinitions are analogous to:<ul>
+<li><a href="https://en.wikipedia.org/wiki/Data_Enum">data Enums</a> in most OO languages </li>
+<li>primitive Enums in database systems</li>
+<li>extensible Enums in some systems</li>
+<li>rdf:Literals in RDF</li>
+<li>DataEnums in OWL</li>
+</ul>
+</li>
+</ul>
+<h2 id="elements-and-expressions">Elements and Expressions</h2>
+<p>For each of the 4 core element Enums <code>&lt;T&gt;</code>, there are a triad of 3 classes in the metamodel:</p>
+<ul>
+<li><code>&lt;T&gt;Expression</code></li>
+<li><code>Anonymous&lt;T&gt;Expression</code></li>
+<li><code>&lt;T&gt;Definition</code></li>
+</ul>
+<p>depicted as:</p>
+<div class="mermaid">classDiagram
+T_Expression "*" --&gt; AnonymousT_Expression: &lt;boolean combinator&gt;
+class T_Definition {
+  +T_Name name
+}
+T_Definition --|&gt; T_Expression
+AnonymousT_Expression --|&gt; T_Expression
+</div>
+<p>For many purposes, all that is required is the Definition element. The purpose of the above abstraction is to allow
+composition of anonymous expressions using boolean operators. For example, we may want to refer to the union of collection
+of ClassDefinitions.</p>
+<h2 id="metaclasses">Metaclasses</h2>
+<ul>
+<li>metamodel documentation: <a href="https://w3id.org/linkml/Element">Element</a></li>
+</ul>
+<p>The following describes the structure of schema elements. Each element of a schema instantiates a <em>Metaclass</em></p>
+<h3 id="classdefinition">ClassDefinition</h3>
+<ul>
+<li>metamodel documentation: <a href="https://w3id.org/linkml/ClassDefinition">ClassDefinition</a></li>
+</ul>
+<p>Instances of <strong>ClassDefinition</strong> are <em>instantiable</em>.</p>
+<p>Any LinkML instance that instantiates a ClassDefinition will have zero to many slot-value assignments, constrained
+by rules that operate off of the metaslot assignments of that class.</p>
+<p>ClassDefinition inherits from both Element and ClassExpression. A ClassDefinition must have a <em>name</em>.
+ClassDefinitions may refer to <strong>AnonymousClassExpression</strong>s as part of boolean expressions.</p>
+<div class="mermaid">classDiagram
+ClassExpression "*" --&gt; AnonymousClassExpression: any_of
+ClassExpression "*" --&gt; AnonymousClassExpression: exactly_one_of
+ClassExpression "*" --&gt; AnonymousClassExpression: none_of
+ClassExpression "*" --&gt; AnonymousClassExpression: all_of      
+ClassDefinition --|&gt; ClassExpression: mixin
+ClassDefinition --|&gt; Element: is_a
+AnonymousClassExpression --|&gt; ClassExpression
+class ClassDefinition {
+  +ClassDefinitionName name
+  +boolean abstract
+  +boolean mixin
+}
+ClassDefinition "*"--&gt; SlotDefinition: slots
+ClassDefinition "*"--&gt; SlotDefinition: slot_usage
+ClassDefinition "*"--&gt; AttributeDefinition: slot_usage
+ClassDefinition "0..1"--&gt; ClassDefinition: is_a
+ClassDefinition "*"--&gt; ClassDefinition: mixins
+ClassDefinition "*"--&gt; AnonymousClassExpression: classification_rules
+ClassDefinition "*"--&gt; ClassRule: rules
+</div>
+<ul>
+<li><code>name</code> is a required field that uniquely identifiers the <strong>ClassDefinition</strong> within a schema</li>
+<li><code>slots</code> is a list of slot names indicating the slots that are applicable for that class</li>
+<li><code>slot_usage</code> is a list of slots that specifies more specific usage conditions for the slot in the context of this class</li>
+<li><code>attributes</code> is a list of slots that are intended to be local to the class</li>
+<li><code>is_a</code> is an optional parent class which this class inherits from</li>
+<li><code>mixins</code> is a list of parent mixin class which this class inherits from</li>
+<li><code>abstract</code> is a boolean indicating whether the class is intended to be directly instantiated</li>
+<li><code>mixin</code> is a boolean indicating whether the class is intended to be uses as a mixin</li>
+</ul>
+<p>An example collection of ClassDefinitions in a schema specified using the functional syntax might be:</p>
+<pre><code class="language-python">SchemaDefinition(
+  classes=[
+   ClassDefinition(
+    name=String("NamedThing"),
+    abstract=True,
+    slots=[
+        String("id"),
+        String("name"),
+        ...
+      ]
+    ),
+   ClassDefinition(
+    name=String("Person"),
+    description=String("A person, living or dead"),
+    is_a=String("NamedThing"),
+    attributes=[
+        SlotDefinition(
+            name=String("height"),
+            ...),
+        SlotDefinition(
+            name=String("age"),
+            ...)
+    ],
+    ...
+    )
+</code></pre>
+<p>This might be used to validate an instance:</p>
+<pre><code class="language-python">Person(id=String("P:123"),
+       name=String("Alex"),
+       height=...
+       age=...)
+</code></pre>
+<p>See the next sections for validation rules</p>
+<h3 id="slotdefinition">SlotDefinition</h3>
+<ul>
+<li>metamodel documentation: <a href="https://w3id.org/linkml/SlotDefinition">SlotDefinition</a></li>
+</ul>
+<p><strong>SlotDefinition</strong> is NOT <em>instantiable</em>. Each assignment in a LinkML <strong>ClassDefinition</strong> instance must use a SlotDefinition from the schema.</p>
+<p>SlotDefinition inherits from both Element and SlotExpression. A SlotDefinition must have a <em>name</em>.
+other schema elements may refer to <strong>AnonymousSlotExpression</strong>s composed using boolean operators.</p>
+<div class="mermaid">classDiagram
+class SlotExpression {
+  +SlotDefinitionName range
+}
+SlotExpression "*" --&gt; AnonymousSlotExpression: any_of
+SlotExpression "*" --&gt; AnonymousSlotExpression: exactly_one_of
+SlotExpression "*" --&gt; AnonymousSlotExpression: none_of
+SlotExpression "*" --&gt; AnonymousSlotExpression: all_of   
+class SlotDefinition {
+  +SlotDefinitionName name
+  +boolean identifier
+  +boolean key
+  +boolean abstract
+  +boolean mixin
+  +boolean designates_type
+  +SlotDefinitionName is_a
+  +SlotDefinitionName[] mixins
+  +ClassDefinitionName range
+  +Decimal minimum_value
+  +Decimal maximum_value
+  +String equals_expression
+  +String pattern
+  +String string_serialization
+  +boolean symmetric
+  +boolean asymmetric
+  +boolean reflexive
+  +boolean irreflexive
+  +boolean locally_reflexive
+  +boolean transitive
+  +SlotDefinition transitive_form_of
+  +SlotDefinition reflexive_transitive_form_of 
+  +SlotDefinition inverse
+}
+SlotDefinition --|&gt; SlotExpression: mixin
+SlotDefinition --|&gt; Element: is_a
+SlotDefinition "0..1" --&gt; SlotDefinition: is_a
+SlotDefinition "*" --&gt; SlotDefinition: mixins
+</div>
+<p>An example collection of SlotDefinitions might be:</p>
+<pre><code class="language-python">SchemaDefinition(
+  slots=[
+   SlotDefinition(
+    name=String("id"),
+    identifier=True,
+    description=String("A unique identifier for an object"),
+    range=String("String"),
+    ...
+    ),
+   SlotDefinition(
+    name=String("name"),
+    description=String("..."),
+    range=String("String"),
+    ...
+    )
+</code></pre>
+<h3 id="enumdefinition">EnumDefinition</h3>
+<ul>
+<li>metamodel documentation: <a href="https://w3id.org/linkml/EnumDefinition">EnumDefinition</a></li>
+</ul>
+<p><strong>EnumDefinition</strong> instances are <em>instantiable</em>. </p>
+<div class="mermaid">classDiagram
+class EnumExpression {
+  +TypeDefinitionName range
+}
+EnumExpression "*" --&gt; AnonymousEnumExpression: any_of
+EnumExpression "*" --&gt; AnonymousEnumExpression: exactly_one_of
+EnumExpression "*" --&gt; AnonymousEnumExpression: none_of
+EnumExpression "*" --&gt; AnonymousEnumExpression: all_of   
+class EnumDefinition {
+  +EnumDefinitionName name
+}
+EnumDefinition "*" --&gt; PermissibleValue: permissible_values
+class PermissibleValue {
+  +String text
+  +String description
+  +UriOrCurie meaning
+}
+</div>
+<h3 id="typedefinition">TypeDefinition</h3>
+<ul>
+<li>metamodel documentation: <a href="https://w3id.org/linkml/TypeDefinition">TypeDefinition</a></li>
+</ul>
+<p><strong>TypeDefinition</strong> instances are <em>instantiable</em>.</p>
+<div class="mermaid">classDiagram
+class TypeExpression {
+  +TypeDefinitionName range
+}
+TypeExpression "*" --&gt; AnonymousTypeExpression: any_of
+TypeExpression "*" --&gt; AnonymousTypeExpression: exactly_one_of
+TypeExpression "*" --&gt; AnonymousTypeExpression: none_of
+TypeExpression "*" --&gt; AnonymousTypeExpression: all_of   
+class TypeDefinition {
+  +TypeDefinitionName name
+  +TypeDefinitionName typeof
+  +TypeDefinitionName[] mixins
+  +Uri uri
+  +String base
+  +String repo
+}
+TypeDefinition --|&gt; TypeExpression: mixin
+TypeDefinition --|&gt; Element: is_a
+
+</div>
+<p>See below for the standard types included with LinkML. These can be extended using <code>typeof</code></p>
+<h3 id="classdefinitionreferences">ClassDefinitionReferences</h3>
+<p><strong>ClassDefinitionReferences</strong> are primitive elements that provide a way to reference a particular instances.</p>
+<p>ClassDefinitionReferences are not part of the asserted metamodel but are derived from derivation rules -- see next section</p>
+<h2 id="other-schema-elements">Other Schema Elements</h2>
+<h3 id="prefixes">Prefixes</h3>
+<ul>
+<li>metamodel documentation: <a href="https://w3id.org/linkml/Prefix">Prefix</a></li>
+</ul>
+<div class="mermaid">classDiagram
+    SchemaDefinition "*"--&gt;Prefix: prefixes
+    class Prefix {
+      +Ncname prefix_prefix
+      +Uri prefix_reference
+    }
+</div>
+<p>Example:</p>
+<pre><code class="language-python">SchemaDefinition(
+    prefixes=[
+       Prefix(prefix_prefix=Ncname("linkml")
+              prefix_reference=Uri("https://w3id.org/linkml/")),
+       Prefix(prefix_prefix=Ncname("schema")
+              prefix_reference=Uri("http://schema.org")),
+       Prefix(prefix_prefix=Ncname("wgs")
+              prefix_reference=Uri("http://www.w3.org/2003/01/geo/wgs84_pos#")),
+       Prefix(prefix_prefix=Ncname("qudt")
+              prefix_reference=Uri("http://qudt.org/1.1/schema/qudt#"))
+    ])
+</code></pre>
+<h2 id="composition-of-expressions">Composition of Expressions</h2>
+<h2 id="built-in-and-defined-types">Built in and defined types</h2>
+<p>LinkML has a number of types defined in the types model, documented <a href="https://linkml.io/linkml-model/docs/#types">here</a></p>
+<ul>
+<li>Boolean (Bool) - A binary (true or false) value</li>
+<li>Date (XSDDate) - a date (year, month and day) in an idealized calendar</li>
+<li>Datetime (XSDDateTime) - The combination of a date and time</li>
+<li>Decimal (Decimal) - A real number with arbitrary precision that conforms to the xsd:decimal specification</li>
+<li>Double (float) - A real number that conforms to the xsd:double specification</li>
+<li>Float (float) - A real number that conforms to the xsd:float specification</li>
+<li>Integer (int) - An integer</li>
+<li>Ncname (NCName) - Prefix part of CURIE</li>
+<li>Nodeidentifier (NodeIdentifier) - A URI, CURIE or BNODE that represents a node in a model.</li>
+<li>Objectidentifier (ElementIdentifier) - A URI or CURIE that represents an object in the model.</li>
+<li>String (str) - A character string</li>
+<li>Time (XSDTime) - A time object represents a (local) time of day, independent of any particular day</li>
+<li>Uri (URI) - a complete URI</li>
+<li>Uriorcurie (URIorCURIE) - a URI or a CURIE</li>
+</ul>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../02instances/" title="Instances"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../04derived-schemas/" title="Derived Schemas">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../02instances/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../04derived-schemas/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script>var base_url = '../..';</script>
+<script defer="" src="../../js/theme_extra.js"></script>
+<script defer="" src="../../js/theme.js"></script>
+<script defer="" src="../../search/main.js"></script>
+<script defer="">
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</html>

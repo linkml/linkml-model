@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Mapping of Instances - LinkML Model</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Mapping of Instances";
+        var mkdocs_page_input_path = "specification/06mapping.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-2SYBSJVZ23"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-2SYBSJVZ23');
+      </script>
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> LinkML Model
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../home/">About</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Specification</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../00preamble/">Preface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01introduction/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02instances/">Instances</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03schemas/">Schema Datamodel</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04derived-schemas/">Derived Schemas</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05validation/">Instance Validation</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Mapping of Instances</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#translation-of-instances-to-json-or-yaml">Translation of instances to JSON or YAML</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#instances-of-classdefinition">Instances of ClassDefinition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#instances-of-none">Instances of None</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#instances-of-collection">Instances of Collection</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#instances-of-typedefinition">Instances of TypeDefinition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#instances-of-enumdefinition">Instances of EnumDefinition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#instances-of-classdefinitionreference">Instances of ClassDefinitionReference</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#translation-to-rdf">Translation to RDF</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#mapping-of-curies-to-uris">Mapping of CURIEs to URIs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#direct-translation-of-instance-graphs-to-rdf">Direct Translation of instance graphs to RDF</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#instances-of-classdefinition_1">Instances of ClassDefinition</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#instances-of-typedefinition_1">Instances of TypeDefinition</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#instances-of-enumdefinition_1">Instances of EnumDefinition</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#instances-of-classdefinitionreference_1">Instances of ClassDefinitionReference</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#translation-of-instance-graphs-to-rdf-graphs-via-json-ld">Translation of instance graphs to RDF graphs (via JSON-LD)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#translation-of-instance-graphs-to-rdf-and-property-graphs">Translation of instance graphs to RDF* and property graphs</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Metamodel</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">LinkML Model</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Specification &raquo;</li><li>Mapping of Instances</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="translation-of-instance-graphs">Translation of instance graphs</h1>
+<p>This section describes how LinkML instances are translated to different formats and data models.</p>
+<ul>
+<li>Conversion <em>from</em> LinkML instances to another format is called <em>serialization</em> or <em>dumping</em></li>
+<li>Conversion <em>to</em> LinkML instances from another format is called <em>parsing</em> or <em>loading</em></li>
+</ul>
+<p>The reference implementation is the <a href="https://github.com/linkml/linkml-runtime/">linkml-runtime</a> but other implementations that conform to this specification are valid.</p>
+<h2 id="translation-of-instances-to-json-or-yaml">Translation of instances to JSON or YAML</h2>
+<ul>
+<li>Serialization to JSON takes as input:<ul>
+<li>a (root) instance</li>
+</ul>
+</li>
+<li>Parsing from JSON takes as input:<ul>
+<li>a JSON document</li>
+<li>a target ClassDefinitionName</li>
+<li>a SchemaDefinition</li>
+</ul>
+</li>
+</ul>
+<h3 id="instances-of-classdefinition">Instances of ClassDefinition</h3>
+<p>Given an instance <code>i</code> of a ClassDefinition:</p>
+<p><em>ClassDefinitionName</em>( <code>s1=v1</code>, ..., <code>sn=v2</code> )</p>
+<p>This is translated to</p>
+<pre><code class="language-json">{
+   Tr(s1) = Tr(v1),
+   ...,
+   Tr(s2) = Tr(v2)           
+}
+</code></pre>
+<p>Note this is potentially lossy, as the type is dropped</p>
+<p>When parsing, if this is the root instance, then the target ClassDefinition is used</p>
+<p>If this is not the root instance, then the type is inferred from the root of the parent slot in the derived schema</p>
+<p>Optionally, this type is deepened if <code>C.type_designator</code> is not None - the value of this slot is used to
+set the target ClassDefinitionName</p>
+<h3 id="instances-of-none">Instances of None</h3>
+<p>The parent slot is omitted</p>
+<h3 id="instances-of-collection">Instances of Collection</h3>
+<p>If the parent slot <code>s.inlined_as_list=True</code></p>
+<pre><code>{
+   IdVal(member1): 
+      Tr(member1) - IdField(member1)
+   ...
+   IdVal(memberN): 
+      Tr(memberN) - IdField(memberN)
+}
+</code></pre>
+<p>otherwise:</p>
+<pre><code class="language-json">[
+   Tr(member_1),
+   ...
+   Tr(member_n),
+]
+</code></pre>
+<h3 id="instances-of-typedefinition">Instances of TypeDefinition</h3>
+<p>The direct value is used</p>
+<h3 id="instances-of-enumdefinition">Instances of EnumDefinition</h3>
+<p>The direct value is used</p>
+<h3 id="instances-of-classdefinitionreference">Instances of ClassDefinitionReference</h3>
+<p>The direct value is used</p>
+<h2 id="translation-to-rdf">Translation to RDF</h2>
+<p>Two RDF translations are provided:</p>
+<ul>
+<li>A <em>direct</em> translation</li>
+<li>Translation via JSON-LD, which combines<ol>
+<li>Translation of a LinkML <strong>SchemaDefinition</strong> to a <strong>JSON-LD Context</strong></li>
+<li>The standard translation of LinkML instances to JSON</li>
+</ol>
+</li>
+</ul>
+<p>Both translations make use of the <strong>prefixes</strong> provided in the schema</p>
+<p>The semantic content of both is equivalent. </p>
+<h3 id="mapping-of-curies-to-uris">Mapping of CURIEs to URIs</h3>
+<p>LinkML provides standard types:</p>
+<ul>
+<li>Curie</li>
+<li>Uri</li>
+<li>CurieOrUri</li>
+</ul>
+<p>The syntax for a CURIE is defined by <a href="https://www.w3.org/TR/curie/">W3C CURIE Syntax 1.0</a></p>
+<p><strong>curie</strong>       :=   [ [ <strong>prefix</strong> ] ':' ] <strong>reference</strong></p>
+<p><strong>prefix</strong>      :=   <strong><a href="https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName">NCName</a></strong></p>
+<p><strong>reference</strong>   :=   <strong><a href="https://www.ietf.org/rfc/rfc3987.txt">irelative-ref</a></strong></p>
+<p>We define a function <strong>CurieToUri</strong>(<code>x</code>) that maps (expands) a CurieOrUri to a Uri</p>
+<p>If <code>x</code> is already a Uri, then <code>x</code> is returned, otherwise the following procedure is followed</p>
+<p>To expand a CURIE with an explicit prefix to a URI using a schema <code>m</code>, first <code>m.prefixes</code> is consulted for <code>m.prefixes[prefix]</code>.</p>
+<p>If this is present, then <code>m.prefixes[prefix].prefix_reference</code> is uses as the <strong>Base URI</strong></p>
+<p>If this is not present, then <code>m.prefixes[m.default_prefix].prefix_reference</code> is used as the Base URI</p>
+<p>to obtain the URI, the Base URI is concatenated with the <strong>reference</strong></p>
+<p>If the CURIE has no explicit prefix, and the CURIE is value of a slot <code>s</code>, then <code>s.implicit_prefix</code> is used</p>
+<h3 id="direct-translation-of-instance-graphs-to-rdf">Direct Translation of instance graphs to RDF</h3>
+<p>A translation <strong>Tr</strong> operates on an instance <code>i</code>, in the context of a derived schema <code>m*</code></p>
+<h4 id="instances-of-classdefinition_1">Instances of ClassDefinition</h4>
+<p>If <code>i</code> is an instance of a ClassDefinition, then <strong>Tr</strong>(i) is as follows:</p>
+<p><em>ClassDefinitionName</em>( <code>s1=v1</code>, ..., <code>sn=v2</code> )</p>
+<p>We assign a value to <code>subject</code> which will be either an IRI, or a <strong>blank node</strong></p>
+<ul>
+<li>If <strong>IdVal</strong>(<code>i</code>) is None, the subject is assigned a blank node</li>
+<li>Otherwise <code>subject</code> = <strong>CurieToUri</strong>(<strong>IdVal</strong>(<code>i</code>)) </li>
+</ul>
+<p>We assign a value <code>object</code> for the type of <code>i</code>. This will be equivalent to the <code>c.class_uri</code> in <code>m*</code></p>
+<p>This is used to generate a triple (<code>subject</code> rdf:type <strong>CurieToUri</strong>(<code>object</code>))   </p>
+<p>For each <code>s=v</code> in the assignments where <code>s.identifier=True</code> does not hold, and <code>v</code> is not <strong>None</strong>, we generate a triple</p>
+<p>(<code>subject</code> TrSlot(s) Tr(v))</p>
+<p>Here <strong>TrSlot</strong>(<code>s</code>) = <strong>CurieToUri</strong>(<code>s.slot_uri</code>)</p>
+<h4 id="instances-of-typedefinition_1">Instances of TypeDefinition</h4>
+<p>If <code>i</code> is an instance of a TypeDefinition of type <code>t</code>
+then <strong>Tr</strong>(i) is translated to an RDF literal, with datatype  <strong>CurieToUri</strong>(t.uri)</p>
+<h4 id="instances-of-enumdefinition_1">Instances of EnumDefinition</h4>
+<p>If <code>i</code> is an instance of a EnumDefinition, then <strong>Tr</strong>(i) is as follows:</p>
+<p>If i corresponds to a PermissibleValue with <code>pv.meaning</code> that is not None, then
+<strong>Tr</strong>(i) = <strong>CurieToUri</strong>(pv.meaning)</p>
+<h4 id="instances-of-classdefinitionreference_1">Instances of ClassDefinitionReference</h4>
+<p>If <code>i</code> is an instance of a ClassDefinitionReference
+then <strong>Tr</strong>(i) = <strong>CurieToUri</strong>(i.value)</p>
+<h3 id="translation-of-instance-graphs-to-rdf-graphs-via-json-ld">Translation of instance graphs to RDF graphs (via JSON-LD)</h3>
+<p>To be specified</p>
+<h3 id="translation-of-instance-graphs-to-rdf-and-property-graphs">Translation of instance graphs to RDF* and property graphs</h3>
+<p>To be specified</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../05validation/" class="btn btn-neutral float-left" title="Instance Validation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../.." class="btn btn-neutral float-right" title="Metamodel">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../05validation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../.." style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

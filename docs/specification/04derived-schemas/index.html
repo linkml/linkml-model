@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Derived Schemas - LinkML Model</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Derived Schemas";
+        var mkdocs_page_input_path = "specification/04derived-schemas.md";
+        var mkdocs_page_url = null;
+      </script>
+<script defer="" src="../../js/jquery-3.6.0.min.js"></script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-2SYBSJVZ23"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-2SYBSJVZ23');
+      </script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> LinkML Model
+        </a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../home/">About</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Specification</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../00preamble/">Preface</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01introduction/">Introduction</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02instances/">Instances</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../03schemas/">Schema Datamodel</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="./">Derived Schemas</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#conventions">Conventions</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#function-classidentifier">Function: ClassIdentifier</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#function-closure">Function: Closure</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#function-ancestors">Function: Ancestors</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#derivation-rules">Derivation Rules</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#rule-model-imports">Rule: Model Imports</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rule-fromschema-elements">Rule: fromschema elements</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rule-applicable-slot-names">Rule: Applicable Slot Names</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rule-derived-attributes">Rule: Derived Attributes</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rule-default-range">Rule: Default Range</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rule-derived-class-and-slot-uris">Rule: Derived Class and Slot URIs</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#rule-generation-of-patterns-from-structured-patterns">Rule: Generation of patterns from structured patterns</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#rule-generation-of-classdefinitionreferences">Rule: Generation of ClassDefinitionReferences</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#structural-conformance-rules">Structural Conformance Rules</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#rule-each-referenced-entity-must-be-present">Rule: Each referenced entity must be present</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#classdefinition-structural-conformance-rules">ClassDefinition Structural Conformance Rules</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#slotdefinition-structural-conformance-rules">SlotDefinition Structural Conformance Rules</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#typedefinition-structural-conformance-rules">TypeDefinition Structural Conformance Rules</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#enumdefinition-structural-conformance-rules">EnumDefinition Structural Conformance Rules</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#classdefinitionreference-structural-conformance-rules">ClassDefinitionReference Structural Conformance Rules</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#metamodel-conformance-rules">Metamodel Conformance Rules</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05validation/">Instance Validation</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06mapping/">Mapping of Instances</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Metamodel</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">LinkML Model</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a alt="Docs" class="icon icon-home" href="../.."></a> »</li>
+<li>Specification »</li><li>Derived Schemas</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="derived-schemas">Derived Schemas</h1>
+<p>This section describes rules that can be applied to a schema to obtain a <em>derived</em> (aka <em>induced</em>) schema.</p>
+<p>The derived schema can be materialized, or it may be present as a <em>view</em> onto a schema. A derived view may also be referred to
+as an <em>inferred</em> or <em>induced</em> view.</p>
+<div class="mermaid">flowchart TD
+    M[Asserted Schema] --&gt; Derivation{Derivation Procedure}
+    Derivation --&gt;|derives| Mstar[Derived Schema]
+    R[Rules] --&gt; Derivation
+</div>
+<p>Derivations happen via <em>rules</em> that are specified below, using a set of convenience functions</p>
+<h2 id="conventions">Conventions</h2>
+<p>We use <code>m</code> to denote the input or asserted schema (model), and <code>m*</code> to denote the derived schema</p>
+<h2 id="functions">Functions</h2>
+<h3 id="function-classidentifier">Function: ClassIdentifier</h3>
+<p>The function <strong>ClassIdentifier</strong>(<code>c</code>) takes a ClassDefinition or ClassDefinitionName as input and returns:</p>
+<ul>
+<li>the name of a derived attribute <code>s</code> in <code>c</code> where <code>s.identifier</code> is True in <code>m*</code></li>
+<li><strong>None</strong> if there is no such slot</li>
+<li>An error if there are multiple such slots</li>
+</ul>
+<h3 id="function-closure">Function: Closure</h3>
+<p>The function <strong>Closure</strong>(<code>x</code>, <code>s</code>) takes as input an element <code>x</code> and a metaslot <code>s</code> and returns the mathematical closure
+of looking up <code>x.&lt;s&gt;</code></p>
+<p>The <strong>ReflexiveClosure</strong> includes <code>x</code></p>
+<h3 id="function-ancestors">Function: Ancestors</h3>
+<p>The function <strong>Ancestors</strong>(<code>x</code>) returns the <strong>Closure</strong> of the <strong>Parents</strong> function applied to <code>x</code>. <strong>Parents</strong> itself is the union of <code>is_a</code> and <code>mixins</code>.</p>
+<p>The function <strong>ReflexiveAncestors</strong> uses the <strong>ReflexiveClosure</strong>.</p>
+<h2 id="derivation-rules">Derivation Rules</h2>
+<h3 id="rule-model-imports">Rule: Model Imports</h3>
+<p>Each model imports zero to many imports, indicated by the <strong>SchemaDefinition</strong>.<a href="https://w3id.org/linkml/imports">imports</a> metaslot.</p>
+<p><code>m*</code> is set to be the union of all schema elements from the <strong>ReflexiveClosure</strong> of <code>m.imports</code></p>
+<p>When copying an element <code>x</code> from an import into <code>m*</code>, the name <code>x.name</code> must be unique - if the same name has been used in another model, the derivation procedure fails, and an error is thrown.</p>
+<p><strong>Note</strong>: If two or more models import the same target (e.g. <code>m1</code> imports <code>m2</code> and <code>m3</code> and <code>m2</code> imports <code>m3</code>), <code>m3</code> will be only be resolved once.</p>
+<p><strong>Note</strong>: Two models are considered to be "identical" if they both 
+have the same <code>id</code>.  If <code>m2</code> and <code>m3</code> both have <code>id: http://models-r.us/modelA</code>, it is assumed that, despite the different location, they represent the same thing.  LinkML <em>will</em> check the model <code>version</code> field and will raise an error if <code>m2</code> has <code>version: 1.0.0</code> and <code>m3</code> has <code>version: 1.0.1</code></p>
+<p>Each imported module must be resolved - i.e the value of the import slot is mapped to a location on disk or on the web</p>
+<h3 id="rule-fromschema-elements">Rule: fromschema elements</h3>
+<p>Each element in the schema as assigned a metaslot <code>fromschema</code> value. This is the value of the <code>id</code> of the schema in which that element is defined.</p>
+<p>This is preserved over imports, such that if <code>m</code> imports <code>m2</code>, and <code>m2</code> defines a class <code>c</code>, then <code>m*[c].fromschema</code> = m2</p>
+<h3 id="rule-applicable-slot-names">Rule: Applicable Slot Names</h3>
+<p>The set of applicable slot names for a class <code>c</code> are determined by taking the union of:</p>
+<ul>
+<li>The names of all values of <code>x.attributes</code></li>
+<li>The names of all values of <code>x.slots</code></li>
+</ul>
+<p>For all <code>x</code> in <code>ReflexiveAncestors(c)</code></p>
+<h3 id="rule-derived-attributes">Rule: Derived Attributes</h3>
+<p>Derived attributes can be calculated for every <em>applicable</em> slot name for any class <code>c</code></p>
+<p><code>c.attributes[s] = DerivedAttributes(c,s)</code></p>
+<p>This is the combination of <em>asserted</em> attributes for c, as well as asserted attributes for ancestors of c,
+as well as the SlotDefinition corresponding to that attribute, together with any overrides specified by <code>slot_usage</code> in <code>c</code>
+and ancestors of <code>c</code></p>
+<ul>
+<li>attributes asserted directly in <code>c.attributes</code> in the base schema</li>
+<li>attributes derived from each SlotDefinition <code>s</code> in <code>c.slots</code> by<ul>
+<li>looking up <code>s</code> in <code>m*.slots</code> and copying the slot-value assignments from these SlotDefinitions</li>
+<li>overriding these slot-value assignments with any slot-value assignments provided by <code>c.slot_usage[s]</code></li>
+</ul>
+</li>
+<li>inheriting from parents of <code>c</code> using precedence rules</li>
+<li>inheriting from parents of <code>s</code></li>
+</ul>
+<p>The precedence rules for derived attributes are as follows:</p>
+<p>If a metaslot <code>s</code> is declared <code>multivalued</code> then when copying <code>s</code> from a parent to a child, the values are appended.</p>
+<p>If a metaslot <code>s</code> is declared <code>multivalued</code> </p>
+<p>if a slot is multi valued then copying will append, unless the element already exists.</p>
+<p>if the slot is single valued, and intersection rules can be applied to the slot, then these are performed on all values</p>
+<p>if the slot is single valued, and intersection rules cannot be applied to the slot, then the following precedence rules are applied:</p>
+<ul>
+<li>metaslot values from slot_usage take the highest priority</li>
+<li>metaslot values from the slot definition take the next highest priority</li>
+<li>direct mixins take the next highest priority. where multiple direct mixins are provided as a list, the last element takes highest priority</li>
+<li>direct is_as take the next highest priority</li>
+<li>the above two rules are applied one level up, and then recursively applied</li>
+</ul>
+<p>Intersection rules</p>
+<table>
+<thead>
+<tr>
+<th>metaslot</th>
+<th>rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>maximum_value</code></td>
+<td><code>min(v1,v2)</code></td>
+</tr>
+<tr>
+<td><code>minimum_value</code></td>
+<td><code>max(v1,v2)</code></td>
+</tr>
+<tr>
+<td><code>pattern</code></td>
+<td>TBD</td>
+</tr>
+<tr>
+<td><code>range</code></td>
+<td><code>IF subsumes(v1,v2) then v2</code> <br/> <code>ELSE IF subsumes(v2,v1) then v2 ELSE UNDEFINED</code></td>
+</tr>
+</tbody>
+</table>
+<p>If the result of applying any intersection rule is UNDEFINED then we fall back on precedence rules</p>
+<h3 id="rule-default-range">Rule: Default Range</h3>
+<p>For all attributes in the derived model, if a range is not assigned using the above method, then the range is assigned a value corresponding
+to the value of <code>default_range</code> for the schema in which the slot is defined.</p>
+<h3 id="rule-derived-class-and-slot-uris">Rule: Derived Class and Slot URIs</h3>
+<p>For each class or slot, if a class_uri or slot_uri is not specified, then this is derived by concatenating <code>m.default_prefix</code> with the CURIE separator <code>:</code> followed by the SafeUpperCamelCase encoding of the name of that class or slot definition</p>
+<h2 id="rule-generation-of-patterns-from-structured-patterns">Rule: Generation of patterns from structured patterns</h2>
+<p>For any slot <code>s</code>, if <code>s.structured_pattern = p</code> and <code>p</code> is not <strong>None</strong> then <code>s.pattern</code> is assigned a value based on the following
+procedure:</p>
+<p>If <code>p.interpolated</code> is True, then the value of <code>s.syntax</code> is <em>interpolated</em>, by replacing all occurrences of braced text <code>{VAR}</code>
+with the value of <code>VAR</code>. The value of <code>VAR</code> is obtained using <code>m.settings[VAR]</code>, where <code>m</code> is the schema in which <code>p</code> is introduced.</p>
+<p>If <code>p.interpolated</code> is not True, then the value of <code>s.syntax</code> is used directly.</p>
+<p>If <code>p.partial_match</code> is not True, then <code>s.pattern</code> has a '^' character inserted at the begining and a '$' character inserted as the end.</p>
+<h3 id="rule-generation-of-classdefinitionreferences">Rule: Generation of ClassDefinitionReferences</h3>
+<p>For every <strong>ClassDefinition</strong> <code>c</code>, if there exists a slot <code>s</code> such that <code>s.identifer=True</code>,
+then a corresponding <strong>ClassDefinitionReference</strong> <code>r</code> is generated.</p>
+<p><code>r.name</code> is assigned to be the concatenation of <code>c.name</code> and <code>s.name</code></p>
+<p><code>r</code> functionally serves as a <em>foreign key</em> to instances of <code>r</code>, and allows for non-inlined
+representation of instance references in tree-based formats such as JSON.</p>
+<h2 id="structural-conformance-rules">Structural Conformance Rules</h2>
+<h3 id="rule-each-referenced-entity-must-be-present">Rule: Each referenced entity must be present</h3>
+<p>Every <strong>ClassDefinition</strong>, <strong>ClassDefinitionReference</strong>, <strong>SlotDefinitionReference</strong>, <strong>EnumDefinitionReference</strong>, and <strong>TypeDefinitionReference</strong> must be resolvable within <code>m*</code></p>
+<p>However, not every element needs to be referenced. For example, it is valid to have a list of SlotDefinitions that are never used in <code>m*</code>.</p>
+<h3 id="classdefinition-structural-conformance-rules">ClassDefinition Structural Conformance Rules</h3>
+<p>Each <code>c</code> in <code>m*.classes</code> must conform to the rules below:</p>
+<ul>
+<li><code>c</code> must be an instance of a <strong>ClassDefinition</strong></li>
+<li><code>c</code> must have a unique name <code>c.name</code>, and this name must not be shared by any other class or element in <code>m*</code></li>
+<li><code>c</code> lists permissible slots in <code>c.slots</code>, the range of this is a reference to a SlotDefinition in <code>m*.slots</code></li>
+<li><code>c</code> defines how slots are used in the context of <code>c</code> via a collection of SlotDefinitions specified in <code>c.slot_usage</code></li>
+<li><code>c</code> may define local slots using <code>c.attributes</code>, the value of this is a. collection of SlotDefinitions</li>
+<li><code>c</code> may have certain boolean properties defined such as <code>c.mixin</code> and <code>c.abstract</code></li>
+<li><code>c</code> must have exactly one value for <code>c.class_uri</code> in <code>m*</code>, and the value must be an instance of the builtin type UriOrCurie</li>
+<li><code>c</code> may have parent ClassDefinitions defined via <code>c.is_a</code> and <code>c.mixins</code><ul>
+<li>the value of <code>c.is_a</code> must be a ClassDefinitionReference</li>
+<li>the value of <code>c.mixins</code> must be a collection of ClassDefinitonReferences</li>
+</ul>
+</li>
+<li>For any parent <code>p</code> of <code>c</code>, if <code>p.mixin</code> is True, then <code>c.mixin</code> SHOULD be True</li>
+<li><code>c</code> includes additional rules in <code>c.rules</code> and <code>c.classificiation_rules</code></li>
+<li><code>c</code> may have any number of additional slot-value assignments consistent with the validation rules provided here with the metamodel <code>MM</code></li>
+</ul>
+<h3 id="slotdefinition-structural-conformance-rules">SlotDefinition Structural Conformance Rules</h3>
+<p>Each <code>s</code> in <code>m*.slots</code> must conform to the rules below:</p>
+<ul>
+<li><code>s</code> must be an instance of a <strong>SlotDefinition</strong></li>
+<li><code>s</code> must have a unique name <code>s.name</code>, and this name must not be shared by any other type or element</li>
+<li><code>s</code> must have a range specified via <code>s.range</code> in <code>m*</code></li>
+<li><code>s</code> may have an assignment <code>s.identifier</code> which is True if <code>s</code> plays the role of a unique identifier</li>
+<li><code>s</code> may have certain boolean properties defined such as <code>s.mixin</code> and <code>s.abstract</code></li>
+<li><code>s</code> must have exactly one value for <code>s.slot_uri</code> in <code>m*</code>, and the value must be an instance of the builtin type UriOrCurie</li>
+<li><code>s</code> may have parent SlotDefinitions defined via <code>s.is_a</code> and <code>s.mixins</code><ul>
+<li>the value of <code>s.is_a</code> must be a <strong>SlotDefinitionReference</strong></li>
+<li>the value of <code>s.mixins</code> must be a collection of <strong>SlotDefinitionReference</strong>s</li>
+<li>For any parent <code>p</code> of <code>s</code>, if <code>p.mixin</code> is True, then <code>s.mixin</code> SHOULD be True</li>
+</ul>
+</li>
+<li><code>s</code> may have any number of additional slot-value assignments consistent with the validation rules provided here with the metamodel <code>MM</code></li>
+</ul>
+<h3 id="typedefinition-structural-conformance-rules">TypeDefinition Structural Conformance Rules</h3>
+<p>Each <code>s</code> in <code>m*.types</code> must conform to the rules below:</p>
+<ul>
+<li><code>t</code> must be an instance of a <strong>TypeDefinition</strong></li>
+<li><code>t</code> must have a unique name <code>t.name</code>, and this name must not be shared by any other type or element</li>
+<li><code>t</code> must have a mapping to an xsd type provided via <code>t.uri</code> in <code>m*</code></li>
+<li><code>t</code> may have a parent type declared via <code>t.typeof</code></li>
+<li><code>t</code> may have any number of additional slot-value assignments consistent with the validation rules provided here with the metamodel <code>MM</code></li>
+</ul>
+<h3 id="enumdefinition-structural-conformance-rules">EnumDefinition Structural Conformance Rules</h3>
+<p>Each <code>e</code> in <code>m*.enums</code> must conform to the rules below:</p>
+<ul>
+<li><code>e</code> must be an instance of a <strong>EnumDefinition</strong></li>
+<li><code>e</code> must have a unique name <code>e.name</code>, and this name must not be shared by any other enum or element</li>
+<li><code>e</code> lists all static permissible values via <code>e.permissible_values</code>, the value of which is a list of instances of the MM class PermissibleValue</li>
+<li><code>e</code> may have any number of additional slot-value assignments consistent with the validation rules provided here with the metamodel <code>MM</code></li>
+</ul>
+<h3 id="classdefinitionreference-structural-conformance-rules">ClassDefinitionReference Structural Conformance Rules</h3>
+<p>Each <code>r</code> in <code>m*.class_references</code> must conform to the rules below:</p>
+<ul>
+<li><code>r</code> must be an instance of a <strong>ClassDefinitionReference</strong></li>
+<li><code>r</code> must have a unique name <code>r.name</code>, and this name must not be shared by any other type or element</li>
+</ul>
+<h3 id="metamodel-conformance-rules">Metamodel Conformance Rules</h3>
+<p>Both the asserted and derived schema should be valid instances of the LinkML metamodel <strong>MM</strong>
+using the instance validation rules described in the next section</p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../03schemas/" title="Schema Datamodel"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../05validation/" title="Instance Validation">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../03schemas/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../05validation/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script>var base_url = '../..';</script>
+<script defer="" src="../../js/theme_extra.js"></script>
+<script defer="" src="../../js/theme.js"></script>
+<script defer="" src="../../search/main.js"></script>
+<script defer="">
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</html>
