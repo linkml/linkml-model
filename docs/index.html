@@ -3,16 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="img/favicon.ico" />
-    <title>LinkML Model</title>
+    <title>Metamodel - LinkML Model</title>
     <link rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Index";
+        var mkdocs_page_name = "Metamodel";
         var mkdocs_page_input_path = "index.md";
         var mkdocs_page_url = null;
       </script>
@@ -40,20 +40,34 @@
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
           <a href="." class="icon icon-home"> LinkML Model
-        </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
-  </form>
-</div>
+        </a>
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="home/">Home</a>
+                <li class="toctree-l1"><a class="reference internal" href="home/">About</a>
                 </li>
               </ul>
+              <p class="caption"><span class="caption-text">Specification</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="specification/00preamble/">Preface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="specification/01introduction/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="specification/02instances/">Instances</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="specification/03schemas/">Schema Datamodel</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="specification/04derived-schemas/">Derived Schemas</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="specification/05validation/">Instance Validation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="specification/06mapping/">Mapping of Instances</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href=".">Index</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href=".">Metamodel</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a>
     </li>
@@ -74,11 +88,7 @@
         </ul>
     </li>
     </ul>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="credits/">Credits</a>
-                </li>
+                  </li>
               </ul>
       </div>
     </div>
@@ -93,7 +103,8 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Index</li>
+    <li><a href="." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Appendix &raquo;</li><li>Metamodel</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -103,9 +114,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="meta">meta</h1>
-<p><strong>metamodel version:</strong> 1.7.0</p>
-<p><strong>version:</strong> 2.0.0</p>
+                <h1 id="meta-schema">meta schema</h1>
 <p>The metamodel for schemas defined using the Linked Data Modeling Language framework.</p>
 <p>For more information on LinkML, see <a href="https://linkml.io">linkml.io</a></p>
 <p>Core metaclasses:</p>
@@ -124,6 +133,8 @@ refer to the official URI for each construct, e.g.
 <a href="https://w3id.org/linkml/is_a">https://w3id.org/linkml/is_a</a></p>
 <h3 id="classes">Classes</h3>
 <ul>
+<li><a href="ValidationReport/">ValidationReport</a> - A report object</li>
+<li><a href="ValidationResult/">ValidationResult</a> - An individual result arising from validation of a data instance using a particular rule</li>
 <li><a href="AltDescription/">AltDescription</a> - an attributed description</li>
 <li><a href="AnonymousExpression/">AnonymousExpression</a><ul>
 <li><a href="AnonymousClassExpression/">AnonymousClassExpression</a></li>
@@ -168,6 +179,7 @@ refer to the official URI for each construct, e.g.
 <li><a href="ClassExpression/">ClassExpression</a> - A boolean expression that can be used to dynamically determine membership of a class</li>
 <li><a href="CommonMetadata/">CommonMetadata</a> - Generic metadata shared across definitions</li>
 <li><a href="Expression/">Expression</a> - general mixin for any class that can represent some form of expression<ul>
+<li><a href="EnumExpression/">EnumExpression</a></li>
 <li><a href="SlotExpression/">SlotExpression</a> - an expression that constrains the range of values a slot can take</li>
 <li><a href="TypeExpression/">TypeExpression</a></li>
 </ul>
@@ -259,6 +271,7 @@ refer to the official URI for each construct, e.g.
 <li><a href="domain_of/">domain_of</a> - the class(es) that reference the slot in a "slots" or "slot_usage" context</li>
 <li><a href="elseconditions/">elseconditions</a> - an expression that must hold for an instance of the class, if the preconditions no not hold</li>
 <li><a href="emit_prefixes/">emit_prefixes</a> - a list of Curie prefixes that are used in the representation of instances of the model.  All prefixes in this list are added to the prefix sections of the target models.</li>
+<li><a href="enum_range/">enum_range</a> - An inlined enumeration</li>
 <li><a href="enums/">enums</a> - enumerated ranges</li>
 <li><a href="examples/">examples</a> - example usages of an element</li>
 <li><a href="extension_tag/">extension➞tag</a> - a tag associated with an extension</li>
@@ -286,9 +299,11 @@ refer to the official URI for each construct, e.g.
 <li><a href="in_language/">in_language</a></li>
 <li><a href="in_subset/">in_subset</a> - used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)</li>
 <li><a href="inapplicable/">inapplicable</a> - true means that the slot must not be present</li>
+<li><a href="info/">info</a></li>
 <li><a href="inherited/">inherited</a> - true means that the <em>value</em> of a slot is inherited by subclasses</li>
 <li><a href="inlined/">inlined</a> - True means that keyed or identified slot appears in an outer structure by value.  False means that only the key or identifier for the slot appears within the domain, referencing a structure that appears elsewhere.</li>
 <li><a href="inlined_as_list/">inlined_as_list</a> - True means that an inlined slot is represented as a list of range instances.  False means that an inlined slot is represented as a dictionary, whose key is the slot key or identifier and whose value is the range instance.</li>
+<li><a href="instantiates/">instantiates</a></li>
 <li><a href="interpolated/">interpolated</a> - if true then the pattern is first string interpolated</li>
 <li><a href="inverse/">inverse</a> - indicates that any instance of d s r implies that there is also an instance of r s' d</li>
 <li><a href="is_a/">is_a</a> - specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded<ul>
@@ -348,7 +363,10 @@ refer to the official URI for each construct, e.g.
 <li><a href="schema_definition_name/">schema_definition➞name</a></li>
 </ul>
 </li>
+<li><a href="node_source/">node_source</a></li>
 <li><a href="notes/">notes</a> - editorial notes about an element intended for internal consumption</li>
+<li><a href="object/">object</a></li>
+<li><a href="object_str/">object_str</a></li>
 <li><a href="open_world/">open_world</a> - if true, the the postconditions may be omitted in instance data, but it is valid for an inference engine to add these</li>
 <li><a href="owned_by/">owned_by</a> - agent that owns or is the steward of the element</li>
 <li><a href="owner/">owner</a> - the "owner" of the slot. It is the class if it appears in the slots list, otherwise the declaring slot</li>
@@ -358,6 +376,7 @@ refer to the official URI for each construct, e.g.
 <li><a href="permissible_values/">permissible_values</a> - A list of possible values for a slot range</li>
 <li><a href="postconditions/">postconditions</a> - an expression that must hold for an instance of the class, if the preconditions hold</li>
 <li><a href="preconditions/">preconditions</a> - an expression that must hold in order for the rule to be applicable to an instance</li>
+<li><a href="predicate/">predicate</a></li>
 <li><a href="prefix_prefix/">prefix_prefix</a> - the nsname (sans ':' for a given prefix)</li>
 <li><a href="prefix_reference/">prefix_reference</a> - A URI associated with a given prefix</li>
 <li><a href="prefixes/">prefixes</a> - prefix / URI definitions to be added to the context beyond those fetched from prefixcommons in id prefixes</li>
@@ -390,6 +409,7 @@ refer to the official URI for each construct, e.g.
 <li><a href="setting_key/">setting_key</a> - the variable name for a setting</li>
 <li><a href="setting_value/">setting_value</a> - The value assigned for a setting</li>
 <li><a href="settings/">settings</a> - A collection of global variable settings</li>
+<li><a href="severity/">severity</a></li>
 <li><a href="shared/">shared</a> - If True, then the relationship between the slot domain and range is many to one or many to many</li>
 <li><a href="singular_name/">singular_name</a> - a name that is used in the singular form</li>
 <li><a href="slot_conditions/">slot_conditions</a> - the redefinition of a slot in the context of the containing class definition.</li>
@@ -409,7 +429,8 @@ refer to the official URI for each construct, e.g.
 <li><a href="structured_imports/">structured_imports</a> - other schemas that are included in this schema</li>
 <li><a href="structured_pattern/">structured_pattern</a> - the string value of the slot must conform to the regular expression in the pattern expression</li>
 <li><a href="subclass_of/">subclass_of</a> - rdfs:subClassOf to be emitted in OWL generation</li>
-<li><a href="subproperty_of/">subproperty_of</a> - Ontology property which this slot is a subproperty of</li>
+<li><a href="subject/">subject</a></li>
+<li><a href="subproperty_of/">subproperty_of</a> - Ontology property which this slot is a subproperty of.  Note: setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values in every serialization of the model.</li>
 <li><a href="subsets/">subsets</a> - list of subsets referenced in this model</li>
 <li><a href="syntax/">syntax</a> - the string value of the slot must conform to this regular expression expressed in the string. May be interpolated.</li>
 <li><a href="text/">text</a></li>
@@ -421,6 +442,7 @@ refer to the official URI for each construct, e.g.
 </li>
 <li><a href="traverse/">traverse</a> - the slot to traverse</li>
 <li><a href="tree_root/">tree_root</a> - indicator that this is the root class in tree structures</li>
+<li><a href="type/">type</a></li>
 <li><a href="type_uri/">type_definition➞uri</a> - The uri that defines the possible values for the type definition</li>
 <li><a href="typeof/">typeof</a> - Names a parent type</li>
 <li><a href="types/">types</a> - data types used in the model</li>
@@ -429,18 +451,21 @@ refer to the official URI for each construct, e.g.
 <li><a href="unique_key_slots/">unique_key_slots</a> - list of slot names that form a key</li>
 <li><a href="unique_keys/">unique_keys</a> - Set of unique keys for this slot</li>
 <li><a href="usage_slot_name/">usage_slot_name</a> - The name of the slot referenced in the slot_usage</li>
+<li><a href="validationReport__results/">➞results</a></li>
 <li><a href="value/">value</a> - example value</li>
 <li><a href="value_description/">example➞description</a> - description of what the value is doing</li>
 <li><a href="value_specification_constant/">value_specification_constant</a> - Grouping for metamodel slots that constrain the a slot value to equal a specified constant</li>
-<li><a href="values_from/">values_from</a> - the identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot</li>
+<li><a href="values_from/">values_from</a> - The identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot. Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration in that in an enumeration, the values of the enumeration are listed directly in the model itself. Setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values in every serialization of the model.</li>
 <li><a href="version/">version</a> - particular version of schema</li>
 </ul>
 <h3 id="enums">Enums</h3>
 <ul>
 <li><a href="alias_predicate_enum/">alias_predicate_enum</a></li>
 <li><a href="presence_enum/">presence_enum</a> - enumeration of conditions by which a slot value should be set</li>
+<li><a href="problem_type/">problem_type</a></li>
 <li><a href="pv_formula_options/">pv_formula_options</a> - The formula used to generate the set of permissible values from the code_set values</li>
 <li><a href="relational_role_enum/">relational_role_enum</a> - enumeration of roles a slot on a relationship class can play</li>
+<li><a href="severity_options/">severity_options</a></li>
 </ul>
 <h3 id="subsets">Subsets</h3>
 <ul>
@@ -488,8 +513,7 @@ refer to the official URI for each construct, e.g.
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="home/" class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="credits/" class="btn btn-neutral float-right" title="Credits">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="specification/06mapping/" class="btn btn-neutral float-left" title="Mapping of Instances"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>
@@ -512,17 +536,14 @@ refer to the official URI for each construct, e.g.
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="home/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="specification/06mapping/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
-    
-      <span><a href="credits/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
     <script>var base_url = '.';</script>
     <script src="js/theme_extra.js" defer></script>
     <script src="js/theme.js" defer></script>
-      <script src="search/main.js" defer></script>
     <script defer>
         window.onload = function () {
             SphinxRtdTheme.Navigation.enable(true);
@@ -531,8 +552,3 @@ refer to the official URI for each construct, e.g.
 
 </body>
 </html>
-
-<!--
-MkDocs version : 1.3.0
-Build Date UTC : 2022-05-19 21:52:02.158233+00:00
--->

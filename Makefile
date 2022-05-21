@@ -30,8 +30,10 @@ PKG_T_PYTHON = $(PKG_DIR)
 
 # Global generation options
 GEN_OPTS = --log_level WARNING
-ENV = export PIPENV_VENV_IN_PROJECT=true && export PIPENV_PIPFILE=make-venv/Pipfile && export PIPENV_IGNORE_VIRTUALENVS=1
-RUN = $(ENV) && pipenv run
+#ENV = export PIPENV_VENV_IN_PROJECT=true && export PIPENV_PIPFILE=make-venv/Pipfile && export PIPENV_IGNORE_VIRTUALENVS=1
+ENV = 
+#RUN = $(ENV) && pipenv run
+RUN = pipenv run
 
 # ----------------------------------------
 # TOP LEVEL TARGETS
@@ -42,18 +44,8 @@ all: install gen test
 # We don't want to pollute the python environment with linkml tool specific packages.  For this reason,
 # we install an isolated instance of linkml in the pipenv-linkml directory
 # ---------------------------------------
-install: make-venv/env.lock
-
-make-venv/env.lock:
-	mkdir -p make-venv
-	touch make-venv/Pipfile
-	$(ENV) && pipenv install linkml mkdocs
-	touch make-venv/env.lock
-
-uninstall:
-	touch make-venv/env.lock && rm -f make-venv/env.lock
-	if [ -f "make-venv/Pipfile" ]; then $(ENV) && pipenv --rm ; fi
-	rm -f make-venv/Pipfile*
+#install: make-venv/env.lock
+install:
 
 
 
