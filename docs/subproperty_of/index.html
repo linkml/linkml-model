@@ -40,25 +40,35 @@
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
           <a href=".." class="icon icon-home"> LinkML Model
-        </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
-  </form>
-</div>
+        </a>
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../home/">Home</a>
+                <li class="toctree-l1"><a class="reference internal" href="../home/">About</a>
                 </li>
               </ul>
+              <p class="caption"><span class="caption-text">Specification</span></p>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="..">Index</a>
-                </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../specification/00preamble/">Preface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../specification/01introduction/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../specification/02instances/">Instances</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../specification/03schemas/">Schema Datamodel</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../specification/04derived-schemas/">Derived Schemas</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../specification/05validation/">Instance Validation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../specification/06mapping/">Mapping of Instances</a>
+                  </li>
               </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../credits/">Credits</a>
-                </li>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Metamodel</a>
+                  </li>
               </ul>
       </div>
     </div>
@@ -84,7 +94,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="slot-subproperty_of">Slot: subproperty_of</h1>
-<p>Ontology property which this slot is a subproperty of</p>
+<p>Ontology property which this slot is a subproperty of.  Note: setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values in every serialization of the model.</p>
 <p>URI: <a href="https://w3id.org/linkml/subproperty_of">linkml:subproperty_of</a></p>
 <h2 id="domain-and-range">Domain and Range</h2>
 <p><a href="../SlotDefinition/">SlotDefinition</a> &#8594;  <sub>0..1</sub> <a href="../SlotDefinition/">SlotDefinition</a></p>
@@ -108,6 +118,11 @@
 <td><strong>Mappings:</strong></td>
 <td></td>
 <td>rdfs:subPropertyOf</td>
+</tr>
+<tr>
+<td><strong>Examples:</strong></td>
+<td></td>
+<td>Example(value='RO:HOM0000001', description='this is the RO term for "in homology relationship with", and used as a value of subproperty of this means that any ontological child (related to RO:HOM0000001 via an is_a relationship), is a valid value for the slot that declares this with the subproperty_of tag.  This differs from the \'values_from\' meta model component in that \'values_from\' requires the id of a value set (said another way, if an entire ontology had a curie/identifier that was the identifier for the entire ontology, then that identifier would be used in \'values_from.\')')</td>
 </tr>
 </tbody>
 </table>
@@ -141,7 +156,6 @@
     <script>var base_url = '..';</script>
     <script src="../js/theme_extra.js" defer></script>
     <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
     <script defer>
         window.onload = function () {
             SphinxRtdTheme.Navigation.enable(true);
