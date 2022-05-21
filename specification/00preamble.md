@@ -1,6 +1,9 @@
 # Linked Data Modeling Language: Specification
 
-Authors: Chris Mungall, Harold Solbrig
+Authors:
+
+ - Chris Mungall, Lawrence Berkeley National Laboratory 
+ - Harold Solbrig, Johns Hopkins University
 
 ## Abstract
 

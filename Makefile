@@ -117,7 +117,8 @@ docs/index.html: target/docs/index.md install
 	$(RUN) mkdocs build
 
 target/docs/index.md: $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml tdir-docs install
-	$(RUN) gen-markdown $(GEN_OPTS) --mergeimports --notypesdir --warnonexist --dir target/docs $<
+	$(RUN) gen-markdown $(GEN_OPTS) --mergeimports --notypesdir --warnonexist --dir target/docs $< && \
+	cp -pr specification target/docs/
 
 
 # ---------------------------------------

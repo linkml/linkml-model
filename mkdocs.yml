@@ -3,9 +3,19 @@ theme:
   name: readthedocs
   analytics:
     gtag: G-2SYBSJVZ23
+plugins:
+  - mermaid2
 docs_dir: target/docs
 site_dir: docs
 nav:
-  - Home: home.md
-  - Index: index.md
-  - Credits: credits.md
+  - About: home.md
+  - Specification:
+      Preface: specification/00preamble.md
+      Introduction: specification/01introduction.md
+      Instances: specification/02instances.md
+      Schema Datamodel: specification/03schemas.md
+      Derived Schemas: specification/04derived-schemas.md
+      Instance Validation: specification/05validation.md
+      Mapping of Instances: specification/06mapping.md
+  - Appendix:
+      Metamodel: index.md
