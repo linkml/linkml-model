@@ -42,6 +42,7 @@ prefixes:
   qb: http://purl.org/linked-data/cube#
   prov: http://www.w3.org/ns/prov#
   vann: https://vocab.org/vann/
+  qudt: http://qudt.org/schema/qudt/
 
 default_prefix: linkml
 default_range: string
@@ -66,7 +67,8 @@ imports:
   - linkml:extensions
   - linkml:annotations
   - linkml:validation
-
+  - units
+  
 subsets:
   owl:
     description: Set of slots that appear in the OWL representation of a model
@@ -839,6 +841,8 @@ slots:
     range: integer
     in_subset:
       - basic
+    exact_mappings:
+      - qudt:order
   deactivated:
     description: a deactivated rule is not executed by the rules engine
     slot_uri: sh:deactivated
@@ -860,10 +864,11 @@ slots:
     description: the collection of classification rules that apply to all members of this class
 
   slot_conditions:
+    domain: class_expression
     multivalued: true
     range: slot_definition
     inlined: true
-    description: the redefinition of a slot in the context of the containing class definition.
+    description: expresses constraints on a group of slots for a class expression
     
   attributes:
     domain: class_definition
@@ -1788,7 +1793,8 @@ slots:
       - this should only be used on slots that are applicable to class that represent relationships
       - in the context of RDF, this should be used for slots that can be modeled using the RDF reification vocabulary
       - in the context of property graphs, this should be used on edge classes to indicate which slots represent the input and output nodes
-    
+
+      
 #==================================
 # Classes                         #
 #==================================
@@ -1896,7 +1902,9 @@ classes:
     mixin: true
     slots:
       - pattern
-      - structured_pattern      
+      - structured_pattern
+      - unit
+      - implicit_prefix
       - equals_string
       - equals_string_in
       - equals_number
@@ -2067,6 +2075,7 @@ classes:
       - maximum_value
       - pattern
       - structured_pattern
+      - unit
       - implicit_prefix
       - equals_string
       - equals_string_in
@@ -2352,7 +2361,6 @@ classes:
     in_subset:
       - basic
       - relational_model
-
 
 #==================================
 # Enumerations                    #
