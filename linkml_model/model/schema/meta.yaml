@@ -462,7 +462,7 @@ slots:
   # Enum definition slots
   # -----------------------------------
   code_set:
-    domain: enum_definition
+    domain: enum_expression
     range: uriorcurie
     description: >-
       the identifier of an enumeration code set.
@@ -472,7 +472,7 @@ slots:
       - basic
 
   code_set_version:
-    domain: enum_definition
+    domain: enum_expression
     range: string
     description: >-
       the version identifier of the enumeration code set
@@ -482,17 +482,17 @@ slots:
       - basic
 
   code_set_tag:
-    domain: enum_definition
+    domain: enum_expression
     range: string
     description: >-
       the version tag of the enumeration code set
     comments:
-      - enum_definition cannot have both a code_set_tag and a code_set_version
+      - enum_expression cannot have both a code_set_tag and a code_set_version
     in_subset:
       - basic
 
   pv_formula:
-    domain: enum_definition
+    domain: enum_expression
     range: pv_formula_options
     description: >-
       Defines the specific formula to be used to generate the permissible values.
@@ -503,7 +503,7 @@ slots:
       - basic
 
   permissible_values:
-    domain: enum_definition
+    domain: enum_expression
     range: permissible_value
     multivalued: true
     inlined: true
@@ -511,6 +511,69 @@ slots:
       A list of possible values for a slot range
     in_subset:
       - basic
+
+  enum_uri:
+    aliases:
+      - public ID
+    domain: enum_definition
+    range: uriorcurie
+    description: URI of the enum in an RDF environment
+    ifabsent: class_curie
+    in_subset:
+      - basic
+      
+  include:
+    domain: enum_expression
+    range: anonymous_enum_expression
+    multivalued: true
+
+  minus:
+    domain: enum_expression
+    range: anonymous_enum_expression
+    multivalued: true
+
+  inherits:
+    domain: enum_expression
+    range: enum_definition
+    multivalued: true
+
+  matches:
+    domain: enum_expression
+    range: match_query
+
+  identifier_pattern:
+    domain: match_query
+    range: string
+    
+  concepts:
+    domain: enum_expression
+    range: uriorcurie
+    multivalued: true
+    
+  reachable_from:
+    domain: enum_expression
+    range: reachability_query
+
+  source_ontology:
+    range: uriorcurie
+    
+  is_direct:
+    domain: reachability_query
+    range: boolean
+
+  include_self:
+    domain: reachability_query
+    range: boolean
+
+  relationship_types:
+    domain: reachability_query
+    range: uriorcurie
+    multivalued: true
+
+  source_nodes:
+    domain: reachability_query
+    range: uriorcurie
+    multivalued: true
 
   # -----------------------------------
   # Slots for permissible_value
@@ -1970,7 +2033,17 @@ classes:
       - code_set_version
       - pv_formula
       - permissible_values
-    
+      - include
+      - minus
+      - inherits
+      - reachable_from
+      - matches
+      - concepts
+
+  anonymous_enum_expression:
+    mixins:
+      - enum_expression
+        
   enum_definition:
     description: List of values that constrain the range of a slot
     is_a: element
@@ -1982,7 +2055,23 @@ classes:
       - basic
       - relational_model
       - object_oriented
+    slots:
+      - enum_uri
 
+  match_query:
+    slots:
+      - identifier_pattern
+      - source_ontology
+      
+  reachability_query:
+    slots:
+      - source_ontology
+      - source_nodes
+      - relationship_types
+      - is_direct
+      - include_self
+      
+      
   structured_alias:
     description: >-
       object that contains meta data about a synonym or alias including where it came from (source)
