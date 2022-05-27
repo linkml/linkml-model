@@ -523,54 +523,85 @@ slots:
       - basic
       
   include:
+    description: An enum expression that yields a list of permissible values that are to be included, after subtracting the minus set
     domain: enum_expression
     range: anonymous_enum_expression
     multivalued: true
 
   minus:
+    description: An enum expression that yields a list of permissible values that are to be subtracted from the enum
     domain: enum_expression
     range: anonymous_enum_expression
     multivalued: true
 
   inherits:
+    description: An enum definition that is used as the basis to create a new enum
+    comments:
+      - All permissible values for all inherited enums are copied to form the initial seed set
     domain: enum_expression
     range: enum_definition
     multivalued: true
 
   matches:
+    description: Specifies a match query that is used to calculate the list of permissible values
     domain: enum_expression
     range: match_query
 
   identifier_pattern:
+    description: A regular expression that is used to obtain a set of identifiers from a source_ontology to construct a set of permissible values
     domain: match_query
     range: string
     
   concepts:
+    description: A list of identifiers that are used to construct a set of permissible values
     domain: enum_expression
     range: uriorcurie
     multivalued: true
     
   reachable_from:
+    description: Specifies a query for obtaining a list of permissible values based on graph reachability
     domain: enum_expression
     range: reachability_query
 
   source_ontology:
+    aliases:
+      - terminology
+      - vocabulary
+    description: An ontology or vocabulary or terminology that is used in a query to obtain a set of permissible values
     range: uriorcurie
     
   is_direct:
+    aliases:
+      - non-transitive
+    description: True if the reachability query should only include directly related nodes, if False then include also transitively connected
+    domain: reachability_query
+    range: boolean
+
+  reversed:
+    aliases:
+      - ancestors
+    description: True if the direction of the reachability query is reversed and ancestors are retrieved
     domain: reachability_query
     range: boolean
 
   include_self:
+    aliases:
+      - reflexive
+    description: True if the query is reflexive
     domain: reachability_query
     range: boolean
 
   relationship_types:
+    description: A list of relationship types (properties) that are used in a reachability query
+    aliases:
+      - predicates
+      - properties
     domain: reachability_query
     range: uriorcurie
     multivalued: true
 
   source_nodes:
+    description: A list of nodes that are used in the reachability query
     domain: reachability_query
     range: uriorcurie
     multivalued: true
@@ -2026,6 +2057,7 @@ classes:
       - basic
 
   enum_expression:
+    description: An expression that constrains the range of a slot
     is_a: expression
     slots:
       - code_set
@@ -2041,6 +2073,7 @@ classes:
       - concepts
 
   anonymous_enum_expression:
+    description: An enum_expression that is not named
     mixins:
       - enum_expression
         
@@ -2059,17 +2092,20 @@ classes:
       - enum_uri
 
   match_query:
+    description: A query that is used on an enum expression to dynamically obtain a set of permissivle values via a query that matches on properties of the external concepts
     slots:
       - identifier_pattern
       - source_ontology
       
   reachability_query:
+    description: A query that is used on an enum expression to dynamically obtain a set of permissible values via walking from a set of source nodes to a set of descendants or ancestors over a set of relationship types
     slots:
       - source_ontology
       - source_nodes
       - relationship_types
       - is_direct
       - include_self
+      - reversed
       
       
   structured_alias:
