@@ -137,33 +137,24 @@ enums:
           relationship_types:
             - wdp:P31
             - wdp:P279
-    
-  # I'm not really sure if this is valid/correct, but I wanted to give a quick and dirty example. This is based on: https://build.fhir.org/valueset-example-intensional.json.html - joeflack4 2022/05/27
+
   SerumCholesterolExample:
-    # `description`: I didn't see this as a valid `slot` for `enum_expression`. Should this be here?
     description: >
       This is an example value set that includes all the LOINC codes for serum/plasma cholesterol from v2.36.
-    # `is_a`: This too. is this / should this be here?
-    # is_a: enum_expression
     code_set: http://hl7.org/fhir/ValueSet/serum-cholesterol
-    # code_set_tag: development
     code_set_version: "1.0.0"
     pv_formula: CODE
     include:
       - LP43571-6
     minus:
       - 5932-9
-    # inherits:
     reachable_from:
       source_ontology: http://loinc.org
-      source_nodes: LP43571-6  # not sure if I did this right... there's only one include code, defined as: {"property": "parent", "op": "=", "value": "LP43571-6"}
-      relationship_types:
-        - skos:exactMatch
-      is_direct: true  # not sure if this is applicable here. it's not required, so I guess I could leave it out
+      source_nodes:
+        - LP43571-6
+      relationship_types: null
+      is_direct: true
       include_self: true
       traverse_up: false
-    matches:
-      identifier_pattern: "LP43571-6"  # this static text is technically a regexp. I guess `matches` is necessary when `reachable_from`, `include`, and `minus` are provided?
-      source_ontology: http://loinc.org
-    concepts: # did I do this correctly? Is this even necessary  when `matches` or `reachable_from`, `include`, and `minus` are provided?
+    concepts:
       - http://loinc.org/LP43571-6
