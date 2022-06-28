@@ -252,7 +252,7 @@ EXAMPLES = relational-roles rules slot-group path unique-key inlining-union
 
 all-validate: $(patsubst %, validate-%, $(EXAMPLES))
 validate-%: examples/%-example.yaml
-	linkml-validate -C SchemaDefinition -s linkml_model/model/schema/meta.yaml $<
+	$(RUN) linkml-validate -C SchemaDefinition -s linkml_model/model/schema/meta.yaml $<
 
 
 TITLE = "LinkML Specification"

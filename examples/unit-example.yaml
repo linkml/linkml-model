@@ -1,0 +1,101 @@
+id: https://w3id.org/linkml/examples/unit
+title: Unit Example
+name: unit-example
+description: This demonstrates the use of units
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  ex: https://w3id.org/linkml/examples/units/
+  sh: https://w3id.org/shacl/
+
+default_prefix: ex
+default_range: string
+
+default_curi_maps:
+    - semweb_context
+
+emit_prefixes:
+  - linkml
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+imports:
+  - linkml:types
+
+#==================================
+# Classes                         #
+#==================================
+
+classes:
+  PersonInfo:
+    slots:
+      - id
+      - name
+      - height_in_cm
+      - arm_length
+
+  Measurement:
+    attributes:
+      unit_code:
+        range: UnitCodeEnum
+      numeric_value:
+        range: float
+
+#==================================
+# Slots                           #
+#==================================
+
+slots:
+  id:
+    identifier: true
+    range: string
+  name:
+    range: string
+  email:
+    range: EmailString
+
+  ## Example 1: unit is a property of the slot/field
+  height_in_cm:
+    range: float
+    unit:
+      ucum_code: cm
+      
+  ## Example 2: unit is a property of the scalar type;
+  ## this is equivalent to making it a property of the slot/field,
+  ## however, the type can be reused in multiple places
+  weight_in_kg:
+    range: KilogramValue
+
+  ## Example 3: unit is part of data rather than baked into schema
+  ## This allows direct representatiom of data using different units without need for conversion.
+  ## This is both a pro (flexibility) and a con (less standardization)
+  arm_length:
+    range: Measurement
+  
+      
+#==================================
+# Types
+#==================================
+
+types:
+  KilogramValue:
+    typeof: float
+    unit:
+      ucum_code: kg
+    
+
+      
+#==================================
+# Enums
+#==================================
+
+enums:
+  UnitCodeEnum:
+    permissible_values:
+      cm:
+      m:
+      inches:
+      feet:
