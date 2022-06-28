@@ -30,6 +30,10 @@
       "prefix_reference": "http://www.geneontology.org/formats/oboInOwl#"
     },
     {
+      "prefix_prefix": "NCIT",
+      "prefix_reference": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#"
+    },
+    {
       "prefix_prefix": "pav",
       "prefix_reference": "http://purl.org/pav/"
     },
@@ -68,6 +72,10 @@
     {
       "prefix_prefix": "vann",
       "prefix_reference": "https://vocab.org/vann/"
+    },
+    {
+      "prefix_prefix": "qudt",
+      "prefix_reference": "http://qudt.org/schema/qudt/"
     }
   ],
   "emit_prefixes": [
@@ -221,6 +229,17 @@
       "imported_from": "linkml:types",
       "base": "XSDDateTime",
       "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date_or_datetime",
+      "definition_uri": "https://w3id.org/linkml/DateOrDatetime",
+      "description": "Either a date or a datetime",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "https://w3id.org/linkml/DateOrDatetime",
       "repr": "str",
       "@type": "TypeDefinition"
     },
@@ -1999,6 +2018,9 @@
       "mappings": [
         "https://w3id.org/shacl/order"
       ],
+      "exact_mappings": [
+        "http://qudt.org/schema/qudt/order"
+      ],
       "slot_uri": "https://w3id.org/shacl/order",
       "owner": "ClassRule",
       "domain_of": [
@@ -2062,8 +2084,9 @@
     {
       "name": "slot_conditions",
       "definition_uri": "https://w3id.org/linkml/slot_conditions",
-      "description": "the redefinition of a slot in the context of the containing class definition.",
+      "description": "expresses constraints on a group of slots for a class expression",
       "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "ClassExpression",
       "slot_uri": "https://w3id.org/linkml/slot_conditions",
       "multivalued": true,
       "owner": "ClassExpression",
@@ -2157,19 +2180,21 @@
     {
       "name": "union_of",
       "definition_uri": "https://w3id.org/linkml/union_of",
-      "description": "indicates that the domain class consists exactly of the members of the classes in the range",
+      "description": "indicates that the domain element consists exactly of the members of the element in the range.",
       "notes": [
         "this only applies in the OWL generation"
       ],
       "from_schema": "https://w3id.org/linkml/meta",
-      "domain": "ClassDefinition",
+      "domain": "Element",
       "slot_uri": "https://w3id.org/linkml/union_of",
       "multivalued": true,
-      "owner": "ClassDefinition",
+      "owner": "union_of",
       "domain_of": [
+        "TypeDefinition",
+        "SlotDefinition",
         "ClassDefinition"
       ],
-      "range": "ClassDefinition",
+      "range": "Element",
       "@type": "SlotDefinition"
     },
     {
@@ -2414,6 +2439,7 @@
       "slot_uri": "https://w3id.org/linkml/implicit_prefix",
       "owner": "SlotExpression",
       "domain_of": [
+        "TypeExpression",
         "SlotExpression"
       ],
       "range": "string",
@@ -4411,6 +4437,28 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "type_definition_union_of",
+      "definition_uri": "https://w3id.org/linkml/union_of",
+      "description": "indicates that the domain element consists exactly of the members of the element in the range.",
+      "notes": [
+        "this only applies in the OWL generation"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "union_of",
+      "domain": "TypeDefinition",
+      "slot_uri": "https://w3id.org/linkml/union_of",
+      "multivalued": true,
+      "alias": "union_of",
+      "owner": "TypeDefinition",
+      "domain_of": [
+        "TypeDefinition"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "union_of",
+      "range": "TypeDefinition",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "structured_alias_categories",
       "definition_uri": "https://w3id.org/linkml/categories",
       "description": "The category or categories of an alias. This can be drawn from any relevant vocabulary",
@@ -4740,6 +4788,28 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "slot_definition_union_of",
+      "definition_uri": "https://w3id.org/linkml/union_of",
+      "description": "indicates that the domain element consists exactly of the members of the element in the range.",
+      "notes": [
+        "this only applies in the OWL generation"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "union_of",
+      "domain": "SlotDefinition",
+      "slot_uri": "https://w3id.org/linkml/union_of",
+      "multivalued": true,
+      "alias": "union_of",
+      "owner": "SlotDefinition",
+      "domain_of": [
+        "SlotDefinition"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "union_of",
+      "range": "TypeDefinition",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "class_expression_any_of",
       "definition_uri": "https://w3id.org/linkml/any_of",
       "description": "holds if at least one of the expressions hold",
@@ -4944,6 +5014,28 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "disjoint_with",
+      "range": "ClassDefinition",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "class_definition_union_of",
+      "definition_uri": "https://w3id.org/linkml/union_of",
+      "description": "indicates that the domain element consists exactly of the members of the element in the range.",
+      "notes": [
+        "this only applies in the OWL generation"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "is_a": "union_of",
+      "domain": "ClassDefinition",
+      "slot_uri": "https://w3id.org/linkml/union_of",
+      "multivalued": true,
+      "alias": "union_of",
+      "owner": "ClassDefinition",
+      "domain_of": [
+        "ClassDefinition"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "union_of",
       "range": "ClassDefinition",
       "@type": "SlotDefinition"
     },
@@ -5192,6 +5284,7 @@
       "slots": [
         "pattern",
         "structured_pattern",
+        "implicit_prefix",
         "equals_string",
         "equals_string_in",
         "equals_number",
@@ -5216,6 +5309,7 @@
       "slots": [
         "pattern",
         "structured_pattern",
+        "implicit_prefix",
         "equals_string",
         "equals_string_in",
         "equals_number",
@@ -5279,8 +5373,10 @@
         "base",
         "type_uri",
         "repr",
+        "type_definition_union_of",
         "pattern",
         "structured_pattern",
+        "implicit_prefix",
         "equals_string",
         "equals_string_in",
         "equals_number",
@@ -5431,10 +5527,19 @@
         "object_oriented"
       ],
       "from_schema": "https://w3id.org/linkml/meta",
+      "aliases": [
+        "enum",
+        "value set",
+        "term set",
+        "Terminology Value Set"
+      ],
+      "exact_mappings": [
+        "NCIT:C113497"
+      ],
       "close_mappings": [
         "qb:HierarchicalCodeList"
       ],
-      "is_a": "Element",
+      "is_a": "Definition",
       "mixins": [
         "EnumExpression"
       ],
@@ -5471,6 +5576,18 @@
         "narrow_mappings",
         "broad_mappings",
         "rank",
+        "is_a",
+        "abstract",
+        "mixin",
+        "mixins",
+        "apply_to",
+        "values_from",
+        "created_by",
+        "created_on",
+        "last_updated_on",
+        "modified_by",
+        "status",
+        "string_serialization",
         "code_set",
         "code_set_tag",
         "code_set_version",
@@ -5846,6 +5963,7 @@
         "path_rule",
         "slot_definition_disjoint_with",
         "children_are_mutually_disjoint",
+        "slot_definition_union_of",
         "slot_definition_is_a",
         "slot_definition_mixins",
         "slot_definition_apply_to",
@@ -6016,7 +6134,7 @@
         "attributes",
         "class_uri",
         "subclass_of",
-        "union_of",
+        "class_definition_union_of",
         "defining_slots",
         "tree_root",
         "unique_keys",
@@ -6494,9 +6612,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "meta.yaml",
-  "source_file_date": "2022-05-21T01:31:19",
-  "source_file_size": 66985,
-  "generation_date": "2022-05-21T01:32:26",
+  "source_file_date": "2022-06-28T03:36:36",
+  "source_file_size": 67509,
+  "generation_date": "2022-06-28T03:37:45",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",

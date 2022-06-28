@@ -155,10 +155,10 @@ refer to the official URI for each construct, e.g.
 <li><a href="Element/">Element</a> - a named element in the model<ul>
 <li><a href="Definition/">Definition</a> - base class for definitions<ul>
 <li><a href="ClassDefinition/">ClassDefinition</a> - the definition of a class or interface</li>
+<li><a href="EnumDefinition/">EnumDefinition</a> - List of values that constrain the range of a slot</li>
 <li><a href="SlotDefinition/">SlotDefinition</a> - the definition of a property or a slot</li>
 </ul>
 </li>
-<li><a href="EnumDefinition/">EnumDefinition</a> - List of values that constrain the range of a slot</li>
 <li><a href="SchemaDefinition/">SchemaDefinition</a> - a collection of subset, type, slot and class definitions</li>
 <li><a href="SubsetDefinition/">SubsetDefinition</a> - the name and description of a subset</li>
 <li><a href="TypeDefinition/">TypeDefinition</a> - A data type definition.</li>
@@ -418,7 +418,7 @@ refer to the official URI for each construct, e.g.
 <li><a href="severity/">severity</a></li>
 <li><a href="shared/">shared</a> - If True, then the relationship between the slot domain and range is many to one or many to many</li>
 <li><a href="singular_name/">singular_name</a> - a name that is used in the singular form</li>
-<li><a href="slot_conditions/">slot_conditions</a> - the redefinition of a slot in the context of the containing class definition.</li>
+<li><a href="slot_conditions/">slot_conditions</a> - expresses constraints on a group of slots for a class expression</li>
 <li><a href="slot_definitions/">schema_definition➞slots</a> - slot definitions</li>
 <li><a href="slot_group/">slot_group</a> - allows for grouping of related slots into a grouping slot that serves the role of a group</li>
 <li><a href="slot_names_unique/">slot_names_unique</a> - if true then induced/mangled slot names are not created for class_usage and attributes</li>
@@ -452,7 +452,12 @@ refer to the official URI for each construct, e.g.
 <li><a href="type_uri/">type_definition➞uri</a> - The uri that defines the possible values for the type definition</li>
 <li><a href="typeof/">typeof</a> - Names a parent type</li>
 <li><a href="types/">types</a> - data types used in the model</li>
-<li><a href="union_of/">union_of</a> - indicates that the domain class consists exactly of the members of the classes in the range</li>
+<li><a href="union_of/">union_of</a> - indicates that the domain element consists exactly of the members of the element in the range.<ul>
+<li><a href="class_definition_union_of/">class_definition➞union_of</a></li>
+<li><a href="slot_definition_union_of/">slot_definition➞union_of</a></li>
+<li><a href="type_definition_union_of/">type_definition➞union_of</a></li>
+</ul>
+</li>
 <li><a href="unique_key_name/">unique_key_name</a> - name of the unique key</li>
 <li><a href="unique_key_slots/">unique_key_slots</a> - list of slot names that form a key</li>
 <li><a href="unique_keys/">unique_keys</a> - Set of unique keys for this slot</li>
@@ -502,6 +507,7 @@ refer to the official URI for each construct, e.g.
 <ul>
 <li><a href="Boolean/">Boolean</a>  (<strong>Bool</strong>)  - A binary (true or false) value</li>
 <li><a href="Date/">Date</a>  (<strong>XSDDate</strong>)  - a date (year, month and day) in an idealized calendar</li>
+<li><a href="DateOrDatetime/">DateOrDatetime</a>  (<strong>str</strong>)  - Either a date or a datetime</li>
 <li><a href="Datetime/">Datetime</a>  (<strong>XSDDateTime</strong>)  - The combination of a date and time</li>
 <li><a href="Decimal/">Decimal</a>  (<strong>Decimal</strong>)  - A real number with arbitrary precision that conforms to the xsd:decimal specification</li>
 <li><a href="Double/">Double</a>  (<strong>float</strong>)  - A real number that conforms to the xsd:double specification</li>

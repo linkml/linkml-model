@@ -115,10 +115,10 @@
 <li><strong><a href="./">ClassDefinition</a></strong> <em><a href="../class_definition_disjoint_with/">class_definition➞disjoint_with</a></em>  <sub>0..*</sub>  <strong><a href="./">ClassDefinition</a></strong></li>
 <li><strong><a href="./">ClassDefinition</a></strong> <em><a href="../class_definition_is_a/">class_definition➞is_a</a></em>  <sub>0..1</sub>  <strong><a href="./">ClassDefinition</a></strong></li>
 <li><strong><a href="./">ClassDefinition</a></strong> <em><a href="../class_definition_mixins/">class_definition➞mixins</a></em>  <sub>0..*</sub>  <strong><a href="./">ClassDefinition</a></strong></li>
+<li><strong><a href="./">ClassDefinition</a></strong> <em><a href="../class_definition_union_of/">class_definition➞union_of</a></em>  <sub>0..*</sub>  <strong><a href="./">ClassDefinition</a></strong></li>
 <li><strong><a href="../SchemaDefinition/">SchemaDefinition</a></strong> <em><a href="../classes/">classes</a></em>  <sub>0..*</sub>  <strong><a href="./">ClassDefinition</a></strong></li>
 <li><strong><a href="../SlotDefinition/">SlotDefinition</a></strong> <em><a href="../domain/">domain</a></em>  <sub>0..1</sub>  <strong><a href="./">ClassDefinition</a></strong></li>
 <li><strong><a href="../SlotDefinition/">SlotDefinition</a></strong> <em><a href="../domain_of/">domain_of</a></em>  <sub>0..*</sub>  <strong><a href="./">ClassDefinition</a></strong></li>
-<li><strong><a href="./">ClassDefinition</a></strong> <em><a href="../union_of/">union_of</a></em>  <sub>0..*</sub>  <strong><a href="./">ClassDefinition</a></strong></li>
 </ul>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
@@ -152,8 +152,8 @@
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
-<li><a href="../union_of/">union_of</a>  <sub>0..*</sub><ul>
-<li>Description: indicates that the domain class consists exactly of the members of the classes in the range</li>
+<li><a href="../class_definition_union_of/">class_definition➞union_of</a>  <sub>0..*</sub><ul>
+<li>Description: indicates that the domain element consists exactly of the members of the element in the range.</li>
 <li>Range: <a href="./">ClassDefinition</a></li>
 </ul>
 </li>
@@ -343,7 +343,7 @@ For example, a Measurement class may have 3 fields: unit, value, and string_valu
 <h3 id="mixed-in-from-class_expression_4">Mixed in from class_expression:</h3>
 <ul>
 <li><a href="../slot_conditions/">slot_conditions</a>  <sub>0..*</sub><ul>
-<li>Description: the redefinition of a slot in the context of the containing class definition.</li>
+<li>Description: expresses constraints on a group of slots for a class expression</li>
 <li>Range: <a href="../SlotDefinition/">SlotDefinition</a></li>
 </ul>
 </li>

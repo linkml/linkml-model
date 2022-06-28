@@ -146,6 +146,7 @@ type AnonymousTypeExpression implements TypeExpression
   {
     pattern: String
     structuredPattern: PatternExpression
+    implicitPrefix: String
     equalsString: String
     equalsStringIn: [String]
     equalsNumber: Integer
@@ -422,6 +423,18 @@ type EnumDefinition implements EnumExpression
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
     rank: Integer
+    isA: Definition
+    abstract: Boolean
+    mixin: Boolean
+    mixins: [Definition]
+    applyTo: [Definition]
+    valuesFrom: [Uriorcurie]
+    createdBy: Uriorcurie
+    createdOn: Datetime
+    lastUpdatedOn: Datetime
+    modifiedBy: Uriorcurie
+    status: Uriorcurie
+    stringSerialization: String
     codeSet: Uriorcurie
     codeSetTag: String
     codeSetVersion: String
@@ -758,6 +771,7 @@ type SlotDefinition implements SlotExpression
     pathRule: PathExpression
     disjointWith: [SlotDefinition]
     childrenAreMutuallyDisjoint: Boolean
+    unionOf: [TypeDefinition]
     isA: SlotDefinition
     mixins: [SlotDefinition]
     applyTo: [SlotDefinition]
@@ -923,8 +937,10 @@ type TypeDefinition implements TypeExpression
     base: String
     uri: Uriorcurie
     repr: String
+    unionOf: [TypeDefinition]
     pattern: String
     structuredPattern: PatternExpression
+    implicitPrefix: String
     equalsString: String
     equalsStringIn: [String]
     equalsNumber: Integer
@@ -940,6 +956,7 @@ interface TypeExpression
   {
     pattern: String
     structuredPattern: PatternExpression
+    implicitPrefix: String
     equalsString: String
     equalsStringIn: [String]
     equalsNumber: Integer
