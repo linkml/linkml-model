@@ -32,6 +32,7 @@ prefixes:
   skos: http://www.w3.org/2004/02/skos/core#
   skosxl: http://www.w3.org/2008/05/skos-xl#
   OIO: http://www.geneontology.org/formats/oboInOwl#
+  NCIT: http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#
   pav: http://purl.org/pav/
   oslc: http://open-services.net/ns/core#
   schema: http://schema.org/
@@ -1972,10 +1973,17 @@ classes:
       - permissible_values
     
   enum_definition:
+    aliases:
+      - enum
+      - value set
+      - term set
+      - Terminology Value Set
     description: List of values that constrain the range of a slot
-    is_a: element
+    is_a: definition
     mixins:
       - enum_expression
+    exact_mappings:
+      - NCIT:C113497
     close_mappings:
       - qb:HierarchicalCodeList
     in_subset:

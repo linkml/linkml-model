@@ -175,6 +175,9 @@ In all cases, the semantics are as follows:
    
 ### range expression checks
 
+For each slot `s` in `Atts`, if `i.<s>` is not None, and `RE = s.range_expression` is not None, then a check
+**CE**(`x`) is performed on `i.<s>`
+
 ### Rule evaluation
 
 For each rule `r` in *C*.rules:
