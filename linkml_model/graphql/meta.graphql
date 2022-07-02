@@ -127,6 +127,7 @@ type AnonymousSlotExpression implements SlotExpression
     maximumValue: Integer
     pattern: String
     structuredPattern: PatternExpression
+    unit: UnitOfMeasure
     implicitPrefix: String
     equalsString: String
     equalsStringIn: [String]
@@ -146,6 +147,7 @@ type AnonymousTypeExpression implements TypeExpression
   {
     pattern: String
     structuredPattern: PatternExpression
+    unit: UnitOfMeasure
     implicitPrefix: String
     equalsString: String
     equalsStringIn: [String]
@@ -786,6 +788,7 @@ type SlotDefinition implements SlotExpression
     maximumValue: Integer
     pattern: String
     structuredPattern: PatternExpression
+    unit: UnitOfMeasure
     implicitPrefix: String
     equalsString: String
     equalsStringIn: [String]
@@ -814,6 +817,7 @@ interface SlotExpression
     maximumValue: Integer
     pattern: String
     structuredPattern: PatternExpression
+    unit: UnitOfMeasure
     implicitPrefix: String
     equalsString: String
     equalsStringIn: [String]
@@ -940,6 +944,7 @@ type TypeDefinition implements TypeExpression
     unionOf: [TypeDefinition]
     pattern: String
     structuredPattern: PatternExpression
+    unit: UnitOfMeasure
     implicitPrefix: String
     equalsString: String
     equalsStringIn: [String]
@@ -956,6 +961,7 @@ interface TypeExpression
   {
     pattern: String
     structuredPattern: PatternExpression
+    unit: UnitOfMeasure
     implicitPrefix: String
     equalsString: String
     equalsStringIn: [String]
@@ -999,6 +1005,16 @@ type UniqueKey implements Extensible, Annotatable, CommonMetadata
     narrowMappings: [Uriorcurie]
     broadMappings: [Uriorcurie]
     rank: Integer
+  }
+
+type UnitOfMeasure
+  {
+    symbol: String
+    exactMappings: [Uriorcurie]
+    ucumCode: String
+    derivation: String
+    hasQuantityKind: Uriorcurie
+    iec61360code: String
   }
 
 type ValidationReport

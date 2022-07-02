@@ -139,6 +139,7 @@ refer to the official URI for each construct, e.g.
 <a href="https://w3id.org/linkml/is_a">https://w3id.org/linkml/is_a</a></p>
 <h3 id="classes">Classes</h3>
 <ul>
+<li><a href="UnitOfMeasure/">UnitOfMeasure</a> - A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension).</li>
 <li><a href="ValidationReport/">ValidationReport</a> - A report object</li>
 <li><a href="ValidationResult/">ValidationResult</a> - An individual result arising from validation of a data instance using a particular rule</li>
 <li><a href="AltDescription/">AltDescription</a> - an attributed description</li>
@@ -266,6 +267,7 @@ refer to the official URI for each construct, e.g.
 <li><a href="deprecated/">deprecated</a> - Description of why and when this element will no longer be used</li>
 <li><a href="deprecated_element_has_exact_replacement/">deprecated element has exact replacement</a> - When an element is deprecated, it can be automatically replaced by this uri or curie</li>
 <li><a href="deprecated_element_has_possible_replacement/">deprecated element has possible replacement</a> - When an element is deprecated, it can be potentially replaced by this uri or curie</li>
+<li><a href="derivation/">derivation</a> - Expression for deriving this unit from other units</li>
 <li><a href="description/">description</a> - a description of the element's purpose and use</li>
 <li><a href="designates_type/">designates_type</a> - True means that the key slot(s) is used to determine the instantiation (types) relation between objects and a ClassDefinition</li>
 <li><a href="disjoint_with/">disjoint_with</a> - Two classes are disjoint if they have no instances in common, two slots are disjoint if they can never hold between the same two instances<ul>
@@ -292,9 +294,11 @@ refer to the official URI for each construct, e.g.
 </li>
 <li><a href="from_schema/">from_schema</a> - id of the schema that defined the element</li>
 <li><a href="generation_date/">generation_date</a> - date and time that the schema was loaded/generated</li>
+<li><a href="has_quantity_kind/">has_quantity_kind</a> - Concept in a vocabulary or ontology that denotes the kind of quanity being measured, e.g. length</li>
 <li><a href="id/">id</a> - The official schema URI</li>
 <li><a href="id_prefixes/">id_prefixes</a> - the identifier of this class or slot must begin with the URIs referenced by this prefix</li>
 <li><a href="identifier/">identifier</a> - True means that the key slot(s) uniquely identify the container. There can be at most one identifier or key per container</li>
+<li><a href="iec61360code/">iec61360code</a></li>
 <li><a href="ifabsent/">ifabsent</a> - function that provides a default value for the slot.  Possible values for this slot are defined in</li>
 <li><a href="implicit_prefix/">implicit_prefix</a> - Causes the slot value to be interpreted as a uriorcurie after prefixing with this string</li>
 <li><a href="import_as/">import_as</a></li>
@@ -347,7 +351,10 @@ refer to the official URI for each construct, e.g.
 <li><a href="mappings/">mappings</a> - A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.<ul>
 <li><a href="broad_mappings/">broad mappings</a> - A list of terms from different schemas or terminology systems that have broader meaning.</li>
 <li><a href="close_mappings/">close mappings</a> - A list of terms from different schemas or terminology systems that have close meaning.</li>
-<li><a href="exact_mappings/">exact mappings</a> - A list of terms from different schemas or terminology systems that have identical meaning.</li>
+<li><a href="exact_mappings/">exact mappings</a> - A list of terms from different schemas or terminology systems that have identical meaning.<ul>
+<li><a href="UnitOfMeasure_exact_mappings/">UnitOfMeasure➞exact mappings</a> - Used to link a unit to equivalent concepts in ontologies such as UO, SNOMED, OEM, OBOE, NCIT</li>
+</ul>
+</li>
 <li><a href="narrow_mappings/">narrow mappings</a> - A list of terms from different schemas or terminology systems that have narrower meaning.</li>
 <li><a href="related_mappings/">related mappings</a> - A list of terms from different schemas or terminology systems that have related meaning.</li>
 </ul>
@@ -438,6 +445,7 @@ refer to the official URI for each construct, e.g.
 <li><a href="subject/">subject</a></li>
 <li><a href="subproperty_of/">subproperty_of</a> - Ontology property which this slot is a subproperty of.  Note: setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values in every serialization of the model.</li>
 <li><a href="subsets/">subsets</a> - list of subsets referenced in this model</li>
+<li><a href="symbol/">symbol</a> - name of the unit encoded as a symbol</li>
 <li><a href="syntax/">syntax</a> - the string value of the slot must conform to this regular expression expressed in the string. May be interpolated.</li>
 <li><a href="text/">text</a></li>
 <li><a href="title/">title</a> - the official title of the element</li>
@@ -452,6 +460,7 @@ refer to the official URI for each construct, e.g.
 <li><a href="type_uri/">type_definition➞uri</a> - The uri that defines the possible values for the type definition</li>
 <li><a href="typeof/">typeof</a> - Names a parent type</li>
 <li><a href="types/">types</a> - data types used in the model</li>
+<li><a href="ucum_code/">ucum_code</a> - associates a QUDT unit with its UCUM code (case-sensitive).</li>
 <li><a href="union_of/">union_of</a> - indicates that the domain element consists exactly of the members of the element in the range.<ul>
 <li><a href="class_definition_union_of/">class_definition➞union_of</a></li>
 <li><a href="slot_definition_union_of/">slot_definition➞union_of</a></li>
@@ -461,6 +470,7 @@ refer to the official URI for each construct, e.g.
 <li><a href="unique_key_name/">unique_key_name</a> - name of the unique key</li>
 <li><a href="unique_key_slots/">unique_key_slots</a> - list of slot names that form a key</li>
 <li><a href="unique_keys/">unique_keys</a> - Set of unique keys for this slot</li>
+<li><a href="unit/">unit</a> - an encoding of a unit</li>
 <li><a href="usage_slot_name/">usage_slot_name</a> - The name of the slot referenced in the slot_usage</li>
 <li><a href="validationReport__results/">➞results</a></li>
 <li><a href="value/">value</a> - example value</li>

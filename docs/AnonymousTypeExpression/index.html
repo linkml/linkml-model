@@ -99,7 +99,7 @@
               
                 <h1 id="class-anonymous_type_expression">Class: anonymous_type_expression</h1>
 <p>URI: <a href="https://w3id.org/linkml/AnonymousTypeExpression">linkml:AnonymousTypeExpression</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[TypeExpression],[PatternExpression],[TypeExpression]++-%20all_of%200..*&gt;[AnonymousTypeExpression&#124;pattern:string%20%3F;implicit_prefix:string%20%3F;equals_string:string%20%3F;equals_string_in:string%20*;equals_number:integer%20%3F;minimum_value:integer%20%3F;maximum_value:integer%20%3F],[TypeExpression]++-%20any_of%200..*&gt;[AnonymousTypeExpression],[TypeExpression]++-%20exactly_one_of%200..*&gt;[AnonymousTypeExpression],[TypeExpression]++-%20none_of%200..*&gt;[AnonymousTypeExpression],[AnonymousTypeExpression]uses%20-.-&gt;[TypeExpression]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[TypeExpression],[PatternExpression],[TypeExpression]++-%20all_of%200..*&gt;[AnonymousTypeExpression&#124;pattern:string%20%3F;implicit_prefix:string%20%3F;equals_string:string%20%3F;equals_string_in:string%20*;equals_number:integer%20%3F;minimum_value:integer%20%3F;maximum_value:integer%20%3F],[TypeExpression]++-%20any_of%200..*&gt;[AnonymousTypeExpression],[TypeExpression]++-%20exactly_one_of%200..*&gt;[AnonymousTypeExpression],[TypeExpression]++-%20none_of%200..*&gt;[AnonymousTypeExpression],[AnonymousTypeExpression]uses%20-.-&gt;[TypeExpression]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[TypeExpression],[PatternExpression],[TypeExpression]++-%20all_of%200..*&gt;[AnonymousTypeExpression&#124;pattern:string%20%3F;implicit_prefix:string%20%3F;equals_string:string%20%3F;equals_string_in:string%20*;equals_number:integer%20%3F;minimum_value:integer%20%3F;maximum_value:integer%20%3F],[TypeExpression]++-%20any_of%200..*&gt;[AnonymousTypeExpression],[TypeExpression]++-%20exactly_one_of%200..*&gt;[AnonymousTypeExpression],[TypeExpression]++-%20none_of%200..*&gt;[AnonymousTypeExpression],[AnonymousTypeExpression]uses%20-.-&gt;[TypeExpression],[UnitOfMeasure]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[TypeExpression],[PatternExpression],[TypeExpression]++-%20all_of%200..*&gt;[AnonymousTypeExpression&#124;pattern:string%20%3F;implicit_prefix:string%20%3F;equals_string:string%20%3F;equals_string_in:string%20*;equals_number:integer%20%3F;minimum_value:integer%20%3F;maximum_value:integer%20%3F],[TypeExpression]++-%20any_of%200..*&gt;[AnonymousTypeExpression],[TypeExpression]++-%20exactly_one_of%200..*&gt;[AnonymousTypeExpression],[TypeExpression]++-%20none_of%200..*&gt;[AnonymousTypeExpression],[AnonymousTypeExpression]uses%20-.-&gt;[TypeExpression],[UnitOfMeasure]" /></a></p>
 <h2 id="uses-mixin">Uses Mixin</h2>
 <ul>
 <li>mixin: <a href="../TypeExpression/">TypeExpression</a></li>
@@ -131,13 +131,21 @@
 </ul>
 <h3 id="mixed-in-from-type_expression_2">Mixed in from type_expression:</h3>
 <ul>
+<li><a href="../unit/">unit</a>  <sub>0..1</sub><ul>
+<li>Description: an encoding of a unit</li>
+<li>Range: <a href="../UnitOfMeasure/">UnitOfMeasure</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="mixed-in-from-type_expression_3">Mixed in from type_expression:</h3>
+<ul>
 <li><a href="../implicit_prefix/">implicit_prefix</a>  <sub>0..1</sub><ul>
 <li>Description: Causes the slot value to be interpreted as a uriorcurie after prefixing with this string</li>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 </li>
 </ul>
-<h3 id="mixed-in-from-type_expression_3">Mixed in from type_expression:</h3>
+<h3 id="mixed-in-from-type_expression_4">Mixed in from type_expression:</h3>
 <ul>
 <li><a href="../equals_string/">equals_string</a>  <sub>0..1</sub><ul>
 <li>Description: the slot must have range string and the value of the slot must equal the specified value</li>
@@ -145,7 +153,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="mixed-in-from-type_expression_4">Mixed in from type_expression:</h3>
+<h3 id="mixed-in-from-type_expression_5">Mixed in from type_expression:</h3>
 <ul>
 <li><a href="../equals_string_in/">equals_string_in</a>  <sub>0..*</sub><ul>
 <li>Description: the slot must have range string and the value of the slot must equal one of the specified values</li>
@@ -153,7 +161,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="mixed-in-from-type_expression_5">Mixed in from type_expression:</h3>
+<h3 id="mixed-in-from-type_expression_6">Mixed in from type_expression:</h3>
 <ul>
 <li><a href="../equals_number/">equals_number</a>  <sub>0..1</sub><ul>
 <li>Description: the slot must have range of a number and the value of the slot must equal the specified value</li>
@@ -161,7 +169,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="mixed-in-from-type_expression_6">Mixed in from type_expression:</h3>
+<h3 id="mixed-in-from-type_expression_7">Mixed in from type_expression:</h3>
 <ul>
 <li><a href="../minimum_value/">minimum_value</a>  <sub>0..1</sub><ul>
 <li>Description: for slots with ranges of type number, the value must be equal to or higher than this</li>
@@ -170,7 +178,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="mixed-in-from-type_expression_7">Mixed in from type_expression:</h3>
+<h3 id="mixed-in-from-type_expression_8">Mixed in from type_expression:</h3>
 <ul>
 <li><a href="../maximum_value/">maximum_value</a>  <sub>0..1</sub><ul>
 <li>Description: for slots with ranges of type number, the value must be equal to or lowe than this</li>
@@ -179,7 +187,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="mixed-in-from-type_expression_8">Mixed in from type_expression:</h3>
+<h3 id="mixed-in-from-type_expression_9">Mixed in from type_expression:</h3>
 <ul>
 <li><a href="../type_expression_none_of/">type_expression➞none_of</a>  <sub>0..*</sub><ul>
 <li>Description: holds if none of the expressions hold</li>
@@ -187,7 +195,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="mixed-in-from-type_expression_9">Mixed in from type_expression:</h3>
+<h3 id="mixed-in-from-type_expression_10">Mixed in from type_expression:</h3>
 <ul>
 <li><a href="../type_expression_exactly_one_of/">type_expression➞exactly_one_of</a>  <sub>0..*</sub><ul>
 <li>Description: holds if only one of the expressions hold</li>
@@ -195,7 +203,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="mixed-in-from-type_expression_10">Mixed in from type_expression:</h3>
+<h3 id="mixed-in-from-type_expression_11">Mixed in from type_expression:</h3>
 <ul>
 <li><a href="../type_expression_any_of/">type_expression➞any_of</a>  <sub>0..*</sub><ul>
 <li>Description: holds if at least one of the expressions hold</li>
@@ -203,7 +211,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="mixed-in-from-type_expression_11">Mixed in from type_expression:</h3>
+<h3 id="mixed-in-from-type_expression_12">Mixed in from type_expression:</h3>
 <ul>
 <li><a href="../type_expression_all_of/">type_expression➞all_of</a>  <sub>0..*</sub><ul>
 <li>Description: holds if all of the expressions hold</li>

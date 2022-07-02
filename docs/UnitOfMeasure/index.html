@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Slot: exact mappings - LinkML Model</title>
+    <title>Class: UnitOfMeasure - LinkML Model</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Slot: exact mappings";
-        var mkdocs_page_input_path = "exact_mappings.md";
+        var mkdocs_page_name = "Class: UnitOfMeasure";
+        var mkdocs_page_input_path = "UnitOfMeasure.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -87,7 +87,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Slot: exact mappings</li>
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Class: UnitOfMeasure</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -97,40 +97,46 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="slot-exact-mappings">Slot: exact mappings</h1>
-<p>A list of terms from different schemas or terminology systems that have identical meaning.</p>
-<p>URI: <a href="https://w3id.org/linkml/exact_mappings">linkml:exact_mappings</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p>None &#8594;  <sub>0..*</sub> <a href="../Uriorcurie/">Uriorcurie</a></p>
-<h2 id="parents">Parents</h2>
+                <h1 id="class-unitofmeasure">Class: UnitOfMeasure</h1>
+<p>A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension).</p>
+<p>URI: <a href="https://w3id.org/linkml/UnitOfMeasure">linkml:UnitOfMeasure</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[TypeExpression]++-%20unit%200..1&gt;[UnitOfMeasure&#124;symbol:string%20%3F;exact_mappings:uriorcurie%20*;ucum_code:string%20%3F;derivation:string%20%3F;has_quantity_kind:uriorcurie%20%3F;iec61360code:string%20%3F],[SlotExpression]++-%20unit%200..1&gt;[UnitOfMeasure],[TypeExpression],[SlotExpression]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[TypeExpression]++-%20unit%200..1&gt;[UnitOfMeasure&#124;symbol:string%20%3F;exact_mappings:uriorcurie%20*;ucum_code:string%20%3F;derivation:string%20%3F;has_quantity_kind:uriorcurie%20%3F;iec61360code:string%20%3F],[SlotExpression]++-%20unit%200..1&gt;[UnitOfMeasure],[TypeExpression],[SlotExpression]" /></a></p>
+<h2 id="referenced-by-class">Referenced by Class</h2>
 <ul>
-<li>is_a: <a href="../mappings/">mappings</a></li>
+<li><strong>None</strong> <em><a href="../unit/">unit</a></em>  <sub>0..1</sub>  <strong><a href="./">UnitOfMeasure</a></strong></li>
 </ul>
-<h2 id="children">Children</h2>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
 <ul>
-<li><a href="../UnitOfMeasure_exact_mappings/">UnitOfMeasure➞exact mappings</a></li>
+<li><a href="../symbol/">symbol</a>  <sub>0..1</sub><ul>
+<li>Description: name of the unit encoded as a symbol</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
-<h2 id="used-by">Used by</h2>
-<ul>
-<li><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></li>
-<li><a href="../AnonymousExpression/">AnonymousExpression</a></li>
-<li><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></li>
-<li><a href="../ClassDefinition/">ClassDefinition</a></li>
-<li><a href="../ClassRule/">ClassRule</a></li>
-<li><a href="../CommonMetadata/">CommonMetadata</a></li>
-<li><a href="../Definition/">Definition</a></li>
-<li><a href="../Element/">Element</a></li>
-<li><a href="../EnumDefinition/">EnumDefinition</a></li>
-<li><a href="../ImportExpression/">ImportExpression</a></li>
-<li><a href="../PathExpression/">PathExpression</a></li>
-<li><a href="../PatternExpression/">PatternExpression</a></li>
-<li><a href="../PermissibleValue/">PermissibleValue</a></li>
-<li><a href="../SchemaDefinition/">SchemaDefinition</a></li>
-<li><a href="../SlotDefinition/">SlotDefinition</a></li>
-<li><a href="../StructuredAlias/">StructuredAlias</a></li>
-<li><a href="../SubsetDefinition/">SubsetDefinition</a></li>
-<li><a href="../TypeDefinition/">TypeDefinition</a></li>
-<li><a href="../UniqueKey/">UniqueKey</a></li>
+</li>
+<li><a href="../UnitOfMeasure_exact_mappings/">UnitOfMeasure➞exact mappings</a>  <sub>0..*</sub><ul>
+<li>Description: Used to link a unit to equivalent concepts in ontologies such as UO, SNOMED, OEM, OBOE, NCIT</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../ucum_code/">ucum_code</a>  <sub>0..1</sub><ul>
+<li>Description: associates a QUDT unit with its UCUM code (case-sensitive).</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../derivation/">derivation</a>  <sub>0..1</sub><ul>
+<li>Description: Expression for deriving this unit from other units</li>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
+<li><a href="../has_quantity_kind/">has_quantity_kind</a>  <sub>0..1</sub><ul>
+<li>Description: Concept in a vocabulary or ontology that denotes the kind of quanity being measured, e.g. length</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../iec61360code/">iec61360code</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../String/">String</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="other-properties">Other properties</h2>
 <table>
@@ -145,7 +151,7 @@
 <tr>
 <td><strong>Mappings:</strong></td>
 <td></td>
-<td>skos:exactMatch</td>
+<td>qudt:Unit</td>
 </tr>
 </tbody>
 </table>

@@ -9,7 +9,8 @@
     "linkml:mappings",
     "linkml:extensions",
     "linkml:annotations",
-    "linkml:validation"
+    "linkml:validation",
+    "units"
   ],
   "license": "https://creativecommons.org/publicdomain/zero/1.0/",
   "prefixes": [
@@ -3968,9 +3969,10 @@
       "is_a": "mappings",
       "slot_uri": "http://www.w3.org/2004/02/skos/core#exactMatch",
       "multivalued": true,
-      "owner": "CommonMetadata",
+      "owner": "UnitOfMeasure",
       "domain_of": [
-        "CommonMetadata"
+        "CommonMetadata",
+        "UnitOfMeasure"
       ],
       "range": "uriorcurie",
       "@type": "SlotDefinition"
@@ -4285,6 +4287,111 @@
       "owner": "ValidationResult",
       "domain_of": [
         "ValidationResult"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "unit",
+      "definition_uri": "https://w3id.org/linkml/unit",
+      "description": "an encoding of a unit",
+      "from_schema": "https://w3id.org/linkml/units",
+      "imported_from": "units",
+      "mappings": [
+        "http://qudt.org/schema/qudt/unit"
+      ],
+      "slot_uri": "http://qudt.org/schema/qudt/unit",
+      "owner": "SlotExpression",
+      "domain_of": [
+        "TypeExpression",
+        "SlotExpression"
+      ],
+      "range": "UnitOfMeasure",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ucum_code",
+      "definition_uri": "https://w3id.org/linkml/ucum_code",
+      "description": "associates a QUDT unit with its UCUM code (case-sensitive).",
+      "from_schema": "https://w3id.org/linkml/units",
+      "imported_from": "units",
+      "mappings": [
+        "http://qudt.org/schema/qudt/ucumCode"
+      ],
+      "domain": "UnitOfMeasure",
+      "slot_uri": "http://qudt.org/schema/qudt/ucumCode",
+      "owner": "UnitOfMeasure",
+      "domain_of": [
+        "UnitOfMeasure"
+      ],
+      "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "derivation",
+      "definition_uri": "https://w3id.org/linkml/derivation",
+      "description": "Expression for deriving this unit from other units",
+      "from_schema": "https://w3id.org/linkml/units",
+      "imported_from": "units",
+      "slot_uri": "https://w3id.org/linkml/derivation",
+      "owner": "UnitOfMeasure",
+      "domain_of": [
+        "UnitOfMeasure"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "has_quantity_kind",
+      "definition_uri": "https://w3id.org/linkml/has_quantity_kind",
+      "description": "Concept in a vocabulary or ontology that denotes the kind of quanity being measured, e.g. length",
+      "comments": [
+        "Potential ontologies include but are not limited to PATO, NCIT, OBOE, qudt.quantityKind"
+      ],
+      "from_schema": "https://w3id.org/linkml/units",
+      "imported_from": "units",
+      "mappings": [
+        "http://qudt.org/schema/qudt/hasQuantityKind"
+      ],
+      "slot_uri": "http://qudt.org/schema/qudt/hasQuantityKind",
+      "owner": "UnitOfMeasure",
+      "domain_of": [
+        "UnitOfMeasure"
+      ],
+      "range": "uriorcurie",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "iec61360code",
+      "definition_uri": "https://w3id.org/linkml/iec61360code",
+      "from_schema": "https://w3id.org/linkml/units",
+      "imported_from": "units",
+      "mappings": [
+        "http://qudt.org/schema/qudt/iec61360Code"
+      ],
+      "slot_uri": "http://qudt.org/schema/qudt/iec61360Code",
+      "owner": "UnitOfMeasure",
+      "domain_of": [
+        "UnitOfMeasure"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "symbol",
+      "definition_uri": "https://w3id.org/linkml/symbol",
+      "description": "name of the unit encoded as a symbol",
+      "from_schema": "https://w3id.org/linkml/units",
+      "imported_from": "units",
+      "mappings": [
+        "http://qudt.org/schema/qudt/symbol"
+      ],
+      "slot_uri": "http://qudt.org/schema/qudt/symbol",
+      "owner": "UnitOfMeasure",
+      "domain_of": [
+        "UnitOfMeasure"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -5093,6 +5200,32 @@
       "usage_slot_name": "mixins",
       "range": "PermissibleValue",
       "@type": "SlotDefinition"
+    },
+    {
+      "name": "UnitOfMeasure_exact_mappings",
+      "definition_uri": "https://w3id.org/linkml/exact_mappings",
+      "description": "Used to link a unit to equivalent concepts in ontologies such as UO, SNOMED, OEM, OBOE, NCIT",
+      "comments": [
+        "Do not use this to encode mappings to systems for which a dedicated field exists"
+      ],
+      "from_schema": "https://w3id.org/linkml/mappings",
+      "imported_from": "units",
+      "mappings": [
+        "http://www.w3.org/2004/02/skos/core#exactMatch"
+      ],
+      "is_a": "exact_mappings",
+      "domain": "UnitOfMeasure",
+      "slot_uri": "http://www.w3.org/2004/02/skos/core#exactMatch",
+      "multivalued": true,
+      "alias": "exact mappings",
+      "owner": "UnitOfMeasure",
+      "domain_of": [
+        "UnitOfMeasure"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "exact mappings",
+      "range": "uriorcurie",
+      "@type": "SlotDefinition"
     }
   ],
   "classes": [
@@ -5284,6 +5417,7 @@
       "slots": [
         "pattern",
         "structured_pattern",
+        "unit",
         "implicit_prefix",
         "equals_string",
         "equals_string_in",
@@ -5309,6 +5443,7 @@
       "slots": [
         "pattern",
         "structured_pattern",
+        "unit",
         "implicit_prefix",
         "equals_string",
         "equals_string_in",
@@ -5376,6 +5511,7 @@
         "type_definition_union_of",
         "pattern",
         "structured_pattern",
+        "unit",
         "implicit_prefix",
         "equals_string",
         "equals_string_in",
@@ -5778,6 +5914,7 @@
         "maximum_value",
         "pattern",
         "structured_pattern",
+        "unit",
         "implicit_prefix",
         "equals_string",
         "equals_string_in",
@@ -5844,6 +5981,7 @@
         "maximum_value",
         "pattern",
         "structured_pattern",
+        "unit",
         "implicit_prefix",
         "equals_string",
         "equals_string_in",
@@ -5978,6 +6116,7 @@
         "maximum_value",
         "pattern",
         "structured_pattern",
+        "unit",
         "implicit_prefix",
         "equals_string",
         "equals_string_in",
@@ -6608,13 +6747,76 @@
       "slot_usage": {},
       "class_uri": "https://w3id.org/shacl/ValidationResult",
       "@type": "ClassDefinition"
+    },
+    {
+      "name": "UnitOfMeasure",
+      "definition_uri": "https://w3id.org/linkml/UnitOfMeasure",
+      "description": "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension).",
+      "from_schema": "https://w3id.org/linkml/units",
+      "imported_from": "units",
+      "mappings": [
+        "qudt:Unit"
+      ],
+      "slots": [
+        "symbol",
+        "UnitOfMeasure_exact_mappings",
+        "ucum_code",
+        "derivation",
+        "has_quantity_kind",
+        "iec61360code"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://qudt.org/schema/qudt/Unit",
+      "any_of": [
+        {
+          "slot_conditions": [
+            {
+              "name": "ucum_code",
+              "required": true,
+              "@type": "SlotDefinition"
+            }
+          ],
+          "@type": "AnonymousClassExpression"
+        },
+        {
+          "slot_conditions": [
+            {
+              "name": "iec61360code",
+              "required": true,
+              "@type": "SlotDefinition"
+            }
+          ],
+          "@type": "AnonymousClassExpression"
+        },
+        {
+          "slot_conditions": [
+            {
+              "name": "symbol",
+              "required": true,
+              "@type": "SlotDefinition"
+            }
+          ],
+          "@type": "AnonymousClassExpression"
+        },
+        {
+          "slot_conditions": [
+            {
+              "name": "exact_mappings",
+              "required": true,
+              "@type": "SlotDefinition"
+            }
+          ],
+          "@type": "AnonymousClassExpression"
+        }
+      ],
+      "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "meta.yaml",
-  "source_file_date": "2022-06-28T03:36:36",
-  "source_file_size": 67509,
-  "generation_date": "2022-06-28T03:37:45",
+  "source_file_date": "2022-07-02T00:40:29",
+  "source_file_size": 67506,
+  "generation_date": "2022-07-02T00:41:52",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",
@@ -6622,6 +6824,7 @@
     "https://w3id.org/linkml/extensions.context.jsonld",
     "https://w3id.org/linkml/annotations.context.jsonld",
     "https://w3id.org/linkml/validation.context.jsonld",
+    "units.context.jsonld",
     {
       "@base": "https://w3id.org/linkml/"
     }
