@@ -8,6 +8,10 @@ prefixes:
   linkml: https://w3id.org/linkml/
   ex: https://w3id.org/linkml/examples/units/
   sh: https://w3id.org/shacl/
+  UO: http://purl.obolibrary.org/obo/UO_
+  PATO: http://purl.obolibrary.org/obo/UO_
+  qudt: http://qudt.org/schema/qudt/
+  uom: https://w3id.org/uom/
 
 default_prefix: ex
 default_range: string
@@ -38,30 +42,50 @@ classes:
       - arm_length
 
   Measurement:
+    description: 
     attributes:
       unit_code:
         range: UnitCodeEnum
       numeric_value:
         range: float
+      
+  Measurement_v2:
+    description: 
+    attributes:
+      unit_code:
+        range: UnitTerm
+      numeric_value:
+        range: float
+
+  UnitTerm:
+    attributes:
+      id:
+        identifier: true
+      label:
+      
 
 #==================================
 # Slots                           #
 #==================================
 
 slots:
+  ## Example 1: unit is a property of the slot/field ("baked in")
+  height_in_cm:
+    range: float
+    unit:
+      ucum_code: cm
+      iec61360code: UAA375
+      exact_mappings:
+        - UO:0000015 ## centimeter
+        - uom:cm
+      has_quantity_kind: PATO:0000119 ## height
+      
   id:
     identifier: true
     range: string
   name:
     range: string
-  email:
-    range: EmailString
 
-  ## Example 1: unit is a property of the slot/field
-  height_in_cm:
-    range: float
-    unit:
-      ucum_code: cm
       
   ## Example 2: unit is a property of the scalar type;
   ## this is equivalent to making it a property of the slot/field,
@@ -96,6 +120,10 @@ enums:
   UnitCodeEnum:
     permissible_values:
       cm:
+        unit:
+          ucum_code: cm
       m:
+        unit:
+          ucum_code: m
       inches:
       feet:
