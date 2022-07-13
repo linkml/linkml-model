@@ -1,6 +1,6 @@
 {
   "name": "meta",
-  "description": "The metamodel for schemas defined using the Linked Data Modeling Language framework.\n\nFor more information on LinkML, see [linkml.io](https://linkml.io)\n\nCore metaclasses:\n\n* [SchemaDefinition](https://w3id.org/linkml/SchemaDefinition)\n* [ClassDefinition](https://w3id.org/linkml/ClassDefinition)\n* [SlotDefinition](https://w3id.org/linkml/SlotDefinition)\n\nEvery LinkML model instantiates SchemaDefinition, all classes in\nthe model instantiate ClassDefinition, and so on\n\nNote that the LinkML metamodel instantiates itself.\n\nFor a non-normative introduction to LinkML schemas, see the tutorial\nand schema guide on [linkml.io/linkml].\n\nFor canonical reference documentation on any metamodel construct,\nrefer to the official URI for each construct, e.g.\n[https://w3id.org/linkml/is_a](https://w3id.org/linkml/is_a)",
+  "description": "The metamodel for schemas defined using the Linked Data Modeling Language framework.\n\nFor more information on LinkML, see [linkml.io](https://linkml.io)\n\nCore metaclasses:\n\n* [SchemaDefinition](https://w3id.org/linkml/SchemaDefinition)\n* [ClassDefinition](https://w3id.org/linkml/ClassDefinition)\n* [SlotDefinition](https://w3id.org/linkml/SlotDefinition)\n* [TypeDefinition](https://w3id.org/linkml/TypeDefinition)\n\nEvery LinkML model instantiates SchemaDefinition, all classes in\nthe model instantiate ClassDefinition, and so on\n\nNote that the LinkML metamodel instantiates itself.\n\nFor a non-normative introduction to LinkML schemas, see the tutorial\nand schema guide on [linkml.io/linkml].\n\nFor canonical reference documentation on any metamodel construct,\nrefer to the official URI for each construct, e.g.\n[https://w3id.org/linkml/is_a](https://w3id.org/linkml/is_a)",
   "title": "LinkML Schema Metamodel",
   "id": "https://w3id.org/linkml/meta",
   "version": "2.0.0",
@@ -4534,10 +4534,11 @@
         "http://qudt.org/schema/qudt/unit"
       ],
       "slot_uri": "http://qudt.org/schema/qudt/unit",
-      "owner": "SlotExpression",
+      "owner": "PermissibleValue",
       "domain_of": [
         "TypeExpression",
-        "SlotExpression"
+        "SlotExpression",
+        "PermissibleValue"
       ],
       "range": "UnitOfMeasure",
       "inlined": true,
@@ -6854,6 +6855,7 @@
         "text",
         "description",
         "meaning",
+        "unit",
         "permissible_value_is_a",
         "permissible_value_mixins",
         "extensions",
@@ -7116,9 +7118,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "meta.yaml",
-  "source_file_date": "2022-07-13T02:07:02",
-  "source_file_size": 71382,
-  "generation_date": "2022-07-13T02:08:17",
+  "source_file_date": "2022-07-13T02:37:17",
+  "source_file_size": 71456,
+  "generation_date": "2022-07-13T02:38:24",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",
