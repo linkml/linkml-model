@@ -98,14 +98,16 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="class-enum_expression">Class: enum_expression</h1>
+<p>An expression that constrains the range of a slot</p>
 <p>URI: <a href="https://w3id.org/linkml/EnumExpression">linkml:EnumExpression</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[PermissibleValue],[Expression],[PermissibleValue]&lt;permissible_values%200..*-++[EnumExpression&#124;code_set:uriorcurie%20%3F;code_set_tag:string%20%3F;code_set_version:string%20%3F;pv_formula:pv_formula_options%20%3F],[SlotExpression]++-%20enum_range%200..1&gt;[EnumExpression],[EnumDefinition]uses%20-.-&gt;[EnumExpression],[Expression]^-[EnumExpression],[SlotExpression],[EnumDefinition]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[PermissibleValue],[Expression],[PermissibleValue]&lt;permissible_values%200..*-++[EnumExpression&#124;code_set:uriorcurie%20%3F;code_set_tag:string%20%3F;code_set_version:string%20%3F;pv_formula:pv_formula_options%20%3F],[SlotExpression]++-%20enum_range%200..1&gt;[EnumExpression],[EnumDefinition]uses%20-.-&gt;[EnumExpression],[Expression]^-[EnumExpression],[SlotExpression],[EnumDefinition]" /></a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[ReachabilityQuery],[PermissibleValue],[MatchQuery],[Expression],[MatchQuery]&lt;matches%200..1-++[EnumExpression&#124;code_set:uriorcurie%20%3F;code_set_tag:string%20%3F;code_set_version:string%20%3F;pv_formula:pv_formula_options%20%3F;concepts:uriorcurie%20*],[ReachabilityQuery]&lt;reachable_from%200..1-++[EnumExpression],[EnumDefinition]&lt;inherits%200..*-%20[EnumExpression],[AnonymousEnumExpression]&lt;minus%200..*-++[EnumExpression],[AnonymousEnumExpression]&lt;include%200..*-++[EnumExpression],[PermissibleValue]&lt;permissible_values%200..*-++[EnumExpression],[SlotExpression]++-%20enum_range%200..1&gt;[EnumExpression],[EnumDefinition]uses%20-.-&gt;[EnumExpression],[AnonymousEnumExpression]uses%20-.-&gt;[EnumExpression],[Expression]^-[EnumExpression],[SlotExpression],[EnumDefinition],[AnonymousEnumExpression]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[ReachabilityQuery],[PermissibleValue],[MatchQuery],[Expression],[MatchQuery]&lt;matches%200..1-++[EnumExpression&#124;code_set:uriorcurie%20%3F;code_set_tag:string%20%3F;code_set_version:string%20%3F;pv_formula:pv_formula_options%20%3F;concepts:uriorcurie%20*],[ReachabilityQuery]&lt;reachable_from%200..1-++[EnumExpression],[EnumDefinition]&lt;inherits%200..*-%20[EnumExpression],[AnonymousEnumExpression]&lt;minus%200..*-++[EnumExpression],[AnonymousEnumExpression]&lt;include%200..*-++[EnumExpression],[PermissibleValue]&lt;permissible_values%200..*-++[EnumExpression],[SlotExpression]++-%20enum_range%200..1&gt;[EnumExpression],[EnumDefinition]uses%20-.-&gt;[EnumExpression],[AnonymousEnumExpression]uses%20-.-&gt;[EnumExpression],[Expression]^-[EnumExpression],[SlotExpression],[EnumDefinition],[AnonymousEnumExpression]" /></a></p>
 <h2 id="parents">Parents</h2>
 <ul>
 <li>is_a: <a href="../Expression/">Expression</a> - general mixin for any class that can represent some form of expression</li>
 </ul>
 <h2 id="mixin-for">Mixin for</h2>
 <ul>
+<li><a href="../AnonymousEnumExpression/">AnonymousEnumExpression</a> (mixin)  - An enum_expression that is not named</li>
 <li><a href="../EnumDefinition/">EnumDefinition</a> (mixin)  - List of values that constrain the range of a slot</li>
 </ul>
 <h2 id="referenced-by-class">Referenced by Class</h2>
@@ -143,6 +145,36 @@
 <li>Description: A list of possible values for a slot range</li>
 <li>Range: <a href="../PermissibleValue/">PermissibleValue</a></li>
 <li>in subsets: (basic)</li>
+</ul>
+</li>
+<li><a href="../include/">include</a>  <sub>0..*</sub><ul>
+<li>Description: An enum expression that yields a list of permissible values that are to be included, after subtracting the minus set</li>
+<li>Range: <a href="../AnonymousEnumExpression/">AnonymousEnumExpression</a></li>
+</ul>
+</li>
+<li><a href="../minus/">minus</a>  <sub>0..*</sub><ul>
+<li>Description: An enum expression that yields a list of permissible values that are to be subtracted from the enum</li>
+<li>Range: <a href="../AnonymousEnumExpression/">AnonymousEnumExpression</a></li>
+</ul>
+</li>
+<li><a href="../inherits/">inherits</a>  <sub>0..*</sub><ul>
+<li>Description: An enum definition that is used as the basis to create a new enum</li>
+<li>Range: <a href="../EnumDefinition/">EnumDefinition</a></li>
+</ul>
+</li>
+<li><a href="../reachable_from/">reachable_from</a>  <sub>0..1</sub><ul>
+<li>Description: Specifies a query for obtaining a list of permissible values based on graph reachability</li>
+<li>Range: <a href="../ReachabilityQuery/">ReachabilityQuery</a></li>
+</ul>
+</li>
+<li><a href="../matches/">matches</a>  <sub>0..1</sub><ul>
+<li>Description: Specifies a match query that is used to calculate the list of permissible values</li>
+<li>Range: <a href="../MatchQuery/">MatchQuery</a></li>
+</ul>
+</li>
+<li><a href="../concepts/">concepts</a>  <sub>0..*</sub><ul>
+<li>Description: A list of identifiers that are used to construct a set of permissible values</li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
 </li>
 </ul>

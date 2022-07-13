@@ -56,6 +56,21 @@ type AnonymousClassExpression implements ClassExpression
     slotConditions: [SlotDefinition]
   }
 
+type AnonymousEnumExpression implements EnumExpression
+  {
+    codeSet: Uriorcurie
+    codeSetTag: String
+    codeSetVersion: String
+    pvFormula: PvFormulaOptions
+    permissibleValues: [PermissibleValue]
+    include: [AnonymousEnumExpression]
+    minus: [AnonymousEnumExpression]
+    inherits: [EnumDefinition]
+    reachableFrom: ReachabilityQuery
+    matches: MatchQuery
+    concepts: [Uriorcurie]
+  }
+
 type AnonymousExpression implements Expression, Extensible, Annotatable, CommonMetadata
   {
     extensions: [Extension]
@@ -437,11 +452,18 @@ type EnumDefinition implements EnumExpression
     modifiedBy: Uriorcurie
     status: Uriorcurie
     stringSerialization: String
+    enumUri: Uriorcurie
     codeSet: Uriorcurie
     codeSetTag: String
     codeSetVersion: String
     pvFormula: PvFormulaOptions
     permissibleValues: [PermissibleValue]
+    include: [AnonymousEnumExpression]
+    minus: [AnonymousEnumExpression]
+    inherits: [EnumDefinition]
+    reachableFrom: ReachabilityQuery
+    matches: MatchQuery
+    concepts: [Uriorcurie]
   }
 
 type EnumExpression
@@ -451,6 +473,12 @@ type EnumExpression
     codeSetVersion: String
     pvFormula: PvFormulaOptions
     permissibleValues: [PermissibleValue]
+    include: [AnonymousEnumExpression]
+    minus: [AnonymousEnumExpression]
+    inherits: [EnumDefinition]
+    reachableFrom: ReachabilityQuery
+    matches: MatchQuery
+    concepts: [Uriorcurie]
   }
 
 type Example
@@ -513,6 +541,12 @@ type LocalName
   {
     localNameSource: Ncname!
     localNameValue: String!
+  }
+
+type MatchQuery
+  {
+    identifierPattern: String
+    sourceOntology: Uriorcurie
   }
 
 type PathExpression implements Expression, Extensible, Annotatable, CommonMetadata
@@ -627,6 +661,16 @@ type Prefix
   {
     prefixPrefix: Ncname!
     prefixReference: Uri!
+  }
+
+type ReachabilityQuery
+  {
+    sourceOntology: Uriorcurie
+    sourceNodes: [Uriorcurie]
+    relationshipTypes: [Uriorcurie]
+    isDirect: Boolean
+    includeSelf: Boolean
+    traverseUp: Boolean
   }
 
 type SchemaDefinition

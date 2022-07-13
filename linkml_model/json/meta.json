@@ -1227,9 +1227,9 @@
         "basic"
       ],
       "from_schema": "https://w3id.org/linkml/meta",
-      "domain": "EnumDefinition",
+      "domain": "EnumExpression",
       "slot_uri": "https://w3id.org/linkml/code_set",
-      "owner": "code_set",
+      "owner": "EnumExpression",
       "domain_of": [
         "EnumExpression"
       ],
@@ -1247,9 +1247,9 @@
         "basic"
       ],
       "from_schema": "https://w3id.org/linkml/meta",
-      "domain": "EnumDefinition",
+      "domain": "EnumExpression",
       "slot_uri": "https://w3id.org/linkml/code_set_version",
-      "owner": "code_set_version",
+      "owner": "EnumExpression",
       "domain_of": [
         "EnumExpression"
       ],
@@ -1261,15 +1261,15 @@
       "definition_uri": "https://w3id.org/linkml/code_set_tag",
       "description": "the version tag of the enumeration code set",
       "comments": [
-        "enum_definition cannot have both a code_set_tag and a code_set_version"
+        "enum_expression cannot have both a code_set_tag and a code_set_version"
       ],
       "in_subset": [
         "basic"
       ],
       "from_schema": "https://w3id.org/linkml/meta",
-      "domain": "EnumDefinition",
+      "domain": "EnumExpression",
       "slot_uri": "https://w3id.org/linkml/code_set_tag",
-      "owner": "code_set_tag",
+      "owner": "EnumExpression",
       "domain_of": [
         "EnumExpression"
       ],
@@ -1288,9 +1288,9 @@
         "basic"
       ],
       "from_schema": "https://w3id.org/linkml/meta",
-      "domain": "EnumDefinition",
+      "domain": "EnumExpression",
       "slot_uri": "https://w3id.org/linkml/pv_formula",
-      "owner": "pv_formula",
+      "owner": "EnumExpression",
       "domain_of": [
         "EnumExpression"
       ],
@@ -1305,15 +1305,248 @@
         "basic"
       ],
       "from_schema": "https://w3id.org/linkml/meta",
-      "domain": "EnumDefinition",
+      "domain": "EnumExpression",
       "slot_uri": "https://w3id.org/linkml/permissible_values",
       "multivalued": true,
-      "owner": "permissible_values",
+      "owner": "EnumExpression",
       "domain_of": [
         "EnumExpression"
       ],
       "range": "PermissibleValue",
       "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "enum_uri",
+      "definition_uri": "https://w3id.org/linkml/enum_uri",
+      "description": "URI of the enum in an RDF environment",
+      "in_subset": [
+        "basic"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "aliases": [
+        "public ID"
+      ],
+      "domain": "EnumDefinition",
+      "slot_uri": "https://w3id.org/linkml/enum_uri",
+      "ifabsent": "class_curie",
+      "owner": "EnumDefinition",
+      "domain_of": [
+        "EnumDefinition"
+      ],
+      "range": "uriorcurie",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "include",
+      "definition_uri": "https://w3id.org/linkml/include",
+      "description": "An enum expression that yields a list of permissible values that are to be included, after subtracting the minus set",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "EnumExpression",
+      "slot_uri": "https://w3id.org/linkml/include",
+      "multivalued": true,
+      "owner": "EnumExpression",
+      "domain_of": [
+        "EnumExpression"
+      ],
+      "range": "AnonymousEnumExpression",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "minus",
+      "definition_uri": "https://w3id.org/linkml/minus",
+      "description": "An enum expression that yields a list of permissible values that are to be subtracted from the enum",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "EnumExpression",
+      "slot_uri": "https://w3id.org/linkml/minus",
+      "multivalued": true,
+      "owner": "EnumExpression",
+      "domain_of": [
+        "EnumExpression"
+      ],
+      "range": "AnonymousEnumExpression",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "inherits",
+      "definition_uri": "https://w3id.org/linkml/inherits",
+      "description": "An enum definition that is used as the basis to create a new enum",
+      "comments": [
+        "All permissible values for all inherited enums are copied to form the initial seed set"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "EnumExpression",
+      "slot_uri": "https://w3id.org/linkml/inherits",
+      "multivalued": true,
+      "owner": "EnumExpression",
+      "domain_of": [
+        "EnumExpression"
+      ],
+      "range": "EnumDefinition",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "matches",
+      "definition_uri": "https://w3id.org/linkml/matches",
+      "description": "Specifies a match query that is used to calculate the list of permissible values",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "EnumExpression",
+      "slot_uri": "https://w3id.org/linkml/matches",
+      "owner": "EnumExpression",
+      "domain_of": [
+        "EnumExpression"
+      ],
+      "range": "MatchQuery",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "identifier_pattern",
+      "definition_uri": "https://w3id.org/linkml/identifier_pattern",
+      "description": "A regular expression that is used to obtain a set of identifiers from a source_ontology to construct a set of permissible values",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "MatchQuery",
+      "slot_uri": "https://w3id.org/linkml/identifier_pattern",
+      "owner": "MatchQuery",
+      "domain_of": [
+        "MatchQuery"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "concepts",
+      "definition_uri": "https://w3id.org/linkml/concepts",
+      "description": "A list of identifiers that are used to construct a set of permissible values",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "EnumExpression",
+      "slot_uri": "https://w3id.org/linkml/concepts",
+      "multivalued": true,
+      "owner": "EnumExpression",
+      "domain_of": [
+        "EnumExpression"
+      ],
+      "range": "uriorcurie",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "reachable_from",
+      "definition_uri": "https://w3id.org/linkml/reachable_from",
+      "description": "Specifies a query for obtaining a list of permissible values based on graph reachability",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "EnumExpression",
+      "slot_uri": "https://w3id.org/linkml/reachable_from",
+      "owner": "EnumExpression",
+      "domain_of": [
+        "EnumExpression"
+      ],
+      "range": "ReachabilityQuery",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "source_ontology",
+      "definition_uri": "https://w3id.org/linkml/source_ontology",
+      "description": "An ontology or vocabulary or terminology that is used in a query to obtain a set of permissible values",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "aliases": [
+        "terminology",
+        "vocabulary"
+      ],
+      "slot_uri": "https://w3id.org/linkml/source_ontology",
+      "owner": "ReachabilityQuery",
+      "domain_of": [
+        "MatchQuery",
+        "ReachabilityQuery"
+      ],
+      "range": "uriorcurie",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "is_direct",
+      "definition_uri": "https://w3id.org/linkml/is_direct",
+      "description": "True if the reachability query should only include directly related nodes, if False then include also transitively connected",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "aliases": [
+        "non-transitive"
+      ],
+      "domain": "ReachabilityQuery",
+      "slot_uri": "https://w3id.org/linkml/is_direct",
+      "owner": "ReachabilityQuery",
+      "domain_of": [
+        "ReachabilityQuery"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "traverse_up",
+      "definition_uri": "https://w3id.org/linkml/traverse_up",
+      "description": "True if the direction of the reachability query is reversed and ancestors are retrieved",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "aliases": [
+        "ancestors"
+      ],
+      "domain": "ReachabilityQuery",
+      "slot_uri": "https://w3id.org/linkml/traverse_up",
+      "owner": "ReachabilityQuery",
+      "domain_of": [
+        "ReachabilityQuery"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "include_self",
+      "definition_uri": "https://w3id.org/linkml/include_self",
+      "description": "True if the query is reflexive",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "aliases": [
+        "reflexive"
+      ],
+      "domain": "ReachabilityQuery",
+      "slot_uri": "https://w3id.org/linkml/include_self",
+      "owner": "ReachabilityQuery",
+      "domain_of": [
+        "ReachabilityQuery"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "relationship_types",
+      "definition_uri": "https://w3id.org/linkml/relationship_types",
+      "description": "A list of relationship types (properties) that are used in a reachability query",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "aliases": [
+        "predicates",
+        "properties"
+      ],
+      "domain": "ReachabilityQuery",
+      "slot_uri": "https://w3id.org/linkml/relationship_types",
+      "multivalued": true,
+      "owner": "ReachabilityQuery",
+      "domain_of": [
+        "ReachabilityQuery"
+      ],
+      "range": "uriorcurie",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "source_nodes",
+      "definition_uri": "https://w3id.org/linkml/source_nodes",
+      "description": "A list of nodes that are used in the reachability query",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "ReachabilityQuery",
+      "slot_uri": "https://w3id.org/linkml/source_nodes",
+      "multivalued": true,
+      "owner": "ReachabilityQuery",
+      "domain_of": [
+        "ReachabilityQuery"
+      ],
+      "range": "uriorcurie",
       "@type": "SlotDefinition"
     },
     {
@@ -5640,6 +5873,7 @@
     {
       "name": "EnumExpression",
       "definition_uri": "https://w3id.org/linkml/EnumExpression",
+      "description": "An expression that constrains the range of a slot",
       "from_schema": "https://w3id.org/linkml/meta",
       "is_a": "Expression",
       "slots": [
@@ -5647,10 +5881,41 @@
         "code_set_tag",
         "code_set_version",
         "pv_formula",
-        "permissible_values"
+        "permissible_values",
+        "include",
+        "minus",
+        "inherits",
+        "reachable_from",
+        "matches",
+        "concepts"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/linkml/EnumExpression",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AnonymousEnumExpression",
+      "definition_uri": "https://w3id.org/linkml/AnonymousEnumExpression",
+      "description": "An enum_expression that is not named",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "mixins": [
+        "EnumExpression"
+      ],
+      "slots": [
+        "code_set",
+        "code_set_tag",
+        "code_set_version",
+        "pv_formula",
+        "permissible_values",
+        "include",
+        "minus",
+        "inherits",
+        "reachable_from",
+        "matches",
+        "concepts"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/AnonymousEnumExpression",
       "@type": "ClassDefinition"
     },
     {
@@ -5724,14 +5989,51 @@
         "modified_by",
         "status",
         "string_serialization",
+        "enum_uri",
         "code_set",
         "code_set_tag",
         "code_set_version",
         "pv_formula",
-        "permissible_values"
+        "permissible_values",
+        "include",
+        "minus",
+        "inherits",
+        "reachable_from",
+        "matches",
+        "concepts"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/linkml/EnumDefinition",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "MatchQuery",
+      "definition_uri": "https://w3id.org/linkml/MatchQuery",
+      "description": "A query that is used on an enum expression to dynamically obtain a set of permissivle values via a query that matches on properties of the external concepts",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "slots": [
+        "identifier_pattern",
+        "source_ontology"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/MatchQuery",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ReachabilityQuery",
+      "definition_uri": "https://w3id.org/linkml/ReachabilityQuery",
+      "description": "A query that is used on an enum expression to dynamically obtain a set of permissible values via walking from a set of source nodes to a set of descendants or ancestors over a set of relationship types",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "slots": [
+        "source_ontology",
+        "source_nodes",
+        "relationship_types",
+        "is_direct",
+        "include_self",
+        "traverse_up"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/ReachabilityQuery",
       "@type": "ClassDefinition"
     },
     {
@@ -6814,9 +7116,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "meta.yaml",
-  "source_file_date": "2022-07-02T00:40:29",
-  "source_file_size": 67506,
-  "generation_date": "2022-07-02T00:41:52",
+  "source_file_date": "2022-07-13T02:07:02",
+  "source_file_size": 71382,
+  "generation_date": "2022-07-13T02:08:17",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",
