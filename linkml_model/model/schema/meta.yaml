@@ -465,7 +465,7 @@ slots:
   # Enum definition slots
   # -----------------------------------
   code_set:
-    domain: enum_definition
+    domain: enum_expression
     range: uriorcurie
     description: >-
       the identifier of an enumeration code set.
@@ -475,7 +475,7 @@ slots:
       - basic
 
   code_set_version:
-    domain: enum_definition
+    domain: enum_expression
     range: string
     description: >-
       the version identifier of the enumeration code set
@@ -485,17 +485,17 @@ slots:
       - basic
 
   code_set_tag:
-    domain: enum_definition
+    domain: enum_expression
     range: string
     description: >-
       the version tag of the enumeration code set
     comments:
-      - enum_definition cannot have both a code_set_tag and a code_set_version
+      - enum_expression cannot have both a code_set_tag and a code_set_version
     in_subset:
       - basic
 
   pv_formula:
-    domain: enum_definition
+    domain: enum_expression
     range: pv_formula_options
     description: >-
       Defines the specific formula to be used to generate the permissible values.
@@ -506,7 +506,7 @@ slots:
       - basic
 
   permissible_values:
-    domain: enum_definition
+    domain: enum_expression
     range: permissible_value
     multivalued: true
     inlined: true
@@ -514,6 +514,100 @@ slots:
       A list of possible values for a slot range
     in_subset:
       - basic
+
+  enum_uri:
+    aliases:
+      - public ID
+    domain: enum_definition
+    range: uriorcurie
+    description: URI of the enum in an RDF environment
+    ifabsent: class_curie
+    in_subset:
+      - basic
+      
+  include:
+    description: An enum expression that yields a list of permissible values that are to be included, after subtracting the minus set
+    domain: enum_expression
+    range: anonymous_enum_expression
+    multivalued: true
+
+  minus:
+    description: An enum expression that yields a list of permissible values that are to be subtracted from the enum
+    domain: enum_expression
+    range: anonymous_enum_expression
+    multivalued: true
+
+  inherits:
+    description: An enum definition that is used as the basis to create a new enum
+    comments:
+      - All permissible values for all inherited enums are copied to form the initial seed set
+    domain: enum_expression
+    range: enum_definition
+    multivalued: true
+
+  matches:
+    description: Specifies a match query that is used to calculate the list of permissible values
+    domain: enum_expression
+    range: match_query
+
+  identifier_pattern:
+    description: A regular expression that is used to obtain a set of identifiers from a source_ontology to construct a set of permissible values
+    domain: match_query
+    range: string
+    
+  concepts:
+    description: A list of identifiers that are used to construct a set of permissible values
+    domain: enum_expression
+    range: uriorcurie
+    multivalued: true
+    
+  reachable_from:
+    description: Specifies a query for obtaining a list of permissible values based on graph reachability
+    domain: enum_expression
+    range: reachability_query
+
+  source_ontology:
+    aliases:
+      - terminology
+      - vocabulary
+    description: An ontology or vocabulary or terminology that is used in a query to obtain a set of permissible values
+    range: uriorcurie
+    
+  is_direct:
+    aliases:
+      - non-transitive
+    description: True if the reachability query should only include directly related nodes, if False then include also transitively connected
+    domain: reachability_query
+    range: boolean
+
+  traverse_up:
+    aliases:
+      - ancestors
+    description: True if the direction of the reachability query is reversed and ancestors are retrieved
+    domain: reachability_query
+    range: boolean
+
+  include_self:
+    aliases:
+      - reflexive
+    description: True if the query is reflexive
+    domain: reachability_query
+    range: boolean
+
+  relationship_types:
+    description: A list of relationship types (properties) that are used in a reachability query
+    aliases:
+      - predicates
+      - properties
+    domain: reachability_query
+    range: uriorcurie
+    multivalued: true
+
+  source_nodes:
+    description: A list of nodes that are used in the reachability query
+    domain: reachability_query
+    range: uriorcurie
+    multivalued: true
 
   # -----------------------------------
   # Slots for permissible_value
@@ -1975,6 +2069,7 @@ classes:
       - basic
 
   enum_expression:
+    description: An expression that constrains the range of a slot
     is_a: expression
     slots:
       - code_set
@@ -1982,7 +2077,18 @@ classes:
       - code_set_version
       - pv_formula
       - permissible_values
-    
+      - include
+      - minus
+      - inherits
+      - reachable_from
+      - matches
+      - concepts
+
+  anonymous_enum_expression:
+    description: An enum_expression that is not named
+    mixins:
+      - enum_expression
+        
   enum_definition:
     aliases:
       - enum
@@ -2001,7 +2107,26 @@ classes:
       - basic
       - relational_model
       - object_oriented
+    slots:
+      - enum_uri
 
+  match_query:
+    description: A query that is used on an enum expression to dynamically obtain a set of permissivle values via a query that matches on properties of the external concepts
+    slots:
+      - identifier_pattern
+      - source_ontology
+      
+  reachability_query:
+    description: A query that is used on an enum expression to dynamically obtain a set of permissible values via walking from a set of source nodes to a set of descendants or ancestors over a set of relationship types
+    slots:
+      - source_ontology
+      - source_nodes
+      - relationship_types
+      - is_direct
+      - include_self
+      - traverse_up
+      
+      
   structured_alias:
     description: >-
       object that contains meta data about a synonym or alias including where it came from (source)
@@ -2422,7 +2547,6 @@ enums:
         description: a slot with this role connects a symmetric relationship to a node that represents either subject or object node
       OTHER_ROLE:
         description: a slot with this role connects a relationship to a node that is not subject/object/predicate
-
 
   alias_predicate_enum:
     permissible_values:
