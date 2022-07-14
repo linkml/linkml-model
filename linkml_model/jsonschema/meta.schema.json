@@ -313,6 +313,73 @@
          "title": "AnonymousClassExpression",
          "type": "object"
       },
+      "AnonymousEnumExpression": {
+         "additionalProperties": false,
+         "description": "An enum_expression that is not named",
+         "properties": {
+            "code_set": {
+               "description": "the identifier of an enumeration code set.",
+               "type": "string"
+            },
+            "code_set_tag": {
+               "description": "the version tag of the enumeration code set",
+               "type": "string"
+            },
+            "code_set_version": {
+               "description": "the version identifier of the enumeration code set",
+               "type": "string"
+            },
+            "concepts": {
+               "description": "A list of identifiers that are used to construct a set of permissible values",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "include": {
+               "description": "An enum expression that yields a list of permissible values that are to be included, after subtracting the minus set",
+               "items": {
+                  "$ref": "#/$defs/AnonymousEnumExpression"
+               },
+               "type": "array"
+            },
+            "inherits": {
+               "description": "An enum definition that is used as the basis to create a new enum",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "matches": {
+               "$ref": "#/$defs/MatchQuery",
+               "description": "Specifies a match query that is used to calculate the list of permissible values"
+            },
+            "minus": {
+               "description": "An enum expression that yields a list of permissible values that are to be subtracted from the enum",
+               "items": {
+                  "$ref": "#/$defs/AnonymousEnumExpression"
+               },
+               "type": "array"
+            },
+            "permissible_values": {
+               "additionalProperties": {
+                  "$ref": "#/$defs/PermissibleValue__identifier_optional"
+               },
+               "description": "A list of possible values for a slot range"
+            },
+            "pv_formula": {
+               "$ref": "#/$defs/PvFormulaOptions",
+               "description": "Defines the specific formula to be used to generate the permissible values."
+            },
+            "reachable_from": {
+               "$ref": "#/$defs/ReachabilityQuery",
+               "description": "Specifies a query for obtaining a list of permissible values based on graph reachability"
+            }
+         },
+         "required": [],
+         "title": "AnonymousEnumExpression",
+         "type": "object"
+      },
       "AnonymousSlotExpression": {
          "additionalProperties": false,
          "description": "",
@@ -1647,6 +1714,13 @@
                },
                "type": "array"
             },
+            "concepts": {
+               "description": "A list of identifiers that are used to construct a set of permissible values",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "conforms_to": {
                "description": "An established standard to which the element conforms.",
                "type": "string"
@@ -1678,6 +1752,10 @@
             },
             "description": {
                "description": "a description of the element's purpose and use",
+               "type": "string"
+            },
+            "enum_uri": {
+               "description": "URI of the enum in an RDF environment",
                "type": "string"
             },
             "exact_mappings": {
@@ -1725,6 +1803,20 @@
                },
                "type": "array"
             },
+            "include": {
+               "description": "An enum expression that yields a list of permissible values that are to be included, after subtracting the minus set",
+               "items": {
+                  "$ref": "#/$defs/AnonymousEnumExpression"
+               },
+               "type": "array"
+            },
+            "inherits": {
+               "description": "An enum definition that is used as the basis to create a new enum",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "is_a": {
                "description": "specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
                "type": "string"
@@ -1743,6 +1835,17 @@
                "description": "A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.",
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "matches": {
+               "$ref": "#/$defs/MatchQuery",
+               "description": "Specifies a match query that is used to calculate the list of permissible values"
+            },
+            "minus": {
+               "description": "An enum expression that yields a list of permissible values that are to be subtracted from the enum",
+               "items": {
+                  "$ref": "#/$defs/AnonymousEnumExpression"
                },
                "type": "array"
             },
@@ -1792,6 +1895,10 @@
             "rank": {
                "description": "the relative order in which the element occurs, lower values are given precedence",
                "type": "integer"
+            },
+            "reachable_from": {
+               "$ref": "#/$defs/ReachabilityQuery",
+               "description": "Specifies a query for obtaining a list of permissible values based on graph reachability"
             },
             "related_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have related meaning.",
@@ -1916,6 +2023,13 @@
                },
                "type": "array"
             },
+            "concepts": {
+               "description": "A list of identifiers that are used to construct a set of permissible values",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "conforms_to": {
                "description": "An established standard to which the element conforms.",
                "type": "string"
@@ -1947,6 +2061,10 @@
             },
             "description": {
                "description": "a description of the element's purpose and use",
+               "type": "string"
+            },
+            "enum_uri": {
+               "description": "URI of the enum in an RDF environment",
                "type": "string"
             },
             "exact_mappings": {
@@ -1994,6 +2112,20 @@
                },
                "type": "array"
             },
+            "include": {
+               "description": "An enum expression that yields a list of permissible values that are to be included, after subtracting the minus set",
+               "items": {
+                  "$ref": "#/$defs/AnonymousEnumExpression"
+               },
+               "type": "array"
+            },
+            "inherits": {
+               "description": "An enum definition that is used as the basis to create a new enum",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "is_a": {
                "description": "specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
                "type": "string"
@@ -2012,6 +2144,17 @@
                "description": "A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.",
                "items": {
                   "type": "string"
+               },
+               "type": "array"
+            },
+            "matches": {
+               "$ref": "#/$defs/MatchQuery",
+               "description": "Specifies a match query that is used to calculate the list of permissible values"
+            },
+            "minus": {
+               "description": "An enum expression that yields a list of permissible values that are to be subtracted from the enum",
+               "items": {
+                  "$ref": "#/$defs/AnonymousEnumExpression"
                },
                "type": "array"
             },
@@ -2061,6 +2204,10 @@
             "rank": {
                "description": "the relative order in which the element occurs, lower values are given precedence",
                "type": "integer"
+            },
+            "reachable_from": {
+               "$ref": "#/$defs/ReachabilityQuery",
+               "description": "Specifies a query for obtaining a list of permissible values based on graph reachability"
             },
             "related_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have related meaning.",
@@ -2120,7 +2267,7 @@
       },
       "EnumExpression": {
          "additionalProperties": false,
-         "description": "",
+         "description": "An expression that constrains the range of a slot",
          "properties": {
             "code_set": {
                "description": "the identifier of an enumeration code set.",
@@ -2134,6 +2281,38 @@
                "description": "the version identifier of the enumeration code set",
                "type": "string"
             },
+            "concepts": {
+               "description": "A list of identifiers that are used to construct a set of permissible values",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "include": {
+               "description": "An enum expression that yields a list of permissible values that are to be included, after subtracting the minus set",
+               "items": {
+                  "$ref": "#/$defs/AnonymousEnumExpression"
+               },
+               "type": "array"
+            },
+            "inherits": {
+               "description": "An enum definition that is used as the basis to create a new enum",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "matches": {
+               "$ref": "#/$defs/MatchQuery",
+               "description": "Specifies a match query that is used to calculate the list of permissible values"
+            },
+            "minus": {
+               "description": "An enum expression that yields a list of permissible values that are to be subtracted from the enum",
+               "items": {
+                  "$ref": "#/$defs/AnonymousEnumExpression"
+               },
+               "type": "array"
+            },
             "permissible_values": {
                "additionalProperties": {
                   "$ref": "#/$defs/PermissibleValue__identifier_optional"
@@ -2143,6 +2322,10 @@
             "pv_formula": {
                "$ref": "#/$defs/PvFormulaOptions",
                "description": "Defines the specific formula to be used to generate the permissible values."
+            },
+            "reachable_from": {
+               "$ref": "#/$defs/ReachabilityQuery",
+               "description": "Specifies a query for obtaining a list of permissible values based on graph reachability"
             }
          },
          "required": [],
@@ -2429,6 +2612,23 @@
             "local_name_value"
          ],
          "title": "LocalName",
+         "type": "object"
+      },
+      "MatchQuery": {
+         "additionalProperties": false,
+         "description": "A query that is used on an enum expression to dynamically obtain a set of permissivle values via a query that matches on properties of the external concepts",
+         "properties": {
+            "identifier_pattern": {
+               "description": "A regular expression that is used to obtain a set of identifiers from a source_ontology to construct a set of permissible values",
+               "type": "string"
+            },
+            "source_ontology": {
+               "description": "An ontology or vocabulary or terminology that is used in a query to obtain a set of permissible values",
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "MatchQuery",
          "type": "object"
       },
       "PathExpression": {
@@ -2985,6 +3185,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "unit": {
+               "$ref": "#/$defs/UnitOfMeasure",
+               "description": "an encoding of a unit"
             }
          },
          "required": [
@@ -3167,6 +3371,10 @@
                   "type": "string"
                },
                "type": "array"
+            },
+            "unit": {
+               "$ref": "#/$defs/UnitOfMeasure",
+               "description": "an encoding of a unit"
             }
          },
          "required": [],
@@ -3222,19 +3430,6 @@
          "title": "PresenceEnum",
          "type": "string"
       },
-      "ProblemType": {
-         "description": "",
-         "enum": [
-            "undeclared_slot",
-            "inapplicable_slot",
-            "missing_slot_value",
-            "slot_range_violation",
-            "max_count_violation",
-            "parsing_error"
-         ],
-         "title": "ProblemType",
-         "type": "string"
-      },
       "PvFormulaOptions": {
          "description": "The formula used to generate the set of permissible values from the code_set values",
          "enum": [
@@ -3245,6 +3440,45 @@
          ],
          "title": "PvFormulaOptions",
          "type": "string"
+      },
+      "ReachabilityQuery": {
+         "additionalProperties": false,
+         "description": "A query that is used on an enum expression to dynamically obtain a set of permissible values via walking from a set of source nodes to a set of descendants or ancestors over a set of relationship types",
+         "properties": {
+            "include_self": {
+               "description": "True if the query is reflexive",
+               "type": "boolean"
+            },
+            "is_direct": {
+               "description": "True if the reachability query should only include directly related nodes, if False then include also transitively connected",
+               "type": "boolean"
+            },
+            "relationship_types": {
+               "description": "A list of relationship types (properties) that are used in a reachability query",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "source_nodes": {
+               "description": "A list of nodes that are used in the reachability query",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "source_ontology": {
+               "description": "An ontology or vocabulary or terminology that is used in a query to obtain a set of permissible values",
+               "type": "string"
+            },
+            "traverse_up": {
+               "description": "True if the direction of the reachability query is reversed and ancestors are retrieved",
+               "type": "boolean"
+            }
+         },
+         "required": [],
+         "title": "ReachabilityQuery",
+         "type": "object"
       },
       "RelationalRoleEnum": {
          "description": "enumeration of roles a slot on a relationship class can play",
@@ -3608,17 +3842,6 @@
          ],
          "title": "Setting",
          "type": "object"
-      },
-      "SeverityOptions": {
-         "description": "",
-         "enum": [
-            "FATAL",
-            "ERROR",
-            "WARNING",
-            "INFO"
-         ],
-         "title": "SeverityOptions",
-         "type": "string"
       },
       "SlotDefinition": {
          "additionalProperties": false,
@@ -6151,57 +6374,6 @@
          },
          "required": [],
          "title": "UnitOfMeasure",
-         "type": "object"
-      },
-      "ValidationReport": {
-         "additionalProperties": false,
-         "description": "A report object",
-         "properties": {
-            "results": {
-               "items": {
-                  "$ref": "#/$defs/ValidationResult"
-               },
-               "type": "array"
-            }
-         },
-         "required": [],
-         "title": "ValidationReport",
-         "type": "object"
-      },
-      "ValidationResult": {
-         "additionalProperties": false,
-         "description": "An individual result arising from validation of a data instance using a particular rule",
-         "properties": {
-            "info": {
-               "type": "string"
-            },
-            "instantiates": {
-               "type": "string"
-            },
-            "node_source": {
-               "type": "string"
-            },
-            "object": {
-               "type": "string"
-            },
-            "object_str": {
-               "type": "string"
-            },
-            "predicate": {
-               "type": "string"
-            },
-            "severity": {
-               "$ref": "#/$defs/SeverityOptions"
-            },
-            "subject": {
-               "type": "string"
-            },
-            "type": {
-               "type": "string"
-            }
-         },
-         "required": [],
-         "title": "ValidationResult",
          "type": "object"
       }
    },
