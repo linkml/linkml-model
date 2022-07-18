@@ -2,11 +2,13 @@
 
 **Validation** is a procedure that takes as input:
 
-* A LinkML instance structure `i`, where `i` is to be validated
-* A LinkML instance structure `root`. This may be the same as `i`
-* A *derived* schema `m*`
+* A LinkML instance  `i`, where `i` is to be validated
+* A LinkML instance `root`. This MUST contain `i` and MAY be the same as `i`
+* A schema *m*
 
 The validation procedure will produce output that can be used to determine if the instance is *structurally and semantically valid* according to the schema.
+
+The formal specification of the validation procedure takes as input a *derived* schema *m<sup>D</sup>*:
 
 ```mermaid
 flowchart TD
@@ -18,6 +20,8 @@ flowchart TD
     Mstar --> Validation
 ```
 
+Actual implementations may choose to perform this composition or work directly on the asserted schema.
+
 The following holds for any validation procedure:
 
 - The output MUST include a boolean slot indicating whether the input can be demonstrated to be false
@@ -28,6 +32,8 @@ The following holds for any validation procedure:
 - The procedure MAY restrict validation to defined subsets (profiles) of the Metamodel
 - The procedure  SHOULD return in its payload an indication of which profile and version is used.
 
+## Validation procedure for instances
+
 The validation procedure is to first take the metaclass that is instantiated by the type of the instance `i`,
 and apply one of the 4 checks below, with each check performing its own sub-rules. The ClassDefinition check
 is *recursive*, checking each slot-value assignment. This means a check on any instance will always validate the
@@ -37,23 +43,23 @@ full instance tree.
 
 Given an instance `i` of a ClassDefinition:
 
-*ClassDefinitionName*( `SVs` )
+**ClassDefinitionName**( **Assignments** )
 
-Where `SVs` is a collection of length `N`, with index `i..N` and members `slot_i=value_i`,
-and *ClassDefinitionName* is the name of a ClassDefinition in `m*`, such that `C=m*.classes[ClassDefinitionName]`
+Where **Assignments** is a collection of length `N`, with index `i..N` and members `slot_i=value_i`,
+and *ClassDefinitionName* is the name of a ClassDefinition in *m<sup>D</sup>*, such that `C`=m<sup>D</sup>`.classes[ClassDefinitionName]`
 
-### CD Rule: Assignment values must be valid
+### Rule: Assignment values must be valid
 
-for each `slot=value` assignment in `SVs`, the validation procedure is performed on `value`, with
+for each `slot=value` assignment in **Assignments**, the validation procedure is performed on `value`, with
 `root` remaining the same
 
-### CD Rule: ClassDefinition instances must instantiate a class in the schema
+### Rule: ClassDefinition instances must instantiate a class in the schema
 
-*ClassDefinitionName* MUST be the name of a ClassDefinition in `m*`
+*ClassDefinitionName* MUST be the name of a ClassDefinition in *m<sup>D</sup>*
 
-`C` is assigned to be the value of `m*[ClassDefinitionName]`
+`C` is assigned to be the value of m<sup>D</sup>`[ClassDefinitionName]`
 
-`Atts` is assigned to be the value of `C.attributes` (see the previous section)
+**Assignments** is assigned to be the value of `C.attributes` (see the previous section)
 
 `C` SHOULD have all the following properties:
 
@@ -61,49 +67,49 @@ for each `slot=value` assignment in `SVs`, the validation procedure is performed
 - `C.abstract` SHOULD NOT be **True**
 - `C.mixin` SHOULD NOT be **True**
 
-### CD Rule: identifiers must be unique
+### Rule: identifiers must be unique
 
 We define a procedure **IdVal**(`i`) which yields the value of `i.<identifier_slot>` where `identifier_slot`
-is the slot n `Atts` with metaslot assignment `identifier`=**True**
+is the slot n **Assignments** with metaslot assignment `identifier`=**True**
 
 If there is no such slot then `**IdVal**(`i`) is None and this check is ignored.
 
 `i` is invalid if there exists another instance `j` such that `j` is reachable from `root`,
 and **IdVal**(`i`)=**IdVal**(`j`) and `i` and `j` are distinct.
 
-### CD Rule: All assignments must be to permitted slots
+### Rule: All assignments must be to permitted slots
 
 For each `s=value` assignment in <*Assignment1*>, <*Assignment2*>, ..., <*AssignmentN*>:
 
-- `s` must be in `Atts`
+- `s` must be in **Assignments**
 
 ### Rule: All required slots must be specified
 
-For each slot `s` in `Atts`, if `s.required=True`, then `i.<s>` must be neither `None` nor the empty collection `[]`
+For each slot `s` in **Assignments**, if `s.required=True`, then `i.<s>` must be neither `None` nor the empty collection `[]`
 
 ### Rule: All recommended slots should be specified
 
-For each slot `s` in `Atts`, if `s.recommended=True`, then `i.<s>` should be neither `None` nor the empty collection `[]`
+For each slot `s` in **Assignments**, if `s.recommended=True`, then `i.<s>` should be neither `None` nor the empty collection `[]`
 
 If this condition is not met, this is considered a warning rather than invalidity
 
 ### Rule: Assigned values must conform to multivalued cardinality
 
-For each slot `s` in `Atts`,
+For each slot `s` in **Assignments**,
 
  * if `s.multivalued` is True, then `i.<s>` must be a collection or None
  * If `s.multivalued` is False, then `i.<s>` must not be a collection
 
 ### Rule: values should be within stated bounds
 
-For each slot `s` in `Atts`,
+For each slot `s` in **Assignments**,
 
  * if `s.maximum_value` is not None, then `i.<s>` must be a number and must be less that or equal to the maximum value
  * if `s.minimum_value` is not None, then `i.<s>` must be a number and must be greater that or equal to the minimum value
 
 ### Rule: values should equal evaluable expression
 
-For each slot `s` in `Atts`, if `s.equals_expression` is not None, then `i.<s>` must equal
+For each slot `s` in **Assignments**, if `s.equals_expression` is not None, then `i.<s>` must equal
 the value of `Eval(s.equals_expression)`. See section on expression language
 for details of syntax.
 
@@ -111,7 +117,7 @@ Note: this rule can be executed in inference mode
 
 ### Rule: values should equal string_serialization
 
-For each slot `s` in `Atts`, if `s.string_serialization` is not None, then `i.<s>` must equal
+For each slot `s` in **Assignments**, if `s.string_serialization` is not None, then `i.<s>` must equal
 the value of `Stringify(s.string_serialization)`. See section on expression language
 for details of syntax.
 
@@ -121,7 +127,7 @@ Note: this rule can be executed in inference mode
 
 ### Range class instantiation check
 
-For each slot `s` in `Atts`, if `i.<s>` is not None, and `s.range` is in `m*.classes`,
+For each slot `s` in **Assignments**, if `i.<s>` is not None, and `s.range` is in `m*.classes`,
 then `s.range` must be in `ReflexiveAncestors(Type(i.<s>))`
 
  Additional checks MAY be performed based on whether `s.inlined` is True
@@ -131,22 +137,7 @@ then `s.range` must be in `ReflexiveAncestors(Type(i.<s>))`
      * `i.<s>`  SHOULD be a Reference
      * OR `i.<s>` instantiates a class `R` such that R has no slot `rs` that is declared to be an identifier. i.e. `rs.identifier = True`
 
-### Range type check
 
-For each slot `s` in `Atts`, if `i.<s>` is not None, and `s.range` is in `m*.types`,
-where `i.<s> = *T*( **AtomicValue** )` must match `s.range`,
-
-here `T.uri` is used to determine the type:
-
-- for xsd floats, doubles, and decimals, AtomicValue must be a decimal- for xsd floats, doubles, and decimals, AtomicValue must be a decimal
-- for xsd ints, AtomicValue must be an Integer
-- for xsd dates, datetimes, and times, AtomicValue must be a string conforming to the relevant ISO type
-- for xsd booleans, AtomicValue must be True or False
-
-### Range enum check
-
-For each slot `s` in `Atts`, if `i.<s>` is not None, and `s.range` is in `m*.enums`,
-then `i.<s>` must be equal to `pv.text` for some pv in `m*.enums[s.range]`
 
 ### Boolean combinations of expressions
 
@@ -175,7 +166,7 @@ In all cases, the semantics are as follows:
    
 ### range expression checks
 
-For each slot `s` in `Atts`, if `i.<s>` is not None, and `RE = s.range_expression` is not None, then a check
+For each slot `s` in **Assignments**, if `i.<s>` is not None, and `RE = s.range_expression` is not None, then a check
 **CE**(`x`) is performed on `i.<s>`
 
 ### Rule evaluation
@@ -188,6 +179,23 @@ For each rule `r` in *C*.rules:
 ### Classification Rule evaluation
 
 ### type designator checks
+
+## Validation of TypeDefinitions
+
+For each slot `s` in **Assignments**, if `i.<s>` is not None, and `s.range` is in `m*.types`,
+where `i.<s> = *T*( **AtomicValue** )` must match `s.range`,
+
+here `T.uri` is used to determine the type:
+
+- for xsd floats, doubles, and decimals, AtomicValue must be a decimal- for xsd floats, doubles, and decimals, AtomicValue must be a decimal
+- for xsd ints, AtomicValue must be an Integer
+- for xsd dates, datetimes, and times, AtomicValue must be a string conforming to the relevant ISO type
+- for xsd booleans, AtomicValue must be True or False
+
+## Validation of EnumDefinitions
+
+For each slot `s` in **Assignments**, if `i.<s>` is not None, and `s.range` is in `m*.enums`,
+then `i.<s>` must be equal to `pv.text` for some pv in `m*.enums[s.range]`
 
 ## Inference of new values
 

@@ -3,11 +3,16 @@
 This section describes how LinkML instances are translated to different formats and data models.
 
 - Conversion *from* LinkML instances to another format is called *serialization* or *dumping*
-- Conversion *to* LinkML instances from another format is called *parsing* or *loading*
+- Conversion *to* LinkML instances from another format is called *parsing*, *loading*, or *deserialization*
 
 The reference implementation is the [linkml-runtime](https://github.com/linkml/linkml-runtime/) but other implementations that conform to this specification are valid.
 
 ## Translation of instances to JSON or YAML
+
+Here we define a mapping of LinkML instances to JSON.
+
+As JSON is a subset of YAML, this can also be used to load and dump from YAML. This is the canonical YAML mapping. We leave open
+the possibility of a *direct* YAML conversion in future which makes use of YAML tags to encode typing information.
 
 - Serialization to JSON takes as input:
     - a (root) instance
@@ -20,15 +25,16 @@ The reference implementation is the [linkml-runtime](https://github.com/linkml/l
 
 Given an instance `i` of a ClassDefinition:
 
-*ClassDefinitionName*( `s1=v1`, ..., `sn=v2` )
+*ClassDefinitionName*( `s1=v1`, ..., `sn=vn` )
 
-This is translated to
+This is translated to a JSON *object*
 
 ```json
 {
    Tr(s1) = Tr(v1),
-   ...,
-   Tr(s2) = Tr(v2)           
+   Tr(s2) = Tr(v2)
+  ...,
+   Tr(sn) = Tr(vn)           
 }
 ```
 
@@ -43,9 +49,11 @@ set the target ClassDefinitionName
 
 ### Instances of None
 
-The parent slot is omitted
+None is mapped to JSON nulls.
 
-### Instances of Collection
+It is conventional to omit an assignment whose value is None/null when serializing. The canonical serialization MUST omit these, but a parser MUST accept None/null values that are explicitly provided
+
+### Instances of Collections of InstancesOfClass
 
 If the parent slot `s.inlined_as_list=True`
 
@@ -68,6 +76,19 @@ otherwise:
    Tr(member_n),
 ]
 ```
+
+### Instances of other Collections
+
+These are always translated to lists:
+
+```
+[
+   Tr(member_1),
+   ...
+   Tr(member_n),
+]
+```
+
 
 ### Instances of TypeDefinition
 
@@ -100,15 +121,15 @@ LinkML provides standard types:
 
 - Curie
 - Uri
-- CurieOrUri
+- Curieoruri
 
 The syntax for a CURIE is defined by [W3C CURIE Syntax 1.0](https://www.w3.org/TR/curie/)
 
-**curie**       :=   [ [ **prefix** ] ':' ] **reference**
+> **curie**       :=   [ [ **prefix** ] ':' ] **reference**
 
-**prefix**      :=   **[NCName](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName)**
+> **prefix**      :=   **[NCName](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName)**
 
-**reference**   :=   **[irelative-ref](https://www.ietf.org/rfc/rfc3987.txt)**
+> **reference**   :=   **[irelative-ref](https://www.ietf.org/rfc/rfc3987.txt)**
 
 We define a function **CurieToUri**(`x`) that maps (expands) a CurieOrUri to a Uri
 
