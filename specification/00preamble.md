@@ -13,7 +13,8 @@ This document defines the structure of instance data using a functional-style sy
 
 ## Notes
 
-More information about LinkML can be found on the [LinkML site](https://linkml.io), which includes introductory material and tutorials. It also includes a reference implementation and set of tools for working with LinkML schemas and data.
+More information about LinkML can be found on the [LinkML site](https://linkml.io), which includes introductory material and [tutorials](https://linkml.io/linkml/intro/tutorial).
+It also includes a reference implementation and set of tools for working with LinkML schemas and data.
 
 The specification provided here is intended to be independent of any particular tool or implementation.
 
@@ -23,5 +24,5 @@ This is a draft specification open from comments to all.
 
 ### License
 
-This specification, like all parts of LinkML in the public domain under a Creative Commons Zero license waiver.
+This specification, like all parts of LinkML are in the public domain under a Creative Commons Zero license waiver.
 

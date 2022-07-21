@@ -2,18 +2,13 @@
 
 This document is a functional draft specification for the Linked Data Modeling Language (LinkML).
 
-LinkML is a data modeling language for describing the structure of a collection of *instances*, 
-where instances are tree-like object oriented structures. Each instance instantiates a class from the LinkML *metamodel*. This is either a *primitive* class such as a scalar type, reference, enumeration, or a *class* class, which is associated with slot-value *assignments*.
+LinkML is a data modeling language for describing the structure of a collection of *instances*, where instances are tree-like object-oriented structures. Instances are pieces of information that represent things of interest in a particular domain, such as individual people, biological samples, places, events, or abstract entities. 
 
-LinkML schemas also specify *rules* for determining if instances conform to a the schema, and for adding additional implicit information to an instance collection.
+Instances are either primitive *types* such as numbers or strings, or objects that are typed using *classes* from a LinkML *schema*. Classes are categories or groupings of things in the domain of interest; for example, "Person", "Medical History", "Data file", or "Country". Instances can be inter-related by assigning *slot values*; for example, an instance of a Person may have values for slots "name" or "country of birth".
 
-LinkML is independent of any programming language, and independent of
-any concrete form for serializing instances of schemas. Mappings are
-provided for serializing instances as JSON, YAML, RDF, flat tables, or
-relational models, or for mapping to programming language structures,
-but are independent of any of these. Schemas are typically expressed
-using the YAML serialization, but this specification is independent of
-that serialization.
+LinkML schemas also specify *rules* for determining if instances conform to the schema, and for *inference* adding additional implicit slot values.
+
+LinkML is independent of any programming language, database technology, and is independent of any concrete form for serializing instances of schemas. Mappings are provided for serializing instances as JSON, YAML, RDF, flat tables, or relational models, or for mapping to programming language structures. However, the structure and semantics of LinkML are independent from any of these. Schemas are typically expressed using the YAML serialization, but this specification is defined independent of that particular serialization.
 
 LinkML is self-describing, and any LinkML schema is itself a collection instances that instantiates elements in a special schema called the *LinkML metamodel*.
 
@@ -59,28 +54,27 @@ This section. Provides background information and preliminary definitions
 
 ### Part 2: Structure and Syntax of Instances
 
-This specifies what an instance is in the context of LinkML.
+Specification of the data model for instances in LinkML.
 
-The instance data model is shown as UML. A normative functional-style syntax is provided for instances, and this syntax is used throughout the
-specification.
+The data model shown as UML for informative purposes. A normative functional-style syntax is provided for instances, and this syntax is used throughout the specification.
 
-This also introduces a path accessor syntax for specifying how to traverse LinkML instances.
+This section also introduces a **path accessor** syntax for specifying how to traverse LinkML instances.
 
 ### Part 3: Structure of Schemas
 
-This section specifies the core elements of a LinkML schema.
+Specification of the core elements of a LinkML schema: ClassDefinitions, TypeDefinitions, SlotDefinitions, EnumDefinitions, as well as ancillary structures.
 
 ### Part 4: Derived Schemas and Schema Semantics
 
-This section specifies rules for inferring derived schemas, which can be used for purposes such as validation.
+Specification of inference procedures for **derived schemas**, which can be used for purposes such as validation.
 
 ### Part 5: Validation of Instance Data
 
-This section specifies the procedure for validating LinkML instances using a derived schema
+Specification of the procedure for **validating** LinkML instances using a derived schema
 
 ### Part 6: Mapping of Instance Data
 
-This section specifies how LinkML instances are mapped to other data models and syntaxes, including:
+Specification of how LinkML instances are mapped to other data models and syntaxes:
 
 - JSON/YAML
-- RDF
+- RDF and JSON-LD

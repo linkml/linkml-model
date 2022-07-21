@@ -16,28 +16,37 @@ Derivations happen via *rules* that are specified below, using a set of convenie
 
 ## Conventions
 
-We use `m` to denote the input or asserted schema (model), and `m*` to denote the derived schema
+We use `m` to denote the input or asserted schema (model), and *m<sup>D</sup>* to denote the derived schema
 
 ## Functions
 
-### Function: ClassIdentifier
+### Function: GetIdentifierSlot
 
-The function **ClassIdentifier**(`c`) takes a ClassDefinition or ClassDefinitionName as input and returns:
+The function **GetIdentifierSlot**(`c`) takes a ClassDefinition or ClassDefinitionName as input and returns:
 
-- the name of a derived attribute `s` in `c` where `s.identifier` is True in `m*`
+- the name of a derived attribute `s` in `c` where `s.identifier` is True in *m<sup>D</sup>*
 - **None** if there is no such slot
 - An error if there are multiple such slots
 
 ### Function: Closure
 
 The function **Closure**(`x`, `s`) takes as input an element `x` and a metaslot `s` and returns the mathematical closure
-of looking up `x.<s>`
+of `s` where `s` is treated as a relation between instances `i` and `j` that holds when  either:
+
+ - s is not multivalued: `i.s = j`
+ - s is multivalued: `j member-of i.s`
 
 The **ReflexiveClosure** includes `x`
 
+### Function: Parents
+
+**Parents** itself is the union of `is_a` and `mixins`.
+
+> **Parents**(x) = `{e : e = x.is_a \/ e in x.mixins }`
+
 ### Function: Ancestors
 
-The function **Ancestors**(`x`) returns the **Closure** of the **Parents** function applied to `x`. **Parents** itself is the union of `is_a` and `mixins`.
+The function **Ancestors**(`x`) returns the **Closure** of the **Parents** function applied to `x`.
 
 The function **ReflexiveAncestors** uses the **ReflexiveClosure**.
 
@@ -47,9 +56,9 @@ The function **ReflexiveAncestors** uses the **ReflexiveClosure**.
 
 Each model imports zero to many imports, indicated by the **SchemaDefinition**.[imports](https://w3id.org/linkml/imports) metaslot.
 
-`m*` is set to be the union of all schema elements from the **ReflexiveClosure** of `m.imports`
+*m<sup>D</sup>* is set to be the union of all schema elements from the **ReflexiveClosure** of `m.imports`
 
-When copying an element `x` from an import into `m*`, the name `x.name` must be unique - if the same name has been used in another model, the derivation procedure fails, and an error is thrown.
+When copying an element `x` from an import into *m<sup>D</sup>*, the name `x.name` must be unique - if the same name has been used in another model, the derivation procedure fails, and an error is thrown.
 
 **Note**: If two or more models import the same target (e.g. `m1` imports `m2` and `m3` and `m2` imports `m3`), `m3` will be only be resolved once.
 
@@ -62,7 +71,7 @@ Each imported module must be resolved - i.e the value of the import slot is mapp
 
 Each element in the schema as assigned a metaslot `fromschema` value. This is the value of the `id` of the schema in which that element is defined.
 
-This is preserved over imports, such that if `m` imports `m2`, and `m2` defines a class `c`, then `m*[c].fromschema` = m2
+This is preserved over imports, such that if `m` imports `m2`, and `m2` defines a class `c`, then *m<sup>D</sup>*`[c].fromschema` = m2
 
 ### Rule: Applicable Slot Names
 
@@ -85,7 +94,7 @@ and ancestors of `c`
 
 - attributes asserted directly in `c.attributes` in the base schema
 - attributes derived from each SlotDefinition `s` in `c.slots` by
-    - looking up `s` in `m*.slots` and copying the slot-value assignments from these SlotDefinitions
+    - looking up `s` in *m<sup>D</sup>*`.slots` and copying the slot-value assignments from these SlotDefinitions
     - overriding these slot-value assignments with any slot-value assignments provided by `c.slot_usage[s]`
 - inheriting from parents of `c` using precedence rules
 - inheriting from parents of `s`
@@ -154,21 +163,21 @@ representation of instance references in tree-based formats such as JSON.
 
 ### Rule: Each referenced entity must be present
 
-Every **ClassDefinition**, **ClassDefinitionReference**, **SlotDefinitionReference**, **EnumDefinitionReference**, and **TypeDefinitionReference** must be resolvable within `m*`
+Every **ClassDefinition**, **ClassDefinitionReference**, **SlotDefinitionReference**, **EnumDefinitionReference**, and **TypeDefinitionReference** must be resolvable within *m<sup>D</sup>*
 
-However, not every element needs to be referenced. For example, it is valid to have a list of SlotDefinitions that are never used in `m*`.
+However, not every element needs to be referenced. For example, it is valid to have a list of SlotDefinitions that are never used in *m<sup>D</sup>*.
 
 ### ClassDefinition Structural Conformance Rules
 
-Each `c` in `m*.classes` must conform to the rules below:
+Each `c` in *m<sup>D</sup>*`.classes` must conform to the rules below:
 
 - `c` must be an instance of a **ClassDefinition**
-- `c` must have a unique name `c.name`, and this name must not be shared by any other class or element in `m*`
-- `c` lists permissible slots in `c.slots`, the range of this is a reference to a SlotDefinition in `m*.slots`
+- `c` must have a unique name `c.name`, and this name must not be shared by any other class or element in *m<sup>D</sup>*
+- `c` lists permissible slots in `c.slots`, the range of this is a reference to a SlotDefinition in *m<sup>D</sup>*`.slots`
 - `c` defines how slots are used in the context of `c` via a collection of SlotDefinitions specified in `c.slot_usage`
 - `c` may define local slots using `c.attributes`, the value of this is a. collection of SlotDefinitions
 - `c` may have certain boolean properties defined such as `c.mixin` and `c.abstract`
-- `c` must have exactly one value for `c.class_uri` in `m*`, and the value must be an instance of the builtin type UriOrCurie
+- `c` must have exactly one value for `c.class_uri` in *m<sup>D</sup>*, and the value must be an instance of the builtin type UriOrCurie
 - `c` may have parent ClassDefinitions defined via `c.is_a` and `c.mixins`
     - the value of `c.is_a` must be a ClassDefinitionReference
     - the value of `c.mixins` must be a collection of ClassDefinitonReferences
@@ -178,14 +187,14 @@ Each `c` in `m*.classes` must conform to the rules below:
 
 ### SlotDefinition Structural Conformance Rules
 
-Each `s` in `m*.slots` must conform to the rules below:
+Each `s` in *m<sup>D</sup>*`.slots` must conform to the rules below:
 
 - `s` must be an instance of a **SlotDefinition**
 - `s` must have a unique name `s.name`, and this name must not be shared by any other type or element
-- `s` must have a range specified via `s.range` in `m*`
+- `s` must have a range specified via `s.range` in *m<sup>D</sup>*
 - `s` may have an assignment `s.identifier` which is True if `s` plays the role of a unique identifier
 - `s` may have certain boolean properties defined such as `s.mixin` and `s.abstract`
-- `s` must have exactly one value for `s.slot_uri` in `m*`, and the value must be an instance of the builtin type UriOrCurie
+- `s` must have exactly one value for `s.slot_uri` in *m<sup>D</sup>*, and the value must be an instance of the builtin type UriOrCurie
 - `s` may have parent SlotDefinitions defined via `s.is_a` and `s.mixins`
     - the value of `s.is_a` must be a **SlotDefinitionReference**
     - the value of `s.mixins` must be a collection of **SlotDefinitionReference**s
@@ -194,17 +203,17 @@ Each `s` in `m*.slots` must conform to the rules below:
 
 ### TypeDefinition Structural Conformance Rules
 
-Each `s` in `m*.types` must conform to the rules below:
+Each `s` in *m<sup>D</sup>*`.types` must conform to the rules below:
 
 - `t` must be an instance of a **TypeDefinition**
 - `t` must have a unique name `t.name`, and this name must not be shared by any other type or element
-- `t` must have a mapping to an xsd type provided via `t.uri` in `m*`
+- `t` must have a mapping to an xsd type provided via `t.uri` in *m<sup>D</sup>*
 - `t` may have a parent type declared via `t.typeof`
 - `t` may have any number of additional slot-value assignments consistent with the validation rules provided here with the metamodel `MM`
 
 ### EnumDefinition Structural Conformance Rules
 
-Each `e` in `m*.enums` must conform to the rules below:
+Each `e` in *m<sup>D</sup>*`.enums` must conform to the rules below:
 
 - `e` must be an instance of a **EnumDefinition**
 - `e` must have a unique name `e.name`, and this name must not be shared by any other enum or element
@@ -213,7 +222,7 @@ Each `e` in `m*.enums` must conform to the rules below:
 
 ### ClassDefinitionReference Structural Conformance Rules
 
-Each `r` in `m*.class_references` must conform to the rules below:
+Each `r` in *m<sup>D</sup>*`.class_references` must conform to the rules below:
 
 - `r` must be an instance of a **ClassDefinitionReference**
 - `r` must have a unique name `r.name`, and this name must not be shared by any other type or element
