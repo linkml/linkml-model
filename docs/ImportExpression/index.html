@@ -1,394 +1,1055 @@
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+
+<html class="no-js" lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Class: import_expression - LinkML Model</title>
-    <link rel="stylesheet" href="../css/theme.css" />
-    <link rel="stylesheet" href="../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
-    
-      <script>
-        // Current page data
-        var mkdocs_page_name = "Class: import_expression";
-        var mkdocs_page_input_path = "ImportExpression.md";
-        var mkdocs_page_url = null;
-      </script>
-    
-    <script src="../js/jquery-3.6.0.min.js" defer></script>
-    <!--[if lt IE 9]>
-      <script src="../js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-2SYBSJVZ23"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-2SYBSJVZ23');
-      </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.3.1, mkdocs-material-8.3.9" name="generator"/>
+<title>Class: ImportExpression - LinkML Model</title>
+<link href="../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href=".." class="icon icon-home"> LinkML Model
-        </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
-  </form>
+<body data-md-color-accent="amber" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#class-importexpression">
+          Skip to content
+        </a>
 </div>
-      </div>
-
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../home/">About</a>
-                </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Specification</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../specification/00preamble/">Preface</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../specification/01introduction/">Introduction</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../specification/02instances/">Instances</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../specification/03schemas/">Schema Datamodel</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../specification/04derived-schemas/">Derived Schemas</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../specification/05validation/">Instance Validation</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../specification/06mapping/">Mapping of Instances</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Appendix</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="..">Metamodel</a>
-                  </li>
-              </ul>
-      </div>
-    </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="..">LinkML Model</a>
-        
-      </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Class: import_expression</li>
-    <li class="wy-breadcrumbs-aside">
-    </li>
-  </ul>
-  <hr/>
+<div data-md-component="announce">
 </div>
-
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
-              
-                <h1 id="class-import_expression">Class: import_expression</h1>
-<p>an expression describing an import</p>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="LinkML Model" class="md-header__button md-logo" data-md-component="logo" href=".." title="LinkML Model">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            LinkML Model
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Class: ImportExpression
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="amber" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="teal" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"></path></svg>
+</label>
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="amber" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="teal" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="LinkML Model" class="md-nav__button md-logo" data-md-component="logo" href=".." title="LinkML Model">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    LinkML Model
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../home/">
+        About
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+          Specification
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Specification" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Specification
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../specification/00preamble/">
+        Preface
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../specification/01introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../specification/02instances/">
+        Instances
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../specification/03schemas/">
+        Schema Datamodel
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../specification/04derived-schemas/">
+        Derived Schemas
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../specification/05validation/">
+        Instance Validation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../specification/06mapping/">
+        Mapping of Instances
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+          Appendix
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Appendix" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+        Metamodel
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+    Inheritance
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slots">
+    Slots
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+    Usages
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifier-and-mapping-information">
+    Identifier and Mapping Information
+  </a>
+<nav aria-label="Identifier and Mapping Information" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schema-source">
+    Schema Source
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mappings">
+    Mappings
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linkml-specification">
+    LinkML Specification
+  </a>
+<nav aria-label="LinkML Specification" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#direct">
+    Direct
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#induced">
+    Induced
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="class-importexpression">Class: ImportExpression</h1>
+<p><em>an expression describing an import</em></p>
 <p>URI: <a href="https://w3id.org/linkml/ImportExpression">linkml:ImportExpression</a></p>
-<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[SubsetDefinition],[StructuredAlias],[Setting],[SchemaDefinition],[Setting]&lt;import_map%200..*-++[ImportExpression&#124;import_from:uriorcurie;import_as:ncname%20%3F;description:string%20%3F;title:string%20%3F;deprecated:string%20%3F;todos:string%20*;notes:string%20*;comments:string%20*;from_schema:uri%20%3F;imported_from:string%20%3F;source:uriorcurie%20%3F;in_language:string%20%3F;see_also:uriorcurie%20*;deprecated_element_has_exact_replacement:uriorcurie%20%3F;deprecated_element_has_possible_replacement:uriorcurie%20%3F;aliases:string%20*;mappings:uriorcurie%20*;exact_mappings:uriorcurie%20*;close_mappings:uriorcurie%20*;related_mappings:uriorcurie%20*;narrow_mappings:uriorcurie%20*;broad_mappings:uriorcurie%20*;rank:integer%20%3F],[ImportExpression]uses%20-.-&gt;[Extensible],[ImportExpression]uses%20-.-&gt;[Annotatable],[ImportExpression]uses%20-.-&gt;[CommonMetadata],[Extension],[Extensible],[Example],[CommonMetadata],[Annotation],[Annotatable],[AltDescription]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[SubsetDefinition],[StructuredAlias],[Setting],[SchemaDefinition],[Setting]&lt;import_map%200..*-++[ImportExpression&#124;import_from:uriorcurie;import_as:ncname%20%3F;description:string%20%3F;title:string%20%3F;deprecated:string%20%3F;todos:string%20*;notes:string%20*;comments:string%20*;from_schema:uri%20%3F;imported_from:string%20%3F;source:uriorcurie%20%3F;in_language:string%20%3F;see_also:uriorcurie%20*;deprecated_element_has_exact_replacement:uriorcurie%20%3F;deprecated_element_has_possible_replacement:uriorcurie%20%3F;aliases:string%20*;mappings:uriorcurie%20*;exact_mappings:uriorcurie%20*;close_mappings:uriorcurie%20*;related_mappings:uriorcurie%20*;narrow_mappings:uriorcurie%20*;broad_mappings:uriorcurie%20*;rank:integer%20%3F],[ImportExpression]uses%20-.-&gt;[Extensible],[ImportExpression]uses%20-.-&gt;[Annotatable],[ImportExpression]uses%20-.-&gt;[CommonMetadata],[Extension],[Extensible],[Example],[CommonMetadata],[Annotation],[Annotatable],[AltDescription]" /></a></p>
-<h2 id="uses-mixin">Uses Mixin</h2>
-<ul>
-<li>mixin: <a href="../Extensible/">Extensible</a> - mixin for classes that support extension</li>
-<li>mixin: <a href="../Annotatable/">Annotatable</a> - mixin for classes that support annotations</li>
-<li>mixin: <a href="../CommonMetadata/">CommonMetadata</a> - Generic metadata shared across definitions</li>
-</ul>
-<h2 id="referenced-by-class">Referenced by Class</h2>
-<ul>
-<li><strong><a href="../SchemaDefinition/">SchemaDefinition</a></strong> <em><a href="../structured_imports/">structured_imports</a></em>  <sub>0..*</sub>  <strong><a href="./">ImportExpression</a></strong></li>
-</ul>
-<h2 id="attributes">Attributes</h2>
-<h3 id="own">Own</h3>
-<ul>
-<li><a href="../import_from/">import_from</a>  <sub>1..1</sub><ul>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
-<li><a href="../import_as/">import_as</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../Ncname/">Ncname</a></li>
-</ul>
-</li>
-<li><a href="../import_map/">import_map</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="../Setting/">Setting</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-extensible">Mixed in from extensible:</h3>
-<ul>
-<li><a href="../extensions/">extensions</a>  <sub>0..*</sub><ul>
-<li>Description: a tag/text tuple attached to an arbitrary element</li>
-<li>Range: <a href="../Extension/">Extension</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-annotatable">Mixed in from annotatable:</h3>
-<ul>
-<li><a href="../annotations/">annotations</a>  <sub>0..*</sub><ul>
-<li>Description: a collection of tag/text tuples with the semantics of OWL Annotation</li>
-<li>Range: <a href="../Annotation/">Annotation</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../description/">description</a>  <sub>0..1</sub><ul>
-<li>Description: a description of the element's purpose and use</li>
-<li>Range: <a href="../String/">String</a></li>
-<li>in subsets: (basic)</li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_1">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../alt_descriptions/">alt_descriptions</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="../AltDescription/">AltDescription</a></li>
-<li>in subsets: (basic)</li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_2">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../title/">title</a>  <sub>0..1</sub><ul>
-<li>Description: the official title of the element</li>
-<li>Range: <a href="../String/">String</a></li>
-<li>in subsets: (owl,basic)</li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_3">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../deprecated/">deprecated</a>  <sub>0..1</sub><ul>
-<li>Description: Description of why and when this element will no longer be used</li>
-<li>Range: <a href="../String/">String</a></li>
-<li>in subsets: (basic)</li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_4">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../todos/">todos</a>  <sub>0..*</sub><ul>
-<li>Description: Outstanding issue that needs resolution</li>
-<li>Range: <a href="../String/">String</a></li>
-<li>in subsets: (basic)</li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_5">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../notes/">notes</a>  <sub>0..*</sub><ul>
-<li>Description: editorial notes about an element intended for internal consumption</li>
-<li>Range: <a href="../String/">String</a></li>
-<li>in subsets: (owl,basic)</li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_6">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../comments/">comments</a>  <sub>0..*</sub><ul>
-<li>Description: notes and comments about an element intended for external consumption</li>
-<li>Range: <a href="../String/">String</a></li>
-<li>in subsets: (owl,basic)</li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_7">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../examples/">examples</a>  <sub>0..*</sub><ul>
-<li>Description: example usages of an element</li>
-<li>Range: <a href="../Example/">Example</a></li>
-<li>in subsets: (owl,basic)</li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_8">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../in_subset/">in_subset</a>  <sub>0..*</sub><ul>
-<li>Description: used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)</li>
-<li>Range: <a href="../SubsetDefinition/">SubsetDefinition</a></li>
-<li>in subsets: (basic)</li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_9">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../from_schema/">from_schema</a>  <sub>0..1</sub><ul>
-<li>Description: id of the schema that defined the element</li>
-<li>Range: <a href="../Uri/">Uri</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_10">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../imported_from/">imported_from</a>  <sub>0..1</sub><ul>
-<li>Description: the imports entry that this element was derived from.  Empty means primary source</li>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_11">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../source/">source</a>  <sub>0..1</sub><ul>
-<li>Description: A related resource from which the element is derived.</li>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-<li>in subsets: (basic)</li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_12">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../in_language/">in_language</a>  <sub>0..1</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_13">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../see_also/">see_also</a>  <sub>0..*</sub><ul>
-<li>Description: a reference</li>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-<li>in subsets: (owl,basic)</li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_14">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../deprecated_element_has_exact_replacement/">deprecated element has exact replacement</a>  <sub>0..1</sub><ul>
-<li>Description: When an element is deprecated, it can be automatically replaced by this uri or curie</li>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_15">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../deprecated_element_has_possible_replacement/">deprecated element has possible replacement</a>  <sub>0..1</sub><ul>
-<li>Description: When an element is deprecated, it can be potentially replaced by this uri or curie</li>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_16">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../aliases/">aliases</a>  <sub>0..*</sub><ul>
-<li>Range: <a href="../String/">String</a></li>
-<li>in subsets: (basic)</li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_17">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../structured_aliases/">structured_aliases</a>  <sub>0..*</sub><ul>
-<li>Description: A list of structured_alias objects.</li>
-<li>Range: <a href="../StructuredAlias/">StructuredAlias</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_18">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../mappings/">mappings</a>  <sub>0..*</sub><ul>
-<li>Description: A list of terms from different schemas or terminology systems that have comparable meaning. These may include terms that are precisely equivalent, broader or narrower in meaning, or otherwise semantically related but not equivalent from a strict ontological perspective.</li>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_19">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../exact_mappings/">exact mappings</a>  <sub>0..*</sub><ul>
-<li>Description: A list of terms from different schemas or terminology systems that have identical meaning.</li>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_20">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../close_mappings/">close mappings</a>  <sub>0..*</sub><ul>
-<li>Description: A list of terms from different schemas or terminology systems that have close meaning.</li>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_21">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../related_mappings/">related mappings</a>  <sub>0..*</sub><ul>
-<li>Description: A list of terms from different schemas or terminology systems that have related meaning.</li>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_22">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../narrow_mappings/">narrow mappings</a>  <sub>0..*</sub><ul>
-<li>Description: A list of terms from different schemas or terminology systems that have narrower meaning.</li>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_23">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../broad_mappings/">broad mappings</a>  <sub>0..*</sub><ul>
-<li>Description: A list of terms from different schemas or terminology systems that have broader meaning.</li>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="mixed-in-from-common_metadata_24">Mixed in from common_metadata:</h3>
-<ul>
-<li><a href="../rank/">rank</a>  <sub>0..1</sub><ul>
-<li>Description: the relative order in which the element occurs, lower values are given precedence</li>
-<li>Range: <a href="../Integer/">Integer</a></li>
-<li>in subsets: (basic)</li>
-</ul>
-</li>
-</ul>
-              
-            </div>
-          </div><footer>
+<div class="mermaid"> classDiagram
+      Extensible &lt;|-- ImportExpression
+      Annotatable &lt;|-- ImportExpression
+      CommonMetadata &lt;|-- ImportExpression
 
-  <hr/>
+      ImportExpression : aliases
+      ImportExpression : alt_descriptions
+      ImportExpression : annotations
+      ImportExpression : broad_mappings
+      ImportExpression : close_mappings
+      ImportExpression : comments
+      ImportExpression : deprecated
+      ImportExpression : deprecated_element_has_exact_replacement
+      ImportExpression : deprecated_element_has_possible_replacement
+      ImportExpression : description
+      ImportExpression : exact_mappings
+      ImportExpression : examples
+      ImportExpression : extensions
+      ImportExpression : from_schema
+      ImportExpression : import_as
+      ImportExpression : import_from
+      ImportExpression : import_map
+      ImportExpression : imported_from
+      ImportExpression : in_language
+      ImportExpression : in_subset
+      ImportExpression : mappings
+      ImportExpression : narrow_mappings
+      ImportExpression : notes
+      ImportExpression : rank
+      ImportExpression : related_mappings
+      ImportExpression : see_also
+      ImportExpression : source
+      ImportExpression : structured_aliases
+      ImportExpression : title
+      ImportExpression : todos
 
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-  </div>
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
-          
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-    
-    
-  </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme_extra.js" defer></script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        };
-    </script>
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><strong>ImportExpression</strong> [ extensible annotatable common_metadata]</li>
+</ul>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../import_from/">import_from</a></td>
+<td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="../import_as/">import_as</a></td>
+<td>0..1 <br/> <a href="../Ncname/">Ncname</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="../import_map/">import_map</a></td>
+<td>0..* <br/> <a href="../Setting/">Setting</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="../extensions/">extensions</a></td>
+<td>0..* <br/> <a href="../Extension/">Extension</a></td>
+<td>a tag/text tuple attached to an arbitrary element</td>
+</tr>
+<tr>
+<td><a href="../annotations/">annotations</a></td>
+<td>0..* <br/> <a href="../Annotation/">Annotation</a></td>
+<td>a collection of tag/text tuples with the semantics of OWL Annotation</td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td>a description of the element's purpose and use</td>
+</tr>
+<tr>
+<td><a href="../alt_descriptions/">alt_descriptions</a></td>
+<td>0..* <br/> <a href="../AltDescription/">AltDescription</a></td>
+<td>A sourced alternative description for an element</td>
+</tr>
+<tr>
+<td><a href="../title/">title</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the official title of the element</td>
+</tr>
+<tr>
+<td><a href="../deprecated/">deprecated</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Description of why and when this element will no longer be used</td>
+</tr>
+<tr>
+<td><a href="../todos/">todos</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>Outstanding issue that needs resolution</td>
+</tr>
+<tr>
+<td><a href="../notes/">notes</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>editorial notes about an element intended for internal consumption</td>
+</tr>
+<tr>
+<td><a href="../comments/">comments</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>notes and comments about an element intended for external consumption</td>
+</tr>
+<tr>
+<td><a href="../examples/">examples</a></td>
+<td>0..* <br/> <a href="../Example/">Example</a></td>
+<td>example usages of an element</td>
+</tr>
+<tr>
+<td><a href="../in_subset/">in_subset</a></td>
+<td>0..* <br/> <a href="../SubsetDefinition/">SubsetDefinition</a></td>
+<td>used to indicate membership of a term in a defined subset of terms used for a...</td>
+</tr>
+<tr>
+<td><a href="../from_schema/">from_schema</a></td>
+<td>0..1 <br/> <a href="../Uri/">Uri</a></td>
+<td>id of the schema that defined the element</td>
+</tr>
+<tr>
+<td><a href="../imported_from/">imported_from</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the imports entry that this element was derived from</td>
+</tr>
+<tr>
+<td><a href="../source/">source</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A related resource from which the element is derived</td>
+</tr>
+<tr>
+<td><a href="../in_language/">in_language</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="../see_also/">see_also</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>a reference</td>
+</tr>
+<tr>
+<td><a href="../deprecated_element_has_exact_replacement/">deprecated_element_has_exact_replacement</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>When an element is deprecated, it can be automatically replaced by this uri o...</td>
+</tr>
+<tr>
+<td><a href="../deprecated_element_has_possible_replacement/">deprecated_element_has_possible_replacement</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>When an element is deprecated, it can be potentially replaced by this uri or ...</td>
+</tr>
+<tr>
+<td><a href="../aliases/">aliases</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>Alaternate names for the element</td>
+</tr>
+<tr>
+<td><a href="../structured_aliases/">structured_aliases</a></td>
+<td>0..* <br/> <a href="../StructuredAlias/">StructuredAlias</a></td>
+<td>A list of structured_alias objects</td>
+</tr>
+<tr>
+<td><a href="../mappings/">mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have compa...</td>
+</tr>
+<tr>
+<td><a href="../exact_mappings/">exact_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have ident...</td>
+</tr>
+<tr>
+<td><a href="../close_mappings/">close_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have close...</td>
+</tr>
+<tr>
+<td><a href="../related_mappings/">related_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have relat...</td>
+</tr>
+<tr>
+<td><a href="../narrow_mappings/">narrow_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have narro...</td>
+</tr>
+<tr>
+<td><a href="../broad_mappings/">broad_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have broad...</td>
+</tr>
+<tr>
+<td><a href="../rank/">rank</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the relative order in which the element occurs, lower values are given preced...</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="./">ImportExpression</a></td>
+<td><a href="../import_from/">import_from</a></td>
+<td>domain</td>
+<td>import_expression</td>
+</tr>
+<tr>
+<td><a href="./">ImportExpression</a></td>
+<td><a href="../import_as/">import_as</a></td>
+<td>domain</td>
+<td>import_expression</td>
+</tr>
+<tr>
+<td><a href="./">ImportExpression</a></td>
+<td><a href="../import_map/">import_map</a></td>
+<td>domain</td>
+<td>import_expression</td>
+</tr>
+</tbody>
+</table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/linkml/meta</li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>['linkml:ImportExpression']</td>
+</tr>
+<tr>
+<td>native</td>
+<td>['linkml:ImportExpression']</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-specification">LinkML Specification</h2>
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+<h3 id="direct">Direct</h3>
+<details>
+<pre><code class="language-yaml">name: import_expression
+description: an expression describing an import
+from_schema: https://w3id.org/linkml/meta
+rank: 1000
+mixins:
+- extensible
+- annotatable
+- common_metadata
+status: testing
+slots:
+- import_from
+- import_as
+- import_map
 
-</body>
+</code></pre>
+</details>
+<h3 id="induced">Induced</h3>
+<details>
+<pre><code class="language-yaml">name: import_expression
+description: an expression describing an import
+from_schema: https://w3id.org/linkml/meta
+rank: 1000
+mixins:
+- extensible
+- annotatable
+- common_metadata
+status: testing
+attributes:
+  import_from:
+    name: import_from
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: import_expression
+    alias: import_from
+    owner: import_expression
+    domain_of:
+    - import_expression
+    range: uriorcurie
+    required: true
+  import_as:
+    name: import_as
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: import_expression
+    alias: import_as
+    owner: import_expression
+    domain_of:
+    - import_expression
+    range: ncname
+  import_map:
+    name: import_map
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: import_expression
+    multivalued: true
+    alias: import_map
+    owner: import_expression
+    domain_of:
+    - import_expression
+    range: setting
+    inlined: true
+  extensions:
+    name: extensions
+    description: a tag/text tuple attached to an arbitrary element
+    from_schema: https://w3id.org/linkml/extensions
+    rank: 1000
+    domain: extensible
+    multivalued: true
+    alias: extensions
+    owner: import_expression
+    domain_of:
+    - extension
+    - extensible
+    range: extension
+    inlined: true
+  annotations:
+    name: annotations
+    description: a collection of tag/text tuples with the semantics of OWL Annotation
+    from_schema: https://w3id.org/linkml/annotations
+    rank: 1000
+    is_a: extensions
+    domain: annotatable
+    multivalued: true
+    alias: annotations
+    owner: import_expression
+    domain_of:
+    - annotatable
+    - annotation
+    range: annotation
+    inlined: true
+  description:
+    name: description
+    description: a description of the element's purpose and use
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - definition
+    exact_mappings:
+    - dcterms:description
+    - schema:description
+    rank: 5
+    domain: element
+    slot_uri: skos:definition
+    alias: description
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    - permissible_value
+    range: string
+    recommended: true
+  alt_descriptions:
+    name: alt_descriptions
+    description: A sourced alternative description for an element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - alternate definitions
+    rank: 1000
+    domain: element
+    multivalued: true
+    alias: alt_descriptions
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: alt_description
+    inlined: true
+  title:
+    name: title
+    description: the official title of the element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - long name
+    rank: 3
+    domain: element
+    slot_uri: dcterms:title
+    alias: title
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: string
+  deprecated:
+    name: deprecated
+    description: Description of why and when this element will no longer be used
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    close_mappings:
+    - owl:deprecated
+    rank: 1000
+    domain: element
+    alias: deprecated
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: string
+  todos:
+    name: todos
+    description: Outstanding issue that needs resolution
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    multivalued: true
+    alias: todos
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: string
+  notes:
+    name: notes
+    description: editorial notes about an element intended for internal consumption
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    slot_uri: skos:editorialNote
+    multivalued: true
+    alias: notes
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: string
+  comments:
+    name: comments
+    description: notes and comments about an element intended for external consumption
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    exact_mappings:
+    - rdfs:comment
+    rank: 1000
+    domain: element
+    slot_uri: skos:note
+    multivalued: true
+    alias: comments
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: string
+  examples:
+    name: examples
+    description: example usages of an element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    close_mappings:
+    - vann:example
+    rank: 1000
+    singular_name: example
+    domain: element
+    multivalued: true
+    alias: examples
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: example
+    inlined: true
+  in_subset:
+    name: in_subset
+    description: used to indicate membership of a term in a defined subset of terms
+      used for a particular domain or application (e.g. the translator_minimal subset
+      holding the minimal set of predicates used in a translator knowledge graph)
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    slot_uri: OIO:inSubset
+    multivalued: true
+    alias: in_subset
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: subset_definition
+  from_schema:
+    name: from_schema
+    description: id of the schema that defined the element
+    notes:
+    - A stronger model would be range schema_definition, but this doesn't address
+      the import model
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    slot_uri: skos:inScheme
+    readonly: supplied by the schema loader
+    alias: from_schema
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: uri
+  imported_from:
+    name: imported_from
+    description: the imports entry that this element was derived from.  Empty means
+      primary source
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    readonly: supplied by the schema loader
+    alias: imported_from
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: string
+  source:
+    name: source
+    description: A related resource from which the element is derived.
+    comments:
+    - The described resource may be derived from the related resource in whole or
+      in part
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - origin
+    - derived from
+    close_mappings:
+    - prov:wasDerivedFrom
+    - schema:isBasedOn
+    rank: 1000
+    domain: element
+    slot_uri: dcterms:source
+    alias: source
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  in_language:
+    name: in_language
+    notes:
+    - Use a string from IETF BCP 47
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    slot_uri: schema:inLanguage
+    alias: in_language
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: string
+  see_also:
+    name: see_also
+    description: a reference
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    slot_uri: rdfs:seeAlso
+    multivalued: true
+    alias: see_also
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  deprecated element has exact replacement:
+    name: deprecated element has exact replacement
+    description: When an element is deprecated, it can be automatically replaced by
+      this uri or curie
+    from_schema: https://w3id.org/linkml/mappings
+    mappings:
+    - IAO:0100001
+    rank: 1000
+    alias: deprecated_element_has_exact_replacement
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  deprecated element has possible replacement:
+    name: deprecated element has possible replacement
+    description: When an element is deprecated, it can be potentially replaced by
+      this uri or curie
+    from_schema: https://w3id.org/linkml/mappings
+    mappings:
+    - OIO:consider
+    rank: 1000
+    alias: deprecated_element_has_possible_replacement
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  aliases:
+    name: aliases
+    description: Alaternate names for the element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - synonyms
+    - alternate names
+    - alternative labels
+    - designations
+    exact_mappings:
+    - schema:alternateName
+    rank: 1000
+    domain: element
+    slot_uri: skos:altLabel
+    multivalued: true
+    alias: aliases
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: string
+  structured_aliases:
+    name: structured_aliases
+    description: A list of structured_alias objects.
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    slot_uri: skosxl:altLabel
+    multivalued: true
+    alias: structured_aliases
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: structured_alias
+    inlined: true
+  mappings:
+    name: mappings
+    description: A list of terms from different schemas or terminology systems that
+      have comparable meaning. These may include terms that are precisely equivalent,
+      broader or narrower in meaning, or otherwise semantically related but not equivalent
+      from a strict ontological perspective.
+    from_schema: https://w3id.org/linkml/mappings
+    aliases:
+    - xrefs
+    - identifiers
+    - alternate identifiers
+    - alternate ids
+    rank: 1000
+    slot_uri: skos:mappingRelation
+    multivalued: true
+    alias: mappings
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  exact mappings:
+    name: exact mappings
+    description: A list of terms from different schemas or terminology systems that
+      have identical meaning.
+    from_schema: https://w3id.org/linkml/mappings
+    rank: 1000
+    is_a: mappings
+    slot_uri: skos:exactMatch
+    multivalued: true
+    inherited: false
+    alias: exact_mappings
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    - UnitOfMeasure
+    range: uriorcurie
+  close mappings:
+    name: close mappings
+    description: A list of terms from different schemas or terminology systems that
+      have close meaning.
+    from_schema: https://w3id.org/linkml/mappings
+    rank: 1000
+    is_a: mappings
+    slot_uri: skos:closeMatch
+    multivalued: true
+    inherited: false
+    alias: close_mappings
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  related mappings:
+    name: related mappings
+    description: A list of terms from different schemas or terminology systems that
+      have related meaning.
+    from_schema: https://w3id.org/linkml/mappings
+    rank: 1000
+    is_a: mappings
+    slot_uri: skos:relatedMatch
+    multivalued: true
+    inherited: false
+    alias: related_mappings
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  narrow mappings:
+    name: narrow mappings
+    description: A list of terms from different schemas or terminology systems that
+      have narrower meaning.
+    from_schema: https://w3id.org/linkml/mappings
+    rank: 1000
+    is_a: mappings
+    slot_uri: skos:narrowMatch
+    multivalued: true
+    inherited: false
+    alias: narrow_mappings
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  broad mappings:
+    name: broad mappings
+    description: A list of terms from different schemas or terminology systems that
+      have broader meaning.
+    from_schema: https://w3id.org/linkml/mappings
+    rank: 1000
+    is_a: mappings
+    slot_uri: skos:broadMatch
+    multivalued: true
+    inherited: false
+    alias: broad_mappings
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  rank:
+    name: rank
+    description: the relative order in which the element occurs, lower values are
+      given precedence
+    comments:
+    - the rank of an element does not affect the semantics
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - order
+    - precedence
+    - display order
+    exact_mappings:
+    - qudt:order
+    rank: 51
+    slot_uri: sh:order
+    alias: rank
+    owner: import_expression
+    domain_of:
+    - common_metadata
+    - class_rule
+    range: integer
+
+</code></pre>
+</details>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>
