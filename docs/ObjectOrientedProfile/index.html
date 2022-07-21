@@ -13,7 +13,7 @@
     
     
       
-        <title>Slot: types - LinkML Model</title>
+        <title>ObjectOrientedProfile - LinkML Model</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-types" class="md-skip">
+        <a href="#objectorientedprofile" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: types
+              ObjectOrientedProfile
             
           </span>
         </div>
@@ -419,13 +419,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    Properties
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     Identifier and Mapping Information
   </a>
@@ -445,6 +438,54 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#classes-in-subset" class="md-nav__link">
+    Classes in subset
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes in subset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schemadefinition" class="md-nav__link">
+    SchemaDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classdefinition" class="md-nav__link">
+    ClassDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumdefinition" class="md-nav__link">
+    EnumDefinition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots-in-subset" class="md-nav__link">
+    Slots in subset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations-in-subset" class="md-nav__link">
+    Enumerations in subset
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -459,20 +500,225 @@
                 
 
 
-<h1 id="slot-types">Slot: types</h1>
-<p><em>An index to the collection of all type definitions in the schema</em></p>
-<p>URI: <a href="https://w3id.org/linkml/types">https://w3id.org/linkml/types</a></p>
-<!-- no inheritance hierarchy -->
-
-<h2 id="properties">Properties</h2>
-<ul>
-<li>Range: <a href="../TypeDefinition/">TypeDefinition</a></li>
-</ul>
+<h1 id="objectorientedprofile">ObjectOrientedProfile</h1>
+<p>A profile that includes all the metamodel elements whose semantics can be expressed using a minimal
+implementation of the object oriented metamodel as employed by languages such as Java and Python</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: https://w3id.org/linkml/meta</li>
 </ul>
+<h2 id="classes-in-subset">Classes in subset</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
+<td>a collection of subset, type, slot and class definitions</td>
+</tr>
+<tr>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+<td>an element whose instances are complex objects that may have slot-value assig...</td>
+</tr>
+<tr>
+<td><a href="../EnumDefinition/">EnumDefinition</a></td>
+<td>an element whose instances must be drawn from a specified set of permissible ...</td>
+</tr>
+</tbody>
+</table>
+<h3 id="schemadefinition">SchemaDefinition</h3>
+<p>a collection of subset, type, slot and class definitions</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>1..1 <br/> <a href="../Ncname/">Ncname</a></td>
+<td>a unique name for the schema that is both human-readable and consists of only... <strong>identifier</strong></td>
+</tr>
+<tr>
+<td><a href="../classes/">classes</a></td>
+<td>0..* <br/> <a href="../ClassDefinition/">ClassDefinition</a></td>
+<td>An index to the collection of all class definitions in the schema</td>
+</tr>
+<tr>
+<td><a href="../enums/">enums</a></td>
+<td>0..* <br/> <a href="../EnumDefinition/">EnumDefinition</a></td>
+<td>An index to the collection of all enum definitions in the schema</td>
+</tr>
+<tr>
+<td><a href="../types/">types</a></td>
+<td>0..* <br/> <a href="../TypeDefinition/">TypeDefinition</a></td>
+<td>An index to the collection of all type definitions in the schema</td>
+</tr>
+</tbody>
+</table>
+<h3 id="classdefinition">ClassDefinition</h3>
+<p>an element whose instances are complex objects that may have slot-value assignments</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>the unique name of the element within the context of the schema <strong>identifier</strong></td>
+</tr>
+<tr>
+<td><a href="../is_a/">is_a</a></td>
+<td>0..1 <br/> <a href="../ClassDefinition/">ClassDefinition</a></td>
+<td>A primary parent class from which inheritable metaslots are propagated</td>
+</tr>
+<tr>
+<td><a href="../mixins/">mixins</a></td>
+<td>0..* <br/> <a href="../ClassDefinition/">ClassDefinition</a></td>
+<td>A collection of secondary parent mixin classes from which inheritable metaslo...</td>
+</tr>
+<tr>
+<td><a href="../attributes/">attributes</a></td>
+<td>0..* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
+<td>Inline definition of slots</td>
+</tr>
+<tr>
+<td><a href="../abstract/">abstract</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>Indicates the class or slot cannot be directly instantiated and is intended f...</td>
+</tr>
+<tr>
+<td><a href="../mixin/">mixin</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>Indicates the class or slot is not intended to inherited from without being a...</td>
+</tr>
+</tbody>
+</table>
+<h3 id="enumdefinition">EnumDefinition</h3>
+<p>an element whose instances must be drawn from a specified set of permissible values</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>the unique name of the element within the context of the schema <strong>identifier</strong></td>
+</tr>
+<tr>
+<td><a href="../is_a/">is_a</a></td>
+<td>0..1 <br/> <a href="../Definition/">Definition</a></td>
+<td>A primary parent class or slot from which inheritable metaslots are propagate...</td>
+</tr>
+<tr>
+<td><a href="../mixins/">mixins</a></td>
+<td>0..* <br/> <a href="../Definition/">Definition</a></td>
+<td>A collection of secondary parent classes or slots from which inheritable meta...</td>
+</tr>
+<tr>
+<td><a href="../abstract/">abstract</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>Indicates the class or slot cannot be directly instantiated and is intended f...</td>
+</tr>
+<tr>
+<td><a href="../mixin/">mixin</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>Indicates the class or slot is not intended to inherited from without being a...</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots-in-subset">Slots in subset</h2>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>the unique name of the element within the context of the schema</td>
+</tr>
+<tr>
+<td><a href="../classes/">classes</a></td>
+<td>An index to the collection of all class definitions in the schema</td>
+</tr>
+<tr>
+<td><a href="../enums/">enums</a></td>
+<td>An index to the collection of all enum definitions in the schema</td>
+</tr>
+<tr>
+<td><a href="../types/">types</a></td>
+<td>An index to the collection of all type definitions in the schema</td>
+</tr>
+<tr>
+<td><a href="../multivalued/">multivalued</a></td>
+<td>true means that slot can have more than one value</td>
+</tr>
+<tr>
+<td><a href="../required/">required</a></td>
+<td>true means that the slot must be present in the loaded definition</td>
+</tr>
+<tr>
+<td><a href="../is_a/">is_a</a></td>
+<td>A primary parent class or slot from which inheritable metaslots are propagate...</td>
+</tr>
+<tr>
+<td><a href="../mixins/">mixins</a></td>
+<td>A collection of secondary parent classes or slots from which inheritable meta...</td>
+</tr>
+<tr>
+<td><a href="../attributes/">attributes</a></td>
+<td>Inline definition of slots</td>
+</tr>
+<tr>
+<td><a href="../abstract/">abstract</a></td>
+<td>Indicates the class or slot cannot be directly instantiated and is intended f...</td>
+</tr>
+<tr>
+<td><a href="../mixin/">mixin</a></td>
+<td>Indicates the class or slot is not intended to inherited from without being a...</td>
+</tr>
+<tr>
+<td><a href="../range/">range</a></td>
+<td>defines the type of the object of the slot</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enumerations-in-subset">Enumerations in subset</h2>
+<table>
+<thead>
+<tr>
+<th>Enumeration</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
               
             </article>
