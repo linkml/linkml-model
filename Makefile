@@ -13,7 +13,7 @@ SOURCE_SCHEMA_PATH = $(shell sh ./utils/get-value.sh source_schema_path)
 SRC = .
 DEST = target
 PYMODEL = linkml_model/
-DOCDIR = stage/docs
+DOCDIR = $(DEST)/docs
 
 # basename of a YAML file in model/
 .PHONY: all clean
