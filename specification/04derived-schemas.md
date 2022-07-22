@@ -1,62 +1,72 @@
 # Derived Schemas
 
-This section describes rules that can be applied to a schema to obtain a *derived* (aka *induced*) schema.
+This section describes rules that can be applied to a schema to obtain a *derived* schema.
 
-The derived schema can be materialized, or it may be present as a *view* onto a schema. A derived view may also be referred to
-as an *inferred* or *induced* view.
+The derived schema can be *materialized*, or it may be present as a *view* onto a schema.
+
+Derived schemas are also known as *induced* schemas or *inferred* schemas.
 
 ```mermaid
 flowchart TD
-    M[Asserted Schema] --> Derivation{Derivation Procedure}
-    Derivation -->|derives| Mstar[Derived Schema]
-    R[Rules] --> Derivation
+    M[Asserted Schema] -->|input| Derivation{Derivation Procedure}
+    Derivation -->|ouput| Mstar[Derived Schema]
+    R[Rules] -->|input| Derivation
 ```
 
-Derivations happen via *rules* that are specified below, using a set of convenience functions
+Derivations happen via *derivation rules*, using a collection of defined *functions*.
 
 ## Conventions
 
-We use `m` to denote the input or asserted schema (model), and *m<sup>D</sup>* to denote the derived schema
+We use *m* to denote the input or asserted schema (model), and *m<sup>D</sup>* to denote the derived schema
 
 ## Functions
 
-### Function: GetIdentifierSlot
+### List Function
 
-The function **GetIdentifierSlot**(`c`) takes a ClassDefinition or ClassDefinitionName as input and returns:
+The function **L**(*v*) returns a list version of the input:
 
-- the name of a derived attribute `s` in `c` where `s.identifier` is True in *m<sup>D</sup>*
-- **None** if there is no such slot
-- An error if there are multiple such slots
+- *v* when *v* is a collection
+- [  ] when *v* is None
+- [ *v* ] otherwise
 
-### Function: Closure
+### Closure Function 
 
-The function **Closure**(`x`, `s`) takes as input an element `x` and a metaslot `s` and returns the mathematical closure
-of `s` where `s` is treated as a relation between instances `i` and `j` that holds when  either:
+The function **C**(*e*, *f*) takes as input an element *e* and a function *f* and returns
+the mathematical closure of *f* 
 
- - s is not multivalued: `i.s = j`
- - s is multivalued: `j member-of i.s`
-
-The **ReflexiveClosure** includes `x`
+The *ReflexiveClosure* **C<sup>*</sup>** includes *e*
 
 ### Function: Parents
 
 **Parents** itself is the union of `is_a` and `mixins`.
 
-> **Parents**(x) = `{e : e = x.is_a \/ e in x.mixins }`
+> **P**(*e*) = **L**(*e*.`is_a`) ∪ **L**(*e*.`mixins`) }
 
 ### Function: Ancestors
 
-The function **Ancestors**(`x`) returns the **Closure** of the **Parents** function applied to `x`.
+The ancestors function **A** returns the **Closure** of the **Parents** function.
+
+> **A**(*e*) = **C**(*e*, **A**)
 
 The function **ReflexiveAncestors** uses the **ReflexiveClosure**.
 
 ## Derivation Rules
 
-### Rule: Model Imports
+The following rules are applied to deduce a derived schema
+
+### Rule: Merge Imports Closure
 
 Each model imports zero to many imports, indicated by the **SchemaDefinition**.[imports](https://w3id.org/linkml/imports) metaslot.
 
-*m<sup>D</sup>* is set to be the union of all schema elements from the **ReflexiveClosure** of `m.imports`
+*m<sup>D</sup>* is set to include the union of all schema elements from the **ReflexiveClosure** of `m.imports`, such
+that the following holds:
+
+> *m<sup>D</sup>*.*metaslot* = *v* iff *m'* ∈ **R<sup>C</sup>**(*m*.`imports`) and *m'*.*metaslot* = *v*
+> and *metaslot* ∈ {`classes`, `slots`, `types`, `enums`}
+
+```
+*m<sup>D</sup>*
+```
 
 When copying an element `x` from an import into *m<sup>D</sup>*, the name `x.name` must be unique - if the same name has been used in another model, the derivation procedure fails, and an error is thrown.
 
@@ -71,7 +81,7 @@ Each imported module must be resolved - i.e the value of the import slot is mapp
 
 Each element in the schema as assigned a metaslot `fromschema` value. This is the value of the `id` of the schema in which that element is defined.
 
-This is preserved over imports, such that if `m` imports `m2`, and `m2` defines a class `c`, then *m<sup>D</sup>*`[c].fromschema` = m2
+This is preserved over imports, such that if *m* imports `m2`, and `m2` defines a class `c`, then *m<sup>D</sup>*`[c].fromschema` = m2
 
 ### Rule: Applicable Slot Names
 
@@ -137,13 +147,13 @@ to the value of `default_range` for the schema in which the slot is defined.
 
 For each class or slot, if a class_uri or slot_uri is not specified, then this is derived by concatenating `m.default_prefix` with the CURIE separator `:` followed by the SafeUpperCamelCase encoding of the name of that class or slot definition
 
-## Rule: Generation of patterns from structured patterns
+### Rule: Generation of patterns from structured patterns
 
 For any slot `s`, if `s.structured_pattern = p` and `p` is not **None** then `s.pattern` is assigned a value based on the following
 procedure:
 
 If `p.interpolated` is True, then the value of `s.syntax` is *interpolated*, by replacing all occurrences of braced text `{VAR}`
-with the value of `VAR`. The value of `VAR` is obtained using `m.settings[VAR]`, where `m` is the schema in which `p` is introduced.
+with the value of `VAR`. The value of `VAR` is obtained using `m.settings[VAR]`, where *m* is the schema in which `p` is introduced.
 
 If `p.interpolated` is not True, then the value of `s.syntax` is used directly.
 

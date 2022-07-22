@@ -93,11 +93,11 @@ where this instantiates the class with name "Person".
 
 There are 3 types of primitive instances, each is a pair consisting of (1) a *Name* of the element instantiated (2) an atomic value
 
-**InstanceOfType** := **TypeDefinitionName** '(' **AtomicValue** ')'
+> **InstanceOfType** := **TypeDefinitionName** '(' **AtomicValue** ')'
 
-**InstanceOfEnum** := **EnumDefinitionName** '(' **AtomicValue** ')'
+> **InstanceOfEnum** := **EnumDefinitionName** '(' **AtomicValue** ')'
 
-**InstanceOfReference** := **ClassDefinitionReferenceName** '(' **AtomicValue** ')'
+> **InstanceOfReference** := **ClassDefinitionReferenceName** '(' **AtomicValue** ')'
 
 ```mermaid
 classDiagram

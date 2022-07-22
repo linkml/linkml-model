@@ -246,6 +246,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../specification/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../specification/00preamble/" class="md-nav__link">
         Preface
       </a>
@@ -379,8 +393,125 @@
   
     <li class="md-nav__item">
       <a href=".." class="md-nav__link">
-        Metamodel
+        Metamodel Index
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Profiles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Profiles" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Profiles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MinimalSubset/" class="md-nav__link">
+        MinimalSubset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BasicSubset/" class="md-nav__link">
+        BasicSubset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SpecificationProfile.md" class="md-nav__link">
+        SpecificationProfile
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RelationalModelProfile/" class="md-nav__link">
+        RelationalModelProfile
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ObjectOrientedProfile/" class="md-nav__link">
+        ObjectOrientedProfile
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OwlProfile/" class="md-nav__link">
+        OwlProfile
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -441,8 +572,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instances-of-collection" class="md-nav__link">
-    Instances of Collection
+  <a href="#instances-of-collections-of-instancesofclass" class="md-nav__link">
+    Instances of Collections of InstancesOfClass
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instances-of-other-collections" class="md-nav__link">
+    Instances of other Collections
   </a>
   
 </li>
@@ -566,10 +704,13 @@
 <p>This section describes how LinkML instances are translated to different formats and data models.</p>
 <ul>
 <li>Conversion <em>from</em> LinkML instances to another format is called <em>serialization</em> or <em>dumping</em></li>
-<li>Conversion <em>to</em> LinkML instances from another format is called <em>parsing</em> or <em>loading</em></li>
+<li>Conversion <em>to</em> LinkML instances from another format is called <em>parsing</em>, <em>loading</em>, or <em>deserialization</em></li>
 </ul>
 <p>The reference implementation is the <a href="https://github.com/linkml/linkml-runtime/">linkml-runtime</a> but other implementations that conform to this specification are valid.</p>
 <h2 id="translation-of-instances-to-json-or-yaml">Translation of instances to JSON or YAML</h2>
+<p>Here we define a mapping of LinkML instances to JSON.</p>
+<p>As JSON is a subset of YAML, this can also be used to load and dump from YAML. This is the canonical YAML mapping. We leave open
+the possibility of a <em>direct</em> YAML conversion in future which makes use of YAML tags to encode typing information.</p>
 <ul>
 <li>Serialization to JSON takes as input:<ul>
 <li>a (root) instance</li>
@@ -584,12 +725,13 @@
 </ul>
 <h3 id="instances-of-classdefinition">Instances of ClassDefinition</h3>
 <p>Given an instance <code>i</code> of a ClassDefinition:</p>
-<p><em>ClassDefinitionName</em>( <code>s1=v1</code>, ..., <code>sn=v2</code> )</p>
-<p>This is translated to</p>
+<p><em>ClassDefinitionName</em>( <code>s1=v1</code>, ..., <code>sn=vn</code> )</p>
+<p>This is translated to a JSON <em>object</em></p>
 <pre><code class="language-json">{
    Tr(s1) = Tr(v1),
-   ...,
-   Tr(s2) = Tr(v2)           
+   Tr(s2) = Tr(v2)
+  ...,
+   Tr(sn) = Tr(vn)           
 }
 </code></pre>
 <p>Note this is potentially lossy, as the type is dropped</p>
@@ -598,8 +740,9 @@
 <p>Optionally, this type is deepened if <code>C.type_designator</code> is not None - the value of this slot is used to
 set the target ClassDefinitionName</p>
 <h3 id="instances-of-none">Instances of None</h3>
-<p>The parent slot is omitted</p>
-<h3 id="instances-of-collection">Instances of Collection</h3>
+<p>None is mapped to JSON nulls.</p>
+<p>It is conventional to omit an assignment whose value is None/null when serializing. The canonical serialization MUST omit these, but a parser MUST accept None/null values that are explicitly provided</p>
+<h3 id="instances-of-collections-of-instancesofclass">Instances of Collections of InstancesOfClass</h3>
 <p>If the parent slot <code>s.inlined_as_list=True</code></p>
 <pre><code>{
    IdVal(member1): 
@@ -611,6 +754,14 @@ set the target ClassDefinitionName</p>
 </code></pre>
 <p>otherwise:</p>
 <pre><code class="language-json">[
+   Tr(member_1),
+   ...
+   Tr(member_n),
+]
+</code></pre>
+<h3 id="instances-of-other-collections">Instances of other Collections</h3>
+<p>These are always translated to lists:</p>
+<pre><code>[
    Tr(member_1),
    ...
    Tr(member_n),
@@ -639,12 +790,14 @@ set the target ClassDefinitionName</p>
 <ul>
 <li>Curie</li>
 <li>Uri</li>
-<li>CurieOrUri</li>
+<li>Curieoruri</li>
 </ul>
 <p>The syntax for a CURIE is defined by <a href="https://www.w3.org/TR/curie/">W3C CURIE Syntax 1.0</a></p>
+<blockquote>
 <p><strong>curie</strong>       :=   [ [ <strong>prefix</strong> ] ':' ] <strong>reference</strong></p>
 <p><strong>prefix</strong>      :=   <strong><a href="https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName">NCName</a></strong></p>
 <p><strong>reference</strong>   :=   <strong><a href="https://www.ietf.org/rfc/rfc3987.txt">irelative-ref</a></strong></p>
+</blockquote>
 <p>We define a function <strong>CurieToUri</strong>(<code>x</code>) that maps (expands) a CurieOrUri to a Uri</p>
 <p>If <code>x</code> is already a Uri, then <code>x</code> is returned, otherwise the following procedure is followed</p>
 <p>To expand a CURIE with an explicit prefix to a URI using a schema <code>m</code>, first <code>m.prefixes</code> is consulted for <code>m.prefixes[prefix]</code>.</p>

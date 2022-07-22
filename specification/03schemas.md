@@ -25,6 +25,10 @@ The metamodel is itself expressed in LinkML, and the latest version can found fr
 This specification specifies the *normative elements* necessary to specify the behavior of LinkML schemas. Schemas may have additional
 elements provided in the metamodel. For example, elements in schemas can have *informative* slot assignments for slots such as [title](https://w3id.org/linkml/title), [description](https://w3id.org/linkml/description), and so on, but these slots are not described in this specification as they are not normative and do not affect the formal interpretation of schemas.
 
+The subset of the metamodel that corresponds to the specification is called the SpecificationProfile, and it is found at:
+
+* [https://w3id.org/linkml/SpecificationProfile](https://w3id.org/linkml/SpecificationProfile) 
+
 ### YAML representation of schemas
 
 Because schemas and all the parts of a schema are instances of metaclasses in the metamodel, the YAML serialization rules from [section 6](06mapping) can be applied to both serialized and deserialized a schema as YAML.

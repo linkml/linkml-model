@@ -9,6 +9,9 @@ description: |-
   * [linkml.io](https://linkml.io) main website
   * [specification](https://linkml.io/linkml-model/docs/specification/)
 
+  LinkML is self-describing. Every LinkML schema consists of elements
+  that instantiate classes in this metamodel.
+
   Core metaclasses:
 
   * [SchemaDefinition](https://w3id.org/linkml/SchemaDefinition)
@@ -16,13 +19,11 @@ description: |-
   * [SlotDefinition](https://w3id.org/linkml/SlotDefinition)
   * [TypeDefinition](https://w3id.org/linkml/TypeDefinition)
 
-  Every LinkML model instantiates SchemaDefinition, all classes in
-  the model instantiate ClassDefinition, and so on
+  There are many subsets of *profiles* of the metamodel, for different purposes:
 
-  Note that the LinkML metamodel instantiates itself.
-
-  For a non-normative introduction to LinkML schemas, see the tutorial
-  and schema guide on [linkml.io/linkml].
+  * [MinimalSubset](https://w3id.org/linkml/MinimalSubset)
+  * [BasicSubset](https://w3id.org/linkml/BasicSubset)
+  * [BasicSubset](https://w3id.org/linkml/BasicSubset)
 
   For canonical reference documentation on any metamodel construct,
   refer to the official URI for each construct, e.g.
@@ -75,23 +76,34 @@ imports:
   - linkml:units
   
 subsets:
-  SpecificationSubset:
-    title: specification subset
-    description: |-
-      A subset that includes all the metamodel elements that form part of the normative LinkML specification
-  OwlProfile:
-    title: owl profile
-    description: |-
-      A profile that includes all the metamodel elements whose semantics can be expressed in OWL
   MinimalSubset:
+    rank: 0
     title: minimal subset
     description: |-
-      The absolute minimal set of elements necessary for defining a minimal schema
+      The absolute minimal set of elements necessary for defining any schema.
+
+      schemas conforming to the minimal subset consist of classes, with all slots
+      inlined as attributes. There are no enums.
   BasicSubset:
+    rank: 1
     title: basic subset
     description: |-
-      An extension of MinimalSubset that avoids advanced constructs and can be implemented by a broad variety of tools
+      An extension of MinimalSubset that avoids advanced constructs and can be implemented by a broad variety of tools.
+
+      This subset roughly corresponds to the union of most standard constructs used in relational datamodel modeling,
+      object oriented modeling, and simple JSON-style modeling, while avoiding more advanced constructs from these languages.
+
+      It is often possible to translate from a more expressive schema to a BasicSubset schema, through a schema derivation
+      process
+  SpecificationSubset:
+    rank: 2
+    title: specification subset
+    description: |-
+      A subset that includes all the metamodel elements that form part of the normative LinkML specification.
+
+      The complete LinkML specification can be found at [linkml:specification](https://w3id.org/linkml/specification)
   RelationalModelProfile:
+    rank: 3
     title: relational model profile
     description: |-
       A profile that includes all the metamodel elements whose semantics can be expressed using the classic Relational Model.
@@ -99,13 +111,18 @@ subsets:
       mapped to backreferences
 
       The classic Relational Model excludes inheritance and polymorphism -- these must be rolled down to
-      concrete classes or otherwise transformed
-      
+      concrete classes or otherwise transformed.
   ObjectOrientedProfile:
+    rank: 4
     title: object oriented profile
     description: |-
       A profile that includes all the metamodel elements whose semantics can be expressed using a minimal
-      implementation of the object oriented metamodel as employed by languages such as Java and Python
+      implementation of the object oriented metamodel as employed by languages such as Java and Python, or
+      in modeling frameworks like UML
+  OwlProfile:
+    title: owl profile
+    description: |-
+      A profile that includes all the metamodel elements whose semantics can be expressed in OWL
 
 #==================================
 # Slots                           #
