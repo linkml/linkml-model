@@ -125,6 +125,11 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../specification/">
+        Index
+      </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../specification/00preamble/">
         Preface
       </a>
@@ -176,8 +181,53 @@
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="..">
-        Metamodel
+        Metamodel Index
       </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2">
+          Profiles
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Profiles" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+          Profiles
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../MinimalSubset/">
+        MinimalSubset
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../BasicSubset/">
+        BasicSubset
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../SpecificationProfile.md">
+        SpecificationProfile
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../RelationalModelProfile/">
+        RelationalModelProfile
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ObjectOrientedProfile/">
+        ObjectOrientedProfile
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../OwlProfile/">
+        OwlProfile
+      </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -215,11 +265,6 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#instances-of-classes">
     Instances of Classes
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#schemas">
-    Schemas
   </a>
 </li>
 <li class="md-nav__item">
@@ -290,8 +335,8 @@ exchange, but instead for unambiguous describing data in LinkML.</p>
 <h3 id="instances">Instances</h3>
 <p>An instance is either one of four <em>definition</em> types, or a collection, or the special token <code>None</code>:</p>
 <blockquote>
-<p><strong>Instance</strong> := <strong>None</strong> | <strong>InstanceOfClass</strong> | <strong>InstanceOfType</strong> | <strong>InstanceOfEnum</strong> | <strong>InstanceOfReference</strong> | <strong>CollectionInstance</strong>
-<strong>AtomicInstance</strong> :=</p>
+<p><strong>Instance</strong> := <strong>None</strong> | <strong>InstanceOfClass</strong> | <strong>AtomicInstance</strong> | <strong>CollectionInstance</strong></p>
+<p><strong>AtomicInstance</strong> := <strong>InstanceOfType</strong> | <strong>InstanceOfEnum</strong> | <strong>InstanceOfReference</strong></p>
 </blockquote>
 <div class="mermaid">classDiagram
     Instance &lt;|-- InstanceOfClass
@@ -304,24 +349,28 @@ exchange, but instead for unambiguous describing data in LinkML.</p>
 
 </div>
 <h3 id="definition-types-and-names">Definition Types and Names</h3>
-<p>Definition names are used to unambiguously indicate definitions specified in a schema</p>
+<p>Definition names are used to unambiguously indicate definitions specified in a <strong>Schema</strong> (described in the <a href="03schemas">next section</a>):</p>
+<blockquote>
 <p><strong>ClassDefinitionName</strong> := <strong>ElementName</strong></p>
 <p><strong>ClassDefinitionReferenceName</strong> := <strong>ElementName</strong></p>
 <p><strong>TypeDefinitionName</strong> := <strong>ElementName</strong></p>
 <p><strong>EnumDefinitionName</strong> := <strong>ElementName</strong></p>
 <p><strong>SlotDefinitionName</strong> := <strong>ElementName</strong></p>
 <p><strong>ElementName</strong> := <em>a finite sequence of characters matching the PN_LOCAL production of <a href="https://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> and not matching any of the keyword terminals of the syntax</em></p>
+</blockquote>
 <p>Note that the grammar needs a table mapping names to types in order to
 unambiguously parse a serialization in functional syntax</p>
 <p>names must not be shared across definition types</p>
 <h3 id="instances-of-classes">Instances of Classes</h3>
 <p>An <strong>InstanceOfClass</strong> is a pair consisting of (1) a ClassDefinition <em>Name</em> that indicates the <em>instantiation type</em> of the instance, and (2) zero to many <em>Assignments</em><em>, where each
 assignment is a key-value pair of a </em><em>SlotName</em><em> and an </em><em>Instance</em>* value.</p>
+<blockquote>
 <p><strong>InstanceOfClass</strong> := <strong>ClassDefinitionName</strong> '(' &lt;<strong>Assignment</strong>&gt;List ')'</p>
 <p><strong>Assignment</strong> := <strong>SlotName</strong> '=' <strong>Instance</strong></p>
+</blockquote>
 <div class="mermaid">classDiagram
     Instance &lt;|-- InstanceOfClass
-    InstanceOfClass "0..*" *--&gt; Assignment
+    InstanceOfClass "1" --&gt; "1..*" Assignment
     Assignment "1" --&gt; Instance
 
     class InstanceOfClass {
@@ -340,18 +389,14 @@ assignment is a key-value pair of a </em><em>SlotName</em><em> and an </em><em>I
        age=...,
        &lt;other Assignments&gt;)
 </code></pre>
-<p>Where this instantiates the class <em>Person</em>.</p>
-<h3 id="schemas">Schemas</h3>
-<p>The set of permitted slots for a class is defined by LinkML
-<em>schema</em>. Schemas are covered in the <a href="03schemas">next section</a>.</p>
-<p>An instance can be syntactically valid (i.e conforming to the
-grammar defined in this section) while structurally invalid (i.e not
-conforming to a schema). <a href="05validation">Section 5</a> covers validation.</p>
+<p>where this instantiates the class with name "Person".</p>
 <h3 id="primitive-atomic-instances">Primitive (Atomic) Instances</h3>
 <p>There are 3 types of primitive instances, each is a pair consisting of (1) a <em>Name</em> of the element instantiated (2) an atomic value</p>
+<blockquote>
 <p><strong>InstanceOfType</strong> := <strong>TypeDefinitionName</strong> '(' <strong>AtomicValue</strong> ')'</p>
 <p><strong>InstanceOfEnum</strong> := <strong>EnumDefinitionName</strong> '(' <strong>AtomicValue</strong> ')'</p>
 <p><strong>InstanceOfReference</strong> := <strong>ClassDefinitionReferenceName</strong> '(' <strong>AtomicValue</strong> ')'</p>
+</blockquote>
 <div class="mermaid">classDiagram
     Instance &lt;|-- AtomicInstance
     AtomicInstance &lt;|-- InstanceOfReference
@@ -375,6 +420,7 @@ conforming to a schema). <a href="05validation">Section 5</a> covers validation.
 </div>
 <h3 id="atomic-values">Atomic Values</h3>
 <p>An atomic value is either a string or number or boolean, where numbers can be floating points, decimals, or integers.</p>
+<blockquote>
 <p><strong>AtomicValue</strong> := <strong>StringValue</strong> | <strong>NumberValue</strong> | <strong>BooleanValue</strong></p>
 <p><strong>StringValue</strong> := <em>a finite sequence of characters in which " (U+22) and \ (U+5C) occur only in pairs of the form \" (U+5C, U+22) and \ (U+5C, U+5C), enclosed in a pair of " (U+22) characters</em></p>
 <p><strong>NumberValue</strong> := <strong>FloatingPointValue</strong> | <strong>DecimalValue</strong> | <strong>IntegerValue</strong></p>
@@ -389,6 +435,7 @@ conforming to a schema). <a href="05validation">Section 5</a> covers validation.
 <p><strong>NonZero</strong> := '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'</p>
 <p><strong>Zero</strong> ::= '0'</p>
 <p><strong>BooleanValue</strong> ::= 'True' | 'False'</p>
+</blockquote>
 <p>Examples of atomic values are:</p>
 <ul>
 <li><code>180.2</code> -- a DecimalValue</li>
@@ -400,7 +447,7 @@ conforming to a schema). <a href="05validation">Section 5</a> covers validation.
 <pre><code class="language-python">Integer(23)
 </code></pre>
 <p>For this to be a valid InstanceOfType, "Integer" must be the name of a TypeDefinition in the schema</p>
-<p>Another exampleL</p>
+<p>Another example:</p>
 <pre><code class="language-python">PhoneNumber("+1 800 555 0100")
 </code></pre>
 <p>For this to be a valid InstanceOfType, "PhoneNumber" must be the name of a TypeDefinition in the schema</p>
@@ -410,11 +457,13 @@ conforming to a schema). <a href="05validation">Section 5</a> covers validation.
 <p>This MAY be the same string used to identify an instance of a ClassDefinition <code>Person(id="SSN:456")</code>, but this is not required.</p>
 <h3 id="collections">Collections</h3>
 <p>A collection is zero or more instances, serialized as a comma-delimited list:</p>
+<blockquote>
 <p><strong>CollectionInstance</strong> := '[' &lt;<strong>Instance</strong>&gt;List ']'</p>
+</blockquote>
 <div class="mermaid">
 classDiagram
 Instance &lt;|-- CollectionInstance
-CollectionInstance "0..*" --&gt; Instance
+CollectionInstance "*" --&gt; "0..*" Instance
 </div>
 <p>Examples of collections:</p>
 <ul>
@@ -425,14 +474,16 @@ CollectionInstance "0..*" --&gt; Instance
 </ul>
 <h3 id="none-null-instances">None (Null) instances</h3>
 <p>A special symbol is included to indicate null or missing values</p>
+<blockquote>
 <p><strong>None</strong> := 'None'</p>
+</blockquote>
 <p>An assignment of a slot to None is equivalent to omitting that assignment. I.e. the following two instance serializations are equivalent:</p>
 <pre><code>Person(address=None)
 </code></pre>
 <pre><code>Person()
 </code></pre>
 <h3 id="combined-example">Combined Example</h3>
-<p>The following is an example of an instance of a ClassDefinition called <strong>Person</strong>:</p>
+<p>The following is an example of an <strong>InstanceOfClass</strong> where the instantiated type is a class with name "Person":</p>
 <pre><code class="language-python">Person(
   id=String("SSN:123"),
   name=String("Alex"),
@@ -450,13 +501,12 @@ CollectionInstance "0..*" --&gt; Instance
   ]
 )                
 </code></pre>
-<p>See (YAML-Mapping)[#YAML-Mapping] for an example of the equivalent structure expressed in YAML.</p>
-<p>Parsing this requires a table that maps definition names to schema element types:</p>
+<p>Parsing this requires a schema that assigns element names to schema elements:</p>
 <table>
 <thead>
 <tr>
-<th>Definition Name</th>
-<th>Type</th>
+<th>Element Name</th>
+<th>Schema Type</th>
 </tr>
 </thead>
 <tbody>
@@ -484,25 +534,32 @@ CollectionInstance "0..*" --&gt; Instance
 </table>
 <h2 id="identity-conditions">Identity conditions</h2>
 <p>For two instances <code>i</code> and <code>j</code> to be identical they must be of the same metatype.</p>
-<p>Identity conditions for two primitive instances are satisfied if both DefinitionName and AtomicValue match</p>
+<p>Identity conditions for two primitive instances are satisfied if both <strong>DefinitionName</strong> and <strong>AtomicValue</strong> match</p>
+<ul>
+<li><code>i=&lt;DefinitionName_i&gt;(&lt;AtomicValue_i&gt;)</code></li>
+<li><code>j=&lt;DefinitionName_j&gt;(&lt;AtomicValue_j&gt;)</code></li>
+<li><code>i=j iff DefinitionName_i = DefinitionName_j and AtomicValue_i=AtomicValue_j</code></li>
+</ul>
 <p><strong>None</strong> is identical to itself</p>
-<p>Two collections are identical if they are of the same length and each member of <code>i</code> is identical to at least one member of <code>j</code></p>
-<p>Two ClassDefinition instances are identical if the instantiated ClassDefinitionName is identical and each non-None assignment
-in <em>i</em> is identical an assignment in <code>j</code> and, and each non-None assignment in <code>j</code> is identical to an assignment in <code>i</code></p>
+<p>Two collections are identical if they are of the same length and each member of <code>i</code> is identical to at least one member of <code>j</code>, where each match must be unique</p>
+<p>Two ClassDefinition instances are identical if the instantiated <strong>ClassDefinitionName</strong> is identical and each non-<strong>None</strong> assignment
+in <code>i</code> is identical an assignment in <code>j</code> and, and each non-None assignment in <code>j</code> is identical to an assignment in <code>i</code></p>
 <p>Two assignments are identical if the slot name is the same, and the value is identical</p>
 <h2 id="instance-serializations">Instance Serializations</h2>
 <p>The abstract syntax provided here is intended as a normative syntax for the purposes
 of specifying the semantics of LinkML.</p>
-<p>See future sections for details on how this functional syntax maps to other serialization
+<p>See <a href="../06mapping/">section 6</a> for details on how this functional syntax maps to other serialization
 syntaxes and models such as JSON and RDF.</p>
 <h2 id="instance-accessor-syntax">Instance Accessor Syntax</h2>
 <p>For a given instance <code>i</code>, <em>accessor</em> syntax can be used to dereference values.</p>
-<p><strong>Path</strong> := <strong>Source</strong> { <strong>PathExtension</strong> }</p>
+<blockquote>
+<p><strong>Path</strong> := <strong>SlotDefinitionName</strong> { <strong>PathExtension</strong> }</p>
 <p><strong>PathExtension</strong> := '.' <strong>SlotDefinitionName</strong> | '[' <strong>Identifier</strong> ']'</p>
+</blockquote>
 <p>To interpret an accessor for a given instance <em>i</em>:</p>
 <ul>
-<li>if the path extension is <code>.&lt;s&gt;</code> then <em>i</em> must be a ClassDefinition instance, and the value is equal to the value of the slot assignment for slot <code>s</code></li>
-<li>if the path extension is <code>[&lt;id&gt;]</code> then <em>i</em> must be a Collection instance, and the value is equals to the member of that list that has a slot with the role of <em>identifier</em> whose value is <code>&lt;id&gt;</code></li>
+<li>if the path extension is <code>.&lt;s&gt;</code> then <em>i</em> must be an *<em>InstanceOfClass</em>, and the value is equal to the value of the slot assignment for slot <code>s</code></li>
+<li>if the path extension is <code>[&lt;id&gt;]</code> then <em>i</em> must be an <strong>InstanceOfCollection</strong>, and the value is equals to the member of that list that has a slot with the role of <em>identifier</em> whose value is <code>&lt;id&gt;</code></li>
 </ul>
 <p>For example, if <em>i</em> is equal to the Person instance in the example above:</p>
 <ul>
