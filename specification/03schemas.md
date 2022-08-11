@@ -1,16 +1,16 @@
-# Schema Datamodel
+# Schema Data Model
 
 This section describes the *structure* of a LinkML schema. For precise interpretation of these structures, refer to the following two sections on *derived schemas* and *validation*
 
 ## Schema Basics
 
-A LinkML **schema** specifies rules and structural conformance conditions for *instances*. Schemas allow for:
+A LinkML **schema** specifies rules and structural conformance conditions for **instances**. Schemas allow for:
 
 - parsing of instance **serializations** to LinkML instance structures
 - structurally and semantically **validating** LinkML instance structures
 - **inference** of missing values in LinkML instance structures
 
-Every LinkML schema *m* is itself an instance of a special class [SchemaDefinition](https://w3id.org/linkml/SchemaDefinition) that forms part of a special schema called the **LinkML metamodel**, which is denoted as *m<sup>M</sup>*. There is exactly one metamodel.
+Every LinkML schema *m* is itself an instance of a special class [SchemaDefinition](https://w3id.org/linkml/SchemaDefinition) that forms part of a special schema called the **LinkML metamodel**, which is denoted by *m<sup>M</sup>*. There is exactly one metamodel.
 
 In this specification:
 

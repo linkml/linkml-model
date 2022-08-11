@@ -2,15 +2,13 @@
 
 ## Functional Instance Syntax and Structure
 
-This specification provides a grammar for a **functional syntax** for
-expressing LinkML instances. This syntax is not intended for data
-exchange, but instead for unambiguous describing data in LinkML.
+This specification provides a grammar for a **functional syntax** for expressing LinkML instances. This syntax is not intended for data exchange, but instead for unambiguous describing data in LinkML.
 
 [Section 6](06mapping) specifies how the instance model is converted to JSON, YAML, and RDF.
 
 ### Instances
 
-An instance is either one of four *definition* types, or a collection, or the special token `None`:
+An instance is either one of four *definition* types, or a collection, or the special token `None`. The four definition types are subdivided into instances of classes (aka objects), or atomic instances:
 
 > **Instance** := **None** | **InstanceOfClass** | **AtomicInstance** | **CollectionInstance**
  
