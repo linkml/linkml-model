@@ -7,9 +7,9 @@ Authors:
 
 ## Abstract
 
-The Linked Data Modeling Language (LinkML) is a language for working with and specifying the structure of *instance* data. A LinkML *schema* (aka model or datamodel) describes the structure of instance data, and specifies *valid* instances and rules for performing *inference* over instance data.
+The Linked Data Modeling Language (LinkML) is a language for writing schemas that describe the structure of *instance* data. A LinkML schema consists of a number of different elements, including *classes*, which are used to type instances, and *slots* which are used to describe instance data attributes.
 
-This document defines the structure of instance data using a functional-style syntax, and defines the structure of a particular class of instance data, a *LinkML schema*, and the rules for these schemas.
+The LinkML specification defines the structure of instance data using a functional-style syntax, and defines the elements of a schema, together with the rules for operating over these schemas.
 
 ## Notes
 

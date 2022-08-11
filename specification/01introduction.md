@@ -8,14 +8,13 @@ Instances are either primitive *types* such as numbers or strings, or objects th
 
 LinkML schemas also specify *rules* for determining if instances conform to the schema, and for *inference* adding additional implicit slot values.
 
-LinkML is independent of any programming language, database technology, and is independent of any concrete form for serializing instances of schemas. Mappings are provided for serializing instances as JSON, YAML, RDF, flat tables, or relational models, or for mapping to programming language structures. However, the structure and semantics of LinkML are independent from any of these. Schemas are typically expressed using the YAML serialization, but this specification is defined independent of that particular serialization.
+LinkML is independent of any programming language, database technology, and is independent of any concrete form for serializing instances of schemas. Mappings are provided for serializing instances as JSON, YAML, RDF, flat tables, or relational models, or for mapping to programming language structures. However, the structure and semantics of LinkML are not dependent on any of these. Schemas are typically expressed using the YAML serialization, but this specification is defined independent of that particular serialization.
 
 LinkML is self-describing, and any LinkML schema is itself a collection instances that instantiates elements in a special schema called the *LinkML metamodel*.
 
 ## Audience
 
-This document is intended for LinkML tool and framework implementors, and is intended to provide formal clarity about
-the structure and semantics of LinkML.
+This document is intended for LinkML tool and framework implementors, and is intended to provide formal clarity about the structure and semantics of LinkML.
 
 For a more lightweight introduction, consult the material on the main [LinkML site](https://linkml.io),
 including the LinkML tutorial.
