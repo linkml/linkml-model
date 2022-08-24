@@ -1,18 +1,45 @@
 [tool.poetry]
-name = "linkml-project-template"
-version = "0.1.0"
-description = "Enter description of your project here"
-authors = ["Mark A. Miller <mamillerpa@gmail.com>"]
+name = "linkml-model"
+version = "0.0.0"
+description = "Metamodel schema, documentation, and specification for the Linked Open Data Modeling Language (LinkML)"
 license = "MIT"
-include = ["README.md", "src/linkml", "project"]
+authors = [
+    "Chris Mungall <cjmungall@lbl.gov>",
+    "Mark A. Miller <mamillerpa@gmail.com>"
+]
+
+readme = "README.md"
+
+homepage = "https://linkml.io/"
+repository = "https://github.com/linkml/linkml-model/"
+documentation = "https://linkml.io/linkml-model/docs/"
+
+keywords = ["linked data", "linkml", "metamodel"]
+
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Healthcare Industry",
+    "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3.9"
+]
+
+packages = [
+    { include = "linkml_model" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+
 linkml-runtime = "^1.3.0"
 
 [tool.poetry.dev-dependencies]
 linkml = "^1.3.1"
 mkdocs-material = "^8.2.8"
+mkdocs-mermaid2-plugin = "^0.6.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
