@@ -36,8 +36,8 @@ prefixes:
   linkml: https://w3id.org/linkml/
   skos: http://www.w3.org/2004/02/skos/core#
   skosxl: http://www.w3.org/2008/05/skos-xl#
-  OIO: http://www.geneontology.org/formats/oboInOwl#
-  NCIT: http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#
+  oboInOwl: http://www.geneontology.org/formats/oboInOwl#
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
   pav: http://purl.org/pav/
   oslc: http://open-services.net/ns/core#
   schema: http://schema.org/
@@ -63,7 +63,7 @@ emit_prefixes:
   - xsd
   - skos
   - dcterms
-  - OIO
+  - oboInOwl
   - owl
   - pav
 
@@ -298,7 +298,7 @@ slots:
       used to indicate membership of a term in a defined subset of terms used for a particular domain
       or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a
       translator knowledge graph)
-    slot_uri: OIO:inSubset
+    slot_uri: oboInOwl:inSubset
     in_subset:
       - BasicSubset
 
@@ -818,7 +818,7 @@ slots:
     inlined: true
     description: An index to the collection of all subset definitions in the schema
     exact_mappings:
-      - OIO:hasSubset
+      - oboInOwl:hasSubset
     in_subset:
       - SpecificationSubset
       - BasicSubset
