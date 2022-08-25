@@ -42,14 +42,17 @@ install:
 
 all: gen-project gendoc
 %.yaml: gen-project
-deploy: all mkd-gh-deploy
+deploy: gendoc mkd-gh-deploy
 
 # generates all project files
+# and updates the artifacts in linkml-model
 gen-project: $(PYMODEL)
 	$(RUN) gen-project -d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
+	cp -r $(DEST)/* $(PYMODEL)
+	rm -r $(PYMODEL)/docs
 
 test:
-	$(RUN) gen-project -d tmp $(SOURCE_SCHEMA_PATH) 
+	$(RUN) python -m unittest discover
 
 check-config:
 	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n  - Remember to edit 'about.yaml'\n\n" || exit 0)

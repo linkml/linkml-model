@@ -1,32 +1,31 @@
-# Built from:
-# https://docs.github.com/en/actions/guides/building-and-testing-python
-# https://github.com/snok/install-poetry#workflows-and-tips
+name: Build and deploy documentation
 
-name: Build and test linkml-model
-
-on: [pull_request]
+# Controls when the action will run. Triggers the workflow on PR to main
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "mkdocs.yml"
+      - "linkml_model/model/schema/*.yaml"
+      - "linkml_model/model/docs/*"
 
 jobs:
-  test:
-
+  github-pages:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.9", "3.10"]
-
+    
     steps:
-
       #----------------------------------------------
       #       check-out repo and set-up python
       #----------------------------------------------
       - name: Check out repository
         uses: actions/checkout@v2
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Setup Python 3.9
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
-
+          python-version: 3.9
+              
       #----------------------------------------------
       #          install & configure poetry
       #----------------------------------------------
@@ -51,17 +50,15 @@ jobs:
       #----------------------------------------------
       - name: Install dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction --no-root
+        run: poetry install --no-interaction --no-root     
+        
+      #----------------------------------------------
+      #           generate markdown files
+      #----------------------------------------------
+      - run: make gendoc
 
       #----------------------------------------------
-      #    install your root project, if required 
-      #----------------------------------------------      
-      - name: Install library
-        run: poetry install --no-interaction
-
+      #           deploy documentation
       #----------------------------------------------
-      #              run test suite   
-      #----------------------------------------------
-      - name: Run tests
-        run: make test
-
+      - run: make deploy
+      
