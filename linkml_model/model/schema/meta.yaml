@@ -429,6 +429,14 @@ slots:
     in_subset:
       - BasicSubset
 
+  publisher:
+    domain: element
+    range: uriorcurie
+    description: An entity responsible for making the resource available
+    slot_uri: dcterms:publisher
+    in_subset:
+      - BasicSubset
+
   # --------------------------------------------------------------
   # Slots that are common to slot definition and class definition
   # --------------------------------------------------------------
@@ -703,6 +711,8 @@ slots:
     domain: permissible_value
     range: string
     identifier: true
+    close_mappings:
+      - skos:notation
     in_subset:
       - SpecificationSubset
       - BasicSubset
@@ -1079,6 +1089,7 @@ slots:
     range: integer
     exact_mappings:
       - qudt:order
+      - qb:order
     in_subset:
       - SpecificationSubset
       - BasicSubset
@@ -1992,6 +2003,7 @@ slots:
   # Slots for prefix
   # -----------------------------------
   prefix_prefix:
+    slot_uri: sh:prefix
     rank: 1
     domain: prefix
     range: ncname
@@ -2002,6 +2014,7 @@ slots:
       - BasicSubset
 
   prefix_reference:
+    slot_uri: sh:namespace
     rank: 2
     domain: prefix
     range: uri
@@ -2012,6 +2025,7 @@ slots:
       - BasicSubset
 
   prefixes:
+    slot_uri: sh:declare
     rank: 10
     domain: schema_definition
     range: prefix
@@ -2255,6 +2269,8 @@ classes:
       - keywords
     see_also:
       - https://en.wikipedia.org/wiki/Data_dictionary
+    close_mappings:
+      - qb:ComponentSet
     slot_usage:
       name:
         range: ncname
@@ -2384,9 +2400,10 @@ classes:
     mixins:
       - enum_expression
     exact_mappings:
+      - qb:HierarchicalCodeList
       - NCIT:C113497
     close_mappings:
-      - qb:HierarchicalCodeList
+      - skos:ConceptScheme
     in_subset:
       - SpecificationSubset
       - BasicSubset
@@ -2542,6 +2559,7 @@ classes:
     is_a: definition
     close_mappings:
       - rdf:Property
+      - qb:ComponentProperty
     mixins:
       - slot_expression
     slots:
@@ -2788,6 +2806,8 @@ classes:
         range: permissible_value
       mixins:
         range: permissible_value
+    close_mappings:
+      - skos:Concept
     slots:
       - text
       - description
