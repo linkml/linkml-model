@@ -534,7 +534,7 @@ slots:
     comments:
       - one use for this is being able to describe a range using any_of expressions, for example to combine two enums
     status: testing
-    
+
   boolean_slot:
     abstract: true
     multivalued: true
@@ -549,7 +549,7 @@ slots:
     exact_mappings:
       - sh:or
     status: testing
-        
+
   exactly_one_of:
     description: holds if only one of the expressions hold
     is_a: boolean_slot
@@ -557,7 +557,7 @@ slots:
     exact_mappings:
       - sh:xone
     status: testing
-        
+
   none_of:
     description: holds if none of the expressions hold
     is_a: boolean_slot
@@ -565,7 +565,7 @@ slots:
     exact_mappings:
       - sh:not
     status: testing
-        
+
   all_of:
     description: holds if all of the expressions hold
     is_a: boolean_slot
@@ -618,7 +618,7 @@ slots:
     description: a deactivated rule is not executed by the rules engine
     slot_uri: sh:deactivated
     range: boolean
-    
+
   rules:
     slot_uri: sh:rule
     domain: class_definition
@@ -642,7 +642,7 @@ slots:
     inlined: true
     description: the redefinition of a slot in the context of the containing class definition.
     status: testing
-    
+
   attributes:
     domain: class_definition
     multivalued: true
@@ -790,12 +790,12 @@ slots:
     abstract: true
     description: Grouping for metamodel slots that constrain the a slot value to equal a specified constant
     status: testing
-    
+
   list_value_specification_constant:
     abstract: true
     description: Grouping for metamodel slots that constrain members of a multivalued slot value to equal a specified constant
     status: testing
-      
+
   value_presence:
     is_a: value_specification_constant
     domain: slot_definition
@@ -812,7 +812,7 @@ slots:
     inherited: true
     description: the slot must have range string and the value of the slot must equal the specified value
     status: testing
-        
+
   equals_number:
     is_a: value_specification_constant
     range: integer  ## todo, make the range a union
@@ -862,7 +862,7 @@ slots:
     inherited: true
     description: the slot must have range number and the value of the slot must equal one of the specified values
     status: testing
-    
+
   has_member:
     is_a: list_value_specification_constant
     range: anonymous_slot_expression
@@ -890,8 +890,8 @@ slots:
       ```
     status: testing
 
-  
-      
+
+
   singular_name:
     domain: slot_definition
     description: a name that is used in the singular form
@@ -989,14 +989,6 @@ slots:
     description: >-
       the name used for a slot in the context of its owning class.  If present, this is used instead of the actual
       slot name.
-
-  owner:
-    domain: slot_definition
-    range: definition
-    description: >-
-      the "owner" of the slot. It is the class if it appears in the slots list, otherwise the declaring slot
-    readonly: filled in by loader -- either class domain or slot domain
-    deprecated: Will be replaced by domain_of and eventually removed
 
   domain_of:
     domain: slot_definition
@@ -1325,7 +1317,7 @@ classes:
   anonymous_type_expression:
     mixins:
       - type_expression
-      
+
   type_definition:
     mixins:
       - type_expression
@@ -1405,7 +1397,7 @@ classes:
       - common_metadata
     status: testing
 
-    
+
   slot_expression:
     description: an expression that constrains the range of values a slot can take
     mixin: true
@@ -1448,7 +1440,7 @@ classes:
     mixins:
       - slot_expression
     status: testing
-    
+
   slot_definition:
     description: the definition of a property or a slot
     aliases:
@@ -1569,7 +1561,7 @@ classes:
     abstract: true
     description: A rule that is applied to classes
     status: testing
-    
+
   class_rule:
     is_a: class_level_rule
     aliases:
