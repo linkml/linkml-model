@@ -94,7 +94,7 @@ For all `x` in `ReflexiveAncestors(c)`
 
 ### Rule: Derived Attributes
 
-Derived attributes can be calculated for every *applicable* slot name for any class `c`
+Derived attributes can be calculated for every *applicable* slot name `s` for any class `c`
 
 `c.attributes[s] = DerivedAttributes(c,s)`
 
@@ -111,11 +111,7 @@ and ancestors of `c`
 
 The precedence rules for derived attributes are as follows:
 
-If a metaslot `s` is declared `multivalued` then when copying `s` from a parent to a child, the values are appended.
-
-If a metaslot `s` is declared `multivalued` 
-
-if a slot is multi valued then copying will append, unless the element already exists.
+If a metaslot `s` is declared `multivalued` then when copying `s` from a parent to a child, the values are appended, unless the element already exists.
 
 if the slot is single valued, and intersection rules can be applied to the slot, then these are performed on all values
 

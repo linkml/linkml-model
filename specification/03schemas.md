@@ -51,7 +51,7 @@ However, it should be understood these are not equivalents.
      - [enumerated types](https://en.wikipedia.org/wiki/Enumerated_type) in programming languages and some relational systems
      - drop-down selections in spreadsheets       
      - Note however that in LinkML enums are optionally backed by stronger semantics with enum elements (permissible values) mapped to vocabularies or ontologies
- * EnumDefinitions are analogous to:
+ * TypeDefinitions are analogous to:
      - [data types](https://en.wikipedia.org/wiki/Data_type) in most object-oriented languages 
      - primitive types in database systems
      - extensible types in some systems
@@ -93,7 +93,6 @@ classDiagram
     SchemaDefinition "1" --> "*" ClassDefinition: classes
     SchemaDefinition "1" --> "*" SlotDefinition: slots
     SchemaDefinition "1" --> "*" EnumDefinition: enums
-    SchemaDefinition "1" --> "*" EnumDefinition: Enums
     SchemaDefinition "1" --> "*" SubsetDefinition: subsets
     SchemaDefinition "1" --> "*" Prefix: prefixes
     ClassDefinition --|> Element
