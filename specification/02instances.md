@@ -281,7 +281,7 @@ Two assignments are identical if the slot name is the same, and the value is ide
 The abstract syntax provided here is intended as a normative syntax for the purposes
 of specifying the semantics of LinkML.
 
-See [section 6](06mapping.md) for details on how this functional syntax maps to other serialization
+See [section 6](06mapping) for details on how this functional syntax maps to other serialization
 syntaxes and models such as JSON and RDF.
 
 ## Instance Accessor Syntax
