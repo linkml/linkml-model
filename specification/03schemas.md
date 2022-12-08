@@ -343,7 +343,7 @@ Any instance *s* of a SlotDefinition may have assignments in any of the followin
 | [slot_group](slot_group.md) | 0..1 <br/> [SlotDefinition](SlotDefinition.md)  | allows for grouping of related slots into a grouping slot that serves the rol...   |
 | [is_grouping_slot](is_grouping_slot.md) | 0..1 <br/> [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean)  | true if this slot is a grouping slot   |
 | [disjoint_with](disjoint_with.md) | 0..* <br/> [SlotDefinition](SlotDefinition.md)  | Two classes are disjoint if they have no instances in common, two slots are d...   |
-| [union_of](union_of.md) | 0..* <br/> [TypeDefinition](TypeDefinition.md)  | indicates that the domain element consists exactly of the members of the elem...   |
+| [union_of](union_of.md) | 0..* <br/> [SlotDefinition](SlotDefinition.md)  | indicates that the domain element consists exactly of the members of the elem...   |
 | [range](range.md) | 0..1 <br/> [Element](Element.md)  | defines the type of the object of the slot   |
 | [range_expression](range_expression.md) | 0..1 <br/> [AnonymousClassExpression](AnonymousClassExpression.md)  | A range that is described as a boolean expression combining existing ranges   |
 | [enum_range](enum_range.md) | 0..1 <br/> [EnumExpression](EnumExpression.md)  | An inlined enumeration   |
