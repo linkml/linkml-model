@@ -118,6 +118,7 @@
          "description": "",
          "properties": {
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -133,7 +134,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -231,7 +233,7 @@
                "type": "array"
             },
             "is_a": {
-               "description": "specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
+               "description": "A primary parent class or slot from which inheritable metaslots are propagated from. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
                "type": "string"
             },
             "mappings": {
@@ -385,16 +387,15 @@
          "description": "",
          "properties": {
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
             "all_members": {
-               "additionalProperties": {
-                  "$ref": "#/$defs/SlotDefinition__identifier_optional"
-               },
-               "description": "the value of the multiavlued slot is a list where all elements conform to the specified values.\nthis defines a dynamic class with named slots according to matching constraints\n\nE.g to state that all members of a list are between 1 and 10\n```\nall_members:\n  x:\n    range: integer\n    minimum_value: 10\n    maximum_value: 10\n```"
+               "$ref": "#/$defs/AnonymousSlotExpression",
+               "description": "the value of the slot is multivalued with all members satisfying the condition"
             },
             "all_of": {
                "description": "holds if all of the expressions hold",
@@ -406,7 +407,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -514,7 +516,7 @@
             },
             "has_member": {
                "$ref": "#/$defs/AnonymousSlotExpression",
-               "description": "the values of the slot is multivalued with at least one member satisfying the condition"
+               "description": "the value of the slot is multivalued with at least one member satisfying the condition"
             },
             "implicit_prefix": {
                "description": "Causes the slot value to be interpreted as a uriorcurie after prefixing with this string",
@@ -653,6 +655,10 @@
             "unit": {
                "$ref": "#/$defs/UnitOfMeasure",
                "description": "an encoding of a unit"
+            },
+            "value_presence": {
+               "$ref": "#/$defs/PresenceEnum",
+               "description": "if true then a value must be present (for lists there must be at least one value). If false then a value must be absent (for lists, must be empty)"
             }
          },
          "required": [],
@@ -737,13 +743,14 @@
       },
       "ClassDefinition": {
          "additionalProperties": false,
-         "description": "the definition of a class or interface",
+         "description": "an element whose instances are complex objects that may have slot-value assignments",
          "properties": {
             "abstract": {
-               "description": "an abstract class is a high level class or slot that is typically used to group common slots together and cannot be directly instantiated.",
+               "description": "Indicates the class or slot cannot be directly instantiated and is intended for grouping and specifying core inherited metaslots",
                "type": "boolean"
             },
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -759,7 +766,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -799,7 +807,7 @@
                "type": "boolean"
             },
             "class_uri": {
-               "description": "URI of the class in an RDF environment",
+               "description": "URI of the class that provides a semantic interpretation of the element in a linked data context. The URI may come from any namespace and may be shared between schemas",
                "type": "string"
             },
             "classification_rules": {
@@ -923,7 +931,7 @@
                "type": "array"
             },
             "is_a": {
-               "description": "specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
+               "description": "A primary parent class from which inheritable metaslots are propagated",
                "type": "string"
             },
             "last_updated_on": {
@@ -944,11 +952,11 @@
                "type": "array"
             },
             "mixin": {
-               "description": "this slot or class can only be used as a mixin.",
+               "description": "Indicates the class or slot is intended to be inherited from without being an is_a parent. mixins should not be inherited from using is_a, except by other mixins.",
                "type": "boolean"
             },
             "mixins": {
-               "description": "List of definitions to be mixed in. Targets may be any definition of the same type",
+               "description": "A collection of secondary parent mixin classes from which inheritable metaslots are propagated",
                "items": {
                   "type": "string"
                },
@@ -1026,10 +1034,10 @@
                "additionalProperties": {
                   "$ref": "#/$defs/SlotDefinition__identifier_optional"
                },
-               "description": "the redefinition of a slot in the context of the containing class definition."
+               "description": "the refinement of a slot in the context of the containing class definition."
             },
             "slots": {
-               "description": "list of slot names that are applicable to a class",
+               "description": "collection of slot names that are applicable to a class",
                "items": {
                   "type": "string"
                },
@@ -1084,7 +1092,7 @@
                "additionalProperties": {
                   "$ref": "#/$defs/UniqueKey__identifier_optional"
                },
-               "description": "Set of unique keys for this slot"
+               "description": "A collection of unique keys for this class. Unique keys may be singular or compound."
             },
             "values_from": {
                "description": "The identifier of a \"value set\" -- a set of identifiers that form the possible values for the range of a slot. Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration in that in an enumeration, the values of the enumeration are listed directly in the model itself. Setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values in every serialization of the model.",
@@ -1102,13 +1110,14 @@
       },
       "ClassDefinition__identifier_optional": {
          "additionalProperties": false,
-         "description": "the definition of a class or interface",
+         "description": "an element whose instances are complex objects that may have slot-value assignments",
          "properties": {
             "abstract": {
-               "description": "an abstract class is a high level class or slot that is typically used to group common slots together and cannot be directly instantiated.",
+               "description": "Indicates the class or slot cannot be directly instantiated and is intended for grouping and specifying core inherited metaslots",
                "type": "boolean"
             },
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -1124,7 +1133,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -1164,7 +1174,7 @@
                "type": "boolean"
             },
             "class_uri": {
-               "description": "URI of the class in an RDF environment",
+               "description": "URI of the class that provides a semantic interpretation of the element in a linked data context. The URI may come from any namespace and may be shared between schemas",
                "type": "string"
             },
             "classification_rules": {
@@ -1288,7 +1298,7 @@
                "type": "array"
             },
             "is_a": {
-               "description": "specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
+               "description": "A primary parent class from which inheritable metaslots are propagated",
                "type": "string"
             },
             "last_updated_on": {
@@ -1309,11 +1319,11 @@
                "type": "array"
             },
             "mixin": {
-               "description": "this slot or class can only be used as a mixin.",
+               "description": "Indicates the class or slot is intended to be inherited from without being an is_a parent. mixins should not be inherited from using is_a, except by other mixins.",
                "type": "boolean"
             },
             "mixins": {
-               "description": "List of definitions to be mixed in. Targets may be any definition of the same type",
+               "description": "A collection of secondary parent mixin classes from which inheritable metaslots are propagated",
                "items": {
                   "type": "string"
                },
@@ -1391,10 +1401,10 @@
                "additionalProperties": {
                   "$ref": "#/$defs/SlotDefinition__identifier_optional"
                },
-               "description": "the redefinition of a slot in the context of the containing class definition."
+               "description": "the refinement of a slot in the context of the containing class definition."
             },
             "slots": {
-               "description": "list of slot names that are applicable to a class",
+               "description": "collection of slot names that are applicable to a class",
                "items": {
                   "type": "string"
                },
@@ -1449,7 +1459,7 @@
                "additionalProperties": {
                   "$ref": "#/$defs/UniqueKey__identifier_optional"
                },
-               "description": "Set of unique keys for this slot"
+               "description": "A collection of unique keys for this class. Unique keys may be singular or compound."
             },
             "values_from": {
                "description": "The identifier of a \"value set\" -- a set of identifiers that form the possible values for the range of a slot. Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration in that in an enumeration, the values of the enumeration are listed directly in the model itself. Setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values in every serialization of the model.",
@@ -1468,6 +1478,7 @@
          "description": "A rule that applies to instances of a class",
          "properties": {
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -1476,7 +1487,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -1651,13 +1663,14 @@
       },
       "EnumDefinition": {
          "additionalProperties": false,
-         "description": "List of values that constrain the range of a slot",
+         "description": "an element whose instances must be drawn from a specified set of permissible values",
          "properties": {
             "abstract": {
-               "description": "an abstract class is a high level class or slot that is typically used to group common slots together and cannot be directly instantiated.",
+               "description": "Indicates the class or slot cannot be directly instantiated and is intended for grouping and specifying core inherited metaslots",
                "type": "boolean"
             },
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -1666,7 +1679,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -1755,7 +1769,7 @@
                "type": "string"
             },
             "enum_uri": {
-               "description": "URI of the enum in an RDF environment",
+               "description": "URI of the enum that provides a semantic interpretation of the element in a linked data context. The URI may come from any namespace and may be shared between schemas",
                "type": "string"
             },
             "exact_mappings": {
@@ -1818,7 +1832,7 @@
                "type": "array"
             },
             "is_a": {
-               "description": "specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
+               "description": "A primary parent class or slot from which inheritable metaslots are propagated from. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
                "type": "string"
             },
             "last_updated_on": {
@@ -1850,11 +1864,11 @@
                "type": "array"
             },
             "mixin": {
-               "description": "this slot or class can only be used as a mixin.",
+               "description": "Indicates the class or slot is intended to be inherited from without being an is_a parent. mixins should not be inherited from using is_a, except by other mixins.",
                "type": "boolean"
             },
             "mixins": {
-               "description": "List of definitions to be mixed in. Targets may be any definition of the same type",
+               "description": "A collection of secondary parent classes or slots from which inheritable metaslots are propagated from.",
                "items": {
                   "type": "string"
                },
@@ -1960,13 +1974,14 @@
       },
       "EnumDefinition__identifier_optional": {
          "additionalProperties": false,
-         "description": "List of values that constrain the range of a slot",
+         "description": "an element whose instances must be drawn from a specified set of permissible values",
          "properties": {
             "abstract": {
-               "description": "an abstract class is a high level class or slot that is typically used to group common slots together and cannot be directly instantiated.",
+               "description": "Indicates the class or slot cannot be directly instantiated and is intended for grouping and specifying core inherited metaslots",
                "type": "boolean"
             },
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -1975,7 +1990,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -2064,7 +2080,7 @@
                "type": "string"
             },
             "enum_uri": {
-               "description": "URI of the enum in an RDF environment",
+               "description": "URI of the enum that provides a semantic interpretation of the element in a linked data context. The URI may come from any namespace and may be shared between schemas",
                "type": "string"
             },
             "exact_mappings": {
@@ -2127,7 +2143,7 @@
                "type": "array"
             },
             "is_a": {
-               "description": "specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
+               "description": "A primary parent class or slot from which inheritable metaslots are propagated from. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
                "type": "string"
             },
             "last_updated_on": {
@@ -2159,11 +2175,11 @@
                "type": "array"
             },
             "mixin": {
-               "description": "this slot or class can only be used as a mixin.",
+               "description": "Indicates the class or slot is intended to be inherited from without being an is_a parent. mixins should not be inherited from using is_a, except by other mixins.",
                "type": "boolean"
             },
             "mixins": {
-               "description": "List of definitions to be mixed in. Targets may be any definition of the same type",
+               "description": "A collection of secondary parent classes or slots from which inheritable metaslots are propagated from.",
                "items": {
                   "type": "string"
                },
@@ -2405,6 +2421,7 @@
          "description": "an expression describing an import",
          "properties": {
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -2413,7 +2430,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -2636,6 +2654,7 @@
          "description": "An expression that describes an abstract path from an object to another through a sequence of slot lookups",
          "properties": {
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -2651,7 +2670,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -2842,6 +2862,7 @@
          "description": "a regular expression pattern used to evaluate conformance of a string",
          "properties": {
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -2850,7 +2871,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -3016,6 +3038,7 @@
          "description": "a permissible value, accompanied by intended text and an optional mapping to a concept URI",
          "properties": {
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -3024,7 +3047,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -3108,7 +3132,7 @@
                "type": "array"
             },
             "is_a": {
-               "description": "specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
+               "description": "A primary parent class or slot from which inheritable metaslots are propagated from. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
                "type": "string"
             },
             "mappings": {
@@ -3123,7 +3147,7 @@
                "type": "string"
             },
             "mixins": {
-               "description": "List of definitions to be mixed in. Targets may be any definition of the same type",
+               "description": "A collection of secondary parent classes or slots from which inheritable metaslots are propagated from.",
                "items": {
                   "type": "string"
                },
@@ -3202,6 +3226,7 @@
          "description": "a permissible value, accompanied by intended text and an optional mapping to a concept URI",
          "properties": {
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -3210,7 +3235,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -3294,7 +3320,7 @@
                "type": "array"
             },
             "is_a": {
-               "description": "specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
+               "description": "A primary parent class or slot from which inheritable metaslots are propagated from. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
                "type": "string"
             },
             "mappings": {
@@ -3309,7 +3335,7 @@
                "type": "string"
             },
             "mixins": {
-               "description": "List of definitions to be mixed in. Targets may be any definition of the same type",
+               "description": "A collection of secondary parent classes or slots from which inheritable metaslots are propagated from.",
                "items": {
                   "type": "string"
                },
@@ -3497,6 +3523,7 @@
          "description": "a collection of subset, type, slot and class definitions",
          "properties": {
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -3505,7 +3532,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -3531,7 +3559,7 @@
                "additionalProperties": {
                   "$ref": "#/$defs/ClassDefinition__identifier_optional"
                },
-               "description": "class definitions"
+               "description": "An index to the collection of all class definitions in the schema"
             },
             "close_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have close meaning.",
@@ -3597,7 +3625,7 @@
                "additionalProperties": {
                   "$ref": "#/$defs/EnumDefinition__identifier_optional"
                },
-               "description": "enumerated ranges"
+               "description": "An index to the collection of all enum definitions in the schema"
             },
             "exact_mappings": {
                "description": "A list of terms from different schemas or terminology systems that have identical meaning.",
@@ -3688,7 +3716,7 @@
                "type": "string"
             },
             "name": {
-               "description": "the unique name of the element within the context of the schema.  Name is combined with the default prefix to form the globally unique subject of the target class.",
+               "description": "a unique name for the schema that is both human-readable and consists of only characters from the NCName set",
                "type": "string"
             },
             "narrow_mappings": {
@@ -3743,7 +3771,7 @@
                "additionalProperties": {
                   "$ref": "#/$defs/SlotDefinition__identifier_optional"
                },
-               "description": "slot definitions"
+               "description": "An index to the collection of all slot definitions in the schema"
             },
             "source": {
                "description": "A related resource from which the element is derived.",
@@ -3773,7 +3801,7 @@
                "additionalProperties": {
                   "$ref": "#/$defs/SubsetDefinition__identifier_optional"
                },
-               "description": "list of subsets referenced in this model"
+               "description": "An index to the collection of all subset definitions in the schema"
             },
             "title": {
                "description": "the official title of the element",
@@ -3790,7 +3818,7 @@
                "additionalProperties": {
                   "$ref": "#/$defs/TypeDefinition__identifier_optional"
                },
-               "description": "data types used in the model"
+               "description": "An index to the collection of all type definitions in the schema"
             },
             "version": {
                "description": "particular version of schema",
@@ -3845,10 +3873,10 @@
       },
       "SlotDefinition": {
          "additionalProperties": false,
-         "description": "the definition of a property or a slot",
+         "description": "an element that describes how instances are related to other instances",
          "properties": {
             "abstract": {
-               "description": "an abstract class is a high level class or slot that is typically used to group common slots together and cannot be directly instantiated.",
+               "description": "Indicates the class or slot cannot be directly instantiated and is intended for grouping and specifying core inherited metaslots",
                "type": "boolean"
             },
             "alias": {
@@ -3856,16 +3884,15 @@
                "type": "string"
             },
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
             "all_members": {
-               "additionalProperties": {
-                  "$ref": "#/$defs/SlotDefinition__identifier_optional"
-               },
-               "description": "the value of the multiavlued slot is a list where all elements conform to the specified values.\nthis defines a dynamic class with named slots according to matching constraints\n\nE.g to state that all members of a list are between 1 and 10\n```\nall_members:\n  x:\n    range: integer\n    minimum_value: 10\n    maximum_value: 10\n```"
+               "$ref": "#/$defs/AnonymousSlotExpression",
+               "description": "the value of the slot is multivalued with all members satisfying the condition"
             },
             "all_of": {
                "description": "holds if all of the expressions hold",
@@ -3877,7 +3904,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -4039,7 +4067,7 @@
             },
             "has_member": {
                "$ref": "#/$defs/AnonymousSlotExpression",
-               "description": "the values of the slot is multivalued with at least one member satisfying the condition"
+               "description": "the value of the slot is multivalued with at least one member satisfying the condition"
             },
             "id_prefixes": {
                "description": "the identifier of this class or slot must begin with the URIs referenced by this prefix",
@@ -4095,11 +4123,11 @@
                "type": "boolean"
             },
             "is_a": {
-               "description": "specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
+               "description": "A primary parent slot from which inheritable metaslots are propagated",
                "type": "string"
             },
             "is_class_field": {
-               "description": "indicates that any instance, i,  the domain of this slot will include an assert of i s range",
+               "description": "indicates that for any instance, i, the domain of this slot will include an assertion of i s range",
                "type": "boolean"
             },
             "is_grouping_slot": {
@@ -4133,7 +4161,7 @@
                }
             },
             "locally_reflexive": {
-               "description": "If s is locally_reflexive, then i.s=i for all instances i where s if a class slot for the type of i",
+               "description": "If s is locally_reflexive, then i.s=i for all instances i where s is a class slot for the type of i",
                "type": "boolean"
             },
             "mappings": {
@@ -4160,11 +4188,11 @@
                "type": "integer"
             },
             "mixin": {
-               "description": "this slot or class can only be used as a mixin.",
+               "description": "Indicates the class or slot is intended to be inherited from without being an is_a parent. mixins should not be inherited from using is_a, except by other mixins.",
                "type": "boolean"
             },
             "mixins": {
-               "description": "List of definitions to be mixed in. Targets may be any definition of the same type",
+               "description": "A collection of secondary parent mixin slots from which inheritable metaslots are propagated",
                "items": {
                   "type": "string"
                },
@@ -4259,7 +4287,7 @@
                "type": "boolean"
             },
             "role": {
-               "description": "the role played by the slot range",
+               "description": "a textual descriptor that indicates the role played by the slot range",
                "type": "string"
             },
             "see_also": {
@@ -4349,6 +4377,10 @@
             "usage_slot_name": {
                "description": "The name of the slot referenced in the slot_usage",
                "type": "string"
+            },
+            "value_presence": {
+               "$ref": "#/$defs/PresenceEnum",
+               "description": "if true then a value must be present (for lists there must be at least one value). If false then a value must be absent (for lists, must be empty)"
             },
             "values_from": {
                "description": "The identifier of a \"value set\" -- a set of identifiers that form the possible values for the range of a slot. Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration in that in an enumeration, the values of the enumeration are listed directly in the model itself. Setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values in every serialization of the model.",
@@ -4366,10 +4398,10 @@
       },
       "SlotDefinition__identifier_optional": {
          "additionalProperties": false,
-         "description": "the definition of a property or a slot",
+         "description": "an element that describes how instances are related to other instances",
          "properties": {
             "abstract": {
-               "description": "an abstract class is a high level class or slot that is typically used to group common slots together and cannot be directly instantiated.",
+               "description": "Indicates the class or slot cannot be directly instantiated and is intended for grouping and specifying core inherited metaslots",
                "type": "boolean"
             },
             "alias": {
@@ -4377,16 +4409,15 @@
                "type": "string"
             },
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
             "all_members": {
-               "additionalProperties": {
-                  "$ref": "#/$defs/SlotDefinition__identifier_optional"
-               },
-               "description": "the value of the multiavlued slot is a list where all elements conform to the specified values.\nthis defines a dynamic class with named slots according to matching constraints\n\nE.g to state that all members of a list are between 1 and 10\n```\nall_members:\n  x:\n    range: integer\n    minimum_value: 10\n    maximum_value: 10\n```"
+               "$ref": "#/$defs/AnonymousSlotExpression",
+               "description": "the value of the slot is multivalued with all members satisfying the condition"
             },
             "all_of": {
                "description": "holds if all of the expressions hold",
@@ -4398,7 +4429,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -4560,7 +4592,7 @@
             },
             "has_member": {
                "$ref": "#/$defs/AnonymousSlotExpression",
-               "description": "the values of the slot is multivalued with at least one member satisfying the condition"
+               "description": "the value of the slot is multivalued with at least one member satisfying the condition"
             },
             "id_prefixes": {
                "description": "the identifier of this class or slot must begin with the URIs referenced by this prefix",
@@ -4616,11 +4648,11 @@
                "type": "boolean"
             },
             "is_a": {
-               "description": "specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded",
+               "description": "A primary parent slot from which inheritable metaslots are propagated",
                "type": "string"
             },
             "is_class_field": {
-               "description": "indicates that any instance, i,  the domain of this slot will include an assert of i s range",
+               "description": "indicates that for any instance, i, the domain of this slot will include an assertion of i s range",
                "type": "boolean"
             },
             "is_grouping_slot": {
@@ -4654,7 +4686,7 @@
                }
             },
             "locally_reflexive": {
-               "description": "If s is locally_reflexive, then i.s=i for all instances i where s if a class slot for the type of i",
+               "description": "If s is locally_reflexive, then i.s=i for all instances i where s is a class slot for the type of i",
                "type": "boolean"
             },
             "mappings": {
@@ -4681,11 +4713,11 @@
                "type": "integer"
             },
             "mixin": {
-               "description": "this slot or class can only be used as a mixin.",
+               "description": "Indicates the class or slot is intended to be inherited from without being an is_a parent. mixins should not be inherited from using is_a, except by other mixins.",
                "type": "boolean"
             },
             "mixins": {
-               "description": "List of definitions to be mixed in. Targets may be any definition of the same type",
+               "description": "A collection of secondary parent mixin slots from which inheritable metaslots are propagated",
                "items": {
                   "type": "string"
                },
@@ -4780,7 +4812,7 @@
                "type": "boolean"
             },
             "role": {
-               "description": "the role played by the slot range",
+               "description": "a textual descriptor that indicates the role played by the slot range",
                "type": "string"
             },
             "see_also": {
@@ -4870,6 +4902,10 @@
             "usage_slot_name": {
                "description": "The name of the slot referenced in the slot_usage",
                "type": "string"
+            },
+            "value_presence": {
+               "$ref": "#/$defs/PresenceEnum",
+               "description": "if true then a value must be present (for lists there must be at least one value). If false then a value must be absent (for lists, must be empty)"
             },
             "values_from": {
                "description": "The identifier of a \"value set\" -- a set of identifiers that form the possible values for the range of a slot. Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration in that in an enumeration, the values of the enumeration are listed directly in the model itself. Setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values in every serialization of the model.",
@@ -4888,6 +4924,7 @@
          "description": "object that contains meta data about a synonym or alias including where it came from (source) and its scope (narrow, broad, etc.)",
          "properties": {
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -4896,7 +4933,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -5064,9 +5102,10 @@
       },
       "SubsetDefinition": {
          "additionalProperties": false,
-         "description": "the name and description of a subset",
+         "description": "an element that can be used to group other metamodel elements",
          "properties": {
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -5075,7 +5114,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -5252,9 +5292,10 @@
       },
       "SubsetDefinition__identifier_optional": {
          "additionalProperties": false,
-         "description": "the name and description of a subset",
+         "description": "an element that can be used to group other metamodel elements",
          "properties": {
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -5263,7 +5304,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -5438,9 +5480,10 @@
       },
       "TypeDefinition": {
          "additionalProperties": false,
-         "description": "A data type definition.",
+         "description": "an element that whose instances are atomic scalar values that can be mapped to primitive types",
          "properties": {
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -5456,7 +5499,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -5716,9 +5760,10 @@
       },
       "TypeDefinition__identifier_optional": {
          "additionalProperties": false,
-         "description": "A data type definition.",
+         "description": "an element that whose instances are atomic scalar values that can be mapped to primitive types",
          "properties": {
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -5734,7 +5779,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -5995,6 +6041,7 @@
          "description": "a collection of slots whose values uniquely identify an instance of a class",
          "properties": {
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -6003,7 +6050,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -6171,6 +6219,7 @@
          "description": "a collection of slots whose values uniquely identify an instance of a class",
          "properties": {
             "aliases": {
+               "description": "Alaternate names for the element",
                "items": {
                   "type": "string"
                },
@@ -6179,7 +6228,8 @@
             "alt_descriptions": {
                "additionalProperties": {
                   "$ref": "#/$defs/AltDescription__identifier_optional"
-               }
+               },
+               "description": "A sourced alternative description for an element"
             },
             "annotations": {
                "additionalProperties": {
@@ -6383,6 +6433,7 @@
    "metamodel_version": "1.7.0",
    "properties": {
       "aliases": {
+         "description": "Alaternate names for the element",
          "items": {
             "type": "string"
          },
@@ -6391,7 +6442,8 @@
       "alt_descriptions": {
          "additionalProperties": {
             "$ref": "#/$defs/AltDescription__identifier_optional"
-         }
+         },
+         "description": "A sourced alternative description for an element"
       },
       "annotations": {
          "additionalProperties": {
@@ -6417,7 +6469,7 @@
          "additionalProperties": {
             "$ref": "#/$defs/ClassDefinition__identifier_optional"
          },
-         "description": "class definitions"
+         "description": "An index to the collection of all class definitions in the schema"
       },
       "close_mappings": {
          "description": "A list of terms from different schemas or terminology systems that have close meaning.",
@@ -6483,7 +6535,7 @@
          "additionalProperties": {
             "$ref": "#/$defs/EnumDefinition__identifier_optional"
          },
-         "description": "enumerated ranges"
+         "description": "An index to the collection of all enum definitions in the schema"
       },
       "exact_mappings": {
          "description": "A list of terms from different schemas or terminology systems that have identical meaning.",
@@ -6574,7 +6626,7 @@
          "type": "string"
       },
       "name": {
-         "description": "the unique name of the element within the context of the schema.  Name is combined with the default prefix to form the globally unique subject of the target class.",
+         "description": "a unique name for the schema that is both human-readable and consists of only characters from the NCName set",
          "type": "string"
       },
       "narrow_mappings": {
@@ -6629,7 +6681,7 @@
          "additionalProperties": {
             "$ref": "#/$defs/SlotDefinition__identifier_optional"
          },
-         "description": "slot definitions"
+         "description": "An index to the collection of all slot definitions in the schema"
       },
       "source": {
          "description": "A related resource from which the element is derived.",
@@ -6659,7 +6711,7 @@
          "additionalProperties": {
             "$ref": "#/$defs/SubsetDefinition__identifier_optional"
          },
-         "description": "list of subsets referenced in this model"
+         "description": "An index to the collection of all subset definitions in the schema"
       },
       "title": {
          "description": "the official title of the element",
@@ -6676,7 +6728,7 @@
          "additionalProperties": {
             "$ref": "#/$defs/TypeDefinition__identifier_optional"
          },
-         "description": "data types used in the model"
+         "description": "An index to the collection of all type definitions in the schema"
       },
       "version": {
          "description": "particular version of schema",
@@ -6691,4 +6743,3 @@
    "type": "object",
    "version": "2.0.0"
 }
-
