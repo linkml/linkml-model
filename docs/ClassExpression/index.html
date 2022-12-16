@@ -6,14 +6,14 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.3.9" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: ClassExpression - LinkML Model</title>
-<link href="../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-<script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="amber" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
@@ -74,7 +74,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </label>
 <nav aria-label="Search" class="md-search__options">
-<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
 </button>
 </nav>
@@ -207,8 +207,8 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../SpecificationProfile.md">
-        SpecificationProfile
+<a class="md-nav__link" href="../SpecificationSubset/">
+        SpecificationSubset
       </a>
 </li>
 <li class="md-nav__item">
@@ -252,6 +252,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#mixin-usage">
+    Mixin Usage
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#usages">
     Usages
   </a>
@@ -276,10 +281,10 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#linkml-specification">
-    LinkML Specification
+<a class="md-nav__link" href="#linkml-source">
+    LinkML Source
   </a>
-<nav aria-label="LinkML Specification" class="md-nav">
+<nav aria-label="LinkML Source" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#direct">
@@ -303,11 +308,9 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-classexpression">Class: ClassExpression</h1>
 <p><em>A boolean expression that can be used to dynamically determine membership of a class</em></p>
-<ul>
-<li><strong>NOTE</strong>: this is a mixin class intended to be used in combination with other classes, and not used directly</li>
-</ul>
 <p>URI: <a href="https://w3id.org/linkml/ClassExpression">linkml:ClassExpression</a></p>
 <div class="mermaid"> classDiagram
+    class ClassExpression
       ClassExpression &lt;|-- AnonymousClassExpression
       ClassExpression &lt;|-- ClassDefinition
 
@@ -326,33 +329,58 @@
 <th>Name</th>
 <th>Cardinality and Range</th>
 <th>Description</th>
+<th>Inheritance</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="../any_of/">any_of</a></td>
-<td>0..* <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
+<td>0..1 <br/> <a href="../Expression/">Expression</a></td>
 <td>holds if at least one of the expressions hold</td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../exactly_one_of/">exactly_one_of</a></td>
-<td>0..* <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
+<td>0..1 <br/> <a href="../Expression/">Expression</a></td>
 <td>holds if only one of the expressions hold</td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../none_of/">none_of</a></td>
-<td>0..* <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
+<td>0..1 <br/> <a href="../Expression/">Expression</a></td>
 <td>holds if none of the expressions hold</td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../all_of/">all_of</a></td>
-<td>0..* <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
+<td>0..1 <br/> <a href="../Expression/">Expression</a></td>
 <td>holds if all of the expressions hold</td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../slot_conditions/">slot_conditions</a></td>
 <td>0..* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
 <td>expresses constraints on a group of slots for a class expression</td>
+<td>direct</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mixin-usage">Mixin Usage</h2>
+<table>
+<thead>
+<tr>
+<th>mixed into</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+<td>an element whose instances are complex objects that may have slot-value assig...</td>
 </tr>
 </tbody>
 </table>
@@ -371,19 +399,19 @@
 <td><a href="./">ClassExpression</a></td>
 <td><a href="../slot_conditions/">slot_conditions</a></td>
 <td>domain</td>
-<td>class_expression</td>
+<td><a href="./">ClassExpression</a></td>
 </tr>
 <tr>
 <td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
 <td><a href="../slot_conditions/">slot_conditions</a></td>
 <td>domain</td>
-<td>class_expression</td>
+<td><a href="./">ClassExpression</a></td>
 </tr>
 <tr>
 <td><a href="../ClassDefinition/">ClassDefinition</a></td>
 <td><a href="../slot_conditions/">slot_conditions</a></td>
 <td>domain</td>
-<td>class_expression</td>
+<td><a href="./">ClassExpression</a></td>
 </tr>
 </tbody>
 </table>
@@ -403,15 +431,15 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>['linkml:ClassExpression']</td>
+<td>linkml:ClassExpression</td>
 </tr>
 <tr>
 <td>native</td>
-<td>['linkml:ClassExpression']</td>
+<td>linkml:ClassExpression</td>
 </tr>
 </tbody>
 </table>
-<h2 id="linkml-specification">LinkML Specification</h2>
+<h2 id="linkml-source">LinkML Source</h2>
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
@@ -655,7 +683,7 @@ attributes:
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+<script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
 <script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>
