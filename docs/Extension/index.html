@@ -6,14 +6,14 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.3.9" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: Extension - LinkML Model</title>
-<link href="../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-<script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="amber" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
@@ -74,7 +74,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </label>
 <nav aria-label="Search" class="md-search__options">
-<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
 </button>
 </nav>
@@ -207,8 +207,8 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../SpecificationProfile.md">
-        SpecificationProfile
+<a class="md-nav__link" href="../SpecificationSubset/">
+        SpecificationSubset
       </a>
 </li>
 <li class="md-nav__item">
@@ -281,10 +281,10 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#linkml-specification">
-    LinkML Specification
+<a class="md-nav__link" href="#linkml-source">
+    LinkML Source
   </a>
-<nav aria-label="LinkML Specification" class="md-nav">
+<nav aria-label="LinkML Source" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#direct">
@@ -310,6 +310,7 @@
 <p><em>a tag/value pair used to add non-model information to an entry</em></p>
 <p>URI: <a href="https://w3id.org/linkml/Extension">linkml:Extension</a></p>
 <div class="mermaid"> classDiagram
+    class Extension
       Extension &lt;|-- Annotation
 
       Extension : extension_tag
@@ -320,7 +321,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>Extension</strong><ul>
-<li><a href="../Annotation/">Annotation</a> [ annotatable]</li>
+<li><a href="../Annotation/">Annotation</a> [ <a href="../Annotatable/">Annotatable</a>]</li>
 </ul>
 </li>
 </ul>
@@ -331,6 +332,7 @@
 <th>Name</th>
 <th>Cardinality and Range</th>
 <th>Description</th>
+<th>Inheritance</th>
 </tr>
 </thead>
 <tbody>
@@ -338,16 +340,19 @@
 <td><a href="../extension_tag/">extension_tag</a></td>
 <td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>a tag associated with an extension</td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../extension_value/">extension_value</a></td>
-<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>1..1 <br/> NONE</td>
 <td>the actual annotation</td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../extensions/">extensions</a></td>
 <td>0..* <br/> <a href="./">Extension</a></td>
 <td>a tag/text tuple attached to an arbitrary element</td>
+<td>direct</td>
 </tr>
 </tbody>
 </table>
@@ -366,151 +371,151 @@
 <td><a href="../Element/">Element</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../TypeDefinition/">TypeDefinition</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../Definition/">Definition</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../EnumDefinition/">EnumDefinition</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../StructuredAlias/">StructuredAlias</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../PathExpression/">PathExpression</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../SlotDefinition/">SlotDefinition</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../ClassDefinition/">ClassDefinition</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../ClassRule/">ClassRule</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../PatternExpression/">PatternExpression</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../ImportExpression/">ImportExpression</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../PermissibleValue/">PermissibleValue</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../UniqueKey/">UniqueKey</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../Annotation/">Annotation</a></td>
 <td><a href="../extension_tag/">extension_tag</a></td>
 <td>domain</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../Annotation/">Annotation</a></td>
 <td><a href="../extension_value/">extension_value</a></td>
 <td>domain</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../Annotation/">Annotation</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="./">Extension</a></td>
 <td><a href="../extension_tag/">extension_tag</a></td>
 <td>domain</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="./">Extension</a></td>
 <td><a href="../extension_value/">extension_value</a></td>
 <td>domain</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="./">Extension</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../Extensible/">Extensible</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
-<td>extension</td>
+<td><a href="./">Extension</a></td>
 </tr>
 </tbody>
 </table>
@@ -530,15 +535,15 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>['linkml:Extension']</td>
+<td>linkml:Extension</td>
 </tr>
 <tr>
 <td>native</td>
-<td>['linkml:Extension']</td>
+<td>linkml:Extension</td>
 </tr>
 </tbody>
 </table>
-<h2 id="linkml-specification">LinkML Specification</h2>
+<h2 id="linkml-source">LinkML Source</h2>
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
@@ -624,7 +629,7 @@ attributes:
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+<script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
 <script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

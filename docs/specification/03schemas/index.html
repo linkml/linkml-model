@@ -6,14 +6,14 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.3.9" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
 <title>Schema Datamodel - LinkML Model</title>
-<link href="../../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
-<link href="../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-<script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="amber" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#schema-datamodel">
+<a class="md-skip" href="#schema-data-model">
           Skip to content
         </a>
 </div>
@@ -74,7 +74,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </label>
 <nav aria-label="Search" class="md-search__options">
-<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
 </button>
 </nav>
@@ -408,8 +408,8 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../SpecificationProfile.md">
-        SpecificationProfile
+<a class="md-nav__link" href="../../SpecificationSubset/">
+        SpecificationSubset
       </a>
 </li>
 <li class="md-nav__item">
@@ -642,16 +642,16 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="schema-datamodel">Schema Datamodel</h1>
+<h1 id="schema-data-model">Schema Data Model</h1>
 <p>This section describes the <em>structure</em> of a LinkML schema. For precise interpretation of these structures, refer to the following two sections on <em>derived schemas</em> and <em>validation</em></p>
 <h2 id="schema-basics">Schema Basics</h2>
-<p>A LinkML <strong>schema</strong> specifies rules and structural conformance conditions for <em>instances</em>. Schemas allow for:</p>
+<p>A LinkML <strong>schema</strong> specifies rules and structural conformance conditions for <strong>instances</strong>. Schemas allow for:</p>
 <ul>
 <li>parsing of instance <strong>serializations</strong> to LinkML instance structures</li>
 <li>structurally and semantically <strong>validating</strong> LinkML instance structures</li>
 <li><strong>inference</strong> of missing values in LinkML instance structures</li>
 </ul>
-<p>Every LinkML schema <em>m</em> is itself an instance of a special class <a href="https://w3id.org/linkml/SchemaDefinition">SchemaDefinition</a> that forms part of a special schema called the <strong>LinkML metamodel</strong>, which is denoted as <em>m<sup>M</sup></em>. There is exactly one metamodel.</p>
+<p>Every LinkML schema <em>m</em> is itself an instance of a special class <a href="https://w3id.org/linkml/SchemaDefinition">SchemaDefinition</a> that forms part of a special schema called the <strong>LinkML metamodel</strong>, which is denoted by <em>m<sup>M</sup></em>. There is exactly one metamodel.</p>
 <p>In this specification:</p>
 <ul>
 <li>ClassDefinitions in <em>m<sup>M</sup></em> are called <strong>metaclasses</strong></li>
@@ -664,6 +664,10 @@
 </ul>
 <p>This specification specifies the <em>normative elements</em> necessary to specify the behavior of LinkML schemas. Schemas may have additional
 elements provided in the metamodel. For example, elements in schemas can have <em>informative</em> slot assignments for slots such as <a href="https://w3id.org/linkml/title">title</a>, <a href="https://w3id.org/linkml/description">description</a>, and so on, but these slots are not described in this specification as they are not normative and do not affect the formal interpretation of schemas.</p>
+<p>The subset of the metamodel that corresponds to the specification is called the SpecificationProfile, and it is found at:</p>
+<ul>
+<li><a href="https://w3id.org/linkml/SpecificationProfile">https://w3id.org/linkml/SpecificationProfile</a> </li>
+</ul>
 <h3 id="yaml-representation-of-schemas">YAML representation of schemas</h3>
 <p>Because schemas and all the parts of a schema are instances of metaclasses in the metamodel, the YAML serialization rules from <a href="06mapping">section 6</a> can be applied to both serialized and deserialized a schema as YAML.</p>
 <h3 id="analogies-to-other-modeling-frameworks">Analogies to other modeling frameworks</h3>
@@ -689,7 +693,7 @@ However, it should be understood these are not equivalents.</p>
 <li>Note however that in LinkML enums are optionally backed by stronger semantics with enum elements (permissible values) mapped to vocabularies or ontologies</li>
 </ul>
 </li>
-<li>EnumDefinitions are analogous to:<ul>
+<li>TypeDefinitions are analogous to:<ul>
 <li><a href="https://en.wikipedia.org/wiki/Data_type">data types</a> in most object-oriented languages </li>
 <li>primitive types in database systems</li>
 <li>extensible types in some systems</li>
@@ -791,7 +795,6 @@ However, it should be understood these are not equivalents.</p>
     SchemaDefinition "1" --&gt; "*" ClassDefinition: classes
     SchemaDefinition "1" --&gt; "*" SlotDefinition: slots
     SchemaDefinition "1" --&gt; "*" EnumDefinition: enums
-    SchemaDefinition "1" --&gt; "*" EnumDefinition: Enums
     SchemaDefinition "1" --&gt; "*" SubsetDefinition: subsets
     SchemaDefinition "1" --&gt; "*" Prefix: prefixes
     ClassDefinition --|&gt; Element
@@ -1265,7 +1268,7 @@ other schema elements may refer to <strong>AnonymousSlotExpression</strong>s com
 </tr>
 <tr>
 <td><a href="union_of.md">union_of</a></td>
-<td>0..* <br/> <a href="TypeDefinition.md">TypeDefinition</a></td>
+<td>0..* <br/> <a href="SlotDefinition.md">SlotDefinition</a></td>
 <td>indicates that the domain element consists exactly of the members of the elem...</td>
 </tr>
 <tr>
@@ -1972,7 +1975,7 @@ types:
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-<script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+<script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
 <script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>
