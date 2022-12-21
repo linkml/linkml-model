@@ -63,16 +63,16 @@ for each `slot=value` assignment in **Assignments**, the validation procedure is
 
 `C` SHOULD have all the following properties:
 
-- `C.deprecated` SHOULD be **None**
-- `C.abstract` SHOULD NOT be **True**
-- `C.mixin` SHOULD NOT be **True**
+- `C.deprecated` SHOULD be `None`
+- `C.abstract` SHOULD NOT be `True`
+- `C.mixin` SHOULD NOT be `True`
 
 ### Rule: identifiers must be unique
 
 We define a procedure **IdVal**(`i`) which yields the value of `i.<identifier_slot>` where `identifier_slot`
-is the slot n **Assignments** with metaslot assignment `identifier`=**True**
+is the slot in **Assignments** with metaslot assignment `identifier=True`
 
-If there is no such slot then `**IdVal**(`i`) is None and this check is ignored.
+If there is no such slot then **IdVal**(`i`) is `None` and this check is ignored.
 
 `i` is invalid if there exists another instance `j` such that `j` is reachable from `root`,
 and **IdVal**(`i`)=**IdVal**(`j`) and `i` and `j` are distinct.
@@ -97,19 +97,19 @@ If this condition is not met, this is considered a warning rather than invalidit
 
 For each slot `s` in **Assignments**,
 
- * if `s.multivalued` is True, then `i.<s>` must be a collection or None
- * If `s.multivalued` is False, then `i.<s>` must not be a collection
+ * if `s.multivalued` is `True`, then `i.<s>` must be a collection or `None`
+ * If `s.multivalued` is `False`, then `i.<s>` must not be a collection
 
 ### Rule: values should be within stated bounds
 
 For each slot `s` in **Assignments**,
 
- * if `s.maximum_value` is not None, then `i.<s>` must be a number and must be less that or equal to the maximum value
- * if `s.minimum_value` is not None, then `i.<s>` must be a number and must be greater that or equal to the minimum value
+ * if `s.maximum_value` is not `None`, then `i.<s>` must be a number and must be less that or equal to the maximum value
+ * if `s.minimum_value` is not `None`, then `i.<s>` must be a number and must be greater that or equal to the minimum value
 
 ### Rule: values should equal evaluable expression
 
-For each slot `s` in **Assignments**, if `s.equals_expression` is not None, then `i.<s>` must equal
+For each slot `s` in **Assignments**, if `s.equals_expression` is not `None`, then `i.<s>` must equal
 the value of `Eval(s.equals_expression)`. See section on expression language
 for details of syntax.
 
@@ -117,7 +117,7 @@ Note: this rule can be executed in inference mode
 
 ### Rule: values should equal string_serialization
 
-For each slot `s` in **Assignments**, if `s.string_serialization` is not None, then `i.<s>` must equal
+For each slot `s` in **Assignments**, if `s.string_serialization` is not `None`, then `i.<s>` must equal
 the value of `Stringify(s.string_serialization)`. See section on expression language
 for details of syntax.
 
@@ -127,15 +127,15 @@ Note: this rule can be executed in inference mode
 
 ### Range class instantiation check
 
-For each slot `s` in **Assignments**, if `i.<s>` is not None, and `s.range` is in `m*.classes`,
+For each slot `s` in **Assignments**, if `i.<s>` is not `None`, and `s.range` is in `m*.classes`,
 then `s.range` must be in `ReflexiveAncestors(Type(i.<s>))`
 
- Additional checks MAY be performed based on whether `s.inlined` is True
+ Additional checks MAY be performed based on whether `s.inlined` is `True`
 
- * if `s.inlined`, then `i.<s>`  SHOULD NOT be a Reference
- * if `s.inlined` is False, then EITHER:
+ * if `s.inlined` is `True`, then `i.<s>`  SHOULD NOT be a Reference
+ * if `s.inlined` is `False`, then EITHER:
      * `i.<s>`  SHOULD be a Reference
-     * OR `i.<s>` instantiates a class `R` such that R has no slot `rs` that is declared to be an identifier. i.e. `rs.identifier = True`
+     * OR `i.<s>` instantiates a class `R` such that `R` has no slot `rs` that is declared to be an identifier. i.e. `rs.identifier = True`
 
 
 
@@ -166,14 +166,14 @@ In all cases, the semantics are as follows:
    
 ### range expression checks
 
-For each slot `s` in **Assignments**, if `i.<s>` is not None, and `RE = s.range_expression` is not None, then a check
+For each slot `s` in **Assignments**, if `i.<s>` is not `None`, and `RE = s.range_expression` is not `None`, then a check
 **CE**(`x`) is performed on `i.<s>`
 
 ### Rule evaluation
 
 For each rule `r` in *C*.rules:
 
-- if `r.preconditions` is None or `r.preconditions` is satisfied, then
+- if `r.preconditions` is `None` or `r.preconditions` is satisfied, then
 - `r.postconditions` are applied
 
 ### Classification Rule evaluation
@@ -182,7 +182,7 @@ For each rule `r` in *C*.rules:
 
 ## Validation of TypeDefinitions
 
-For each slot `s` in **Assignments**, if `i.<s>` is not None, and `s.range` is in `m*.types`,
+For each slot `s` in **Assignments**, if `i.<s>` is not `None`, and `s.range` is in `m*.types`,
 where `i.<s> = *T*( **AtomicValue** )` must match `s.range`,
 
 here `T.uri` is used to determine the type:
@@ -190,11 +190,11 @@ here `T.uri` is used to determine the type:
 - for xsd floats, doubles, and decimals, AtomicValue must be a decimal- for xsd floats, doubles, and decimals, AtomicValue must be a decimal
 - for xsd ints, AtomicValue must be an Integer
 - for xsd dates, datetimes, and times, AtomicValue must be a string conforming to the relevant ISO type
-- for xsd booleans, AtomicValue must be True or False
+- for xsd booleans, AtomicValue must be `True` or `False`
 
 ## Validation of EnumDefinitions
 
-For each slot `s` in **Assignments**, if `i.<s>` is not None, and `s.range` is in `m*.enums`,
+For each slot `s` in **Assignments**, if `i.<s>` is not `None`, and `s.range` is in `m*.enums`,
 then `i.<s>` must be equal to `pv.text` for some pv in `m*.enums[s.range]`
 
 ## Inference of new values

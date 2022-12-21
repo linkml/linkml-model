@@ -6,14 +6,14 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.3.9" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: UniqueKey - LinkML Model</title>
-<link href="../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-<script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="amber" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
@@ -74,7 +74,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </label>
 <nav aria-label="Search" class="md-search__options">
-<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
 </button>
 </nav>
@@ -207,8 +207,8 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../SpecificationProfile.md">
-        SpecificationProfile
+<a class="md-nav__link" href="../SpecificationSubset/">
+        SpecificationSubset
       </a>
 </li>
 <li class="md-nav__item">
@@ -281,10 +281,10 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#linkml-specification">
-    LinkML Specification
+<a class="md-nav__link" href="#linkml-source">
+    LinkML Source
   </a>
-<nav aria-label="LinkML Specification" class="md-nav">
+<nav aria-label="LinkML Source" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#direct">
@@ -310,6 +310,7 @@
 <p><em>a collection of slots whose values uniquely identify an instance of a class</em></p>
 <p>URI: <a href="https://w3id.org/linkml/UniqueKey">linkml:UniqueKey</a></p>
 <div class="mermaid"> classDiagram
+    class UniqueKey
       Extensible &lt;|-- UniqueKey
       Annotatable &lt;|-- UniqueKey
       CommonMetadata &lt;|-- UniqueKey
@@ -344,11 +345,10 @@
       UniqueKey : unique_key_name
       UniqueKey : unique_key_slots
 
-
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><strong>UniqueKey</strong> [ extensible annotatable common_metadata]</li>
+<li><strong>UniqueKey</strong> [ <a href="../Extensible/">Extensible</a> <a href="../Annotatable/">Annotatable</a> <a href="../CommonMetadata/">CommonMetadata</a>]</li>
 </ul>
 <h2 id="slots">Slots</h2>
 <table>
@@ -357,153 +357,183 @@
 <th>Name</th>
 <th>Cardinality and Range</th>
 <th>Description</th>
+<th>Inheritance</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="../unique_key_name/">unique_key_name</a></td>
-<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>1..1 <br/> NONE</td>
 <td>name of the unique key</td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../unique_key_slots/">unique_key_slots</a></td>
 <td>1..* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
 <td>list of slot names that form a key</td>
-</tr>
-<tr>
-<td><a href="../extensions/">extensions</a></td>
-<td>0..* <br/> <a href="../Extension/">Extension</a></td>
-<td>a tag/text tuple attached to an arbitrary element</td>
-</tr>
-<tr>
-<td><a href="../annotations/">annotations</a></td>
-<td>0..* <br/> <a href="../Annotation/">Annotation</a></td>
-<td>a collection of tag/text tuples with the semantics of OWL Annotation</td>
-</tr>
-<tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
-<td>a description of the element's purpose and use</td>
-</tr>
-<tr>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>0..* <br/> <a href="../AltDescription/">AltDescription</a></td>
-<td>A sourced alternative description for an element</td>
-</tr>
-<tr>
-<td><a href="../title/">title</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the official title of the element</td>
-</tr>
-<tr>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Description of why and when this element will no longer be used</td>
-</tr>
-<tr>
-<td><a href="../todos/">todos</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
-<td>Outstanding issue that needs resolution</td>
-</tr>
-<tr>
-<td><a href="../notes/">notes</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
-<td>editorial notes about an element intended for internal consumption</td>
-</tr>
-<tr>
-<td><a href="../comments/">comments</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
-<td>notes and comments about an element intended for external consumption</td>
-</tr>
-<tr>
-<td><a href="../examples/">examples</a></td>
-<td>0..* <br/> <a href="../Example/">Example</a></td>
-<td>example usages of an element</td>
-</tr>
-<tr>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>0..* <br/> <a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td>used to indicate membership of a term in a defined subset of terms used for a...</td>
-</tr>
-<tr>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>0..1 <br/> <a href="../Uri/">Uri</a></td>
-<td>id of the schema that defined the element</td>
-</tr>
-<tr>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the imports entry that this element was derived from</td>
-</tr>
-<tr>
-<td><a href="../source/">source</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A related resource from which the element is derived</td>
-</tr>
-<tr>
-<td><a href="../in_language/">in_language</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../see_also/">see_also</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>a reference</td>
-</tr>
-<tr>
-<td><a href="../deprecated_element_has_exact_replacement/">deprecated_element_has_exact_replacement</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>When an element is deprecated, it can be automatically replaced by this uri o...</td>
-</tr>
-<tr>
-<td><a href="../deprecated_element_has_possible_replacement/">deprecated_element_has_possible_replacement</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>When an element is deprecated, it can be potentially replaced by this uri or ...</td>
-</tr>
-<tr>
-<td><a href="../aliases/">aliases</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
-<td>Alaternate names for the element</td>
-</tr>
-<tr>
-<td><a href="../structured_aliases/">structured_aliases</a></td>
-<td>0..* <br/> <a href="../StructuredAlias/">StructuredAlias</a></td>
-<td>A list of structured_alias objects</td>
-</tr>
-<tr>
-<td><a href="../mappings/">mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have compa...</td>
-</tr>
-<tr>
-<td><a href="../exact_mappings/">exact_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have ident...</td>
-</tr>
-<tr>
-<td><a href="../close_mappings/">close_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have close...</td>
-</tr>
-<tr>
-<td><a href="../related_mappings/">related_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have relat...</td>
-</tr>
-<tr>
-<td><a href="../narrow_mappings/">narrow_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have narro...</td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../broad_mappings/">broad_mappings</a></td>
 <td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have broad...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../in_language/">in_language</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../deprecated_element_has_possible_replacement/">deprecated_element_has_possible_replacement</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>When an element is deprecated, it can be potentially replaced by this uri or ...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../alt_descriptions/">alt_descriptions</a></td>
+<td>0..* <br/> <a href="../AltDescription/">AltDescription</a></td>
+<td>A sourced alternative description for an element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../mappings/">mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have compa...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../from_schema/">from_schema</a></td>
+<td>0..1 <br/> <a href="../Uri/">Uri</a></td>
+<td>id of the schema that defined the element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <em>recommended</em> <br/> NONE</td>
+<td>a description of the element's purpose and use</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../extensions/">extensions</a></td>
+<td>0..* <br/> <a href="../Extension/">Extension</a></td>
+<td>a tag/text tuple attached to an arbitrary element</td>
+<td><a href="../Extensible/">Extensible</a></td>
+</tr>
+<tr>
+<td><a href="../deprecated_element_has_exact_replacement/">deprecated_element_has_exact_replacement</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>When an element is deprecated, it can be automatically replaced by this uri o...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../source/">source</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A related resource from which the element is derived</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../title/">title</a></td>
+<td>0..1 <br/> NONE</td>
+<td>the official title of the element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../narrow_mappings/">narrow_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have narro...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../see_also/">see_also</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>a reference</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../notes/">notes</a></td>
+<td>0..* <br/> NONE</td>
+<td>editorial notes about an element intended for internal consumption</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../comments/">comments</a></td>
+<td>0..* <br/> NONE</td>
+<td>notes and comments about an element intended for external consumption</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../todos/">todos</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>Outstanding issue that needs resolution</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../in_subset/">in_subset</a></td>
+<td>0..* <br/> <a href="../SubsetDefinition/">SubsetDefinition</a></td>
+<td>used to indicate membership of a term in a defined subset of terms used for a...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../aliases/">aliases</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>Alaternate names for the element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../related_mappings/">related_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have relat...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../examples/">examples</a></td>
+<td>0..* <br/> <a href="../Example/">Example</a></td>
+<td>example usages of an element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../annotations/">annotations</a></td>
+<td>0..* <br/> <a href="../Annotation/">Annotation</a></td>
+<td>a collection of tag/text tuples with the semantics of OWL Annotation</td>
+<td><a href="../Annotatable/">Annotatable</a></td>
+</tr>
+<tr>
+<td><a href="../deprecated/">deprecated</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Description of why and when this element will no longer be used</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../close_mappings/">close_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have close...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../structured_aliases/">structured_aliases</a></td>
+<td>0..* <br/> <a href="../StructuredAlias/">StructuredAlias</a></td>
+<td>A list of structured_alias objects</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../exact_mappings/">exact_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have ident...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../rank/">rank</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>the relative order in which the element occurs, lower values are given preced...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../imported_from/">imported_from</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the imports entry that this element was derived from</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 </tbody>
 </table>
@@ -522,19 +552,19 @@
 <td><a href="../ClassDefinition/">ClassDefinition</a></td>
 <td><a href="../unique_keys/">unique_keys</a></td>
 <td>range</td>
-<td>unique_key</td>
+<td><a href="./">UniqueKey</a></td>
 </tr>
 <tr>
 <td><a href="./">UniqueKey</a></td>
 <td><a href="../unique_key_name/">unique_key_name</a></td>
 <td>domain</td>
-<td>unique_key</td>
+<td><a href="./">UniqueKey</a></td>
 </tr>
 <tr>
 <td><a href="./">UniqueKey</a></td>
 <td><a href="../unique_key_slots/">unique_key_slots</a></td>
 <td>domain</td>
-<td>unique_key</td>
+<td><a href="./">UniqueKey</a></td>
 </tr>
 </tbody>
 </table>
@@ -554,15 +584,15 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>['linkml:UniqueKey']</td>
+<td>linkml:UniqueKey</td>
 </tr>
 <tr>
 <td>native</td>
-<td>['linkml:UniqueKey']</td>
+<td>linkml:UniqueKey</td>
 </tr>
 </tbody>
 </table>
-<h2 id="linkml-specification">LinkML Specification</h2>
+<h2 id="linkml-source">LinkML Source</h2>
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
@@ -1068,6 +1098,7 @@ attributes:
     - display order
     exact_mappings:
     - qudt:order
+    - qb:order
     rank: 51
     slot_uri: sh:order
     alias: rank
@@ -1101,7 +1132,7 @@ attributes:
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+<script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
 <script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

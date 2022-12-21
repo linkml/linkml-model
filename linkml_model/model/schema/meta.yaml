@@ -474,7 +474,7 @@ slots:
     domain: definition
     range: boolean
     description: >-
-      Indicates the class or slot is not intended to inherited from without being an is_a parent. mixins should not be inherited from using is_a, except by other mixins.
+      Indicates the class or slot is intended to be inherited from without being an is_a parent. mixins should not be inherited from using is_a, except by other mixins.
     see_also:
       - https://en.wikipedia.org/wiki/Mixin
     in_subset:
@@ -1442,30 +1442,15 @@ slots:
   has_member:
     is_a: list_value_specification_constant
     range: anonymous_slot_expression
-    #multivalued: true
-    inlined: true
-    description: the values of the slot is multivalued with at least one member satisfying the condition
+    description: the value of the slot is multivalued with at least one member satisfying the condition
     status: testing
     in_subset:
       - SpecificationSubset
 
   all_members:
     is_a: list_value_specification_constant
-    range: slot_definition
-    multivalued: true
-    inlined: true
-    description: |-
-      the value of the multiavlued slot is a list where all elements conform to the specified values.
-      this defines a dynamic class with named slots according to matching constraints
-
-      E.g to state that all members of a list are between 1 and 10
-      ```
-      all_members:
-        x:
-          range: integer
-          minimum_value: 10
-          maximum_value: 10
-      ```
+    range: anonymous_slot_expression
+    description: the value of the slot is multivalued with all members satisfying the condition
     status: testing
     in_subset:
       - SpecificationSubset
@@ -1751,7 +1736,7 @@ slots:
 
   locally_reflexive:
     is_a: relational_logical_characteristic
-    description: If s is locally_reflexive, then i.s=i for all instances i where s if a class slot for the type of i
+    description: If s is locally_reflexive, then i.s=i for all instances i where s is a class slot for the type of i
     in_subset:
       - SpecificationSubset
 
@@ -2613,7 +2598,7 @@ classes:
       disjoint_with:
         range: slot_definition
       union_of:
-        range: type_definition
+        range: slot_definition
     in_subset:
       - SpecificationSubset
       - MinimalSubset

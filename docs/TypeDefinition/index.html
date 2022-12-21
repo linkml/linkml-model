@@ -6,14 +6,14 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.3.9" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
 <title>Class: TypeDefinition - LinkML Model</title>
-<link href="../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-<script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="amber" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
@@ -74,7 +74,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </label>
 <nav aria-label="Search" class="md-search__options">
-<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
 </button>
 </nav>
@@ -207,8 +207,8 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../SpecificationProfile.md">
-        SpecificationProfile
+<a class="md-nav__link" href="../SpecificationSubset/">
+        SpecificationSubset
       </a>
 </li>
 <li class="md-nav__item">
@@ -281,10 +281,10 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#linkml-specification">
-    LinkML Specification
+<a class="md-nav__link" href="#linkml-source">
+    LinkML Source
   </a>
-<nav aria-label="LinkML Specification" class="md-nav">
+<nav aria-label="LinkML Source" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#direct">
@@ -310,6 +310,7 @@
 <p><em>an element that whose instances are atomic scalar values that can be mapped to primitive types</em></p>
 <p>URI: <a href="https://w3id.org/linkml/TypeDefinition">linkml:TypeDefinition</a></p>
 <div class="mermaid"> classDiagram
+    class TypeDefinition
       TypeExpression &lt;|-- TypeDefinition
       Element &lt;|-- TypeDefinition
 
@@ -364,12 +365,11 @@
       TypeDefinition : union_of
       TypeDefinition : unit
 
-
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Element/">Element</a> [ extensible annotatable common_metadata]<ul>
-<li><strong>TypeDefinition</strong> [ type_expression]</li>
+<li><a href="../Element/">Element</a> [ <a href="../Extensible/">Extensible</a> <a href="../Annotatable/">Annotatable</a> <a href="../CommonMetadata/">CommonMetadata</a>]<ul>
+<li><strong>TypeDefinition</strong> [ <a href="../TypeExpression/">TypeExpression</a>]</li>
 </ul>
 </li>
 </ul>
@@ -380,6 +380,7 @@
 <th>Name</th>
 <th>Cardinality and Range</th>
 <th>Description</th>
+<th>Inheritance</th>
 </tr>
 </thead>
 <tbody>
@@ -387,251 +388,301 @@
 <td><a href="../typeof/">typeof</a></td>
 <td>0..1 <br/> <a href="./">TypeDefinition</a></td>
 <td>Names a parent type</td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../base/">base</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> NONE</td>
 <td>python base type that implements this type definition</td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../type_uri/">type_uri</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>The uri that defines the possible values for the type definition</td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../repr/">repr</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>the name of the python object that implements this type definition</td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../union_of/">union_of</a></td>
-<td>0..* <br/> <a href="./">TypeDefinition</a></td>
+<td>0..* <br/> <a href="../Element/">Element</a></td>
 <td>indicates that the domain element consists exactly of the members of the elem...</td>
-</tr>
-<tr>
-<td><a href="../pattern/">pattern</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the string value of the slot must conform to this regular expression expresse...</td>
-</tr>
-<tr>
-<td><a href="../structured_pattern/">structured_pattern</a></td>
-<td>0..1 <br/> <a href="../PatternExpression/">PatternExpression</a></td>
-<td>the string value of the slot must conform to the regular expression in the pa...</td>
-</tr>
-<tr>
-<td><a href="../unit/">unit</a></td>
-<td>0..1 <br/> <a href="../UnitOfMeasure/">UnitOfMeasure</a></td>
-<td>an encoding of a unit</td>
-</tr>
-<tr>
-<td><a href="../implicit_prefix/">implicit_prefix</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Causes the slot value to be interpreted as a uriorcurie after prefixing with ...</td>
-</tr>
-<tr>
-<td><a href="../equals_string/">equals_string</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the slot must have range string and the value of the slot must equal the spec...</td>
-</tr>
-<tr>
-<td><a href="../equals_string_in/">equals_string_in</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
-<td>the slot must have range string and the value of the slot must equal one of t...</td>
-</tr>
-<tr>
-<td><a href="../equals_number/">equals_number</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the slot must have range of a number and the value of the slot must equal the...</td>
-</tr>
-<tr>
-<td><a href="../minimum_value/">minimum_value</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>for slots with ranges of type number, the value must be equal to or higher th...</td>
-</tr>
-<tr>
-<td><a href="../maximum_value/">maximum_value</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>for slots with ranges of type number, the value must be equal to or lowe than...</td>
-</tr>
-<tr>
-<td><a href="../none_of/">none_of</a></td>
-<td>0..* <br/> <a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
-<td>holds if none of the expressions hold</td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../exactly_one_of/">exactly_one_of</a></td>
-<td>0..* <br/> <a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
+<td>0..1 <br/> <a href="../Expression/">Expression</a></td>
 <td>holds if only one of the expressions hold</td>
-</tr>
-<tr>
-<td><a href="../any_of/">any_of</a></td>
-<td>0..* <br/> <a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
-<td>holds if at least one of the expressions hold</td>
-</tr>
-<tr>
-<td><a href="../all_of/">all_of</a></td>
-<td>0..* <br/> <a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
-<td>holds if all of the expressions hold</td>
-</tr>
-<tr>
-<td><a href="../name/">name</a></td>
-<td>1..1 <br/> <a href="../String/">String</a></td>
-<td>the unique name of the element within the context of the schema</td>
-</tr>
-<tr>
-<td><a href="../id_prefixes/">id_prefixes</a></td>
-<td>0..* <br/> <a href="../Ncname/">Ncname</a></td>
-<td>the identifier of this class or slot must begin with the URIs referenced by t...</td>
-</tr>
-<tr>
-<td><a href="../definition_uri/">definition_uri</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>the "native" URI of the element</td>
-</tr>
-<tr>
-<td><a href="../local_names/">local_names</a></td>
-<td>0..* <br/> <a href="../LocalName/">LocalName</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../conforms_to/">conforms_to</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>An established standard to which the element conforms</td>
-</tr>
-<tr>
-<td><a href="../extensions/">extensions</a></td>
-<td>0..* <br/> <a href="../Extension/">Extension</a></td>
-<td>a tag/text tuple attached to an arbitrary element</td>
-</tr>
-<tr>
-<td><a href="../annotations/">annotations</a></td>
-<td>0..* <br/> <a href="../Annotation/">Annotation</a></td>
-<td>a collection of tag/text tuples with the semantics of OWL Annotation</td>
-</tr>
-<tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
-<td>a description of the element's purpose and use</td>
-</tr>
-<tr>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>0..* <br/> <a href="../AltDescription/">AltDescription</a></td>
-<td>A sourced alternative description for an element</td>
-</tr>
-<tr>
-<td><a href="../title/">title</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the official title of the element</td>
-</tr>
-<tr>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Description of why and when this element will no longer be used</td>
-</tr>
-<tr>
-<td><a href="../todos/">todos</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
-<td>Outstanding issue that needs resolution</td>
-</tr>
-<tr>
-<td><a href="../notes/">notes</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
-<td>editorial notes about an element intended for internal consumption</td>
-</tr>
-<tr>
-<td><a href="../comments/">comments</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
-<td>notes and comments about an element intended for external consumption</td>
-</tr>
-<tr>
-<td><a href="../examples/">examples</a></td>
-<td>0..* <br/> <a href="../Example/">Example</a></td>
-<td>example usages of an element</td>
-</tr>
-<tr>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>0..* <br/> <a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td>used to indicate membership of a term in a defined subset of terms used for a...</td>
-</tr>
-<tr>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>0..1 <br/> <a href="../Uri/">Uri</a></td>
-<td>id of the schema that defined the element</td>
-</tr>
-<tr>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the imports entry that this element was derived from</td>
-</tr>
-<tr>
-<td><a href="../source/">source</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A related resource from which the element is derived</td>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
 </tr>
 <tr>
 <td><a href="../in_language/">in_language</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../alt_descriptions/">alt_descriptions</a></td>
+<td>0..* <br/> <a href="../AltDescription/">AltDescription</a></td>
+<td>A sourced alternative description for an element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../equals_string_in/">equals_string_in</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>the slot must have range string and the value of the slot must equal one of t...</td>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
+</tr>
+<tr>
+<td><a href="../source/">source</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A related resource from which the element is derived</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../title/">title</a></td>
+<td>0..1 <br/> NONE</td>
+<td>the official title of the element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../definition_uri/">definition_uri</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the "native" URI of the element</td>
+<td><a href="../Element/">Element</a></td>
 </tr>
 <tr>
 <td><a href="../see_also/">see_also</a></td>
 <td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>a reference</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
-<td><a href="../deprecated_element_has_exact_replacement/">deprecated_element_has_exact_replacement</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>When an element is deprecated, it can be automatically replaced by this uri o...</td>
+<td><a href="../pattern/">pattern</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the string value of the slot must conform to this regular expression expresse...</td>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
 </tr>
 <tr>
-<td><a href="../deprecated_element_has_possible_replacement/">deprecated_element_has_possible_replacement</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>When an element is deprecated, it can be potentially replaced by this uri or ...</td>
+<td><a href="../comments/">comments</a></td>
+<td>0..* <br/> NONE</td>
+<td>notes and comments about an element intended for external consumption</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
-<td><a href="../aliases/">aliases</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
-<td>Alaternate names for the element</td>
-</tr>
-<tr>
-<td><a href="../structured_aliases/">structured_aliases</a></td>
-<td>0..* <br/> <a href="../StructuredAlias/">StructuredAlias</a></td>
-<td>A list of structured_alias objects</td>
-</tr>
-<tr>
-<td><a href="../mappings/">mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have compa...</td>
-</tr>
-<tr>
-<td><a href="../exact_mappings/">exact_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have ident...</td>
-</tr>
-<tr>
-<td><a href="../close_mappings/">close_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have close...</td>
+<td><a href="../in_subset/">in_subset</a></td>
+<td>0..* <br/> <a href="../SubsetDefinition/">SubsetDefinition</a></td>
+<td>used to indicate membership of a term in a defined subset of terms used for a...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../related_mappings/">related_mappings</a></td>
 <td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have relat...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
-<td><a href="../narrow_mappings/">narrow_mappings</a></td>
+<td><a href="../annotations/">annotations</a></td>
+<td>0..* <br/> <a href="../Annotation/">Annotation</a></td>
+<td>a collection of tag/text tuples with the semantics of OWL Annotation</td>
+<td><a href="../Annotatable/">Annotatable</a></td>
+</tr>
+<tr>
+<td><a href="../deprecated/">deprecated</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Description of why and when this element will no longer be used</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../implicit_prefix/">implicit_prefix</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Causes the slot value to be interpreted as a uriorcurie after prefixing with ...</td>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
+</tr>
+<tr>
+<td><a href="../structured_aliases/">structured_aliases</a></td>
+<td>0..* <br/> <a href="../StructuredAlias/">StructuredAlias</a></td>
+<td>A list of structured_alias objects</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../exact_mappings/">exact_mappings</a></td>
 <td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have narro...</td>
+<td>A list of terms from different schemas or terminology systems that have ident...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../any_of/">any_of</a></td>
+<td>0..1 <br/> <a href="../Expression/">Expression</a></td>
+<td>holds if at least one of the expressions hold</td>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
 </tr>
 <tr>
 <td><a href="../broad_mappings/">broad_mappings</a></td>
 <td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have broad...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../id_prefixes/">id_prefixes</a></td>
+<td>0..* <br/> <a href="../Ncname/">Ncname</a></td>
+<td>the identifier of this class or slot must begin with the URIs referenced by t...</td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td><a href="../deprecated_element_has_possible_replacement/">deprecated_element_has_possible_replacement</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>When an element is deprecated, it can be potentially replaced by this uri or ...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../structured_pattern/">structured_pattern</a></td>
+<td>0..1 <br/> <a href="../PatternExpression/">PatternExpression</a></td>
+<td>the string value of the slot must conform to the regular expression in the pa...</td>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
+</tr>
+<tr>
+<td><a href="../minimum_value/">minimum_value</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>for slots with ranges of type number, the value must be equal to or higher th...</td>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
+</tr>
+<tr>
+<td><a href="../equals_string/">equals_string</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the slot must have range string and the value of the slot must equal the spec...</td>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <em>recommended</em> <br/> NONE</td>
+<td>a description of the element's purpose and use</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../from_schema/">from_schema</a></td>
+<td>0..1 <br/> <a href="../Uri/">Uri</a></td>
+<td>id of the schema that defined the element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../mappings/">mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have compa...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../extensions/">extensions</a></td>
+<td>0..* <br/> <a href="../Extension/">Extension</a></td>
+<td>a tag/text tuple attached to an arbitrary element</td>
+<td><a href="../Extensible/">Extensible</a></td>
+</tr>
+<tr>
+<td><a href="../deprecated_element_has_exact_replacement/">deprecated_element_has_exact_replacement</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>When an element is deprecated, it can be automatically replaced by this uri o...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../all_of/">all_of</a></td>
+<td>0..1 <br/> <a href="../Expression/">Expression</a></td>
+<td>holds if all of the expressions hold</td>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
+</tr>
+<tr>
+<td><a href="../narrow_mappings/">narrow_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have narro...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../todos/">todos</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>Outstanding issue that needs resolution</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../notes/">notes</a></td>
+<td>0..* <br/> NONE</td>
+<td>editorial notes about an element intended for internal consumption</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../aliases/">aliases</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>Alaternate names for the element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../examples/">examples</a></td>
+<td>0..* <br/> <a href="../Example/">Example</a></td>
+<td>example usages of an element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../local_names/">local_names</a></td>
+<td>0..* <br/> <a href="../LocalName/">LocalName</a></td>
+<td></td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td><a href="../close_mappings/">close_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have close...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../conforms_to/">conforms_to</a></td>
+<td>0..1 <br/> NONE</td>
+<td>An established standard to which the element conforms</td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td><a href="../equals_number/">equals_number</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the slot must have range of a number and the value of the slot must equal the...</td>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
+</tr>
+<tr>
+<td><a href="../none_of/">none_of</a></td>
+<td>0..1 <br/> <a href="../Expression/">Expression</a></td>
+<td>holds if none of the expressions hold</td>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
+</tr>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>1..1 <br/> NONE</td>
+<td>the unique name of the element within the context of the schema</td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td><a href="../unit/">unit</a></td>
+<td>0..1 <br/> <a href="../UnitOfMeasure/">UnitOfMeasure</a></td>
+<td>an encoding of a unit</td>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
+</tr>
+<tr>
+<td><a href="../maximum_value/">maximum_value</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>for slots with ranges of type number, the value must be equal to or lowe than...</td>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
 </tr>
 <tr>
 <td><a href="../rank/">rank</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>the relative order in which the element occurs, lower values are given preced...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../imported_from/">imported_from</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the imports entry that this element was derived from</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 </tbody>
 </table>
@@ -650,55 +701,49 @@
 <td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
 <td><a href="../default_range/">default_range</a></td>
 <td>range</td>
-<td>type_definition</td>
+<td><a href="./">TypeDefinition</a></td>
 </tr>
 <tr>
 <td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
 <td><a href="../types/">types</a></td>
 <td>range</td>
-<td>type_definition</td>
+<td><a href="./">TypeDefinition</a></td>
 </tr>
 <tr>
 <td><a href="./">TypeDefinition</a></td>
 <td><a href="../typeof/">typeof</a></td>
 <td>domain</td>
-<td>type_definition</td>
+<td><a href="./">TypeDefinition</a></td>
 </tr>
 <tr>
 <td><a href="./">TypeDefinition</a></td>
 <td><a href="../typeof/">typeof</a></td>
 <td>range</td>
-<td>type_definition</td>
+<td><a href="./">TypeDefinition</a></td>
 </tr>
 <tr>
 <td><a href="./">TypeDefinition</a></td>
 <td><a href="../base/">base</a></td>
 <td>domain</td>
-<td>type_definition</td>
+<td><a href="./">TypeDefinition</a></td>
 </tr>
 <tr>
 <td><a href="./">TypeDefinition</a></td>
 <td><a href="../type_uri/">type_uri</a></td>
 <td>domain</td>
-<td>type_definition</td>
+<td><a href="./">TypeDefinition</a></td>
 </tr>
 <tr>
 <td><a href="./">TypeDefinition</a></td>
 <td><a href="../repr/">repr</a></td>
 <td>domain</td>
-<td>type_definition</td>
+<td><a href="./">TypeDefinition</a></td>
 </tr>
 <tr>
 <td><a href="./">TypeDefinition</a></td>
 <td><a href="../union_of/">union_of</a></td>
 <td>range</td>
-<td>type_definition</td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../union_of/">union_of</a></td>
-<td>range</td>
-<td>type_definition</td>
+<td><a href="./">TypeDefinition</a></td>
 </tr>
 </tbody>
 </table>
@@ -718,15 +763,15 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>['linkml:TypeDefinition']</td>
+<td>linkml:TypeDefinition</td>
 </tr>
 <tr>
 <td>native</td>
-<td>['linkml:TypeDefinition']</td>
+<td>linkml:TypeDefinition</td>
 </tr>
 </tbody>
 </table>
-<h2 id="linkml-specification">LinkML Specification</h2>
+<h2 id="linkml-source">LinkML Source</h2>
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
@@ -1629,6 +1674,7 @@ attributes:
     - display order
     exact_mappings:
     - qudt:order
+    - qb:order
     rank: 51
     slot_uri: sh:order
     alias: rank
@@ -1662,7 +1708,7 @@ attributes:
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+<script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
 <script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

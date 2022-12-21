@@ -47,7 +47,7 @@ deploy: gendoc mkd-gh-deploy
 # generates all project files
 # and updates the artifacts in linkml-model
 gen-project: $(PYMODEL)
-	$(RUN) gen-project -d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
+	$(RUN) gen-project -d $(DEST) --config-file gen_project_config.yaml $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 	cp -r $(DEST)/* $(PYMODEL)
 	rm -r $(PYMODEL)/docs
 

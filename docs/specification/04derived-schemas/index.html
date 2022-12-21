@@ -6,14 +6,14 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.3.9" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
 <title>Derived Schemas - LinkML Model</title>
-<link href="../../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
-<link href="../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-<script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="amber" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
@@ -74,7 +74,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </label>
 <nav aria-label="Search" class="md-search__options">
-<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
 </button>
 </nav>
@@ -176,13 +176,13 @@
 <nav aria-label="Functions" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#function-getidentifierslot">
-    Function: GetIdentifierSlot
+<a class="md-nav__link" href="#list-function">
+    List Function
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#function-closure">
-    Function: Closure
+<a class="md-nav__link" href="#closure-function">
+    Closure Function
   </a>
 </li>
 <li class="md-nav__item">
@@ -205,8 +205,8 @@
 <nav aria-label="Derivation Rules" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#rule-model-imports">
-    Rule: Model Imports
+<a class="md-nav__link" href="#rule-merge-imports-closure">
+    Rule: Merge Imports Closure
   </a>
 </li>
 <li class="md-nav__item">
@@ -234,15 +234,11 @@
     Rule: Derived Class and Slot URIs
   </a>
 </li>
-</ul>
-</nav>
-</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#rule-generation-of-patterns-from-structured-patterns">
     Rule: Generation of patterns from structured patterns
   </a>
-<nav aria-label="Rule: Generation of patterns from structured patterns" class="md-nav">
-<ul class="md-nav__list">
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#rule-generation-of-classdefinitionreferences">
     Rule: Generation of ClassDefinitionReferences
@@ -351,8 +347,8 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../SpecificationProfile.md">
-        SpecificationProfile
+<a class="md-nav__link" href="../../SpecificationSubset/">
+        SpecificationSubset
       </a>
 </li>
 <li class="md-nav__item">
@@ -402,13 +398,13 @@
 <nav aria-label="Functions" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#function-getidentifierslot">
-    Function: GetIdentifierSlot
+<a class="md-nav__link" href="#list-function">
+    List Function
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#function-closure">
-    Function: Closure
+<a class="md-nav__link" href="#closure-function">
+    Closure Function
   </a>
 </li>
 <li class="md-nav__item">
@@ -431,8 +427,8 @@
 <nav aria-label="Derivation Rules" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#rule-model-imports">
-    Rule: Model Imports
+<a class="md-nav__link" href="#rule-merge-imports-closure">
+    Rule: Merge Imports Closure
   </a>
 </li>
 <li class="md-nav__item">
@@ -460,15 +456,11 @@
     Rule: Derived Class and Slot URIs
   </a>
 </li>
-</ul>
-</nav>
-</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#rule-generation-of-patterns-from-structured-patterns">
     Rule: Generation of patterns from structured patterns
   </a>
-<nav aria-label="Rule: Generation of patterns from structured patterns" class="md-nav">
-<ul class="md-nav__list">
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#rule-generation-of-classdefinitionreferences">
     Rule: Generation of ClassDefinitionReferences
@@ -529,45 +521,52 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="derived-schemas">Derived Schemas</h1>
-<p>This section describes rules that can be applied to a schema to obtain a <em>derived</em> (aka <em>induced</em>) schema.</p>
-<p>The derived schema can be materialized, or it may be present as a <em>view</em> onto a schema. A derived view may also be referred to
-as an <em>inferred</em> or <em>induced</em> view.</p>
+<p>This section describes rules that can be applied to a schema to obtain a <em>derived</em> schema.</p>
+<p>The derived schema can be <em>materialized</em>, or it may be present as a <em>view</em> onto a schema.</p>
+<p>Derived schemas are also known as <em>induced</em> schemas or <em>inferred</em> schemas.</p>
 <div class="mermaid">flowchart TD
-    M[Asserted Schema] --&gt; Derivation{Derivation Procedure}
-    Derivation --&gt;|derives| Mstar[Derived Schema]
-    R[Rules] --&gt; Derivation
+    M[Asserted Schema] --&gt;|input| Derivation{Derivation Procedure}
+    Derivation --&gt;|ouput| Mstar[Derived Schema]
+    R[Rules] --&gt;|input| Derivation
 </div>
-<p>Derivations happen via <em>rules</em> that are specified below, using a set of convenience functions</p>
+<p>Derivations happen via <em>derivation rules</em>, using a collection of defined <em>functions</em>.</p>
 <h2 id="conventions">Conventions</h2>
-<p>We use <code>m</code> to denote the input or asserted schema (model), and <em>m<sup>D</sup></em> to denote the derived schema</p>
+<p>We use <em>m</em> to denote the input or asserted schema (model), and <em>m<sup>D</sup></em> to denote the derived schema</p>
 <h2 id="functions">Functions</h2>
-<h3 id="function-getidentifierslot">Function: GetIdentifierSlot</h3>
-<p>The function <strong>GetIdentifierSlot</strong>(<code>c</code>) takes a ClassDefinition or ClassDefinitionName as input and returns:</p>
+<h3 id="list-function">List Function</h3>
+<p>The function <strong>L</strong>(<em>v</em>) returns a list version of the input:</p>
 <ul>
-<li>the name of a derived attribute <code>s</code> in <code>c</code> where <code>s.identifier</code> is True in <em>m<sup>D</sup></em></li>
-<li><strong>None</strong> if there is no such slot</li>
-<li>An error if there are multiple such slots</li>
+<li><em>v</em> when <em>v</em> is a collection</li>
+<li>[  ] when <em>v</em> is None</li>
+<li>[ <em>v</em> ] otherwise</li>
 </ul>
-<h3 id="function-closure">Function: Closure</h3>
-<p>The function <strong>Closure</strong>(<code>x</code>, <code>s</code>) takes as input an element <code>x</code> and a metaslot <code>s</code> and returns the mathematical closure
-of <code>s</code> where <code>s</code> is treated as a relation between instances <code>i</code> and <code>j</code> that holds when  either:</p>
-<ul>
-<li>s is not multivalued: <code>i.s = j</code></li>
-<li>s is multivalued: <code>j member-of i.s</code></li>
-</ul>
-<p>The <strong>ReflexiveClosure</strong> includes <code>x</code></p>
+<h3 id="closure-function">Closure Function</h3>
+<p>The function <strong>C</strong>(<em>e</em>, <em>f</em>) takes as input an element <em>e</em> and a function <em>f</em> and returns
+the mathematical closure of <em>f</em> </p>
+<p>The <em>ReflexiveClosure</em> <strong>C<sup>*</sup></strong> includes <em>e</em></p>
 <h3 id="function-parents">Function: Parents</h3>
 <p><strong>Parents</strong> itself is the union of <code>is_a</code> and <code>mixins</code>.</p>
 <blockquote>
-<p><strong>Parents</strong>(x) = <code>{e : e = x.is_a \/ e in x.mixins }</code></p>
+<p><strong>P</strong>(<em>e</em>) = <strong>L</strong>(<em>e</em>.<code>is_a</code>) ∪ <strong>L</strong>(<em>e</em>.<code>mixins</code>) }</p>
 </blockquote>
 <h3 id="function-ancestors">Function: Ancestors</h3>
-<p>The function <strong>Ancestors</strong>(<code>x</code>) returns the <strong>Closure</strong> of the <strong>Parents</strong> function applied to <code>x</code>.</p>
+<p>The ancestors function <strong>A</strong> returns the <strong>Closure</strong> of the <strong>Parents</strong> function.</p>
+<blockquote>
+<p><strong>A</strong>(<em>e</em>) = <strong>C</strong>(<em>e</em>, <strong>A</strong>)</p>
+</blockquote>
 <p>The function <strong>ReflexiveAncestors</strong> uses the <strong>ReflexiveClosure</strong>.</p>
 <h2 id="derivation-rules">Derivation Rules</h2>
-<h3 id="rule-model-imports">Rule: Model Imports</h3>
+<p>The following rules are applied to deduce a derived schema</p>
+<h3 id="rule-merge-imports-closure">Rule: Merge Imports Closure</h3>
 <p>Each model imports zero to many imports, indicated by the <strong>SchemaDefinition</strong>.<a href="https://w3id.org/linkml/imports">imports</a> metaslot.</p>
-<p><em>m<sup>D</sup></em> is set to be the union of all schema elements from the <strong>ReflexiveClosure</strong> of <code>m.imports</code></p>
+<p><em>m<sup>D</sup></em> is set to include the union of all schema elements from the <strong>ReflexiveClosure</strong> of <code>m.imports</code>, such
+that the following holds:</p>
+<blockquote>
+<p><em>m<sup>D</sup></em>.<em>metaslot</em> = <em>v</em> iff <em>m'</em> ∈ <strong>R<sup>C</sup></strong>(<em>m</em>.<code>imports</code>) and <em>m'</em>.<em>metaslot</em> = <em>v</em>
+and <em>metaslot</em> ∈ {<code>classes</code>, <code>slots</code>, <code>types</code>, <code>enums</code>}</p>
+</blockquote>
+<pre><code>*m&lt;sup&gt;D&lt;/sup&gt;*
+</code></pre>
 <p>When copying an element <code>x</code> from an import into <em>m<sup>D</sup></em>, the name <code>x.name</code> must be unique - if the same name has been used in another model, the derivation procedure fails, and an error is thrown.</p>
 <p><strong>Note</strong>: If two or more models import the same target (e.g. <code>m1</code> imports <code>m2</code> and <code>m3</code> and <code>m2</code> imports <code>m3</code>), <code>m3</code> will be only be resolved once.</p>
 <p><strong>Note</strong>: Two models are considered to be "identical" if they both 
@@ -575,7 +574,7 @@ have the same <code>id</code>.  If <code>m2</code> and <code>m3</code> both have
 <p>Each imported module must be resolved - i.e the value of the import slot is mapped to a location on disk or on the web</p>
 <h3 id="rule-fromschema-elements">Rule: fromschema elements</h3>
 <p>Each element in the schema as assigned a metaslot <code>fromschema</code> value. This is the value of the <code>id</code> of the schema in which that element is defined.</p>
-<p>This is preserved over imports, such that if <code>m</code> imports <code>m2</code>, and <code>m2</code> defines a class <code>c</code>, then <em>m<sup>D</sup></em><code>[c].fromschema</code> = m2</p>
+<p>This is preserved over imports, such that if <em>m</em> imports <code>m2</code>, and <code>m2</code> defines a class <code>c</code>, then <em>m<sup>D</sup></em><code>[c].fromschema</code> = m2</p>
 <h3 id="rule-applicable-slot-names">Rule: Applicable Slot Names</h3>
 <p>The set of applicable slot names for a class <code>c</code> are determined by taking the union of:</p>
 <ul>
@@ -584,7 +583,7 @@ have the same <code>id</code>.  If <code>m2</code> and <code>m3</code> both have
 </ul>
 <p>For all <code>x</code> in <code>ReflexiveAncestors(c)</code></p>
 <h3 id="rule-derived-attributes">Rule: Derived Attributes</h3>
-<p>Derived attributes can be calculated for every <em>applicable</em> slot name for any class <code>c</code></p>
+<p>Derived attributes can be calculated for every <em>applicable</em> slot name <code>s</code> for any class <code>c</code></p>
 <p><code>c.attributes[s] = DerivedAttributes(c,s)</code></p>
 <p>This is the combination of <em>asserted</em> attributes for c, as well as asserted attributes for ancestors of c,
 as well as the SlotDefinition corresponding to that attribute, together with any overrides specified by <code>slot_usage</code> in <code>c</code>
@@ -600,9 +599,7 @@ and ancestors of <code>c</code></p>
 <li>inheriting from parents of <code>s</code></li>
 </ul>
 <p>The precedence rules for derived attributes are as follows:</p>
-<p>If a metaslot <code>s</code> is declared <code>multivalued</code> then when copying <code>s</code> from a parent to a child, the values are appended.</p>
-<p>If a metaslot <code>s</code> is declared <code>multivalued</code> </p>
-<p>if a slot is multi valued then copying will append, unless the element already exists.</p>
+<p>If a metaslot <code>s</code> is declared <code>multivalued</code> then when copying <code>s</code> from a parent to a child, the values are appended, unless the element already exists.</p>
 <p>if the slot is single valued, and intersection rules can be applied to the slot, then these are performed on all values</p>
 <p>if the slot is single valued, and intersection rules cannot be applied to the slot, then the following precedence rules are applied:</p>
 <ul>
@@ -645,11 +642,11 @@ and ancestors of <code>c</code></p>
 to the value of <code>default_range</code> for the schema in which the slot is defined.</p>
 <h3 id="rule-derived-class-and-slot-uris">Rule: Derived Class and Slot URIs</h3>
 <p>For each class or slot, if a class_uri or slot_uri is not specified, then this is derived by concatenating <code>m.default_prefix</code> with the CURIE separator <code>:</code> followed by the SafeUpperCamelCase encoding of the name of that class or slot definition</p>
-<h2 id="rule-generation-of-patterns-from-structured-patterns">Rule: Generation of patterns from structured patterns</h2>
+<h3 id="rule-generation-of-patterns-from-structured-patterns">Rule: Generation of patterns from structured patterns</h3>
 <p>For any slot <code>s</code>, if <code>s.structured_pattern = p</code> and <code>p</code> is not <strong>None</strong> then <code>s.pattern</code> is assigned a value based on the following
 procedure:</p>
 <p>If <code>p.interpolated</code> is True, then the value of <code>s.syntax</code> is <em>interpolated</em>, by replacing all occurrences of braced text <code>{VAR}</code>
-with the value of <code>VAR</code>. The value of <code>VAR</code> is obtained using <code>m.settings[VAR]</code>, where <code>m</code> is the schema in which <code>p</code> is introduced.</p>
+with the value of <code>VAR</code>. The value of <code>VAR</code> is obtained using <code>m.settings[VAR]</code>, where <em>m</em> is the schema in which <code>p</code> is introduced.</p>
 <p>If <code>p.interpolated</code> is not True, then the value of <code>s.syntax</code> is used directly.</p>
 <p>If <code>p.partial_match</code> is not True, then <code>s.pattern</code> has a '^' character inserted at the begining and a '$' character inserted as the end.</p>
 <h3 id="rule-generation-of-classdefinitionreferences">Rule: Generation of ClassDefinitionReferences</h3>
@@ -774,7 +771,7 @@ using the instance validation rules described in the next section</p>
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-<script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+<script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
 <script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

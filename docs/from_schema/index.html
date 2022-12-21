@@ -9,7 +9,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -17,13 +17,14 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.975780f9.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.2505c338.min.css">
         
       
       
+
     
     
     
@@ -36,10 +37,11 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
+    
     
     
   </head>
@@ -108,6 +110,7 @@
         
           
           
+          
           <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
@@ -115,6 +118,7 @@
             </label>
           
         
+          
           
           
           <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
@@ -142,7 +146,7 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -460,8 +464,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../SpecificationProfile.md" class="md-nav__link">
-        SpecificationProfile
+      <a href="../SpecificationSubset/" class="md-nav__link">
+        SpecificationSubset
       </a>
     </li>
   
@@ -550,6 +554,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#applicable-classes" class="md-nav__link">
+    Applicable Classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     Properties
   </a>
@@ -576,6 +587,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#linkml-source" class="md-nav__link">
+    LinkML Source
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -584,17 +602,105 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
+                  
 
 
 <h1 id="slot-from_schema">Slot: from_schema</h1>
 <p><em>id of the schema that defined the element</em></p>
-<p>URI: <a href="http://www.w3.org/2004/02/skos/core#inScheme">http://www.w3.org/2004/02/skos/core#inScheme</a></p>
+<p>URI: <a href="http://www.w3.org/2004/02/skos/core#inScheme">skos:inScheme</a></p>
 <!-- no inheritance hierarchy -->
 
+<h2 id="applicable-classes">Applicable Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+<td>Generic metadata shared across definitions</td>
+</tr>
+<tr>
+<td><a href="../Element/">Element</a></td>
+<td>a named element in the model</td>
+</tr>
+<tr>
+<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
+<td>a collection of subset, type, slot and class definitions</td>
+</tr>
+<tr>
+<td><a href="../TypeDefinition/">TypeDefinition</a></td>
+<td>an element that whose instances are atomic scalar values that can be mapped t...</td>
+</tr>
+<tr>
+<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
+<td>an element that can be used to group other metamodel elements</td>
+</tr>
+<tr>
+<td><a href="../Definition/">Definition</a></td>
+<td>abstract base class for core metaclasses</td>
+</tr>
+<tr>
+<td><a href="../EnumDefinition/">EnumDefinition</a></td>
+<td>an element whose instances must be drawn from a specified set of permissible ...</td>
+</tr>
+<tr>
+<td><a href="../StructuredAlias/">StructuredAlias</a></td>
+<td>object that contains meta data about a synonym or alias including where it ca...</td>
+</tr>
+<tr>
+<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="../PathExpression/">PathExpression</a></td>
+<td>An expression that describes an abstract path from an object to another throu...</td>
+</tr>
+<tr>
+<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="../SlotDefinition/">SlotDefinition</a></td>
+<td>an element that describes how instances are related to other instances</td>
+</tr>
+<tr>
+<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+<td>an element whose instances are complex objects that may have slot-value assig...</td>
+</tr>
+<tr>
+<td><a href="../ClassRule/">ClassRule</a></td>
+<td>A rule that applies to instances of a class</td>
+</tr>
+<tr>
+<td><a href="../PatternExpression/">PatternExpression</a></td>
+<td>a regular expression pattern used to evaluate conformance of a string</td>
+</tr>
+<tr>
+<td><a href="../ImportExpression/">ImportExpression</a></td>
+<td>an expression describing an import</td>
+</tr>
+<tr>
+<td><a href="../PermissibleValue/">PermissibleValue</a></td>
+<td>a permissible value, accompanied by intended text and an optional mapping to ...</td>
+</tr>
+<tr>
+<td><a href="../UniqueKey/">UniqueKey</a></td>
+<td>a collection of slots whose values uniquely identify an instance of a class</td>
+</tr>
+</tbody>
+</table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>Range: <a href="../Uri/">Uri</a></li>
@@ -604,11 +710,39 @@
 <ul>
 <li>from schema: https://w3id.org/linkml/meta</li>
 </ul>
+<h2 id="linkml-source">LinkML Source</h2>
+<details>
 
-              
-            </article>
-            
-          </div>
+<pre><code class="language-yaml">name: from_schema
+description: id of the schema that defined the element
+notes:
+- A stronger model would be range schema_definition, but this doesn't address the
+  import model
+in_subset:
+- SpecificationSubset
+from_schema: https://w3id.org/linkml/meta
+rank: 1000
+domain: element
+slot_uri: skos:inScheme
+readonly: supplied by the schema loader
+alias: from_schema
+domain_of:
+- common_metadata
+range: uri
+
+</code></pre>
+
+</details>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
         </div>
         
       </main>
@@ -635,11 +769,13 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
+    
     
   </body>
 </html>
