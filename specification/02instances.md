@@ -4,7 +4,7 @@
 
 This specification provides a grammar for a **functional syntax** for expressing LinkML instances. This syntax is not intended for data exchange, but instead for unambiguous describing data in LinkML.
 
-[Section 6](06mapping) specifies how the instance model is converted to JSON, YAML, and RDF.
+[Section 6](../06mapping) specifies how the instance model is converted to JSON, YAML, and RDF.
 
 ### Instances
 
@@ -28,7 +28,7 @@ classDiagram
 
 ### Definition Types and Names
 
-Definition names are used to unambiguously indicate definitions specified in a **Schema** (described in the [next section](03schemas)):
+Definition names are used to unambiguously indicate definitions specified in a **Schema** (described in the [next section](../03schemas)):
 
 > **ClassDefinitionName** := **ElementName**
 
