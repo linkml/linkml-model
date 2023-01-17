@@ -1,14 +1,19 @@
 # LinkML Instances
 
-## Functional Instance Syntax and Structure
+## Abstract Functional Instance Syntax and Structure
 
-This specification provides a grammar for a **functional syntax** for expressing LinkML instances. This syntax is not intended for data exchange, but instead for unambiguous describing data in LinkML.
+This specification provides a grammar for a **functional syntax** for expressing the structure of LinkML instances. A LinkML instance is a tree-like structure conforming to the syntax specified here.
 
-[Section 6](06mapping) specifies how the instance model is converted to JSON, YAML, and RDF.
+This syntax is not intended for data exchange, but instead for unambiguous describing data in LinkML in a way that is independent of any particular syntax.
+
+[Section 6](06mapping) specifies how the instance model is serialized as JSON, YAML, and RDF, and guidelines for mapping to object-oriented programming representations.
+
+This section uses BNF to define the structure of the LinkML instance abstract model.
+We also include UML-style diagrams for informative purposes.
 
 ### Instances
 
-An instance is either one of four *definition* types, or a collection, or the special token `None`. The four definition types are subdivided into instances of classes (aka objects), or atomic instances:
+An instance is a tree-like structure conforming to either one of four *definition* types, or a *collection*, or the special token `None`. The four definition types are subdivided into instances of classes (aka objects), or atomic instances:
 
 > **Instance** := **None** | **InstanceOfClass** | **AtomicInstance** | **CollectionInstance**
  
@@ -28,11 +33,9 @@ classDiagram
 
 ### Definition Types and Names
 
-Definition names are used to unambiguously indicate definitions specified in a **Schema** (described in the [next section](03schemas)):
+Definition names are used to unambiguously indicate *elements* specified in a **Schema** (described in [Part 3](03schemas)):
 
 > **ClassDefinitionName** := **ElementName**
-
-> **ClassDefinitionReferenceName** := **ElementName**
 
 > **TypeDefinitionName** := **ElementName**
 
@@ -42,21 +45,16 @@ Definition names are used to unambiguously indicate definitions specified in a *
 
 > **ElementName** := *a finite sequence of characters matching the PN_LOCAL production of [SPARQL](https://www.w3.org/TR/rdf-sparql-query/) and not matching any of the keyword terminals of the syntax*
 
-Note that the grammar needs a table mapping names to types in order to
-unambiguously parse a serialization in functional syntax
+Names MUST NOT be shared across definition types
 
-names must not be shared across definition types
-
-
-
-### Instances of Classes
+### Instances of Classes (Objects)
 
 An **InstanceOfClass** is a pair consisting of (1) a ClassDefinition *Name* that indicates the *instantiation type* of the instance, and (2) zero to many *Assignments**, where each
 assignment is a key-value pair of a **SlotName** and an **Instance** value.
 
 > **InstanceOfClass** := **ClassDefinitionName** '(' <**Assignment**>List ')'
 
-> **Assignment** := **SlotName** '=' **Instance**
+> **Assignment** := **SlotDefinitionName** '=' **Instance**
 
 ```mermaid
 classDiagram
@@ -74,7 +72,7 @@ classDiagram
     }
 ```
 
-No SlotName can appear twice in any set of Assignments (i.e. SlotName is a key)
+No SlotDefinitionName can appear twice in any set of Assignments (i.e. SlotDefinitionName is a *key*)
 
 An example instance might be written in functional syntax as:
 
@@ -85,17 +83,21 @@ Person(id=...,
        <other Assignments>)
 ```
 
-where this instantiates the class with name "Person".
+Here the **ClassDefinitionName** is `Person`, and the **SlotDefinitionName**s are `id`, `name`, `age`.
 
 ### Primitive (Atomic) Instances
 
-There are 3 types of primitive instances, each is a pair consisting of (1) a *Name* of the element instantiated (2) an atomic value
+There are 3 types of primitive (aka atomic aka scalar) instances, each is a pair consisting of (1) a *Name* of the element instantiated (2) an atomic value. Different syntaxes are used to unambiguously distinguish the different types of primitive instances.
 
-> **InstanceOfType** := **TypeDefinitionName** '(' **AtomicValue** ')'
+> **InstanceOfType** := **TypeDefinitionName** '^' **AtomicValue** 
 
-> **InstanceOfEnum** := **EnumDefinitionName** '(' **AtomicValue** ')'
+> **InstanceOfEnum** := **EnumDefinitionName** '[' **PermissibleValue** ']'
+> 
+> **PermissibleValue** := **AtomicValue**
 
-> **InstanceOfReference** := **ClassDefinitionReferenceName** '(' **AtomicValue** ')'
+> **InstanceOfReference** := **ClassDefinitionName** '&' **ObjectReference** 
+> 
+> **ObjectReference** := **AtomicValue** 
 
 ```mermaid
 classDiagram
@@ -120,14 +122,16 @@ classDiagram
     }
 ```
 
-
+Terminology note: Primitive instances are also known as "literals" or "scalars".
 
 ### Atomic Values
 
 An atomic value is either a string or number or boolean, where numbers can be floating points, decimals, or integers.
 
-> **AtomicValue** := **StringValue** | **NumberValue** | **BooleanValue**
+> **AtomicValue** := **QuotedString** | **NumberValue** | **BooleanValue**
 
+> **QuotedString** := '"' **StringValue** '"'
+>
 > **StringValue** := *a finite sequence of characters in which " (U+22) and \ (U+5C) occur only in pairs of the form \" (U+5C, U+22) and \\ (U+5C, U+5C), enclosed in a pair of " (U+22) characters*
 
 > **NumberValue** := **FloatingPointValue** | **DecimalValue** | **IntegerValue**
@@ -159,36 +163,49 @@ Examples of atomic values are:
 * `180.2` -- a DecimalValue
 * `5` -- an IntegerValue
 * `"Alex"` -- a StringValue
+* `True` -- a BooleanValue
+* `"2023-01-01"` -- a StringValue (which happens to be interpetable as a date)
 
 #### Atomic Instance Examples
 
-An InstanceOfType instance might look like:
+An **InstanceOfType** instance might look like:
 
 ```python
-Integer(23)
+Integer^23
 ```
 
-For this to be a valid InstanceOfType, "Integer" must be the name of a TypeDefinition in the schema
+In this example, the **TypeDefinitionName** is `Integer`, and the **AtomicValue** is the number `23`.
 
-Another example:
+Note that this is necessarily a syntactically valid Instance according to this part of the specification. Part 6 describes schema-level validation, and for this to be valid according to a schema, that schema must (a) provide a TypeDefinition with the name "Integer" (b) map this to an XSD number type (presumably, xsd:integer).
+
+Note that the following is *syntactically valid*: 
 
 ```python
-PhoneNumber("+1 800 555 0100")
+Integer^"ABC"
 ```
 
-For this to be a valid InstanceOfType, "PhoneNumber" must be the name of a TypeDefinition in the schema
+If `Integer` is a TypeDefinition that is mapped to the XSD type for integers, then this will be invalid according to the schema, but at the syntactic level the structure is valid.
 
-If the schema includes a ClassReference "PersonId" then the following is a valid InstanceOfReference
+
+Another example if a syntactically valid **InstanceOfType**:
 
 ```python
-PersonId("SSN:456")
+PhoneNumber^"+1 800 555 0100"
 ```
 
-This MAY be the same string used to identify an instance of a ClassDefinition `Person(id="SSN:456")`, but this is not required.
+For this to be a valid according to a schema InstanceOfType, "PhoneNumber" must be the name of a TypeDefinition in the schema, mapped to an XSD string type.
+
+An example of a syntactically valid **InstanceOfReference**:
+
+```python
+Person&"SSN:456"
+```
+
+This is syntactically valid, but for it to be valid according to a schema, the schema must include a ClassDefinition with the name `Person`, and that ClassDefinition must have an *identifier* (see Part 6).
 
 ### Collections
 
-A collection is zero or more instances, serialized as a comma-delimited list:
+A collection is zero or more instances, serialized as a comma-delimited list inside square brackets:
 
 > **CollectionInstance** := '[' <**Instance**>List ']'
 
@@ -201,10 +218,12 @@ CollectionInstance "*" --> "0..*" Instance
 
 Examples of collections:
 
-* `[String("A"), String("B"), Integer(5)]` -- a list of primitive instances
+* `[String^"A", String^"B", Integer^5]` -- a list of primitive instances
 * `[Person(name=..., ...), Person(name=..., ...)]` -- a list of class instances
-* `[Person(name=..., ...), Integer(5), None]` -- a heterogeneous collection
+* `[Person(name=..., ...), Integer^5, None]` -- a heterogeneous collection
 * `[]` -- an empty collection
+
+Note that collections can be serialized in different ways depending on the target syntax, for examples, lists vs dictionaries. See section [6](06mapping) for details of serializations.
 
 ### None (Null) instances
 
@@ -222,83 +241,91 @@ Person(address=None)
 Person()
 ```
 
-
-
 ### Combined Example
 
 The following is an example of an **InstanceOfClass** where the instantiated type is a class with name "Person":
 
 ```python
 Person(
-  id=String("SSN:123"),
-  name=String("Alex"),
-  aliases=[String("Alexandra")],
+  id=String^"SSN:123",
+  name=String^"Alex",
+  aliases=[String^"Alexandra"],
   address=None,
-  phone=PhoneNumber("+1 800 555 0100"),
+  phone=PhoneNumber^"+1 800 555 0100",
   height=
-    Measurement(value=Decimal(170.2)
-                unit=UnitCode("cm")),
+    Measurement(value=Decimal^170.2
+                unit=UnitCode["cm"]),
   relationships=[
     FamilialRelationship(
-      type=RelationshipType("SIBLING_OF"),
-      related_to=PersonId("SSN:456")
+      type=RelationshipType["SIBLING_OF"],
+      related_to=Person&"SSN:456"
     )
   ]
 )                
 ```
 
-Parsing this requires a schema that assigns element names to schema elements:
-
-|Element Name|Schema Type|
-|---|---|
-|Person|ClassDefinition|
-|Measurement|ClassDefinition|
-|FamilialRelationship|ClassDefinition|
-|UnitCode|EnumDefinition|
-|Person|ClassDefinition|
-
 ## Identity conditions
 
-For two instances `i` and `j` to be identical they must be of the same metatype.
+Two instances `i` and `j` are identical if one of the following conditions is met:
 
-Identity conditions for two primitive instances are satisfied if both **DefinitionName** and **AtomicValue** match
+| **Name**          | `i`                                   | `j`                                   | Additional Conditions |
+|-------------------|---------------------------------------|---------------------------------------|-----------------------|
+| `None`            | `None`                                | `None`                                |                       |
+| `TypeDefinition`  | `<TypeDefinitionName>^<AtomicValue>`  | `<TypeDefinitionName>^<AtomicValue>`  |                       |
+| `ObjectReference` | `<ClassDefinitionName>&<AtomicValue>` | `<ClassDefinitionName>&<AtomicValue>` |                       |
+| `EnumDefinition`  | `<EnumDefinitionName>[<AtomicValue>]` | `<EnumDefinitionName>[<AtomicValue>`  |                       |
+| `ClassDefinition` | `<ClassDefinition>(ai1, ..., aiN)`    | `<ClassDefinition>(aj1, ..., ajN)`    | See below             |
+| `Collection`      | `[i1, ..., iN]`                       | `[j1, ..., jN]`                       | `i1=j`, ..., `iN=jN`  |
 
-* `i=<DefinitionName_i>(<AtomicValue_i>)`
-* `j=<DefinitionName_j>(<AtomicValue_j>)`
-* `i=j iff DefinitionName_i = DefinitionName_j and AtomicValue_i=AtomicValue_j`
+### Identity conditions for ClassDefinition Instances
 
-**None** is identical to itself
+Two ClassDefinition instances `i` and `j` are identical if (1) both instantiate the same class, and all slot assignments can be matched, regardless of order.
 
-Two collections are identical if they are of the same length and each member of `i` is identical to at least one member of `j`, where each match must be unique
+Note that prior to comparison, the representation is first *normalized* and all assignments whose value is `None` are removed.
 
-Two ClassDefinition instances are identical if the instantiated **ClassDefinitionName** is identical and each non-**None** assignment
-in `i` is identical an assignment in `j` and, and each non-None assignment in `j` is identical to an assignment in `i`
+```
+if
+  i == <ClassName>(<Assignments_i>) and j == <ClassName>(<Assignments_j>) and
+  all(a_i in Assignments_i if any(a_j in Assignments_j if a_i == a_j)) and
+  all(a_j in Assignments_j if any(a_i in Assignments_i if a_i == a_j))
+then
+  i == j   
+```
 
-Two assignments are identical if the slot name is the same, and the value is identical
+Two slot value assignments are identical if either (1) either is None (b) slot and value match
 
-## Instance Serializations
+Assignment identity conditions:
 
-The abstract syntax provided here is intended as a normative syntax for the purposes
-of specifying the semantics of LinkML.
+```
+if 
+  a_i == <SlotName>=<Value_i> and a_j == <SlotName>=<Value_j> and Value_i == Value_j
+then
+  a_i == a_j
+```
 
-See [section 6](06mapping.md) for details on how this functional syntax maps to other serialization
-syntaxes and models such as JSON and RDF.
 
 ## Instance Accessor Syntax
 
-For a given instance `i`, *accessor* syntax can be used to dereference values.
+For a given instance `i`, **Path** syntax can be used to dereference values.
 
-> **Path** := **SlotDefinitionName** { **PathExtension** }
+> **PathComponent** := '.' **SlotDefinitionName** | '[' **Identifier** ']'
+>
+> **Identifier** := **AtomicValue**
 
-> **PathExtension** := '.' **SlotDefinitionName** | '[' **Identifier** ']'
+An path is a name of a variable denoting an instance followed by zero or more **PathComponent**s.
 
-To interpret an accessor for a given instance *i*:
+> **Path** := **VariableName** [  **PathComponent** ]
 
-- if the path extension is `.<s>` then *i* must be an **InstanceOfClass*, and the value is equal to the value of the slot assignment for slot `s`
-- if the path extension is `[<id>]` then *i* must be an **InstanceOfCollection**, and the value is equals to the member of that list that has a slot with the role of *identifier* whose value is `<id>`
+To interpret a path *p*:
 
-For example, if *i* is equal to the Person instance in the example above:
+1. **VariableName** is resolved to an instance *i*
+2. For each path component in the path, reset *i* to be the value of looking up that component:
+    - if the path extension is `.<s>` then *r* must be an **InstanceOfClass*, and the value is equal to the value of the slot assignment for slot `s`
+    - if the path extension is `[<id>]` then *r* must be an **InstanceOfCollection**, and the value is equals to the member of that list that has a slot with the role of *identifier* whose value is `<id>`
 
-* `i.id` == `String("SSN:123")`
-* `i.height.unit` == `String("cm")`
+For example, if *i* is equal to the Person instance in the Combined Example above:
+
+* `i` == `i`
+* `i.id` == `String^"SSN:123"`
+* `i.height.unit` == `String^"cm"`
 

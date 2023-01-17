@@ -1,11 +1,8 @@
 # Validation using Schemas
 
-**Validation** is a procedure that takes as input:
-
-* A LinkML instance  `i`, where `i` is to be validated
-* A LinkML instance `root`. This MUST contain `i` and MAY be the same as `i`
-* A schema *m*
-
+**Validation** is a procedure that takes as input a LinkML instance and a schema, and will
+run a collection of *checks* against that instance.
+    
 The validation procedure will produce output that can be used to determine if the instance is *structurally and semantically valid* according to the schema.
 
 The formal specification of the validation procedure takes as input a *derived* schema *m<sup>D</sup>*:
@@ -20,123 +17,140 @@ flowchart TD
     Mstar --> Validation
 ```
 
+Formally, the validation is performed against the abstract instance model, but validator
+implementations may choose to perform additional validation checks against the concrete
+serialization. This includes checking collections using `inlined_as_dict`.
+
 Actual implementations may choose to perform this composition or work directly on the asserted schema.
 
 The following holds for any validation procedure:
 
 - The output MUST include a boolean slot indicating whether the input can be demonstrated to be false
-- The output SHOULD include additional information about the nature of all problems encountered. 
+- The output SHOULD include additional information indicating types of validation errors and where they occur
 - The output SHOULD be conformant with the LinkML validation schema.
 - The output MAY also return cases where *recommendations* are not adhered to
 - The output MAY also be combined with parsing to yield the precise location (i.e. line numbers) in the source serialization document where problems are found.
 - The procedure MAY restrict validation to defined subsets (profiles) of the Metamodel
 - The procedure  SHOULD return in its payload an indication of which profile and version is used.
 
+## Types of checks
+
+| Check                 | Type      | Description            | SHACL                             |
+|-----------------------|-----------|------------------------|-----------------------------------|
+| `Required`            | ERROR     |                        | `MinCountConstraintComponent`     |
+| `Recommended`         | WARNING   |                        | `MinCountConstraintComponent`     |
+| `Singlevalued`        | ERROR     |                        | `MaxCountConstraintComponent`     |
+| `Multivalued`         | ERROR     |                        | `MinCountConstraintComponent`     |
+| `Inlined`             | ERROR     |                        |                                   |
+| `Referenced`          | ERROR     |                        |                                   |
+| `ClassRange`          | ERROR     | class matches range    | `ClassConstraintComponent`        |
+| `Datatype`            | ERROR     | datatype matches range | `DatatypeConstraintComponent`     |
+| `NodeKind`            | ERROR     | range metatype         | `NodeKindConstraintComponent`     |
+| `MinimumValue`        | ERROR     |                        | `MinInclusiveConstraintComponent` |
+| `MaximumValue`        | ERROR     |                        | `MaxInclusiveConstraintComponent` |
+| `Pattern`             | ERROR     |                        | `PatternConstraintComponent` |
+| `EqualsExpression`    | INFERENCE |                        | `EqualsConstraintComponent` |
+| `StringSerialization` | INFERENCE |                        | `EqualsConstraintComponent` |
+| `TypeDesignator`      | INFERENCE |                        |  |
+
+For the `INFERENCE` type, the validation procedure MAY fill in missing values in the instance.
+There is only an error if the inferred value is not consistent with the asserted value.
+
 ## Validation procedure for instances
 
-The validation procedure is to first take the metaclass that is instantiated by the type of the instance `i`,
-and apply one of the 4 checks below, with each check performing its own sub-rules. The ClassDefinition check
-is *recursive*, checking each slot-value assignment. This means a check on any instance will always validate the
-full instance tree.
 
-## Validation of ClassDefinitions
+```
+Validate(i, m, t):
+    mD = DeriveSchema(m)
+    s = new SlotDefinition(range=t)
+    for check in Checks:
+      if (s,i) matches check:
+        yield check
+      if i == <Class>(a1, ..., an):
+        for s' = i' in a1, ..., an:
+          Validate(i', mD, DerivedSlot(s', <Class>))
+```
 
-Given an instance `i` of a ClassDefinition:
+Matches are performed against the tables below. The element `i` is checked against
+the `Element` column. If the comparison type value **T** is `=`, this must be identical. If `i` is a Collection,
+then the match is performed against all members of the collection.
 
-**ClassDefinitionName**( **Assignments** )
 
-Where **Assignments** is a collection of length `N`, with index `i..N` and members `slot_i=value_i`,
-and *ClassDefinitionName* is the name of a ClassDefinition in *m<sup>D</sup>*, such that `C`=m<sup>D</sup>`.classes[ClassDefinitionName]`
+The notation `[...]` indicates a collection with at least one value.
 
-### Rule: Assignment values must be valid
+### Core checks
 
-for each `slot=value` assignment in **Assignments**, the validation procedure is performed on `value`, with
-`root` remaining the same
+The following core checks apply to multiple instance definition types.
 
-### Rule: ClassDefinition instances must instantiate a class in the schema
+| **T** | Element                            | Check Name     | Fail Condition                                                             |
+|-------|------------------------------------|----------------|----------------------------------------------------------------------------|
+| `=`   | `None`                             | `Required`     | `<slot>.required=True`                                                     |
+| `=`   | `[]`                               | `Required`     | `<slot>.required=True`                                                     |
+| `=`   | `None`                             | `Recommended`  | `<slot>.required=True`                                                     |
+| `=`   | `[]`                               | `Recommended`  | `<slot>.required=True`                                                     |
+| `=`   | `[...]`                            | `Singlevalued` | `<slot>.multivalued=False`                                                 |
+| `=`   | `[...]`                            | `UniqueKey`    | **not** **Unique**(`[...]`)                                                |
+| `=`   | `<V>` `<V> != [...]` `<V> != None` | `Multivalued`  |  `<slot>.multivalued=True`                                                 |
+| `in`  | `<Type>&<Value>`                   | `NodeKind`     | `<slot>.range  ∉ m.types`                                                  |
+| `in`  | `<Enum>[<PermissibleValue>]`       | `NodeKind`     | `<slot>.range  ∉ m.enums`                                                  |
+| `in`  | `<Class>&<Reference>`              | `Inlined`      | `<slot>.range.inlined=True`                                                |
+| `in`  | `<Class>(<Assignments>)`           | `Referenced`   | `<slot>.range.inlined=False`                                               |
+| `in`  | `<Class>(<Assignments>)`           | `NodeKind`     | `<slot>.range  ∉ m.classes`                                                |
 
-*ClassDefinitionName* MUST be the name of a ClassDefinition in *m<sup>D</sup>*
+The condition **Unique** checks a list of objects for uniqueness.
 
-`C` is assigned to be the value of m<sup>D</sup>`[ClassDefinitionName]`
+For each `ClassDefinition` in the list, the primary key value is calculated, and this is assumed to be unique.
 
-**Assignments** is assigned to be the value of `C.attributes` (see the previous section)
+### Deprecation checks
 
-`C` SHOULD have all the following properties:
+The following checks match multiple different instance definition types and check for usage of deprecated elements.
 
-- `C.deprecated` SHOULD be `None`
-- `C.abstract` SHOULD NOT be `True`
-- `C.mixin` SHOULD NOT be `True`
+| **T** | Element                      | Check              | Fail Condition                                                             |
+|-------|------------------------------|--------------------|----------------------------------------------------------------------------|
+| `in`  |                              | `DeprecatedSlot`   | `<slot>.deprecated=True`                                                   |
+| `in`  | `<Type>&<Value>`             | `DeprecatedType`   | `<Type>.deprecated=True`                                                   |
+| `in`  | `<Enum>[<PermissibleValue>]` | `DeprecatedEnum`   | `<Enum>.deprecated=True`                                                   |
+| `in`  | `<Class>&<Reference>`        | `DeprecatedClass`  | `<Class>.deprecated=True`                                                  |
+| `in`  | `<Class>(<Assignments>)`     | `DeprecatedClass`  | `<Class>.deprecated=True`                                                  |
 
-### Rule: identifiers must be unique
 
-We define a procedure **IdVal**(`i`) which yields the value of `i.<identifier_slot>` where `identifier_slot`
-is the slot in **Assignments** with metaslot assignment `identifier=True`
+### Atomic Checks
 
-If there is no such slot then **IdVal**(`i`) is `None` and this check is ignored.
+The following checks only match when `i` is an **AtomicInstance**
 
-`i` is invalid if there exists another instance `j` such that `j` is reachable from `root`,
-and **IdVal**(`i`)=**IdVal**(`j`) and `i` and `j` are distinct.
+| **T**  | Element               | Check                 | Fail Condition                                              |
+|--------|-----------------------|-----------------------|-------------------------------------------------------------|
+| `in`   | `<Type>^<Value>`      | `Datatype`            | **Conforms**(`<Value>`, `<Type>.uri`)                       |
+| `in`   | `<Type>^<Value>`      | `MaximumValue`        | `<Value> > <slot>.maximum_value`                            |
+| `in`   | `<Type>^<Value>`      | `MinimumValue`        | `<Value> < <slot>.minimum_value`                            |
+| `in`   | `<Type>^<Value>`      | `Pattern`             | `<Value> !~ <slot>.pattern`                                 |
+| `in`   | `<Class>&<Reference>` | `Pattern`             | `<Reference> !~ <slot>.pattern`                             |
+| `in`   | `<Type>^<Value>`      | `EqualsExpression`    | `<Value> != Eval(<slot>.equals_expression(parent))`         |
+| `in`   | `<Type>^<Value>`      | `StringSerialization` | `<Value> != Stringify(<slot>.string_serialization(parent))` |
 
-### Rule: All assignments must be to permitted slots
 
-For each `s=value` assignment in <*Assignment1*>, <*Assignment2*>, ..., <*AssignmentN*>:
+### Class Checks
 
-- `s` must be in **Assignments**
+The following checks only match when `i` is an **InstanceOfClass**
 
-### Rule: All required slots must be specified
+| **T**  | Element                            | Check             | Fail Condition                                      |
+|--------|------------------------------------|-------------------|-----------------------------------------------------|
+| `in`   | `<Class>(<Assignments>)`           | `Abstract`        | `Class.abstract`                                    |
+| `in`   | `<Class>(<Assignments>)`           | `Mixin`           | `Class.mixin`                                       |
+| `in`   | `<Class>(<Assignments>)`           | `ClassRange`      | `slot.range ∉ A*(<Class>)`                          |
+| `in`   | `<Class>(..., <subslot>=<V>, ...)` | `ApplicableSlot`  | `subslot ∉ <Class>.attributes`                      |
+| `in`   | `<Class>(..., <ts>=<V>, ...)`      | `DesignatedType`  | `<V> ∉ A*(<Class>)`  `ts = TypeDesignator(<Class>)` |
 
-For each slot `s` in **Assignments**, if `s.required=True`, then `i.<s>` must be neither `None` nor the empty collection `[]`
+### Enum checks
 
-### Rule: All recommended slots should be specified
 
-For each slot `s` in **Assignments**, if `s.recommended=True`, then `i.<s>` should be neither `None` nor the empty collection `[]`
+| **T**  | Element         | Check         | Fail Condition                     |
+|--------|-----------------|---------------|------------------------------------|
+| `in`   | `<Enum>[<PV>]`  | `Permissible` | `<PV>  ∉ <Enum>.permissible_value` |
 
-If this condition is not met, this is considered a warning rather than invalidity
+### Rules
 
-### Rule: Assigned values must conform to multivalued cardinality
-
-For each slot `s` in **Assignments**,
-
- * if `s.multivalued` is `True`, then `i.<s>` must be a collection or `None`
- * If `s.multivalued` is `False`, then `i.<s>` must not be a collection
-
-### Rule: values should be within stated bounds
-
-For each slot `s` in **Assignments**,
-
- * if `s.maximum_value` is not `None`, then `i.<s>` must be a number and must be less that or equal to the maximum value
- * if `s.minimum_value` is not `None`, then `i.<s>` must be a number and must be greater that or equal to the minimum value
-
-### Rule: values should equal evaluable expression
-
-For each slot `s` in **Assignments**, if `s.equals_expression` is not `None`, then `i.<s>` must equal
-the value of `Eval(s.equals_expression)`. See section on expression language
-for details of syntax.
-
-Note: this rule can be executed in inference mode
-
-### Rule: values should equal string_serialization
-
-For each slot `s` in **Assignments**, if `s.string_serialization` is not `None`, then `i.<s>` must equal
-the value of `Stringify(s.string_serialization)`. See section on expression language
-for details of syntax.
-
-### Rule: values should equal regular expression patterns
-
-Note: this rule can be executed in inference mode
-
-### Range class instantiation check
-
-For each slot `s` in **Assignments**, if `i.<s>` is not `None`, and `s.range` is in `m*.classes`,
-then `s.range` must be in `ReflexiveAncestors(Type(i.<s>))`
-
- Additional checks MAY be performed based on whether `s.inlined` is `True`
-
- * if `s.inlined` is `True`, then `i.<s>`  SHOULD NOT be a Reference
- * if `s.inlined` is `False`, then EITHER:
-     * `i.<s>`  SHOULD be a Reference
-     * OR `i.<s>` instantiates a class `R` such that `R` has no slot `rs` that is declared to be an identifier. i.e. `rs.identifier = True`
-
+### Uniqueness checks
 
 
 ### Boolean combinations of expressions
@@ -164,11 +178,6 @@ In all cases, the semantics are as follows:
 - all_of: true if there are no members that evaluate to false
   * for empty lists this is always true
    
-### range expression checks
-
-For each slot `s` in **Assignments**, if `i.<s>` is not `None`, and `RE = s.range_expression` is not `None`, then a check
-**CE**(`x`) is performed on `i.<s>`
-
 ### Rule evaluation
 
 For each rule `r` in *C*.rules:
@@ -192,10 +201,6 @@ here `T.uri` is used to determine the type:
 - for xsd dates, datetimes, and times, AtomicValue must be a string conforming to the relevant ISO type
 - for xsd booleans, AtomicValue must be `True` or `False`
 
-## Validation of EnumDefinitions
-
-For each slot `s` in **Assignments**, if `i.<s>` is not `None`, and `s.range` is in `m*.enums`,
-then `i.<s>` must be equal to `pv.text` for some pv in `m*.enums[s.range]`
 
 ## Inference of new values
 
