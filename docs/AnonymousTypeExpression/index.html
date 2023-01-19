@@ -343,15 +343,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../any_of/">any_of</a></td>
-<td>0..1 <br/> <a href="../Expression/">Expression</a></td>
-<td>holds if at least one of the expressions hold</td>
-<td><a href="../TypeExpression/">TypeExpression</a></td>
-</tr>
-<tr>
-<td><a href="../exactly_one_of/">exactly_one_of</a></td>
-<td>0..1 <br/> <a href="../Expression/">Expression</a></td>
-<td>holds if only one of the expressions hold</td>
+<td><a href="../pattern/">pattern</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the string value of the slot must conform to this regular expression expresse...</td>
 <td><a href="../TypeExpression/">TypeExpression</a></td>
 </tr>
 <tr>
@@ -361,21 +355,21 @@
 <td><a href="../TypeExpression/">TypeExpression</a></td>
 </tr>
 <tr>
-<td><a href="../minimum_value/">minimum_value</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>for slots with ranges of type number, the value must be equal to or higher th...</td>
-<td><a href="../TypeExpression/">TypeExpression</a></td>
-</tr>
-<tr>
-<td><a href="../equals_string/">equals_string</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the slot must have range string and the value of the slot must equal the spec...</td>
+<td><a href="../unit/">unit</a></td>
+<td>0..1 <br/> <a href="../UnitOfMeasure/">UnitOfMeasure</a></td>
+<td>an encoding of a unit</td>
 <td><a href="../TypeExpression/">TypeExpression</a></td>
 </tr>
 <tr>
 <td><a href="../implicit_prefix/">implicit_prefix</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Causes the slot value to be interpreted as a uriorcurie after prefixing with ...</td>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
+</tr>
+<tr>
+<td><a href="../equals_string/">equals_string</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the slot must have range string and the value of the slot must equal the spec...</td>
 <td><a href="../TypeExpression/">TypeExpression</a></td>
 </tr>
 <tr>
@@ -391,21 +385,9 @@
 <td><a href="../TypeExpression/">TypeExpression</a></td>
 </tr>
 <tr>
-<td><a href="../none_of/">none_of</a></td>
-<td>0..1 <br/> <a href="../Expression/">Expression</a></td>
-<td>holds if none of the expressions hold</td>
-<td><a href="../TypeExpression/">TypeExpression</a></td>
-</tr>
-<tr>
-<td><a href="../all_of/">all_of</a></td>
-<td>0..1 <br/> <a href="../Expression/">Expression</a></td>
-<td>holds if all of the expressions hold</td>
-<td><a href="../TypeExpression/">TypeExpression</a></td>
-</tr>
-<tr>
-<td><a href="../unit/">unit</a></td>
-<td>0..1 <br/> <a href="../UnitOfMeasure/">UnitOfMeasure</a></td>
-<td>an encoding of a unit</td>
+<td><a href="../minimum_value/">minimum_value</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>for slots with ranges of type number, the value must be equal to or higher th...</td>
 <td><a href="../TypeExpression/">TypeExpression</a></td>
 </tr>
 <tr>
@@ -415,9 +397,27 @@
 <td><a href="../TypeExpression/">TypeExpression</a></td>
 </tr>
 <tr>
-<td><a href="../pattern/">pattern</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the string value of the slot must conform to this regular expression expresse...</td>
+<td><a href="../none_of/">none_of</a></td>
+<td>0..* <br/> <a href="./">AnonymousTypeExpression</a></td>
+<td>holds if none of the expressions hold</td>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
+</tr>
+<tr>
+<td><a href="../exactly_one_of/">exactly_one_of</a></td>
+<td>0..* <br/> <a href="./">AnonymousTypeExpression</a></td>
+<td>holds if only one of the expressions hold</td>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
+</tr>
+<tr>
+<td><a href="../any_of/">any_of</a></td>
+<td>0..* <br/> <a href="./">AnonymousTypeExpression</a></td>
+<td>holds if at least one of the expressions hold</td>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
+</tr>
+<tr>
+<td><a href="../all_of/">all_of</a></td>
+<td>0..* <br/> <a href="./">AnonymousTypeExpression</a></td>
+<td>holds if all of the expressions hold</td>
 <td><a href="../TypeExpression/">TypeExpression</a></td>
 </tr>
 </tbody>

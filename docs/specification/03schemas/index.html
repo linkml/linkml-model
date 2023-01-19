@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#schema-data-model">
+<a class="md-skip" href="#schema-datamodel">
           Skip to content
         </a>
 </div>
@@ -642,16 +642,16 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="schema-data-model">Schema Data Model</h1>
+<h1 id="schema-datamodel">Schema Datamodel</h1>
 <p>This section describes the <em>structure</em> of a LinkML schema. For precise interpretation of these structures, refer to the following two sections on <em>derived schemas</em> and <em>validation</em></p>
 <h2 id="schema-basics">Schema Basics</h2>
-<p>A LinkML <strong>schema</strong> specifies rules and structural conformance conditions for <strong>instances</strong>. Schemas allow for:</p>
+<p>A LinkML <strong>schema</strong> specifies rules and structural conformance conditions for <em>instances</em>. Schemas allow for:</p>
 <ul>
 <li>parsing of instance <strong>serializations</strong> to LinkML instance structures</li>
 <li>structurally and semantically <strong>validating</strong> LinkML instance structures</li>
 <li><strong>inference</strong> of missing values in LinkML instance structures</li>
 </ul>
-<p>Every LinkML schema <em>m</em> is itself an instance of a special class <a href="https://w3id.org/linkml/SchemaDefinition">SchemaDefinition</a> that forms part of a special schema called the <strong>LinkML metamodel</strong>, which is denoted by <em>m<sup>M</sup></em>. There is exactly one metamodel.</p>
+<p>Every LinkML schema <em>m</em> is itself an instance of a special class <a href="https://w3id.org/linkml/SchemaDefinition">SchemaDefinition</a> that forms part of a special schema called the <strong>LinkML metamodel</strong>, which is denoted as <em>m<sup>M</sup></em>. There is exactly one metamodel.</p>
 <p>In this specification:</p>
 <ul>
 <li>ClassDefinitions in <em>m<sup>M</sup></em> are called <strong>metaclasses</strong></li>
@@ -664,10 +664,6 @@
 </ul>
 <p>This specification specifies the <em>normative elements</em> necessary to specify the behavior of LinkML schemas. Schemas may have additional
 elements provided in the metamodel. For example, elements in schemas can have <em>informative</em> slot assignments for slots such as <a href="https://w3id.org/linkml/title">title</a>, <a href="https://w3id.org/linkml/description">description</a>, and so on, but these slots are not described in this specification as they are not normative and do not affect the formal interpretation of schemas.</p>
-<p>The subset of the metamodel that corresponds to the specification is called the SpecificationProfile, and it is found at:</p>
-<ul>
-<li><a href="https://w3id.org/linkml/SpecificationProfile">https://w3id.org/linkml/SpecificationProfile</a> </li>
-</ul>
 <h3 id="yaml-representation-of-schemas">YAML representation of schemas</h3>
 <p>Because schemas and all the parts of a schema are instances of metaclasses in the metamodel, the YAML serialization rules from <a href="06mapping">section 6</a> can be applied to both serialized and deserialized a schema as YAML.</p>
 <h3 id="analogies-to-other-modeling-frameworks">Analogies to other modeling frameworks</h3>
@@ -693,7 +689,7 @@ However, it should be understood these are not equivalents.</p>
 <li>Note however that in LinkML enums are optionally backed by stronger semantics with enum elements (permissible values) mapped to vocabularies or ontologies</li>
 </ul>
 </li>
-<li>TypeDefinitions are analogous to:<ul>
+<li>EnumDefinitions are analogous to:<ul>
 <li><a href="https://en.wikipedia.org/wiki/Data_type">data types</a> in most object-oriented languages </li>
 <li>primitive types in database systems</li>
 <li>extensible types in some systems</li>
@@ -795,6 +791,7 @@ However, it should be understood these are not equivalents.</p>
     SchemaDefinition "1" --&gt; "*" ClassDefinition: classes
     SchemaDefinition "1" --&gt; "*" SlotDefinition: slots
     SchemaDefinition "1" --&gt; "*" EnumDefinition: enums
+    SchemaDefinition "1" --&gt; "*" EnumDefinition: Enums
     SchemaDefinition "1" --&gt; "*" SubsetDefinition: subsets
     SchemaDefinition "1" --&gt; "*" Prefix: prefixes
     ClassDefinition --|&gt; Element
@@ -1268,7 +1265,7 @@ other schema elements may refer to <strong>AnonymousSlotExpression</strong>s com
 </tr>
 <tr>
 <td><a href="union_of.md">union_of</a></td>
-<td>0..* <br/> <a href="SlotDefinition.md">SlotDefinition</a></td>
+<td>0..* <br/> <a href="TypeDefinition.md">TypeDefinition</a></td>
 <td>indicates that the domain element consists exactly of the members of the elem...</td>
 </tr>
 <tr>

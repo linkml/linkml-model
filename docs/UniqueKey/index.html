@@ -363,7 +363,7 @@
 <tbody>
 <tr>
 <td><a href="../unique_key_name/">unique_key_name</a></td>
-<td>1..1 <br/> NONE</td>
+<td>1..1 <br/> <a href="../String/">String</a></td>
 <td>name of the unique key</td>
 <td>direct</td>
 </tr>
@@ -374,21 +374,21 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../broad_mappings/">broad_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have broad...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+<td><a href="../extensions/">extensions</a></td>
+<td>0..* <br/> <a href="../Extension/">Extension</a></td>
+<td>a tag/text tuple attached to an arbitrary element</td>
+<td><a href="../Extensible/">Extensible</a></td>
 </tr>
 <tr>
-<td><a href="../in_language/">in_language</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+<td><a href="../annotations/">annotations</a></td>
+<td>0..* <br/> <a href="../Annotation/">Annotation</a></td>
+<td>a collection of tag/text tuples with the semantics of OWL Annotation</td>
+<td><a href="../Annotatable/">Annotatable</a></td>
 </tr>
 <tr>
-<td><a href="../deprecated_element_has_possible_replacement/">deprecated_element_has_possible_replacement</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>When an element is deprecated, it can be potentially replaced by this uri or ...</td>
+<td><a href="../description/">description</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td>a description of the element's purpose and use</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
@@ -398,69 +398,15 @@
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
-<td><a href="../mappings/">mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have compa...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>0..1 <br/> <a href="../Uri/">Uri</a></td>
-<td>id of the schema that defined the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <em>recommended</em> <br/> NONE</td>
-<td>a description of the element's purpose and use</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../extensions/">extensions</a></td>
-<td>0..* <br/> <a href="../Extension/">Extension</a></td>
-<td>a tag/text tuple attached to an arbitrary element</td>
-<td><a href="../Extensible/">Extensible</a></td>
-</tr>
-<tr>
-<td><a href="../deprecated_element_has_exact_replacement/">deprecated_element_has_exact_replacement</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>When an element is deprecated, it can be automatically replaced by this uri o...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../source/">source</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A related resource from which the element is derived</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
 <td><a href="../title/">title</a></td>
-<td>0..1 <br/> NONE</td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>the official title of the element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
-<td><a href="../narrow_mappings/">narrow_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have narro...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../see_also/">see_also</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>a reference</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../notes/">notes</a></td>
-<td>0..* <br/> NONE</td>
-<td>editorial notes about an element intended for internal consumption</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../comments/">comments</a></td>
-<td>0..* <br/> NONE</td>
-<td>notes and comments about an element intended for external consumption</td>
+<td><a href="../deprecated/">deprecated</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Description of why and when this element will no longer be used</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
@@ -470,21 +416,15 @@
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>0..* <br/> <a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td>used to indicate membership of a term in a defined subset of terms used for a...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../aliases/">aliases</a></td>
+<td><a href="../notes/">notes</a></td>
 <td>0..* <br/> <a href="../String/">String</a></td>
-<td>Alaternate names for the element</td>
+<td>editorial notes about an element intended for internal consumption</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
-<td><a href="../related_mappings/">related_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have relat...</td>
+<td><a href="../comments/">comments</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>notes and comments about an element intended for external consumption</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
@@ -494,21 +434,57 @@
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
-<td><a href="../annotations/">annotations</a></td>
-<td>0..* <br/> <a href="../Annotation/">Annotation</a></td>
-<td>a collection of tag/text tuples with the semantics of OWL Annotation</td>
-<td><a href="../Annotatable/">Annotatable</a></td>
-</tr>
-<tr>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Description of why and when this element will no longer be used</td>
+<td><a href="../in_subset/">in_subset</a></td>
+<td>0..* <br/> <a href="../SubsetDefinition/">SubsetDefinition</a></td>
+<td>used to indicate membership of a term in a defined subset of terms used for a...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
-<td><a href="../close_mappings/">close_mappings</a></td>
+<td><a href="../from_schema/">from_schema</a></td>
+<td>0..1 <br/> <a href="../Uri/">Uri</a></td>
+<td>id of the schema that defined the element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../imported_from/">imported_from</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the imports entry that this element was derived from</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../source/">source</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A related resource from which the element is derived</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../in_language/">in_language</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../see_also/">see_also</a></td>
 <td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have close...</td>
+<td>a reference</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../deprecated_element_has_exact_replacement/">deprecated_element_has_exact_replacement</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>When an element is deprecated, it can be automatically replaced by this uri o...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../deprecated_element_has_possible_replacement/">deprecated_element_has_possible_replacement</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>When an element is deprecated, it can be potentially replaced by this uri or ...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../aliases/">aliases</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>Alaternate names for the element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
@@ -518,21 +494,45 @@
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
+<td><a href="../mappings/">mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have compa...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
 <td><a href="../exact_mappings/">exact_mappings</a></td>
 <td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have ident...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
-<td><a href="../rank/">rank</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the relative order in which the element occurs, lower values are given preced...</td>
+<td><a href="../close_mappings/">close_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have close...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the imports entry that this element was derived from</td>
+<td><a href="../related_mappings/">related_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have relat...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../narrow_mappings/">narrow_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have narro...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../broad_mappings/">broad_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have broad...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../rank/">rank</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the relative order in which the element occurs, lower values are given preced...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 </tbody>

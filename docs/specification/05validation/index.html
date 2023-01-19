@@ -541,14 +541,14 @@ and <em>ClassDefinitionName</em> is the name of a ClassDefinition in <em>m<sup>D
 <p><strong>Assignments</strong> is assigned to be the value of <code>C.attributes</code> (see the previous section)</p>
 <p><code>C</code> SHOULD have all the following properties:</p>
 <ul>
-<li><code>C.deprecated</code> SHOULD be <code>None</code></li>
-<li><code>C.abstract</code> SHOULD NOT be <code>True</code></li>
-<li><code>C.mixin</code> SHOULD NOT be <code>True</code></li>
+<li><code>C.deprecated</code> SHOULD be <strong>None</strong></li>
+<li><code>C.abstract</code> SHOULD NOT be <strong>True</strong></li>
+<li><code>C.mixin</code> SHOULD NOT be <strong>True</strong></li>
 </ul>
 <h3 id="rule-identifiers-must-be-unique">Rule: identifiers must be unique</h3>
 <p>We define a procedure <strong>IdVal</strong>(<code>i</code>) which yields the value of <code>i.&lt;identifier_slot&gt;</code> where <code>identifier_slot</code>
-is the slot in <strong>Assignments</strong> with metaslot assignment <code>identifier=True</code></p>
-<p>If there is no such slot then <strong>IdVal</strong>(<code>i</code>) is <code>None</code> and this check is ignored.</p>
+is the slot n <strong>Assignments</strong> with metaslot assignment <code>identifier</code>=<strong>True</strong></p>
+<p>If there is no such slot then <code>**IdVal**(</code>i`) is None and this check is ignored.</p>
 <p><code>i</code> is invalid if there exists another instance <code>j</code> such that <code>j</code> is reachable from <code>root</code>,
 and <strong>IdVal</strong>(<code>i</code>)=<strong>IdVal</strong>(<code>j</code>) and <code>i</code> and <code>j</code> are distinct.</p>
 <h3 id="rule-all-assignments-must-be-to-permitted-slots">Rule: All assignments must be to permitted slots</h3>
@@ -564,35 +564,35 @@ and <strong>IdVal</strong>(<code>i</code>)=<strong>IdVal</strong>(<code>j</code>
 <h3 id="rule-assigned-values-must-conform-to-multivalued-cardinality">Rule: Assigned values must conform to multivalued cardinality</h3>
 <p>For each slot <code>s</code> in <strong>Assignments</strong>,</p>
 <ul>
-<li>if <code>s.multivalued</code> is <code>True</code>, then <code>i.&lt;s&gt;</code> must be a collection or <code>None</code></li>
-<li>If <code>s.multivalued</code> is <code>False</code>, then <code>i.&lt;s&gt;</code> must not be a collection</li>
+<li>if <code>s.multivalued</code> is True, then <code>i.&lt;s&gt;</code> must be a collection or None</li>
+<li>If <code>s.multivalued</code> is False, then <code>i.&lt;s&gt;</code> must not be a collection</li>
 </ul>
 <h3 id="rule-values-should-be-within-stated-bounds">Rule: values should be within stated bounds</h3>
 <p>For each slot <code>s</code> in <strong>Assignments</strong>,</p>
 <ul>
-<li>if <code>s.maximum_value</code> is not <code>None</code>, then <code>i.&lt;s&gt;</code> must be a number and must be less that or equal to the maximum value</li>
-<li>if <code>s.minimum_value</code> is not <code>None</code>, then <code>i.&lt;s&gt;</code> must be a number and must be greater that or equal to the minimum value</li>
+<li>if <code>s.maximum_value</code> is not None, then <code>i.&lt;s&gt;</code> must be a number and must be less that or equal to the maximum value</li>
+<li>if <code>s.minimum_value</code> is not None, then <code>i.&lt;s&gt;</code> must be a number and must be greater that or equal to the minimum value</li>
 </ul>
 <h3 id="rule-values-should-equal-evaluable-expression">Rule: values should equal evaluable expression</h3>
-<p>For each slot <code>s</code> in <strong>Assignments</strong>, if <code>s.equals_expression</code> is not <code>None</code>, then <code>i.&lt;s&gt;</code> must equal
+<p>For each slot <code>s</code> in <strong>Assignments</strong>, if <code>s.equals_expression</code> is not None, then <code>i.&lt;s&gt;</code> must equal
 the value of <code>Eval(s.equals_expression)</code>. See section on expression language
 for details of syntax.</p>
 <p>Note: this rule can be executed in inference mode</p>
 <h3 id="rule-values-should-equal-string_serialization">Rule: values should equal string_serialization</h3>
-<p>For each slot <code>s</code> in <strong>Assignments</strong>, if <code>s.string_serialization</code> is not <code>None</code>, then <code>i.&lt;s&gt;</code> must equal
+<p>For each slot <code>s</code> in <strong>Assignments</strong>, if <code>s.string_serialization</code> is not None, then <code>i.&lt;s&gt;</code> must equal
 the value of <code>Stringify(s.string_serialization)</code>. See section on expression language
 for details of syntax.</p>
 <h3 id="rule-values-should-equal-regular-expression-patterns">Rule: values should equal regular expression patterns</h3>
 <p>Note: this rule can be executed in inference mode</p>
 <h3 id="range-class-instantiation-check">Range class instantiation check</h3>
-<p>For each slot <code>s</code> in <strong>Assignments</strong>, if <code>i.&lt;s&gt;</code> is not <code>None</code>, and <code>s.range</code> is in <code>m*.classes</code>,
+<p>For each slot <code>s</code> in <strong>Assignments</strong>, if <code>i.&lt;s&gt;</code> is not None, and <code>s.range</code> is in <code>m*.classes</code>,
 then <code>s.range</code> must be in <code>ReflexiveAncestors(Type(i.&lt;s&gt;))</code></p>
-<p>Additional checks MAY be performed based on whether <code>s.inlined</code> is <code>True</code></p>
+<p>Additional checks MAY be performed based on whether <code>s.inlined</code> is True</p>
 <ul>
-<li>if <code>s.inlined</code> is <code>True</code>, then <code>i.&lt;s&gt;</code>  SHOULD NOT be a Reference</li>
-<li>if <code>s.inlined</code> is <code>False</code>, then EITHER:<ul>
+<li>if <code>s.inlined</code>, then <code>i.&lt;s&gt;</code>  SHOULD NOT be a Reference</li>
+<li>if <code>s.inlined</code> is False, then EITHER:<ul>
 <li><code>i.&lt;s&gt;</code>  SHOULD be a Reference</li>
-<li>OR <code>i.&lt;s&gt;</code> instantiates a class <code>R</code> such that <code>R</code> has no slot <code>rs</code> that is declared to be an identifier. i.e. <code>rs.identifier = True</code></li>
+<li>OR <code>i.&lt;s&gt;</code> instantiates a class <code>R</code> such that R has no slot <code>rs</code> that is declared to be an identifier. i.e. <code>rs.identifier = True</code></li>
 </ul>
 </li>
 </ul>
@@ -620,28 +620,28 @@ of the same type.</p>
 <li>for empty lists this is always true</li>
 </ul>
 <h3 id="range-expression-checks">range expression checks</h3>
-<p>For each slot <code>s</code> in <strong>Assignments</strong>, if <code>i.&lt;s&gt;</code> is not <code>None</code>, and <code>RE = s.range_expression</code> is not <code>None</code>, then a check
+<p>For each slot <code>s</code> in <strong>Assignments</strong>, if <code>i.&lt;s&gt;</code> is not None, and <code>RE = s.range_expression</code> is not None, then a check
 <strong>CE</strong>(<code>x</code>) is performed on <code>i.&lt;s&gt;</code></p>
 <h3 id="rule-evaluation">Rule evaluation</h3>
 <p>For each rule <code>r</code> in <em>C</em>.rules:</p>
 <ul>
-<li>if <code>r.preconditions</code> is <code>None</code> or <code>r.preconditions</code> is satisfied, then</li>
+<li>if <code>r.preconditions</code> is None or <code>r.preconditions</code> is satisfied, then</li>
 <li><code>r.postconditions</code> are applied</li>
 </ul>
 <h3 id="classification-rule-evaluation">Classification Rule evaluation</h3>
 <h3 id="type-designator-checks">type designator checks</h3>
 <h2 id="validation-of-typedefinitions">Validation of TypeDefinitions</h2>
-<p>For each slot <code>s</code> in <strong>Assignments</strong>, if <code>i.&lt;s&gt;</code> is not <code>None</code>, and <code>s.range</code> is in <code>m*.types</code>,
+<p>For each slot <code>s</code> in <strong>Assignments</strong>, if <code>i.&lt;s&gt;</code> is not None, and <code>s.range</code> is in <code>m*.types</code>,
 where <code>i.&lt;s&gt; = *T*( **AtomicValue** )</code> must match <code>s.range</code>,</p>
 <p>here <code>T.uri</code> is used to determine the type:</p>
 <ul>
 <li>for xsd floats, doubles, and decimals, AtomicValue must be a decimal- for xsd floats, doubles, and decimals, AtomicValue must be a decimal</li>
 <li>for xsd ints, AtomicValue must be an Integer</li>
 <li>for xsd dates, datetimes, and times, AtomicValue must be a string conforming to the relevant ISO type</li>
-<li>for xsd booleans, AtomicValue must be <code>True</code> or <code>False</code></li>
+<li>for xsd booleans, AtomicValue must be True or False</li>
 </ul>
 <h2 id="validation-of-enumdefinitions">Validation of EnumDefinitions</h2>
-<p>For each slot <code>s</code> in <strong>Assignments</strong>, if <code>i.&lt;s&gt;</code> is not <code>None</code>, and <code>s.range</code> is in <code>m*.enums</code>,
+<p>For each slot <code>s</code> in <strong>Assignments</strong>, if <code>i.&lt;s&gt;</code> is not None, and <code>s.range</code> is in <code>m*.enums</code>,
 then <code>i.&lt;s&gt;</code> must be equal to <code>pv.text</code> for some pv in <code>m*.enums[s.range]</code></p>
 <h2 id="inference-of-new-values">Inference of new values</h2>
 </article>
