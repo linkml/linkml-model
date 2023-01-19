@@ -82,7 +82,7 @@ $(DOCDIR):
 	mkdir -p $@
 
 gendoc: $(DOCDIR)
-	cp linkml_model/model/docs/*md $(DOCDIR) ; \
+	cp -pr linkml_model/model/docs/ $(DOCDIR) ; \
 	$(RUN) gen-doc --genmeta --sort-by rank -d $(DOCDIR) $(SOURCE_SCHEMA_PATH)
 
 testdoc: gendoc serve
