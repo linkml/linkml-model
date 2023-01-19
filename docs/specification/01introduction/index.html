@@ -758,20 +758,19 @@
 
 <h1 id="introduction">Introduction</h1>
 <p>This document is a functional draft specification for the Linked Data Modeling Language (LinkML).</p>
-<p>LinkML is a data modeling language for describing the structure of a collection of <em>instances</em>, where instances are tree-like object-oriented structures. Instances are pieces of information that represent things of interest in a particular domain, such as individual people, biological samples, places, events, or abstract entities. </p>
-<p>Instances are either primitive <em>types</em> such as numbers or strings, or objects that are typed using <em>classes</em> from a LinkML <em>schema</em>. Classes are categories or groupings of things in the domain of interest; for example, "Person", "Medical History", "Data file", or "Country". Instances can be inter-related by assigning <em>slot values</em>; for example, an instance of a Person may have values for slots "name" or "country of birth".</p>
+<p>LinkML is a data modeling language for describing the structure of a collection of <em>instances</em>, where instances are tree-like object-oriented structures. Instances represent things of interest in a particular domain, such as individual people, biological samples, places, events, or abstract entities. </p>
+<p>Instances are either primitive <em>types</em> such as numbers or strings, or <em>objects</em> that are typed using <em>classes</em> from a LinkML <em>schema</em>. Classes are categories or groupings of things in the domain of interest; for example, <code>Person</code>, <code>Medical History</code>, <code>Data file</code>, or <code>Country</code>. Instances can be inter-related by assigning <em>values</em> to particular <em>slots</em>; for example, an instance of a Person may have values for slots <code>name</code> or <code>country of birth</code>.</p>
 <p>LinkML schemas also specify <em>rules</em> for determining if instances conform to the schema, and for <em>inference</em> adding additional implicit slot values.</p>
-<p>LinkML is independent of any programming language, database technology, and is independent of any concrete form for serializing instances of schemas. Mappings are provided for serializing instances as JSON, YAML, RDF, flat tables, or relational models, or for mapping to programming language structures. However, the structure and semantics of LinkML are independent from any of these. Schemas are typically expressed using the YAML serialization, but this specification is defined independent of that particular serialization.</p>
+<p>LinkML is independent of any programming language, database technology, and is independent of any concrete form for serializing instances of schemas. Mappings are provided for serializing instances as JSON, YAML, RDF, flat tables, or relational models, or for mapping to programming language structures. However, the structure and semantics of LinkML are not dependent on any of these. Schemas are typically expressed using the YAML serialization, but this specification is defined independent of that particular serialization.</p>
 <p>LinkML is self-describing, and any LinkML schema is itself a collection instances that instantiates elements in a special schema called the <em>LinkML metamodel</em>.</p>
 <h2 id="audience">Audience</h2>
-<p>This document is intended for LinkML tool and framework implementors, and is intended to provide formal clarity about
-the structure and semantics of LinkML.</p>
+<p>This document is intended for LinkML tool and framework implementors, and is intended to formally specify the structure and semantics of LinkML.</p>
 <p>For a more lightweight introduction, consult the material on the main <a href="https://linkml.io">LinkML site</a>,
 including the LinkML tutorial.</p>
 <h2 id="conventions-and-terminology">Conventions and terminology</h2>
 <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="https://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>.</p>
 <h2 id="bnf">BNF</h2>
-<p>Grammars in this document are written using the BNF notation, summarized below:</p>
+<p>Grammars in this specification are written using the BNF notation, summarized below:</p>
 <table>
 <thead>
 <tr>
@@ -810,25 +809,28 @@ including the LinkML tutorial.</p>
 <pre><code>&lt;NT&gt;List ::= [ &lt;NT&gt; { ',' &lt;NT&gt;List } ]
 </code></pre>
 <h2 id="outline">Outline</h2>
-<p>The specification is organized in 6 parts. The parts cannot be read independently, as each part builds on
-concepts introduced in previous parts.</p>
+<p>The specification is organized in 6 parts. The parts are not independent, as each part builds on concepts introduced in previous parts.</p>
 <h3 id="part-1-introduction">Part 1: Introduction</h3>
-<p>This section. Provides background information and preliminary definitions</p>
+<p>This section. Background information and preliminary definitions.</p>
 <h3 id="part-2-structure-and-syntax-of-instances">Part 2: Structure and Syntax of Instances</h3>
-<p>Specification of the data model for instances in LinkML.</p>
-<p>The data model shown as UML for informative purposes. A normative functional-style syntax is provided for instances, and this syntax is used throughout the specification.</p>
-<p>This section also introduces a <strong>path accessor</strong> syntax for specifying how to traverse LinkML instances.</p>
+<p>Part 2 provides a <em>structural specification</em> of LinkML <strong>instances</strong>. The structural specification is provided as a normative abstract functional-style syntax. UML diagrams are provided for informative purposes.</p>
+<p>This syntax is not intended as an actual exchange syntax for LinkML data. For that, existing syntaxes such as JSON, YAML, or RDF syntaxes should be used (see Part 6). The abstract syntax allows for a seperation of the essential features of the language from issues related to any particular syntax.</p>
+<p>Part 2 also introduces a <strong>path accessor</strong> syntax for specifying how to traverse LinkML instances.</p>
+<p>The abstract syntax and path accessor syntax are used in the remainder of the specification.</p>
 <h3 id="part-3-structure-of-schemas">Part 3: Structure of Schemas</h3>
-<p>Specification of the core elements of a LinkML schema: ClassDefinitions, TypeDefinitions, SlotDefinitions, EnumDefinitions, as well as ancillary structures.</p>
+<p>Introduces the concept of a LinkML schema, which specifies how conforming LinkML instances are intended to be structured.</p>
+<p>This part specifies the core elements of a LinkML schema: <a href="https://w3id.org/linkml/ClassDefinition">ClassDefinitions</a>, <a href="https://w3id.org/linkml/TypeDefinition">TypeDefinitions</a>, <a href="https://w3id.org/linkml/SlotDefinition">SlotDefinitions</a>, <a href="https://w3id.org/linkml/EnumDefinition">EnumDefinitions</a>, as well as ancillary structures.</p>
+<p>This part also introduces the concept of the LinkML metamodel. A LinkML schema is both a specification of conformance conditions for an instance, and at the same time an instance that conforms to the metamodel schema.</p>
 <h3 id="part-4-derived-schemas-and-schema-semantics">Part 4: Derived Schemas and Schema Semantics</h3>
-<p>Specification of inference procedures for <strong>derived schemas</strong>, which can be used for purposes such as validation.</p>
+<p>Specification of inference functions and procedures for <strong>derived schemas</strong> to populate missing values in schemas.</p>
 <h3 id="part-5-validation-of-instance-data">Part 5: Validation of Instance Data</h3>
-<p>Specification of the procedure for <strong>validating</strong> LinkML instances using a derived schema</p>
+<p>Specification of the procedure for <strong>validating</strong> LinkML instances using a derived schema.</p>
 <h3 id="part-6-mapping-of-instance-data">Part 6: Mapping of Instance Data</h3>
-<p>Specification of how LinkML instances are mapped to other data models and syntaxes:</p>
+<p>Specification of how LinkML instances are mapped to other data models and concrete syntaxes:</p>
 <ul>
-<li>JSON/YAML</li>
+<li>JSON and the JSON subset of YAML</li>
 <li>RDF and JSON-LD</li>
+<li>in-memory object-oriented representations</li>
 </ul>
 
 

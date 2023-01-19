@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#schema-datamodel">
+<a class="md-skip" href="#schema-data-model">
           Skip to content
         </a>
 </div>
@@ -163,7 +163,12 @@
 <a class="md-nav__link" href="#schema-basics">
     Schema Basics
   </a>
-<nav aria-label="Schema Basics" class="md-nav">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-linkml-metamodel">
+    The LinkML Metamodel
+  </a>
+<nav aria-label="The LinkML Metamodel" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#yaml-representation-of-schemas">
@@ -451,7 +456,12 @@
 <a class="md-nav__link" href="#schema-basics">
     Schema Basics
   </a>
-<nav aria-label="Schema Basics" class="md-nav">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-linkml-metamodel">
+    The LinkML Metamodel
+  </a>
+<nav aria-label="The LinkML Metamodel" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#yaml-representation-of-schemas">
@@ -642,16 +652,17 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="schema-datamodel">Schema Datamodel</h1>
-<p>This section describes the <em>structure</em> of a LinkML schema. For precise interpretation of these structures, refer to the following two sections on <em>derived schemas</em> and <em>validation</em></p>
+<h1 id="schema-data-model">Schema Data Model</h1>
+<p>This section describes the <em>structure</em> of LinkML schemas. For precise <em>semantic</em> interpretation of these structures, refer to the following two parts on <em>derived schemas</em> (part 4) and <em>validation</em> (part 5).</p>
 <h2 id="schema-basics">Schema Basics</h2>
-<p>A LinkML <strong>schema</strong> specifies rules and structural conformance conditions for <em>instances</em>. Schemas allow for:</p>
+<p>A LinkML <strong>schema</strong> specifies rules and structural conformance conditions for <strong>instances</strong>. Schemas allow for:</p>
 <ul>
-<li>parsing of instance <strong>serializations</strong> to LinkML instance structures</li>
-<li>structurally and semantically <strong>validating</strong> LinkML instance structures</li>
-<li><strong>inference</strong> of missing values in LinkML instance structures</li>
+<li><strong>parsing</strong> of instance <em>serializations</em> to LinkML instances</li>
+<li>structurally and semantically <strong>validating</strong> LinkML instances</li>
+<li><strong>inference</strong> of missing values in LinkML instances</li>
 </ul>
-<p>Every LinkML schema <em>m</em> is itself an instance of a special class <a href="https://w3id.org/linkml/SchemaDefinition">SchemaDefinition</a> that forms part of a special schema called the <strong>LinkML metamodel</strong>, which is denoted as <em>m<sup>M</sup></em>. There is exactly one metamodel.</p>
+<h2 id="the-linkml-metamodel">The LinkML Metamodel</h2>
+<p>Every LinkML schema <em>m</em> is itself an instance of a special class <a href="https://w3id.org/linkml/SchemaDefinition">SchemaDefinition</a> that forms part of a special schema called the <strong>LinkML metamodel</strong>, which is denoted by <em>m<sup>M</sup></em>. There is exactly one metamodel.</p>
 <p>In this specification:</p>
 <ul>
 <li>ClassDefinitions in <em>m<sup>M</sup></em> are called <strong>metaclasses</strong></li>
@@ -659,16 +670,22 @@
 </ul>
 <p>The metamodel is itself expressed in LinkML, and the latest version can found from canonical URLs:</p>
 <ul>
-<li><a href="https://w3id.org/linkml/SchemaDefinition">https://w3id.org/linkml/SchemaDefinition</a> -- generated documentation</li>
-<li><a href="https://w3id.org/linkml/meta.yaml">https://w3id.org/linkml/meta.yaml</a> -- canonical YAML serialization</li>
+<li><a href="https://w3id.org/linkml/SchemaDefinition">https://w3id.org/linkml/SchemaDefinition</a> -- top level class</li>
+<li><a href="https://w3id.org/linkml/meta.yaml">https://w3id.org/linkml/meta.yaml</a> -- canonical YAML serialization of the metamodel</li>
 </ul>
 <p>This specification specifies the <em>normative elements</em> necessary to specify the behavior of LinkML schemas. Schemas may have additional
 elements provided in the metamodel. For example, elements in schemas can have <em>informative</em> slot assignments for slots such as <a href="https://w3id.org/linkml/title">title</a>, <a href="https://w3id.org/linkml/description">description</a>, and so on, but these slots are not described in this specification as they are not normative and do not affect the formal interpretation of schemas.</p>
+<p>The subset of the metamodel that corresponds to the specification is called the SpecificationProfile, and it is found at:</p>
+<ul>
+<li><a href="https://w3id.org/linkml/SpecificationSubset">https://w3id.org/linkml/SpecificationSubset</a> </li>
+</ul>
 <h3 id="yaml-representation-of-schemas">YAML representation of schemas</h3>
-<p>Because schemas and all the parts of a schema are instances of metaclasses in the metamodel, the YAML serialization rules from <a href="06mapping">section 6</a> can be applied to both serialized and deserialized a schema as YAML.</p>
+<p>This part of the specification specifies schemas in terms of the abstract functional syntax (part 2).</p>
+<p>For practical purposes, the canonical serialization of a schema is in YAML. The rules for serializing and deserializing LinkML schemas are the same as for instances, because every schema is an object that instantiates a SchemaDefinition class in the metamodel.</p>
+<p>See  <a href="06mapping">section 6</a> for rules for mapping to YAML.</p>
 <h3 id="analogies-to-other-modeling-frameworks">Analogies to other modeling frameworks</h3>
 <p>To help understand the basic concepts, it can be helpful to think about analogous structures in other frameworks.
-However, it should be understood these are not equivalents.</p>
+However, it should be understood these are not precisely equivalent.</p>
 <ul>
 <li>ClassDefinitions are analogous to: <ul>
 <li><a href="https://en.wikipedia.org/wiki/Class_(computer_programming)">classes</a> in object-oriented languages </li>
@@ -689,7 +706,7 @@ However, it should be understood these are not equivalents.</p>
 <li>Note however that in LinkML enums are optionally backed by stronger semantics with enum elements (permissible values) mapped to vocabularies or ontologies</li>
 </ul>
 </li>
-<li>EnumDefinitions are analogous to:<ul>
+<li>TypeDefinitions are analogous to:<ul>
 <li><a href="https://en.wikipedia.org/wiki/Data_type">data types</a> in most object-oriented languages </li>
 <li>primitive types in database systems</li>
 <li>extensible types in some systems</li>
@@ -791,7 +808,6 @@ However, it should be understood these are not equivalents.</p>
     SchemaDefinition "1" --&gt; "*" ClassDefinition: classes
     SchemaDefinition "1" --&gt; "*" SlotDefinition: slots
     SchemaDefinition "1" --&gt; "*" EnumDefinition: enums
-    SchemaDefinition "1" --&gt; "*" EnumDefinition: Enums
     SchemaDefinition "1" --&gt; "*" SubsetDefinition: subsets
     SchemaDefinition "1" --&gt; "*" Prefix: prefixes
     ClassDefinition --|&gt; Element
@@ -809,7 +825,7 @@ However, it should be understood these are not equivalents.</p>
 <h3 id="schema-example-functional-syntax">Schema example, functional syntax</h3>
 <p>The skeleton of a schema instance serialized as in functional syntax might look like:</p>
 <pre><code>SchemaDefinition(
-  id=String('http://example.org/organization'),
+  id=String^"http://example.org/organization",
   imports=[...],
   prefixes=[...],
   classes=[...],
@@ -838,9 +854,8 @@ types:
 <ul>
 <li>metamodel documentation: <a href="https://w3id.org/linkml/ClassDefinition">ClassDefinition</a></li>
 </ul>
-<p>Instances of <strong>ClassDefinition</strong> are themselves <em>instantiable</em>. For example, a schema may contain a class definition "Person". This class definition instantiates the metaclass <strong>ClassDefinition</strong>, and can have instances, of actual persons.</p>
-<p>Any LinkML instance that instantiates a ClassDefinition will have zero to many slot-value assignments, constrained
-by rules that operate off of the metaslot assignments of that class.</p>
+<p>Instances of <strong>ClassDefinition</strong> are themselves <em>instantiable</em>. For example, a schema may contain a class definition "Person". This ClassDefinition instantiates the metaclass <strong>ClassDefinition</strong>, and can have instances, of actual persons.</p>
+<p>Any LinkML instance that instantiates a ClassDefinition will have zero to many slot-value assignments, constrained by rules that operate off of the metaslot assignments of that class.</p>
 <h3 id="classdefinition-normative-subset-metaslots">ClassDefinition: Normative subset metaslots</h3>
 <p>Any instance <em>c</em> of a ClassDefinition may have assignments in any of the following normative metaslots</p>
 <table>
@@ -1021,24 +1036,24 @@ of ClassDefinitions.</p>
 <p>A collection of ClassDefinition instances might look </p>
 <pre><code class="language-python">[  
    ClassDefinition(
-    name=String("NamedThing"),
+    name=String^"NamedThing",
     abstract=True,
     slots=[
-        String("id"),
-        String("name"),
+        SlotDefinitionReference&amp;"id",
+        SlotDefinitionReference&amp;"name",
         ...
       ]
     ),
    ClassDefinition(
-    name=String("Person"),
-    description=String("A person, living or dead"),
-    is_a=String("NamedThing"),
+    name=String^"Person",
+    description=String^"A person, living or dead",
+    is_a=ClassDefinitionReference&amp;"NamedThing",
     attributes=[
         SlotDefinition(
-            name=String("height"),
+            name=String^"height",
             ...),
         SlotDefinition(
-            name=String("age"),
+            name=String^"age",
             ...)
    ),
    ...
@@ -1265,7 +1280,7 @@ other schema elements may refer to <strong>AnonymousSlotExpression</strong>s com
 </tr>
 <tr>
 <td><a href="union_of.md">union_of</a></td>
-<td>0..* <br/> <a href="TypeDefinition.md">TypeDefinition</a></td>
+<td>0..* <br/> <a href="SlotDefinition.md">SlotDefinition</a></td>
 <td>indicates that the domain element consists exactly of the members of the elem...</td>
 </tr>
 <tr>
@@ -1410,16 +1425,16 @@ SlotDefinition "*" --&gt; SlotDefinition: mixins
 <pre><code class="language-python">SchemaDefinition(
   slots=[
    SlotDefinition(
-    name=String("id"),
-    identifier=Boolean(True),
-    description=String("A unique identifier for an object"),
-    range=String("String"),
+    name=String^"id",
+    identifier=Boolean^True,
+    description=String^"A unique identifier for an object",
+    range=TypeDefinitionReference&amp;"String",
     ...
     ),
    SlotDefinition(
-    name=String("name"),
-    description=String("..."),
-    range=String("String"),
+    name=String^"name",
+    description=String^"...",
+    range=String^"String",
     ...
     )
 </code></pre>
@@ -1830,41 +1845,41 @@ types:
 </code></pre>
 <p>Because schemas, are instances of the metamodel, this hypothetical schema may be serialized in functional instance syntax as follows:</p>
 <pre><code>SchemaDefinition(
-  id=String("http://example.org/organization"),
-  name=String("organization"),
+  id=String^"http://example.org/organization",
+  name=String^"organization",
   prefixes=[
-       Prefix(prefix_prefix=Ncname("linkml")
-              prefix_reference=Uri("https://w3id.org/linkml/")),
-       Prefix(prefix_prefix=Ncname("org")
-              prefix_reference=Uri("http://example.org/organization/")),
-       Prefix(prefix_prefix=Ncname("schema")
-              prefix_reference=Uri("http://schema.org")),
-       Prefix(prefix_prefix=Ncname("wgs")
-              prefix_reference=Uri("http://www.w3.org/2003/01/geo/wgs84_pos#")),
-       Prefix(prefix_prefix=Ncname("qudt")
-              prefix_reference=Uri("http://qudt.org/1.1/schema/qudt#"))
+       Prefix(prefix_prefix=Ncname^"linkml"
+              prefix_reference=Uri^"https://w3id.org/linkml/"),
+       Prefix(prefix_prefix=Ncname^"org"
+              prefix_reference=Uri^"http://example.org/organization/"),
+       Prefix(prefix_prefix=Ncname^"schema"
+              prefix_reference=Uri^"http://schema.org"),
+       Prefix(prefix_prefix=Ncname^"wgs"
+              prefix_reference=Uri^"http://www.w3.org/2003/01/geo/wgs84_pos#"),
+       Prefix(prefix_prefix=Ncname^"qudt"
+              prefix_reference=Uri^"http://qudt.org/1.1/schema/qudt#")
   ],
-  default_prefix=String("org"),
+  default_prefix=String^"org",
   imports=[
-    Uriorcurie("linkml:types")
+    Uriorcurie^"linkml:types"
   ],
   classes=[
     ClassDefinition(
-      name=String("Person"),
+      name=String^"Person",
       slots=[
-        String("id"),
-        String("name"),
-        String("height"),
-        String("age"),
-        String("knows"),
-        String("job"),
+        SlotDefinition&amp;"id",
+        SlotDefinition&amp;"name",
+        SlotDefinition&amp;"height",
+        SlotDefinition&amp;"age",
+        SlotDefinition&amp;"knows",
+        SlotDefinition&amp;"job",
         ...
       ]
     ),
     ClassDefinition(
-      name=String("Organization"),
+      name=String^"Organization",
       slots=[
-        String("id"),
+        SlotDefinition&amp;"id",
         ...
       ]
     ),
@@ -1872,51 +1887,46 @@ types:
   ],
   slots=[
     SlotDefinition(
-      name=String("id"),
-      identifier=Boolean(True),
-      description=String("..."),
-      range=String("String"),
+      name=SlotDefinition&amp;"id",
+      identifier=Boolean^True,
+      description=String^"...",
+      range=TypeDefinition&amp;"String",
       ...
     ),
     SlotDefinition(
-      name=String("name"),
-      description=String("..."),
-      range=String("String"),
+      name=SlotDefinition&amp;"name",
+      description=SlotDefinition&amp;"...",
       ...
     ),
     SlotDefinition(
-      name=String("occupation"),
-      description=String("..."),
-      range=String("JobCode"),
+      name=String^"occupation",
       ...
     ),
     SlotDefinition(
-      name=String("date_of_birth"),
-      description=String("..."),
-      range=String("Date"),
+      name=String^"date_of_birth",
       ...
     ),
     SlotDefinition(
-      name=String("knows"),
-      description=String("..."),
-      range=String("Person"),
-      multivalued=Boolean(True),
+      name=String^"knows",
+      description=String^"...",
+      range=ClassDefinition&amp;"Person",
+      multivalued=Boolean^True,
       ...
     )
   ],
   enums=[
      EnumDefinition(
-       name=String("JobCode"),
+       name=String^"JobCode",
        permissible_values=[...],
      )
   ],
   types=[
      TypeDefinition(
-       name=String("Date"),
+       name=String^"Date",
        ...
      ),
      TypeDefinition(
-       name=String("String"),
+       name=String^"String",
        ...
      ),
   ]
