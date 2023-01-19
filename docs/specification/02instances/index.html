@@ -155,10 +155,10 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#functional-instance-syntax-and-structure">
-    Functional Instance Syntax and Structure
+<a class="md-nav__link" href="#abstract-functional-instance-syntax-and-structure">
+    Abstract Functional Instance Syntax and Structure
   </a>
-<nav aria-label="Functional Instance Syntax and Structure" class="md-nav">
+<nav aria-label="Abstract Functional Instance Syntax and Structure" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#instances">
@@ -171,8 +171,8 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#instances-of-classes">
-    Instances of Classes
+<a class="md-nav__link" href="#instances-of-classes-objects">
+    Instances of Classes (Objects)
   </a>
 </li>
 <li class="md-nav__item">
@@ -216,11 +216,15 @@
 <a class="md-nav__link" href="#identity-conditions">
     Identity conditions
   </a>
-</li>
+<nav aria-label="Identity conditions" class="md-nav">
+<ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#instance-serializations">
-    Instance Serializations
+<a class="md-nav__link" href="#identity-conditions-for-classdefinition-instances">
+    Identity conditions for ClassDefinition Instances
   </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#instance-accessor-syntax">
@@ -333,10 +337,10 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#functional-instance-syntax-and-structure">
-    Functional Instance Syntax and Structure
+<a class="md-nav__link" href="#abstract-functional-instance-syntax-and-structure">
+    Abstract Functional Instance Syntax and Structure
   </a>
-<nav aria-label="Functional Instance Syntax and Structure" class="md-nav">
+<nav aria-label="Abstract Functional Instance Syntax and Structure" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#instances">
@@ -349,8 +353,8 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#instances-of-classes">
-    Instances of Classes
+<a class="md-nav__link" href="#instances-of-classes-objects">
+    Instances of Classes (Objects)
   </a>
 </li>
 <li class="md-nav__item">
@@ -394,11 +398,15 @@
 <a class="md-nav__link" href="#identity-conditions">
     Identity conditions
   </a>
-</li>
+<nav aria-label="Identity conditions" class="md-nav">
+<ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#instance-serializations">
-    Instance Serializations
+<a class="md-nav__link" href="#identity-conditions-for-classdefinition-instances">
+    Identity conditions for ClassDefinition Instances
   </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#instance-accessor-syntax">
@@ -413,13 +421,14 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="linkml-instances">LinkML Instances</h1>
-<h2 id="functional-instance-syntax-and-structure">Functional Instance Syntax and Structure</h2>
-<p>This specification provides a grammar for a <strong>functional syntax</strong> for
-expressing LinkML instances. This syntax is not intended for data
-exchange, but instead for unambiguous describing data in LinkML.</p>
-<p><a href="06mapping">Section 6</a> specifies how the instance model is converted to JSON, YAML, and RDF.</p>
+<h2 id="abstract-functional-instance-syntax-and-structure">Abstract Functional Instance Syntax and Structure</h2>
+<p>This specification provides a grammar for a <strong>functional syntax</strong> for expressing the structure of LinkML instances. A LinkML instance is a tree-like structure conforming to the syntax specified here.</p>
+<p>This syntax is not intended for data exchange, but instead for unambiguous describing data in LinkML in a way that is independent of any particular syntax.</p>
+<p><a href="06mapping">Section 6</a> specifies how the instance model is serialized as JSON, YAML, and RDF, and guidelines for mapping to object-oriented programming representations.</p>
+<p>This section uses BNF to define the structure of the LinkML instance abstract model.
+We also include UML-style diagrams for informative purposes.</p>
 <h3 id="instances">Instances</h3>
-<p>An instance is either one of four <em>definition</em> types, or a collection, or the special token <code>None</code>:</p>
+<p>An instance is a tree-like structure conforming to either one of four <em>definition</em> types, or a <em>collection</em>, or the special token <code>None</code>. The four definition types are subdivided into instances of classes (aka objects), or atomic instances:</p>
 <blockquote>
 <p><strong>Instance</strong> := <strong>None</strong> | <strong>InstanceOfClass</strong> | <strong>AtomicInstance</strong> | <strong>CollectionInstance</strong></p>
 <p><strong>AtomicInstance</strong> := <strong>InstanceOfType</strong> | <strong>InstanceOfEnum</strong> | <strong>InstanceOfReference</strong></p>
@@ -435,24 +444,21 @@ exchange, but instead for unambiguous describing data in LinkML.</p>
 
 </div>
 <h3 id="definition-types-and-names">Definition Types and Names</h3>
-<p>Definition names are used to unambiguously indicate definitions specified in a <strong>Schema</strong> (described in the <a href="03schemas">next section</a>):</p>
+<p>Definition names are used to unambiguously indicate <em>elements</em> specified in a <strong>Schema</strong> (described in <a href="03schemas">Part 3</a>):</p>
 <blockquote>
 <p><strong>ClassDefinitionName</strong> := <strong>ElementName</strong></p>
-<p><strong>ClassDefinitionReferenceName</strong> := <strong>ElementName</strong></p>
 <p><strong>TypeDefinitionName</strong> := <strong>ElementName</strong></p>
 <p><strong>EnumDefinitionName</strong> := <strong>ElementName</strong></p>
 <p><strong>SlotDefinitionName</strong> := <strong>ElementName</strong></p>
 <p><strong>ElementName</strong> := <em>a finite sequence of characters matching the PN_LOCAL production of <a href="https://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> and not matching any of the keyword terminals of the syntax</em></p>
 </blockquote>
-<p>Note that the grammar needs a table mapping names to types in order to
-unambiguously parse a serialization in functional syntax</p>
-<p>names must not be shared across definition types</p>
-<h3 id="instances-of-classes">Instances of Classes</h3>
+<p>Names MUST NOT be shared across definition types</p>
+<h3 id="instances-of-classes-objects">Instances of Classes (Objects)</h3>
 <p>An <strong>InstanceOfClass</strong> is a pair consisting of (1) a ClassDefinition <em>Name</em> that indicates the <em>instantiation type</em> of the instance, and (2) zero to many <em>Assignments</em><em>, where each
 assignment is a key-value pair of a </em><em>SlotName</em><em> and an </em><em>Instance</em>* value.</p>
 <blockquote>
 <p><strong>InstanceOfClass</strong> := <strong>ClassDefinitionName</strong> '(' &lt;<strong>Assignment</strong>&gt;List ')'</p>
-<p><strong>Assignment</strong> := <strong>SlotName</strong> '=' <strong>Instance</strong></p>
+<p><strong>Assignment</strong> := <strong>SlotDefinitionName</strong> '=' <strong>Instance</strong></p>
 </blockquote>
 <div class="mermaid">classDiagram
     Instance &lt;|-- InstanceOfClass
@@ -468,20 +474,22 @@ assignment is a key-value pair of a </em><em>SlotName</em><em> and an </em><em>I
       +Instance value
     }
 </div>
-<p>No SlotName can appear twice in any set of Assignments (i.e. SlotName is a key)</p>
+<p>No SlotDefinitionName can appear twice in any set of Assignments (i.e. SlotDefinitionName is a <em>key</em>)</p>
 <p>An example instance might be written in functional syntax as:</p>
 <pre><code class="language-python">Person(id=...,
        name=...,
        age=...,
        &lt;other Assignments&gt;)
 </code></pre>
-<p>where this instantiates the class with name "Person".</p>
+<p>Here the <strong>ClassDefinitionName</strong> is <code>Person</code>, and the <strong>SlotDefinitionName</strong>s are <code>id</code>, <code>name</code>, <code>age</code>.</p>
 <h3 id="primitive-atomic-instances">Primitive (Atomic) Instances</h3>
-<p>There are 3 types of primitive instances, each is a pair consisting of (1) a <em>Name</em> of the element instantiated (2) an atomic value</p>
+<p>There are 3 types of primitive (aka atomic aka scalar) instances, each is a pair consisting of (1) a <em>Name</em> of the element instantiated (2) an atomic value. Different syntaxes are used to unambiguously distinguish the different types of primitive instances.</p>
 <blockquote>
-<p><strong>InstanceOfType</strong> := <strong>TypeDefinitionName</strong> '(' <strong>AtomicValue</strong> ')'</p>
-<p><strong>InstanceOfEnum</strong> := <strong>EnumDefinitionName</strong> '(' <strong>AtomicValue</strong> ')'</p>
-<p><strong>InstanceOfReference</strong> := <strong>ClassDefinitionReferenceName</strong> '(' <strong>AtomicValue</strong> ')'</p>
+<p><strong>InstanceOfType</strong> := <strong>TypeDefinitionName</strong> '^' <strong>AtomicValue</strong> </p>
+<p><strong>InstanceOfEnum</strong> := <strong>EnumDefinitionName</strong> '[' <strong>PermissibleValue</strong> ']'</p>
+<p><strong>PermissibleValue</strong> := <strong>AtomicValue</strong></p>
+<p><strong>InstanceOfReference</strong> := <strong>ClassDefinitionName</strong> '&amp;' <strong>ObjectReference</strong> </p>
+<p><strong>ObjectReference</strong> := <strong>AtomicValue</strong> </p>
 </blockquote>
 <div class="mermaid">classDiagram
     Instance &lt;|-- AtomicInstance
@@ -504,10 +512,12 @@ assignment is a key-value pair of a </em><em>SlotName</em><em> and an </em><em>I
       +EnumDefinitionName type
     }
 </div>
+<p>Terminology note: Primitive instances are also known as "literals" or "scalars".</p>
 <h3 id="atomic-values">Atomic Values</h3>
 <p>An atomic value is either a string or number or boolean, where numbers can be floating points, decimals, or integers.</p>
 <blockquote>
-<p><strong>AtomicValue</strong> := <strong>StringValue</strong> | <strong>NumberValue</strong> | <strong>BooleanValue</strong></p>
+<p><strong>AtomicValue</strong> := <strong>QuotedString</strong> | <strong>NumberValue</strong> | <strong>BooleanValue</strong></p>
+<p><strong>QuotedString</strong> := '"' <strong>StringValue</strong> '"'</p>
 <p><strong>StringValue</strong> := <em>a finite sequence of characters in which " (U+22) and \ (U+5C) occur only in pairs of the form \" (U+5C, U+22) and \ (U+5C, U+5C), enclosed in a pair of " (U+22) characters</em></p>
 <p><strong>NumberValue</strong> := <strong>FloatingPointValue</strong> | <strong>DecimalValue</strong> | <strong>IntegerValue</strong></p>
 <p><strong>FloatingPointValue</strong> ::= [ '+' | '-'] ( <strong>Digits</strong> ['.'<strong>Digits</strong>] [ <strong>Exponent</strong> ] | '.' <strong>Digits</strong> [ <strong>Exponent</strong> ]) ( 'f' | 'F' )</p>
@@ -527,22 +537,29 @@ assignment is a key-value pair of a </em><em>SlotName</em><em> and an </em><em>I
 <li><code>180.2</code> -- a DecimalValue</li>
 <li><code>5</code> -- an IntegerValue</li>
 <li><code>"Alex"</code> -- a StringValue</li>
+<li><code>True</code> -- a BooleanValue</li>
+<li><code>"2023-01-01"</code> -- a StringValue (which happens to be interpetable as a date)</li>
 </ul>
 <h4 id="atomic-instance-examples">Atomic Instance Examples</h4>
-<p>An InstanceOfType instance might look like:</p>
-<pre><code class="language-python">Integer(23)
+<p>An <strong>InstanceOfType</strong> instance might look like:</p>
+<pre><code class="language-python">Integer^23
 </code></pre>
-<p>For this to be a valid InstanceOfType, "Integer" must be the name of a TypeDefinition in the schema</p>
-<p>Another example:</p>
-<pre><code class="language-python">PhoneNumber("+1 800 555 0100")
+<p>In this example, the <strong>TypeDefinitionName</strong> is <code>Integer</code>, and the <strong>AtomicValue</strong> is the number <code>23</code>.</p>
+<p>Note that this is necessarily a syntactically valid Instance according to this part of the specification. Part 6 describes schema-level validation, and for this to be valid according to a schema, that schema must (a) provide a TypeDefinition with the name "Integer" (b) map this to an XSD number type (presumably, xsd:integer).</p>
+<p>Note that the following is <em>syntactically valid</em>: </p>
+<pre><code class="language-python">Integer^"ABC"
 </code></pre>
-<p>For this to be a valid InstanceOfType, "PhoneNumber" must be the name of a TypeDefinition in the schema</p>
-<p>If the schema includes a ClassReference "PersonId" then the following is a valid InstanceOfReference</p>
-<pre><code class="language-python">PersonId("SSN:456")
+<p>If <code>Integer</code> is a TypeDefinition that is mapped to the XSD type for integers, then this will be invalid according to the schema, but at the syntactic level the structure is valid.</p>
+<p>Another example if a syntactically valid <strong>InstanceOfType</strong>:</p>
+<pre><code class="language-python">PhoneNumber^"+1 800 555 0100"
 </code></pre>
-<p>This MAY be the same string used to identify an instance of a ClassDefinition <code>Person(id="SSN:456")</code>, but this is not required.</p>
+<p>For this to be a valid according to a schema InstanceOfType, "PhoneNumber" must be the name of a TypeDefinition in the schema, mapped to an XSD string type.</p>
+<p>An example of a syntactically valid <strong>InstanceOfReference</strong>:</p>
+<pre><code class="language-python">Person&amp;"SSN:456"
+</code></pre>
+<p>This is syntactically valid, but for it to be valid according to a schema, the schema must include a ClassDefinition with the name <code>Person</code>, and that ClassDefinition must have an <em>identifier</em> (see Part 6).</p>
 <h3 id="collections">Collections</h3>
-<p>A collection is zero or more instances, serialized as a comma-delimited list:</p>
+<p>A collection is zero or more instances, serialized as a comma-delimited list inside square brackets:</p>
 <blockquote>
 <p><strong>CollectionInstance</strong> := '[' &lt;<strong>Instance</strong>&gt;List ']'</p>
 </blockquote>
@@ -553,11 +570,12 @@ CollectionInstance "*" --&gt; "0..*" Instance
 </div>
 <p>Examples of collections:</p>
 <ul>
-<li><code>[String("A"), String("B"), Integer(5)]</code> -- a list of primitive instances</li>
+<li><code>[String^"A", String^"B", Integer^5]</code> -- a list of primitive instances</li>
 <li><code>[Person(name=..., ...), Person(name=..., ...)]</code> -- a list of class instances</li>
-<li><code>[Person(name=..., ...), Integer(5), None]</code> -- a heterogeneous collection</li>
+<li><code>[Person(name=..., ...), Integer^5, None]</code> -- a heterogeneous collection</li>
 <li><code>[]</code> -- an empty collection</li>
 </ul>
+<p>Note that collections can be serialized in different ways depending on the target syntax, for examples, lists vs dictionaries. See section <a href="06mapping">6</a> for details of serializations.</p>
 <h3 id="none-null-instances">None (Null) instances</h3>
 <p>A special symbol is included to indicate null or missing values</p>
 <blockquote>
@@ -571,86 +589,113 @@ CollectionInstance "*" --&gt; "0..*" Instance
 <h3 id="combined-example">Combined Example</h3>
 <p>The following is an example of an <strong>InstanceOfClass</strong> where the instantiated type is a class with name "Person":</p>
 <pre><code class="language-python">Person(
-  id=String("SSN:123"),
-  name=String("Alex"),
-  aliases=[String("Alexandra")],
+  id=String^"SSN:123",
+  name=String^"Alex",
+  aliases=[String^"Alexandra"],
   address=None,
-  phone=PhoneNumber("+1 800 555 0100"),
+  phone=PhoneNumber^"+1 800 555 0100",
   height=
-    Measurement(value=Decimal(170.2)
-                unit=UnitCode("cm")),
+    Measurement(value=Decimal^170.2
+                unit=UnitCode["cm"]),
   relationships=[
     FamilialRelationship(
-      type=RelationshipType("SIBLING_OF"),
-      related_to=PersonId("SSN:456")
+      type=RelationshipType["SIBLING_OF"],
+      related_to=Person&amp;"SSN:456"
     )
   ]
 )                
 </code></pre>
-<p>Parsing this requires a schema that assigns element names to schema elements:</p>
+<h2 id="identity-conditions">Identity conditions</h2>
+<p>Two instances <code>i</code> and <code>j</code> are identical if one of the following conditions is met:</p>
 <table>
 <thead>
 <tr>
-<th>Element Name</th>
-<th>Schema Type</th>
+<th><strong>Name</strong></th>
+<th><code>i</code></th>
+<th><code>j</code></th>
+<th>Additional Conditions</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Person</td>
-<td>ClassDefinition</td>
+<td><code>None</code></td>
+<td><code>None</code></td>
+<td><code>None</code></td>
+<td></td>
 </tr>
 <tr>
-<td>Measurement</td>
-<td>ClassDefinition</td>
+<td><code>TypeDefinition</code></td>
+<td><code>&lt;TypeDefinitionName&gt;^&lt;AtomicValue&gt;</code></td>
+<td><code>&lt;TypeDefinitionName&gt;^&lt;AtomicValue&gt;</code></td>
+<td></td>
 </tr>
 <tr>
-<td>FamilialRelationship</td>
-<td>ClassDefinition</td>
+<td><code>ObjectReference</code></td>
+<td><code>&lt;ClassDefinitionName&gt;&amp;&lt;AtomicValue&gt;</code></td>
+<td><code>&lt;ClassDefinitionName&gt;&amp;&lt;AtomicValue&gt;</code></td>
+<td></td>
 </tr>
 <tr>
-<td>UnitCode</td>
-<td>EnumDefinition</td>
+<td><code>EnumDefinition</code></td>
+<td><code>&lt;EnumDefinitionName&gt;[&lt;AtomicValue&gt;]</code></td>
+<td><code>&lt;EnumDefinitionName&gt;[&lt;AtomicValue&gt;</code></td>
+<td></td>
 </tr>
 <tr>
-<td>Person</td>
-<td>ClassDefinition</td>
+<td><code>ClassDefinition</code></td>
+<td><code>&lt;ClassDefinition&gt;(ai1, ..., aiN)</code></td>
+<td><code>&lt;ClassDefinition&gt;(aj1, ..., ajN)</code></td>
+<td>See below</td>
+</tr>
+<tr>
+<td><code>Collection</code></td>
+<td><code>[i1, ..., iN]</code></td>
+<td><code>[j1, ..., jN]</code></td>
+<td><code>i1=j</code>, ..., <code>iN=jN</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="identity-conditions">Identity conditions</h2>
-<p>For two instances <code>i</code> and <code>j</code> to be identical they must be of the same metatype.</p>
-<p>Identity conditions for two primitive instances are satisfied if both <strong>DefinitionName</strong> and <strong>AtomicValue</strong> match</p>
-<ul>
-<li><code>i=&lt;DefinitionName_i&gt;(&lt;AtomicValue_i&gt;)</code></li>
-<li><code>j=&lt;DefinitionName_j&gt;(&lt;AtomicValue_j&gt;)</code></li>
-<li><code>i=j iff DefinitionName_i = DefinitionName_j and AtomicValue_i=AtomicValue_j</code></li>
-</ul>
-<p><strong>None</strong> is identical to itself</p>
-<p>Two collections are identical if they are of the same length and each member of <code>i</code> is identical to at least one member of <code>j</code>, where each match must be unique</p>
-<p>Two ClassDefinition instances are identical if the instantiated <strong>ClassDefinitionName</strong> is identical and each non-<strong>None</strong> assignment
-in <code>i</code> is identical an assignment in <code>j</code> and, and each non-None assignment in <code>j</code> is identical to an assignment in <code>i</code></p>
-<p>Two assignments are identical if the slot name is the same, and the value is identical</p>
-<h2 id="instance-serializations">Instance Serializations</h2>
-<p>The abstract syntax provided here is intended as a normative syntax for the purposes
-of specifying the semantics of LinkML.</p>
-<p>See <a href="../06mapping/">section 6</a> for details on how this functional syntax maps to other serialization
-syntaxes and models such as JSON and RDF.</p>
+<h3 id="identity-conditions-for-classdefinition-instances">Identity conditions for ClassDefinition Instances</h3>
+<p>Two ClassDefinition instances <code>i</code> and <code>j</code> are identical if (1) both instantiate the same class, and all slot assignments can be matched, regardless of order.</p>
+<p>Note that prior to comparison, the representation is first <em>normalized</em> and all assignments whose value is <code>None</code> are removed.</p>
+<pre><code>if
+  i == &lt;ClassName&gt;(&lt;Assignments_i&gt;) and j == &lt;ClassName&gt;(&lt;Assignments_j&gt;) and
+  all(a_i in Assignments_i if any(a_j in Assignments_j if a_i == a_j)) and
+  all(a_j in Assignments_j if any(a_i in Assignments_i if a_i == a_j))
+then
+  i == j   
+</code></pre>
+<p>Two slot value assignments are identical if either (1) either is None (b) slot and value match</p>
+<p>Assignment identity conditions:</p>
+<pre><code>if 
+  a_i == &lt;SlotName&gt;=&lt;Value_i&gt; and a_j == &lt;SlotName&gt;=&lt;Value_j&gt; and Value_i == Value_j
+then
+  a_i == a_j
+</code></pre>
 <h2 id="instance-accessor-syntax">Instance Accessor Syntax</h2>
-<p>For a given instance <code>i</code>, <em>accessor</em> syntax can be used to dereference values.</p>
+<p>For a given instance <code>i</code>, <strong>Path</strong> syntax can be used to dereference values.</p>
 <blockquote>
-<p><strong>Path</strong> := <strong>SlotDefinitionName</strong> { <strong>PathExtension</strong> }</p>
-<p><strong>PathExtension</strong> := '.' <strong>SlotDefinitionName</strong> | '[' <strong>Identifier</strong> ']'</p>
+<p><strong>PathComponent</strong> := '.' <strong>SlotDefinitionName</strong> | '[' <strong>Identifier</strong> ']'</p>
+<p><strong>Identifier</strong> := <strong>AtomicValue</strong></p>
 </blockquote>
-<p>To interpret an accessor for a given instance <em>i</em>:</p>
-<ul>
-<li>if the path extension is <code>.&lt;s&gt;</code> then <em>i</em> must be an *<em>InstanceOfClass</em>, and the value is equal to the value of the slot assignment for slot <code>s</code></li>
-<li>if the path extension is <code>[&lt;id&gt;]</code> then <em>i</em> must be an <strong>InstanceOfCollection</strong>, and the value is equals to the member of that list that has a slot with the role of <em>identifier</em> whose value is <code>&lt;id&gt;</code></li>
+<p>An path is a name of a variable denoting an instance followed by zero or more <strong>PathComponent</strong>s.</p>
+<blockquote>
+<p><strong>Path</strong> := <strong>VariableName</strong> [  <strong>PathComponent</strong> ]</p>
+</blockquote>
+<p>To interpret a path <em>p</em>:</p>
+<ol>
+<li><strong>VariableName</strong> is resolved to an instance <em>i</em></li>
+<li>For each path component in the path, reset <em>i</em> to be the value of looking up that component:<ul>
+<li>if the path extension is <code>.&lt;s&gt;</code> then <em>r</em> must be an *<em>InstanceOfClass</em>, and the value is equal to the value of the slot assignment for slot <code>s</code></li>
+<li>if the path extension is <code>[&lt;id&gt;]</code> then <em>r</em> must be an <strong>InstanceOfCollection</strong>, and the value is equals to the member of that list that has a slot with the role of <em>identifier</em> whose value is <code>&lt;id&gt;</code></li>
 </ul>
-<p>For example, if <em>i</em> is equal to the Person instance in the example above:</p>
+</li>
+</ol>
+<p>For example, if <em>i</em> is equal to the Person instance in the Combined Example above:</p>
 <ul>
-<li><code>i.id</code> == <code>String("SSN:123")</code></li>
-<li><code>i.height.unit</code> == <code>String("cm")</code></li>
+<li><code>i</code> == <code>i</code></li>
+<li><code>i.id</code> == <code>String^"SSN:123"</code></li>
+<li><code>i.height.unit</code> == <code>String^"cm"</code></li>
 </ul>
 </article>
 </div>

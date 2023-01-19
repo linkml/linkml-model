@@ -87,6 +87,9 @@ gendoc: $(DOCDIR)
 
 testdoc: gendoc serve
 
+builddoc:
+	$(RUN) mkdocs build
+
 MKDOCS = $(RUN) mkdocs
 mkd-%:
 	$(MKDOCS) $*
