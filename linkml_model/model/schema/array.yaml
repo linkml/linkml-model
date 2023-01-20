@@ -1,0 +1,54 @@
+id: https://w3id.org/linkml/linkml-arrays
+name: linkml-arrays
+title: linkml-arrays
+description: |-
+  LinkML schema to store one-dimensional series and two-dimensional arrays.
+
+prefixes:
+  arrays: https://w3id.org/linkml/linkml-arrays
+  linkml: https://w3id.org/linkml/
+
+default_prefix: arrays
+default_range: string
+
+imports:
+  - linkml:types
+
+classes:
+
+  Any:
+    class_uri: linkml:Any
+
+  OneDimensionalSeries:
+    attributes:
+      name:  # the row label
+        key: true  # unique when nested (unlike identifier, which is a global identifier)
+      data_type:
+      values:
+        range: Any
+        multivalued: true
+        required: true
+
+  TwoDimensionalArray:
+    attributes:
+      axis0:
+        aliases:
+        - x
+        range: OneDimensionalSeries
+        rank: 0
+        required: true
+        inlined: true
+        inlined_as_list: true
+      axis1:
+        aliases:
+        - y
+        range: OneDimensionalSeries
+        rank: 1
+        required: true
+        inlined: true
+        inlined_as_list: true
+      values:
+        # this will be serialized as one big long list that should be interpreted as a 2D array
+        range: Any
+        required: true
+        multivalued: true
