@@ -41,8 +41,8 @@ slots:
     inherited: true
     symmetric: true
     annotations:
-      tag: biolink:canonical_predicate
-      value: true
+      - tag: biolink:canonical_predicate
+        value: true
     exact_mappings:
       - skos:relatedMatch
       - UMLS:related_to
@@ -57,12 +57,12 @@ slots:
       - RO:0002084
     aliases: ['similar to']
     structured_aliases:
-      - alias_name: mapped_to
-        alias_type: close
+      - literal_form: mapped_to
+        predicate: RELATED_SYNONYM
         source: infores:mesh
-      - alias_name: higher_than
-        alias_type: narrow
+      - literal_form: higher_than
+        predicate: NARROW_SYNONYM
         source: infores:semmeddb
-      - alias_name: related_to
-        alias_type: exact
+      - literal_form: related_to
+        predicate: EXACT_SYNONYM
         source: infores:bte

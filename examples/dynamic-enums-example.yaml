@@ -71,9 +71,9 @@ enums:
       relationship_types:
         - rdfs:subClassOf
     minus:
-      permissible_values:
-        root_node:
-          meaning: MONDO:0000001 ## disease or disorder
+      - permissible_values:
+          root_node:
+            meaning: MONDO:0000001 ## disease or disorder
 
   HumanDisease:
     description: Extends the Disease value set, including NCIT neoplasms, excluding non-human diseases
@@ -107,8 +107,8 @@ enums:
             - loinc:LP43571-6
           is_direct: true
     minus:
-      concepts:
-        - LOINC:5932-9
+      - concepts:
+          - LOINC:5932-9
 
   HCAExample:
     see_also:
@@ -123,8 +123,8 @@ enums:
           relationship_types:
             - rdfs:subClassOf
     minus:
-      concepts:
-        - LOINC:5932-9
+      - concepts:
+          - LOINC:5932-9
         
   BodyPartEnum:
     reachable_from:
