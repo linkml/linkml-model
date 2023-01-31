@@ -1754,7 +1754,7 @@ slots:
     range: slot_definition
     description: If s transitive_form_of d, then (1) s holds whenever d holds (2) s is transitive (3) d holds whenever s holds and there are no intermediates, and s is not reflexive
     comments:
-      - Example: ancestor_of is the transitive_form_of parent_of
+      - "Example: ancestor_of is the transitive_form_of parent_of"
     in_subset:
       - SpecificationSubset
 
@@ -2100,8 +2100,8 @@ slots:
     slot_uri: sh:group
     range_expression:
       slot_conditions:
-        - is_grouping_slot:
-            equals_expression: True
+        is_grouping_slot:
+          equals_expression: "True"
     in_subset:
       - SpecificationSubset
       - BasicSubset
@@ -2382,6 +2382,7 @@ classes:
       - value set
       - term set
       - Terminology Value Set
+      - answer list
     description: an element whose instances must be drawn from a specified set of permissible values
     is_a: definition
     mixins:
@@ -2829,10 +2830,14 @@ enums:
     description: >-
       The formula used to generate the set of permissible values from the code_set values
     permissible_values:
-      CODE: The permissible values are the set of possible codes in the code set
-      CURIE: The permissible values are the set of CURIES in the code set
-      URI: The permissible values are the set of code URIs in the code set
-      FHIR_CODING: The permissible values are the set of FHIR coding elements derived from the code set
+      CODE:
+        description: The permissible values are the set of possible codes in the code set
+      CURIE:
+        description: The permissible values are the set of CURIES in the code set
+      URI:
+        description: The permissible values are the set of code URIs in the code set
+      FHIR_CODING:
+        description: The permissible values are the set of FHIR coding elements derived from the code set
     in_subset:
       - SpecificationSubset
       - BasicSubset
