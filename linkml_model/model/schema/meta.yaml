@@ -43,7 +43,7 @@ prefixes:
   schema: http://schema.org/
   bibo: http://purl.org/ontology/bibo/
   swrl: http://www.w3.org/2003/11/swrl#
-  sh: https://w3id.org/shacl/
+  sh: http://www.w3.org/ns/shacl#
   owl: http://www.w3.org/2002/07/owl#
   qb: http://purl.org/linked-data/cube#
   prov: http://www.w3.org/ns/prov#
@@ -1974,6 +1974,14 @@ slots:
     in_subset:
       - BasicSubset
 
+  value_object:
+    domain: example
+    alias: object
+    description: direct object representation of the example
+    range: Anything
+    in_subset:
+      - BasicSubset
+
   examples:
     singular_name: example
     domain: element
@@ -2170,6 +2178,9 @@ slots:
 #==================================
 classes:
 
+  Anything:
+    class_uri: linkml:Any
+  
   common_metadata:
     description: Generic metadata shared across definitions
     mixin: true
@@ -2381,6 +2392,7 @@ classes:
       - enum
       - value set
       - term set
+      - concept set
       - Terminology Value Set
       - answer list
     description: an element whose instances must be drawn from a specified set of permissible values
@@ -2770,6 +2782,7 @@ classes:
     slots:
       - value
       - value_description
+      - value_object
     in_subset:
       - BasicSubset
 
