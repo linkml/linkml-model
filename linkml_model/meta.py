@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-12-16T14:12:00
+# Generation date: 2023-02-03T10:05:44
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -60,7 +60,7 @@ QUDT = CurieNamespace('qudt', 'http://qudt.org/schema/qudt/')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
-SH = CurieNamespace('sh', 'https://w3id.org/shacl/')
+SH = CurieNamespace('sh', 'http://www.w3.org/ns/shacl#')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
 SKOSXL = CurieNamespace('skosxl', 'http://www.w3.org/2008/05/skos-xl#')
 SWRL = CurieNamespace('swrl', 'http://www.w3.org/2003/11/swrl#')
@@ -127,6 +127,8 @@ class PermissibleValueText(extended_str):
 class UniqueKeyUniqueKeyName(extended_str):
     pass
 
+
+Anything = Any
 
 @dataclass
 class CommonMetadata(YAMLRoot):
@@ -273,6 +275,7 @@ class Element(YAMLRoot):
     definition_uri: Optional[Union[str, URIorCURIE]] = None
     local_names: Optional[Union[Dict[Union[str, LocalNameLocalNameSource], Union[dict, "LocalName"]], List[Union[dict, "LocalName"]]]] = empty_dict()
     conforms_to: Optional[str] = None
+    implements: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     extensions: Optional[Union[Dict[Union[str, ExtensionTag], Union[dict, Extension]], List[Union[dict, Extension]]]] = empty_dict()
     annotations: Optional[Union[Dict[Union[str, AnnotationTag], Union[dict, Annotation]], List[Union[dict, Annotation]]]] = empty_dict()
     description: Optional[str] = None
@@ -318,6 +321,10 @@ class Element(YAMLRoot):
 
         if self.conforms_to is not None and not isinstance(self.conforms_to, str):
             self.conforms_to = str(self.conforms_to)
+
+        if not isinstance(self.implements, list):
+            self.implements = [self.implements] if self.implements is not None else []
+        self.implements = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.implements]
 
         self._normalize_inlined_as_dict(slot_name="extensions", slot_type=Extension, key_name="tag", keyed=True)
 
@@ -415,7 +422,7 @@ class Element(YAMLRoot):
 @dataclass
 class SchemaDefinition(Element):
     """
-    a collection of subset, type, slot and class definitions
+    a collection of subset, type, slot, enum and class definitions
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -432,7 +439,7 @@ class SchemaDefinition(Element):
     prefixes: Optional[Union[Dict[Union[str, PrefixPrefixPrefix], Union[dict, "Prefix"]], List[Union[dict, "Prefix"]]]] = empty_dict()
     emit_prefixes: Optional[Union[Union[str, NCName], List[Union[str, NCName]]]] = empty_list()
     default_curi_maps: Optional[Union[str, List[str]]] = empty_list()
-    default_prefix: Optional[str] = None
+    default_prefix: Optional[str] = "linkml"
     default_range: Optional[Union[str, TypeDefinitionName]] = None
     subsets: Optional[Union[Dict[Union[str, SubsetDefinitionName], Union[dict, "SubsetDefinition"]], List[Union[dict, "SubsetDefinition"]]]] = empty_dict()
     types: Optional[Union[Dict[Union[str, TypeDefinitionName], Union[dict, "TypeDefinition"]], List[Union[dict, "TypeDefinition"]]]] = empty_dict()
@@ -450,8 +457,6 @@ class SchemaDefinition(Element):
     keywords: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.default_prefix is None:
-            self.default_prefix = sfx(str(self.id))
         if self._is_empty(self.name):
             self.MissingRequiredField("name")
         if not isinstance(self.name, SchemaDefinitionName):
@@ -870,7 +875,7 @@ class EnumDefinition(Definition):
     class_model_uri: ClassVar[URIRef] = LINKML.EnumDefinition
 
     name: Union[str, EnumDefinitionName] = None
-    enum_uri: Optional[Union[str, URIorCURIE]] = None
+    enum_uri: Optional[Union[str, URIorCURIE]] = class_class_curie
     code_set: Optional[Union[str, URIorCURIE]] = None
     code_set_tag: Optional[str] = None
     code_set_version: Optional[str] = None
@@ -1611,7 +1616,7 @@ class SlotExpression(Expression):
     class_name: ClassVar[str] = "slot_expression"
     class_model_uri: ClassVar[URIRef] = LINKML.SlotExpression
 
-    range: Optional[Union[str, ElementName]] = None
+    range: Optional[Union[str, ElementName]] = "string"
     range_expression: Optional[Union[dict, "AnonymousClassExpression"]] = None
     enum_range: Optional[Union[dict, EnumExpression]] = None
     required: Optional[Union[bool, Bool]] = None
@@ -1734,7 +1739,7 @@ class AnonymousSlotExpression(AnonymousExpression):
     class_name: ClassVar[str] = "anonymous_slot_expression"
     class_model_uri: ClassVar[URIRef] = LINKML.AnonymousSlotExpression
 
-    range: Optional[Union[str, ElementName]] = None
+    range: Optional[Union[str, ElementName]] = "string"
     range_expression: Optional[Union[dict, "AnonymousClassExpression"]] = None
     enum_range: Optional[Union[dict, EnumExpression]] = None
     required: Optional[Union[bool, Bool]] = None
@@ -1901,7 +1906,7 @@ class SlotDefinition(Definition):
     is_a: Optional[Union[str, SlotDefinitionName]] = None
     mixins: Optional[Union[Union[str, SlotDefinitionName], List[Union[str, SlotDefinitionName]]]] = empty_list()
     apply_to: Optional[Union[Union[str, SlotDefinitionName], List[Union[str, SlotDefinitionName]]]] = empty_list()
-    range: Optional[Union[str, ElementName]] = None
+    range: Optional[Union[str, ElementName]] = "string"
     range_expression: Optional[Union[dict, "AnonymousClassExpression"]] = None
     enum_range: Optional[Union[dict, EnumExpression]] = None
     required: Optional[Union[bool, Bool]] = None
@@ -1929,6 +1934,8 @@ class SlotDefinition(Definition):
     all_of: Optional[Union[Union[dict, AnonymousSlotExpression], List[Union[dict, AnonymousSlotExpression]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.slot_uri is None:
+            self.slot_uri = slots.slot_uri.curie
         if self._is_empty(self.name):
             self.MissingRequiredField("name")
         if not isinstance(self.name, SlotDefinitionName):
@@ -2242,7 +2249,7 @@ class ClassDefinition(Definition):
     slots: Optional[Union[Union[str, SlotDefinitionName], List[Union[str, SlotDefinitionName]]]] = empty_list()
     slot_usage: Optional[Union[Dict[Union[str, SlotDefinitionName], Union[dict, SlotDefinition]], List[Union[dict, SlotDefinition]]]] = empty_dict()
     attributes: Optional[Union[Dict[Union[str, SlotDefinitionName], Union[dict, SlotDefinition]], List[Union[dict, SlotDefinition]]]] = empty_dict()
-    class_uri: Optional[Union[str, URIorCURIE]] = None
+    class_uri: Optional[Union[str, URIorCURIE]] = class_class_curie
     subclass_of: Optional[Union[str, URIorCURIE]] = None
     union_of: Optional[Union[Union[str, ClassDefinitionName], List[Union[str, ClassDefinitionName]]]] = empty_list()
     defining_slots: Optional[Union[Union[str, SlotDefinitionName], List[Union[str, SlotDefinitionName]]]] = empty_list()
@@ -2913,6 +2920,7 @@ class Example(YAMLRoot):
 
     value: Optional[str] = None
     description: Optional[str] = None
+    object: Optional[Union[dict, Anything]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.value is not None and not isinstance(self.value, str):
@@ -3340,6 +3348,9 @@ slots.title = Slot(uri=DCTERMS.title, name="title", curie=DCTERMS.curie('title')
 slots.conforms_to = Slot(uri=DCTERMS.conformsTo, name="conforms_to", curie=DCTERMS.curie('conformsTo'),
                    model_uri=LINKML.conforms_to, domain=Element, range=Optional[str])
 
+slots.implements = Slot(uri=LINKML.implements, name="implements", curie=LINKML.curie('implements'),
+                   model_uri=LINKML.implements, domain=Element, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
+
 slots.categories = Slot(uri=DCTERMS.subject, name="categories", curie=DCTERMS.curie('subject'),
                    model_uri=LINKML.categories, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
 
@@ -3619,7 +3630,7 @@ slots.attributes = Slot(uri=LINKML.attributes, name="attributes", curie=LINKML.c
 slots.class_uri = Slot(uri=LINKML.class_uri, name="class_uri", curie=LINKML.curie('class_uri'),
                    model_uri=LINKML.class_uri, domain=ClassDefinition, range=Optional[Union[str, URIorCURIE]])
 
-slots.subclass_of = Slot(uri=RDFS.subClassOf, name="subclass_of", curie=RDFS.curie('subClassOf'),
+slots.subclass_of = Slot(uri=LINKML.subclass_of, name="subclass_of", curie=LINKML.curie('subclass_of'),
                    model_uri=LINKML.subclass_of, domain=ClassDefinition, range=Optional[Union[str, URIorCURIE]])
 
 slots.defining_slots = Slot(uri=LINKML.defining_slots, name="defining_slots", curie=LINKML.curie('defining_slots'),
@@ -3720,6 +3731,9 @@ slots.inlined = Slot(uri=LINKML.inlined, name="inlined", curie=LINKML.curie('inl
 
 slots.inlined_as_list = Slot(uri=LINKML.inlined_as_list, name="inlined_as_list", curie=LINKML.curie('inlined_as_list'),
                    model_uri=LINKML.inlined_as_list, domain=SlotDefinition, range=Optional[Union[bool, Bool]])
+
+slots.inlined_as_simple_dict = Slot(uri=LINKML.inlined_as_simple_dict, name="inlined_as_simple_dict", curie=LINKML.curie('inlined_as_simple_dict'),
+                   model_uri=LINKML.inlined_as_simple_dict, domain=SlotDefinition, range=Optional[Union[bool, Bool]])
 
 slots.list_elements_ordered = Slot(uri=LINKML.list_elements_ordered, name="list_elements_ordered", curie=LINKML.curie('list_elements_ordered'),
                    model_uri=LINKML.list_elements_ordered, domain=SlotDefinition, range=Optional[Union[bool, Bool]])
@@ -3849,6 +3863,9 @@ slots.value = Slot(uri=SKOS.example, name="value", curie=SKOS.curie('example'),
 
 slots.value_description = Slot(uri=LINKML.description, name="value_description", curie=LINKML.curie('description'),
                    model_uri=LINKML.value_description, domain=Example, range=Optional[str])
+
+slots.value_object = Slot(uri=LINKML.object, name="value_object", curie=LINKML.curie('object'),
+                   model_uri=LINKML.value_object, domain=Example, range=Optional[Union[dict, Anything]])
 
 slots.examples = Slot(uri=LINKML.examples, name="examples", curie=LINKML.curie('examples'),
                    model_uri=LINKML.examples, domain=Element, range=Optional[Union[Union[dict, "Example"], List[Union[dict, "Example"]]]])

@@ -9,7 +9,7 @@ PREFIX pav: <http://purl.org/pav/>
 PREFIX oslc: <http://open-services.net/ns/core#>
 PREFIX schema: <http://schema.org/>
 PREFIX bibo: <http://purl.org/ontology/bibo/>
-PREFIX sh: <https://w3id.org/shacl/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX qudt: <http://qudt.org/schema/qudt/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
@@ -206,6 +206,12 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
     )
 }
 
+<Anything> CLOSED {
+    (  $<Anything_tes> rdf:type . * ;
+       rdf:type [ <Any> ] ?
+    )
+}
+
 <ClassDefinition> CLOSED {
     (  $<ClassDefinition_tes> (  &<Definition_tes> ;
           rdf:type [ <Definition> ] ? ;
@@ -215,7 +221,7 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           <slot_usage> @<SlotDefinition> * ;
           <attributes> @<SlotDefinition> * ;
           <class_uri> @<Uriorcurie> ? ;
-          rdfs:subClassOf @<Uriorcurie> ? ;
+          <subclass_of> @<Uriorcurie> ? ;
           <union_of> @<ClassDefinition> * ;
           <defining_slots> @<SlotDefinition> * ;
           <tree_root> @<Boolean> ? ;
@@ -373,6 +379,7 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           <definition_uri> @<Uriorcurie> ? ;
           <local_names> @<LocalName> * ;
           dcterms:conformsTo @<String> ? ;
+          <implements> @<Uriorcurie> * ;
           <extensions> @<Extension> * ;
           <annotations> @<Annotation> * ;
           skos:definition @<String> ? ;
@@ -448,7 +455,8 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
 
 <Example> CLOSED {
     (  $<Example_tes> (  skos:example @<String> ? ;
-          <description> @<String> ?
+          <description> @<String> ? ;
+          <object> @<Anything> ?
        ) ;
        rdf:type [ <Example> ] ?
     )

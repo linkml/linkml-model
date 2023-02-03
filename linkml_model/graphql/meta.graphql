@@ -174,6 +174,10 @@ type AnonymousTypeExpression implements TypeExpression
     allOf: [AnonymousTypeExpression]
   }
 
+type Anything
+  {
+  }
+
 type ClassDefinition implements ClassExpression
   {
     name: String!
@@ -181,6 +185,7 @@ type ClassDefinition implements ClassExpression
     definitionUri: Uriorcurie
     localNames: [LocalName]
     conformsTo: String
+    implements: [Uriorcurie]
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -328,6 +333,7 @@ interface Definition
     definitionUri: Uriorcurie
     localNames: [LocalName]
     conformsTo: String
+    implements: [Uriorcurie]
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -376,6 +382,7 @@ type Element implements Extensible, Annotatable, CommonMetadata
     definitionUri: Uriorcurie
     localNames: [LocalName]
     conformsTo: String
+    implements: [Uriorcurie]
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -412,6 +419,7 @@ type EnumDefinition implements EnumExpression
     definitionUri: Uriorcurie
     localNames: [LocalName]
     conformsTo: String
+    implements: [Uriorcurie]
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -484,6 +492,7 @@ type Example
   {
     value: String
     description: String
+    object: Anything
   }
 
 interface Expression
@@ -679,6 +688,7 @@ type SchemaDefinition
     definitionUri: Uriorcurie
     localNames: [LocalName]
     conformsTo: String
+    implements: [Uriorcurie]
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -745,6 +755,7 @@ type SlotDefinition implements SlotExpression
     definitionUri: Uriorcurie
     localNames: [LocalName]
     conformsTo: String
+    implements: [Uriorcurie]
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -920,6 +931,7 @@ type SubsetDefinition
     definitionUri: Uriorcurie
     localNames: [LocalName]
     conformsTo: String
+    implements: [Uriorcurie]
     extensions: [Extension]
     annotations: [Annotation]
     description: String
@@ -956,6 +968,7 @@ type TypeDefinition implements TypeExpression
     definitionUri: Uriorcurie
     localNames: [LocalName]
     conformsTo: String
+    implements: [Uriorcurie]
     extensions: [Extension]
     annotations: [Annotation]
     description: String

@@ -52,25 +52,30 @@
 -- # Class: "type_expression" Description: ""
 --     * Slot: id Description: 
 --     * Slot: pattern Description: the string value of the slot must conform to this regular expression expressed in the string
+--     * Slot: implicit_prefix Description: Causes the slot value to be interpreted as a uriorcurie after prefixing with this string
 --     * Slot: equals_string Description: the slot must have range string and the value of the slot must equal the specified value
 --     * Slot: equals_number Description: the slot must have range of a number and the value of the slot must equal the specified value
 --     * Slot: minimum_value Description: for slots with ranges of type number, the value must be equal to or higher than this
 --     * Slot: maximum_value Description: for slots with ranges of type number, the value must be equal to or lowe than this
 --     * Slot: structured_pattern_id Description: the string value of the slot must conform to the regular expression in the pattern expression
+--     * Slot: unit_id Description: an encoding of a unit
 -- # Class: "anonymous_type_expression" Description: ""
 --     * Slot: id Description: 
 --     * Slot: pattern Description: the string value of the slot must conform to this regular expression expressed in the string
+--     * Slot: implicit_prefix Description: Causes the slot value to be interpreted as a uriorcurie after prefixing with this string
 --     * Slot: equals_string Description: the slot must have range string and the value of the slot must equal the specified value
 --     * Slot: equals_number Description: the slot must have range of a number and the value of the slot must equal the specified value
 --     * Slot: minimum_value Description: for slots with ranges of type number, the value must be equal to or higher than this
 --     * Slot: maximum_value Description: for slots with ranges of type number, the value must be equal to or lowe than this
 --     * Slot: structured_pattern_id Description: the string value of the slot must conform to the regular expression in the pattern expression
+--     * Slot: unit_id Description: an encoding of a unit
 -- # Class: "type_definition" Description: "A data type definition."
 --     * Slot: typeof Description: Names a parent type
 --     * Slot: base Description: python base type that implements this type definition
 --     * Slot: uri Description: The uri that defines the possible values for the type definition
 --     * Slot: repr Description: the name of the python object that implements this type definition
 --     * Slot: pattern Description: the string value of the slot must conform to this regular expression expressed in the string
+--     * Slot: implicit_prefix Description: Causes the slot value to be interpreted as a uriorcurie after prefixing with this string
 --     * Slot: equals_string Description: the slot must have range string and the value of the slot must equal the specified value
 --     * Slot: equals_number Description: the slot must have range of a number and the value of the slot must equal the specified value
 --     * Slot: minimum_value Description: for slots with ranges of type number, the value must be equal to or higher than this
@@ -90,6 +95,7 @@
 --     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: schema_definition_name Description: Autocreated FK slot
 --     * Slot: structured_pattern_id Description: the string value of the slot must conform to the regular expression in the pattern expression
+--     * Slot: unit_id Description: an encoding of a unit
 -- # Class: "subset_definition" Description: "the name and description of a subset"
 --     * Slot: name Description: the unique name of the element within the context of the schema.  Name is combined with the default prefix to form the globally unique subject of the target class.
 --     * Slot: definition_uri Description: the "native" URI of the element
@@ -128,11 +134,37 @@
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
 --     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
--- # Class: "enum_definition" Description: "List of values that constrain the range of a slot"
+-- # Class: "enum_expression" Description: "An expression that constrains the range of a slot"
+--     * Slot: id Description: 
 --     * Slot: code_set Description: the identifier of an enumeration code set.
 --     * Slot: code_set_tag Description: the version tag of the enumeration code set
 --     * Slot: code_set_version Description: the version identifier of the enumeration code set
 --     * Slot: pv_formula Description: Defines the specific formula to be used to generate the permissible values.
+--     * Slot: reachable_from_id Description: Specifies a query for obtaining a list of permissible values based on graph reachability
+--     * Slot: matches_id Description: Specifies a match query that is used to calculate the list of permissible values
+-- # Class: "anonymous_enum_expression" Description: "An enum_expression that is not named"
+--     * Slot: id Description: 
+--     * Slot: code_set Description: the identifier of an enumeration code set.
+--     * Slot: code_set_tag Description: the version tag of the enumeration code set
+--     * Slot: code_set_version Description: the version identifier of the enumeration code set
+--     * Slot: pv_formula Description: Defines the specific formula to be used to generate the permissible values.
+--     * Slot: reachable_from_id Description: Specifies a query for obtaining a list of permissible values based on graph reachability
+--     * Slot: matches_id Description: Specifies a match query that is used to calculate the list of permissible values
+-- # Class: "enum_definition" Description: "List of values that constrain the range of a slot"
+--     * Slot: enum_uri Description: URI of the enum in an RDF environment
+--     * Slot: code_set Description: the identifier of an enumeration code set.
+--     * Slot: code_set_tag Description: the version tag of the enumeration code set
+--     * Slot: code_set_version Description: the version identifier of the enumeration code set
+--     * Slot: pv_formula Description: Defines the specific formula to be used to generate the permissible values.
+--     * Slot: is_a Description: specifies single-inheritance between classes or slots. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded
+--     * Slot: abstract Description: an abstract class is a high level class or slot that is typically used to group common slots together and cannot be directly instantiated.
+--     * Slot: mixin Description: this slot or class can only be used as a mixin.
+--     * Slot: created_by Description: agent that created the element
+--     * Slot: created_on Description: time at which the element was created
+--     * Slot: last_updated_on Description: time at which the element was last updated
+--     * Slot: modified_by Description: agent that modified the element
+--     * Slot: status Description: status of the element
+--     * Slot: string_serialization Description: Used on a slot that stores the string serialization of the containing object. The syntax follows python formatted strings, with slot names enclosed in {}s. These are expanded using the values of those slots.We call the slot with the serialization the s-slot, the slots used in the {}s are v-slots. If both s-slots and v-slots are populated on an object then the value of the s-slot should correspond to the expansion.Implementations of frameworks may choose to use this property to either (a) PARSE: implement automated normalizations by parsing denormalized strings into complex objects (b) GENERARE: implement automated to_string labeling of complex objectsFor example, a Measurement class may have 3 fields: unit, value, and string_value. The string_value slot may have a string_serialization of {value}{unit} such that if unit=cm and value=2, the value of string_value shouldd be 2cm
 --     * Slot: name Description: the unique name of the element within the context of the schema.  Name is combined with the default prefix to form the globally unique subject of the target class.
 --     * Slot: definition_uri Description: the "native" URI of the element
 --     * Slot: conforms_to Description: An established standard to which the element conforms.
@@ -147,6 +179,18 @@
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
 --     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: schema_definition_name Description: Autocreated FK slot
+--     * Slot: reachable_from_id Description: Specifies a query for obtaining a list of permissible values based on graph reachability
+--     * Slot: matches_id Description: Specifies a match query that is used to calculate the list of permissible values
+-- # Class: "match_query" Description: "A query that is used on an enum expression to dynamically obtain a set of permissivle values via a query that matches on properties of the external concepts"
+--     * Slot: id Description: 
+--     * Slot: identifier_pattern Description: A regular expression that is used to obtain a set of identifiers from a source_ontology to construct a set of permissible values
+--     * Slot: source_ontology Description: An ontology or vocabulary or terminology that is used in a query to obtain a set of permissible values
+-- # Class: "reachability_query" Description: "A query that is used on an enum expression to dynamically obtain a set of permissible values via walking from a set of source nodes to a set of descendants or ancestors over a set of relationship types"
+--     * Slot: id Description: 
+--     * Slot: source_ontology Description: An ontology or vocabulary or terminology that is used in a query to obtain a set of permissible values
+--     * Slot: is_direct Description: True if the reachability query should only include directly related nodes, if False then include also transitively connected
+--     * Slot: include_self Description: True if the query is reflexive
+--     * Slot: traverse_up Description: True if the direction of the reachability query is reversed and ancestors are retrieved
 -- # Class: "structured_alias" Description: "object that contains meta data about a synonym or alias including where it came from (source) and its scope (narrow, broad, etc.)"
 --     * Slot: id Description: 
 --     * Slot: literal_form Description: The literal lexical form of a structured alias
@@ -227,7 +271,9 @@
 --     * Slot: minimum_cardinality Description: the minimum number of entries for a multivalued slot
 --     * Slot: maximum_cardinality Description: the maximum number of entries for a multivalued slot
 --     * Slot: range_expression_id Description: A range that is described as a boolean expression combining existing ranges
+--     * Slot: enum_range_id Description: An inlined enumeration
 --     * Slot: structured_pattern_id Description: the string value of the slot must conform to the regular expression in the pattern expression
+--     * Slot: unit_id Description: an encoding of a unit
 --     * Slot: has_member_id Description: the values of the slot is multivalued with at least one member satisfying the condition
 -- # Class: "anonymous_slot_expression" Description: ""
 --     * Slot: id Description: 
@@ -256,7 +302,9 @@
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
 --     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: range_expression_id Description: A range that is described as a boolean expression combining existing ranges
+--     * Slot: enum_range_id Description: An inlined enumeration
 --     * Slot: structured_pattern_id Description: the string value of the slot must conform to the regular expression in the pattern expression
+--     * Slot: unit_id Description: an encoding of a unit
 --     * Slot: has_member_id Description: the values of the slot is multivalued with at least one member satisfying the condition
 -- # Class: "slot_definition" Description: "the definition of a property or a slot"
 --     * Slot: singular_name Description: a name that is used in the singular form
@@ -274,7 +322,7 @@
 --     * Slot: designates_type Description: True means that the key slot(s) is used to determine the instantiation (types) relation between objects and a ClassDefinition
 --     * Slot: alias Description: the name used for a slot in the context of its owning class.  If present, this is used instead of the actual slot name.
 --     * Slot: owner Description: the "owner" of the slot. It is the class if it appears in the slots list, otherwise the declaring slot
---     * Slot: subproperty_of Description: Ontology property which this slot is a subproperty of
+--     * Slot: subproperty_of Description: Ontology property which this slot is a subproperty of.  Note: setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values in every serialization of the model.
 --     * Slot: symmetric Description: If s is symmetric, and i.s=v, then v.s=i
 --     * Slot: reflexive Description: If s is reflexive, then i.s=i for all instances i
 --     * Slot: locally_reflexive Description: If s is locally_reflexive, then i.s=i for all instances i where s if a class slot for the type of i
@@ -337,7 +385,9 @@
 --     * Slot: class_definition_name Description: Autocreated FK slot
 --     * Slot: path_rule_id Description: a rule for inferring a slot assignment based on evaluating a path through a sequence of slot assignemnts
 --     * Slot: range_expression_id Description: A range that is described as a boolean expression combining existing ranges
+--     * Slot: enum_range_id Description: An inlined enumeration
 --     * Slot: structured_pattern_id Description: the string value of the slot must conform to the regular expression in the pattern expression
+--     * Slot: unit_id Description: an encoding of a unit
 --     * Slot: has_member_id Description: the values of the slot is multivalued with at least one member satisfying the condition
 -- # Class: "class_expression" Description: "A boolean expression that can be used to dynamically determine membership of a class"
 --     * Slot: id Description: 
@@ -513,7 +563,10 @@
 --     * Slot: deprecated_element_has_exact_replacement Description: When an element is deprecated, it can be automatically replaced by this uri or curie
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
 --     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
+--     * Slot: enum_expression_id Description: Autocreated FK slot
+--     * Slot: anonymous_enum_expression_id Description: Autocreated FK slot
 --     * Slot: enum_definition_name Description: Autocreated FK slot
+--     * Slot: unit_id Description: an encoding of a unit
 -- # Class: "unique_key" Description: "a collection of slots whose values uniquely identify an instance of a class"
 --     * Slot: unique_key_name Description: name of the unique key
 --     * Slot: description Description: a description of the element's purpose and use
@@ -527,6 +580,13 @@
 --     * Slot: deprecated_element_has_possible_replacement Description: When an element is deprecated, it can be potentially replaced by this uri or curie
 --     * Slot: rank Description: the relative order in which the element occurs, lower values are given precedence
 --     * Slot: class_definition_name Description: Autocreated FK slot
+-- # Class: "UnitOfMeasure" Description: "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension)."
+--     * Slot: id Description: 
+--     * Slot: symbol Description: name of the unit encoded as a symbol
+--     * Slot: ucum_code Description: associates a QUDT unit with its UCUM code (case-sensitive).
+--     * Slot: derivation Description: Expression for deriving this unit from other units
+--     * Slot: has_quantity_kind Description: Concept in a vocabulary or ontology that denotes the kind of quanity being measured, e.g. length
+--     * Slot: iec61360code Description: 
 -- # Class: "annotatable" Description: "mixin for classes that support annotations"
 --     * Slot: id Description: 
 -- # Class: "annotation" Description: "a tag/value pair with the semantics of OWL Annotation"
@@ -737,6 +797,9 @@
 -- # Class: "anonymous_type_expression_all_of" Description: ""
 --     * Slot: anonymous_type_expression_id Description: Autocreated FK slot
 --     * Slot: all_of_id Description: holds if all of the expressions hold
+-- # Class: "type_definition_union_of" Description: ""
+--     * Slot: type_definition_name Description: Autocreated FK slot
+--     * Slot: union_of Description: indicates that the domain element consists exactly of the members of the element in the range.
 -- # Class: "type_definition_equals_string_in" Description: ""
 --     * Slot: type_definition_name Description: Autocreated FK slot
 --     * Slot: equals_string_in Description: the slot must have range string and the value of the slot must equal one of the specified values
@@ -838,7 +901,7 @@
 --     * Slot: apply_to Description: Used to extend class or slot definitions. For example, if we have a core schema where a gene has two slots for identifier and symbol, and we have a specialized schema for my_organism where we wish to add a slot systematic_name, we can avoid subclassing by defining a class gene_my_organism, adding the slot to this class, and then adding an apply_to pointing to the gene class. The new slot will be 'injected into' the gene class.
 -- # Class: "definition_values_from" Description: ""
 --     * Slot: definition_name Description: Autocreated FK slot
---     * Slot: values_from Description: the identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot
+--     * Slot: values_from Description: The identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot. Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration in that in an enumeration, the values of the enumeration are listed directly in the model itself. Setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values in every serialization of the model.
 -- # Class: "definition_id_prefixes" Description: ""
 --     * Slot: definition_name Description: Autocreated FK slot
 --     * Slot: id_prefixes Description: the identifier of this class or slot must begin with the URIs referenced by this prefix
@@ -878,6 +941,51 @@
 -- # Class: "definition_broad_mappings" Description: ""
 --     * Slot: definition_name Description: Autocreated FK slot
 --     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
+-- # Class: "enum_expression_include" Description: ""
+--     * Slot: enum_expression_id Description: Autocreated FK slot
+--     * Slot: include_id Description: An enum expression that yields a list of permissible values that are to be included, after subtracting the minus set
+-- # Class: "enum_expression_minus" Description: ""
+--     * Slot: enum_expression_id Description: Autocreated FK slot
+--     * Slot: minus_id Description: An enum expression that yields a list of permissible values that are to be subtracted from the enum
+-- # Class: "enum_expression_inherits" Description: ""
+--     * Slot: enum_expression_id Description: Autocreated FK slot
+--     * Slot: inherits Description: An enum definition that is used as the basis to create a new enum
+-- # Class: "enum_expression_concepts" Description: ""
+--     * Slot: enum_expression_id Description: Autocreated FK slot
+--     * Slot: concepts Description: A list of identifiers that are used to construct a set of permissible values
+-- # Class: "anonymous_enum_expression_include" Description: ""
+--     * Slot: anonymous_enum_expression_id Description: Autocreated FK slot
+--     * Slot: include_id Description: An enum expression that yields a list of permissible values that are to be included, after subtracting the minus set
+-- # Class: "anonymous_enum_expression_minus" Description: ""
+--     * Slot: anonymous_enum_expression_id Description: Autocreated FK slot
+--     * Slot: minus_id Description: An enum expression that yields a list of permissible values that are to be subtracted from the enum
+-- # Class: "anonymous_enum_expression_inherits" Description: ""
+--     * Slot: anonymous_enum_expression_id Description: Autocreated FK slot
+--     * Slot: inherits Description: An enum definition that is used as the basis to create a new enum
+-- # Class: "anonymous_enum_expression_concepts" Description: ""
+--     * Slot: anonymous_enum_expression_id Description: Autocreated FK slot
+--     * Slot: concepts Description: A list of identifiers that are used to construct a set of permissible values
+-- # Class: "enum_definition_include" Description: ""
+--     * Slot: enum_definition_name Description: Autocreated FK slot
+--     * Slot: include_id Description: An enum expression that yields a list of permissible values that are to be included, after subtracting the minus set
+-- # Class: "enum_definition_minus" Description: ""
+--     * Slot: enum_definition_name Description: Autocreated FK slot
+--     * Slot: minus_id Description: An enum expression that yields a list of permissible values that are to be subtracted from the enum
+-- # Class: "enum_definition_inherits" Description: ""
+--     * Slot: enum_definition_name Description: Autocreated FK slot
+--     * Slot: inherits Description: An enum definition that is used as the basis to create a new enum
+-- # Class: "enum_definition_concepts" Description: ""
+--     * Slot: enum_definition_name Description: Autocreated FK slot
+--     * Slot: concepts Description: A list of identifiers that are used to construct a set of permissible values
+-- # Class: "enum_definition_mixins" Description: ""
+--     * Slot: enum_definition_name Description: Autocreated FK slot
+--     * Slot: mixins Description: List of definitions to be mixed in. Targets may be any definition of the same type
+-- # Class: "enum_definition_apply_to" Description: ""
+--     * Slot: enum_definition_name Description: Autocreated FK slot
+--     * Slot: apply_to Description: Used to extend class or slot definitions. For example, if we have a core schema where a gene has two slots for identifier and symbol, and we have a specialized schema for my_organism where we wish to add a slot systematic_name, we can avoid subclassing by defining a class gene_my_organism, adding the slot to this class, and then adding an apply_to pointing to the gene class. The new slot will be 'injected into' the gene class.
+-- # Class: "enum_definition_values_from" Description: ""
+--     * Slot: enum_definition_name Description: Autocreated FK slot
+--     * Slot: values_from Description: The identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot. Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration in that in an enumeration, the values of the enumeration are listed directly in the model itself. Setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values in every serialization of the model.
 -- # Class: "enum_definition_id_prefixes" Description: ""
 --     * Slot: enum_definition_name Description: Autocreated FK slot
 --     * Slot: id_prefixes Description: the identifier of this class or slot must begin with the URIs referenced by this prefix
@@ -917,6 +1025,12 @@
 -- # Class: "enum_definition_broad_mappings" Description: ""
 --     * Slot: enum_definition_name Description: Autocreated FK slot
 --     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
+-- # Class: "reachability_query_source_nodes" Description: ""
+--     * Slot: reachability_query_id Description: Autocreated FK slot
+--     * Slot: source_nodes Description: A list of nodes that are used in the reachability query
+-- # Class: "reachability_query_relationship_types" Description: ""
+--     * Slot: reachability_query_id Description: Autocreated FK slot
+--     * Slot: relationship_types Description: A list of relationship types (properties) that are used in a reachability query
 -- # Class: "structured_alias_category" Description: ""
 --     * Slot: structured_alias_id Description: Autocreated FK slot
 --     * Slot: category Description: The category or categories of an alias. This can be drawn from any relevant vocabulary
@@ -1112,6 +1226,9 @@
 -- # Class: "slot_definition_disjoint_with" Description: ""
 --     * Slot: slot_definition_name Description: Autocreated FK slot
 --     * Slot: disjoint_with Description: Two classes are disjoint if they have no instances in common, two slots are disjoint if they can never hold between the same two instances
+-- # Class: "slot_definition_union_of" Description: ""
+--     * Slot: slot_definition_name Description: Autocreated FK slot
+--     * Slot: union_of Description: indicates that the domain element consists exactly of the members of the element in the range.
 -- # Class: "slot_definition_equals_string_in" Description: ""
 --     * Slot: slot_definition_name Description: Autocreated FK slot
 --     * Slot: equals_string_in Description: the slot must have range string and the value of the slot must equal one of the specified values
@@ -1135,7 +1252,7 @@
 --     * Slot: apply_to Description: Used to extend class or slot definitions. For example, if we have a core schema where a gene has two slots for identifier and symbol, and we have a specialized schema for my_organism where we wish to add a slot systematic_name, we can avoid subclassing by defining a class gene_my_organism, adding the slot to this class, and then adding an apply_to pointing to the gene class. The new slot will be 'injected into' the gene class.
 -- # Class: "slot_definition_values_from" Description: ""
 --     * Slot: slot_definition_name Description: Autocreated FK slot
---     * Slot: values_from Description: the identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot
+--     * Slot: values_from Description: The identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot. Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration in that in an enumeration, the values of the enumeration are listed directly in the model itself. Setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values in every serialization of the model.
 -- # Class: "slot_definition_id_prefixes" Description: ""
 --     * Slot: slot_definition_name Description: Autocreated FK slot
 --     * Slot: id_prefixes Description: the identifier of this class or slot must begin with the URIs referenced by this prefix
@@ -1240,7 +1357,7 @@
 --     * Slot: slots Description: list of slot names that are applicable to a class
 -- # Class: "class_definition_union_of" Description: ""
 --     * Slot: class_definition_name Description: Autocreated FK slot
---     * Slot: union_of Description: indicates that the domain class consists exactly of the members of the classes in the range
+--     * Slot: union_of Description: indicates that the domain element consists exactly of the members of the element in the range.
 -- # Class: "class_definition_defining_slots" Description: ""
 --     * Slot: class_definition_name Description: Autocreated FK slot
 --     * Slot: defining_slots Description: The combination of is a plus defining slots form a genus-differentia definition, or the set of necessary and sufficient conditions that can be transformed into an OWL equivalence axiom
@@ -1267,7 +1384,7 @@
 --     * Slot: apply_to Description: Used to extend class or slot definitions. For example, if we have a core schema where a gene has two slots for identifier and symbol, and we have a specialized schema for my_organism where we wish to add a slot systematic_name, we can avoid subclassing by defining a class gene_my_organism, adding the slot to this class, and then adding an apply_to pointing to the gene class. The new slot will be 'injected into' the gene class.
 -- # Class: "class_definition_values_from" Description: ""
 --     * Slot: class_definition_name Description: Autocreated FK slot
---     * Slot: values_from Description: the identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot
+--     * Slot: values_from Description: The identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot. Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration in that in an enumeration, the values of the enumeration are listed directly in the model itself. Setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values in every serialization of the model.
 -- # Class: "class_definition_id_prefixes" Description: ""
 --     * Slot: class_definition_name Description: Autocreated FK slot
 --     * Slot: id_prefixes Description: the identifier of this class or slot must begin with the URIs referenced by this prefix
@@ -1490,6 +1607,9 @@
 -- # Class: "unique_key_broad_mappings" Description: ""
 --     * Slot: unique_key_unique_key_name Description: Autocreated FK slot
 --     * Slot: broad_mappings Description: A list of terms from different schemas or terminology systems that have broader meaning.
+-- # Class: "UnitOfMeasure_exact_mappings" Description: ""
+--     * Slot: UnitOfMeasure_id Description: Autocreated FK slot
+--     * Slot: exact_mappings Description: Used to link a unit to equivalent concepts in ontologies such as UO, SNOMED, OEM, OBOE, NCIT
 
 CREATE TABLE common_metadata (
 	id INTEGER, 
@@ -1555,6 +1675,7 @@ CREATE TABLE type_definition (
 	uri TEXT, 
 	repr TEXT, 
 	pattern TEXT, 
+	implicit_prefix TEXT, 
 	equals_string TEXT, 
 	equals_number INTEGER, 
 	minimum_value INTEGER, 
@@ -1574,10 +1695,12 @@ CREATE TABLE type_definition (
 	rank INTEGER, 
 	schema_definition_name TEXT, 
 	structured_pattern_id TEXT, 
+	unit_id TEXT, 
 	PRIMARY KEY (name), 
 	FOREIGN KEY(typeof) REFERENCES type_definition (name), 
 	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id), 
-	FOREIGN KEY(structured_pattern_id) REFERENCES pattern_expression (id)
+	FOREIGN KEY(structured_pattern_id) REFERENCES pattern_expression (id), 
+	FOREIGN KEY(unit_id) REFERENCES "UnitOfMeasure" (id)
 );
 CREATE TABLE definition (
 	is_a TEXT, 
@@ -1604,6 +1727,20 @@ CREATE TABLE definition (
 	rank INTEGER, 
 	PRIMARY KEY (name), 
 	FOREIGN KEY(is_a) REFERENCES definition (name)
+);
+CREATE TABLE match_query (
+	id INTEGER, 
+	identifier_pattern TEXT, 
+	source_ontology TEXT, 
+	PRIMARY KEY (id)
+);
+CREATE TABLE reachability_query (
+	id INTEGER, 
+	source_ontology TEXT, 
+	is_direct BOOLEAN, 
+	include_self BOOLEAN, 
+	traverse_up BOOLEAN, 
+	PRIMARY KEY (id)
 );
 CREATE TABLE expression (
 	id INTEGER, 
@@ -1723,7 +1860,9 @@ CREATE TABLE slot_definition (
 	class_definition_name TEXT, 
 	path_rule_id TEXT, 
 	range_expression_id TEXT, 
+	enum_range_id TEXT, 
 	structured_pattern_id TEXT, 
+	unit_id TEXT, 
 	has_member_id TEXT, 
 	PRIMARY KEY (name), 
 	FOREIGN KEY(domain) REFERENCES class_definition (name), 
@@ -1744,7 +1883,9 @@ CREATE TABLE slot_definition (
 	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name), 
 	FOREIGN KEY(path_rule_id) REFERENCES path_expression (id), 
 	FOREIGN KEY(range_expression_id) REFERENCES anonymous_class_expression (id), 
+	FOREIGN KEY(enum_range_id) REFERENCES enum_expression (id), 
 	FOREIGN KEY(structured_pattern_id) REFERENCES pattern_expression (id), 
+	FOREIGN KEY(unit_id) REFERENCES "UnitOfMeasure" (id), 
 	FOREIGN KEY(has_member_id) REFERENCES anonymous_slot_expression (id)
 );
 CREATE TABLE class_expression (
@@ -1788,6 +1929,15 @@ CREATE TABLE import_expression (
 	rank INTEGER, 
 	PRIMARY KEY (id)
 );
+CREATE TABLE "UnitOfMeasure" (
+	id INTEGER, 
+	symbol TEXT, 
+	ucum_code TEXT, 
+	derivation TEXT, 
+	has_quantity_kind TEXT, 
+	iec61360code TEXT, 
+	PRIMARY KEY (id)
+);
 CREATE TABLE annotatable (
 	id INTEGER, 
 	PRIMARY KEY (id)
@@ -1799,24 +1949,30 @@ CREATE TABLE extensible (
 CREATE TABLE type_expression (
 	id INTEGER, 
 	pattern TEXT, 
+	implicit_prefix TEXT, 
 	equals_string TEXT, 
 	equals_number INTEGER, 
 	minimum_value INTEGER, 
 	maximum_value INTEGER, 
 	structured_pattern_id TEXT, 
+	unit_id TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(structured_pattern_id) REFERENCES pattern_expression (id)
+	FOREIGN KEY(structured_pattern_id) REFERENCES pattern_expression (id), 
+	FOREIGN KEY(unit_id) REFERENCES "UnitOfMeasure" (id)
 );
 CREATE TABLE anonymous_type_expression (
 	id INTEGER, 
 	pattern TEXT, 
+	implicit_prefix TEXT, 
 	equals_string TEXT, 
 	equals_number INTEGER, 
 	minimum_value INTEGER, 
 	maximum_value INTEGER, 
 	structured_pattern_id TEXT, 
+	unit_id TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(structured_pattern_id) REFERENCES pattern_expression (id)
+	FOREIGN KEY(structured_pattern_id) REFERENCES pattern_expression (id), 
+	FOREIGN KEY(unit_id) REFERENCES "UnitOfMeasure" (id)
 );
 CREATE TABLE subset_definition (
 	name TEXT, 
@@ -1836,11 +1992,45 @@ CREATE TABLE subset_definition (
 	PRIMARY KEY (name), 
 	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id)
 );
-CREATE TABLE enum_definition (
+CREATE TABLE enum_expression (
+	id INTEGER, 
 	code_set TEXT, 
 	code_set_tag TEXT, 
 	code_set_version TEXT, 
 	pv_formula VARCHAR(11), 
+	reachable_from_id TEXT, 
+	matches_id TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(reachable_from_id) REFERENCES reachability_query (id), 
+	FOREIGN KEY(matches_id) REFERENCES match_query (id)
+);
+CREATE TABLE anonymous_enum_expression (
+	id INTEGER, 
+	code_set TEXT, 
+	code_set_tag TEXT, 
+	code_set_version TEXT, 
+	pv_formula VARCHAR(11), 
+	reachable_from_id TEXT, 
+	matches_id TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(reachable_from_id) REFERENCES reachability_query (id), 
+	FOREIGN KEY(matches_id) REFERENCES match_query (id)
+);
+CREATE TABLE enum_definition (
+	enum_uri TEXT, 
+	code_set TEXT, 
+	code_set_tag TEXT, 
+	code_set_version TEXT, 
+	pv_formula VARCHAR(11), 
+	is_a TEXT, 
+	abstract BOOLEAN, 
+	mixin BOOLEAN, 
+	created_by TEXT, 
+	created_on DATETIME, 
+	last_updated_on DATETIME, 
+	modified_by TEXT, 
+	status TEXT, 
+	string_serialization TEXT, 
 	name TEXT, 
 	definition_uri TEXT, 
 	conforms_to TEXT, 
@@ -1855,8 +2045,13 @@ CREATE TABLE enum_definition (
 	deprecated_element_has_possible_replacement TEXT, 
 	rank INTEGER, 
 	schema_definition_name TEXT, 
+	reachable_from_id TEXT, 
+	matches_id TEXT, 
 	PRIMARY KEY (name), 
-	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id)
+	FOREIGN KEY(is_a) REFERENCES definition (name), 
+	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id), 
+	FOREIGN KEY(reachable_from_id) REFERENCES reachability_query (id), 
+	FOREIGN KEY(matches_id) REFERENCES match_query (id)
 );
 CREATE TABLE class_definition (
 	class_uri TEXT, 
@@ -2148,6 +2343,13 @@ CREATE TABLE schema_definition_broad_mappings (
 	PRIMARY KEY (schema_definition_name, broad_mappings), 
 	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (id)
 );
+CREATE TABLE type_definition_union_of (
+	type_definition_name TEXT, 
+	union_of TEXT, 
+	PRIMARY KEY (type_definition_name, union_of), 
+	FOREIGN KEY(type_definition_name) REFERENCES type_definition (name), 
+	FOREIGN KEY(union_of) REFERENCES type_definition (name)
+);
 CREATE TABLE type_definition_equals_string_in (
 	type_definition_name TEXT, 
 	equals_string_in TEXT, 
@@ -2318,6 +2520,18 @@ CREATE TABLE definition_broad_mappings (
 	PRIMARY KEY (definition_name, broad_mappings), 
 	FOREIGN KEY(definition_name) REFERENCES definition (name)
 );
+CREATE TABLE reachability_query_source_nodes (
+	reachability_query_id TEXT, 
+	source_nodes TEXT, 
+	PRIMARY KEY (reachability_query_id, source_nodes), 
+	FOREIGN KEY(reachability_query_id) REFERENCES reachability_query (id)
+);
+CREATE TABLE reachability_query_relationship_types (
+	reachability_query_id TEXT, 
+	relationship_types TEXT, 
+	PRIMARY KEY (reachability_query_id, relationship_types), 
+	FOREIGN KEY(reachability_query_id) REFERENCES reachability_query (id)
+);
 CREATE TABLE anonymous_expression_todos (
 	anonymous_expression_id TEXT, 
 	todos TEXT, 
@@ -2484,6 +2698,13 @@ CREATE TABLE slot_definition_disjoint_with (
 	PRIMARY KEY (slot_definition_name, disjoint_with), 
 	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name), 
 	FOREIGN KEY(disjoint_with) REFERENCES slot_definition (name)
+);
+CREATE TABLE slot_definition_union_of (
+	slot_definition_name TEXT, 
+	union_of TEXT, 
+	PRIMARY KEY (slot_definition_name, union_of), 
+	FOREIGN KEY(slot_definition_name) REFERENCES slot_definition (name), 
+	FOREIGN KEY(union_of) REFERENCES type_definition (name)
 );
 CREATE TABLE slot_definition_equals_string_in (
 	slot_definition_name TEXT, 
@@ -2715,6 +2936,12 @@ CREATE TABLE import_expression_broad_mappings (
 	PRIMARY KEY (import_expression_id, broad_mappings), 
 	FOREIGN KEY(import_expression_id) REFERENCES import_expression (id)
 );
+CREATE TABLE "UnitOfMeasure_exact_mappings" (
+	"UnitOfMeasure_id" TEXT, 
+	exact_mappings TEXT, 
+	PRIMARY KEY ("UnitOfMeasure_id", exact_mappings), 
+	FOREIGN KEY("UnitOfMeasure_id") REFERENCES "UnitOfMeasure" (id)
+);
 CREATE TABLE anonymous_class_expression (
 	id INTEGER, 
 	is_a TEXT, 
@@ -2767,9 +2994,15 @@ CREATE TABLE permissible_value (
 	deprecated_element_has_exact_replacement TEXT, 
 	deprecated_element_has_possible_replacement TEXT, 
 	rank INTEGER, 
+	enum_expression_id TEXT, 
+	anonymous_enum_expression_id TEXT, 
 	enum_definition_name TEXT, 
+	unit_id TEXT, 
 	PRIMARY KEY (text), 
-	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name)
+	FOREIGN KEY(enum_expression_id) REFERENCES enum_expression (id), 
+	FOREIGN KEY(anonymous_enum_expression_id) REFERENCES anonymous_enum_expression (id), 
+	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name), 
+	FOREIGN KEY(unit_id) REFERENCES "UnitOfMeasure" (id)
 );
 CREATE TABLE unique_key (
 	unique_key_name TEXT NOT NULL, 
@@ -2996,6 +3229,107 @@ CREATE TABLE definition_in_subset (
 	PRIMARY KEY (definition_name, in_subset), 
 	FOREIGN KEY(definition_name) REFERENCES definition (name), 
 	FOREIGN KEY(in_subset) REFERENCES subset_definition (name)
+);
+CREATE TABLE enum_expression_include (
+	enum_expression_id TEXT, 
+	include_id TEXT, 
+	PRIMARY KEY (enum_expression_id, include_id), 
+	FOREIGN KEY(enum_expression_id) REFERENCES enum_expression (id), 
+	FOREIGN KEY(include_id) REFERENCES anonymous_enum_expression (id)
+);
+CREATE TABLE enum_expression_minus (
+	enum_expression_id TEXT, 
+	minus_id TEXT, 
+	PRIMARY KEY (enum_expression_id, minus_id), 
+	FOREIGN KEY(enum_expression_id) REFERENCES enum_expression (id), 
+	FOREIGN KEY(minus_id) REFERENCES anonymous_enum_expression (id)
+);
+CREATE TABLE enum_expression_inherits (
+	enum_expression_id TEXT, 
+	inherits TEXT, 
+	PRIMARY KEY (enum_expression_id, inherits), 
+	FOREIGN KEY(enum_expression_id) REFERENCES enum_expression (id), 
+	FOREIGN KEY(inherits) REFERENCES enum_definition (name)
+);
+CREATE TABLE enum_expression_concepts (
+	enum_expression_id TEXT, 
+	concepts TEXT, 
+	PRIMARY KEY (enum_expression_id, concepts), 
+	FOREIGN KEY(enum_expression_id) REFERENCES enum_expression (id)
+);
+CREATE TABLE anonymous_enum_expression_include (
+	anonymous_enum_expression_id TEXT, 
+	include_id TEXT, 
+	PRIMARY KEY (anonymous_enum_expression_id, include_id), 
+	FOREIGN KEY(anonymous_enum_expression_id) REFERENCES anonymous_enum_expression (id), 
+	FOREIGN KEY(include_id) REFERENCES anonymous_enum_expression (id)
+);
+CREATE TABLE anonymous_enum_expression_minus (
+	anonymous_enum_expression_id TEXT, 
+	minus_id TEXT, 
+	PRIMARY KEY (anonymous_enum_expression_id, minus_id), 
+	FOREIGN KEY(anonymous_enum_expression_id) REFERENCES anonymous_enum_expression (id), 
+	FOREIGN KEY(minus_id) REFERENCES anonymous_enum_expression (id)
+);
+CREATE TABLE anonymous_enum_expression_inherits (
+	anonymous_enum_expression_id TEXT, 
+	inherits TEXT, 
+	PRIMARY KEY (anonymous_enum_expression_id, inherits), 
+	FOREIGN KEY(anonymous_enum_expression_id) REFERENCES anonymous_enum_expression (id), 
+	FOREIGN KEY(inherits) REFERENCES enum_definition (name)
+);
+CREATE TABLE anonymous_enum_expression_concepts (
+	anonymous_enum_expression_id TEXT, 
+	concepts TEXT, 
+	PRIMARY KEY (anonymous_enum_expression_id, concepts), 
+	FOREIGN KEY(anonymous_enum_expression_id) REFERENCES anonymous_enum_expression (id)
+);
+CREATE TABLE enum_definition_include (
+	enum_definition_name TEXT, 
+	include_id TEXT, 
+	PRIMARY KEY (enum_definition_name, include_id), 
+	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name), 
+	FOREIGN KEY(include_id) REFERENCES anonymous_enum_expression (id)
+);
+CREATE TABLE enum_definition_minus (
+	enum_definition_name TEXT, 
+	minus_id TEXT, 
+	PRIMARY KEY (enum_definition_name, minus_id), 
+	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name), 
+	FOREIGN KEY(minus_id) REFERENCES anonymous_enum_expression (id)
+);
+CREATE TABLE enum_definition_inherits (
+	enum_definition_name TEXT, 
+	inherits TEXT, 
+	PRIMARY KEY (enum_definition_name, inherits), 
+	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name), 
+	FOREIGN KEY(inherits) REFERENCES enum_definition (name)
+);
+CREATE TABLE enum_definition_concepts (
+	enum_definition_name TEXT, 
+	concepts TEXT, 
+	PRIMARY KEY (enum_definition_name, concepts), 
+	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name)
+);
+CREATE TABLE enum_definition_mixins (
+	enum_definition_name TEXT, 
+	mixins TEXT, 
+	PRIMARY KEY (enum_definition_name, mixins), 
+	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name), 
+	FOREIGN KEY(mixins) REFERENCES definition (name)
+);
+CREATE TABLE enum_definition_apply_to (
+	enum_definition_name TEXT, 
+	apply_to TEXT, 
+	PRIMARY KEY (enum_definition_name, apply_to), 
+	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name), 
+	FOREIGN KEY(apply_to) REFERENCES definition (name)
+);
+CREATE TABLE enum_definition_values_from (
+	enum_definition_name TEXT, 
+	values_from TEXT, 
+	PRIMARY KEY (enum_definition_name, values_from), 
+	FOREIGN KEY(enum_definition_name) REFERENCES enum_definition (name)
 );
 CREATE TABLE enum_definition_id_prefixes (
 	enum_definition_name TEXT, 
@@ -3272,12 +3606,16 @@ CREATE TABLE anonymous_slot_expression (
 	deprecated_element_has_possible_replacement TEXT, 
 	rank INTEGER, 
 	range_expression_id TEXT, 
+	enum_range_id TEXT, 
 	structured_pattern_id TEXT, 
+	unit_id TEXT, 
 	has_member_id TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(range) REFERENCES element (name), 
 	FOREIGN KEY(range_expression_id) REFERENCES anonymous_class_expression (id), 
+	FOREIGN KEY(enum_range_id) REFERENCES enum_expression (id), 
 	FOREIGN KEY(structured_pattern_id) REFERENCES pattern_expression (id), 
+	FOREIGN KEY(unit_id) REFERENCES "UnitOfMeasure" (id), 
 	FOREIGN KEY(has_member_id) REFERENCES anonymous_slot_expression (id)
 );
 CREATE TABLE class_rule (
@@ -3686,12 +4024,16 @@ CREATE TABLE slot_expression (
 	minimum_cardinality INTEGER, 
 	maximum_cardinality INTEGER, 
 	range_expression_id TEXT, 
+	enum_range_id TEXT, 
 	structured_pattern_id TEXT, 
+	unit_id TEXT, 
 	has_member_id TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(range) REFERENCES element (name), 
 	FOREIGN KEY(range_expression_id) REFERENCES anonymous_class_expression (id), 
+	FOREIGN KEY(enum_range_id) REFERENCES enum_expression (id), 
 	FOREIGN KEY(structured_pattern_id) REFERENCES pattern_expression (id), 
+	FOREIGN KEY(unit_id) REFERENCES "UnitOfMeasure" (id), 
 	FOREIGN KEY(has_member_id) REFERENCES anonymous_slot_expression (id)
 );
 CREATE TABLE anonymous_slot_expression_equals_string_in (
