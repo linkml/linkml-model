@@ -172,6 +172,12 @@ slots:
     in_subset:
       - BasicSubset
 
+  implements:
+    domain: element
+    range: uriorcurie
+    description: An element in another schema which this element conforms to
+    multivalued: true
+      
   categories:
     range: uriorcurie
     singular_name: category
@@ -570,6 +576,8 @@ slots:
       - BasicSubset
 
   permissible_values:
+    aliases:
+      - coded values
     domain: enum_expression
     range: permissible_value
     multivalued: true
@@ -991,6 +999,8 @@ slots:
       - sh:or
     in_subset:
       - SpecificationSubset
+    see_also:
+      - "https://w3id.org/linkml/docs/specification/05validation/#rules"
 
   exactly_one_of:
     rank: 103
@@ -1001,6 +1011,8 @@ slots:
       - sh:xone
     in_subset:
       - SpecificationSubset
+    see_also:
+      - "https://w3id.org/linkml/docs/specification/05validation/#rules"
 
   none_of:
     rank: 105
@@ -1011,6 +1023,8 @@ slots:
       - sh:not
     in_subset:
       - SpecificationSubset
+    see_also:
+      - "https://w3id.org/linkml/docs/specification/05validation/#rules"
 
   all_of:
     rank: 107
@@ -1021,6 +1035,8 @@ slots:
       - sh:and
     in_subset:
       - SpecificationSubset
+    see_also:
+      - "https://w3id.org/linkml/docs/specification/05validation/#rules"
 
   preconditions:
     rank: 111
@@ -1036,6 +1052,8 @@ slots:
       - swrl:body
     in_subset:
       - SpecificationSubset
+    see_also:
+      - "https://w3id.org/linkml/docs/specification/05validation/#rules"
 
   postconditions:
     rank: 113
@@ -1050,6 +1068,8 @@ slots:
       - swrl:body
     in_subset:
       - SpecificationSubset
+    see_also:
+      - "https://w3id.org/linkml/docs/specification/05validation/#rules"
 
   elseconditions:
     rank: 115
@@ -1060,6 +1080,8 @@ slots:
     inlined: true
     in_subset:
       - SpecificationSubset
+    see_also:
+      - "https://w3id.org/linkml/docs/specification/05validation/#rules"
 
   bidirectional:
     aliases:
@@ -1162,7 +1184,8 @@ slots:
     domain: class_definition
     range: uriorcurie
     description: rdfs:subClassOf to be emitted in OWL generation
-    slot_uri: rdfs:subClassOf
+    close_mappings:
+      - rdfs:subClassOf
     deprecated: Use is_a instead
 
   defining_slots:
@@ -1515,6 +1538,8 @@ slots:
     in_subset:
       - SpecificationSubset
       - BasicSubset
+    see_also:
+      - "https://w3id.org/linkml/docs/specification/06mapping/#collection-forms"
 
   inlined_as_list:
     rank: 27
@@ -1535,6 +1560,20 @@ slots:
     in_subset:
       - SpecificationSubset
       - BasicSubset
+    see_also:
+      - "https://w3id.org/linkml/docs/specification/06mapping/#collection-forms"
+
+  inlined_as_simple_dict:
+    rank: 28
+    domain: slot_definition
+    range: boolean
+    inherited: true
+    description: >-
+      True means that an inlined slot is represented as a simple dict whose values are all atoms
+    in_subset:
+      - SpecificationSubset
+    see_also:
+      - "https://w3id.org/linkml/docs/specification/06mapping/#collection-forms"
 
   list_elements_ordered:
     domain: slot_definition
@@ -1576,7 +1615,7 @@ slots:
     range: boolean
     inherited: true
     description: >-
-      True means that the key slot(s) uniquely identify the container.
+      True means that the key slot(s) uniquely identify the elements within a single container
     comments:
       - see also 'unique_key'
       - key is inherited
@@ -1594,7 +1633,7 @@ slots:
     range: boolean
     inherited: true
     description: >-
-      True means that the key slot(s) uniquely identify the container. There can be at most one identifier or key per
+      True means that the key slot(s) uniquely identifies the elements. There can be at most one identifier or key per
       container
     aliases:
       - primary key
@@ -1633,6 +1672,8 @@ slots:
     description: >-
       the name used for a slot in the context of its owning class.  If present, this is used instead of the actual
       slot name.
+    comments:
+      - not to be confused with aliases, which indicates a set of terms to be used for search purposes.
     in_subset:
       - SpecificationSubset
 
@@ -1650,6 +1691,8 @@ slots:
     description: the class(es) that reference the slot in a "slots" or "slot_usage" context
     readonly: filled in by the loader
     multivalued: true
+    exact_mappings:
+      - schema:domainIncludes
 
   is_usage_slot:
     domain: slot_definition
@@ -2229,6 +2272,7 @@ classes:
       - definition_uri
       - local_names
       - conforms_to
+      - implements
     see_also:
       - https://en.wikipedia.org/wiki/Data_element
     in_subset:
@@ -2459,7 +2503,6 @@ classes:
     mixin: true
     abstract: true
     description: general mixin for any class that can represent some form of expression
-    status: testing
 
   anonymous_expression:
     abstract: true
@@ -2468,7 +2511,6 @@ classes:
       - extensible
       - annotatable
       - common_metadata
-    status: testing
 
   path_expression:
     description: An expression that describes an abstract path from an object to another through a sequence of slot lookups
@@ -2477,7 +2519,6 @@ classes:
       - extensible
       - annotatable
       - common_metadata
-    status: testing
     slots:
       - followed_by
       - none_of
@@ -2539,13 +2580,11 @@ classes:
         range: anonymous_slot_expression
       none_of:
         range: anonymous_slot_expression
-    status: testing
 
   anonymous_slot_expression:
     is_a: anonymous_expression
     mixins:
       - slot_expression
-    status: testing
 
   slot_definition:
     rank: 3
@@ -2638,7 +2677,6 @@ classes:
         range: anonymous_class_expression
       none_of:
         range: anonymous_class_expression
-    status: testing
 
   anonymous_class_expression:
     is_a: anonymous_expression
@@ -2646,7 +2684,6 @@ classes:
       - class_expression
     slots:
       - is_a
-    status: testing
 
   class_definition:
     rank: 2
@@ -2704,7 +2741,6 @@ classes:
   class_level_rule:
     abstract: true
     description: A rule that is applied to classes
-    status: testing
 
   class_rule:
     is_a: class_level_rule
@@ -2726,7 +2762,6 @@ classes:
     close_mappings:
       - sh:TripleRule
       - swrl:Imp
-    status: testing
     in_subset:
       - SpecificationSubset
 

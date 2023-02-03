@@ -10,6 +10,7 @@ prefixes:
   linkml: https://w3id.org/linkml/
   xsd: http://www.w3.org/2001/XMLSchema#
   shex: http://www.w3.org/ns/shex#
+  schema: http://schema.org/
 
 default_prefix: linkml
 default_range: string
@@ -30,32 +31,44 @@ types:
     uri: xsd:string
     base: str
     description: A character string
+    exact_mappings:
+      - schema:Text
 
   integer:
     uri: xsd:integer
     base: int
     description: An integer
+    exact_mappings:
+      - schema:Integer
 
   boolean:
     uri: xsd:boolean
     base: Bool
     repr: bool
     description: A binary (true or false) value
+    exact_mappings:
+      - schema:Boolean
 
   float:
     uri: xsd:float
     base: float
     description: A real number that conforms to the xsd:float specification
+    exact_mappings:
+      - schema:Float
 
   double:
     uri: xsd:double
     base: float
     description: A real number that conforms to the xsd:double specification
+    close_mappings:
+      - schema:Float
 
   decimal:
     uri: xsd:decimal
     base: Decimal
     description: A real number with arbitrary precision that conforms to the xsd:decimal specification
+    broad_mappings:
+      - schema:Number
 
   time:
     uri: xsd:dateTime
@@ -64,6 +77,8 @@ types:
     description: A time object represents a (local) time of day, independent of any particular day
     notes:
       - URI is dateTime because OWL reasoners do not work with straight date or time
+    exact_mappings:
+      - schema:Time
 
   date:
     uri: xsd:date
@@ -72,12 +87,16 @@ types:
     description: a date (year, month and day) in an idealized calendar
     notes:
       - URI is dateTime because OWL reasoners don't work with straight date or time
+    exact_mappings:
+      - schema:Date
 
   datetime:
     uri: xsd:dateTime
     repr: str
     base: XSDDateTime
     description: The combination of a date and time
+    exact_mappings:
+      - schema:DateTime
 
   date_or_datetime:
     uri: linkml:DateOrDatetime
@@ -99,6 +118,8 @@ types:
     base: URI
     repr: str
     description: a complete URI
+    close_mappings:
+      - schema:URL
 
   ncname:
     uri: xsd:string

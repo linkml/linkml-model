@@ -51,8 +51,19 @@ gen-project: $(PYMODEL)
 	cp -r $(DEST)/* $(PYMODEL)
 	rm -r $(PYMODEL)/docs
 
-test:
+test: test-schema test-python test-validate-schema
+test-schema:
+	$(RUN) gen-project -d tmp $(SOURCE_SCHEMA_PATH)
+
+test-python:
 	$(RUN) python -m unittest discover
+
+test-examples:
+#	$(RUN) linkml-run-examples -s $(SOURCE_SCHEMA_PATH) -e tests/input/examples -d /tmp/
+	find tests/input/examples | ./utils/run-examples.pl
+
+test-validate-schema:
+	$(RUN) linkml-normalize -s $(SOURCE_SCHEMA_PATH) $(SOURCE_SCHEMA_PATH) -o /tmp/schema
 
 check-config:
 	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n  - Remember to edit 'about.yaml'\n\n" || exit 0)
