@@ -37,6 +37,8 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
 
 <Uriorcurie> IRI
 
+<Curie> xsd:string
+
 <Uri> IRI
 
 <Ncname> xsd:string
@@ -143,6 +145,11 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:relatedMatch @<Uriorcurie> * ;
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
+          pav:createdBy @<Uriorcurie> ? ;
+          pav:createdOn @<Datetime> ? ;
+          pav:lastUpdatedOn @<Datetime> ? ;
+          oslc:modifiedBy @<Uriorcurie> ? ;
+          bibo:status @<Uriorcurie> ? ;
           sh:order @<Integer> ?
        ) ;
        rdf:type [ <AnonymousExpression> ] ?
@@ -304,7 +311,12 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:closeMatch @<Uriorcurie> * ;
           skos:relatedMatch @<Uriorcurie> * ;
           skos:narrowMatch @<Uriorcurie> * ;
-          skos:broadMatch @<Uriorcurie> *
+          skos:broadMatch @<Uriorcurie> * ;
+          pav:createdBy @<Uriorcurie> ? ;
+          pav:createdOn @<Datetime> ? ;
+          pav:lastUpdatedOn @<Datetime> ? ;
+          oslc:modifiedBy @<Uriorcurie> ? ;
+          bibo:status @<Uriorcurie> ?
        ) ;
        rdf:type [ <ClassRule> ] ?
     )
@@ -335,6 +347,11 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:relatedMatch @<Uriorcurie> * ;
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
+          pav:createdBy @<Uriorcurie> ? ;
+          pav:createdOn @<Datetime> ? ;
+          pav:lastUpdatedOn @<Datetime> ? ;
+          oslc:modifiedBy @<Uriorcurie> ? ;
+          bibo:status @<Uriorcurie> ? ;
           sh:order @<Integer> ?
        ) ;
        rdf:type [ <CommonMetadata> ] ?
@@ -353,11 +370,6 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           <mixins> @<Definition> * ;
           <apply_to> @<Definition> * ;
           <values_from> @<Uriorcurie> * ;
-          pav:createdBy @<Uriorcurie> ? ;
-          pav:createdOn @<Datetime> ? ;
-          pav:lastUpdatedOn @<Datetime> ? ;
-          oslc:modifiedBy @<Uriorcurie> ? ;
-          bibo:status @<Uriorcurie> ? ;
           <string_serialization> @<String> ?
        ) ;
        rdf:type [ <Definition> ]
@@ -406,6 +418,11 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:relatedMatch @<Uriorcurie> * ;
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
+          pav:createdBy @<Uriorcurie> ? ;
+          pav:createdOn @<Datetime> ? ;
+          pav:lastUpdatedOn @<Datetime> ? ;
+          oslc:modifiedBy @<Uriorcurie> ? ;
+          bibo:status @<Uriorcurie> ? ;
           sh:order @<Integer> ?
        ) ;
        rdf:type [ <Element> ]
@@ -525,6 +542,11 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:relatedMatch @<Uriorcurie> * ;
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
+          pav:createdBy @<Uriorcurie> ? ;
+          pav:createdOn @<Datetime> ? ;
+          pav:lastUpdatedOn @<Datetime> ? ;
+          oslc:modifiedBy @<Uriorcurie> ? ;
+          bibo:status @<Uriorcurie> ? ;
           sh:order @<Integer> ?
        ) ;
        rdf:type [ <ImportExpression> ] ?
@@ -590,6 +612,11 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:relatedMatch @<Uriorcurie> * ;
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
+          pav:createdBy @<Uriorcurie> ? ;
+          pav:createdOn @<Datetime> ? ;
+          pav:lastUpdatedOn @<Datetime> ? ;
+          oslc:modifiedBy @<Uriorcurie> ? ;
+          bibo:status @<Uriorcurie> ? ;
           sh:order @<Integer> ?
        ) ;
        rdf:type [ <PathExpression> ] ?
@@ -632,6 +659,11 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:relatedMatch @<Uriorcurie> * ;
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
+          pav:createdBy @<Uriorcurie> ? ;
+          pav:createdOn @<Datetime> ? ;
+          pav:lastUpdatedOn @<Datetime> ? ;
+          oslc:modifiedBy @<Uriorcurie> ? ;
+          bibo:status @<Uriorcurie> ? ;
           sh:order @<Integer> ?
        ) ;
        rdf:type [ <PatternExpression> ] ?
@@ -674,6 +706,11 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:relatedMatch @<Uriorcurie> * ;
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
+          pav:createdBy @<Uriorcurie> ? ;
+          pav:createdOn @<Datetime> ? ;
+          pav:lastUpdatedOn @<Datetime> ? ;
+          oslc:modifiedBy @<Uriorcurie> ? ;
+          bibo:status @<Uriorcurie> ? ;
           sh:order @<Integer> ?
        ) ;
        rdf:type [ <PermissibleValue> ]
@@ -886,6 +923,11 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:relatedMatch @<Uriorcurie> * ;
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
+          pav:createdBy @<Uriorcurie> ? ;
+          pav:createdOn @<Datetime> ? ;
+          pav:lastUpdatedOn @<Datetime> ? ;
+          oslc:modifiedBy @<Uriorcurie> ? ;
+          bibo:status @<Uriorcurie> ? ;
           sh:order @<Integer> ?
        ) ;
        rdf:type [ skosxl:Label ] ?
@@ -984,6 +1026,11 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:relatedMatch @<Uriorcurie> * ;
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
+          pav:createdBy @<Uriorcurie> ? ;
+          pav:createdOn @<Datetime> ? ;
+          pav:lastUpdatedOn @<Datetime> ? ;
+          oslc:modifiedBy @<Uriorcurie> ? ;
+          bibo:status @<Uriorcurie> ? ;
           sh:order @<Integer> ?
        ) ;
        rdf:type [ <UniqueKey> ]
@@ -992,6 +1039,8 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
 
 <UnitOfMeasure> CLOSED {
     (  $<UnitOfMeasure_tes> (  qudt:symbol @<String> ? ;
+          qudt:abbreviation @<String> ? ;
+          rdfs:label @<String> ? ;
           skos:exactMatch @<Uriorcurie> * ;
           qudt:ucumCode @<String> ? ;
           <derivation> @<String> ? ;

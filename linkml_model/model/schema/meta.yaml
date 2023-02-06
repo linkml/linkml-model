@@ -354,6 +354,15 @@ slots:
     in_subset:
       - BasicSubset
 
+  contributors:
+    domain: element
+    range: uriorcurie
+    description: agent that contributed to the element
+    slot_uri: dcterms:contributor
+    multivalued: true
+    in_subset:
+      - BasicSubset
+
   created_on:
     domain: element
     range: datetime
@@ -418,6 +427,7 @@ slots:
     range: string
     notes:
       -  Use a string from IETF BCP 47
+    conforms_to: https://www.rfc-editor.org/rfc/bcp/bcp47.txt
 
   source:
     aliases:
@@ -2252,6 +2262,11 @@ classes:
       - related mappings
       - narrow mappings
       - broad mappings
+      - created_by
+      - created_on
+      - last_updated_on
+      - modified_by
+      - status
       - rank
     in_subset:
       - BasicSubset
@@ -2398,11 +2413,6 @@ classes:
       - mixins
       - apply_to
       - values_from
-      - created_by
-      - created_on
-      - last_updated_on
-      - modified_by
-      - status
       - string_serialization
     see_also:
       - https://en.wikipedia.org/wiki/Data_element_definition
