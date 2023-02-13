@@ -321,11 +321,11 @@ To interpret a path *p*:
 1. **VariableName** is resolved to an instance *i*
 2. For each path component in the path, reset *i* to be the value of looking up that component:
     - if the path extension is `.<s>` then *r* must be an **InstanceOfClass*, and the value is equal to the value of the slot assignment for slot `s`
-    - if the path extension is `[<id>]` then *r* must be an **InstanceOfCollection**, and the value is equals to the member of that list that has a slot with the role of *identifier* whose value is `<id>`
+    - if the path extension is `[<key>]` then *r* must be an **InstanceOfCollection**, and the value is equals to the member of that list that has a slot with the role of *identifier* whose value is `<key>`
 
 For example, if *i* is equal to the Person instance in the Combined Example above:
 
 * `i` == `i`
 * `i.id` == `String^"SSN:123"`
 * `i.height.unit` == `String^"cm"`
-
+* `i.relationships[0].related_to` == `Person&"SSN:456"`

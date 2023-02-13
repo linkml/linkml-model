@@ -24,7 +24,7 @@ We use *m* to denote the input or asserted schema (model), and *m<sup>D</sup>* t
 We provide a non-normative example of a schema in canonical YAML. This will be referred to
 in the remainder of the document.
 
-The schema is organized in a local folder as follows
+The schema is organized in a local folder as follows:
 
 person.yaml:
 ```yaml
@@ -96,7 +96,7 @@ This section defines functions that can be used in schema derivation rules.
 
 ### Normalize as List Function
 
-The function **L**(*v*) normalizes `v`to a list:
+The function **L**(*v*) normalizes `v` to a list/collection:
 
 | *v*                                 | **L**(*v*)      |
 |-------------------------------------|-----------------|
@@ -108,8 +108,8 @@ i.e.
 
 ```
 L(v) = 
-  v if v == [...]
   [] if v == None
+  v if v == [...]
   [v] otherwise
 ```
 
@@ -121,9 +121,36 @@ In the metamodel, the identifier **SlotDefinitionName** is always `name`, so thi
 
 > **K**(*v*) = *v*.**name**
 
+### URI and CURIE functions
+
+- a CURIE is a string that conforms to the [W3 CURIE specification](https://www.w3.org/TR/curie/)
+- a URI is a string that conforms to [rfc3987](https://www.ietf.org/rfc/rfc3987.txt)
+- The function **URI**(*s*, *v*) takes a string as input and normalizes it to a URI
+    - if the input is already a URI, then return it
+    - if the input is a CURIE, then expand it using the prefix map in *s*; this is known as *expansion*
+- The function **CURIE**(*s*, *v*) takes a string as input and normalizes it to a CURIE
+    - if the input is already a CURIE, then return it
+    - if the input is a URI, then shorten it using the prefix map in *s*; this is known as *contraction*
+
+When a CURIE is expanded, it is first decomposed according to the grammar defined in [W3 CURIE specification](https://www.w3.org/TR/curie/):
+
+> curie       :=   [ [ prefix ] ':' ] reference
+> 
+> prefix      :=   [NCName](http://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName)
+>
+> reference   :=   irelative-ref (as defined in [IRI](https://www.w3.org/TR/curie/#ref_IRI))
+
+The following concatenation is applied
+
+> **URI**(`<prefix>`: `<reference>`) = `m.prefixes`[`prefix`]`.prefix_reference` + `<reference>`
+
+For the reverse operation, any URI that starts with a prefix reference can be used to generate a valid CURIE.
+The one with the shortest reference is chosen as the canonical.
+
 ### Resolve Functions
 
 The function **Resolve** takes as input a **InstanceOfReference** and returns an **InstanceOfClass**
+that is the referenced object.
 
 | *i*                    | **Resolve**(*i*) |
 |------------------------|------------------|
@@ -192,24 +219,23 @@ The imports closure function **I** returns the reflexive **ReferenceClosure** of
 
 > **I**(*s*) = **C***(*s*, **s.imports**)
 
-### Function: Element CURIEs
+### Function: Element CURIEs and URIs
 
-The lookup table to retrieve the CURIE for an element is:
+For each element in the schema, we can derive a model URI and an element URI. These *may* be identical.
 
-| Type              | Main Rule     | Default                                  |
-|-------------------|---------------|------------------------------------------|
-| `ClassDefinition` | `e.class_uri` | `<m.default_prefix>:<SafeCamel(e.name)>` |
-| `SlotDefinition`  | `e.slot_uri`  | `<m.default_prefix>:<SafeSnake(e.name)>` |
-| `TypeDefinition`  | `e.uri`       | `<m.default_prefix>:<SafeCamel(e.name)>` |
-| `EnumDefinition`  | `e.enum_uri`  | `<m.default_prefix>:<SafeCamel(e.name)>` |
-| `PermissibleValue` | `e.meaning`   | `CURIE(Enum) + "." + Safe(e.text)`         |
+The following table is used:
 
-### Function: Expand CURIEs
+| Type                | Element URI   | Model URI                                |
+|---------------------|---------------|------------------------------------------|
+| `ClassDefinition`   | `e.class_uri` | `<m.default_prefix>:<SafeCamel(e.name)>` |
+| `SlotDefinition`    | `e.slot_uri`  | `<m.default_prefix>:<SafeSnake(e.name)>` |
+| `TypeDefinition`    | `e.uri`       | `<m.default_prefix>:<SafeCamel(e.name)>` |
+| `EnumDefinition`    | `e.enum_uri`  | `<m.default_prefix>:<SafeCamel(e.name)>` |
+| `PermissibleValue`  | `e.meaning`   | `ModelURI(Enum) + "." + Safe(e.text)`    |
 
-To expand a CURIE to a URL, the string is split on `:`. There must be two tokens.
-The first token is used to lookup `m.prefixes`, and the URL is constructed from:
+If the element URI slot is not set, then the model URI is used as the element URI.
 
-> `uri(PREFIX: LOCAL) = m.prefixes[PREFIX].prefix_reference + LOCAL`
+URIs can be contracted to CURIEs using the `prefixes` map in the model, see next function.
 
 ### Function: Applicable Slots
 
@@ -395,7 +421,28 @@ for c in m.classes:
 
 ### Rule: Derived Class and Slot URIs
 
-For each class or slot, if a class_uri or slot_uri is not specified, then this is derived by concatenating `m.default_prefix` with the CURIE separator `:` followed by the SafeUpperCamelCase encoding of the name of that class or slot definition
+For each class or slot, if a class_uri or slot_uri is not specified, then this is derived using the rules specified
+for Element URIs above.
+
+For example, given:
+
+```yaml
+prefixes:
+  foo: http://example.org/foo/
+  bar: http://example.org/bar/
+default_prefix: foo
+classes:
+  A:
+    class_uri: bar:A
+    ...
+  B:
+    ...
+```
+
+the following values would be set:
+
+ * `A.class_uri` = `http://example.org/bar/A`
+ * `B.class_uri` = `http://example.org/foo/B`
 
 ### Rule: Derived Permissible Values
 

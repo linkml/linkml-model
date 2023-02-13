@@ -48,10 +48,10 @@ The following holds for any validation procedure:
 | `NodeKind`            | ERROR     | range metatype         | `NodeKindConstraintComponent`     |
 | `MinimumValue`        | ERROR     |                        | `MinInclusiveConstraintComponent` |
 | `MaximumValue`        | ERROR     |                        | `MaxInclusiveConstraintComponent` |
-| `Pattern`             | ERROR     |                        | `PatternConstraintComponent` |
-| `EqualsExpression`    | INFERENCE |                        | `EqualsConstraintComponent` |
-| `StringSerialization` | INFERENCE |                        | `EqualsConstraintComponent` |
-| `TypeDesignator`      | INFERENCE |                        |  |
+| `Pattern`             | ERROR     |                        | `PatternConstraintComponent`      |
+| `EqualsExpression`    | INFERENCE |                        | `EqualsConstraintComponent`       |
+| `StringSerialization` | INFERENCE |                        | `EqualsConstraintComponent`       |
+| `TypeDesignator`      | INFERENCE |                        |                                   |
 
 For the `INFERENCE` type, the validation procedure MAY fill in missing values in the instance.
 There is only an error if the inferred value is not consistent with the asserted value.
@@ -133,13 +133,51 @@ The following checks only match when `i` is an **AtomicInstance**
 
 The following checks only match when `i` is an **InstanceOfClass**
 
-| **T**  | Element                            | Check             | Fail Condition                                      |
-|--------|------------------------------------|-------------------|-----------------------------------------------------|
-| `in`   | `<Class>(<Assignments>)`           | `Abstract`        | `Class.abstract`                                    |
-| `in`   | `<Class>(<Assignments>)`           | `Mixin`           | `Class.mixin`                                       |
-| `in`   | `<Class>(<Assignments>)`           | `ClassRange`      | `slot.range ∉ A*(<Class>)`                          |
-| `in`   | `<Class>(..., <subslot>=<V>, ...)` | `ApplicableSlot`  | `subslot ∉ <Class>.attributes`                      |
-| `in`   | `<Class>(..., <ts>=<V>, ...)`      | `DesignatedType`  | `<V> ∉ A*(<Class>)`  `ts = TypeDesignator(<Class>)` |
+| **T**  | Element                            | Check             | Fail Condition                                                                  |
+|--------|------------------------------------|-------------------|---------------------------------------------------------------------------------|
+| `in`   | `<Class>(<Assignments>)`           | `Abstract`        | `Class.abstract`                                                                |
+| `in`   | `<Class>(<Assignments>)`           | `Mixin`           | `Class.mixin`                                                                   |
+| `in`   | `<Class>(<Assignments>)`           | `ClassRange`      | `slot.range ∉ A*(<Class>)`                                                      |
+| `in`   | `<Class>(..., <subslot>=<V>, ...)` | `ApplicableSlot`  | `subslot ∉ <Class>.attributes`                                                  |
+| `in`   | `<Class>(..., <ts>=<V>, ...)`      | `DesignatedType`  | `∃ v ∈ L(<V>): v ∉ Norm(A*(<Class>), ts.range)` and `ts.designates_type = True` |
+
+For the DesignatedType check, the `Norm` function takes as input as a list of classes,
+and expands these according to the range of the slot `ts` that designates the type.
+
+
+| Range        | Match                                                |
+|--------------|------------------------------------------------------|
+| `string`     | { `c.name` }                                         |
+| `curie`      | { **CURIE**(`c.class_uri`) }                         |
+| `uri`        | { **URI**(`c.class_uri`) }                           |
+| `uriorcurie` | { **CURIE**(`c.class_uri`), **URI**(`c.class_uri`) } |
+
+For example, given an instance
+
+> `Organization(name="acme", type=String^"Business")`
+
+And a schema that includes:
+
+```python
+ClassDefinition(
+  name="Business",
+  is_a=ClassDefinition&Organization,
+)
+ClassDefinition(
+  name="Organization",
+  attributes=[
+    SlotDefinition(name="type", range=TypeDefinition&string),
+    ...
+```
+
+This will pass the `DesignatedType` check, because:
+
+* `A*(ClassDefinition&Business) = { ..., ClassDefinition&Organization, ... }`
+* `Norm(A*(ClassDefinition&Business), TypeDefinition&string) = { ..., String^"Business", ... }`
+* `String^"Business" ∉ { ..., String^"Business", ... }`
+
+DesignatedType checks can also executed in inference mode, where an inference engine
+may choose to assign the most specific value allowed to the slot.
 
 ### Enum checks
 
@@ -186,8 +224,6 @@ For each rule `r` in *C*.rules:
 - `r.postconditions` are applied
 
 ### Classification Rule evaluation
-
-### type designator checks
 
 ## Validation of TypeDefinitions
 
