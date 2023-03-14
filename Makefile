@@ -58,6 +58,7 @@ test-schema:
 test-python:
 	$(RUN) python -m unittest discover
 
+# TODO: switch to linkml-run-examples when normalize is implemented
 test-examples:
 #	$(RUN) linkml-run-examples -s $(SOURCE_SCHEMA_PATH) -e tests/input/examples -d /tmp/
 	find tests/input/examples | ./utils/run-examples.pl
