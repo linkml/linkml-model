@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-11T19:19:26
+# Generation date: 2023-03-13T17:15:40
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -3514,7 +3514,9 @@ class RelationalRoleEnum(EnumDefinitionImpl):
     )
 
 class AliasPredicateEnum(EnumDefinitionImpl):
-
+    """
+    permissible values for the relationship between an element and an alias
+    """
     EXACT_SYNONYM = PermissibleValue(text="EXACT_SYNONYM",
                                                  meaning=SKOS.exactMatch)
     RELATED_SYNONYM = PermissibleValue(text="RELATED_SYNONYM",
@@ -3526,6 +3528,7 @@ class AliasPredicateEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="AliasPredicateEnum",
+        description="permissible values for the relationship between an element and an alias",
     )
 
 # Slots
