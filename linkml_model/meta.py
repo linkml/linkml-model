@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-13T17:15:40
+# Generation date: 2023-03-15T19:40:24
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -479,7 +479,7 @@ class SchemaDefinition(Element):
     prefixes: Optional[Union[Dict[Union[str, PrefixPrefixPrefix], Union[dict, "Prefix"]], List[Union[dict, "Prefix"]]]] = empty_dict()
     emit_prefixes: Optional[Union[Union[str, NCName], List[Union[str, NCName]]]] = empty_list()
     default_curi_maps: Optional[Union[str, List[str]]] = empty_list()
-    default_prefix: Optional[str] = None
+    default_prefix: Optional[str] = "linkml"
     default_range: Optional[Union[str, TypeDefinitionName]] = None
     subsets: Optional[Union[Dict[Union[str, SubsetDefinitionName], Union[dict, "SubsetDefinition"]], List[Union[dict, "SubsetDefinition"]]]] = empty_dict()
     types: Optional[Union[Dict[Union[str, TypeDefinitionName], Union[dict, "TypeDefinition"]], List[Union[dict, "TypeDefinition"]]]] = empty_dict()
@@ -497,8 +497,6 @@ class SchemaDefinition(Element):
     keywords: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.default_prefix is None:
-            self.default_prefix = sfx(str(self.id))
         if self._is_empty(self.name):
             self.MissingRequiredField("name")
         if not isinstance(self.name, SchemaDefinitionName):
