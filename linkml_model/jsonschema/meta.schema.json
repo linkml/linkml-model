@@ -1,7 +1,7 @@
 {
     "$defs": {
         "AliasPredicateEnum": {
-            "description": "",
+            "description": "permissible values for the relationship between an element and an alias",
             "enum": [
                 "EXACT_SYNONYM",
                 "RELATED_SYNONYM",
@@ -122,7 +122,7 @@
             "description": "",
             "properties": {
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -171,7 +171,7 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -199,7 +199,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "exact_mappings": {
@@ -239,10 +239,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -283,7 +284,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -301,7 +302,7 @@
                     "type": "array"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -323,18 +324,18 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
                     "type": "array"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
@@ -416,7 +417,7 @@
             "description": "",
             "properties": {
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -469,7 +470,7 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -497,7 +498,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "enum_range": {
@@ -568,10 +569,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -632,7 +634,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -655,7 +657,7 @@
                     "type": "integer"
                 },
                 "recommended": {
-                    "description": "true means that the slot should be present in the loaded definition, but this is not required",
+                    "description": "true means that the slot should be present in instances of the class definition, but this is not required",
                     "type": "boolean"
                 },
                 "related_mappings": {
@@ -666,11 +668,11 @@
                     "type": "array"
                 },
                 "required": {
-                    "description": "true means that the slot must be present in the loaded definition",
+                    "description": "true means that the slot must be present in instances of the class definition",
                     "type": "boolean"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -685,7 +687,7 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
@@ -696,11 +698,11 @@
                     "description": "the string value of the slot must conform to the regular expression in the pattern expression"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
@@ -720,7 +722,7 @@
         },
         "AnonymousTypeExpression": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A type expression that is not a top-level named type definition. Used for nesting.",
             "properties": {
                 "all_of": {
                     "description": "holds if all of the expressions hold",
@@ -804,11 +806,11 @@
             "description": "an element whose instances are complex objects that may have slot-value assignments",
             "properties": {
                 "abstract": {
-                    "description": "Indicates the class or slot cannot be directly instantiated and is intended for grouping and specifying core inherited metaslots",
+                    "description": "Indicates the class or slot cannot be directly instantiated and is intended for grouping purposes.",
                     "type": "boolean"
                 },
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -872,7 +874,7 @@
                     "type": "string"
                 },
                 "classification_rules": {
-                    "description": "the collection of classification rules that apply to all members of this class",
+                    "description": "The collection of classification rules that apply to all members of this class. Classification rules allow for automatically assigning the instantiated type of an instance.",
                     "items": {
                         "$ref": "#/$defs/AnonymousClassExpression"
                     },
@@ -886,7 +888,7 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -913,7 +915,7 @@
                     "type": "array"
                 },
                 "definition_uri": {
-                    "description": "the \"native\" URI of the element",
+                    "description": "The native URI of the element. This is always within the namespace of the containing schema. Contrast with the assigned URI, via class_uri or slot_uri",
                     "type": "string"
                 },
                 "deprecated": {
@@ -929,7 +931,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "disjoint_with": {
@@ -972,14 +974,14 @@
                     "type": "string"
                 },
                 "id_prefixes": {
-                    "description": "the identifier of this class or slot must begin with the URIs referenced by this prefix",
+                    "description": "An allowed list of prefixes for which identifiers must conform. The identifier of this class or slot must begin with the URIs referenced by this prefix",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "implements": {
-                    "description": "An element in another schema which this element conforms to",
+                    "description": "An element in another schema which this element conforms to. The referenced element is not imported into the schema for the implementing element. However, the referenced schema may be used to check conformance of the implementing element.",
                     "items": {
                         "type": "string"
                     },
@@ -990,10 +992,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -1055,7 +1058,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -1084,7 +1087,7 @@
                     "type": "array"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -1128,29 +1131,29 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
                     "type": "array"
                 },
                 "subclass_of": {
-                    "description": "rdfs:subClassOf to be emitted in OWL generation",
+                    "description": "DEPRECATED -- rdfs:subClassOf to be emitted in OWL generation",
                     "type": "string"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "tree_root": {
-                    "description": "indicator that this is the root class in tree structures",
+                    "description": "Indicates that this is the Container class which forms the root of the serialized document structure in tree serializations",
                     "type": "boolean"
                 },
                 "union_of": {
@@ -1164,7 +1167,7 @@
                     "additionalProperties": {
                         "$ref": "#/$defs/UniqueKey__identifier_optional"
                     },
-                    "description": "A collection of unique keys for this class. Unique keys may be singular or compound.",
+                    "description": "A collection of named unique keys for this class. Unique keys may be singular or compound.",
                     "type": "object"
                 },
                 "values_from": {
@@ -1186,11 +1189,11 @@
             "description": "an element whose instances are complex objects that may have slot-value assignments",
             "properties": {
                 "abstract": {
-                    "description": "Indicates the class or slot cannot be directly instantiated and is intended for grouping and specifying core inherited metaslots",
+                    "description": "Indicates the class or slot cannot be directly instantiated and is intended for grouping purposes.",
                     "type": "boolean"
                 },
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -1254,7 +1257,7 @@
                     "type": "string"
                 },
                 "classification_rules": {
-                    "description": "the collection of classification rules that apply to all members of this class",
+                    "description": "The collection of classification rules that apply to all members of this class. Classification rules allow for automatically assigning the instantiated type of an instance.",
                     "items": {
                         "$ref": "#/$defs/AnonymousClassExpression"
                     },
@@ -1268,7 +1271,7 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -1295,7 +1298,7 @@
                     "type": "array"
                 },
                 "definition_uri": {
-                    "description": "the \"native\" URI of the element",
+                    "description": "The native URI of the element. This is always within the namespace of the containing schema. Contrast with the assigned URI, via class_uri or slot_uri",
                     "type": "string"
                 },
                 "deprecated": {
@@ -1311,7 +1314,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "disjoint_with": {
@@ -1354,14 +1357,14 @@
                     "type": "string"
                 },
                 "id_prefixes": {
-                    "description": "the identifier of this class or slot must begin with the URIs referenced by this prefix",
+                    "description": "An allowed list of prefixes for which identifiers must conform. The identifier of this class or slot must begin with the URIs referenced by this prefix",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "implements": {
-                    "description": "An element in another schema which this element conforms to",
+                    "description": "An element in another schema which this element conforms to. The referenced element is not imported into the schema for the implementing element. However, the referenced schema may be used to check conformance of the implementing element.",
                     "items": {
                         "type": "string"
                     },
@@ -1372,10 +1375,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -1437,7 +1441,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -1466,7 +1470,7 @@
                     "type": "array"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -1510,29 +1514,29 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
                     "type": "array"
                 },
                 "subclass_of": {
-                    "description": "rdfs:subClassOf to be emitted in OWL generation",
+                    "description": "DEPRECATED -- rdfs:subClassOf to be emitted in OWL generation",
                     "type": "string"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "tree_root": {
-                    "description": "indicator that this is the root class in tree structures",
+                    "description": "Indicates that this is the Container class which forms the root of the serialized document structure in tree serializations",
                     "type": "boolean"
                 },
                 "union_of": {
@@ -1546,7 +1550,7 @@
                     "additionalProperties": {
                         "$ref": "#/$defs/UniqueKey__identifier_optional"
                     },
-                    "description": "A collection of unique keys for this class. Unique keys may be singular or compound.",
+                    "description": "A collection of named unique keys for this class. Unique keys may be singular or compound.",
                     "type": "object"
                 },
                 "values_from": {
@@ -1566,7 +1570,7 @@
             "description": "A rule that applies to instances of a class",
             "properties": {
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -1605,7 +1609,7 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -1637,7 +1641,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "elseconditions": {
@@ -1674,10 +1678,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -1707,7 +1712,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -1737,7 +1742,7 @@
                     "type": "array"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -1752,18 +1757,18 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
                     "type": "array"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
@@ -1778,11 +1783,11 @@
             "description": "an element whose instances must be drawn from a specified set of permissible values",
             "properties": {
                 "abstract": {
-                    "description": "Indicates the class or slot cannot be directly instantiated and is intended for grouping and specifying core inherited metaslots",
+                    "description": "Indicates the class or slot cannot be directly instantiated and is intended for grouping purposes.",
                     "type": "boolean"
                 },
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -1836,7 +1841,7 @@
                     "type": "string"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -1863,7 +1868,7 @@
                     "type": "string"
                 },
                 "definition_uri": {
-                    "description": "the \"native\" URI of the element",
+                    "description": "The native URI of the element. This is always within the namespace of the containing schema. Contrast with the assigned URI, via class_uri or slot_uri",
                     "type": "string"
                 },
                 "deprecated": {
@@ -1879,7 +1884,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "enum_uri": {
@@ -1912,14 +1917,14 @@
                     "type": "string"
                 },
                 "id_prefixes": {
-                    "description": "the identifier of this class or slot must begin with the URIs referenced by this prefix",
+                    "description": "An allowed list of prefixes for which identifiers must conform. The identifier of this class or slot must begin with the URIs referenced by this prefix",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "implements": {
-                    "description": "An element in another schema which this element conforms to",
+                    "description": "An element in another schema which this element conforms to. The referenced element is not imported into the schema for the implementing element. However, the referenced schema may be used to check conformance of the implementing element.",
                     "items": {
                         "type": "string"
                     },
@@ -1930,10 +1935,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -2013,7 +2019,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -2046,7 +2052,7 @@
                     "type": "array"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -2065,18 +2071,18 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
                     "type": "array"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
@@ -2101,11 +2107,11 @@
             "description": "an element whose instances must be drawn from a specified set of permissible values",
             "properties": {
                 "abstract": {
-                    "description": "Indicates the class or slot cannot be directly instantiated and is intended for grouping and specifying core inherited metaslots",
+                    "description": "Indicates the class or slot cannot be directly instantiated and is intended for grouping purposes.",
                     "type": "boolean"
                 },
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -2159,7 +2165,7 @@
                     "type": "string"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -2186,7 +2192,7 @@
                     "type": "string"
                 },
                 "definition_uri": {
-                    "description": "the \"native\" URI of the element",
+                    "description": "The native URI of the element. This is always within the namespace of the containing schema. Contrast with the assigned URI, via class_uri or slot_uri",
                     "type": "string"
                 },
                 "deprecated": {
@@ -2202,7 +2208,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "enum_uri": {
@@ -2235,14 +2241,14 @@
                     "type": "string"
                 },
                 "id_prefixes": {
-                    "description": "the identifier of this class or slot must begin with the URIs referenced by this prefix",
+                    "description": "An allowed list of prefixes for which identifiers must conform. The identifier of this class or slot must begin with the URIs referenced by this prefix",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "implements": {
-                    "description": "An element in another schema which this element conforms to",
+                    "description": "An element in another schema which this element conforms to. The referenced element is not imported into the schema for the implementing element. However, the referenced schema may be used to check conformance of the implementing element.",
                     "items": {
                         "type": "string"
                     },
@@ -2253,10 +2259,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -2336,7 +2343,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -2369,7 +2376,7 @@
                     "type": "array"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -2388,18 +2395,18 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
                     "type": "array"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
@@ -2562,7 +2569,7 @@
             "description": "an expression describing an import",
             "properties": {
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -2597,7 +2604,7 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -2625,7 +2632,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "exact_mappings": {
@@ -2670,10 +2677,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -2703,7 +2711,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -2721,7 +2729,7 @@
                     "type": "array"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -2736,18 +2744,18 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
                     "type": "array"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
@@ -2820,7 +2828,7 @@
             "description": "An expression that describes an abstract path from an object to another through a sequence of slot lookups",
             "properties": {
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -2869,7 +2877,7 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -2897,7 +2905,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "exact_mappings": {
@@ -2941,10 +2949,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -2981,7 +2990,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -3007,7 +3016,7 @@
                     "type": "boolean"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -3022,18 +3031,18 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
                     "type": "array"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
@@ -3052,7 +3061,7 @@
             "description": "a regular expression pattern used to evaluate conformance of a string",
             "properties": {
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -3087,7 +3096,7 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -3115,7 +3124,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "exact_mappings": {
@@ -3148,10 +3157,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -3185,7 +3195,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -3207,7 +3217,7 @@
                     "type": "array"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -3222,7 +3232,7 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
@@ -3233,11 +3243,11 @@
                     "type": "string"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
@@ -3252,7 +3262,7 @@
             "description": "a permissible value, accompanied by intended text and an optional mapping to a concept URI",
             "properties": {
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -3287,7 +3297,7 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -3315,7 +3325,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "exact_mappings": {
@@ -3348,10 +3358,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -3385,7 +3396,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -3403,7 +3414,7 @@
                     "type": "array"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -3418,21 +3429,22 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
                     "type": "array"
                 },
                 "text": {
+                    "description": "The actual permissible value itself",
                     "type": "string"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
@@ -3454,7 +3466,7 @@
             "description": "a permissible value, accompanied by intended text and an optional mapping to a concept URI",
             "properties": {
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -3489,7 +3501,7 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -3517,7 +3529,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "exact_mappings": {
@@ -3550,10 +3562,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -3587,7 +3600,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -3605,7 +3618,7 @@
                     "type": "array"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -3620,21 +3633,22 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
                     "type": "array"
                 },
                 "text": {
+                    "description": "The actual permissible value itself",
                     "type": "string"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
@@ -3654,11 +3668,11 @@
             "description": "prefix URI tuple",
             "properties": {
                 "prefix_prefix": {
-                    "description": "the nsname (sans ':' for a given prefix)",
+                    "description": "The prefix components of a prefix expansions. This is the part that appears before the colon in a CURIE.",
                     "type": "string"
                 },
                 "prefix_reference": {
-                    "description": "A URI associated with a given prefix",
+                    "description": "The namespace to which a prefix expands to.",
                     "type": "string"
                 }
             },
@@ -3674,11 +3688,11 @@
             "description": "prefix URI tuple",
             "properties": {
                 "prefix_prefix": {
-                    "description": "the nsname (sans ':' for a given prefix)",
+                    "description": "The prefix components of a prefix expansions. This is the part that appears before the colon in a CURIE.",
                     "type": "string"
                 },
                 "prefix_reference": {
-                    "description": "A URI associated with a given prefix",
+                    "description": "The namespace to which a prefix expands to.",
                     "type": "string"
                 }
             },
@@ -3761,10 +3775,10 @@
         },
         "SchemaDefinition": {
             "additionalProperties": false,
-            "description": "a collection of subset, type, slot, enum and class definitions",
+            "description": "A collection of definitions that make up a schema or a data model.",
             "properties": {
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -3792,7 +3806,7 @@
                     "type": "array"
                 },
                 "categories": {
-                    "description": "controlled terms used to categorize an element",
+                    "description": "Controlled terms used to categorize an element.",
                     "items": {
                         "type": "string"
                     },
@@ -3813,7 +3827,7 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -3840,7 +3854,7 @@
                     "type": "array"
                 },
                 "default_prefix": {
-                    "description": "default and base prefix -- used for ':' identifiers, @base and @vocab",
+                    "description": "The prefix that is used for all elements within a schema",
                     "type": "string"
                 },
                 "default_range": {
@@ -3848,7 +3862,7 @@
                     "type": "string"
                 },
                 "definition_uri": {
-                    "description": "the \"native\" URI of the element",
+                    "description": "The native URI of the element. This is always within the namespace of the containing schema. Contrast with the assigned URI, via class_uri or slot_uri",
                     "type": "string"
                 },
                 "deprecated": {
@@ -3864,7 +3878,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "emit_prefixes": {
@@ -3916,14 +3930,14 @@
                     "type": "string"
                 },
                 "id_prefixes": {
-                    "description": "the identifier of this class or slot must begin with the URIs referenced by this prefix",
+                    "description": "An allowed list of prefixes for which identifiers must conform. The identifier of this class or slot must begin with the URIs referenced by this prefix",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "implements": {
-                    "description": "An element in another schema which this element conforms to",
+                    "description": "An element in another schema which this element conforms to. The referenced element is not imported into the schema for the implementing element. However, the referenced schema may be used to check conformance of the implementing element.",
                     "items": {
                         "type": "string"
                     },
@@ -3934,17 +3948,18 @@
                     "type": "string"
                 },
                 "imports": {
-                    "description": "other schemas that are included in this schema",
+                    "description": "A list of schemas that are to be included in this schema",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -3999,7 +4014,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -4009,7 +4024,7 @@
                     "additionalProperties": {
                         "$ref": "#/$defs/Prefix__identifier_optional"
                     },
-                    "description": "prefix / URI definitions to be added to the context beyond those fetched from prefixcommons in id prefixes",
+                    "description": "A collection of prefix expansions that specify how CURIEs can be expanded to URIs",
                     "type": "object"
                 },
                 "rank": {
@@ -4024,7 +4039,7 @@
                     "type": "array"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -4070,7 +4085,7 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
@@ -4084,11 +4099,11 @@
                     "type": "object"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
@@ -4157,7 +4172,7 @@
             "description": "an element that describes how instances are related to other instances",
             "properties": {
                 "abstract": {
-                    "description": "Indicates the class or slot cannot be directly instantiated and is intended for grouping and specifying core inherited metaslots",
+                    "description": "Indicates the class or slot cannot be directly instantiated and is intended for grouping purposes.",
                     "type": "boolean"
                 },
                 "alias": {
@@ -4165,7 +4180,7 @@
                     "type": "string"
                 },
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -4233,7 +4248,7 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -4253,7 +4268,7 @@
                     "type": "string"
                 },
                 "definition_uri": {
-                    "description": "the \"native\" URI of the element",
+                    "description": "The native URI of the element. This is always within the namespace of the containing schema. Contrast with the assigned URI, via class_uri or slot_uri",
                     "type": "string"
                 },
                 "deprecated": {
@@ -4269,7 +4284,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "designates_type": {
@@ -4354,7 +4369,7 @@
                     "description": "the value of the slot is multivalued with at least one member satisfying the condition"
                 },
                 "id_prefixes": {
-                    "description": "the identifier of this class or slot must begin with the URIs referenced by this prefix",
+                    "description": "An allowed list of prefixes for which identifiers must conform. The identifier of this class or slot must begin with the URIs referenced by this prefix",
                     "items": {
                         "type": "string"
                     },
@@ -4369,7 +4384,7 @@
                     "type": "string"
                 },
                 "implements": {
-                    "description": "An element in another schema which this element conforms to",
+                    "description": "An element in another schema which this element conforms to. The referenced element is not imported into the schema for the implementing element. However, the referenced schema may be used to check conformance of the implementing element.",
                     "items": {
                         "type": "string"
                     },
@@ -4384,10 +4399,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -4495,7 +4511,7 @@
                     "type": "string"
                 },
                 "multivalued": {
-                    "description": "true means that slot can have more than one value",
+                    "description": "true means that slot can have more than one value and should be represented using a list or collection structure.",
                     "type": "boolean"
                 },
                 "name": {
@@ -4517,7 +4533,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -4552,7 +4568,7 @@
                     "type": "string"
                 },
                 "recommended": {
-                    "description": "true means that the slot should be present in the loaded definition, but this is not required",
+                    "description": "true means that the slot should be present in instances of the class definition, but this is not required",
                     "type": "boolean"
                 },
                 "reflexive": {
@@ -4575,7 +4591,7 @@
                     "description": "the role a slot on a relationship class plays, for example, the subject, object or predicate roles"
                 },
                 "required": {
-                    "description": "true means that the slot must be present in the loaded definition",
+                    "description": "true means that the slot must be present in instances of the class definition",
                     "type": "boolean"
                 },
                 "role": {
@@ -4583,7 +4599,7 @@
                     "type": "string"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -4602,7 +4618,7 @@
                     "type": "string"
                 },
                 "slot_uri": {
-                    "description": "predicate of this slot for semantic web application",
+                    "description": "URI of the class that provides a semantic interpretation of the slot in a linked data context. The URI may come from any namespace and may be shared between schemas.",
                     "type": "string"
                 },
                 "source": {
@@ -4618,7 +4634,7 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
@@ -4637,11 +4653,11 @@
                     "type": "boolean"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
@@ -4693,7 +4709,7 @@
             "description": "an element that describes how instances are related to other instances",
             "properties": {
                 "abstract": {
-                    "description": "Indicates the class or slot cannot be directly instantiated and is intended for grouping and specifying core inherited metaslots",
+                    "description": "Indicates the class or slot cannot be directly instantiated and is intended for grouping purposes.",
                     "type": "boolean"
                 },
                 "alias": {
@@ -4701,7 +4717,7 @@
                     "type": "string"
                 },
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -4769,7 +4785,7 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -4789,7 +4805,7 @@
                     "type": "string"
                 },
                 "definition_uri": {
-                    "description": "the \"native\" URI of the element",
+                    "description": "The native URI of the element. This is always within the namespace of the containing schema. Contrast with the assigned URI, via class_uri or slot_uri",
                     "type": "string"
                 },
                 "deprecated": {
@@ -4805,7 +4821,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "designates_type": {
@@ -4890,7 +4906,7 @@
                     "description": "the value of the slot is multivalued with at least one member satisfying the condition"
                 },
                 "id_prefixes": {
-                    "description": "the identifier of this class or slot must begin with the URIs referenced by this prefix",
+                    "description": "An allowed list of prefixes for which identifiers must conform. The identifier of this class or slot must begin with the URIs referenced by this prefix",
                     "items": {
                         "type": "string"
                     },
@@ -4905,7 +4921,7 @@
                     "type": "string"
                 },
                 "implements": {
-                    "description": "An element in another schema which this element conforms to",
+                    "description": "An element in another schema which this element conforms to. The referenced element is not imported into the schema for the implementing element. However, the referenced schema may be used to check conformance of the implementing element.",
                     "items": {
                         "type": "string"
                     },
@@ -4920,10 +4936,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -5031,7 +5048,7 @@
                     "type": "string"
                 },
                 "multivalued": {
-                    "description": "true means that slot can have more than one value",
+                    "description": "true means that slot can have more than one value and should be represented using a list or collection structure.",
                     "type": "boolean"
                 },
                 "name": {
@@ -5053,7 +5070,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -5088,7 +5105,7 @@
                     "type": "string"
                 },
                 "recommended": {
-                    "description": "true means that the slot should be present in the loaded definition, but this is not required",
+                    "description": "true means that the slot should be present in instances of the class definition, but this is not required",
                     "type": "boolean"
                 },
                 "reflexive": {
@@ -5111,7 +5128,7 @@
                     "description": "the role a slot on a relationship class plays, for example, the subject, object or predicate roles"
                 },
                 "required": {
-                    "description": "true means that the slot must be present in the loaded definition",
+                    "description": "true means that the slot must be present in instances of the class definition",
                     "type": "boolean"
                 },
                 "role": {
@@ -5119,7 +5136,7 @@
                     "type": "string"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -5138,7 +5155,7 @@
                     "type": "string"
                 },
                 "slot_uri": {
-                    "description": "predicate of this slot for semantic web application",
+                    "description": "URI of the class that provides a semantic interpretation of the slot in a linked data context. The URI may come from any namespace and may be shared between schemas.",
                     "type": "string"
                 },
                 "source": {
@@ -5154,7 +5171,7 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
@@ -5173,11 +5190,11 @@
                     "type": "boolean"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
@@ -5227,7 +5244,7 @@
             "description": "object that contains meta data about a synonym or alias including where it came from (source) and its scope (narrow, broad, etc.)",
             "properties": {
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -5269,7 +5286,7 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -5297,7 +5314,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "exact_mappings": {
@@ -5330,10 +5347,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -5345,7 +5363,7 @@
                     "type": "string"
                 },
                 "literal_form": {
-                    "description": "The literal lexical form of a structured alias",
+                    "description": "The literal lexical form of a structured alias; i.e the actual alias value.",
                     "type": "string"
                 },
                 "mappings": {
@@ -5367,7 +5385,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -5375,7 +5393,7 @@
                 },
                 "predicate": {
                     "$ref": "#/$defs/AliasPredicateEnum",
-                    "description": "The relationship between an element and its alias "
+                    "description": "The relationship between an element and its alias."
                 },
                 "rank": {
                     "description": "the relative order in which the element occurs, lower values are given precedence",
@@ -5389,7 +5407,7 @@
                     "type": "array"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -5404,18 +5422,18 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
                     "type": "array"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
@@ -5433,7 +5451,7 @@
             "description": "an element that can be used to group other metamodel elements",
             "properties": {
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -5468,7 +5486,7 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -5488,7 +5506,7 @@
                     "type": "string"
                 },
                 "definition_uri": {
-                    "description": "the \"native\" URI of the element",
+                    "description": "The native URI of the element. This is always within the namespace of the containing schema. Contrast with the assigned URI, via class_uri or slot_uri",
                     "type": "string"
                 },
                 "deprecated": {
@@ -5504,7 +5522,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "exact_mappings": {
@@ -5533,14 +5551,14 @@
                     "type": "string"
                 },
                 "id_prefixes": {
-                    "description": "the identifier of this class or slot must begin with the URIs referenced by this prefix",
+                    "description": "An allowed list of prefixes for which identifiers must conform. The identifier of this class or slot must begin with the URIs referenced by this prefix",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "implements": {
-                    "description": "An element in another schema which this element conforms to",
+                    "description": "An element in another schema which this element conforms to. The referenced element is not imported into the schema for the implementing element. However, the referenced schema may be used to check conformance of the implementing element.",
                     "items": {
                         "type": "string"
                     },
@@ -5551,10 +5569,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -5594,7 +5613,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -5612,7 +5631,7 @@
                     "type": "array"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -5627,18 +5646,18 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
                     "type": "array"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
@@ -5656,7 +5675,7 @@
             "description": "an element that can be used to group other metamodel elements",
             "properties": {
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -5691,7 +5710,7 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -5711,7 +5730,7 @@
                     "type": "string"
                 },
                 "definition_uri": {
-                    "description": "the \"native\" URI of the element",
+                    "description": "The native URI of the element. This is always within the namespace of the containing schema. Contrast with the assigned URI, via class_uri or slot_uri",
                     "type": "string"
                 },
                 "deprecated": {
@@ -5727,7 +5746,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "exact_mappings": {
@@ -5756,14 +5775,14 @@
                     "type": "string"
                 },
                 "id_prefixes": {
-                    "description": "the identifier of this class or slot must begin with the URIs referenced by this prefix",
+                    "description": "An allowed list of prefixes for which identifiers must conform. The identifier of this class or slot must begin with the URIs referenced by this prefix",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "implements": {
-                    "description": "An element in another schema which this element conforms to",
+                    "description": "An element in another schema which this element conforms to. The referenced element is not imported into the schema for the implementing element. However, the referenced schema may be used to check conformance of the implementing element.",
                     "items": {
                         "type": "string"
                     },
@@ -5774,10 +5793,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -5817,7 +5837,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -5835,7 +5855,7 @@
                     "type": "array"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -5850,18 +5870,18 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
                     "type": "array"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
@@ -5877,7 +5897,7 @@
             "description": "an element that whose instances are atomic scalar values that can be mapped to primitive types",
             "properties": {
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -5912,7 +5932,7 @@
                     "type": "array"
                 },
                 "base": {
-                    "description": "python base type that implements this type definition",
+                    "description": "python base type in the LinkML runtime that implements this type definition",
                     "type": "string"
                 },
                 "broad_mappings": {
@@ -5930,7 +5950,7 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -5950,7 +5970,7 @@
                     "type": "string"
                 },
                 "definition_uri": {
-                    "description": "the \"native\" URI of the element",
+                    "description": "The native URI of the element. This is always within the namespace of the containing schema. Contrast with the assigned URI, via class_uri or slot_uri",
                     "type": "string"
                 },
                 "deprecated": {
@@ -5966,7 +5986,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "equals_number": {
@@ -6017,14 +6037,14 @@
                     "type": "string"
                 },
                 "id_prefixes": {
-                    "description": "the identifier of this class or slot must begin with the URIs referenced by this prefix",
+                    "description": "An allowed list of prefixes for which identifiers must conform. The identifier of this class or slot must begin with the URIs referenced by this prefix",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "implements": {
-                    "description": "An element in another schema which this element conforms to",
+                    "description": "An element in another schema which this element conforms to. The referenced element is not imported into the schema for the implementing element. However, the referenced schema may be used to check conformance of the implementing element.",
                     "items": {
                         "type": "string"
                     },
@@ -6039,10 +6059,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -6097,7 +6118,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -6123,7 +6144,7 @@
                     "type": "string"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -6138,7 +6159,7 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
@@ -6149,18 +6170,18 @@
                     "description": "the string value of the slot must conform to the regular expression in the pattern expression"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "typeof": {
-                    "description": "Names a parent type",
+                    "description": "A parent type from which type properties are inherited",
                     "type": "string"
                 },
                 "union_of": {
@@ -6190,7 +6211,7 @@
             "description": "an element that whose instances are atomic scalar values that can be mapped to primitive types",
             "properties": {
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -6225,7 +6246,7 @@
                     "type": "array"
                 },
                 "base": {
-                    "description": "python base type that implements this type definition",
+                    "description": "python base type in the LinkML runtime that implements this type definition",
                     "type": "string"
                 },
                 "broad_mappings": {
@@ -6243,7 +6264,7 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
@@ -6263,7 +6284,7 @@
                     "type": "string"
                 },
                 "definition_uri": {
-                    "description": "the \"native\" URI of the element",
+                    "description": "The native URI of the element. This is always within the namespace of the containing schema. Contrast with the assigned URI, via class_uri or slot_uri",
                     "type": "string"
                 },
                 "deprecated": {
@@ -6279,7 +6300,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "equals_number": {
@@ -6330,14 +6351,14 @@
                     "type": "string"
                 },
                 "id_prefixes": {
-                    "description": "the identifier of this class or slot must begin with the URIs referenced by this prefix",
+                    "description": "An allowed list of prefixes for which identifiers must conform. The identifier of this class or slot must begin with the URIs referenced by this prefix",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "implements": {
-                    "description": "An element in another schema which this element conforms to",
+                    "description": "An element in another schema which this element conforms to. The referenced element is not imported into the schema for the implementing element. However, the referenced schema may be used to check conformance of the implementing element.",
                     "items": {
                         "type": "string"
                     },
@@ -6352,10 +6373,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -6410,7 +6432,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -6436,7 +6458,7 @@
                     "type": "string"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -6451,7 +6473,7 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
@@ -6462,18 +6484,18 @@
                     "description": "the string value of the slot must conform to the regular expression in the pattern expression"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "typeof": {
-                    "description": "Names a parent type",
+                    "description": "A parent type from which type properties are inherited",
                     "type": "string"
                 },
                 "union_of": {
@@ -6501,7 +6523,7 @@
             "description": "a collection of slots whose values uniquely identify an instance of a class",
             "properties": {
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -6536,11 +6558,15 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "consider_nulls_inequal": {
+                    "description": "By default, None values are considered equal for the purposes of comparisons in determining uniqueness. Set this to true to treat missing values as per ANSI-SQL NULLs, i.e NULL=NULL is always False.",
+                    "type": "boolean"
                 },
                 "created_by": {
                     "description": "agent that created the element",
@@ -6564,7 +6590,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "exact_mappings": {
@@ -6597,10 +6623,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -6630,7 +6657,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -6648,7 +6675,7 @@
                     "type": "array"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -6663,18 +6690,18 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
                     "type": "array"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
@@ -6685,7 +6712,7 @@
                     "type": "string"
                 },
                 "unique_key_slots": {
-                    "description": "list of slot names that form a key",
+                    "description": "list of slot names that form a key. The tuple formed from the values of all these slots should be unique.",
                     "items": {
                         "type": "string"
                     },
@@ -6704,7 +6731,7 @@
             "description": "a collection of slots whose values uniquely identify an instance of a class",
             "properties": {
                 "aliases": {
-                    "description": "Alaternate names for the element",
+                    "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
                     "items": {
                         "type": "string"
                     },
@@ -6739,11 +6766,15 @@
                     "type": "array"
                 },
                 "comments": {
-                    "description": "notes and comments about an element intended for external consumption",
+                    "description": "notes and comments about an element intended primarily for external consumption",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "consider_nulls_inequal": {
+                    "description": "By default, None values are considered equal for the purposes of comparisons in determining uniqueness. Set this to true to treat missing values as per ANSI-SQL NULLs, i.e NULL=NULL is always False.",
+                    "type": "boolean"
                 },
                 "created_by": {
                     "description": "agent that created the element",
@@ -6767,7 +6798,7 @@
                     "type": "string"
                 },
                 "description": {
-                    "description": "a description of the element's purpose and use",
+                    "description": "a textual description of the element's purpose and use",
                     "type": "string"
                 },
                 "exact_mappings": {
@@ -6800,10 +6831,11 @@
                     "type": "string"
                 },
                 "in_language": {
+                    "description": "the primary language used in the sources",
                     "type": "string"
                 },
                 "in_subset": {
-                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+                    "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
                     "items": {
                         "type": "string"
                     },
@@ -6833,7 +6865,7 @@
                     "type": "array"
                 },
                 "notes": {
-                    "description": "editorial notes about an element intended for internal consumption",
+                    "description": "editorial notes about an element intended primarily for internal consumption",
                     "items": {
                         "type": "string"
                     },
@@ -6851,7 +6883,7 @@
                     "type": "array"
                 },
                 "see_also": {
-                    "description": "a reference",
+                    "description": "A list of related entities or URLs that may be of relevance",
                     "items": {
                         "type": "string"
                     },
@@ -6866,18 +6898,18 @@
                     "type": "string"
                 },
                 "structured_aliases": {
-                    "description": "A list of structured_alias objects.",
+                    "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
                     "items": {
                         "$ref": "#/$defs/StructuredAlias"
                     },
                     "type": "array"
                 },
                 "title": {
-                    "description": "the official title of the element",
+                    "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
                     "type": "string"
                 },
                 "todos": {
-                    "description": "Outstanding issue that needs resolution",
+                    "description": "Outstanding issues that needs resolution",
                     "items": {
                         "type": "string"
                     },
@@ -6888,7 +6920,7 @@
                     "type": "string"
                 },
                 "unique_key_slots": {
-                    "description": "list of slot names that form a key",
+                    "description": "list of slot names that form a key. The tuple formed from the values of all these slots should be unique.",
                     "items": {
                         "type": "string"
                     },
@@ -6905,16 +6937,8 @@
             "additionalProperties": false,
             "description": "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension).",
             "properties": {
-                "abbreviation": {
-                    "description": "An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of a base unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols (source: qudt)",
-                    "type": "string"
-                },
                 "derivation": {
                     "description": "Expression for deriving this unit from other units",
-                    "type": "string"
-                },
-                "descriptive_name": {
-                    "description": "the spelled out name of the unit, for example, meter",
                     "type": "string"
                 },
                 "exact_mappings": {
@@ -6950,7 +6974,7 @@
     "metamodel_version": "1.7.0",
     "properties": {
         "aliases": {
-            "description": "Alaternate names for the element",
+            "description": "Alternate names/labels for the element. These do not alter the semantics of the schema, but may be useful to support search and alignment.",
             "items": {
                 "type": "string"
             },
@@ -6978,7 +7002,7 @@
             "type": "array"
         },
         "categories": {
-            "description": "controlled terms used to categorize an element",
+            "description": "Controlled terms used to categorize an element.",
             "items": {
                 "type": "string"
             },
@@ -6999,7 +7023,7 @@
             "type": "array"
         },
         "comments": {
-            "description": "notes and comments about an element intended for external consumption",
+            "description": "notes and comments about an element intended primarily for external consumption",
             "items": {
                 "type": "string"
             },
@@ -7026,7 +7050,7 @@
             "type": "array"
         },
         "default_prefix": {
-            "description": "default and base prefix -- used for ':' identifiers, @base and @vocab",
+            "description": "The prefix that is used for all elements within a schema",
             "type": "string"
         },
         "default_range": {
@@ -7034,7 +7058,7 @@
             "type": "string"
         },
         "definition_uri": {
-            "description": "the \"native\" URI of the element",
+            "description": "The native URI of the element. This is always within the namespace of the containing schema. Contrast with the assigned URI, via class_uri or slot_uri",
             "type": "string"
         },
         "deprecated": {
@@ -7050,7 +7074,7 @@
             "type": "string"
         },
         "description": {
-            "description": "a description of the element's purpose and use",
+            "description": "a textual description of the element's purpose and use",
             "type": "string"
         },
         "emit_prefixes": {
@@ -7102,14 +7126,14 @@
             "type": "string"
         },
         "id_prefixes": {
-            "description": "the identifier of this class or slot must begin with the URIs referenced by this prefix",
+            "description": "An allowed list of prefixes for which identifiers must conform. The identifier of this class or slot must begin with the URIs referenced by this prefix",
             "items": {
                 "type": "string"
             },
             "type": "array"
         },
         "implements": {
-            "description": "An element in another schema which this element conforms to",
+            "description": "An element in another schema which this element conforms to. The referenced element is not imported into the schema for the implementing element. However, the referenced schema may be used to check conformance of the implementing element.",
             "items": {
                 "type": "string"
             },
@@ -7120,17 +7144,18 @@
             "type": "string"
         },
         "imports": {
-            "description": "other schemas that are included in this schema",
+            "description": "A list of schemas that are to be included in this schema",
             "items": {
                 "type": "string"
             },
             "type": "array"
         },
         "in_language": {
+            "description": "the primary language used in the sources",
             "type": "string"
         },
         "in_subset": {
-            "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application (e.g. the translator_minimal subset holding the minimal set of predicates used in a translator knowledge graph)",
+            "description": "used to indicate membership of a term in a defined subset of terms used for a particular domain or application.",
             "items": {
                 "type": "string"
             },
@@ -7185,7 +7210,7 @@
             "type": "array"
         },
         "notes": {
-            "description": "editorial notes about an element intended for internal consumption",
+            "description": "editorial notes about an element intended primarily for internal consumption",
             "items": {
                 "type": "string"
             },
@@ -7195,7 +7220,7 @@
             "additionalProperties": {
                 "$ref": "#/$defs/Prefix__identifier_optional"
             },
-            "description": "prefix / URI definitions to be added to the context beyond those fetched from prefixcommons in id prefixes",
+            "description": "A collection of prefix expansions that specify how CURIEs can be expanded to URIs",
             "type": "object"
         },
         "rank": {
@@ -7210,7 +7235,7 @@
             "type": "array"
         },
         "see_also": {
-            "description": "a reference",
+            "description": "A list of related entities or URLs that may be of relevance",
             "items": {
                 "type": "string"
             },
@@ -7256,7 +7281,7 @@
             "type": "string"
         },
         "structured_aliases": {
-            "description": "A list of structured_alias objects.",
+            "description": "A list of structured_alias objects, used to provide aliases in conjunction with additional metadata.",
             "items": {
                 "$ref": "#/$defs/StructuredAlias"
             },
@@ -7270,11 +7295,11 @@
             "type": "object"
         },
         "title": {
-            "description": "the official title of the element",
+            "description": "A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.",
             "type": "string"
         },
         "todos": {
-            "description": "Outstanding issue that needs resolution",
+            "description": "Outstanding issues that needs resolution",
             "items": {
                 "type": "string"
             },

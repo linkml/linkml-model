@@ -781,7 +781,7 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           rdf:type [ <Definition> ] ? ;
           &<SlotExpression_tes> ;
           rdf:type [ <SlotExpression> ] ? ;
-          skos:altLabel @<String> ? ;
+          <singular_name> @<String> ? ;
           <domain> @<ClassDefinition> ? ;
           <slot_uri> @<Uriorcurie> ? ;
           <multivalued> @<Boolean> ? ;
@@ -1000,6 +1000,7 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           rdf:type [ <CommonMetadata> ] ? ;
           <unique_key_name> @<String> ;
           <unique_key_slots> @<SlotDefinition> + ;
+          <consider_nulls_inequal> @<Boolean> ? ;
           <extensions> @<Extension> * ;
           <annotations> @<Annotation> * ;
           skos:definition @<String> ? ;
