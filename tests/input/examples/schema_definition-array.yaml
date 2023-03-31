@@ -1,0 +1,141 @@
+id: https://example.org/arrays
+name: arrays-example
+title: Array Example
+description: |-
+  Example LinkML schema to demonstrate HDMF-style 2D Arrays
+license: MIT
+see_also:
+  - https://hdmf-dev.github.io/hdmf-term-lists
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+  example: https://example.org/
+
+default_curi_maps:
+  - semweb_context
+default_prefix: example
+default_range: string
+
+imports:
+  - linkml:types
+
+classes:
+
+  TimestampSeries:
+    implements:
+      - linkml:OneDimensionalSeries
+    # TODO abstract from children
+
+  IrregularlySampledTimestampSeries:
+    is_a: TimestampSeries
+    implements:
+      - linkml:OneDimensionalSeries
+    attributes:
+      name:  # the row label
+        key: true  # unique when nested (unlike identifier, which is a global identifier)
+        implements:
+          - linkml:name
+      values:
+        range: float
+        multivalued: true
+        required: true
+        implements:
+          - linkml:elements
+        unit:
+          ucum_code: s
+
+  RegularlySampledTimestampSeries:
+    is_a: TimestampSeries
+    implements:
+      - linkml:OneDimensionalSeries
+    attributes:
+      name:  # the row label
+        key: true  # unique when nested (unlike identifier, which is a global identifier)
+        implements:
+          - linkml:name
+      sampling_rate:
+        range: float
+        required: true
+        unit:
+          ucum_code: Hz
+      starting_time:
+        range: float
+        required: true
+        unit:
+          ucum_code: s
+      length:  # must be defined by outer container when it cannot be inferred
+        range: integer
+      values:
+        range: float
+        multivalued: true
+        equals_expression: "{array_index} / {sampling_rate} + {starting_time}"  # TODO define array_index
+        # equals_expression: "for i in range(length): {i} / {sampling_rate} + {starting_time}"
+        implements:
+          - linkml:elements
+        unit:
+          ucum_code: s
+
+  Electrode:
+    attributes:
+      name:
+        key: true  # unique when nested (unlike identifier, which is a global identifier)
+        range: string
+      impedance:
+        range: float
+        unit:
+          ucum_code: Ohm
+
+  ElectrodeSeries:
+    implements:
+      - linkml:OneDimensionalSeries
+    attributes:
+      name:  # the row label
+        key: true  # unique when nested (unlike identifier, which is a global identifier)
+        implements:
+          - linkml:name
+      values:
+        range: Electrode
+        multivalued: true
+        required: true
+        inlined: true  # not needed if value is not an object
+        inlined_as_list: true
+        implements:
+          - linkml:elements
+
+  ElectricalArray:
+    implements:
+      - linkml:TwoDimensionalArray
+    attributes:
+      time:
+        range: TimestampSeries  # abstract - could be IrregularlySampled... or RegularlySampled...
+        required: true
+        implements:
+          - linkml:axis0
+        inlined: true
+      electrode:
+        range: ElectrodeSeries
+        required: true
+        implements:
+          - linkml:axis1
+        inlined: true
+      values:
+        range: float
+        multivalued: true
+        required: true
+        unit:
+          ucum_code: V
+        implements:
+          - linkml:elements
+
+  IrregularlySampledElectricalArray:
+    is_a: ElectricalArray
+    slot_usage:
+      time:
+        range: IrregularlySampledTimestampSeries
+
+  RegularlySampledElectricalArray:
+    is_a: ElectricalArray
+    attributes:
+      time:
+        range: RegularlySampledTimestampSeries
