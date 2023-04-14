@@ -72,7 +72,7 @@ classes:
         range: float
         multivalued: true
         equals_expression: "{array_index} / {sampling_rate} + {starting_time}"  # TODO define array_index
-        # equals_expression: "for i in range(length): {i} / {sampling_rate} + {starting_time}"
+        # equals_expression_per_all: "[i / {sampling_rate} + {starting_time} for i in range({length})]"
         implements:
           - linkml:elements
         unit:
