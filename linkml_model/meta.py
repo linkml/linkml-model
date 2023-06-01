@@ -1,25 +1,37 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-16T10:58:36
+# Generation date: 2023-06-01T09:50:21
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
-# description: The metamodel for schemas defined using the Linked Data Modeling Language framework. For more
-#              information on LinkML: * [linkml.io](https://linkml.io) main website *
-#              [specification](https://w3id.org/linkml/docs/specification/) LinkML is self-describing. Every
-#              LinkML schema consists of elements that instantiate classes in this metamodel. Core metaclasses: *
-#              [SchemaDefinition](https://w3id.org/linkml/SchemaDefinition) *
-#              [ClassDefinition](https://w3id.org/linkml/ClassDefinition) *
-#              [SlotDefinition](https://w3id.org/linkml/SlotDefinition) *
-#              [TypeDefinition](https://w3id.org/linkml/TypeDefinition) There are many subsets of *profiles* of
-#              the metamodel, for different purposes: * [MinimalSubset](https://w3id.org/linkml/MinimalSubset) *
-#              [BasicSubset](https://w3id.org/linkml/BasicSubset) *
-#              [BasicSubset](https://w3id.org/linkml/BasicSubset) For canonical reference documentation on any
-#              metamodel construct, refer to the official URI for each construct, e.g.
-#              [https://w3id.org/linkml/is_a](https://w3id.org/linkml/is_a)
+# description: The metamodel for schemas defined using the Linked Data Modeling Language framework.
+#
+#   For more information on LinkML:
+#
+#   * [linkml.io](https://linkml.io) main website
+#   * [specification](https://w3id.org/linkml/docs/specification/)
+#
+#   LinkML is self-describing. Every LinkML schema consists of elements
+#   that instantiate classes in this metamodel.
+#
+#   Core metaclasses:
+#
+#   * [SchemaDefinition](https://w3id.org/linkml/SchemaDefinition)
+#   * [ClassDefinition](https://w3id.org/linkml/ClassDefinition)
+#   * [SlotDefinition](https://w3id.org/linkml/SlotDefinition)
+#   * [TypeDefinition](https://w3id.org/linkml/TypeDefinition)
+#
+#   There are many subsets of *profiles* of the metamodel, for different purposes:
+#
+#   * [MinimalSubset](https://w3id.org/linkml/MinimalSubset)
+#   * [BasicSubset](https://w3id.org/linkml/BasicSubset)
+#   * [BasicSubset](https://w3id.org/linkml/BasicSubset)
+#
+#   For canonical reference documentation on any metamodel construct,
+#   refer to the official URI for each construct, e.g.
+#   [https://w3id.org/linkml/is_a](https://w3id.org/linkml/is_a)
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
 import dataclasses
-import sys
 import re
 from jsonasobj2 import JsonObj, as_dict
 from typing import Optional, List, Union, Dict, ClassVar, Any
@@ -3463,14 +3475,18 @@ class PvFormulaOptions(EnumDefinitionImpl):
     """
     The formula used to generate the set of permissible values from the code_set values
     """
-    CODE = PermissibleValue(text="CODE",
-                               description="The permissible values are the set of possible codes in the code set")
-    CURIE = PermissibleValue(text="CURIE",
-                                 description="The permissible values are the set of CURIES in the code set")
-    URI = PermissibleValue(text="URI",
-                             description="The permissible values are the set of code URIs in the code set")
-    FHIR_CODING = PermissibleValue(text="FHIR_CODING",
-                                             description="The permissible values are the set of FHIR coding elements derived from the code set")
+    CODE = PermissibleValue(
+        text="CODE",
+        description="The permissible values are the set of possible codes in the code set")
+    CURIE = PermissibleValue(
+        text="CURIE",
+        description="The permissible values are the set of CURIES in the code set")
+    URI = PermissibleValue(
+        text="URI",
+        description="The permissible values are the set of code URIs in the code set")
+    FHIR_CODING = PermissibleValue(
+        text="FHIR_CODING",
+        description="The permissible values are the set of FHIR coding elements derived from the code set")
 
     _defn = EnumDefinition(
         name="PvFormulaOptions",
@@ -3494,19 +3510,24 @@ class RelationalRoleEnum(EnumDefinitionImpl):
     """
     enumeration of roles a slot on a relationship class can play
     """
-    SUBJECT = PermissibleValue(text="SUBJECT",
-                                     description="a slot with this role connects a relationship to its subject/source node",
-                                     meaning=RDF.subject)
-    OBJECT = PermissibleValue(text="OBJECT",
-                                   description="a slot with this role connects a relationship to its object/target node",
-                                   meaning=RDF.object)
-    PREDICATE = PermissibleValue(text="PREDICATE",
-                                         description="a slot with this role connects a relationship to its predicate/property",
-                                         meaning=RDF.predicate)
-    NODE = PermissibleValue(text="NODE",
-                               description="a slot with this role connects a symmetric relationship to a node that represents either subject or object node")
-    OTHER_ROLE = PermissibleValue(text="OTHER_ROLE",
-                                           description="a slot with this role connects a relationship to a node that is not subject/object/predicate")
+    SUBJECT = PermissibleValue(
+        text="SUBJECT",
+        description="a slot with this role connects a relationship to its subject/source node",
+        meaning=RDF.subject)
+    OBJECT = PermissibleValue(
+        text="OBJECT",
+        description="a slot with this role connects a relationship to its object/target node",
+        meaning=RDF.object)
+    PREDICATE = PermissibleValue(
+        text="PREDICATE",
+        description="a slot with this role connects a relationship to its predicate/property",
+        meaning=RDF.predicate)
+    NODE = PermissibleValue(
+        text="NODE",
+        description="""a slot with this role connects a symmetric relationship to a node that represents either subject or object node""")
+    OTHER_ROLE = PermissibleValue(
+        text="OTHER_ROLE",
+        description="a slot with this role connects a relationship to a node that is not subject/object/predicate")
 
     _defn = EnumDefinition(
         name="RelationalRoleEnum",
@@ -3517,14 +3538,18 @@ class AliasPredicateEnum(EnumDefinitionImpl):
     """
     permissible values for the relationship between an element and an alias
     """
-    EXACT_SYNONYM = PermissibleValue(text="EXACT_SYNONYM",
-                                                 meaning=SKOS.exactMatch)
-    RELATED_SYNONYM = PermissibleValue(text="RELATED_SYNONYM",
-                                                     meaning=SKOS.relatedMatch)
-    BROAD_SYNONYM = PermissibleValue(text="BROAD_SYNONYM",
-                                                 meaning=SKOS.broaderMatch)
-    NARROW_SYNONYM = PermissibleValue(text="NARROW_SYNONYM",
-                                                   meaning=SKOS.narrowerMatch)
+    EXACT_SYNONYM = PermissibleValue(
+        text="EXACT_SYNONYM",
+        meaning=SKOS.exactMatch)
+    RELATED_SYNONYM = PermissibleValue(
+        text="RELATED_SYNONYM",
+        meaning=SKOS.relatedMatch)
+    BROAD_SYNONYM = PermissibleValue(
+        text="BROAD_SYNONYM",
+        meaning=SKOS.broaderMatch)
+    NARROW_SYNONYM = PermissibleValue(
+        text="NARROW_SYNONYM",
+        meaning=SKOS.narrowerMatch)
 
     _defn = EnumDefinition(
         name="AliasPredicateEnum",

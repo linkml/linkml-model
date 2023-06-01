@@ -137,7 +137,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -310,7 +318,14 @@
                 },
                 "slot_conditions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/SlotDefinition__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/SlotDefinition__identifier_optional"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     },
                     "description": "expresses constraints on a group of slots for a class expression",
                     "type": "object"
@@ -395,7 +410,14 @@
                 },
                 "permissible_values": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/PermissibleValue__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/PermissibleValue__identifier_optional"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     },
                     "description": "A list of possible values for a slot range",
                     "type": "object"
@@ -436,7 +458,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -825,7 +855,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -853,7 +891,14 @@
                 },
                 "attributes": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/SlotDefinition__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/SlotDefinition__identifier_optional"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     },
                     "description": "Inline definition of slots",
                     "type": "object"
@@ -1013,7 +1058,15 @@
                 },
                 "local_names": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/LocalName__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/LocalName__identifier_optional"
+                            },
+                            {
+                                "description": "a name assigned to an element in a given ontology",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "type": "object"
                 },
@@ -1095,7 +1148,14 @@
                 },
                 "slot_conditions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/SlotDefinition__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/SlotDefinition__identifier_optional"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     },
                     "description": "expresses constraints on a group of slots for a class expression",
                     "type": "object"
@@ -1106,7 +1166,14 @@
                 },
                 "slot_usage": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/SlotDefinition__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/SlotDefinition__identifier_optional"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     },
                     "description": "the refinement of a slot in the context of the containing class definition.",
                     "type": "object"
@@ -1208,7 +1275,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -1236,7 +1311,14 @@
                 },
                 "attributes": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/SlotDefinition__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/SlotDefinition__identifier_optional"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     },
                     "description": "Inline definition of slots",
                     "type": "object"
@@ -1396,7 +1478,15 @@
                 },
                 "local_names": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/LocalName__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/LocalName__identifier_optional"
+                            },
+                            {
+                                "description": "a name assigned to an element in a given ontology",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "type": "object"
                 },
@@ -1478,7 +1568,14 @@
                 },
                 "slot_conditions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/SlotDefinition__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/SlotDefinition__identifier_optional"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     },
                     "description": "expresses constraints on a group of slots for a class expression",
                     "type": "object"
@@ -1489,7 +1586,14 @@
                 },
                 "slot_usage": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/SlotDefinition__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/SlotDefinition__identifier_optional"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     },
                     "description": "the refinement of a slot in the context of the containing class definition.",
                     "type": "object"
@@ -1578,7 +1682,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -1795,7 +1907,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -1970,7 +2090,15 @@
                 },
                 "local_names": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/LocalName__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/LocalName__identifier_optional"
+                            },
+                            {
+                                "description": "a name assigned to an element in a given ontology",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "type": "object"
                 },
@@ -2027,7 +2155,14 @@
                 },
                 "permissible_values": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/PermissibleValue__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/PermissibleValue__identifier_optional"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     },
                     "description": "A list of possible values for a slot range",
                     "type": "object"
@@ -2119,7 +2254,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -2294,7 +2437,15 @@
                 },
                 "local_names": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/LocalName__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/LocalName__identifier_optional"
+                            },
+                            {
+                                "description": "a name assigned to an element in a given ontology",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "type": "object"
                 },
@@ -2351,7 +2502,14 @@
                 },
                 "permissible_values": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/PermissibleValue__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/PermissibleValue__identifier_optional"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     },
                     "description": "A list of possible values for a slot range",
                     "type": "object"
@@ -2474,7 +2632,14 @@
                 },
                 "permissible_values": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/PermissibleValue__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/PermissibleValue__identifier_optional"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     },
                     "description": "A list of possible values for a slot range",
                     "type": "object"
@@ -2577,7 +2742,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -2668,7 +2841,15 @@
                 },
                 "import_map": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/Setting__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/Setting__identifier_optional"
+                            },
+                            {
+                                "description": "The value assigned for a setting",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "type": "object"
                 },
@@ -2843,7 +3024,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -3069,7 +3258,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -3270,7 +3467,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -3474,7 +3679,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -3786,7 +3999,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -3814,7 +4035,14 @@
                 },
                 "classes": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/ClassDefinition__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/ClassDefinition__identifier_optional"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     },
                     "description": "An index to the collection of all class definitions in the schema",
                     "type": "object"
@@ -3890,7 +4118,14 @@
                 },
                 "enums": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/EnumDefinition__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/EnumDefinition__identifier_optional"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     },
                     "description": "An index to the collection of all enum definitions in the schema",
                     "type": "object"
@@ -3983,7 +4218,15 @@
                 },
                 "local_names": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/LocalName__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/LocalName__identifier_optional"
+                            },
+                            {
+                                "description": "a name assigned to an element in a given ontology",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "type": "object"
                 },
@@ -4022,7 +4265,15 @@
                 },
                 "prefixes": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/Prefix__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/Prefix__identifier_optional"
+                            },
+                            {
+                                "description": "The namespace to which a prefix expands to.",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A collection of prefix expansions that specify how CURIEs can be expanded to URIs",
                     "type": "object"
@@ -4047,7 +4298,15 @@
                 },
                 "settings": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/Setting__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/Setting__identifier_optional"
+                            },
+                            {
+                                "description": "The value assigned for a setting",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A collection of global variable settings",
                     "type": "object"
@@ -4058,7 +4317,14 @@
                 },
                 "slots": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/SlotDefinition__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/SlotDefinition__identifier_optional"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     },
                     "description": "An index to the collection of all slot definitions in the schema",
                     "type": "object"
@@ -4093,7 +4359,14 @@
                 },
                 "subsets": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/SubsetDefinition__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/SubsetDefinition__identifier_optional"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     },
                     "description": "An index to the collection of all subset definitions in the schema",
                     "type": "object"
@@ -4111,7 +4384,14 @@
                 },
                 "types": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/TypeDefinition__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/TypeDefinition__identifier_optional"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     },
                     "description": "An index to the collection of all type definitions in the schema",
                     "type": "object"
@@ -4199,7 +4479,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -4464,7 +4752,15 @@
                 },
                 "local_names": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/LocalName__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/LocalName__identifier_optional"
+                            },
+                            {
+                                "description": "a name assigned to an element in a given ontology",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "type": "object"
                 },
@@ -4736,7 +5032,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -5001,7 +5305,15 @@
                 },
                 "local_names": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/LocalName__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/LocalName__identifier_optional"
+                            },
+                            {
+                                "description": "a name assigned to an element in a given ontology",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "type": "object"
                 },
@@ -5252,7 +5564,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -5459,7 +5779,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -5586,7 +5914,15 @@
                 },
                 "local_names": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/LocalName__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/LocalName__identifier_optional"
+                            },
+                            {
+                                "description": "a name assigned to an element in a given ontology",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "type": "object"
                 },
@@ -5683,7 +6019,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -5810,7 +6154,15 @@
                 },
                 "local_names": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/LocalName__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/LocalName__identifier_optional"
+                            },
+                            {
+                                "description": "a name assigned to an element in a given ontology",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "type": "object"
                 },
@@ -5912,7 +6264,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -6076,7 +6436,15 @@
                 },
                 "local_names": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/LocalName__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/LocalName__identifier_optional"
+                            },
+                            {
+                                "description": "a name assigned to an element in a given ontology",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "type": "object"
                 },
@@ -6226,7 +6594,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -6390,7 +6766,15 @@
                 },
                 "local_names": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/LocalName__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/LocalName__identifier_optional"
+                            },
+                            {
+                                "description": "a name assigned to an element in a given ontology",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "type": "object"
                 },
@@ -6531,7 +6915,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -6739,7 +7131,15 @@
                 },
                 "alt_descriptions": {
                     "additionalProperties": {
-                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/AltDescription__identifier_optional"
+                            },
+                            {
+                                "description": "text of an attributed description",
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "A sourced alternative description for an element",
                     "type": "object"
@@ -6937,8 +7337,16 @@
             "additionalProperties": false,
             "description": "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension).",
             "properties": {
+                "abbreviation": {
+                    "description": "An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of a base unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols (source: qudt)",
+                    "type": "string"
+                },
                 "derivation": {
                     "description": "Expression for deriving this unit from other units",
+                    "type": "string"
+                },
+                "descriptive_name": {
+                    "description": "the spelled out name of the unit, for example, meter",
                     "type": "string"
                 },
                 "exact_mappings": {
@@ -6971,6 +7379,7 @@
     "$id": "https://w3id.org/linkml/meta",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": true,
+    "description": "A collection of definitions that make up a schema or a data model.",
     "metamodel_version": "1.7.0",
     "properties": {
         "aliases": {
@@ -6982,7 +7391,15 @@
         },
         "alt_descriptions": {
             "additionalProperties": {
-                "$ref": "#/$defs/AltDescription__identifier_optional"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/AltDescription__identifier_optional"
+                    },
+                    {
+                        "description": "text of an attributed description",
+                        "type": "string"
+                    }
+                ]
             },
             "description": "A sourced alternative description for an element",
             "type": "object"
@@ -7010,7 +7427,14 @@
         },
         "classes": {
             "additionalProperties": {
-                "$ref": "#/$defs/ClassDefinition__identifier_optional"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/ClassDefinition__identifier_optional"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ]
             },
             "description": "An index to the collection of all class definitions in the schema",
             "type": "object"
@@ -7086,7 +7510,14 @@
         },
         "enums": {
             "additionalProperties": {
-                "$ref": "#/$defs/EnumDefinition__identifier_optional"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/EnumDefinition__identifier_optional"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ]
             },
             "description": "An index to the collection of all enum definitions in the schema",
             "type": "object"
@@ -7179,7 +7610,15 @@
         },
         "local_names": {
             "additionalProperties": {
-                "$ref": "#/$defs/LocalName__identifier_optional"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/LocalName__identifier_optional"
+                    },
+                    {
+                        "description": "a name assigned to an element in a given ontology",
+                        "type": "string"
+                    }
+                ]
             },
             "type": "object"
         },
@@ -7218,7 +7657,15 @@
         },
         "prefixes": {
             "additionalProperties": {
-                "$ref": "#/$defs/Prefix__identifier_optional"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/Prefix__identifier_optional"
+                    },
+                    {
+                        "description": "The namespace to which a prefix expands to.",
+                        "type": "string"
+                    }
+                ]
             },
             "description": "A collection of prefix expansions that specify how CURIEs can be expanded to URIs",
             "type": "object"
@@ -7243,7 +7690,15 @@
         },
         "settings": {
             "additionalProperties": {
-                "$ref": "#/$defs/Setting__identifier_optional"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/Setting__identifier_optional"
+                    },
+                    {
+                        "description": "The value assigned for a setting",
+                        "type": "string"
+                    }
+                ]
             },
             "description": "A collection of global variable settings",
             "type": "object"
@@ -7254,7 +7709,14 @@
         },
         "slots": {
             "additionalProperties": {
-                "$ref": "#/$defs/SlotDefinition__identifier_optional"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/SlotDefinition__identifier_optional"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ]
             },
             "description": "An index to the collection of all slot definitions in the schema",
             "type": "object"
@@ -7289,7 +7751,14 @@
         },
         "subsets": {
             "additionalProperties": {
-                "$ref": "#/$defs/SubsetDefinition__identifier_optional"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/SubsetDefinition__identifier_optional"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ]
             },
             "description": "An index to the collection of all subset definitions in the schema",
             "type": "object"
@@ -7307,7 +7776,14 @@
         },
         "types": {
             "additionalProperties": {
-                "$ref": "#/$defs/TypeDefinition__identifier_optional"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/TypeDefinition__identifier_optional"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ]
             },
             "description": "An index to the collection of all type definitions in the schema",
             "type": "object"
