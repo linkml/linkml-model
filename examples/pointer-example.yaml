@@ -1,0 +1,46 @@
+id: https://w3id.org/linkml/examples/pointer-example
+name: pointer-example
+description: pointer-example
+imports:
+- linkml:types
+prefixes:
+  linkml: https://w3id.org/linkml/
+  ex: https://w3id.org/linkml/examples/pointer-example/
+default_prefix: ex
+slots:
+  property:
+    examples:
+    - value: '#/address[1]'
+    identifier: true
+    range: jsonpointer
+  source:
+    examples:
+    - value: bazSource
+    range: string
+  id:
+    examples:
+    - value: object1234
+    identifier: true
+    range: string
+  height:
+    multivalued: true
+    range: string
+  width:
+    multivalued: true
+    range: string
+  address:
+    multivalued: true
+    range: string
+classes:
+  Source:
+    slots:
+    - property
+    - source
+  MyObject:
+    slots:
+    - id
+    - source
+    - height
+    - width
+    - address
+
