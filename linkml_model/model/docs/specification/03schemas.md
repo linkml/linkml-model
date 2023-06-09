@@ -362,7 +362,7 @@ Any instance *s* of a SlotDefinition may have assignments in any of the followin
 | [minimum_cardinality](minimum_cardinality.md) | 0..1 <br/> [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)  | the minimum number of entries for a multivalued slot   |
 | [maximum_cardinality](maximum_cardinality.md) | 0..1 <br/> [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)  | the maximum number of entries for a multivalued slot   |
 | [has_member](has_member.md) | 0..1 <br/> [AnonymousSlotExpression](AnonymousSlotExpression.md)  | the values of the slot is multivalued with at least one member satisfying the...   |
-| [all_members](all_members.md) | 0..* <br/> [SlotDefinition](SlotDefinition.md)  | the value of the multiavlued slot is a list where all elements conform to the...   |
+| [all_members](all_members.md) | 0..* <br/> [SlotDefinition](SlotDefinition.md)  | the value of the multivalued slot is a list where all elements conform to the...   |
 | [abstract](abstract.md) | 0..1 <br/> [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean)  | Indicates the class or slot cannot be directly instantiated and is intended f...   |
 | [mixin](mixin.md) | 0..1 <br/> [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean)  | Indicates the class or slot is not intended to inherited from without being a...   |
 | [string_serialization](string_serialization.md) | 0..1 <br/> [xsd:string](http://www.w3.org/2001/XMLSchema#string)  | Used on a slot that stores the string serialization of the containing object   |
