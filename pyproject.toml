@@ -50,8 +50,8 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.codespell]
 skip = '.git,*.pdf,*.svg,*.min.*,search_index.json'
-# Ignore table where words could be split across rows
+# Ignore table where words could be split across rows, also within HTML for ..</td>
 # Ignore shortcut specifications like [Ff]alse
-ignore-regex = '(\|.*\|.*\|.*\||\[[A-Z][a-z]\][a-z][a-z])'
+ignore-regex = '(\|.*\|.*\|.*\||[a-z]*\.\.\.</td>|\[[A-Z][a-z]\][a-z][a-z])'
 # ND,LOD - names/keywords
 ignore-words-list = 'nd,lod'
