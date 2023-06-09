@@ -54,7 +54,7 @@ This section. Background information and preliminary definitions.
 
 Part 2 provides a *structural specification* of LinkML **instances**. The structural specification is provided as a normative abstract functional-style syntax. UML diagrams are provided for informative purposes.
 
-This syntax is not intended as an actual exchange syntax for LinkML data. For that, existing syntaxes such as JSON, YAML, or RDF syntaxes should be used (see Part 6). The abstract syntax allows for a seperation of the essential features of the language from issues related to any particular syntax.
+This syntax is not intended as an actual exchange syntax for LinkML data. For that, existing syntaxes such as JSON, YAML, or RDF syntaxes should be used (see Part 6). The abstract syntax allows for a separation of the essential features of the language from issues related to any particular syntax.
 
 Part 2 also introduces a **path accessor** syntax for specifying how to traverse LinkML instances.
 
