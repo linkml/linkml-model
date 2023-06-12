@@ -636,7 +636,7 @@
 <p>Derived schemas are also known as <em>induced</em> schemas or <em>inferred</em> schemas.</p>
 <div class="mermaid">flowchart TD
     M[Asserted Schema] --&gt;|input| Derivation{Derivation Procedure}
-    Derivation --&gt;|ouput| Mstar[Derived Schema]
+    Derivation --&gt;|output| Mstar[Derived Schema]
     R[Rules] --&gt;|input| Derivation
 </div>
 <p>Derivations happen via <em>derivation rules</em>, using a collection of defined <em>functions</em>.</p>
@@ -1102,7 +1102,7 @@ procedure:</p>
 <p>If <code>p.interpolated</code> is True, then the value of <code>s.syntax</code> is <em>interpolated</em>, by replacing all occurrences of braced text <code>{VAR}</code>
 with the value of <code>VAR</code>. The value of <code>VAR</code> is obtained using <code>m.settings[VAR]</code>, where <em>m</em> is the schema in which <code>p</code> is introduced.</p>
 <p>If <code>p.interpolated</code> is not True, then the value of <code>s.syntax</code> is used directly.</p>
-<p>If <code>p.partial_match</code> is not True, then <code>s.pattern</code> has a '^' character inserted at the begining and a '$' character inserted as the end.</p>
+<p>If <code>p.partial_match</code> is not True, then <code>s.pattern</code> has a '^' character inserted at the beginning and a '$' character inserted as the end.</p>
 <h2 id="structural-conformance-rules">Structural Conformance Rules</h2>
 <p>This section specifies conformance rules which the derived schema must satisfy.</p>
 <p>Note that some of these rules may be derivable from treating the schema as an instance of

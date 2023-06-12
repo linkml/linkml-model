@@ -9,7 +9,7 @@ Derived schemas are also known as *induced* schemas or *inferred* schemas.
 ```mermaid
 flowchart TD
     M[Asserted Schema] -->|input| Derivation{Derivation Procedure}
-    Derivation -->|ouput| Mstar[Derived Schema]
+    Derivation -->|output| Mstar[Derived Schema]
     R[Rules] -->|input| Derivation
 ```
 
@@ -458,7 +458,7 @@ with the value of `VAR`. The value of `VAR` is obtained using `m.settings[VAR]`,
 
 If `p.interpolated` is not True, then the value of `s.syntax` is used directly.
 
-If `p.partial_match` is not True, then `s.pattern` has a '^' character inserted at the begining and a '$' character inserted as the end.
+If `p.partial_match` is not True, then `s.pattern` has a '^' character inserted at the beginning and a '$' character inserted as the end.
 
 ## Structural Conformance Rules
 

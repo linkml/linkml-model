@@ -322,7 +322,7 @@
 --     * Slot: designates_type Description: True means that the key slot(s) is used to determine the instantiation (types) relation between objects and a ClassDefinition
 --     * Slot: alias Description: the name used for a slot in the context of its owning class.  If present, this is used instead of the actual slot name.
 --     * Slot: owner Description: the "owner" of the slot. It is the class if it appears in the slots list, otherwise the declaring slot
---     * Slot: subproperty_of Description: Ontology property which this slot is a subproperty of.  Note: setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values in every serialization of the model.
+--     * Slot: subproperty_of Description: Ontology property which this slot is a subproperty of.  Note: setting this property on a slot does not guarantee an expansion of the ontological hierarchy into an enumerated list of possible values in every serialization of the model.
 --     * Slot: symmetric Description: If s is symmetric, and i.s=v, then v.s=i
 --     * Slot: reflexive Description: If s is reflexive, then i.s=i for all instances i
 --     * Slot: locally_reflexive Description: If s is locally_reflexive, then i.s=i for all instances i where s if a class slot for the type of i
@@ -383,7 +383,7 @@
 --     * Slot: class_expression_id Description: Autocreated FK slot
 --     * Slot: anonymous_class_expression_id Description: Autocreated FK slot
 --     * Slot: class_definition_name Description: Autocreated FK slot
---     * Slot: path_rule_id Description: a rule for inferring a slot assignment based on evaluating a path through a sequence of slot assignemnts
+--     * Slot: path_rule_id Description: a rule for inferring a slot assignment based on evaluating a path through a sequence of slot assignments
 --     * Slot: range_expression_id Description: A range that is described as a boolean expression combining existing ranges
 --     * Slot: enum_range_id Description: An inlined enumeration
 --     * Slot: structured_pattern_id Description: the string value of the slot must conform to the regular expression in the pattern expression
@@ -585,7 +585,7 @@
 --     * Slot: symbol Description: name of the unit encoded as a symbol
 --     * Slot: ucum_code Description: associates a QUDT unit with its UCUM code (case-sensitive).
 --     * Slot: derivation Description: Expression for deriving this unit from other units
---     * Slot: has_quantity_kind Description: Concept in a vocabulary or ontology that denotes the kind of quanity being measured, e.g. length
+--     * Slot: has_quantity_kind Description: Concept in a vocabulary or ontology that denotes the kind of quantity being measured, e.g. length
 --     * Slot: iec61360code Description: 
 -- # Class: "annotatable" Description: "mixin for classes that support annotations"
 --     * Slot: id Description: 
@@ -901,7 +901,7 @@
 --     * Slot: apply_to Description: Used to extend class or slot definitions. For example, if we have a core schema where a gene has two slots for identifier and symbol, and we have a specialized schema for my_organism where we wish to add a slot systematic_name, we can avoid subclassing by defining a class gene_my_organism, adding the slot to this class, and then adding an apply_to pointing to the gene class. The new slot will be 'injected into' the gene class.
 -- # Class: "definition_values_from" Description: ""
 --     * Slot: definition_name Description: Autocreated FK slot
---     * Slot: values_from Description: The identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot. Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration in that in an enumeration, the values of the enumeration are listed directly in the model itself. Setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values in every serialization of the model.
+--     * Slot: values_from Description: The identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot. Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration in that in an enumeration, the values of the enumeration are listed directly in the model itself. Setting this property on a slot does not guarantee an expansion of the ontological hierarchy into an enumerated list of possible values in every serialization of the model.
 -- # Class: "definition_id_prefixes" Description: ""
 --     * Slot: definition_name Description: Autocreated FK slot
 --     * Slot: id_prefixes Description: the identifier of this class or slot must begin with the URIs referenced by this prefix
@@ -985,7 +985,7 @@
 --     * Slot: apply_to Description: Used to extend class or slot definitions. For example, if we have a core schema where a gene has two slots for identifier and symbol, and we have a specialized schema for my_organism where we wish to add a slot systematic_name, we can avoid subclassing by defining a class gene_my_organism, adding the slot to this class, and then adding an apply_to pointing to the gene class. The new slot will be 'injected into' the gene class.
 -- # Class: "enum_definition_values_from" Description: ""
 --     * Slot: enum_definition_name Description: Autocreated FK slot
---     * Slot: values_from Description: The identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot. Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration in that in an enumeration, the values of the enumeration are listed directly in the model itself. Setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values in every serialization of the model.
+--     * Slot: values_from Description: The identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot. Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration in that in an enumeration, the values of the enumeration are listed directly in the model itself. Setting this property on a slot does not guarantee an expansion of the ontological hierarchy into an enumerated list of possible values in every serialization of the model.
 -- # Class: "enum_definition_id_prefixes" Description: ""
 --     * Slot: enum_definition_name Description: Autocreated FK slot
 --     * Slot: id_prefixes Description: the identifier of this class or slot must begin with the URIs referenced by this prefix
@@ -1252,7 +1252,7 @@
 --     * Slot: apply_to Description: Used to extend class or slot definitions. For example, if we have a core schema where a gene has two slots for identifier and symbol, and we have a specialized schema for my_organism where we wish to add a slot systematic_name, we can avoid subclassing by defining a class gene_my_organism, adding the slot to this class, and then adding an apply_to pointing to the gene class. The new slot will be 'injected into' the gene class.
 -- # Class: "slot_definition_values_from" Description: ""
 --     * Slot: slot_definition_name Description: Autocreated FK slot
---     * Slot: values_from Description: The identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot. Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration in that in an enumeration, the values of the enumeration are listed directly in the model itself. Setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values in every serialization of the model.
+--     * Slot: values_from Description: The identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot. Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration in that in an enumeration, the values of the enumeration are listed directly in the model itself. Setting this property on a slot does not guarantee an expansion of the ontological hierarchy into an enumerated list of possible values in every serialization of the model.
 -- # Class: "slot_definition_id_prefixes" Description: ""
 --     * Slot: slot_definition_name Description: Autocreated FK slot
 --     * Slot: id_prefixes Description: the identifier of this class or slot must begin with the URIs referenced by this prefix
@@ -1384,7 +1384,7 @@
 --     * Slot: apply_to Description: Used to extend class or slot definitions. For example, if we have a core schema where a gene has two slots for identifier and symbol, and we have a specialized schema for my_organism where we wish to add a slot systematic_name, we can avoid subclassing by defining a class gene_my_organism, adding the slot to this class, and then adding an apply_to pointing to the gene class. The new slot will be 'injected into' the gene class.
 -- # Class: "class_definition_values_from" Description: ""
 --     * Slot: class_definition_name Description: Autocreated FK slot
---     * Slot: values_from Description: The identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot. Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration in that in an enumeration, the values of the enumeration are listed directly in the model itself. Setting this property on a slot does not guarantee an expansion of the ontological hiearchy into an enumerated list of possible values in every serialization of the model.
+--     * Slot: values_from Description: The identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot. Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration in that in an enumeration, the values of the enumeration are listed directly in the model itself. Setting this property on a slot does not guarantee an expansion of the ontological hierarchy into an enumerated list of possible values in every serialization of the model.
 -- # Class: "class_definition_id_prefixes" Description: ""
 --     * Slot: class_definition_name Description: Autocreated FK slot
 --     * Slot: id_prefixes Description: the identifier of this class or slot must begin with the URIs referenced by this prefix
