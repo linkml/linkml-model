@@ -49,6 +49,7 @@ prefixes:
   prov: http://www.w3.org/ns/prov#
   vann: https://vocab.org/vann/
   qudt: http://qudt.org/schema/qudt/
+  cdisc: http://rdf.cdisc.org/mms#
 
 default_prefix: linkml
 default_range: string
@@ -627,6 +628,8 @@ slots:
     in_subset:
       - SpecificationSubset
       - BasicSubset
+    exact_mappings:
+      - cdisc:PermissibleValue
 
   enum_uri:
     aliases:
@@ -2362,6 +2365,7 @@ classes:
       - narrow mappings
       - broad mappings
       - created_by
+      - contributors
       - created_on
       - last_updated_on
       - modified_by
@@ -2560,6 +2564,7 @@ classes:
       - concept set
       - Terminology Value Set
       - answer list
+      - value domain
     description: an element whose instances must be drawn from a specified set of permissible values
     is_a: definition
     mixins:
@@ -2567,6 +2572,7 @@ classes:
     exact_mappings:
       - qb:HierarchicalCodeList
       - NCIT:C113497
+      - cdisc:ValueDomain
     close_mappings:
       - skos:ConceptScheme
     in_subset:
