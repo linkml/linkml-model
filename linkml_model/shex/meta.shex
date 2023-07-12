@@ -47,6 +47,12 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
 
 <Nodeidentifier> NONLITERAL
 
+<Jsonpointer> xsd:string
+
+<Jsonpath> xsd:string
+
+<Sparqlpath> xsd:string
+
 <AltDescription> CLOSED {
     (  $<AltDescription_tes> (  <source> @<String> ;
           <description> @<String>
@@ -146,11 +152,14 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
           pav:createdBy @<Uriorcurie> ? ;
+          dcterms:contributor @<Uriorcurie> * ;
           pav:createdOn @<Datetime> ? ;
           pav:lastUpdatedOn @<Datetime> ? ;
           oslc:modifiedBy @<Uriorcurie> ? ;
           bibo:status @<Uriorcurie> ? ;
-          sh:order @<Integer> ?
+          sh:order @<Integer> ? ;
+          dcterms:subject @<Uriorcurie> * ;
+          schema1:keywords @<String> *
        ) ;
        rdf:type [ <AnonymousExpression> ] ?
     )
@@ -215,6 +224,12 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
 
 <Anything> CLOSED {
     (  $<Anything_tes> rdf:type . * ;
+       rdf:type [ <Any> ] ?
+    )
+}
+
+<AnyValue> CLOSED {
+    (  $<AnyValue_tes> rdf:type . * ;
        rdf:type [ <Any> ] ?
     )
 }
@@ -313,10 +328,13 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
           pav:createdBy @<Uriorcurie> ? ;
+          dcterms:contributor @<Uriorcurie> * ;
           pav:createdOn @<Datetime> ? ;
           pav:lastUpdatedOn @<Datetime> ? ;
           oslc:modifiedBy @<Uriorcurie> ? ;
-          bibo:status @<Uriorcurie> ?
+          bibo:status @<Uriorcurie> ? ;
+          dcterms:subject @<Uriorcurie> * ;
+          schema1:keywords @<String> *
        ) ;
        rdf:type [ <ClassRule> ] ?
     )
@@ -348,11 +366,14 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
           pav:createdBy @<Uriorcurie> ? ;
+          dcterms:contributor @<Uriorcurie> * ;
           pav:createdOn @<Datetime> ? ;
           pav:lastUpdatedOn @<Datetime> ? ;
           oslc:modifiedBy @<Uriorcurie> ? ;
           bibo:status @<Uriorcurie> ? ;
-          sh:order @<Integer> ?
+          sh:order @<Integer> ? ;
+          dcterms:subject @<Uriorcurie> * ;
+          schema1:keywords @<String> *
        ) ;
        rdf:type [ <CommonMetadata> ] ?
     )
@@ -392,6 +413,7 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           <local_names> @<LocalName> * ;
           dcterms:conformsTo @<String> ? ;
           <implements> @<Uriorcurie> * ;
+          <instantiates> @<Uriorcurie> * ;
           <extensions> @<Extension> * ;
           <annotations> @<Annotation> * ;
           skos:definition @<String> ? ;
@@ -419,11 +441,14 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
           pav:createdBy @<Uriorcurie> ? ;
+          dcterms:contributor @<Uriorcurie> * ;
           pav:createdOn @<Datetime> ? ;
           pav:lastUpdatedOn @<Datetime> ? ;
           oslc:modifiedBy @<Uriorcurie> ? ;
           bibo:status @<Uriorcurie> ? ;
-          sh:order @<Integer> ?
+          sh:order @<Integer> ? ;
+          dcterms:subject @<Uriorcurie> * ;
+          schema1:keywords @<String> *
        ) ;
        rdf:type [ <Element> ]
     )
@@ -498,7 +523,7 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
 <Extension>  (
     CLOSED {
        (  $<Extension_tes> (  <tag> @<Uriorcurie> ;
-             <value> @<String> ;
+             <value> @<AnyValue> ;
              <extensions> @<Extension> *
           ) ;
           rdf:type [ <Extension> ]
@@ -543,11 +568,14 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
           pav:createdBy @<Uriorcurie> ? ;
+          dcterms:contributor @<Uriorcurie> * ;
           pav:createdOn @<Datetime> ? ;
           pav:lastUpdatedOn @<Datetime> ? ;
           oslc:modifiedBy @<Uriorcurie> ? ;
           bibo:status @<Uriorcurie> ? ;
-          sh:order @<Integer> ?
+          sh:order @<Integer> ? ;
+          dcterms:subject @<Uriorcurie> * ;
+          schema1:keywords @<String> *
        ) ;
        rdf:type [ <ImportExpression> ] ?
     )
@@ -613,11 +641,14 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
           pav:createdBy @<Uriorcurie> ? ;
+          dcterms:contributor @<Uriorcurie> * ;
           pav:createdOn @<Datetime> ? ;
           pav:lastUpdatedOn @<Datetime> ? ;
           oslc:modifiedBy @<Uriorcurie> ? ;
           bibo:status @<Uriorcurie> ? ;
-          sh:order @<Integer> ?
+          sh:order @<Integer> ? ;
+          dcterms:subject @<Uriorcurie> * ;
+          schema1:keywords @<String> *
        ) ;
        rdf:type [ <PathExpression> ] ?
     )
@@ -660,11 +691,14 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
           pav:createdBy @<Uriorcurie> ? ;
+          dcterms:contributor @<Uriorcurie> * ;
           pav:createdOn @<Datetime> ? ;
           pav:lastUpdatedOn @<Datetime> ? ;
           oslc:modifiedBy @<Uriorcurie> ? ;
           bibo:status @<Uriorcurie> ? ;
-          sh:order @<Integer> ?
+          sh:order @<Integer> ? ;
+          dcterms:subject @<Uriorcurie> * ;
+          schema1:keywords @<String> *
        ) ;
        rdf:type [ <PatternExpression> ] ?
     )
@@ -707,11 +741,14 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
           pav:createdBy @<Uriorcurie> ? ;
+          dcterms:contributor @<Uriorcurie> * ;
           pav:createdOn @<Datetime> ? ;
           pav:lastUpdatedOn @<Datetime> ? ;
           oslc:modifiedBy @<Uriorcurie> ? ;
           bibo:status @<Uriorcurie> ? ;
-          sh:order @<Integer> ?
+          sh:order @<Integer> ? ;
+          dcterms:subject @<Uriorcurie> * ;
+          schema1:keywords @<String> *
        ) ;
        rdf:type [ <PermissibleValue> ]
     )
@@ -760,9 +797,7 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           <source_file_size> @<Integer> ? ;
           <generation_date> @<Datetime> ? ;
           <slot_names_unique> @<Boolean> ? ;
-          <settings> @<Setting> * ;
-          dcterms:subject @<Uriorcurie> * ;
-          schema1:keywords @<String> *
+          <settings> @<Setting> *
        ) ;
        rdf:type [ <SchemaDefinition> ]
     )
@@ -924,11 +959,13 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
           pav:createdBy @<Uriorcurie> ? ;
+          dcterms:contributor @<Uriorcurie> * ;
           pav:createdOn @<Datetime> ? ;
           pav:lastUpdatedOn @<Datetime> ? ;
           oslc:modifiedBy @<Uriorcurie> ? ;
           bibo:status @<Uriorcurie> ? ;
-          sh:order @<Integer> ?
+          sh:order @<Integer> ? ;
+          schema1:keywords @<String> *
        ) ;
        rdf:type [ skosxl:Label ] ?
     )
@@ -1028,11 +1065,14 @@ PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
           skos:narrowMatch @<Uriorcurie> * ;
           skos:broadMatch @<Uriorcurie> * ;
           pav:createdBy @<Uriorcurie> ? ;
+          dcterms:contributor @<Uriorcurie> * ;
           pav:createdOn @<Datetime> ? ;
           pav:lastUpdatedOn @<Datetime> ? ;
           oslc:modifiedBy @<Uriorcurie> ? ;
           bibo:status @<Uriorcurie> ? ;
-          sh:order @<Integer> ?
+          sh:order @<Integer> ? ;
+          dcterms:subject @<Uriorcurie> * ;
+          schema1:keywords @<String> *
        ) ;
        rdf:type [ <UniqueKey> ]
     )

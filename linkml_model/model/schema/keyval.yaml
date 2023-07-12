@@ -1,0 +1,44 @@
+id: https://w3id.org/linkml/keyval
+name: keyval
+description: >-
+  LinkML KeyValue templates. These are intended to be used as templates rather than used directly or inherited
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+
+default_prefix: linkml
+
+emit_prefixes:
+  - linkml
+
+imports:
+  - linkml:types
+
+classes:
+
+  KeyValuePair:
+    description: >-
+      a key-value pair
+    slots:
+      - keyvalue_key
+      - keyvalue_value
+  
+slots:
+
+  keyvalues:
+    description: >-
+      a collection of key-value pairs
+    range: KeyValue
+    multivalued: true
+    inlined: true
+
+  keyvalue_key:
+    key: true
+    description: >-
+      the key of the key-value pair
+  keyvalue_value:
+    description: >-
+      the value of the key-value pair
+
+    

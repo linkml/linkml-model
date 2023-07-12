@@ -1,0 +1,42 @@
+id: test
+name: test
+
+classes:
+  Person:
+    ## as Person instantiates StrictClass, descriptions must be present, and must conform to the regex.
+    description: A person is foo.
+    attributes:
+      id:
+      name:
+    instantiates:
+      - my_ext:StrictClass
+      - another_ext:AuditedClass
+    annotations:
+      audit_info:
+        created_by: Ellen
+        created_at: 2021-01-01
+      audit_info.modified_by: Alejandra
+
+  StrictClass:
+    is_a: class_definition
+    slot_usage:
+      description:
+        required: true
+        pattern: "^[A-Z].*\\.$"
+
+  AuditedClass:
+    is_a: class_definition
+    attributes:
+      audit_info:
+        range: AuditRecord
+
+  AuditRecord:
+    attributes:
+      created_by:
+      created_at:
+      modified_by:
+      modified_at:
+      deleted_by:
+      deleted_at:
+      deleted_reason:
+  

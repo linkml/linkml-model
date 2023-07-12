@@ -1,0 +1,92 @@
+id: https://w3id.org/linkml/graphs
+name: graphs
+description: >-
+  LinkML Graphs templates. These are intended to be used as templates rather than used directly or inherited
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  graphs: https://w3id.org/linkml/graphs/
+
+default_prefix: linkml
+default_range: string
+
+emit_prefixes:
+  - linkml
+
+imports:
+  - linkml:types
+
+classes:
+
+  Graph:
+    abstract: true
+    slots:
+      - nodes
+      - edges
+
+  DirectedGraph:
+    is_a: Graph
+    slot_values:
+      edges:
+        range: DirectedGraphEdge
+
+  UndirectedGraph:
+    is_a: Graph
+    slot_values:
+      edges:
+        range: UndirectedGraphEdge
+
+  GraphNode:
+    slots:
+      - id
+      - properties
+    
+  GraphEdge:
+    abstract: true
+    slots:
+      - edge_subject
+      - edge_predicate
+      - edge_object
+      - properties
+
+  DirectedGraphEdge:
+    is_a: GraphEdge
+
+  UndirectedGraphEdge:
+    is_a: GraphEdge
+
+  PropertyValuePair:
+    implements:
+      - linkml:KeyValuePair
+    slots:
+      - property
+      - value
+
+slots:
+
+  id:
+    identifier: true
+  edge_subject:
+    range: GraphNode
+  edge_predicate:
+  edge_object:
+    range: GraphNode
+  nodes:
+    range: GraphNode
+    multivalued: true
+  edges:
+    range: GraphNode
+    multivalued: true
+  properties:
+    range: PropertyValuePair
+    multivalued: true
+    implements:
+      - linkml:keyvals
+  property:
+    implements:
+      - linkml:keyval_property
+  value:
+    implements:
+      - linkml:keyval_value
+    
