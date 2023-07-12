@@ -240,6 +240,68 @@ here `T.uri` is used to determine the type:
 
 ## Inference of new values
 
+## Schema Validation
+
+A LinkML schema is a LinkML instance that conforms to the LinkML metamodel. As such, it can be validated
+in the same way as any other LinkML instance.
+
+### Metamodel refinement using annotations
+
+#### Background
+
+The LinkML model provides a fixed set of metamodel slots which can be applied to any schema element.
+Any schema that assigns slot values not in the metamodel is invalid.
+
+Sometimes it is useful to attach additional information to elements in a schema, this is called
+schema *extension*. Alternatively, it may be useful to be able to make the metamodel more restrictive
+in some contexts; for example, making the `description` metamodel slot `required` rather than `recommended`.
+
+The LinkML metamodel can be effectively extended through the use of `annotation` slot assignments.
+Annotations are `tag`-`value` pairs.
+
+As an example, if we want to add a metamodel slot `review` intended to store a review of a schema element.
+
+```yaml
+classes:
+  Person:
+    annotations:
+      review: A very useful class that is well defined
+      ...
+```
+
+#### Annotation validation
+
+By default, all annotation tags and values are valid. 
+
+LinkML 1.6 introduces the ability to validate annotation tags and values.
+
+This is done by adding an `instantiates` slot-value assignment onto any schema element. The range of
+the `instantiates` slot is a `uriorcurie` that references a class that serves as a metamodel extension class.
+
+If a schema element instantiates at least one class then *all* annotations are validated.
+
+For example:
+
+```yaml
+classes:
+  Person:
+    instantiates:
+     - mymetamodel:Reviewable
+    annotations:
+      review: A very useful class that is well defined
+      ...
+```
+
+The `Reviewable` class is defined as follows:
+
+```yaml
+classes:
+  Reviewable:
+    class_uri: mymetamodel:Reviewable
+    slots:
+      description: an expert review of a schema element
+      review: string
+```
 
 
 

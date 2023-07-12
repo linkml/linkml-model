@@ -186,6 +186,13 @@ slots:
       into the schema for the implementing element. However, the referenced schema may be used to check
       conformance of the implementing element.
     multivalued: true
+
+  instantiates:
+    domain: element
+    range: uriorcurie
+    description: >-
+      An element in another schema which this element instantiates.
+    multivalued: true
       
   categories:
     range: uriorcurie
@@ -1518,7 +1525,6 @@ slots:
     range: integer
     inherited: true
     description: the minimum number of entries for a multivalued slot
-    status: testing
     in_subset:
       - SpecificationSubset
 
@@ -1527,7 +1533,6 @@ slots:
     range: integer
     inherited: true
     description: the maximum number of entries for a multivalued slot
-    status: testing
     in_subset:
       - SpecificationSubset
 
@@ -2371,6 +2376,8 @@ classes:
       - modified_by
       - status
       - rank
+      - categories
+      - keywords
     in_subset:
       - BasicSubset
 
@@ -2392,6 +2399,7 @@ classes:
       - local_names
       - conforms_to
       - implements
+      - instantiates
     see_also:
       - https://en.wikipedia.org/wiki/Data_element
     in_subset:
@@ -2432,8 +2440,6 @@ classes:
       - generation_date
       - slot_names_unique
       - settings
-      - categories
-      - keywords
     see_also:
       - https://en.wikipedia.org/wiki/Data_dictionary
     close_mappings:
