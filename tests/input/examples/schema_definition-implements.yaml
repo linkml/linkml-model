@@ -1,0 +1,53 @@
+id: https://w3id.org/linkml/examples/enums
+title: Dynamic Enums Example
+name: dynamicenums-example
+description: This demonstrates the use of dynamic enums
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  linkml.measurements: https://w3id.org/linkml/measurements
+  ex: https://w3id.org/linkml/examples/enums/
+  sh: https://w3id.org/shacl/
+  bioregistry: https://bioregistry.io/registry/
+  MONDO: http://purl.obolibrary.org/obo/MONDO_
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  loinc: http://loinc.org/
+
+default_prefix: ex
+default_range: string
+
+default_curi_maps:
+    - semweb_context
+
+emit_prefixes:
+  - linkml
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+imports:
+  - linkml:types
+
+  
+#==================================
+# Classes                         #
+#==================================
+
+classes:
+  Measurement:
+    description: a measurement
+    implements:
+      - linkml.measurements:Measurement
+    attributes:
+      value:
+        range: float
+        description: the numeric value
+        implements:
+          - linkml.measurements:value
+      unit:
+        range: string
+        description: the unit
+        implements:
+          - linkml.measurements:unit
