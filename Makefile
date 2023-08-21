@@ -136,7 +136,9 @@ generate_python_models:
 	done
 
 spell:
-	poetry add codespell
 	poetry run codespell
 
+lint:
+
 include project.Makefile
+
