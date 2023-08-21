@@ -122,9 +122,6 @@ clean:
 	rm -rf $(DEST)
 	rm -rf tmp
 
-.PHONY: run_command_on_yaml_files
-
-
 generate_python_models:
 	# for all the files in the schema folder, run the gen-python command and output the result to the top
 	# level of the project.  In other repos, we'd include mergeimports=True, but we don't do that with
@@ -139,6 +136,7 @@ spell:
 	poetry run codespell
 
 lint:
+	poetry run yamllint -c .yamllint-config linkml_model/model/schema/*.yaml
 
 include project.Makefile
 
