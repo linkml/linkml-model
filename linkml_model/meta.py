@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-08-21T14:56:47
+# Generation date: 2023-08-21T15:13:54
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -58,7 +58,6 @@ version = "2.0.0"
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
-IAO = CurieNamespace('IAO', 'http://purl.obolibrary.org/obo/IAO_')
 NCIT = CurieNamespace('NCIT', 'http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#')
 OIO = CurieNamespace('OIO', 'http://www.geneontology.org/formats/oboInOwl#')
 BIBO = CurieNamespace('bibo', 'http://purl.org/ontology/bibo/')

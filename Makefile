@@ -125,7 +125,7 @@ clean:
 .PHONY: run_command_on_yaml_files
 
 
-run_command_on_yaml_files:
+generate_python_models:
 	# for all the files in the schema folder, run the gen-python command and output the result to the top
 	# level of the project.  In other repos, we'd include mergeimports=True, but we don't do that with
 	# linkml-model.
@@ -134,5 +134,9 @@ run_command_on_yaml_files:
 		filename_without_suffix=$${base%.*}; \
 		poetry run gen-python --genmeta $$file > $(PYMODEL)/$$filename_without_suffix.py; \
 	done
+
+spell:
+	poetry add codespell
+	poetry run codespell
 
 include project.Makefile
