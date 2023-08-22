@@ -122,4 +122,21 @@ clean:
 	rm -rf $(DEST)
 	rm -rf tmp
 
+generate_python_models:
+	# for all the files in the schema folder, run the gen-python command and output the result to the top
+	# level of the project.  In other repos, we'd include mergeimports=True, but we don't do that with
+	# linkml-model.
+	@for file in $(wildcard $(PYMODEL)/model/schema/*.yaml); do \
+		base=$$(basename $$file); \
+		filename_without_suffix=$${base%.*}; \
+		poetry run gen-python --genmeta $$file > $(PYMODEL)/$$filename_without_suffix.py; \
+	done
+
+spell:
+	poetry run codespell
+
+lint:
+	poetry run yamllint -c .yamllint-config linkml_model/model/schema/*.yaml
+
 include project.Makefile
+
