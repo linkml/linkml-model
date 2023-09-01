@@ -4,3 +4,15 @@
  * This is a general purpose Gradle build.
  * Learn more about Gradle by exploring our samples at https://docs.gradle.org/8.1.1/samples
  */
+
+plugins {
+    id 'base'
+}
+
+def src = "$projectDir/linkml_model/model/schema"
+def unifiedSchemaPath = "$projectDir/build/linkml-schema.yaml"
+
+tasks.register('buildUnifiedYaml', Exec) {
+    commandLine "mkdir", "build"
+    commandLine "bash", "-c", "gen-yaml $src/meta.yaml --mergeimports | yq 'del(.imports)' > $unifiedSchemaPath"
+}
