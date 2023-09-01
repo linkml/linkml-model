@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-08-24T10:21:14
+# Generation date: 2023-09-01T13:21:17
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
