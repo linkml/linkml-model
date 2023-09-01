@@ -5,24 +5,25 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "mkdocs.yml"
-      - "linkml_model/model/schema/*.yaml"
-      - "linkml_model/model/docs/*"
 
 jobs:
   github-pages:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
     
     steps:
       #----------------------------------------------
       #       check-out repo and set-up python
       #----------------------------------------------
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # fetch all commits/branches so that mike works
 
       - name: Setup Python 3.9
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: 3.9
               
@@ -40,7 +41,7 @@ jobs:
       #----------------------------------------------
       - name: Load cached venv
         id: cached-poetry-dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: .venv
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
@@ -50,15 +51,31 @@ jobs:
       #----------------------------------------------
       - name: Install dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction --no-root     
-        
+        run: poetry install --no-interaction --no-root
+
+      - name: Configure git user
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          
       #----------------------------------------------
       #           generate markdown files
       #----------------------------------------------
-      - run: make gendoc
+      - name: Generate markdown docs from schema
+        run: make gen-doc
 
       #----------------------------------------------
       #           deploy documentation
       #----------------------------------------------
-      - run: make deploy
-      
+      - name: Deploy generated docs
+        run: |
+          # generate HTML from markdown and put into dev version
+          poetry run mike deploy dev
+          
+          # switch to gh-pages branch, copy over the latest 404.html from main
+          git checkout --force gh-pages
+          git checkout --force main -- 404.html
+          git commit -m "Add 404.html to root" || echo "No changes to 404.html to commit"
+          
+          # push changes to gh-page branch
+          git push origin gh-pages

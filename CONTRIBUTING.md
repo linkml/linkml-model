@@ -23,7 +23,7 @@ The [docs](docs) folder houses the built schema index.
 To build the docs:
 
 ```
-make gendoc
+make gen-doc
 ```
 
 This stages the documentation in target/docs
