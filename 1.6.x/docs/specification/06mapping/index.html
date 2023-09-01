@@ -1,0 +1,1370 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://linkml.io/linkml-model/latest/docs/specification/06mapping/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>Mapping of Instances - LinkML Model</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mapping-of-instance-graphs-to-trees-and-graphs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="LinkML Model" class="md-header__button md-logo" aria-label="LinkML Model" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LinkML Model
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mapping of Instances
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="LinkML Model" class="md-nav__button md-logo" aria-label="LinkML Model" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    LinkML Model
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../home/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Specification
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Specification" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Specification
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00preamble/" class="md-nav__link">
+        Preface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02instances/" class="md-nav__link">
+        Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03schemas/" class="md-nav__link">
+        Schema Datamodel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04derived-schemas/" class="md-nav__link">
+        Derived Schemas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05validation/" class="md-nav__link">
+        Instance Validation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Mapping of Instances
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Mapping of Instances
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminology" class="md-nav__link">
+    Terminology
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementations" class="md-nav__link">
+    Implementations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-to-json-or-yaml" class="md-nav__link">
+    Mapping to JSON or YAML
+  </a>
+  
+    <nav class="md-nav" aria-label="Mapping to JSON or YAML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mapping-to-json-overview" class="md-nav__link">
+    Mapping to JSON: Overview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collection-forms" class="md-nav__link">
+    Collection Forms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collection-form-normalization" class="md-nav__link">
+    Collection Form Normalization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapping-from-json" class="md-nav__link">
+    Mapping from JSON
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#translation-to-rdf" class="md-nav__link">
+    Translation to RDF
+  </a>
+  
+    <nav class="md-nav" aria-label="Translation to RDF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mapping-of-curies-to-uris" class="md-nav__link">
+    Mapping of CURIEs to URIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapping-functions" class="md-nav__link">
+    Mapping functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direct-translation-of-instance-graphs-to-rdf" class="md-nav__link">
+    Direct Translation of instance graphs to RDF
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#translation-of-instance-graphs-to-rdf-graphs-via-json-ld" class="md-nav__link">
+    Translation of instance graphs to RDF graphs (via JSON-LD)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-to-typed-objects" class="md-nav__link">
+    Mapping to Typed Objects
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Appendix
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Appendix" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Metamodel Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Profiles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Profiles" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Profiles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MinimalSubset/" class="md-nav__link">
+        MinimalSubset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BasicSubset/" class="md-nav__link">
+        BasicSubset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SpecificationSubset/" class="md-nav__link">
+        SpecificationSubset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RelationalModelProfile/" class="md-nav__link">
+        RelationalModelProfile
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ObjectOrientedProfile/" class="md-nav__link">
+        ObjectOrientedProfile
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OwlProfile/" class="md-nav__link">
+        OwlProfile
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminology" class="md-nav__link">
+    Terminology
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementations" class="md-nav__link">
+    Implementations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-to-json-or-yaml" class="md-nav__link">
+    Mapping to JSON or YAML
+  </a>
+  
+    <nav class="md-nav" aria-label="Mapping to JSON or YAML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mapping-to-json-overview" class="md-nav__link">
+    Mapping to JSON: Overview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collection-forms" class="md-nav__link">
+    Collection Forms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collection-form-normalization" class="md-nav__link">
+    Collection Form Normalization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapping-from-json" class="md-nav__link">
+    Mapping from JSON
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#translation-to-rdf" class="md-nav__link">
+    Translation to RDF
+  </a>
+  
+    <nav class="md-nav" aria-label="Translation to RDF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mapping-of-curies-to-uris" class="md-nav__link">
+    Mapping of CURIEs to URIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapping-functions" class="md-nav__link">
+    Mapping functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direct-translation-of-instance-graphs-to-rdf" class="md-nav__link">
+    Direct Translation of instance graphs to RDF
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#translation-of-instance-graphs-to-rdf-graphs-via-json-ld" class="md-nav__link">
+    Translation of instance graphs to RDF graphs (via JSON-LD)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-to-typed-objects" class="md-nav__link">
+    Mapping to Typed Objects
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="mapping-of-instance-graphs-to-trees-and-graphs">Mapping of instance graphs to trees and graphs</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This section describes how LinkML instances are translated to different formats and data models.</p>
+<p>The formal specification of LinkML instances is described in <a href="../02instances/">Section 2</a>.</p>
+<p>LinkML instances can be <em>realized</em> in a number of different concrete forms, including:</p>
+<ol>
+<li>tree-shaped serializations such as JSON or YAML</li>
+<li>graph serializations such as RDF</li>
+<li>in-memory programmatic typed object representations, such as Python dataclass instances or java objects.</li>
+<li>Tables in a relational database</li>
+<li>flattened tabular representations</li>
+</ol>
+<p>This part of the LinkML specification only deals with 1-3. Future versions of the specification may also include 4-5.</p>
+<h3 id="terminology">Terminology</h3>
+<ul>
+<li>a <em>mapping</em> describes how the abstract LinkML instance model maps to a concrete form and back</li>
+<li><em>dumping</em> or <em>serialization</em> is the process realizing a mapping from a programmatic representation to a serialization syntax</li>
+<li><em>conversion</em> is the processing of converting between one serialization and another</li>
+<li>a <em>lossy</em> mapping is one that is not guaranteed to preserve all information</li>
+</ul>
+<h3 id="implementations">Implementations</h3>
+<p>As the functional syntax is only intended for specification purposes, it is not expected that implementations use this as an intermediate. Instead, it is expected that an implementation will go via an internal programmatic representation.</p>
+<p>The reference implementation is the <a href="https://github.com/linkml/linkml-runtime/">linkml-runtime</a> but other implementations that conform to this specification are valid.</p>
+<h2 id="mapping-to-json-or-yaml">Mapping to JSON or YAML</h2>
+<p>Here we define a mapping of LinkML instances to JSON.</p>
+<table>
+<thead>
+<tr>
+<th>note on YAML</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>As JSON is a subset of YAML, this can also be used to load and dump from YAML. This is the canonical YAML mapping. We leave open the possibility of a <em>direct</em> YAML conversion in future which makes use of YAML tags to encode typing information.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mapping-to-json-overview">Mapping to JSON: Overview</h3>
+<ul>
+<li>Serialization to JSON takes as input:<ul>
+<li>a (root) instance</li>
+</ul>
+</li>
+<li>Parsing from JSON takes as input:<ul>
+<li>a JSON document</li>
+<li>a target ElementName</li>
+<li>a SchemaDefinition</li>
+</ul>
+</li>
+</ul>
+<p>The following table defines a translation function <strong>tr<sub>J</sub></strong>(<em>i</em>) that maps LinkML instances to JSON.</p>
+<p>To apply this, <em>i</em> is matched against the instance column, and if a match is found, the production rule on the right hand side is applied.</p>
+<table>
+<thead>
+<tr>
+<th>Instance</th>
+<th>JSON</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>None</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>&lt;TypeDefinitionName&gt;&amp;&lt;StringValue&gt;</code></td>
+<td><code>string(&lt;StringValue&gt;)</code></td>
+</tr>
+<tr>
+<td><code>&lt;TypeDefinitionName&gt;&amp;&lt;NumberValue&gt;</code></td>
+<td><code>number(&lt;AtomicValue&gt;)</code></td>
+</tr>
+<tr>
+<td><code>&lt;TypeDefinitionName&gt;&amp;&lt;BooleanValue&gt;</code></td>
+<td><code>bool(&lt;AtomicValue&gt;)</code></td>
+</tr>
+<tr>
+<td><code>&lt;EnumDefinitionName&gt;[&lt;PermissibleValue&gt;]</code></td>
+<td><code>&lt;PermissibleValue&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;ClassDefinitionName&gt;&amp;&lt;StringValue&gt;</code></td>
+<td><code>string(&lt;StringValue&gt;)</code></td>
+</tr>
+<tr>
+<td><code>&lt;ClassDefinitionName&gt;&amp;&lt;NumberValue&gt;</code></td>
+<td><code>number(&lt;NumberValue&gt;)</code></td>
+</tr>
+<tr>
+<td><code>&lt;ClassDefinitionName&gt;(&lt;s1&gt;=&lt;v1&gt;, ..., &lt;sN&gt;=&lt;vN&gt;)</code></td>
+<td><code>object(string(s1)=trJ(v1), ..., string(sN)=trJ(vN))</code></td>
+</tr>
+<tr>
+<td><code>[&lt;Values&gt;]</code></td>
+<td>See below</td>
+</tr>
+</tbody>
+</table>
+<p>the functions <code>object</code> and <code>number</code> and <code>string</code> apply as per the <a href="https://www.json.org/json-en.html">definitions here</a></p>
+<h3 id="collection-forms">Collection Forms</h3>
+<p>There are 4 different <em>forms</em> in which a LinkML collection can be serialized as JSON. These forms <em>only</em> apply to lists uniformly consisting of <strong>InstanceOfClass</strong> objects.</p>
+<table>
+<thead>
+<tr>
+<th>Form</th>
+<th>JSON</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SimpleDict</code></td>
+<td><code>object( K(i1): tr(V(i1)), ..., K(iN): tr(V(iN)) )</code></td>
+</tr>
+<tr>
+<td><code>CompactDict</code></td>
+<td><code>object( K(i1): tr(i1) - {PK: K(i1), ..., K(iN): tr(iN) - {PK: K(iN)} )</code></td>
+</tr>
+<tr>
+<td><code>ExpandedDict</code></td>
+<td><code>object( K(i1): tr(i1), ..., K(iN): tr(iN) )</code></td>
+</tr>
+<tr>
+<td><code>List</code></td>
+<td><code>'[' tr(i1), ..., tr(iN) ']'</code></td>
+</tr>
+</tbody>
+</table>
+<p>This is determined in part by the parent slot <code>s</code></p>
+<ul>
+<li>If <code>s.inlined_as_dict == False</code> then the form is <code>List</code></li>
+<li>If <code>s.inlined_as_dict == True</code> then the form is <code>SimpleDict</code> or <code>CompactDict</code> or <code>ExpandedDict</code><ul>
+<li>If <code>s.inlined_as_simple_dict == True</code> then the form is <code>SimpleDict</code></li>
+<li>If <code>s.inlined_as_simple_dict == False</code> then the form is <code>CompactDict</code> or <code>ExpandedDict</code><ul>
+<li>If <code>s.inlined_as_expanded_dict == True</code> then the form is <code>ExpandedDict</code></li>
+<li>If <code>s.inlined_as_expanded_dict == False</code> then the form is <code>CompactDict</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Note that <code>inlined_as_simple_dict</code> and <code>inlined_as_expanded_dict</code> are only explicitly added to the metamodel in LinkML 1.5 and above. Prior to 1.5 these are calculated as follows:</p>
+<ul>
+<li><code>inlined_as_simple_dict</code> is True if <code>inlined_as_dict</code> is True, and the derived model has a total of two attributes (one of which is the key)</li>
+<li><code>inlined_as_expanded_dict</code> is False</li>
+</ul>
+<h3 id="collection-form-normalization">Collection Form Normalization</h3>
+<p><em>Normalization</em> is the process of translating or <em>coercing</em> one form to the canonical form.</p>
+<p>There are 12 non-identity normalizations possible, according to this table:</p>
+<table>
+<thead>
+<tr>
+<th>Source Form</th>
+<th>Target Form</th>
+<th>Repair?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>List</code></td>
+<td><code>SimpleDict</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>List</code></td>
+<td><code>CompactDict</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>List</code></td>
+<td><code>ExpandedDict</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>SimpleDict</code></td>
+<td><code>List</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>SimpleDict</code></td>
+<td><code>CompactDict</code></td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>SimpleDict</code></td>
+<td><code>ExpandedDict</code></td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>CompactDict</code></td>
+<td><code>List</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>CompactDict</code></td>
+<td><code>SimpleDict</code></td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>CompactDict</code></td>
+<td><code>ExpandedDict</code></td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>ExpandedDict</code></td>
+<td><code>List</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>ExpandedDict</code></td>
+<td><code>SimpleDict</code></td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>ExpandedDict</code></td>
+<td><code>CompactDict</code></td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<p>Additionally, the process of converting between a list of length 1 and a singleton, or the reverse translation, is considered a Repair normalization.</p>
+<p>JSON Parsers MUST implement normalizations where Repair=False. These indicate alternative <em>valid</em> serializations. JSON Parsers MAY choose to implement Repair normalizations. If they choose to implement these, there SHOULD be a way to allow the user to disable these repairs.</p>
+<p>Validators that take JSON as input SHOULD perform normalizations where Repair=False. These normalizations SHOULD be reported as part of the validation report, and MUST NOT be counted as validation errors. Validators MAY perform normalization of Repair=True normalizations, if they do, they MUST report these as errors.</p>
+<h3 id="mapping-from-json">Mapping from JSON</h3>
+<p>Mapping to JSON is potentially lossy, as the definition names are not preserved.</p>
+<p>When mapping from JSON, the function is <strong>tr<sup>-1</sup><sub>J</sub></strong>(<em>obj</em>, <em>target</em>) where target is a schema element.</p>
+<p>The same table as above is used, but an additional inference rule is applied when the target is a <code>ClassDefinitionName</code>.</p>
+<p>First a <em>deepening</em> procedure is applied. If <code>target</code> has an induced slot <strong>s<sup>t</sup></strong> such as that <strong>s<sup>t</sup></strong><code>.designates_type</code> is <code>True</code>, then the value of <code>obj.</code><strong>s<sup>t</sup></strong> is used to determine the type of the instance.</p>
+<ul>
+<li>If the range of <strong>s<sup>t</sup></strong> is a TypeDefinition <code>uriorcurie</code> then the ClassDefinitionName is indexed by the uriorcurie of the class</li>
+<li>If the range of <strong>s<sup>t</sup></strong> is a TypeDefinition with uri <code>xsd:anyURI</code> then the ClassDefinitionName is indexed by the URI of the class</li>
+<li>Otherwise the value of the <strong>s<sup>t</sup></strong> is the target class name</li>
+</ul>
+<p>For each assignment, the induced slot <code>s</code> is calculated (see section 5 of the specification), and <code>s.range</code> is used for the target of subsequent calls to <strong>tr<sup>-1</sup><sub>J</sub></strong>(<em>obj</em>, <em>target</em>).</p>
+<h2 id="translation-to-rdf">Translation to RDF</h2>
+<p>Two RDF translations can be specified:</p>
+<ul>
+<li>A <em>direct</em> translation</li>
+<li>Translation via JSON-LD, which combines<ol>
+<li>Translation of a LinkML <strong>SchemaDefinition</strong> to a <strong>JSON-LD Context</strong></li>
+<li>The standard translation of LinkML instances to JSON</li>
+</ol>
+</li>
+</ul>
+<p>Both translations make use of the <strong>prefixes</strong> provided in the schema</p>
+<p>The semantic content of both is equivalent. </p>
+<h3 id="mapping-of-curies-to-uris">Mapping of CURIEs to URIs</h3>
+<p>LinkML provides standard types:</p>
+<ul>
+<li>Curie</li>
+<li>Uri</li>
+<li>Curieoruri</li>
+</ul>
+<p>The syntax for a CURIE is defined by <a href="https://www.w3.org/TR/curie/">W3C CURIE Syntax 1.0</a></p>
+<blockquote>
+<p><strong>curie</strong>       :=   [ [ <strong>prefix</strong> ] ':' ] <strong>reference</strong></p>
+<p><strong>prefix</strong>      :=   <strong><a href="https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName">NCName</a></strong></p>
+<p><strong>reference</strong>   :=   <strong><a href="https://www.ietf.org/rfc/rfc3987.txt">irelative-ref</a></strong></p>
+</blockquote>
+<p>See the Part 5 for rules for generating CURIEs and URIs from schema elements.</p>
+<h3 id="mapping-functions">Mapping functions</h3>
+<p>The following three functions are used when mapping LinkML instances to RDF:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Literal(<em>v</em>, <em>T</em>)</td>
+<td><code>"&lt;v&gt;"^^T.uri</code></td>
+</tr>
+<tr>
+<td>Node(<em>v</em>)</td>
+<td><code>URI(&lt;v&gt;)</code></td>
+</tr>
+<tr>
+<td>Pred(<em>p</em>)</td>
+<td><code>URI(p.slot_uri)</code></td>
+</tr>
+<tr>
+<td>Subj(<em>i</em>)</td>
+<td><code>URI(K(i))</code> <em>or</em> <strong>Blank</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="direct-translation-of-instance-graphs-to-rdf">Direct Translation of instance graphs to RDF</h3>
+<p>A translation <strong>Tr</strong><sub>R</sub> operates on an instance <code>i</code>, which is matched against the first column here, generating triples in the second column, and returning the value in the final column. </p>
+<table>
+<thead>
+<tr>
+<th><em>i</em></th>
+<th>Triples</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>None</code></td>
+<td><code>{}</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>&lt;Type&gt;&amp;&lt;V&gt;</code></td>
+<td><code>{}</code></td>
+<td><code>Literal(V, Type)</code></td>
+</tr>
+<tr>
+<td><code>&lt;Enum&gt;[&lt;PV&gt;]</code> <em>where</em> <code>PV.meaning=None</code></td>
+<td><code>{}</code></td>
+<td><code>Literal(V, Type)</code></td>
+</tr>
+<tr>
+<td><code>&lt;Enum&gt;[&lt;PV&gt;]</code> <em>where</em> <code>PV.meaning!==None</code></td>
+<td><code>{}</code></td>
+<td><code>Node(PV.meaning)</code></td>
+</tr>
+<tr>
+<td><code>&lt;Class&gt;&amp;&lt;V&gt;</code></td>
+<td><code>{}</code></td>
+<td><code>Node(V)</code></td>
+</tr>
+<tr>
+<td><code>&lt;Class&gt;(&lt;s1&gt;=&lt;v1&gt;, ..., &lt;sN&gt;=&lt;vN&gt;)</code></td>
+<td><code>&lt;Subj(i) Pred(si) L(tr(vi))&gt;</code> <em>for i in 1..N</em></td>
+<td><code>Subj(i)</code></td>
+</tr>
+</tbody>
+</table>
+<p>The triple generator column contains either the empty list or rules to generate triples. The templates <code>&lt;s p L(o)&gt;</code> denotes a triple <code>&lt;s p oi&gt;</code> for each <code>oi</code> in <code>L(o)</code>.</p>
+<h3 id="translation-of-instance-graphs-to-rdf-graphs-via-json-ld">Translation of instance graphs to RDF graphs (via JSON-LD)</h3>
+<p>This is an alternative specification of a mapping to RDF, specified in terms of a mapping to JSON-LD.</p>
+<p>The mapping to JSON-LD is in two parts:</p>
+<ol>
+<li>mapping the instance to JSON-LD</li>
+<li>mapping the derived schema to a JSON-LD context</li>
+</ol>
+<p>For (1), the mapping is the same as in "Mapping to JSON", above, with the addition of the insertion of a <code>@context</code> key-value pair into the top level object.</p>
+<p>For (2), a JSON-LD context is generated by walking the entire derived SchemaDefinition object applying matches in the table below:</p>
+<table>
+<thead>
+<tr>
+<th>Schema Element</th>
+<th>Match</th>
+<th>Context Key</th>
+<th>Context Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SchemaDefinition</code></td>
+<td>p in e.prefixes<code>|</code>p.prefix_prefix<code>|</code>@id=<p.prefix_reference><code></code>@prefix=true`</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SchemaDefinition</code></td>
+<td><code>s in e.slots</code></td>
+<td><code>s.name</code></td>
+<td><code>@type=&lt;s.type.uri&gt;</code></td>
+</tr>
+<tr>
+<td><code>SchemaDefinition</code></td>
+<td><code>s in e.slots</code></td>
+<td><code>s.name</code></td>
+<td><code>@id=URI(&lt;s.slot_uri&gt;)</code></td>
+</tr>
+<tr>
+<td><code>SchemaDefinition</code></td>
+<td><code>s in e.slots</code>, <code>s.inlined=True</code></td>
+<td><code>s.name</code></td>
+<td><code>@id=URI(&lt;s.slot_uri&gt;)</code></td>
+</tr>
+<tr>
+<td><code>SchemaDefinition</code></td>
+<td><code>c in e.classes</code></td>
+<td><code>c.name</code></td>
+<td><code>@id=URI(&lt;s.class_uri&gt;)</code> `</td>
+</tr>
+<tr>
+<td><code>ClassDefinition</code></td>
+<td><code>s in e.attributes</code></td>
+<td><code>s.name</code></td>
+<td><code>@type=&lt;s.type.uri&gt;</code></td>
+</tr>
+<tr>
+<td><code>ClassDefinition</code></td>
+<td><code>s in e.attributes</code></td>
+<td><code>s.name</code></td>
+<td><code>@id=URI(&lt;s.slot_uri&gt;)</code></td>
+</tr>
+<tr>
+<td><code>ClassDefinition</code></td>
+<td><code>s in e.attributes</code>, <code>s.inlined=True</code></td>
+<td><code>s.name</code></td>
+<td><code>@id=URI(&lt;s.slot_uri&gt;)</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mapping-to-typed-objects">Mapping to Typed Objects</h2>
+<p>Different programming languages have different formalisms for representing objects. We specify a generic mapping
+to an abstract <em>typed object</em> representation, which can be mapped to the native object representation of a given language.</p>
+<p>The mapping to Typed Objects is similar to the mapping to JSON, with the addition that each node in the tree has an <strong>ElementName</strong> (type)
+associated with it.</p>
+<table>
+<thead>
+<tr>
+<th>Instance</th>
+<th>TypedObject</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>None</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>&lt;TypeDefinitionName&gt;&amp;&lt;Value&gt;</code></td>
+<td><code>&lt;TypeDefinitionName&gt;(&lt;Value&gt;)</code></td>
+</tr>
+<tr>
+<td><code>&lt;EnumDefinitionName&gt;[&lt;PermissibleValue&gt;]</code></td>
+<td><code>&lt;EnumDefinitionName&gt;(&lt;PermissibleValue&gt;)</code></td>
+</tr>
+<tr>
+<td><code>&lt;ClassDefinitionName&gt;&amp;&lt;Value&gt;</code></td>
+<td><code>REF(&lt;ClassDefinitionName&gt;)(&lt;Value&gt;)</code></td>
+</tr>
+<tr>
+<td><code>&lt;ClassDefinitionName&gt;(&lt;s1&gt;=&lt;v1&gt;, ..., &lt;sN&gt;=&lt;vN&gt;)</code></td>
+<td><code>&lt;ClassDefinitionName&gt;(s1=trO(v1), ..., sN=trO(vN))</code></td>
+</tr>
+<tr>
+<td><code>[&lt;Values&gt;]</code></td>
+<td>As for JSON</td>
+</tr>
+</tbody>
+</table>
+<p>The function <code>REF</code> takes a ClassDefinitionName and returns a function that returns the name of an atomic class by
+concatenating the ClassDefinitionName with the name of <code>PK(ClassDefinitionName)</code> using the naming conventions of the target language.
+For example, if the class <code>Person</code> has an attribute <code>id</code> marked <code>identifier=True</code> then <code>REF(Person)</code> returns <code>PersonId</code>,
+assuming CamelCase naming conventions.</p>
+<p>Mappings to target languages MAY choose to simplify AtomicClassNamees to the corresponding primitives for that language.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../05validation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Instance Validation" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Instance Validation
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../" class="md-footer__link md-footer__link--next" aria-label="Next: Metamodel Index" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Metamodel Index
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+    
+    
+  </body>
+</html>
