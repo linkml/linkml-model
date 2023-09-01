@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-08-21T15:22:16
+# Generation date: 2023-09-01T13:14:37
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -58,6 +58,7 @@ version = "2.0.0"
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
+IAO = CurieNamespace('IAO', 'http://purl.obolibrary.org/obo/IAO_')
 NCIT = CurieNamespace('NCIT', 'http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#')
 OIO = CurieNamespace('OIO', 'http://www.geneontology.org/formats/oboInOwl#')
 BIBO = CurieNamespace('bibo', 'http://purl.org/ontology/bibo/')
@@ -1003,7 +1004,7 @@ class EnumDefinition(Definition):
 class MatchQuery(YAMLRoot):
     """
     A query that is used on an enum expression to dynamically obtain a set of permissivle values via a query that
-    matches on properties of the external concepts
+    matches on properties of the external concepts.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -1029,7 +1030,7 @@ class MatchQuery(YAMLRoot):
 class ReachabilityQuery(YAMLRoot):
     """
     A query that is used on an enum expression to dynamically obtain a set of permissible values via walking from a
-    set of source nodes to a set of descendants or ancestors over a set of relationship types
+    set of source nodes to a set of descendants or ancestors over a set of relationship types.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
