@@ -4,3 +4,24 @@
  * This is a general purpose Gradle build.
  * Learn more about Gradle by exploring our samples at https://docs.gradle.org/8.1.1/samples
  */
+
+plugins {
+    id 'base'
+}
+
+def src = "$projectDir/linkml_model/model/schema"
+def schemaOutDir = "schema"
+def unifiedSchemaPath = "$buildDir/$schemaOutDir/linkml-schema.yaml"
+
+tasks.register('buildUnifiedYaml', Exec) {
+    inputs.files(fileTree("$src"))
+        .withPropertyName('sourceFiles')
+        .withPathSensitivity(PathSensitivity.ABSOLUTE)
+    outputs.dir(layout.buildDirectory.dir("$schemaOutDir"))
+        .withPropertyName('outputDir')
+    commandLine "bash", "-c", "gen-yaml $src/meta.yaml --mergeimports | yq 'del(.imports)' > $unifiedSchemaPath"
+}
+
+tasks.named("assemble") {
+    dependsOn(buildUnifiedYaml)
+}
