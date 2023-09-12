@@ -10,13 +10,14 @@ plugins {
 }
 
 def src = "$projectDir/linkml_model/model/schema"
-def unifiedSchemaPath = "$buildDir/schema/linkml-schema.yaml"
+def schemaOutDir = "schema"
+def unifiedSchemaPath = "$buildDir/$schemaOutDir/linkml-schema.yaml"
 
 tasks.register('buildUnifiedYaml', Exec) {
     inputs.files(fileTree("$src"))
         .withPropertyName('sourceFiles')
         .withPathSensitivity(PathSensitivity.ABSOLUTE)
-    outputs.dir(layout.buildDirectory.dir('schema'))
+    outputs.dir(layout.buildDirectory.dir("$schemaOutDir"))
         .withPropertyName('outputDir')
     commandLine "bash", "-c", "gen-yaml $src/meta.yaml --mergeimports | yq 'del(.imports)' > $unifiedSchemaPath"
 }
