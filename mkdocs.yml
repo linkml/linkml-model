@@ -1,4 +1,5 @@
 site_name: "LinkML Model"
+site_url: "https://linkml.io/linkml-model"
 theme:
   name: material
   analytics:
@@ -21,28 +22,34 @@ theme:
 plugins:
   - search
   - mermaid2
+  - mike:
+      alias_type: symlink
+      canonical_version: latest
+extra:
+  version:
+    provider: mike
 #markdown_extensions:
 #  - toc:
 #      permalink: true
-docs_dir: target/docs
-site_dir: docs
+docs_dir: docs/source
+site_dir: docs/build
 nav:
-  - About: home.md
+  - About: docs/home.md
   - Specification:
-      Index: specification/index.md
-      Preface: specification/00preamble.md
-      Introduction: specification/01introduction.md
-      Instances: specification/02instances.md
-      Schema Datamodel: specification/03schemas.md
-      Derived Schemas: specification/04derived-schemas.md
-      Instance Validation: specification/05validation.md
-      Mapping of Instances: specification/06mapping.md
+    - Index: docs/specification/index.md
+    - Preface: docs/specification/00preamble.md
+    - Introduction: docs/specification/01introduction.md
+    - Instances: docs/specification/02instances.md
+    - Schema Datamodel: docs/specification/03schemas.md
+    - Derived Schemas: docs/specification/04derived-schemas.md
+    - Instance Validation: docs/specification/05validation.md
+    - Mapping of Instances: docs/specification/06mapping.md
   - Appendix:
-      Metamodel Index: index.md
-      Profiles:
-        - MinimalSubset: MinimalSubset.md
-        - BasicSubset: BasicSubset.md
-        - SpecificationSubset: SpecificationSubset.md
-        - RelationalModelProfile: RelationalModelProfile.md
-        - ObjectOrientedProfile: ObjectOrientedProfile.md
-        - OwlProfile: OwlProfile.md
+    - Metamodel Index: docs/index.md
+    - Profiles:
+      - MinimalSubset: docs/MinimalSubset.md
+      - BasicSubset: docs/BasicSubset.md
+      - SpecificationSubset: docs/SpecificationSubset.md
+      - RelationalModelProfile: docs/RelationalModelProfile.md
+      - ObjectOrientedProfile: docs/ObjectOrientedProfile.md
+      - OwlProfile: docs/OwlProfile.md

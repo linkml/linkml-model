@@ -1,0 +1,23 @@
+<!--This file is copied into the root of the documentation branch (gh-pages) after the mkdocs-generated-->
+<!--docs are in place. This file helps redirect paths like:-->
+<!--  * / => /latest-->
+<!--  * /docs/pattern => /latest/docs/pattern-->
+<!--  * /does-not-exist => /latest/404-->
+<!--  * /1.5.x/does-not-exist => /1.5.x/404-->
+
+<script>
+    // Check if the current path is versioned, if not, redirect to the default versioned path
+    const defaultVersion = "latest"
+    const basePath = "/linkml-model"
+    const targetRedirectPath = "404" // path to redirect to, relative to basePath
+
+    const match = window.location.pathname.match(`^${basePath}/(v[0-9.]+|dev|latest)/`)
+    if (match) {
+        // if path starts with version, redirect to versioned 404
+        const versionedPath = `${basePath}/${match[1]}`;
+        window.location.href = `${versionedPath}/${targetRedirectPath}`
+    } else {
+      // if path doesn't start with any version, redirect to defaultVersion
+      window.location.href = window.location.href.replace(basePath, `${basePath}/${defaultVersion}`)
+    }
+</script>

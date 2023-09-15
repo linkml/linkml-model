@@ -11,9 +11,15 @@ RUN = poetry run
 SCHEMA_NAME = linkml_model
 SOURCE_SCHEMA_PATH = $(shell sh ./utils/get-value.sh source_schema_path)
 SRC = .
-DEST = target
-PYMODEL = linkml_model/
-DOCDIR = $(DEST)/docs
+DEST = staging
+PYMODEL = linkml_model
+DOCDIR = docs/source
+
+$(PYMODEL):
+	mkdir -p $@
+
+$(DEST):
+	mkdir -p $@
 
 # basename of a YAML file in model/
 .PHONY: all clean
@@ -34,22 +40,39 @@ status: check-config
 	@echo "Project: $(SCHEMA_NAME)"
 	@echo "Source: $(SOURCE_SCHEMA_PATH)"
 
-setup: install gen-project gendoc git-init-add
+setup: install gen-project gen-doc git-init-add
 
 install:
 	poetry install
 .PHONY: install
 
-all: gen-project gendoc
+all: gen-project gen-doc
 %.yaml: gen-project
-deploy: gendoc mkd-gh-deploy
+deploy: gen-doc mkd-gh-deploy
 
 # generates all project files
 # and updates the artifacts in linkml-model
-gen-project: $(PYMODEL)
-	$(RUN) gen-project -d $(DEST) --config-file gen_project_config.yaml $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
+gen-project: $(PYMODEL) gen-py
+	$(RUN) gen-project -d $(DEST) --config-file gen_project_config.yaml $(SOURCE_SCHEMA_PATH)
 	cp -r $(DEST)/* $(PYMODEL)
-	rm -r $(PYMODEL)/docs
+
+gen-py: $(DEST)
+	# for all the files in the schema folder, run the gen-python command and output the result to the top
+	# level of the project.  In other repos, we'd include mergeimports=True, but we don't do that with
+	# linkml-model.
+	@for file in $(wildcard $(PYMODEL)/model/schema/*.yaml); do \
+		base=$$(basename $$file); \
+		filename_without_suffix=$${base%.*}; \
+		$(RUN) gen-python --genmeta $$file > $(DEST)/$$filename_without_suffix.py; \
+	done
+	cp $(DEST)/*.py $(PYMODEL)
+
+gen-doc:
+	$(RUN) gen-doc --genmeta --sort-by rank -d $(DOCDIR)/docs $(SOURCE_SCHEMA_PATH)
+	cp -r linkml_model/model/docs/* $(DOCDIR)/docs
+	cp -r $(PYMODEL) $(DOCDIR)/$(PYMODEL)
+	rm -rf $(DOCDIR)/$(PYMODEL)/model/docs
+	cp README.md $(DOCDIR)
 
 test: test-schema test-python test-validate-schema
 test-schema:
@@ -85,19 +108,7 @@ upgrade:
 # Test documentation locally
 serve: mkd-serve
 
-# Python datamodel
-$(PYMODEL):
-	mkdir -p $@
-
-
-$(DOCDIR):
-	mkdir -p $@
-
-gendoc: $(DOCDIR)
-	cp -pr linkml_model/model/docs/ $(DOCDIR) ; \
-	$(RUN) gen-doc --genmeta --sort-by rank -d $(DOCDIR) $(SOURCE_SCHEMA_PATH)
-
-testdoc: gendoc serve
+testdoc: gen-doc serve
 
 builddoc:
 	$(RUN) mkdocs build
@@ -120,6 +131,14 @@ git-status:
 
 clean:
 	rm -rf $(DEST)
+	rm -rf docs
 	rm -rf tmp
 
+spell:
+	poetry run codespell
+
+lint:
+	poetry run yamllint -c .yamllint-config linkml_model/model/schema/*.yaml
+
 include project.Makefile
+
