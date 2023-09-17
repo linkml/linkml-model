@@ -42,5 +42,12 @@ tasks.register('copyPackageFiles', Copy) {
     from layout.projectDirectory.file('README.md')
     from layout.projectDirectory.file('README-schema.md')
     from layout.projectDirectory.file('package.json')
+    from layout.projectDirectory.file('.npmrc')
     into layout.buildDirectory
+}
+
+tasks.register('publishPackage', Exec) {
+    dependsOn(build, copyPackageFiles)
+    workingDir(layout.buildDirectory)
+    commandLine "npm", "publish"
 }
