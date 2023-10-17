@@ -61,5 +61,5 @@ jobs:
         env:
           pw: ${{ secrets.CLOUDSMITH_API_KEY }}
         run: |
-          npm-cli-login -u j-simmons -p "$pw" -e j@thejsimmons.com
+          npm-cli-login -u j-simmons -p "$pw" -e j@thejsimmons.com --config-path="./.npmrc"
           ./gradlew publishPackage
