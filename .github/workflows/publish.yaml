@@ -26,6 +26,10 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+
+      - name: Install npm-cli-login
+        run: npm install -g npm-cli-login
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout github repo
         uses: actions/checkout@v4
@@ -53,10 +57,9 @@ jobs:
       - name: Install yq # as per https://github.com/mikefarah/yq#plain-binary
         run: sudo wget https://github.com/mikefarah/yq/releases/download/v4.35.1/yq_linux_amd64 -O /usr/bin/yq && sudo chmod +x /usr/bin/yq
 
-      - name: Build schema
-        run: ./gradlew build
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: linkml-schema
-          path: ./build
+      - name: Publish schema
+        env:
+          pw: ${{ secrets.CLOUDSMITH_API_KEY }}
+        run: |
+          npm-cli-login -u j-simmons -p "$pw" -e j@thejsimmons.com
+          ./gradlew publishPackage
