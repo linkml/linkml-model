@@ -1,0 +1,62 @@
+# This workflow publishes the unified linkml YAML schema to cloudsmith as an npm package
+
+name: publish
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the develop branch
+  push:
+    paths-ignore:
+      - '.gitignore'
+      - 'LICENSE'
+      - 'README.md'
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+*'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout github repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine if on main # as per https://stackoverflow.com/questions/59882715/use-environment-variable-in-github-action-if
+        run: |
+          GIT_REF_COMMIT=$(git rev-list -n 1 $GITHUB_REF)
+          GIT_MAIN_COMMIT=$(git rev-list -n 1 refs/remotes/origin/main)
+          if [[ $GIT_REF_COMMIT == $GIT_MAIN_COMMIT ]]; then
+              echo "ON_MAIN=true" >> "$GITHUB_ENV"
+          else
+              echo "ON_MAIN=false" >> "$GITHUB_ENV"
+          fi
+          cat $GITHUB_ENV
+
+      - name: Skip Publish? # as per https://stackoverflow.com/questions/59882715/use-environment-variable-in-github-action-if
+        if: env.ON_MAIN != 'true'
+        run: exit -1
+
+      - name: Install LinkML
+        run: pip install linkml==1.5.6
+
+      - name: Install yq # as per https://github.com/mikefarah/yq#plain-binary
+        run: sudo wget https://github.com/mikefarah/yq/releases/download/v4.35.1/yq_linux_amd64 -O /usr/bin/yq && sudo chmod +x /usr/bin/yq
+
+      - name: Build schema
+        run: ./gradlew build
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: linkml-schema
+          path: ./build
