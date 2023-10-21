@@ -59,8 +59,8 @@ jobs:
 
       - name: Publish schema
         env:
-          pw: ${{ secrets.CLOUDSMITH_API_KEY }}
+          auth_token: ${{ secrets.CLOUDSMITH_AUTH_TOKEN }}
         run: |
-          registry=$(awk -F= '/registry/{print $2}' .npmrc)
-          npm-cli-login -u j-simmons -p $pw -e j@thejsimmons.com -r $registry
+          registry=$(awk -F: '/registry/{print $2}' .npmrc)
+          npm set $registry:_authToken $auth_token
           ./gradlew publishPackage
