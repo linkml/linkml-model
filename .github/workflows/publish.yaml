@@ -27,9 +27,6 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
-      - name: Install npm-cli-login
-        run: npm install -g npm-cli-login
-
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout github repo
         uses: actions/checkout@v4
@@ -57,7 +54,7 @@ jobs:
       - name: Install yq # as per https://github.com/mikefarah/yq#plain-binary
         run: sudo wget https://github.com/mikefarah/yq/releases/download/v4.35.1/yq_linux_amd64 -O /usr/bin/yq && sudo chmod +x /usr/bin/yq
 
-      - name: Publish schema
+      - name: Publish schema # login with authToken as per https://stackoverflow.com/a/58271202
         env:
           auth_token: ${{ secrets.CLOUDSMITH_AUTH_TOKEN }}
         run: |
