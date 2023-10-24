@@ -1,7 +1,7 @@
 # Release Process
 
 - Close all issues for planned release
-- Checkout `main` branch in git
+- Checkout and pull `main` branch in git from origin
 - Run `npm version <semver-pre-release, e.g., 1.6.0-rc1.1.1.0>` (Update in package.json to be a semver pre-release, then commit, tag with semver pre-release and auto run `git push && git push --tags`)
   - Triggers CI build from tag to call `./gradlew publishPackage` (Publish npm package to cloudsmith)
 - Verify pre-released package
