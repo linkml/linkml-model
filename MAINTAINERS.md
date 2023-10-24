@@ -2,14 +2,18 @@
 
 - Close all issues for planned release
 - Checkout and pull `main` branch in git from origin
-- Run `npm version <semver-pre-release, e.g., 1.6.0-rc1.1.1.0>` (Update in package.json to be a semver pre-release, then commit, tag with semver pre-release and auto run `git push && git push --tags`)
+- Run `npm version <semver-pre-release, e.g., 1.6.0-alpha1.1.0>` (Update in package.json to be a semver pre-release, then commit, tag with semver pre-release and auto run `git push && git push --tags`)
   - Triggers CI build from tag to call `./gradlew publishPackage` (Publish npm package to cloudsmith)
 - Verify pre-released package
   - Create a temporary node project
-  - In temporary project, run `npm install <pre-release-semver-tag>`
+  - In temporary project, run `npm install linkml-schema`
   - Inspect that installed package is as expected
-- Run `npm version <semver-release, e.g., 1.6.0-1.0.0>` (Update in package.json to be a semver release, then commit, tag with semver release and auto run `git push && git push --tags`)
+- Run `npm version <semver-release, e.g., 1.6.0-v1.0.0>` (Update in package.json to be a semver release, then commit, tag with semver release and auto run `git push && git push --tags`)
   - Triggers CI build from tag to call `./gradlew publishPackage` (Publish npm package to cloudsmith)
+- Create new release (on GitHub)
+  - select (final release) tag
+  - auto-generate release notes
+  - publish final release
 
 # Versioning
 
@@ -22,11 +26,16 @@
 
 - actual version is from linkml and we only match to final releases (so we don't pull or release against their release candidates)
 - dash
-- optional pre-release keyword like alpha, beta, rc ending in a dot when present
-- semver release string for our release of the linkml release (so our first official release of 1.6.0 would be v1.6.0-1.0.0)
+- release keyword
+  - alpha (initial pre-release)
+  - beta (optional intermediary pre-release)
+  - rc (release candidate, final pre-release)
+  - v (final release)
+- semver release string for our release of the linkml release (so our first official release of 1.6.0 would be v1.6.0-v1.0.0)
 
 ### Examples
 
-- v1.6.0-1.0.0
-- v1.6.0-alpha.1.0.0
-- v1.6.0-rc1.1.0.0
+- v1.6.0-alpha1.0.0
+- v1.6.0-beta1.0.0
+- v1.6.0-rc1.0.0
+- v1.6.0-v1.0.0
