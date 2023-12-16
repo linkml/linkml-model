@@ -589,13 +589,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#enumerations-in-subset" class="md-nav__link">
-    Enumerations in subset
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -740,13 +733,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#enumerations-in-subset" class="md-nav__link">
-    Enumerations in subset
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -769,7 +755,7 @@
 <p>__</p>
 <p><em>The classic Relational Model excludes inheritance and polymorphism -- these must be rolled down to</em></p>
 <p><em>concrete classes or otherwise transformed.</em></p>
-<p>URI: <a href="RelationalModelProfile">RelationalModelProfile</a></p>
+<p>URI: <a href="./">RelationalModelProfile</a></p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -804,96 +790,12 @@
 </table>
 <h3 id="schemadefinition">SchemaDefinition</h3>
 <p>A collection of definitions that make up a schema or a data model.</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../name/">name</a></td>
-<td>1..1 <br/> <a href="../Ncname/">Ncname</a></td>
-<td>a unique name for the schema that is both human-readable and consists of only... <strong>identifier</strong></td>
-</tr>
-<tr>
-<td><a href="../classes/">classes</a></td>
-<td>0..* <br/> <a href="../ClassDefinition/">ClassDefinition</a></td>
-<td>An index to the collection of all class definitions in the schema</td>
-</tr>
-</tbody>
-</table>
 <h3 id="classdefinition">ClassDefinition</h3>
 <p>an element whose instances are complex objects that may have slot-value assignments</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../name/">name</a></td>
-<td>1..1 <br/> <a href="../String/">String</a></td>
-<td>the unique name of the element within the context of the schema <strong>identifier</strong></td>
-</tr>
-<tr>
-<td><a href="../attributes/">attributes</a></td>
-<td>0..* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
-<td>Inline definition of slots</td>
-</tr>
-<tr>
-<td><a href="../unique_keys/">unique_keys</a></td>
-<td>0..* <br/> <a href="../UniqueKey/">UniqueKey</a></td>
-<td>A collection of named unique keys for this class</td>
-</tr>
-</tbody>
-</table>
 <h3 id="enumdefinition">EnumDefinition</h3>
 <p>an element whose instances must be drawn from a specified set of permissible values</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../name/">name</a></td>
-<td>1..1 <br/> <a href="../String/">String</a></td>
-<td>the unique name of the element within the context of the schema <strong>identifier</strong></td>
-</tr>
-</tbody>
-</table>
 <h3 id="uniquekey">UniqueKey</h3>
 <p>a collection of slots whose values uniquely identify an instance of a class</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../unique_key_name/">unique_key_name</a></td>
-<td>1..1 <br/> <a href="../String/">String</a></td>
-<td>name of the unique key</td>
-</tr>
-<tr>
-<td><a href="../unique_key_slots/">unique_key_slots</a></td>
-<td>1..* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
-<td>list of slot names that form a key</td>
-</tr>
-</tbody>
-</table>
 <h2 id="slots-in-subset">Slots in subset</h2>
 <table>
 <thead>
@@ -942,21 +844,6 @@
 <tr>
 <td><a href="../key/">key</a></td>
 <td>True means that the key slot(s) uniquely identify the elements within a singl...</td>
-</tr>
-</tbody>
-</table>
-<h2 id="enumerations-in-subset">Enumerations in subset</h2>
-<table>
-<thead>
-<tr>
-<th>Enumeration</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>

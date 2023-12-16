@@ -624,13 +624,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#enumerations-in-subset" class="md-nav__link">
-    Enumerations in subset
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -754,13 +747,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#enumerations-in-subset" class="md-nav__link">
-    Enumerations in subset
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -778,7 +764,7 @@
 
 <h1 id="subset-owlprofile">Subset: OwlProfile</h1>
 <p><em>A profile that includes all the metamodel elements whose semantics can be expressed in OWL</em></p>
-<p>URI: <a href="OwlProfile">OwlProfile</a></p>
+<p>URI: <a href="./">OwlProfile</a></p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -817,174 +803,14 @@
 </table>
 <h3 id="schemadefinition">SchemaDefinition</h3>
 <p>A collection of definitions that make up a schema or a data model.</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../id/">id</a></td>
-<td>1..1 <br/> <a href="../Uri/">Uri</a></td>
-<td>The official schema URI</td>
-</tr>
-<tr>
-<td><a href="../name/">name</a></td>
-<td>1..1 <br/> <a href="../Ncname/">Ncname</a></td>
-<td>a unique name for the schema that is both human-readable and consists of only... <strong>identifier</strong></td>
-</tr>
-<tr>
-<td><a href="../classes/">classes</a></td>
-<td>0..* <br/> <a href="../ClassDefinition/">ClassDefinition</a></td>
-<td>An index to the collection of all class definitions in the schema</td>
-</tr>
-<tr>
-<td><a href="../slot_definitions/">slot_definitions</a></td>
-<td>0..* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
-<td>An index to the collection of all slot definitions in the schema</td>
-</tr>
-<tr>
-<td><a href="../enums/">enums</a></td>
-<td>0..* <br/> <a href="../EnumDefinition/">EnumDefinition</a></td>
-<td>An index to the collection of all enum definitions in the schema</td>
-</tr>
-<tr>
-<td><a href="../types/">types</a></td>
-<td>0..* <br/> <a href="../TypeDefinition/">TypeDefinition</a></td>
-<td>An index to the collection of all type definitions in the schema</td>
-</tr>
-<tr>
-<td><a href="../imports/">imports</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of schemas that are to be included in this schema</td>
-</tr>
-</tbody>
-</table>
 <h3 id="classdefinition">ClassDefinition</h3>
 <p>an element whose instances are complex objects that may have slot-value assignments</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../name/">name</a></td>
-<td>1..1 <br/> <a href="../String/">String</a></td>
-<td>the unique name of the element within the context of the schema <strong>identifier</strong></td>
-</tr>
-<tr>
-<td><a href="../is_a/">is_a</a></td>
-<td>0..1 <br/> <a href="../ClassDefinition/">ClassDefinition</a></td>
-<td>A primary parent class from which inheritable metaslots are propagated</td>
-</tr>
-<tr>
-<td><a href="../mixins/">mixins</a></td>
-<td>0..* <br/> <a href="../ClassDefinition/">ClassDefinition</a></td>
-<td>A collection of secondary parent mixin classes from which inheritable metaslo...</td>
-</tr>
-<tr>
-<td><a href="../attributes/">attributes</a></td>
-<td>0..* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
-<td>Inline definition of slots</td>
-</tr>
-<tr>
-<td><a href="../union_of/">union_of</a></td>
-<td>0..* <br/> <a href="../ClassDefinition/">ClassDefinition</a></td>
-<td>indicates that the domain element consists exactly of the members of the elem...</td>
-</tr>
-</tbody>
-</table>
 <h3 id="slotdefinition">SlotDefinition</h3>
 <p>an element that describes how instances are related to other instances</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../name/">name</a></td>
-<td>1..1 <br/> <a href="../String/">String</a></td>
-<td>the unique name of the element within the context of the schema <strong>identifier</strong></td>
-</tr>
-<tr>
-<td><a href="../is_a/">is_a</a></td>
-<td>0..1 <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
-<td>A primary parent slot from which inheritable metaslots are propagated</td>
-</tr>
-<tr>
-<td><a href="../mixins/">mixins</a></td>
-<td>0..* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
-<td>A collection of secondary parent mixin slots from which inheritable metaslots...</td>
-</tr>
-<tr>
-<td><a href="../union_of/">union_of</a></td>
-<td>0..* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
-<td>indicates that the domain element consists exactly of the members of the elem...</td>
-</tr>
-</tbody>
-</table>
 <h3 id="typedefinition">TypeDefinition</h3>
 <p>an element that whose instances are atomic scalar values that can be mapped to primitive types</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../name/">name</a></td>
-<td>1..1 <br/> <a href="../String/">String</a></td>
-<td>the unique name of the element within the context of the schema <strong>identifier</strong></td>
-</tr>
-<tr>
-<td><a href="../union_of/">union_of</a></td>
-<td>0..* <br/> <a href="../TypeDefinition/">TypeDefinition</a></td>
-<td>indicates that the domain element consists exactly of the members of the elem...</td>
-</tr>
-</tbody>
-</table>
 <h3 id="enumdefinition">EnumDefinition</h3>
 <p>an element whose instances must be drawn from a specified set of permissible values</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../name/">name</a></td>
-<td>1..1 <br/> <a href="../String/">String</a></td>
-<td>the unique name of the element within the context of the schema <strong>identifier</strong></td>
-</tr>
-<tr>
-<td><a href="../is_a/">is_a</a></td>
-<td>0..1 <br/> <a href="../Definition/">Definition</a></td>
-<td>A primary parent class or slot from which inheritable metaslots are propagate...</td>
-</tr>
-<tr>
-<td><a href="../mixins/">mixins</a></td>
-<td>0..* <br/> <a href="../Definition/">Definition</a></td>
-<td>A collection of secondary parent classes or slots from which inheritable meta...</td>
-</tr>
-</tbody>
-</table>
 <h2 id="slots-in-subset">Slots in subset</h2>
 <table>
 <thead>
@@ -1037,21 +863,6 @@
 <tr>
 <td><a href="../union_of/">union_of</a></td>
 <td>indicates that the domain element consists exactly of the members of the elem...</td>
-</tr>
-</tbody>
-</table>
-<h2 id="enumerations-in-subset">Enumerations in subset</h2>
-<table>
-<thead>
-<tr>
-<th>Enumeration</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>

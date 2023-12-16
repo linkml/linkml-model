@@ -320,6 +320,8 @@
 
       Extension : extension_value
 
+          Extension --|&gt; AnyValue : extension_value
+
       Extension : extensions
 
           Extension --|&gt; extension : extensions
@@ -352,7 +354,7 @@
 </tr>
 <tr>
 <td><a href="../extension_value/">extension_value</a></td>
-<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>1..1 <br/> <a href="../AnyValue/">AnyValue</a></td>
 <td>the actual annotation</td>
 <td>direct</td>
 </tr>
@@ -594,7 +596,7 @@ attributes:
     owner: extension
     domain_of:
     - extension
-    range: string
+    range: AnyValue
     required: true
   extensions:
     name: extensions
