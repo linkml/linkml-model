@@ -1935,8 +1935,10 @@ slots:
     aliases:
       - low value
     domain: slot_definition
-    range: integer
-    description: for slots with ranges of type number, the value must be equal to or higher than this
+    range: Anything
+    description: For ordinal ranges, the value must be equal to or higher than this
+    notes:
+      - Range to be refined to an "Ordinal" metaclass - see https://github.com/linkml/linkml/issues/1384#issuecomment-1892721142
     inherited: true
     in_subset:
       - SpecificationSubset
@@ -1946,8 +1948,10 @@ slots:
     aliases:
       - high value
     domain: slot_definition
-    range: integer
-    description: for slots with ranges of type number, the value must be equal to or lowe than this
+    range: Anything
+    description: For ordinal ranges, the value must be equal to or lower than this
+    notes:
+      - Range to be refined to an "Ordinal" metaclass - see https://github.com/linkml/linkml/issues/1384#issuecomment-1892721142
     inherited: true
     in_subset:
       - SpecificationSubset

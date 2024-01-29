@@ -623,7 +623,7 @@
 
 
 <h1 id="slot-maximum_value">Slot: maximum_value</h1>
-<p><em>for slots with ranges of type number, the value must be equal to or lowe than this</em></p>
+<p><em>For ordinal ranges, the value must be equal to or lower than this</em></p>
 <p>URI: <a href="https://w3id.org/linkml/maximum_value">linkml:maximum_value</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -671,7 +671,7 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Integer/">Integer</a></li>
+<li>Range: <a href="../Anything/">Anything</a></li>
 </ul>
 <h2 id="aliases">Aliases</h2>
 <ul>
@@ -686,8 +686,9 @@
 <details>
 
 <pre><code class="language-yaml">name: maximum_value
-description: for slots with ranges of type number, the value must be equal to or lowe
-  than this
+description: For ordinal ranges, the value must be equal to or lower than this
+notes:
+- Range to be refined to an &quot;Ordinal&quot; metaclass - see https://github.com/linkml/linkml/issues/1384#issuecomment-1892721142
 in_subset:
 - SpecificationSubset
 - BasicSubset
@@ -701,7 +702,7 @@ alias: maximum_value
 domain_of:
 - type_expression
 - slot_expression
-range: integer
+range: Anything
 
 </code></pre>
 

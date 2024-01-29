@@ -338,7 +338,11 @@
 
       AnonymousTypeExpression : maximum_value
 
+          AnonymousTypeExpression --|&gt; Anything : maximum_value
+
       AnonymousTypeExpression : minimum_value
+
+          AnonymousTypeExpression --|&gt; Anything : minimum_value
 
       AnonymousTypeExpression : none_of
 
@@ -415,14 +419,14 @@
 </tr>
 <tr>
 <td><a href="../minimum_value/">minimum_value</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>for slots with ranges of type number, the value must be equal to or higher th...</td>
+<td>0..1 <br/> <a href="../Anything/">Anything</a></td>
+<td>For ordinal ranges, the value must be equal to or higher than this</td>
 <td><a href="../TypeExpression/">TypeExpression</a></td>
 </tr>
 <tr>
 <td><a href="../maximum_value/">maximum_value</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>for slots with ranges of type number, the value must be equal to or lowe than...</td>
+<td>0..1 <br/> <a href="../Anything/">Anything</a></td>
+<td>For ordinal ranges, the value must be equal to or lower than this</td>
 <td><a href="../TypeExpression/">TypeExpression</a></td>
 </tr>
 <tr>
@@ -697,8 +701,9 @@ attributes:
     range: integer
   minimum_value:
     name: minimum_value
-    description: for slots with ranges of type number, the value must be equal to
-      or higher than this
+    description: For ordinal ranges, the value must be equal to or higher than this
+    notes:
+    - Range to be refined to an "Ordinal" metaclass - see https://github.com/linkml/linkml/issues/1384#issuecomment-1892721142
     in_subset:
     - SpecificationSubset
     - BasicSubset
@@ -713,11 +718,12 @@ attributes:
     domain_of:
     - type_expression
     - slot_expression
-    range: integer
+    range: Anything
   maximum_value:
     name: maximum_value
-    description: for slots with ranges of type number, the value must be equal to
-      or lowe than this
+    description: For ordinal ranges, the value must be equal to or lower than this
+    notes:
+    - Range to be refined to an "Ordinal" metaclass - see https://github.com/linkml/linkml/issues/1384#issuecomment-1892721142
     in_subset:
     - SpecificationSubset
     - BasicSubset
@@ -732,7 +738,7 @@ attributes:
     domain_of:
     - type_expression
     - slot_expression
-    range: integer
+    range: Anything
   none_of:
     name: none_of
     description: holds if none of the expressions hold

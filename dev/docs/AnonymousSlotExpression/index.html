@@ -416,9 +416,13 @@
 
       AnonymousSlotExpression : maximum_value
 
+          AnonymousSlotExpression --|&gt; Anything : maximum_value
+
       AnonymousSlotExpression : minimum_cardinality
 
       AnonymousSlotExpression : minimum_value
+
+          AnonymousSlotExpression --|&gt; Anything : minimum_value
 
       AnonymousSlotExpression : modified_by
 
@@ -538,14 +542,14 @@
 </tr>
 <tr>
 <td><a href="../minimum_value/">minimum_value</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>for slots with ranges of type number, the value must be equal to or higher th...</td>
+<td>0..1 <br/> <a href="../Anything/">Anything</a></td>
+<td>For ordinal ranges, the value must be equal to or higher than this</td>
 <td><a href="../SlotExpression/">SlotExpression</a></td>
 </tr>
 <tr>
 <td><a href="../maximum_value/">maximum_value</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>for slots with ranges of type number, the value must be equal to or lowe than...</td>
+<td>0..1 <br/> <a href="../Anything/">Anything</a></td>
+<td>For ordinal ranges, the value must be equal to or lower than this</td>
 <td><a href="../SlotExpression/">SlotExpression</a></td>
 </tr>
 <tr>
@@ -1181,8 +1185,9 @@ attributes:
     range: boolean
   minimum_value:
     name: minimum_value
-    description: for slots with ranges of type number, the value must be equal to
-      or higher than this
+    description: For ordinal ranges, the value must be equal to or higher than this
+    notes:
+    - Range to be refined to an "Ordinal" metaclass - see https://github.com/linkml/linkml/issues/1384#issuecomment-1892721142
     in_subset:
     - SpecificationSubset
     - BasicSubset
@@ -1197,11 +1202,12 @@ attributes:
     domain_of:
     - type_expression
     - slot_expression
-    range: integer
+    range: Anything
   maximum_value:
     name: maximum_value
-    description: for slots with ranges of type number, the value must be equal to
-      or lowe than this
+    description: For ordinal ranges, the value must be equal to or lower than this
+    notes:
+    - Range to be refined to an "Ordinal" metaclass - see https://github.com/linkml/linkml/issues/1384#issuecomment-1892721142
     in_subset:
     - SpecificationSubset
     - BasicSubset
@@ -1216,7 +1222,7 @@ attributes:
     domain_of:
     - type_expression
     - slot_expression
-    range: integer
+    range: Anything
   pattern:
     name: pattern
     description: the string value of the slot must conform to this regular expression
