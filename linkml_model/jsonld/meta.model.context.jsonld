@@ -1,10 +1,11 @@
 {
-   "_comments": "Auto generated from meta.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2021-12-28T23:39:06\n    Schema: meta\n    \n    id: https://w3id.org/linkml/meta\n    description: A metamodel for defining linked open data schemas\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from meta.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-07-13T17:56:58\n    Schema: meta\n    metamodel version: 1.7.0\n    model version: 2.0.0\n    \n    id: https://w3id.org/linkml/meta\n    description: The metamodel for schemas defined using the Linked Data Modeling Language framework.\n\nFor more information on LinkML, see [linkml.io](https://linkml.io)\n\nCore metaclasses:\n\n* [SchemaDefinition](https://w3id.org/linkml/SchemaDefinition)\n* [ClassDefinition](https://w3id.org/linkml/ClassDefinition)\n* [SlotDefinition](https://w3id.org/linkml/SlotDefinition)\n* [TypeDefinition](https://w3id.org/linkml/TypeDefinition)\n\nEvery LinkML model instantiates SchemaDefinition, all classes in\nthe model instantiate ClassDefinition, and so on\n\nNote that the LinkML metamodel instantiates itself.\n\nFor a non-normative introduction to LinkML schemas, see the tutorial\nand schema guide on [linkml.io/linkml].\n\nFor canonical reference documentation on any metamodel construct,\nrefer to the official URI for each construct, e.g.\n[https://w3id.org/linkml/is_a](https://w3id.org/linkml/is_a)\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "IAO": {
          "@id": "http://purl.obolibrary.org/obo/IAO_",
          "@prefix": true
       },
+      "NCIT": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#",
       "OIO": "http://www.geneontology.org/formats/oboInOwl#",
       "bibo": "http://purl.org/ontology/bibo/",
       "dcterms": "http://purl.org/dc/terms/",
@@ -14,12 +15,15 @@
       "pav": "http://purl.org/pav/",
       "prov": "http://www.w3.org/ns/prov#",
       "qb": "http://purl.org/linked-data/cube#",
+      "qudt": "http://qudt.org/schema/qudt/",
       "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
       "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
       "schema": "http://schema.org/",
       "sh": "https://w3id.org/shacl/",
       "skos": "http://www.w3.org/2004/02/skos/core#",
+      "skosxl": "http://www.w3.org/2008/05/skos-xl#",
       "swrl": "http://www.w3.org/2003/11/swrl#",
+      "vann": "https://vocab.org/vann/",
       "xsd": "http://www.w3.org/2001/XMLSchema#",
       "@vocab": "https://w3id.org/linkml/",
       "abstract": {
@@ -27,6 +31,15 @@
       },
       "alias": {
          "@id": "skos:prefLabel"
+      },
+      "predicate": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "rdf:predicate"
       },
       "aliases": {
          "@id": "skos:altLabel"
@@ -65,6 +78,13 @@
          "@type": "@id",
          "@id": "skos:broadMatch"
       },
+      "categories": {
+         "@type": "@id",
+         "@id": "dcterms:subject"
+      },
+      "children_are_mutually_disjoint": {
+         "@type": "xsd:boolean"
+      },
       "class_uri": {
          "@type": "@id"
       },
@@ -83,6 +103,9 @@
       },
       "comments": {
          "@id": "skos:note"
+      },
+      "concepts": {
+         "@type": "@id"
       },
       "conforms_to": {
          "@id": "dcterms:conformsTo"
@@ -120,6 +143,9 @@
       "designates_type": {
          "@type": "xsd:boolean"
       },
+      "disjoint_with": {
+         "@type": "@id"
+      },
       "domain": {
          "@type": "@id"
       },
@@ -127,6 +153,12 @@
          "@type": "@id"
       },
       "elseconditions": {
+         "@type": "@id"
+      },
+      "enum_range": {
+         "@type": "@id"
+      },
+      "enum_uri": {
          "@type": "@id"
       },
       "enums": {
@@ -167,26 +199,57 @@
       "has_member": {
          "@type": "@id"
       },
+      "has_quantity_kind": {
+         "@type": "@id",
+         "@id": "qudt:hasQuantityKind"
+      },
       "id": {
          "@type": "@id"
       },
       "identifier": {
          "@type": "xsd:boolean"
       },
+      "iec61360code": {
+         "@id": "qudt:iec61360Code"
+      },
+      "import_from": {
+         "@type": "@id"
+      },
+      "import_map": {
+         "@type": "@id"
+      },
       "imports": {
          "@type": "@id"
+      },
+      "in_language": {
+         "@id": "schema:inLanguage"
       },
       "in_subset": {
          "@type": "@id",
          "@id": "OIO:inSubset"
       },
+      "inapplicable": {
+         "@type": "xsd:boolean"
+      },
+      "include": {
+         "@type": "@id"
+      },
+      "include_self": {
+         "@type": "xsd:boolean"
+      },
       "inherited": {
          "@type": "xsd:boolean"
+      },
+      "inherits": {
+         "@type": "@id"
       },
       "inlined": {
          "@type": "xsd:boolean"
       },
       "inlined_as_list": {
+         "@type": "xsd:boolean"
+      },
+      "interpolated": {
          "@type": "xsd:boolean"
       },
       "inverse": {
@@ -202,6 +265,9 @@
       "is_class_field": {
          "@type": "xsd:boolean"
       },
+      "is_direct": {
+         "@type": "xsd:boolean"
+      },
       "is_grouping_slot": {
          "@type": "xsd:boolean"
       },
@@ -211,12 +277,24 @@
       "key": {
          "@type": "xsd:boolean"
       },
+      "keywords": {
+         "@id": "schema:keywords"
+      },
       "last_updated_on": {
          "@type": "xsd:dateTime",
          "@id": "pav:lastUpdatedOn"
       },
       "license": {
          "@id": "dcterms:license"
+      },
+      "list_elements_ordered": {
+         "@type": "xsd:boolean"
+      },
+      "list_elements_unique": {
+         "@type": "xsd:boolean"
+      },
+      "literal_form": {
+         "@id": "skosxl:literalForm"
       },
       "local_name_value": {
          "@id": "skos:altLabel"
@@ -230,6 +308,9 @@
       "mappings": {
          "@type": "@id",
          "@id": "skos:mappingRelation"
+      },
+      "matches": {
+         "@type": "@id"
       },
       "maximum_cardinality": {
          "@type": "xsd:integer"
@@ -245,6 +326,9 @@
       },
       "minimum_value": {
          "@type": "xsd:integer"
+      },
+      "minus": {
+         "@type": "@id"
       },
       "mixin": {
          "@type": "xsd:boolean"
@@ -273,8 +357,14 @@
       "open_world": {
          "@type": "xsd:boolean"
       },
+      "owned_by": {
+         "@type": "@id"
+      },
       "owner": {
          "@type": "@id"
+      },
+      "partial_match": {
+         "@type": "xsd:boolean"
       },
       "path_rule": {
          "@type": "@id"
@@ -284,10 +374,6 @@
       },
       "postconditions": {
          "@type": "@id"
-      },
-      "precedence": {
-         "@type": "xsd:integer",
-         "@id": "sh:order"
       },
       "preconditions": {
          "@type": "@id",
@@ -311,6 +397,13 @@
          "@type": "@id"
       },
       "range_expression": {
+         "@type": "@id"
+      },
+      "rank": {
+         "@type": "xsd:integer",
+         "@id": "sh:order"
+      },
+      "reachable_from": {
          "@type": "@id"
       },
       "recommended": {
@@ -337,6 +430,9 @@
             "meaning": "@id"
          }
       },
+      "relationship_types": {
+         "@type": "@id"
+      },
       "represents_relationship": {
          "@type": "xsd:boolean"
       },
@@ -353,6 +449,12 @@
       "see_also": {
          "@type": "@id",
          "@id": "rdfs:seeAlso"
+      },
+      "settings": {
+         "@type": "@id"
+      },
+      "shared": {
+         "@type": "xsd:boolean"
       },
       "singular_name": {
          "@id": "skos:altLabel"
@@ -386,9 +488,25 @@
       "source_file_size": {
          "@type": "xsd:integer"
       },
+      "source_nodes": {
+         "@type": "@id"
+      },
+      "source_ontology": {
+         "@type": "@id"
+      },
       "status": {
          "@type": "@id",
          "@id": "bibo:status"
+      },
+      "structured_aliases": {
+         "@type": "@id",
+         "@id": "skosxl:altLabel"
+      },
+      "structured_imports": {
+         "@type": "@id"
+      },
+      "structured_pattern": {
+         "@type": "@id"
       },
       "subclass_of": {
          "@type": "@id",
@@ -400,6 +518,9 @@
       },
       "subsets": {
          "@type": "@id"
+      },
+      "symbol": {
+         "@id": "qudt:symbol"
       },
       "symmetric": {
          "@type": "xsd:boolean"
@@ -417,6 +538,9 @@
       "traverse": {
          "@type": "@id"
       },
+      "traverse_up": {
+         "@type": "xsd:boolean"
+      },
       "tree_root": {
          "@type": "xsd:boolean"
       },
@@ -429,6 +553,9 @@
       "types": {
          "@type": "@id"
       },
+      "ucum_code": {
+         "@id": "qudt:ucumCode"
+      },
       "union_of": {
          "@type": "@id"
       },
@@ -437,6 +564,10 @@
       },
       "unique_keys": {
          "@type": "@id"
+      },
+      "unit": {
+         "@type": "@id",
+         "@id": "qudt:unit"
       },
       "value": {
          "@id": "skos:example"
@@ -454,6 +585,12 @@
       },
       "version": {
          "@id": "pav:version"
+      },
+      "StructuredAlias": {
+         "@id": "skosxl:Label"
+      },
+      "UnitOfMeasure": {
+         "@id": "qudt:Unit"
       }
    }
 }

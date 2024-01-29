@@ -14,7 +14,7 @@ if __name__ == '__main__':
     print(sys.path)
 
 # Configuration
-#   FAIL_ON_ERROR -- True means stop on first error. False says plod on throuth
+#   FAIL_ON_ERROR -- True means stop on first error. False says plod on through
 #   W3ID_SERVER -- from server base
 #   SERVER_DIR  -- from server directory
 FAIL_ON_ERROR = True

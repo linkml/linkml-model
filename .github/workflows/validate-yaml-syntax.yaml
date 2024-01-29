@@ -1,0 +1,17 @@
+name: validate-yaml-syntax
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  validate-yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Validate YAML file
+        run: yamllint -c .yamllint-config linkml_model/model/schema/*.yaml

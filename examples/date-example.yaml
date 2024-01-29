@@ -1,0 +1,42 @@
+id: https://w3id.org/linkml/examples/date
+title: Date Example
+name: date-example
+license: https://creativecommons.org/publicdomain/zero/1.0/
+see_also:
+  - https://github.com/linkml/linkml/issues/621
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  ex: https://w3id.org/linkml/examples/annotations/
+  skos: http://www.w3.org/2004/02/skos/core#
+  pav: http://purl.org/pav/
+  schema: http://schema.org/
+  sh: https://w3id.org/shacl/
+
+default_prefix: ex
+default_range: string
+
+default_curi_maps:
+    - semweb_context
+
+imports:
+  - linkml:types
+
+  
+#==================================
+# Classes                         #
+#==================================
+
+classes:
+  Sample:
+    slots:
+      - collection_date
+
+#==================================
+# Slots                           #
+#==================================
+
+slots:
+  collection_date:
+    range: date_or_datetime
+

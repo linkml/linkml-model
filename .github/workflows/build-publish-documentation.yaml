@@ -1,0 +1,81 @@
+name: Build and deploy documentation
+
+# Controls when the action will run. Triggers the workflow on PR to main
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  github-pages:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+    
+    steps:
+      #----------------------------------------------
+      #       check-out repo and set-up python
+      #----------------------------------------------
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # fetch all commits/branches so that mike works
+
+      - name: Setup Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+              
+      #----------------------------------------------
+      #          install & configure poetry
+      #----------------------------------------------
+      - name: Install Poetry
+        uses: snok/install-poetry@v1.3
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      #----------------------------------------------
+      #       load cached venv if cache exists      
+      #----------------------------------------------
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+
+      #----------------------------------------------
+      # install dependencies if cache does not exist 
+      #----------------------------------------------
+      - name: Install dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root
+
+      - name: Configure git user
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          
+      #----------------------------------------------
+      #           generate markdown files
+      #----------------------------------------------
+      - name: Generate markdown docs from schema
+        run: make gen-doc
+
+      #----------------------------------------------
+      #           deploy documentation
+      #----------------------------------------------
+      - name: Deploy generated docs
+        run: |
+          # generate HTML from markdown and put into dev version
+          poetry run mike deploy dev
+          
+          # switch to gh-pages branch, copy over the latest 404.html from main
+          git checkout --force gh-pages
+          git checkout --force main -- 404.html
+          git commit -m "Add 404.html to root" || echo "No changes to 404.html to commit"
+          
+          # push changes to gh-page branch
+          git push origin gh-pages

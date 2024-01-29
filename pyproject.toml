@@ -1,3 +1,63 @@
+[tool.poetry]
+name = "linkml-model"
+version = "0.0.0"
+description = "Metamodel schema, documentation, and specification for the Linked Open Data Modeling Language (LinkML)"
+license = "MIT"
+authors = [
+    "Chris Mungall <cjmungall@lbl.gov>"
+]
+
+readme = "README.md"
+
+homepage = "https://linkml.io/"
+repository = "https://github.com/linkml/linkml-model/"
+documentation = "https://linkml.io/linkml-model/docs/"
+
+keywords = ["linked data", "linkml", "metamodel"]
+
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Healthcare Industry",
+    "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3.9"
+]
+
+packages = [
+    { include = "linkml_model" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+linkml-runtime = ">=1.5.0"
+
+[tool.poetry.group.dev.dependencies]
+linkml = "^1.6.6"
+codespell = "^2.2.5"
+yamllint = "^1.32.0"
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.4.2"
+mkdocs-material = "^8.2.8"
+mkdocs-mermaid2-plugin = "^0.6.0"
+# Using an unpublished version here because we need a feature which isn't released yet (Aug 2023)
+# See: https://github.com/jimporter/mike/issues/154
+mike = {git = "https://github.com/jimporter/mike.git", rev = "be1aafe"}
+
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta:__legacy__"
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.codespell]
+skip = '.git,*.pdf,*.svg,*.min.*,*.json,*.ttl,*.html,*.jsonld'
+# Ignore table where words could be split across rows, also within HTML for ..</td>
+# Ignore shortcut specifications like [Ff]alse
+# Ignore escaped characters like \n etc
+# ignore-regex = '(\|.*\|.*\|.*\||[a-z]*\.\.\.</td>|\[[A-Z][a-z]\][a-z][a-z]|\\[fnrstv])'
+# ND,LOD - names/keywords
+# ans - variable in JS
+# egal - Harmony egal. 
+ignore-words-list = 'nd,lod,ans,egal,alse'

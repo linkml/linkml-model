@@ -1,3 +1,4 @@
+# metamodel_version: 1.7.0
 {
    "type": "Schema",
    "@context": [
@@ -51,6 +52,11 @@
          "type": "NodeConstraint",
          "id": "https://w3id.org/linkml/Datetime",
          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime"
+      },
+      {
+         "type": "NodeConstraint",
+         "id": "https://w3id.org/linkml/DateOrDatetime",
+         "datatype": "https://w3id.org/linkml/DateOrDatetime"
       },
       {
          "type": "NodeConstraint",
@@ -184,6 +190,20 @@
                      {
                         "type": "TripleConstraint",
                         "predicate": "https://w3id.org/linkml/reporthash",
+                        "valueExpr": "https://w3id.org/linkml/String",
+                        "min": 0,
+                        "max": 1
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "https://w3id.org/linkml/reportmd5",
+                        "valueExpr": "https://w3id.org/linkml/String",
+                        "min": 0,
+                        "max": 1
+                     },
+                     {
+                        "type": "TripleConstraint",
+                        "predicate": "https://w3id.org/linkml/reportsha256",
                         "valueExpr": "https://w3id.org/linkml/String",
                         "min": 0,
                         "max": 1

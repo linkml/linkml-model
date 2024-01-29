@@ -1,0 +1,68 @@
+id: https://w3id.org/linkml/examples/rules
+title: Rules example
+name: rules
+description: This demonstrates the use of rules to be introduced in linkml 1.2
+license: https://creativecommons.org/publicdomain/zero/1.0/
+see_also:
+  - https://github.com/orgs/linkml/projects/3
+  - https://github.com/linkml/linkml/issues/75
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  ex: https://w3id.org/linkml/examples/rules/
+  skos: http://www.w3.org/2004/02/skos/core#
+  pav: http://purl.org/pav/
+  schema: http://schema.org/
+  sh: https://w3id.org/shacl/
+
+default_prefix: ex
+default_range: string
+
+default_curi_maps:
+    - semweb_context
+
+emit_prefixes:
+  - linkml
+  - rdf
+  - rdfs
+  - xsd
+  - owl
+
+imports:
+  - linkml:types
+
+slots:
+  related to:
+    description: >-
+      A relationship that is asserted between two named things
+    domain: named thing
+    range: named thing
+    multivalued: true
+    inherited: true
+    symmetric: true
+    annotations:
+      - tag: biolink:canonical_predicate
+        value: true
+    exact_mappings:
+      - skos:relatedMatch
+      - UMLS:related_to
+    broad_mappings:
+      - owl:topObjectProperty
+    narrow_mappings:
+      - BFO:0000054
+      - GOREL:0002005
+      - GOREL:0012006
+      - RO:0002093
+      - RO:0002092
+      - RO:0002084
+    aliases: ['similar to']
+    structured_aliases:
+      - literal_form: mapped_to
+        predicate: RELATED_SYNONYM
+        source: infores:mesh
+      - literal_form: higher_than
+        predicate: NARROW_SYNONYM
+        source: infores:semmeddb
+      - literal_form: related_to
+        predicate: EXACT_SYNONYM
+        source: infores:bte

@@ -1,6 +1,6 @@
 {
   "name": "reporting",
-  "description": "A datamodel for reports on data",
+  "description": "A datamodel for reports on data, based on SHACL",
   "title": "LinkML Report Metamodel",
   "id": "https://w3id.org/linkml/reporting",
   "imports": [
@@ -147,6 +147,17 @@
       "@type": "TypeDefinition"
     },
     {
+      "name": "date_or_datetime",
+      "definition_uri": "https://w3id.org/linkml/DateOrDatetime",
+      "description": "Either a date or a datetime",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "https://w3id.org/linkml/DateOrDatetime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
       "name": "uriorcurie",
       "definition_uri": "https://w3id.org/linkml/Uriorcurie",
       "description": "a URI or a CURIE",
@@ -184,7 +195,7 @@
       "definition_uri": "https://w3id.org/linkml/Objectidentifier",
       "description": "A URI or CURIE that represents an object in the model.",
       "comments": [
-        "Used for inheritence and type checking"
+        "Used for inheritance and type checking"
       ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
@@ -240,10 +251,10 @@
     {
       "name": "severity_options",
       "definition_uri": "https://w3id.org/linkml/reportSeverityOptions",
+      "from_schema": "https://w3id.org/linkml/reporting",
       "exact_mappings": [
         "sh:Severity"
       ],
-      "from_schema": "https://w3id.org/linkml/reporting",
       "permissible_values": [
         {
           "text": "FATAL"
@@ -267,10 +278,10 @@
     {
       "name": "type",
       "definition_uri": "https://w3id.org/linkml/reporttype",
+      "from_schema": "https://w3id.org/linkml/reporting",
       "mappings": [
         "https://w3id.org/shacl/sourceConstraintComponent"
       ],
-      "from_schema": "https://w3id.org/linkml/reporting",
       "slot_uri": "https://w3id.org/shacl/sourceConstraintComponent",
       "owner": "ValidationResult",
       "domain_of": [
@@ -282,10 +293,10 @@
     {
       "name": "subject",
       "definition_uri": "https://w3id.org/linkml/reportsubject",
+      "from_schema": "https://w3id.org/linkml/reporting",
       "mappings": [
         "https://w3id.org/shacl/focusNode"
       ],
-      "from_schema": "https://w3id.org/linkml/reporting",
       "slot_uri": "https://w3id.org/shacl/focusNode",
       "owner": "ValidationResult",
       "domain_of": [
@@ -297,10 +308,10 @@
     {
       "name": "instantiates",
       "definition_uri": "https://w3id.org/linkml/reportinstantiates",
+      "from_schema": "https://w3id.org/linkml/reporting",
       "exact_mappings": [
         "https://w3id.org/shacl/sourceShape"
       ],
-      "from_schema": "https://w3id.org/linkml/reporting",
       "slot_uri": "https://w3id.org/linkml/reportinstantiates",
       "owner": "ValidationResult",
       "domain_of": [
@@ -312,10 +323,10 @@
     {
       "name": "predicate",
       "definition_uri": "https://w3id.org/linkml/reportpredicate",
+      "from_schema": "https://w3id.org/linkml/reporting",
       "related_mappings": [
         "https://w3id.org/shacl/resultPath"
       ],
-      "from_schema": "https://w3id.org/linkml/reporting",
       "slot_uri": "https://w3id.org/linkml/reportpredicate",
       "owner": "ValidationResult",
       "domain_of": [
@@ -327,10 +338,10 @@
     {
       "name": "object",
       "definition_uri": "https://w3id.org/linkml/reportobject",
+      "from_schema": "https://w3id.org/linkml/reporting",
       "mappings": [
         "https://w3id.org/shacl/value"
       ],
-      "from_schema": "https://w3id.org/linkml/reporting",
       "slot_uri": "https://w3id.org/shacl/value",
       "owner": "ValidationResult",
       "domain_of": [
@@ -352,10 +363,10 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "source",
-      "definition_uri": "https://w3id.org/linkml/reportsource",
+      "name": "node_source",
+      "definition_uri": "https://w3id.org/linkml/reportnode_source",
       "from_schema": "https://w3id.org/linkml/reporting",
-      "slot_uri": "https://w3id.org/linkml/reportsource",
+      "slot_uri": "https://w3id.org/linkml/reportnode_source",
       "owner": "ValidationResult",
       "domain_of": [
         "ValidationResult"
@@ -392,13 +403,13 @@
       "from_schema": "https://w3id.org/linkml/reporting",
       "slot_uri": "https://w3id.org/linkml/reportresults",
       "multivalued": true,
-      "inlined": true,
       "alias": "results",
       "owner": "ValidationReport",
       "domain_of": [
         "ValidationReport"
       ],
       "range": "ValidationResult",
+      "inlined": true,
       "@type": "SlotDefinition"
     }
   ],
@@ -406,14 +417,14 @@
     {
       "name": "ValidationReport",
       "definition_uri": "https://w3id.org/linkml/reportValidationReport",
-      "mappings": [
-        "sh:ValidationReport"
-      ],
       "description": "A report object",
       "todos": [
         "add prov object"
       ],
       "from_schema": "https://w3id.org/linkml/reporting",
+      "mappings": [
+        "sh:ValidationReport"
+      ],
       "slots": [
         "validationReport__results"
       ],
@@ -432,11 +443,11 @@
     {
       "name": "ValidationResult",
       "definition_uri": "https://w3id.org/linkml/reportValidationResult",
+      "description": "An individual result arising from validation of a data instance using a particular rule",
+      "from_schema": "https://w3id.org/linkml/reporting",
       "mappings": [
         "sh:ValidationResult"
       ],
-      "description": "An individual result arising from validation of a data instance using a particular rule",
-      "from_schema": "https://w3id.org/linkml/reporting",
       "slots": [
         "type",
         "severity",
@@ -445,7 +456,7 @@
         "predicate",
         "object",
         "object_str",
-        "source",
+        "node_source",
         "info"
       ],
       "slot_usage": {},
@@ -455,9 +466,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "validation.yaml",
-  "source_file_date": "2021-12-28T23:36:45",
-  "source_file_size": 2927,
-  "generation_date": "2021-12-28T23:38:43",
+  "source_file_date": "2022-07-14T00:55:10",
+  "source_file_size": 2953,
+  "generation_date": "2022-07-14T00:56:06",
   "@type": "SchemaDefinition",
   "@context": [
     "https://w3id.org/linkml/types.context.jsonld",
