@@ -352,8 +352,8 @@ Any instance *s* of a SlotDefinition may have assignments in any of the followin
 | [range](../range.md) | 0..1 <br/> [Element](../Element.md)  | defines the type of the object of the slot   |
 | [range_expression](../range_expression.md) | 0..1 <br/> [AnonymousClassExpression](../AnonymousClassExpression.md)  | A range that is described as a boolean expression combining existing ranges  |
 | [enum_range](../enum_range.md) | 0..1 <br/> [EnumExpression](../EnumExpression.md)  | An inlined enumeration   |
-| [minimum_value](../minimum_value.md) | 0..1 <br/> [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)  | for slots with ranges of type number, the value must be equal to or higher th... |
-| [maximum_value](../maximum_value.md) | 0..1 <br/> [xsd:integer](http://www.w3.org/2001/XMLSchema#integer)  | for slots with ranges of type number, the value must be equal to or lowe than... |
+| [minimum_value](../minimum_value.md) | 0..1 <br/> [linkml:Any](https://linkml.io/linkml-model/latest/docs/Anything/)  | for slots with ordinal ranges, the value must be equal to or higher th... |
+| [maximum_value](../maximum_value.md) | 0..1 <br/> [linkml:Any](https://linkml.io/linkml-model/latest/docs/Anything/)  | for slots with ordinal ranges, the value must be equal to or lowe than... |
 | [structured_pattern](../structured_pattern.md) | 0..1 <br/> [PatternExpression](../PatternExpression.md)  | the string value of the slot must conform to the regular expression in the pa... |
 | [implicit_prefix](../implicit_prefix.md) | 0..1 <br/> [xsd:string](http://www.w3.org/2001/XMLSchema#string)  | Causes the slot value to be interpreted as a uriorcurie after prefixing with ... |
 | [equals_string](../equals_string.md) | 0..1 <br/> [xsd:string](http://www.w3.org/2001/XMLSchema#string)  | the slot must have range string and the value of the slot must equal the spec... |
