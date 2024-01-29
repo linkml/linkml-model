@@ -50,6 +50,7 @@ prefixes:
   vann: https://vocab.org/vann/
   qudt: http://qudt.org/schema/qudt/
   cdisc: http://rdf.cdisc.org/mms#
+  SIO: http://semanticscience.org/resource/SIO_
 
 default_prefix: linkml
 default_range: string
@@ -1636,6 +1637,7 @@ slots:
       - BasicSubset
     see_also:
       - "https://w3id.org/linkml/docs/specification/06mapping/#collection-forms"
+      - https://linkml.io/linkml/schemas/inlining.html
 
   inlined_as_list:
     rank: 27
@@ -1658,6 +1660,7 @@ slots:
       - BasicSubset
     see_also:
       - "https://w3id.org/linkml/docs/specification/06mapping/#collection-forms"
+      - https://linkml.io/linkml/schemas/inlining.html
 
   inlined_as_simple_dict:
     rank: 28
@@ -1796,6 +1799,7 @@ slots:
     multivalued: true
     exact_mappings:
       - schema:domainIncludes
+      - SIO:000011
 
   is_usage_slot:
     domain: slot_definition
@@ -2569,9 +2573,12 @@ classes:
     rank: 5
     aliases:
       - enum
+      - enumeration
+      - semantic enumeration
       - value set
       - term set
       - concept set
+      - code set
       - Terminology Value Set
       - answer list
       - value domain
