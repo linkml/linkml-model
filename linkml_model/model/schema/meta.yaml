@@ -242,11 +242,18 @@ slots:
       - If identifiers are treated as CURIEs, then the CURIE must start with one of the indicated prefixes followed by `:` (_should_ start if the list is open)
       - If identifiers are treated as URIs, then the URI string must start with the expanded for of the prefix (_should_ start if the list is open)
     see_also:
-      - https://github.com/linkml/linkml/issues/194
       - https://github.com/linkml/linkml-model/issues/28
     in_subset:
       - SpecificationSubset
       - BasicSubset
+
+  id_prefixes_are_closed:
+    domain: element
+    range: boolean
+    description: >-
+      If true, then the id_prefixes slot is treated as being closed, and any use of an id that does not have this prefix is considered a violation.
+    see_also:
+      - https://github.com/linkml/linkml/issues/194
 
   description:
     rank: 5
@@ -2403,6 +2410,7 @@ classes:
     slots:
       - name
       - id_prefixes
+      - id_prefixes_are_closed
       - definition_uri
       - local_names
       - conforms_to
