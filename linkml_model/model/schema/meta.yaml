@@ -1420,6 +1420,34 @@ slots:
       - BasicSubset
       - ObjectOrientedProfile
 
+  array_shape:
+    domain: slot_definition
+    range: array_shape_expression
+    inherited: true
+    description: coerces the value of the slot into an array and defines the dimensions of that array
+
+  array_axes:
+    description: definitions of each axis in the array
+    domain: array_shape_expression
+    range: array_axis_expression
+    multivalued: true
+    inlined: true
+
+  minimum_dimensions:
+    description: minimum number of dimensions in the array
+    domain: array_shape_expression
+    range: integer
+
+  maximum_dimensions:
+    description: maximum number of dimensions in the array
+    domain: array_shape_expression
+    range: integer
+
+  exact_dimensions:
+    description: exact number of dimensions in the array
+    domain: array_shape_expression
+    range: integer
+
   inherited:
     domain: slot_definition
     range: boolean
@@ -1518,6 +1546,14 @@ slots:
     see_also:
       - https://linkml.io/linkml/developers/inference.html
       - https://linkml.io/linkml/schemas/advanced.html#equals-expression
+    in_subset:
+      - SpecificationSubset
+
+  exact_cardinality:
+    is_a: list_value_specification_constant
+    range: integer
+    inherited: true
+    description: the exact number of entries for a multivalued slot
     in_subset:
       - SpecificationSubset
 
@@ -2715,6 +2751,7 @@ classes:
       - equals_string_in
       - equals_number
       - equals_expression
+      - exact_cardinality
       - minimum_cardinality
       - maximum_cardinality
       - has_member
@@ -2759,6 +2796,7 @@ classes:
       - domain
       - slot_uri
       - multivalued
+      - array_shape
       - inherited
       - readonly
       - ifabsent
@@ -2916,6 +2954,33 @@ classes:
       - swrl:Imp
     in_subset:
       - SpecificationSubset
+
+  array_shape_expression:
+    description: defines the dimensions of an array
+    mixins:
+      - extensible
+      - annotatable
+      - common_metadata
+    slots:
+      - exact_dimensions
+      - minimum_dimensions
+      - maximum_dimensions
+      - array_axes
+
+  array_axis_expression:
+    description: defines one of the dimensions of an array
+    mixins:
+      - extensible
+      - annotatable
+      - common_metadata
+    slots:
+      - name
+      - rank
+      - equals_expression
+      - alias
+      - maximum_cardinality
+      - minimum_cardinality
+      - exact_cardinality
 
   pattern_expression:
     description: a regular expression pattern used to evaluate conformance of a string
