@@ -24,7 +24,6 @@
 #
 #   * [MinimalSubset](https://w3id.org/linkml/MinimalSubset)
 #   * [BasicSubset](https://w3id.org/linkml/BasicSubset)
-#   * [BasicSubset](https://w3id.org/linkml/BasicSubset)
 #
 #   For canonical reference documentation on any metamodel construct,
 #   refer to the official URI for each construct, e.g.
