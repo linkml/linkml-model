@@ -1427,10 +1427,10 @@ slots:
     description: coerces the value of the slot into an array and defines the dimensions of that array
     status: testing
 
-  array_axes:
+  dimensions:
     description: definitions of each axis in the array
     domain: array_info_expression
-    range: array_axis_expression
+    range: dimension_expression
     multivalued: true
     inlined: true
     status: testing
@@ -2970,10 +2970,10 @@ classes:
       - exact_dimensions
       - minimum_dimensions
       - maximum_dimensions
-      - array_axes
+      - dimensions
     status: testing
 
-  array_axis_expression:
+  dimension_expression:
     description: defines one of the dimensions of an array
     mixins:
       - extensible
