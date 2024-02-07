@@ -1419,36 +1419,48 @@ slots:
       - BasicSubset
       - ObjectOrientedProfile
 
-  array_info:
+  array:
     domain: slot_definition
-    range: array_info_expression
+    range: array_expression
     inherited: true
     description: coerces the value of the slot into an array and defines the dimensions of that array
     status: testing
 
-  dimensions_info:
+  dimensions:
+    aliases:
+      - dimensions
     description: definitions of each axis in the array
-    domain: array_info_expression
+    domain: array_expression
     range: dimension_expression
     multivalued: true
+    list_elements_ordered: true
     status: testing
 
   minimum_dimensions:
     description: minimum number of dimensions in the array
-    domain: array_info_expression
+    domain: array_expression
     range: integer
     status: testing
+    minimum_value: 1
 
   maximum_dimensions:
     description: maximum number of dimensions in the array
-    domain: array_info_expression
+    domain: array_expression
     range: integer
     status: testing
+    minimum_value: 1
 
   exact_dimensions:
     description: exact number of dimensions in the array
-    domain: array_info_expression
+    domain: array_expression
     range: integer
+    status: testing
+    minimum_value: 1
+
+  has_extra_dimensions:
+    description: If this is set to true
+    domain: array_expression
+    range: boolean
     status: testing
 
   inherited:
@@ -1558,7 +1570,9 @@ slots:
     inherited: true
     description: the exact number of entries for a multivalued slot
     in_subset:
-      - SpecificationSubset
+      - SpecificationSubse
+    comments:
+      - if exact_cardinality is set, then minimum_cardinalty and maximum_cardinality must be unset or have the same value
 
   minimum_cardinality:
     is_a: list_value_specification_constant
@@ -1567,6 +1581,7 @@ slots:
     description: the minimum number of entries for a multivalued slot
     in_subset:
       - SpecificationSubset
+    minimum_value: 0
 
   maximum_cardinality:
     is_a: list_value_specification_constant
@@ -1575,6 +1590,9 @@ slots:
     description: the maximum number of entries for a multivalued slot
     in_subset:
       - SpecificationSubset
+    comments:
+      - maximum_cardinality cannot be less than minimum_cardinality
+    minimum_value: 0
 
   equals_string_in:
     is_a: list_value_specification_constant
@@ -2799,7 +2817,7 @@ classes:
       - domain
       - slot_uri
       - multivalued
-      - array_info
+      - array
       - inherited
       - readonly
       - ifabsent
@@ -2958,7 +2976,7 @@ classes:
     in_subset:
       - SpecificationSubset
 
-  array_info_expression:
+  array_expression:
     description: defines the dimensions of an array
     mixins:
       - extensible
@@ -2968,7 +2986,8 @@ classes:
       - exact_dimensions
       - minimum_dimensions
       - maximum_dimensions
-      - dimensions_info
+      - has_extra_dimensions
+      - dimensions
     status: testing
 
   dimension_expression:
