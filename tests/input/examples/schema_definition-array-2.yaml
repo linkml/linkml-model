@@ -26,7 +26,7 @@ classes:
     implements:
       - linkml:NDArray
     annotations:
-      dimensions: "1"
+      dimensions_info: "1"
     # TODO abstract from children
 
   IrregularlySampledTimestampSeries:
@@ -47,7 +47,7 @@ classes:
         unit:
           ucum_code: s
     annotations:
-      dimensions: "1"
+      dimensions_info: "1"
 
   RegularlySampledTimestampSeries:
     is_a: TimestampSeries
@@ -82,7 +82,7 @@ classes:
         unit:
           ucum_code: s
     annotations:
-      dimensions: "1"
+      dimensions_info: "1"
 
   Electrode:
     attributes:
@@ -106,7 +106,7 @@ classes:
         implements:
           - linkml:elements
     annotations:
-      dimensions: "1"
+      dimensions_info: "1"
 
   ElectricalDataMatrix:
     description: >-
@@ -125,7 +125,7 @@ classes:
         unit:
           ucum_code: V
     annotations:
-      dimensions: 3
+      dimensions_info: 3
 
   ElectricalDataArray:
     implements:
@@ -154,7 +154,7 @@ classes:
         implements:
           - linkml:array
     annotations:
-      dimensions: 2
+      dimensions_info: 2
 
   IrregularlySampledElectricalDataArray:
     is_a: ElectricalDataArray
@@ -162,7 +162,7 @@ classes:
       time:
         range: IrregularlySampledTimestampSeries
     annotations:
-      dimensions: 2
+      dimensions_info: 2
 
   RegularlySampledElectricalDataArray:
     is_a: ElectricalDataArray
@@ -170,7 +170,7 @@ classes:
       time:
         range: RegularlySampledTimestampSeries
     annotations:
-      dimensions: 2
+      dimensions_info: 2
 
   File:
     tree_root: true
