@@ -1425,6 +1425,7 @@ slots:
     range: array_info_expression
     inherited: true
     description: coerces the value of the slot into an array and defines the dimensions of that array
+    status: testing
 
   array_axes:
     description: definitions of each axis in the array
@@ -1432,21 +1433,25 @@ slots:
     range: array_axis_expression
     multivalued: true
     inlined: true
+    status: testing
 
   minimum_dimensions:
     description: minimum number of dimensions in the array
     domain: array_info_expression
     range: integer
+    status: testing
 
   maximum_dimensions:
     description: maximum number of dimensions in the array
     domain: array_info_expression
     range: integer
+    status: testing
 
   exact_dimensions:
     description: exact number of dimensions in the array
     domain: array_info_expression
     range: integer
+    status: testing
 
   inherited:
     domain: slot_definition
@@ -2966,6 +2971,7 @@ classes:
       - minimum_dimensions
       - maximum_dimensions
       - array_axes
+    status: testing
 
   array_axis_expression:
     description: defines one of the dimensions of an array
@@ -2981,6 +2987,7 @@ classes:
       - maximum_cardinality
       - minimum_cardinality
       - exact_cardinality
+    status: testing
 
   pattern_expression:
     description: a regular expression pattern used to evaluate conformance of a string
