@@ -1444,11 +1444,17 @@ slots:
     minimum_value: 1
 
   maximum_number_dimensions:
-    description: maximum number of dimensions in the array
+    description: maximum number of dimensions in the array, or False if explicitly no maximum.
+      If this is unset, and an explicit list of dimensions are passed using dimensions, then this is interpreted
+      as a closed list and the maximum_number_dimensions is the length of the dimensions list, unless this
+      value is set to False
     domain: array_expression
-    range: integer
+    range: Anything
+    any_of:
+      - range: integer
+        minimum_value: 0
+      - range: boolean
     status: testing
-    minimum_value: 1
 
   exact_number_dimensions:
     description: exact number of dimensions in the array
@@ -2998,7 +3004,6 @@ classes:
       - common_metadata
     slots:
       - alias
-      - equals_expression
       - maximum_cardinality
       - minimum_cardinality
       - exact_cardinality
