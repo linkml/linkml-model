@@ -350,6 +350,8 @@
 
       SlotExpression : equals_string_in
 
+      SlotExpression : exact_cardinality
+
       SlotExpression : exactly_one_of
 
           SlotExpression --|&gt; anonymous_slot_expression : exactly_one_of
@@ -532,6 +534,12 @@
 <td><a href="../equals_expression/">equals_expression</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>the value of the slot must equal the value of the evaluated expression</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../exact_cardinality/">exact_cardinality</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the exact number of entries for a multivalued slot</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -728,6 +736,7 @@ slots:
 - equals_string_in
 - equals_number
 - equals_expression
+- exact_cardinality
 - minimum_cardinality
 - maximum_cardinality
 - has_member
@@ -1157,9 +1166,29 @@ attributes:
     domain_of:
     - slot_expression
     range: string
+  exact_cardinality:
+    name: exact_cardinality
+    description: the exact number of entries for a multivalued slot
+    comments:
+    - if exact_cardinality is set, then minimum_cardinalty and maximum_cardinality
+      must be unset or have the same value
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    is_a: list_value_specification_constant
+    inherited: true
+    alias: exact_cardinality
+    owner: slot_expression
+    domain_of:
+    - slot_expression
+    - dimension_expression
+    range: integer
   minimum_cardinality:
     name: minimum_cardinality
     description: the minimum number of entries for a multivalued slot
+    comments:
+    - minimum_cardinality cannot be greater than maximum_cardinality
     in_subset:
     - SpecificationSubset
     from_schema: https://w3id.org/linkml/meta
@@ -1170,10 +1199,13 @@ attributes:
     owner: slot_expression
     domain_of:
     - slot_expression
+    - dimension_expression
     range: integer
   maximum_cardinality:
     name: maximum_cardinality
     description: the maximum number of entries for a multivalued slot
+    comments:
+    - maximum_cardinality cannot be less than minimum_cardinality
     in_subset:
     - SpecificationSubset
     from_schema: https://w3id.org/linkml/meta
@@ -1184,6 +1216,7 @@ attributes:
     owner: slot_expression
     domain_of:
     - slot_expression
+    - dimension_expression
     range: integer
   has_member:
     name: has_member
