@@ -16,18 +16,20 @@ default_range: string
 imports:
   - linkml:types
 
-types:
+classes:
 
   Any:
     class_uri: linkml:Any
     description: An unconstrained type or object
 
+types:
+
   any_number:
     description: A number of any type
-    any_of:
-      - typeof: integer
-      - typeof: float
-      - typeof: decimal
+    union_of:
+      - integer
+      - float
+      - decimal
 
   signedinteger:
     typeof: integer
@@ -141,11 +143,11 @@ types:
     see_also:
       - https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float32
 
-    float64:
-      aliases:
-      - d
-      typeof: float
-      description: A 64-bit floating point number
-      see_also:
-        - https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64
+  float64:
+    aliases:
+    - d
+    typeof: float
+    description: A 64-bit floating point number
+    see_also:
+      - https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float64
 
