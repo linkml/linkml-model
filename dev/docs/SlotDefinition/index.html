@@ -330,31 +330,31 @@
 
       SlotDefinition : all_members
 
-          SlotDefinition --|&gt; anonymous_slot_expression : all_members
+          SlotDefinition --&gt; anonymous_slot_expression : all_members
 
       SlotDefinition : all_of
 
-          SlotDefinition --|&gt; anonymous_slot_expression : all_of
+          SlotDefinition --&gt; anonymous_slot_expression : all_of
 
       SlotDefinition : alt_descriptions
 
-          SlotDefinition --|&gt; alt_description : alt_descriptions
+          SlotDefinition --&gt; alt_description : alt_descriptions
 
       SlotDefinition : annotations
 
-          SlotDefinition --|&gt; annotation : annotations
+          SlotDefinition --&gt; annotation : annotations
 
       SlotDefinition : any_of
 
-          SlotDefinition --|&gt; anonymous_slot_expression : any_of
+          SlotDefinition --&gt; anonymous_slot_expression : any_of
 
       SlotDefinition : apply_to
 
-          SlotDefinition --|&gt; slot_definition : apply_to
+          SlotDefinition --&gt; slot_definition : apply_to
 
       SlotDefinition : array
 
-          SlotDefinition --|&gt; array_expression : array
+          SlotDefinition --&gt; array_expression : array
 
       SlotDefinition : asymmetric
 
@@ -390,19 +390,19 @@
 
       SlotDefinition : disjoint_with
 
-          SlotDefinition --|&gt; slot_definition : disjoint_with
+          SlotDefinition --&gt; slot_definition : disjoint_with
 
       SlotDefinition : domain
 
-          SlotDefinition --|&gt; class_definition : domain
+          SlotDefinition --&gt; class_definition : domain
 
       SlotDefinition : domain_of
 
-          SlotDefinition --|&gt; class_definition : domain_of
+          SlotDefinition --&gt; class_definition : domain_of
 
       SlotDefinition : enum_range
 
-          SlotDefinition --|&gt; enum_expression : enum_range
+          SlotDefinition --&gt; enum_expression : enum_range
 
       SlotDefinition : equals_expression
 
@@ -418,23 +418,25 @@
 
       SlotDefinition : exactly_one_of
 
-          SlotDefinition --|&gt; anonymous_slot_expression : exactly_one_of
+          SlotDefinition --&gt; anonymous_slot_expression : exactly_one_of
 
       SlotDefinition : examples
 
-          SlotDefinition --|&gt; example : examples
+          SlotDefinition --&gt; example : examples
 
       SlotDefinition : extensions
 
-          SlotDefinition --|&gt; extension : extensions
+          SlotDefinition --&gt; extension : extensions
 
       SlotDefinition : from_schema
 
       SlotDefinition : has_member
 
-          SlotDefinition --|&gt; anonymous_slot_expression : has_member
+          SlotDefinition --&gt; anonymous_slot_expression : has_member
 
       SlotDefinition : id_prefixes
+
+      SlotDefinition : id_prefixes_are_closed
 
       SlotDefinition : identifier
 
@@ -450,7 +452,7 @@
 
       SlotDefinition : in_subset
 
-          SlotDefinition --|&gt; subset_definition : in_subset
+          SlotDefinition --&gt; subset_definition : in_subset
 
       SlotDefinition : inherited
 
@@ -462,13 +464,13 @@
 
       SlotDefinition : inverse
 
-          SlotDefinition --|&gt; slot_definition : inverse
+          SlotDefinition --&gt; slot_definition : inverse
 
       SlotDefinition : irreflexive
 
       SlotDefinition : is_a
 
-          SlotDefinition --|&gt; slot_definition : is_a
+          SlotDefinition --&gt; slot_definition : is_a
 
       SlotDefinition : is_class_field
 
@@ -488,7 +490,7 @@
 
       SlotDefinition : local_names
 
-          SlotDefinition --|&gt; local_name : local_names
+          SlotDefinition --&gt; local_name : local_names
 
       SlotDefinition : locally_reflexive
 
@@ -498,19 +500,19 @@
 
       SlotDefinition : maximum_value
 
-          SlotDefinition --|&gt; Anything : maximum_value
+          SlotDefinition --&gt; Anything : maximum_value
 
       SlotDefinition : minimum_cardinality
 
       SlotDefinition : minimum_value
 
-          SlotDefinition --|&gt; Anything : minimum_value
+          SlotDefinition --&gt; Anything : minimum_value
 
       SlotDefinition : mixin
 
       SlotDefinition : mixins
 
-          SlotDefinition --|&gt; slot_definition : mixins
+          SlotDefinition --&gt; slot_definition : mixins
 
       SlotDefinition : modified_by
 
@@ -522,27 +524,27 @@
 
       SlotDefinition : none_of
 
-          SlotDefinition --|&gt; anonymous_slot_expression : none_of
+          SlotDefinition --&gt; anonymous_slot_expression : none_of
 
       SlotDefinition : notes
 
       SlotDefinition : owner
 
-          SlotDefinition --|&gt; definition : owner
+          SlotDefinition --&gt; definition : owner
 
       SlotDefinition : path_rule
 
-          SlotDefinition --|&gt; path_expression : path_rule
+          SlotDefinition --&gt; path_expression : path_rule
 
       SlotDefinition : pattern
 
       SlotDefinition : range
 
-          SlotDefinition --|&gt; element : range
+          SlotDefinition --&gt; element : range
 
       SlotDefinition : range_expression
 
-          SlotDefinition --|&gt; anonymous_class_expression : range_expression
+          SlotDefinition --&gt; anonymous_class_expression : range_expression
 
       SlotDefinition : rank
 
@@ -554,13 +556,13 @@
 
       SlotDefinition : reflexive_transitive_form_of
 
-          SlotDefinition --|&gt; slot_definition : reflexive_transitive_form_of
+          SlotDefinition --&gt; slot_definition : reflexive_transitive_form_of
 
       SlotDefinition : related_mappings
 
       SlotDefinition : relational_role
 
-          SlotDefinition --|&gt; relational_role_enum : relational_role
+          SlotDefinition --&gt; relational_role_enum : relational_role
 
       SlotDefinition : required
 
@@ -574,7 +576,7 @@
 
       SlotDefinition : slot_group
 
-          SlotDefinition --|&gt; slot_definition : slot_group
+          SlotDefinition --&gt; slot_definition : slot_group
 
       SlotDefinition : slot_uri
 
@@ -586,15 +588,15 @@
 
       SlotDefinition : structured_aliases
 
-          SlotDefinition --|&gt; structured_alias : structured_aliases
+          SlotDefinition --&gt; structured_alias : structured_aliases
 
       SlotDefinition : structured_pattern
 
-          SlotDefinition --|&gt; pattern_expression : structured_pattern
+          SlotDefinition --&gt; pattern_expression : structured_pattern
 
       SlotDefinition : subproperty_of
 
-          SlotDefinition --|&gt; slot_definition : subproperty_of
+          SlotDefinition --&gt; slot_definition : subproperty_of
 
       SlotDefinition : symmetric
 
@@ -606,21 +608,21 @@
 
       SlotDefinition : transitive_form_of
 
-          SlotDefinition --|&gt; slot_definition : transitive_form_of
+          SlotDefinition --&gt; slot_definition : transitive_form_of
 
       SlotDefinition : union_of
 
-          SlotDefinition --|&gt; slot_definition : union_of
+          SlotDefinition --&gt; slot_definition : union_of
 
       SlotDefinition : unit
 
-          SlotDefinition --|&gt; UnitOfMeasure : unit
+          SlotDefinition --&gt; UnitOfMeasure : unit
 
       SlotDefinition : usage_slot_name
 
       SlotDefinition : value_presence
 
-          SlotDefinition --|&gt; presence_enum : value_presence
+          SlotDefinition --&gt; presence_enum : value_presence
 
       SlotDefinition : values_from
 
@@ -1089,6 +1091,12 @@
 <td><a href="../id_prefixes/">id_prefixes</a></td>
 <td>0..* <br/> <a href="../Ncname/">Ncname</a></td>
 <td>An allowed list of prefixes for which identifiers must conform</td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>If true, then the id_prefixes slot is treated as being closed, and any use of...</td>
 <td><a href="../Element/">Element</a></td>
 </tr>
 <tr>
@@ -3377,7 +3385,6 @@ attributes:
     - BasicSubset
     from_schema: https://w3id.org/linkml/meta
     see_also:
-    - https://github.com/linkml/linkml/issues/194
     - https://github.com/linkml/linkml-model/issues/28
     rank: 1000
     domain: element
@@ -3387,6 +3394,20 @@ attributes:
     domain_of:
     - element
     range: ncname
+  id_prefixes_are_closed:
+    name: id_prefixes_are_closed
+    description: If true, then the id_prefixes slot is treated as being closed, and
+      any use of an id that does not have this prefix is considered a violation.
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://github.com/linkml/linkml/issues/194
+    rank: 1000
+    domain: element
+    alias: id_prefixes_are_closed
+    owner: slot_definition
+    domain_of:
+    - element
+    range: boolean
   definition_uri:
     name: definition_uri
     description: The native URI of the element. This is always within the namespace

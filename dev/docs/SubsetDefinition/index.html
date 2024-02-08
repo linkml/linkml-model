@@ -320,11 +320,11 @@
 
       SubsetDefinition : alt_descriptions
 
-          SubsetDefinition --|&gt; alt_description : alt_descriptions
+          SubsetDefinition --&gt; alt_description : alt_descriptions
 
       SubsetDefinition : annotations
 
-          SubsetDefinition --|&gt; annotation : annotations
+          SubsetDefinition --&gt; annotation : annotations
 
       SubsetDefinition : broad_mappings
 
@@ -356,15 +356,17 @@
 
       SubsetDefinition : examples
 
-          SubsetDefinition --|&gt; example : examples
+          SubsetDefinition --&gt; example : examples
 
       SubsetDefinition : extensions
 
-          SubsetDefinition --|&gt; extension : extensions
+          SubsetDefinition --&gt; extension : extensions
 
       SubsetDefinition : from_schema
 
       SubsetDefinition : id_prefixes
+
+      SubsetDefinition : id_prefixes_are_closed
 
       SubsetDefinition : implements
 
@@ -374,7 +376,7 @@
 
       SubsetDefinition : in_subset
 
-          SubsetDefinition --|&gt; subset_definition : in_subset
+          SubsetDefinition --&gt; subset_definition : in_subset
 
       SubsetDefinition : instantiates
 
@@ -384,7 +386,7 @@
 
       SubsetDefinition : local_names
 
-          SubsetDefinition --|&gt; local_name : local_names
+          SubsetDefinition --&gt; local_name : local_names
 
       SubsetDefinition : mappings
 
@@ -408,7 +410,7 @@
 
       SubsetDefinition : structured_aliases
 
-          SubsetDefinition --|&gt; structured_alias : structured_aliases
+          SubsetDefinition --&gt; structured_alias : structured_aliases
 
       SubsetDefinition : title
 
@@ -444,6 +446,12 @@
 <td><a href="../id_prefixes/">id_prefixes</a></td>
 <td>0..* <br/> <a href="../Ncname/">Ncname</a></td>
 <td>An allowed list of prefixes for which identifiers must conform</td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>If true, then the id_prefixes slot is treated as being closed, and any use of...</td>
 <td><a href="../Element/">Element</a></td>
 </tr>
 <tr>
@@ -930,7 +938,6 @@ attributes:
     - BasicSubset
     from_schema: https://w3id.org/linkml/meta
     see_also:
-    - https://github.com/linkml/linkml/issues/194
     - https://github.com/linkml/linkml-model/issues/28
     rank: 1000
     domain: element
@@ -940,6 +947,20 @@ attributes:
     domain_of:
     - element
     range: ncname
+  id_prefixes_are_closed:
+    name: id_prefixes_are_closed
+    description: If true, then the id_prefixes slot is treated as being closed, and
+      any use of an id that does not have this prefix is considered a violation.
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://github.com/linkml/linkml/issues/194
+    rank: 1000
+    domain: element
+    alias: id_prefixes_are_closed
+    owner: subset_definition
+    domain_of:
+    - element
+    range: boolean
   definition_uri:
     name: definition_uri
     description: The native URI of the element. This is always within the namespace

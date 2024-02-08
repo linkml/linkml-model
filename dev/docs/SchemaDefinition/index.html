@@ -330,11 +330,11 @@
 
       SchemaDefinition : alt_descriptions
 
-          SchemaDefinition --|&gt; alt_description : alt_descriptions
+          SchemaDefinition --&gt; alt_description : alt_descriptions
 
       SchemaDefinition : annotations
 
-          SchemaDefinition --|&gt; annotation : annotations
+          SchemaDefinition --&gt; annotation : annotations
 
       SchemaDefinition : broad_mappings
 
@@ -342,7 +342,7 @@
 
       SchemaDefinition : classes
 
-          SchemaDefinition --|&gt; class_definition : classes
+          SchemaDefinition --&gt; class_definition : classes
 
       SchemaDefinition : close_mappings
 
@@ -362,7 +362,7 @@
 
       SchemaDefinition : default_range
 
-          SchemaDefinition --|&gt; type_definition : default_range
+          SchemaDefinition --&gt; type_definition : default_range
 
       SchemaDefinition : definition_uri
 
@@ -378,17 +378,17 @@
 
       SchemaDefinition : enums
 
-          SchemaDefinition --|&gt; enum_definition : enums
+          SchemaDefinition --&gt; enum_definition : enums
 
       SchemaDefinition : exact_mappings
 
       SchemaDefinition : examples
 
-          SchemaDefinition --|&gt; example : examples
+          SchemaDefinition --&gt; example : examples
 
       SchemaDefinition : extensions
 
-          SchemaDefinition --|&gt; extension : extensions
+          SchemaDefinition --&gt; extension : extensions
 
       SchemaDefinition : from_schema
 
@@ -397,6 +397,8 @@
       SchemaDefinition : id
 
       SchemaDefinition : id_prefixes
+
+      SchemaDefinition : id_prefixes_are_closed
 
       SchemaDefinition : implements
 
@@ -408,7 +410,7 @@
 
       SchemaDefinition : in_subset
 
-          SchemaDefinition --|&gt; subset_definition : in_subset
+          SchemaDefinition --&gt; subset_definition : in_subset
 
       SchemaDefinition : instantiates
 
@@ -420,7 +422,7 @@
 
       SchemaDefinition : local_names
 
-          SchemaDefinition --|&gt; local_name : local_names
+          SchemaDefinition --&gt; local_name : local_names
 
       SchemaDefinition : mappings
 
@@ -436,7 +438,7 @@
 
       SchemaDefinition : prefixes
 
-          SchemaDefinition --|&gt; prefix : prefixes
+          SchemaDefinition --&gt; prefix : prefixes
 
       SchemaDefinition : rank
 
@@ -446,11 +448,11 @@
 
       SchemaDefinition : settings
 
-          SchemaDefinition --|&gt; setting : settings
+          SchemaDefinition --&gt; setting : settings
 
       SchemaDefinition : slot_definitions
 
-          SchemaDefinition --|&gt; slot_definition : slot_definitions
+          SchemaDefinition --&gt; slot_definition : slot_definitions
 
       SchemaDefinition : slot_names_unique
 
@@ -466,11 +468,11 @@
 
       SchemaDefinition : structured_aliases
 
-          SchemaDefinition --|&gt; structured_alias : structured_aliases
+          SchemaDefinition --&gt; structured_alias : structured_aliases
 
       SchemaDefinition : subsets
 
-          SchemaDefinition --|&gt; subset_definition : subsets
+          SchemaDefinition --&gt; subset_definition : subsets
 
       SchemaDefinition : title
 
@@ -478,7 +480,7 @@
 
       SchemaDefinition : types
 
-          SchemaDefinition --|&gt; type_definition : types
+          SchemaDefinition --&gt; type_definition : types
 
       SchemaDefinition : version
 
@@ -638,6 +640,12 @@
 <td><a href="../id_prefixes/">id_prefixes</a></td>
 <td>0..* <br/> <a href="../Ncname/">Ncname</a></td>
 <td>An allowed list of prefixes for which identifiers must conform</td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>If true, then the id_prefixes slot is treated as being closed, and any use of...</td>
 <td><a href="../Element/">Element</a></td>
 </tr>
 <tr>
@@ -1522,7 +1530,6 @@ attributes:
     - BasicSubset
     from_schema: https://w3id.org/linkml/meta
     see_also:
-    - https://github.com/linkml/linkml/issues/194
     - https://github.com/linkml/linkml-model/issues/28
     rank: 1000
     domain: element
@@ -1532,6 +1539,20 @@ attributes:
     domain_of:
     - element
     range: ncname
+  id_prefixes_are_closed:
+    name: id_prefixes_are_closed
+    description: If true, then the id_prefixes slot is treated as being closed, and
+      any use of an id that does not have this prefix is considered a violation.
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://github.com/linkml/linkml/issues/194
+    rank: 1000
+    domain: element
+    alias: id_prefixes_are_closed
+    owner: schema_definition
+    domain_of:
+    - element
+    range: boolean
   definition_uri:
     name: definition_uri
     description: The native URI of the element. This is always within the namespace

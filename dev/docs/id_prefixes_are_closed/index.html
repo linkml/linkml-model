@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://linkml.io/linkml-model/latest/docs/id_prefixes/">
+        <link rel="canonical" href="https://linkml.io/linkml-model/latest/docs/id_prefixes_are_closed/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: id_prefixes - LinkML Model</title>
+        <title>Slot: id_prefixes_are_closed - LinkML Model</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-id_prefixes" class="md-skip">
+        <a href="#slot-id_prefixes_are_closed" class="md-skip">
           Skip to content
         </a>
       
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: id_prefixes
+              Slot: id_prefixes_are_closed
             
           </span>
         </div>
@@ -574,13 +574,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    Comments
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#see-also" class="md-nav__link">
     See Also
   </a>
@@ -629,9 +622,9 @@
                   
 
 
-<h1 id="slot-id_prefixes">Slot: id_prefixes</h1>
-<p><em>An allowed list of prefixes for which identifiers must conform. The identifier of this class or slot must begin with the URIs referenced by this prefix</em></p>
-<p>URI: <a href="https://w3id.org/linkml/id_prefixes">linkml:id_prefixes</a></p>
+<h1 id="slot-id_prefixes_are_closed">Slot: id_prefixes_are_closed</h1>
+<p><em>If true, then the id_prefixes slot is treated as being closed, and any use of an id that does not have this prefix is considered a violation.</em></p>
+<p>URI: <a href="https://w3id.org/linkml/id_prefixes_are_closed">linkml:id_prefixes_are_closed</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -688,22 +681,11 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../Ncname/">Ncname</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
-</li>
-</ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Order of elements may be used to indicate priority order</li>
-<li>If identifiers are treated as CURIEs, then the CURIE must start with one of the indicated prefixes followed by <code>:</code> (<em>should</em> start if the list is open)</li>
-<li>If identifiers are treated as URIs, then the URI string must start with the expanded for of the prefix (<em>should</em> start if the list is open)</li>
+<li>Range: <a href="../Boolean/">Boolean</a></li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="https://github.com/linkml/linkml-model/issues/28">https://github.com/linkml/linkml-model/issues/28</a></li>
+<li><a href="https://github.com/linkml/linkml/issues/194">https://github.com/linkml/linkml/issues/194</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -713,28 +695,18 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: id_prefixes
-description: An allowed list of prefixes for which identifiers must conform. The identifier
-  of this class or slot must begin with the URIs referenced by this prefix
-comments:
-- Order of elements may be used to indicate priority order
-- If identifiers are treated as CURIEs, then the CURIE must start with one of the
-  indicated prefixes followed by `:` (_should_ start if the list is open)
-- If identifiers are treated as URIs, then the URI string must start with the expanded
-  for of the prefix (_should_ start if the list is open)
-in_subset:
-- SpecificationSubset
-- BasicSubset
+<pre><code class="language-yaml">name: id_prefixes_are_closed
+description: If true, then the id_prefixes slot is treated as being closed, and any
+  use of an id that does not have this prefix is considered a violation.
 from_schema: https://w3id.org/linkml/meta
 see_also:
-- https://github.com/linkml/linkml-model/issues/28
+- https://github.com/linkml/linkml/issues/194
 rank: 1000
 domain: element
-multivalued: true
-alias: id_prefixes
+alias: id_prefixes_are_closed
 domain_of:
 - element
-range: ncname
+range: boolean
 
 </code></pre>
 

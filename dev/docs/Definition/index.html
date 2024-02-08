@@ -336,15 +336,15 @@
 
       Definition : alt_descriptions
 
-          Definition --|&gt; alt_description : alt_descriptions
+          Definition --&gt; alt_description : alt_descriptions
 
       Definition : annotations
 
-          Definition --|&gt; annotation : annotations
+          Definition --&gt; annotation : annotations
 
       Definition : apply_to
 
-          Definition --|&gt; definition : apply_to
+          Definition --&gt; definition : apply_to
 
       Definition : broad_mappings
 
@@ -376,15 +376,17 @@
 
       Definition : examples
 
-          Definition --|&gt; example : examples
+          Definition --&gt; example : examples
 
       Definition : extensions
 
-          Definition --|&gt; extension : extensions
+          Definition --&gt; extension : extensions
 
       Definition : from_schema
 
       Definition : id_prefixes
+
+      Definition : id_prefixes_are_closed
 
       Definition : implements
 
@@ -394,13 +396,13 @@
 
       Definition : in_subset
 
-          Definition --|&gt; subset_definition : in_subset
+          Definition --&gt; subset_definition : in_subset
 
       Definition : instantiates
 
       Definition : is_a
 
-          Definition --|&gt; definition : is_a
+          Definition --&gt; definition : is_a
 
       Definition : keywords
 
@@ -408,7 +410,7 @@
 
       Definition : local_names
 
-          Definition --|&gt; local_name : local_names
+          Definition --&gt; local_name : local_names
 
       Definition : mappings
 
@@ -416,7 +418,7 @@
 
       Definition : mixins
 
-          Definition --|&gt; definition : mixins
+          Definition --&gt; definition : mixins
 
       Definition : modified_by
 
@@ -440,7 +442,7 @@
 
       Definition : structured_aliases
 
-          Definition --|&gt; structured_alias : structured_aliases
+          Definition --&gt; structured_alias : structured_aliases
 
       Definition : title
 
@@ -525,6 +527,12 @@
 <td><a href="../id_prefixes/">id_prefixes</a></td>
 <td>0..* <br/> <a href="../Ncname/">Ncname</a></td>
 <td>An allowed list of prefixes for which identifiers must conform</td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>If true, then the id_prefixes slot is treated as being closed, and any use of...</td>
 <td><a href="../Element/">Element</a></td>
 </tr>
 <tr>
@@ -1378,7 +1386,6 @@ attributes:
     - BasicSubset
     from_schema: https://w3id.org/linkml/meta
     see_also:
-    - https://github.com/linkml/linkml/issues/194
     - https://github.com/linkml/linkml-model/issues/28
     rank: 1000
     domain: element
@@ -1388,6 +1395,20 @@ attributes:
     domain_of:
     - element
     range: ncname
+  id_prefixes_are_closed:
+    name: id_prefixes_are_closed
+    description: If true, then the id_prefixes slot is treated as being closed, and
+      any use of an id that does not have this prefix is considered a violation.
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://github.com/linkml/linkml/issues/194
+    rank: 1000
+    domain: element
+    alias: id_prefixes_are_closed
+    owner: definition
+    domain_of:
+    - element
+    range: boolean
   definition_uri:
     name: definition_uri
     description: The native URI of the element. This is always within the namespace

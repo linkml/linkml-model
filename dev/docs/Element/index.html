@@ -342,11 +342,11 @@
 
       Element : alt_descriptions
 
-          Element --|&gt; alt_description : alt_descriptions
+          Element --&gt; alt_description : alt_descriptions
 
       Element : annotations
 
-          Element --|&gt; annotation : annotations
+          Element --&gt; annotation : annotations
 
       Element : broad_mappings
 
@@ -378,15 +378,17 @@
 
       Element : examples
 
-          Element --|&gt; example : examples
+          Element --&gt; example : examples
 
       Element : extensions
 
-          Element --|&gt; extension : extensions
+          Element --&gt; extension : extensions
 
       Element : from_schema
 
       Element : id_prefixes
+
+      Element : id_prefixes_are_closed
 
       Element : implements
 
@@ -396,7 +398,7 @@
 
       Element : in_subset
 
-          Element --|&gt; subset_definition : in_subset
+          Element --&gt; subset_definition : in_subset
 
       Element : instantiates
 
@@ -406,7 +408,7 @@
 
       Element : local_names
 
-          Element --|&gt; local_name : local_names
+          Element --&gt; local_name : local_names
 
       Element : mappings
 
@@ -430,7 +432,7 @@
 
       Element : structured_aliases
 
-          Element --|&gt; structured_alias : structured_aliases
+          Element --&gt; structured_alias : structured_aliases
 
       Element : title
 
@@ -469,6 +471,12 @@
 <td><a href="../id_prefixes/">id_prefixes</a></td>
 <td>0..* <br/> <a href="../Ncname/">Ncname</a></td>
 <td>An allowed list of prefixes for which identifiers must conform</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>If true, then the id_prefixes slot is treated as being closed, and any use of...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -864,6 +872,12 @@
 </tr>
 <tr>
 <td><a href="./">Element</a></td>
+<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
+<td>domain</td>
+<td><a href="./">Element</a></td>
+</tr>
+<tr>
+<td><a href="./">Element</a></td>
 <td><a href="../definition_uri/">definition_uri</a></td>
 <td>domain</td>
 <td><a href="./">Element</a></td>
@@ -1027,6 +1041,12 @@
 <tr>
 <td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
 <td><a href="../id_prefixes/">id_prefixes</a></td>
+<td>domain</td>
+<td><a href="./">Element</a></td>
+</tr>
+<tr>
+<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
+<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
 <td>domain</td>
 <td><a href="./">Element</a></td>
 </tr>
@@ -1206,6 +1226,12 @@
 </tr>
 <tr>
 <td><a href="../TypeDefinition/">TypeDefinition</a></td>
+<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
+<td>domain</td>
+<td><a href="./">Element</a></td>
+</tr>
+<tr>
+<td><a href="../TypeDefinition/">TypeDefinition</a></td>
 <td><a href="../definition_uri/">definition_uri</a></td>
 <td>domain</td>
 <td><a href="./">Element</a></td>
@@ -1374,6 +1400,12 @@
 </tr>
 <tr>
 <td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
+<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
+<td>domain</td>
+<td><a href="./">Element</a></td>
+</tr>
+<tr>
+<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
 <td><a href="../definition_uri/">definition_uri</a></td>
 <td>domain</td>
 <td><a href="./">Element</a></td>
@@ -1537,6 +1569,12 @@
 <tr>
 <td><a href="../Definition/">Definition</a></td>
 <td><a href="../id_prefixes/">id_prefixes</a></td>
+<td>domain</td>
+<td><a href="./">Element</a></td>
+</tr>
+<tr>
+<td><a href="../Definition/">Definition</a></td>
+<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
 <td>domain</td>
 <td><a href="./">Element</a></td>
 </tr>
@@ -1705,6 +1743,12 @@
 <tr>
 <td><a href="../EnumDefinition/">EnumDefinition</a></td>
 <td><a href="../id_prefixes/">id_prefixes</a></td>
+<td>domain</td>
+<td><a href="./">Element</a></td>
+</tr>
+<tr>
+<td><a href="../EnumDefinition/">EnumDefinition</a></td>
+<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
 <td>domain</td>
 <td><a href="./">Element</a></td>
 </tr>
@@ -2406,6 +2450,12 @@
 </tr>
 <tr>
 <td><a href="../SlotDefinition/">SlotDefinition</a></td>
+<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
+<td>domain</td>
+<td><a href="./">Element</a></td>
+</tr>
+<tr>
+<td><a href="../SlotDefinition/">SlotDefinition</a></td>
 <td><a href="../definition_uri/">definition_uri</a></td>
 <td>domain</td>
 <td><a href="./">Element</a></td>
@@ -2701,6 +2751,12 @@
 <tr>
 <td><a href="../ClassDefinition/">ClassDefinition</a></td>
 <td><a href="../id_prefixes/">id_prefixes</a></td>
+<td>domain</td>
+<td><a href="./">Element</a></td>
+</tr>
+<tr>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
 <td>domain</td>
 <td><a href="./">Element</a></td>
 </tr>
@@ -3799,6 +3855,7 @@ mixins:
 slots:
 - name
 - id_prefixes
+- id_prefixes_are_closed
 - definition_uri
 - local_names
 - conforms_to
@@ -3872,7 +3929,6 @@ attributes:
     - BasicSubset
     from_schema: https://w3id.org/linkml/meta
     see_also:
-    - https://github.com/linkml/linkml/issues/194
     - https://github.com/linkml/linkml-model/issues/28
     rank: 1000
     domain: element
@@ -3882,6 +3938,20 @@ attributes:
     domain_of:
     - element
     range: ncname
+  id_prefixes_are_closed:
+    name: id_prefixes_are_closed
+    description: If true, then the id_prefixes slot is treated as being closed, and
+      any use of an id that does not have this prefix is considered a violation.
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://github.com/linkml/linkml/issues/194
+    rank: 1000
+    domain: element
+    alias: id_prefixes_are_closed
+    owner: element
+    domain_of:
+    - element
+    range: boolean
   definition_uri:
     name: definition_uri
     description: The native URI of the element. This is always within the namespace

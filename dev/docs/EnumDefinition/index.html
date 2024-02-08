@@ -328,15 +328,15 @@
 
       EnumDefinition : alt_descriptions
 
-          EnumDefinition --|&gt; alt_description : alt_descriptions
+          EnumDefinition --&gt; alt_description : alt_descriptions
 
       EnumDefinition : annotations
 
-          EnumDefinition --|&gt; annotation : annotations
+          EnumDefinition --&gt; annotation : annotations
 
       EnumDefinition : apply_to
 
-          EnumDefinition --|&gt; definition : apply_to
+          EnumDefinition --&gt; definition : apply_to
 
       EnumDefinition : broad_mappings
 
@@ -378,15 +378,17 @@
 
       EnumDefinition : examples
 
-          EnumDefinition --|&gt; example : examples
+          EnumDefinition --&gt; example : examples
 
       EnumDefinition : extensions
 
-          EnumDefinition --|&gt; extension : extensions
+          EnumDefinition --&gt; extension : extensions
 
       EnumDefinition : from_schema
 
       EnumDefinition : id_prefixes
+
+      EnumDefinition : id_prefixes_are_closed
 
       EnumDefinition : implements
 
@@ -396,21 +398,21 @@
 
       EnumDefinition : in_subset
 
-          EnumDefinition --|&gt; subset_definition : in_subset
+          EnumDefinition --&gt; subset_definition : in_subset
 
       EnumDefinition : include
 
-          EnumDefinition --|&gt; anonymous_enum_expression : include
+          EnumDefinition --&gt; anonymous_enum_expression : include
 
       EnumDefinition : inherits
 
-          EnumDefinition --|&gt; enum_definition : inherits
+          EnumDefinition --&gt; enum_definition : inherits
 
       EnumDefinition : instantiates
 
       EnumDefinition : is_a
 
-          EnumDefinition --|&gt; definition : is_a
+          EnumDefinition --&gt; definition : is_a
 
       EnumDefinition : keywords
 
@@ -418,23 +420,23 @@
 
       EnumDefinition : local_names
 
-          EnumDefinition --|&gt; local_name : local_names
+          EnumDefinition --&gt; local_name : local_names
 
       EnumDefinition : mappings
 
       EnumDefinition : matches
 
-          EnumDefinition --|&gt; match_query : matches
+          EnumDefinition --&gt; match_query : matches
 
       EnumDefinition : minus
 
-          EnumDefinition --|&gt; anonymous_enum_expression : minus
+          EnumDefinition --&gt; anonymous_enum_expression : minus
 
       EnumDefinition : mixin
 
       EnumDefinition : mixins
 
-          EnumDefinition --|&gt; definition : mixins
+          EnumDefinition --&gt; definition : mixins
 
       EnumDefinition : modified_by
 
@@ -446,17 +448,17 @@
 
       EnumDefinition : permissible_values
 
-          EnumDefinition --|&gt; permissible_value : permissible_values
+          EnumDefinition --&gt; permissible_value : permissible_values
 
       EnumDefinition : pv_formula
 
-          EnumDefinition --|&gt; pv_formula_options : pv_formula
+          EnumDefinition --&gt; pv_formula_options : pv_formula
 
       EnumDefinition : rank
 
       EnumDefinition : reachable_from
 
-          EnumDefinition --|&gt; reachability_query : reachable_from
+          EnumDefinition --&gt; reachability_query : reachable_from
 
       EnumDefinition : related_mappings
 
@@ -470,7 +472,7 @@
 
       EnumDefinition : structured_aliases
 
-          EnumDefinition --|&gt; structured_alias : structured_aliases
+          EnumDefinition --&gt; structured_alias : structured_aliases
 
       EnumDefinition : title
 
@@ -625,6 +627,12 @@
 <td><a href="../id_prefixes/">id_prefixes</a></td>
 <td>0..* <br/> <a href="../Ncname/">Ncname</a></td>
 <td>An allowed list of prefixes for which identifiers must conform</td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>If true, then the id_prefixes slot is treated as being closed, and any use of...</td>
 <td><a href="../Element/">Element</a></td>
 </tr>
 <tr>
@@ -1425,7 +1433,6 @@ attributes:
     - BasicSubset
     from_schema: https://w3id.org/linkml/meta
     see_also:
-    - https://github.com/linkml/linkml/issues/194
     - https://github.com/linkml/linkml-model/issues/28
     rank: 1000
     domain: element
@@ -1435,6 +1442,20 @@ attributes:
     domain_of:
     - element
     range: ncname
+  id_prefixes_are_closed:
+    name: id_prefixes_are_closed
+    description: If true, then the id_prefixes slot is treated as being closed, and
+      any use of an id that does not have this prefix is considered a violation.
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://github.com/linkml/linkml/issues/194
+    rank: 1000
+    domain: element
+    alias: id_prefixes_are_closed
+    owner: enum_definition
+    domain_of:
+    - element
+    range: boolean
   definition_uri:
     name: definition_uri
     description: The native URI of the element. This is always within the namespace

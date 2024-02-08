@@ -328,19 +328,19 @@
 
       SlotExpression : all_members
 
-          SlotExpression --|&gt; anonymous_slot_expression : all_members
+          SlotExpression --&gt; anonymous_slot_expression : all_members
 
       SlotExpression : all_of
 
-          SlotExpression --|&gt; anonymous_slot_expression : all_of
+          SlotExpression --&gt; anonymous_slot_expression : all_of
 
       SlotExpression : any_of
 
-          SlotExpression --|&gt; anonymous_slot_expression : any_of
+          SlotExpression --&gt; anonymous_slot_expression : any_of
 
       SlotExpression : enum_range
 
-          SlotExpression --|&gt; enum_expression : enum_range
+          SlotExpression --&gt; enum_expression : enum_range
 
       SlotExpression : equals_expression
 
@@ -354,11 +354,11 @@
 
       SlotExpression : exactly_one_of
 
-          SlotExpression --|&gt; anonymous_slot_expression : exactly_one_of
+          SlotExpression --&gt; anonymous_slot_expression : exactly_one_of
 
       SlotExpression : has_member
 
-          SlotExpression --|&gt; anonymous_slot_expression : has_member
+          SlotExpression --&gt; anonymous_slot_expression : has_member
 
       SlotExpression : implicit_prefix
 
@@ -370,27 +370,27 @@
 
       SlotExpression : maximum_value
 
-          SlotExpression --|&gt; Anything : maximum_value
+          SlotExpression --&gt; Anything : maximum_value
 
       SlotExpression : minimum_cardinality
 
       SlotExpression : minimum_value
 
-          SlotExpression --|&gt; Anything : minimum_value
+          SlotExpression --&gt; Anything : minimum_value
 
       SlotExpression : none_of
 
-          SlotExpression --|&gt; anonymous_slot_expression : none_of
+          SlotExpression --&gt; anonymous_slot_expression : none_of
 
       SlotExpression : pattern
 
       SlotExpression : range
 
-          SlotExpression --|&gt; element : range
+          SlotExpression --&gt; element : range
 
       SlotExpression : range_expression
 
-          SlotExpression --|&gt; anonymous_class_expression : range_expression
+          SlotExpression --&gt; anonymous_class_expression : range_expression
 
       SlotExpression : recommended
 
@@ -398,15 +398,15 @@
 
       SlotExpression : structured_pattern
 
-          SlotExpression --|&gt; pattern_expression : structured_pattern
+          SlotExpression --&gt; pattern_expression : structured_pattern
 
       SlotExpression : unit
 
-          SlotExpression --|&gt; UnitOfMeasure : unit
+          SlotExpression --&gt; UnitOfMeasure : unit
 
       SlotExpression : value_presence
 
-          SlotExpression --|&gt; presence_enum : value_presence
+          SlotExpression --&gt; presence_enum : value_presence
 
 
 </div>

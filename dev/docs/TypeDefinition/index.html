@@ -321,19 +321,19 @@
 
       TypeDefinition : all_of
 
-          TypeDefinition --|&gt; anonymous_type_expression : all_of
+          TypeDefinition --&gt; anonymous_type_expression : all_of
 
       TypeDefinition : alt_descriptions
 
-          TypeDefinition --|&gt; alt_description : alt_descriptions
+          TypeDefinition --&gt; alt_description : alt_descriptions
 
       TypeDefinition : annotations
 
-          TypeDefinition --|&gt; annotation : annotations
+          TypeDefinition --&gt; annotation : annotations
 
       TypeDefinition : any_of
 
-          TypeDefinition --|&gt; anonymous_type_expression : any_of
+          TypeDefinition --&gt; anonymous_type_expression : any_of
 
       TypeDefinition : base
 
@@ -373,19 +373,21 @@
 
       TypeDefinition : exactly_one_of
 
-          TypeDefinition --|&gt; anonymous_type_expression : exactly_one_of
+          TypeDefinition --&gt; anonymous_type_expression : exactly_one_of
 
       TypeDefinition : examples
 
-          TypeDefinition --|&gt; example : examples
+          TypeDefinition --&gt; example : examples
 
       TypeDefinition : extensions
 
-          TypeDefinition --|&gt; extension : extensions
+          TypeDefinition --&gt; extension : extensions
 
       TypeDefinition : from_schema
 
       TypeDefinition : id_prefixes
+
+      TypeDefinition : id_prefixes_are_closed
 
       TypeDefinition : implements
 
@@ -397,7 +399,7 @@
 
       TypeDefinition : in_subset
 
-          TypeDefinition --|&gt; subset_definition : in_subset
+          TypeDefinition --&gt; subset_definition : in_subset
 
       TypeDefinition : instantiates
 
@@ -407,17 +409,17 @@
 
       TypeDefinition : local_names
 
-          TypeDefinition --|&gt; local_name : local_names
+          TypeDefinition --&gt; local_name : local_names
 
       TypeDefinition : mappings
 
       TypeDefinition : maximum_value
 
-          TypeDefinition --|&gt; Anything : maximum_value
+          TypeDefinition --&gt; Anything : maximum_value
 
       TypeDefinition : minimum_value
 
-          TypeDefinition --|&gt; Anything : minimum_value
+          TypeDefinition --&gt; Anything : minimum_value
 
       TypeDefinition : modified_by
 
@@ -427,7 +429,7 @@
 
       TypeDefinition : none_of
 
-          TypeDefinition --|&gt; anonymous_type_expression : none_of
+          TypeDefinition --&gt; anonymous_type_expression : none_of
 
       TypeDefinition : notes
 
@@ -447,11 +449,11 @@
 
       TypeDefinition : structured_aliases
 
-          TypeDefinition --|&gt; structured_alias : structured_aliases
+          TypeDefinition --&gt; structured_alias : structured_aliases
 
       TypeDefinition : structured_pattern
 
-          TypeDefinition --|&gt; pattern_expression : structured_pattern
+          TypeDefinition --&gt; pattern_expression : structured_pattern
 
       TypeDefinition : title
 
@@ -461,15 +463,15 @@
 
       TypeDefinition : typeof
 
-          TypeDefinition --|&gt; type_definition : typeof
+          TypeDefinition --&gt; type_definition : typeof
 
       TypeDefinition : union_of
 
-          TypeDefinition --|&gt; type_definition : union_of
+          TypeDefinition --&gt; type_definition : union_of
 
       TypeDefinition : unit
 
-          TypeDefinition --|&gt; UnitOfMeasure : unit
+          TypeDefinition --&gt; UnitOfMeasure : unit
 
 
 </div>
@@ -609,6 +611,12 @@
 <td><a href="../id_prefixes/">id_prefixes</a></td>
 <td>0..* <br/> <a href="../Ncname/">Ncname</a></td>
 <td>An allowed list of prefixes for which identifiers must conform</td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>If true, then the id_prefixes slot is treated as being closed, and any use of...</td>
 <td><a href="../Element/">Element</a></td>
 </tr>
 <tr>
@@ -1342,7 +1350,6 @@ attributes:
     - BasicSubset
     from_schema: https://w3id.org/linkml/meta
     see_also:
-    - https://github.com/linkml/linkml/issues/194
     - https://github.com/linkml/linkml-model/issues/28
     rank: 1000
     domain: element
@@ -1352,6 +1359,20 @@ attributes:
     domain_of:
     - element
     range: ncname
+  id_prefixes_are_closed:
+    name: id_prefixes_are_closed
+    description: If true, then the id_prefixes slot is treated as being closed, and
+      any use of an id that does not have this prefix is considered a violation.
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://github.com/linkml/linkml/issues/194
+    rank: 1000
+    domain: element
+    alias: id_prefixes_are_closed
+    owner: type_definition
+    domain_of:
+    - element
+    range: boolean
   definition_uri:
     name: definition_uri
     description: The native URI of the element. This is always within the namespace
