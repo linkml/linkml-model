@@ -368,8 +368,6 @@
 
       ArrayExpression : from_schema
 
-      ArrayExpression : has_extra_dimensions
-
       ArrayExpression : imported_from
 
       ArrayExpression : in_language
@@ -447,12 +445,6 @@
 <td><a href="../maximum_number_dimensions/">maximum_number_dimensions</a></td>
 <td>0..1 <br/> <a href="../Anything/">Anything</a></td>
 <td>maximum number of dimensions in the array, or False if explicitly no maximum</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../has_extra_dimensions/">has_extra_dimensions</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>If this is set to true</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -710,12 +702,6 @@
 </tr>
 <tr>
 <td><a href="./">ArrayExpression</a></td>
-<td><a href="../has_extra_dimensions/">has_extra_dimensions</a></td>
-<td>domain</td>
-<td><a href="./">ArrayExpression</a></td>
-</tr>
-<tr>
-<td><a href="./">ArrayExpression</a></td>
 <td><a href="../dimensions/">dimensions</a></td>
 <td>domain</td>
 <td><a href="./">ArrayExpression</a></td>
@@ -762,7 +748,6 @@ slots:
 - exact_number_dimensions
 - minimum_number_dimensions
 - maximum_number_dimensions
-- has_extra_dimensions
 - dimensions
 
 </code></pre>
@@ -827,18 +812,6 @@ attributes:
     any_of:
     - range: integer
     - range: boolean
-  has_extra_dimensions:
-    name: has_extra_dimensions
-    description: If this is set to true
-    from_schema: https://w3id.org/linkml/meta
-    status: testing
-    rank: 1000
-    domain: array_expression
-    alias: has_extra_dimensions
-    owner: array_expression
-    domain_of:
-    - array_expression
-    range: boolean
   dimensions:
     name: dimensions
     description: definitions of each axis in the array
