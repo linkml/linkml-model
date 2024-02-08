@@ -1442,6 +1442,8 @@ slots:
     range: integer
     status: testing
     # minimum_value: 1
+    comments:
+      - minimum_cardinality cannot be greater than maximum_cardinality
 
   maximum_number_dimensions:
     description: maximum number of dimensions in the array, or False if explicitly no maximum.
@@ -1464,6 +1466,8 @@ slots:
     range: integer
     status: testing
     # minimum_value: 1
+    comments:
+      - if exact_number_dimensions is set, then minimum_number_dimensions and maximum_number_dimensions must be unset or have the same value
 
   has_extra_dimensions:
     description: If this is set to true
@@ -1590,6 +1594,8 @@ slots:
     in_subset:
       - SpecificationSubset
     # minimum_value: 0
+    comments:
+      - minimum_cardinality cannot be greater than maximum_cardinality
 
   maximum_cardinality:
     is_a: list_value_specification_constant
