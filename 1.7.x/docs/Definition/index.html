@@ -1,0 +1,2098 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://linkml.io/linkml-model/latest/docs/Definition/" rel="canonical"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
+<title>Class: Definition - LinkML Model</title>
+<link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="amber" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#class-definition">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<div data-md-component="outdated" hidden="">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="LinkML Model" class="md-header__button md-logo" data-md-component="logo" href="../.." title="LinkML Model">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            LinkML Model
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Class: Definition
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="amber" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="teal" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"></path></svg>
+</label>
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="amber" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="teal" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="LinkML Model" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="LinkML Model">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    LinkML Model
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../home/">
+        About
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+          Specification
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Specification" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Specification
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../specification/">
+        Index
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../specification/00preamble/">
+        Preface
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../specification/01introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../specification/02instances/">
+        Instances
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../specification/03schemas/">
+        Schema Datamodel
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../specification/04derived-schemas/">
+        Derived Schemas
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../specification/05validation/">
+        Instance Validation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../specification/06mapping/">
+        Mapping of Instances
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+          Appendix
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Appendix" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../">
+        Metamodel Index
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2">
+          Profiles
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Profiles" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+          Profiles
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../MinimalSubset/">
+        MinimalSubset
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../BasicSubset/">
+        BasicSubset
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../SpecificationSubset/">
+        SpecificationSubset
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../RelationalModelProfile/">
+        RelationalModelProfile
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ObjectOrientedProfile/">
+        ObjectOrientedProfile
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../OwlProfile/">
+        OwlProfile
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+    Inheritance
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slots">
+    Slots
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+    Usages
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#see-also">
+    See Also
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifier-and-mapping-information">
+    Identifier and Mapping Information
+  </a>
+<nav aria-label="Identifier and Mapping Information" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schema-source">
+    Schema Source
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mappings">
+    Mappings
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linkml-source">
+    LinkML Source
+  </a>
+<nav aria-label="LinkML Source" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#direct">
+    Direct
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#induced">
+    Induced
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="class-definition">Class: Definition</h1>
+<p><em>abstract base class for core metaclasses</em></p>
+<ul>
+<li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
+</ul>
+<p>URI: <a href="https://w3id.org/linkml/Definition">linkml:Definition</a></p>
+<div class="mermaid"> classDiagram
+    class Definition
+      Element &lt;|-- Definition
+
+
+      Definition &lt;|-- EnumDefinition
+      Definition &lt;|-- SlotDefinition
+      Definition &lt;|-- ClassDefinition
+
+
+      Definition : abstract
+
+      Definition : aliases
+
+      Definition : alt_descriptions
+
+          Definition --&gt; alt_description : alt_descriptions
+
+      Definition : annotations
+
+          Definition --&gt; annotation : annotations
+
+      Definition : apply_to
+
+          Definition --&gt; definition : apply_to
+
+      Definition : broad_mappings
+
+      Definition : categories
+
+      Definition : close_mappings
+
+      Definition : comments
+
+      Definition : conforms_to
+
+      Definition : contributors
+
+      Definition : created_by
+
+      Definition : created_on
+
+      Definition : definition_uri
+
+      Definition : deprecated
+
+      Definition : deprecated_element_has_exact_replacement
+
+      Definition : deprecated_element_has_possible_replacement
+
+      Definition : description
+
+      Definition : exact_mappings
+
+      Definition : examples
+
+          Definition --&gt; example : examples
+
+      Definition : extensions
+
+          Definition --&gt; extension : extensions
+
+      Definition : from_schema
+
+      Definition : id_prefixes
+
+      Definition : id_prefixes_are_closed
+
+      Definition : implements
+
+      Definition : imported_from
+
+      Definition : in_language
+
+      Definition : in_subset
+
+          Definition --&gt; subset_definition : in_subset
+
+      Definition : instantiates
+
+      Definition : is_a
+
+          Definition --&gt; definition : is_a
+
+      Definition : keywords
+
+      Definition : last_updated_on
+
+      Definition : local_names
+
+          Definition --&gt; local_name : local_names
+
+      Definition : mappings
+
+      Definition : mixin
+
+      Definition : mixins
+
+          Definition --&gt; definition : mixins
+
+      Definition : modified_by
+
+      Definition : name
+
+      Definition : narrow_mappings
+
+      Definition : notes
+
+      Definition : rank
+
+      Definition : related_mappings
+
+      Definition : see_also
+
+      Definition : source
+
+      Definition : status
+
+      Definition : string_serialization
+
+      Definition : structured_aliases
+
+          Definition --&gt; structured_alias : structured_aliases
+
+      Definition : title
+
+      Definition : todos
+
+      Definition : values_from
+
+
+</div>
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../Element/">Element</a> [ <a href="../Extensible/">Extensible</a> <a href="../Annotatable/">Annotatable</a> <a href="../CommonMetadata/">CommonMetadata</a>]<ul>
+<li><strong>Definition</strong><ul>
+<li><a href="../EnumDefinition/">EnumDefinition</a> [ <a href="../EnumExpression/">EnumExpression</a>]</li>
+<li><a href="../SlotDefinition/">SlotDefinition</a> [ <a href="../SlotExpression/">SlotExpression</a>]</li>
+<li><a href="../ClassDefinition/">ClassDefinition</a> [ <a href="../ClassExpression/">ClassExpression</a>]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+<th>Inheritance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../is_a/">is_a</a></td>
+<td>0..1 <br/> <a href="./">Definition</a></td>
+<td>A primary parent class or slot from which inheritable metaslots are propagate...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../abstract/">abstract</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>Indicates the class or slot cannot be directly instantiated and is intended f...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../mixin/">mixin</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>Indicates the class or slot is intended to be inherited from without being an...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../mixins/">mixins</a></td>
+<td>0..* <br/> <a href="./">Definition</a></td>
+<td>A collection of secondary parent classes or slots from which inheritable meta...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../apply_to/">apply_to</a></td>
+<td>0..* <br/> <a href="./">Definition</a></td>
+<td>Used to extend class or slot definitions</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../values_from/">values_from</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>The identifier of a "value set" -- a set of identifiers that form the possibl...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../string_serialization/">string_serialization</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Used on a slot that stores the string serialization of the containing object</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>the unique name of the element within the context of the schema</td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td><a href="../id_prefixes/">id_prefixes</a></td>
+<td>0..* <br/> <a href="../Ncname/">Ncname</a></td>
+<td>An allowed list of prefixes for which identifiers must conform</td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>If true, then the id_prefixes slot is treated as being closed, and any use of...</td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td><a href="../definition_uri/">definition_uri</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>The native URI of the element</td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td><a href="../local_names/">local_names</a></td>
+<td>0..* <br/> <a href="../LocalName/">LocalName</a></td>
+<td></td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td><a href="../conforms_to/">conforms_to</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>An established standard to which the element conforms</td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td><a href="../implements/">implements</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>An element in another schema which this element conforms to</td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td><a href="../instantiates/">instantiates</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>An element in another schema which this element instantiates</td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td><a href="../extensions/">extensions</a></td>
+<td>0..* <br/> <a href="../Extension/">Extension</a></td>
+<td>a tag/text tuple attached to an arbitrary element</td>
+<td><a href="../Extensible/">Extensible</a></td>
+</tr>
+<tr>
+<td><a href="../annotations/">annotations</a></td>
+<td>0..* <br/> <a href="../Annotation/">Annotation</a></td>
+<td>a collection of tag/text tuples with the semantics of OWL Annotation</td>
+<td><a href="../Annotatable/">Annotatable</a></td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td>a textual description of the element's purpose and use</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../alt_descriptions/">alt_descriptions</a></td>
+<td>0..* <br/> <a href="../AltDescription/">AltDescription</a></td>
+<td>A sourced alternative description for an element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../title/">title</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A concise human-readable display label for the element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../deprecated/">deprecated</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Description of why and when this element will no longer be used</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../todos/">todos</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>Outstanding issues that needs resolution</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../notes/">notes</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>editorial notes about an element intended primarily for internal consumption</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../comments/">comments</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>notes and comments about an element intended primarily for external consumpti...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../examples/">examples</a></td>
+<td>0..* <br/> <a href="../Example/">Example</a></td>
+<td>example usages of an element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../in_subset/">in_subset</a></td>
+<td>0..* <br/> <a href="../SubsetDefinition/">SubsetDefinition</a></td>
+<td>used to indicate membership of a term in a defined subset of terms used for a...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../from_schema/">from_schema</a></td>
+<td>0..1 <br/> <a href="../Uri/">Uri</a></td>
+<td>id of the schema that defined the element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../imported_from/">imported_from</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the imports entry that this element was derived from</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../source/">source</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A related resource from which the element is derived</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../in_language/">in_language</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the primary language used in the sources</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../see_also/">see_also</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of related entities or URLs that may be of relevance</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../deprecated_element_has_exact_replacement/">deprecated_element_has_exact_replacement</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>When an element is deprecated, it can be automatically replaced by this uri o...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../deprecated_element_has_possible_replacement/">deprecated_element_has_possible_replacement</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>When an element is deprecated, it can be potentially replaced by this uri or ...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../aliases/">aliases</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>Alternate names/labels for the element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../structured_aliases/">structured_aliases</a></td>
+<td>0..* <br/> <a href="../StructuredAlias/">StructuredAlias</a></td>
+<td>A list of structured_alias objects, used to provide aliases in conjunction wi...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../mappings/">mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have compa...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../exact_mappings/">exact_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have ident...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../close_mappings/">close_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have close...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../related_mappings/">related_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have relat...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../narrow_mappings/">narrow_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have narro...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../broad_mappings/">broad_mappings</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of terms from different schemas or terminology systems that have broad...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../created_by/">created_by</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>agent that created the element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../contributors/">contributors</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>agent that contributed to the element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../created_on/">created_on</a></td>
+<td>0..1 <br/> <a href="../Datetime/">Datetime</a></td>
+<td>time at which the element was created</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../last_updated_on/">last_updated_on</a></td>
+<td>0..1 <br/> <a href="../Datetime/">Datetime</a></td>
+<td>time at which the element was last updated</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../modified_by/">modified_by</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>agent that modified the element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../status/">status</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>status of the element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../rank/">rank</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>the relative order in which the element occurs, lower values are given preced...</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../categories/">categories</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>Controlled terms used to categorize an element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../keywords/">keywords</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>Keywords or tags used to describe the element</td>
+<td><a href="../CommonMetadata/">CommonMetadata</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
+<td><a href="../slot_names_unique/">slot_names_unique</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
+<td><a href="../pattern/">pattern</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
+<td><a href="../structured_pattern/">structured_pattern</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
+<td><a href="../pattern/">pattern</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
+<td><a href="../structured_pattern/">structured_pattern</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../TypeDefinition/">TypeDefinition</a></td>
+<td><a href="../pattern/">pattern</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../TypeDefinition/">TypeDefinition</a></td>
+<td><a href="../structured_pattern/">structured_pattern</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="./">Definition</a></td>
+<td><a href="../is_a/">is_a</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="./">Definition</a></td>
+<td><a href="../is_a/">is_a</a></td>
+<td>range</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="./">Definition</a></td>
+<td><a href="../abstract/">abstract</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="./">Definition</a></td>
+<td><a href="../mixin/">mixin</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="./">Definition</a></td>
+<td><a href="../mixins/">mixins</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="./">Definition</a></td>
+<td><a href="../mixins/">mixins</a></td>
+<td>range</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="./">Definition</a></td>
+<td><a href="../apply_to/">apply_to</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="./">Definition</a></td>
+<td><a href="../apply_to/">apply_to</a></td>
+<td>range</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="./">Definition</a></td>
+<td><a href="../values_from/">values_from</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="./">Definition</a></td>
+<td><a href="../string_serialization/">string_serialization</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../EnumDefinition/">EnumDefinition</a></td>
+<td><a href="../is_a/">is_a</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../EnumDefinition/">EnumDefinition</a></td>
+<td><a href="../is_a/">is_a</a></td>
+<td>range</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../EnumDefinition/">EnumDefinition</a></td>
+<td><a href="../abstract/">abstract</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../EnumDefinition/">EnumDefinition</a></td>
+<td><a href="../mixin/">mixin</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../EnumDefinition/">EnumDefinition</a></td>
+<td><a href="../mixins/">mixins</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../EnumDefinition/">EnumDefinition</a></td>
+<td><a href="../mixins/">mixins</a></td>
+<td>range</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../EnumDefinition/">EnumDefinition</a></td>
+<td><a href="../apply_to/">apply_to</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../EnumDefinition/">EnumDefinition</a></td>
+<td><a href="../apply_to/">apply_to</a></td>
+<td>range</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../EnumDefinition/">EnumDefinition</a></td>
+<td><a href="../values_from/">values_from</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../EnumDefinition/">EnumDefinition</a></td>
+<td><a href="../string_serialization/">string_serialization</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../SlotExpression/">SlotExpression</a></td>
+<td><a href="../pattern/">pattern</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../SlotExpression/">SlotExpression</a></td>
+<td><a href="../structured_pattern/">structured_pattern</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
+<td><a href="../pattern/">pattern</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
+<td><a href="../structured_pattern/">structured_pattern</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../SlotDefinition/">SlotDefinition</a></td>
+<td><a href="../owner/">owner</a></td>
+<td>range</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../SlotDefinition/">SlotDefinition</a></td>
+<td><a href="../disjoint_with/">disjoint_with</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../SlotDefinition/">SlotDefinition</a></td>
+<td><a href="../children_are_mutually_disjoint/">children_are_mutually_disjoint</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../SlotDefinition/">SlotDefinition</a></td>
+<td><a href="../pattern/">pattern</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../SlotDefinition/">SlotDefinition</a></td>
+<td><a href="../structured_pattern/">structured_pattern</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../SlotDefinition/">SlotDefinition</a></td>
+<td><a href="../is_a/">is_a</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../SlotDefinition/">SlotDefinition</a></td>
+<td><a href="../abstract/">abstract</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../SlotDefinition/">SlotDefinition</a></td>
+<td><a href="../mixin/">mixin</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../SlotDefinition/">SlotDefinition</a></td>
+<td><a href="../mixins/">mixins</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../SlotDefinition/">SlotDefinition</a></td>
+<td><a href="../apply_to/">apply_to</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../SlotDefinition/">SlotDefinition</a></td>
+<td><a href="../values_from/">values_from</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../SlotDefinition/">SlotDefinition</a></td>
+<td><a href="../string_serialization/">string_serialization</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
+<td><a href="../is_a/">is_a</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
+<td><a href="../is_a/">is_a</a></td>
+<td>range</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+<td><a href="../slot_names_unique/">slot_names_unique</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+<td><a href="../disjoint_with/">disjoint_with</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+<td><a href="../children_are_mutually_disjoint/">children_are_mutually_disjoint</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+<td><a href="../is_a/">is_a</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+<td><a href="../abstract/">abstract</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+<td><a href="../mixin/">mixin</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+<td><a href="../mixins/">mixins</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+<td><a href="../apply_to/">apply_to</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+<td><a href="../values_from/">values_from</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+<tr>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+<td><a href="../string_serialization/">string_serialization</a></td>
+<td>domain</td>
+<td><a href="./">Definition</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Data_element_definition">https://en.wikipedia.org/wiki/Data_element_definition</a></li>
+</ul>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/linkml/meta</li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>linkml:Definition</td>
+</tr>
+<tr>
+<td>native</td>
+<td>linkml:Definition</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+<h3 id="direct">Direct</h3>
+<details>
+<pre><code class="language-yaml">name: definition
+description: abstract base class for core metaclasses
+in_subset:
+- BasicSubset
+from_schema: https://w3id.org/linkml/meta
+see_also:
+- https://en.wikipedia.org/wiki/Data_element_definition
+is_a: element
+abstract: true
+slots:
+- is_a
+- abstract
+- mixin
+- mixins
+- apply_to
+- values_from
+- string_serialization
+
+</code></pre>
+</details>
+<h3 id="induced">Induced</h3>
+<details>
+<pre><code class="language-yaml">name: definition
+description: abstract base class for core metaclasses
+in_subset:
+- BasicSubset
+from_schema: https://w3id.org/linkml/meta
+see_also:
+- https://en.wikipedia.org/wiki/Data_element_definition
+is_a: element
+abstract: true
+attributes:
+  is_a:
+    name: is_a
+    description: A primary parent class or slot from which inheritable metaslots are
+      propagated from. While multiple inheritance is not allowed, mixins can be provided
+      effectively providing the same thing. The semantics are the same when translated
+      to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework
+      (e.g. java classes, python classes) then is a is used. When translating a framework
+      without polymorphism (e.g. json-schema, solr document schema) then is a and
+      mixins are recursively unfolded
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    - ObjectOrientedProfile
+    - OwlProfile
+    from_schema: https://w3id.org/linkml/meta
+    rank: 11
+    abstract: true
+    domain: definition
+    alias: is_a
+    owner: definition
+    domain_of:
+    - definition
+    - anonymous_class_expression
+    range: definition
+  abstract:
+    name: abstract
+    description: Indicates the class or slot cannot be directly instantiated and is
+      intended for grouping purposes.
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    - ObjectOrientedProfile
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: definition
+    alias: abstract
+    owner: definition
+    domain_of:
+    - definition
+    range: boolean
+  mixin:
+    name: mixin
+    description: Indicates the class or slot is intended to be inherited from without
+      being an is_a parent. mixins should not be inherited from using is_a, except
+      by other mixins.
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    - ObjectOrientedProfile
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://en.wikipedia.org/wiki/Mixin
+    aliases:
+    - trait
+    rank: 1000
+    domain: definition
+    alias: mixin
+    owner: definition
+    domain_of:
+    - definition
+    range: boolean
+  mixins:
+    name: mixins
+    description: A collection of secondary parent classes or slots from which inheritable
+      metaslots are propagated from.
+    comments:
+    - mixins act in the same way as parents (is_a). They allow a model to have a primary
+      strict hierarchy, while keeping the benefits of multiple inheritance
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    - ObjectOrientedProfile
+    - OwlProfile
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://en.wikipedia.org/wiki/Mixin
+    aliases:
+    - traits
+    rank: 13
+    domain: definition
+    multivalued: true
+    alias: mixins
+    owner: definition
+    domain_of:
+    - definition
+    range: definition
+  apply_to:
+    name: apply_to
+    description: Used to extend class or slot definitions. For example, if we have
+      a core schema where a gene has two slots for identifier and symbol, and we have
+      a specialized schema for my_organism where we wish to add a slot systematic_name,
+      we can avoid subclassing by defining a class gene_my_organism, adding the slot
+      to this class, and then adding an apply_to pointing to the gene class. The new
+      slot will be 'injected into' the gene class.
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    rank: 1000
+    domain: definition
+    multivalued: true
+    alias: apply_to
+    owner: definition
+    domain_of:
+    - definition
+    range: definition
+  values_from:
+    name: values_from
+    description: 'The identifier of a "value set" -- a set of identifiers that form
+      the possible values for the range of a slot. Note: this is different than ''subproperty_of''
+      in that ''subproperty_of'' is intended to be a single ontology term while ''values_from''
+      is the identifier of an entire value set.  Additionally, this is different than
+      an enumeration in that in an enumeration, the values of the enumeration are
+      listed directly in the model itself. Setting this property on a slot does not
+      guarantee an expansion of the ontological hierarchy into an enumerated list
+      of possible values in every serialization of the model.'
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    rank: 1000
+    domain: definition
+    multivalued: true
+    alias: values_from
+    owner: definition
+    domain_of:
+    - definition
+    range: uriorcurie
+  string_serialization:
+    name: string_serialization
+    description: 'Used on a slot that stores the string serialization of the containing
+      object. The syntax follows python formatted strings, with slot names enclosed
+      in {}s. These are expanded using the values of those slots.
+
+      We call the slot with the serialization the s-slot, the slots used in the {}s
+      are v-slots. If both s-slots and v-slots are populated on an object then the
+      value of the s-slot should correspond to the expansion.
+
+      Implementations of frameworks may choose to use this property to either (a)
+      PARSE: implement automated normalizations by parsing denormalized strings into
+      complex objects (b) GENERARE: implement automated to_string labeling of complex
+      objects
+
+      For example, a Measurement class may have 3 fields: unit, value, and string_value.
+      The string_value slot may have a string_serialization of {value}{unit} such
+      that if unit=cm and value=2, the value of string_value shouldd be 2cm'
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://github.com/linkml/issues/128
+    rank: 1000
+    domain: definition
+    inherited: false
+    alias: string_serialization
+    owner: definition
+    domain_of:
+    - definition
+    range: string
+  name:
+    name: name
+    description: the unique name of the element within the context of the schema.  Name
+      is combined with the default prefix to form the globally unique subject of the
+      target class.
+    in_subset:
+    - SpecificationSubset
+    - OwlProfile
+    - MinimalSubset
+    - BasicSubset
+    - RelationalModelProfile
+    - ObjectOrientedProfile
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://en.wikipedia.org/wiki/Data_element_name
+    - https://linkml.io/linkml/faq/modeling.html#why-are-my-class-names-translated-to-camelcase
+    aliases:
+    - short name
+    - unique name
+    exact_mappings:
+    - schema:name
+    rank: 1
+    domain: element
+    slot_uri: rdfs:label
+    identifier: true
+    alias: name
+    owner: definition
+    domain_of:
+    - element
+    range: string
+    required: true
+  id_prefixes:
+    name: id_prefixes
+    description: An allowed list of prefixes for which identifiers must conform. The
+      identifier of this class or slot must begin with the URIs referenced by this
+      prefix
+    comments:
+    - Order of elements may be used to indicate priority order
+    - If identifiers are treated as CURIEs, then the CURIE must start with one of
+      the indicated prefixes followed by `:` (_should_ start if the list is open)
+    - If identifiers are treated as URIs, then the URI string must start with the
+      expanded for of the prefix (_should_ start if the list is open)
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://github.com/linkml/linkml-model/issues/28
+    rank: 1000
+    domain: element
+    multivalued: true
+    alias: id_prefixes
+    owner: definition
+    domain_of:
+    - element
+    range: ncname
+  id_prefixes_are_closed:
+    name: id_prefixes_are_closed
+    description: If true, then the id_prefixes slot is treated as being closed, and
+      any use of an id that does not have this prefix is considered a violation.
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://github.com/linkml/linkml/issues/194
+    rank: 1000
+    domain: element
+    alias: id_prefixes_are_closed
+    owner: definition
+    domain_of:
+    - element
+    range: boolean
+  definition_uri:
+    name: definition_uri
+    description: The native URI of the element. This is always within the namespace
+      of the containing schema. Contrast with the assigned URI, via class_uri or slot_uri
+    comments:
+    - Formed by combining the default_prefix with the normalized element name
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - linkml:class_uri
+    - linkml:slot_uri
+    rank: 1000
+    domain: element
+    readonly: filled in by the schema loader or schema view
+    alias: definition_uri
+    owner: definition
+    domain_of:
+    - element
+    range: uriorcurie
+  local_names:
+    name: local_names
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    multivalued: true
+    alias: local_names
+    owner: definition
+    domain_of:
+    - element
+    range: local_name
+    inlined: true
+  conforms_to:
+    name: conforms_to
+    description: An established standard to which the element conforms.
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - linkml:implements
+    rank: 1000
+    domain: element
+    slot_uri: dcterms:conformsTo
+    alias: conforms_to
+    owner: definition
+    domain_of:
+    - element
+    range: string
+  implements:
+    name: implements
+    description: An element in another schema which this element conforms to. The
+      referenced element is not imported into the schema for the implementing element.
+      However, the referenced schema may be used to check conformance of the implementing
+      element.
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    multivalued: true
+    alias: implements
+    owner: definition
+    domain_of:
+    - element
+    range: uriorcurie
+  instantiates:
+    name: instantiates
+    description: An element in another schema which this element instantiates.
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    multivalued: true
+    alias: instantiates
+    owner: definition
+    domain_of:
+    - element
+    range: uriorcurie
+  extensions:
+    name: extensions
+    description: a tag/text tuple attached to an arbitrary element
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: extensible
+    multivalued: true
+    alias: extensions
+    owner: definition
+    domain_of:
+    - extension
+    - extensible
+    range: extension
+    inlined: true
+  annotations:
+    name: annotations
+    description: a collection of tag/text tuples with the semantics of OWL Annotation
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    is_a: extensions
+    domain: annotatable
+    multivalued: true
+    alias: annotations
+    owner: definition
+    domain_of:
+    - annotatable
+    - annotation
+    range: annotation
+    inlined: true
+  description:
+    name: description
+    description: a textual description of the element's purpose and use
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - definition
+    exact_mappings:
+    - dcterms:description
+    - schema:description
+    rank: 5
+    domain: element
+    slot_uri: skos:definition
+    alias: description
+    owner: definition
+    domain_of:
+    - common_metadata
+    - permissible_value
+    range: string
+    recommended: true
+  alt_descriptions:
+    name: alt_descriptions
+    description: A sourced alternative description for an element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - alternate definitions
+    rank: 1000
+    domain: element
+    multivalued: true
+    alias: alt_descriptions
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: alt_description
+    inlined: true
+  title:
+    name: title
+    description: A concise human-readable display label for the element. The title
+      should mirror the name, and should use ordinary textual punctuation.
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - long name
+    rank: 3
+    domain: element
+    slot_uri: dcterms:title
+    alias: title
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: string
+  deprecated:
+    name: deprecated
+    description: Description of why and when this element will no longer be used
+    comments:
+    - note that linkml does not use a boolean to indicate deprecation status - the
+      presence of a string value in this field is sufficient to indicate deprecation.
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    close_mappings:
+    - owl:deprecated
+    rank: 1000
+    domain: element
+    alias: deprecated
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: string
+  todos:
+    name: todos
+    description: Outstanding issues that needs resolution
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    multivalued: true
+    alias: todos
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: string
+  notes:
+    name: notes
+    description: editorial notes about an element intended primarily for internal
+      consumption
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    slot_uri: skos:editorialNote
+    multivalued: true
+    alias: notes
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: string
+  comments:
+    name: comments
+    description: notes and comments about an element intended primarily for external
+      consumption
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    exact_mappings:
+    - rdfs:comment
+    rank: 1000
+    domain: element
+    slot_uri: skos:note
+    multivalued: true
+    alias: comments
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: string
+  examples:
+    name: examples
+    description: example usages of an element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    close_mappings:
+    - vann:example
+    rank: 1000
+    singular_name: example
+    domain: element
+    multivalued: true
+    alias: examples
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: example
+    inlined: true
+  in_subset:
+    name: in_subset
+    description: used to indicate membership of a term in a defined subset of terms
+      used for a particular domain or application.
+    comments:
+    - an example of use in the translator_minimal subset in the biolink model, holding
+      the minimal set of predicates used in a translator knowledge graph
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    slot_uri: OIO:inSubset
+    multivalued: true
+    alias: in_subset
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: subset_definition
+  from_schema:
+    name: from_schema
+    description: id of the schema that defined the element
+    notes:
+    - A stronger model would be range schema_definition, but this doesn't address
+      the import model
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    slot_uri: skos:inScheme
+    readonly: supplied by the schema loader or schema view
+    alias: from_schema
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: uri
+  imported_from:
+    name: imported_from
+    description: the imports entry that this element was derived from.  Empty means
+      primary source
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    readonly: supplied by the schema loader or schema view
+    alias: imported_from
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: string
+  source:
+    name: source
+    description: A related resource from which the element is derived.
+    comments:
+    - The described resource may be derived from the related resource in whole or
+      in part
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - origin
+    - derived from
+    close_mappings:
+    - prov:wasDerivedFrom
+    - schema:isBasedOn
+    rank: 1000
+    domain: element
+    slot_uri: dcterms:source
+    alias: source
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  in_language:
+    name: in_language
+    conforms_to: https://www.rfc-editor.org/rfc/bcp/bcp47.txt
+    description: the primary language used in the sources
+    comments:
+    - Recommended to use a string from IETF BCP 47
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    slot_uri: schema:inLanguage
+    alias: in_language
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: string
+  see_also:
+    name: see_also
+    description: A list of related entities or URLs that may be of relevance
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    slot_uri: rdfs:seeAlso
+    multivalued: true
+    alias: see_also
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  deprecated element has exact replacement:
+    name: deprecated element has exact replacement
+    description: When an element is deprecated, it can be automatically replaced by
+      this uri or curie
+    from_schema: https://w3id.org/linkml/meta
+    mappings:
+    - IAO:0100001
+    rank: 1000
+    alias: deprecated_element_has_exact_replacement
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  deprecated element has possible replacement:
+    name: deprecated element has possible replacement
+    description: When an element is deprecated, it can be potentially replaced by
+      this uri or curie
+    from_schema: https://w3id.org/linkml/meta
+    mappings:
+    - OIO:consider
+    rank: 1000
+    alias: deprecated_element_has_possible_replacement
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  aliases:
+    name: aliases
+    description: Alternate names/labels for the element. These do not alter the semantics
+      of the schema, but may be useful to support search and alignment.
+    comments:
+    - not be confused with the metaslot alias.
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - synonyms
+    - alternate names
+    - alternative labels
+    - designations
+    exact_mappings:
+    - schema:alternateName
+    rank: 1000
+    domain: element
+    slot_uri: skos:altLabel
+    multivalued: true
+    alias: aliases
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: string
+  structured_aliases:
+    name: structured_aliases
+    description: A list of structured_alias objects, used to provide aliases in conjunction
+      with additional metadata.
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - linkml:aliases
+    rank: 1000
+    slot_uri: skosxl:altLabel
+    multivalued: true
+    alias: structured_aliases
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: structured_alias
+    inlined: true
+  mappings:
+    name: mappings
+    description: A list of terms from different schemas or terminology systems that
+      have comparable meaning. These may include terms that are precisely equivalent,
+      broader or narrower in meaning, or otherwise semantically related but not equivalent
+      from a strict ontological perspective.
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - xrefs
+    - identifiers
+    - alternate identifiers
+    - alternate ids
+    rank: 1000
+    slot_uri: skos:mappingRelation
+    multivalued: true
+    alias: mappings
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  exact mappings:
+    name: exact mappings
+    description: A list of terms from different schemas or terminology systems that
+      have identical meaning.
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    is_a: mappings
+    slot_uri: skos:exactMatch
+    multivalued: true
+    inherited: false
+    alias: exact_mappings
+    owner: definition
+    domain_of:
+    - common_metadata
+    - UnitOfMeasure
+    range: uriorcurie
+  close mappings:
+    name: close mappings
+    description: A list of terms from different schemas or terminology systems that
+      have close meaning.
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    is_a: mappings
+    slot_uri: skos:closeMatch
+    multivalued: true
+    inherited: false
+    alias: close_mappings
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  related mappings:
+    name: related mappings
+    description: A list of terms from different schemas or terminology systems that
+      have related meaning.
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    is_a: mappings
+    slot_uri: skos:relatedMatch
+    multivalued: true
+    inherited: false
+    alias: related_mappings
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  narrow mappings:
+    name: narrow mappings
+    description: A list of terms from different schemas or terminology systems that
+      have narrower meaning.
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    is_a: mappings
+    slot_uri: skos:narrowMatch
+    multivalued: true
+    inherited: false
+    alias: narrow_mappings
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  broad mappings:
+    name: broad mappings
+    description: A list of terms from different schemas or terminology systems that
+      have broader meaning.
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    is_a: mappings
+    slot_uri: skos:broadMatch
+    multivalued: true
+    inherited: false
+    alias: broad_mappings
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  created_by:
+    name: created_by
+    description: agent that created the element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    slot_uri: pav:createdBy
+    alias: created_by
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  contributors:
+    name: contributors
+    description: agent that contributed to the element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    slot_uri: dcterms:contributor
+    multivalued: true
+    alias: contributors
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  created_on:
+    name: created_on
+    description: time at which the element was created
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    slot_uri: pav:createdOn
+    alias: created_on
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: datetime
+  last_updated_on:
+    name: last_updated_on
+    description: time at which the element was last updated
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    slot_uri: pav:lastUpdatedOn
+    alias: last_updated_on
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: datetime
+  modified_by:
+    name: modified_by
+    description: agent that modified the element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: element
+    slot_uri: oslc:modifiedBy
+    alias: modified_by
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  status:
+    name: status
+    description: status of the element
+    examples:
+    - value: bibo:draft
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://www.hl7.org/fhir/valueset-publication-status.html
+    - https://www.hl7.org/fhir/versions.html#std-process
+    aliases:
+    - workflow status
+    rank: 1000
+    domain: element
+    slot_uri: bibo:status
+    alias: status
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: uriorcurie
+  rank:
+    name: rank
+    description: the relative order in which the element occurs, lower values are
+      given precedence
+    comments:
+    - the rank of an element does not affect the semantics
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - order
+    - precedence
+    - display order
+    exact_mappings:
+    - qudt:order
+    - qb:order
+    rank: 51
+    slot_uri: sh:order
+    alias: rank
+    owner: definition
+    domain_of:
+    - common_metadata
+    - class_rule
+    range: integer
+  categories:
+    name: categories
+    description: Controlled terms used to categorize an element.
+    comments:
+    - if you wish to use uncontrolled terms or terms that lack identifiers then use
+      the keywords element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    singular_name: category
+    slot_uri: dcterms:subject
+    multivalued: true
+    alias: categories
+    owner: definition
+    domain_of:
+    - common_metadata
+    - structured_alias
+    range: uriorcurie
+  keywords:
+    name: keywords
+    description: Keywords or tags used to describe the element
+    in_subset:
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    singular_name: keyword
+    domain: element
+    slot_uri: schema:keywords
+    multivalued: true
+    alias: keywords
+    owner: definition
+    domain_of:
+    - common_metadata
+    range: string
+
+</code></pre>
+</details>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+<script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</html>

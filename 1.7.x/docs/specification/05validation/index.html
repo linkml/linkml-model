@@ -1,0 +1,1063 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://linkml.io/linkml-model/latest/docs/specification/05validation/" rel="canonical"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
+<title>Instance Validation - LinkML Model</title>
+<link href="../../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="amber" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#validation-using-schemas">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<div data-md-component="outdated" hidden="">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="LinkML Model" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="LinkML Model">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            LinkML Model
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Instance Validation
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="amber" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="teal" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"></path></svg>
+</label>
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="amber" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="teal" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="LinkML Model" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="LinkML Model">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    LinkML Model
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../home/">
+        About
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+          Specification
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Specification" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Specification
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../">
+        Index
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../00preamble/">
+        Preface
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01introduction/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02instances/">
+        Instances
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03schemas/">
+        Schema Datamodel
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04derived-schemas/">
+        Derived Schemas
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Instance Validation
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Instance Validation
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#types-of-checks">
+    Types of checks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#validation-procedure-for-instances">
+    Validation procedure for instances
+  </a>
+<nav aria-label="Validation procedure for instances" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#core-checks">
+    Core checks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deprecation-checks">
+    Deprecation checks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#atomic-checks">
+    Atomic Checks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#class-checks">
+    Class Checks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enum-checks">
+    Enum checks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rules">
+    Rules
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uniqueness-checks">
+    Uniqueness checks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#boolean-combinations-of-expressions">
+    Boolean combinations of expressions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rule-evaluation">
+    Rule evaluation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#classification-rule-evaluation">
+    Classification Rule evaluation
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#validation-of-typedefinitions">
+    Validation of TypeDefinitions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inference-of-new-values">
+    Inference of new values
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schema-validation">
+    Schema Validation
+  </a>
+<nav aria-label="Schema Validation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#metamodel-refinement-using-annotations">
+    Metamodel refinement using annotations
+  </a>
+<nav aria-label="Metamodel refinement using annotations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#background">
+    Background
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#annotation-validation">
+    Annotation validation
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06mapping/">
+        Mapping of Instances
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+          Appendix
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Appendix" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../">
+        Metamodel Index
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2">
+          Profiles
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Profiles" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+          Profiles
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../MinimalSubset/">
+        MinimalSubset
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../BasicSubset/">
+        BasicSubset
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../SpecificationSubset/">
+        SpecificationSubset
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../RelationalModelProfile/">
+        RelationalModelProfile
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ObjectOrientedProfile/">
+        ObjectOrientedProfile
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../OwlProfile/">
+        OwlProfile
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#types-of-checks">
+    Types of checks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#validation-procedure-for-instances">
+    Validation procedure for instances
+  </a>
+<nav aria-label="Validation procedure for instances" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#core-checks">
+    Core checks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deprecation-checks">
+    Deprecation checks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#atomic-checks">
+    Atomic Checks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#class-checks">
+    Class Checks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enum-checks">
+    Enum checks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rules">
+    Rules
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uniqueness-checks">
+    Uniqueness checks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#boolean-combinations-of-expressions">
+    Boolean combinations of expressions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rule-evaluation">
+    Rule evaluation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#classification-rule-evaluation">
+    Classification Rule evaluation
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#validation-of-typedefinitions">
+    Validation of TypeDefinitions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inference-of-new-values">
+    Inference of new values
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schema-validation">
+    Schema Validation
+  </a>
+<nav aria-label="Schema Validation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#metamodel-refinement-using-annotations">
+    Metamodel refinement using annotations
+  </a>
+<nav aria-label="Metamodel refinement using annotations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#background">
+    Background
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#annotation-validation">
+    Annotation validation
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="validation-using-schemas">Validation using Schemas</h1>
+<p><strong>Validation</strong> is a procedure that takes as input a LinkML instance and a schema, and will
+run a collection of <em>checks</em> against that instance.</p>
+<p>The validation procedure will produce output that can be used to determine if the instance is <em>structurally and semantically valid</em> according to the schema.</p>
+<p>The formal specification of the validation procedure takes as input a <em>derived</em> schema <em>m<sup>D</sup></em>:</p>
+<div class="mermaid">flowchart TD
+    M[Asserted Schema] --&gt; Derivation{Derivation Procedure}
+    Derivation --&gt;|derives| Mstar[Derived Schema]
+    R[Rules] --&gt; Derivation
+    I[Instance] --&gt; Validation{Validation Procedure}
+    Validation --&gt;|produces| Results[Validation Results]
+    Mstar --&gt; Validation
+</div>
+<p>Formally, the validation is performed against the abstract instance model, but validator
+implementations may choose to perform additional validation checks against the concrete
+serialization. This includes checking collections using <code>inlined_as_dict</code>.</p>
+<p>Actual implementations may choose to perform this composition or work directly on the asserted schema.</p>
+<p>The following holds for any validation procedure:</p>
+<ul>
+<li>The output MUST include a boolean slot indicating whether the input can be demonstrated to be false</li>
+<li>The output SHOULD include additional information indicating types of validation errors and where they occur</li>
+<li>The output SHOULD be conformant with the LinkML validation schema.</li>
+<li>The output MAY also return cases where <em>recommendations</em> are not adhered to</li>
+<li>The output MAY also be combined with parsing to yield the precise location (i.e. line numbers) in the source serialization document where problems are found.</li>
+<li>The procedure MAY restrict validation to defined subsets (profiles) of the Metamodel</li>
+<li>The procedure  SHOULD return in its payload an indication of which profile and version is used.</li>
+</ul>
+<h2 id="types-of-checks">Types of checks</h2>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Type</th>
+<th>Description</th>
+<th>SHACL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Required</code></td>
+<td>ERROR</td>
+<td></td>
+<td><code>MinCountConstraintComponent</code></td>
+</tr>
+<tr>
+<td><code>Recommended</code></td>
+<td>WARNING</td>
+<td></td>
+<td><code>MinCountConstraintComponent</code></td>
+</tr>
+<tr>
+<td><code>Singlevalued</code></td>
+<td>ERROR</td>
+<td></td>
+<td><code>MaxCountConstraintComponent</code></td>
+</tr>
+<tr>
+<td><code>Multivalued</code></td>
+<td>ERROR</td>
+<td></td>
+<td><code>MinCountConstraintComponent</code></td>
+</tr>
+<tr>
+<td><code>Inlined</code></td>
+<td>ERROR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Referenced</code></td>
+<td>ERROR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ClassRange</code></td>
+<td>ERROR</td>
+<td>class matches range</td>
+<td><code>ClassConstraintComponent</code></td>
+</tr>
+<tr>
+<td><code>Datatype</code></td>
+<td>ERROR</td>
+<td>datatype matches range</td>
+<td><code>DatatypeConstraintComponent</code></td>
+</tr>
+<tr>
+<td><code>NodeKind</code></td>
+<td>ERROR</td>
+<td>range metatype</td>
+<td><code>NodeKindConstraintComponent</code></td>
+</tr>
+<tr>
+<td><code>MinimumValue</code></td>
+<td>ERROR</td>
+<td></td>
+<td><code>MinInclusiveConstraintComponent</code></td>
+</tr>
+<tr>
+<td><code>MaximumValue</code></td>
+<td>ERROR</td>
+<td></td>
+<td><code>MaxInclusiveConstraintComponent</code></td>
+</tr>
+<tr>
+<td><code>Pattern</code></td>
+<td>ERROR</td>
+<td></td>
+<td><code>PatternConstraintComponent</code></td>
+</tr>
+<tr>
+<td><code>EqualsExpression</code></td>
+<td>INFERENCE</td>
+<td></td>
+<td><code>EqualsConstraintComponent</code></td>
+</tr>
+<tr>
+<td><code>StringSerialization</code></td>
+<td>INFERENCE</td>
+<td></td>
+<td><code>EqualsConstraintComponent</code></td>
+</tr>
+<tr>
+<td><code>TypeDesignator</code></td>
+<td>INFERENCE</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>For the <code>INFERENCE</code> type, the validation procedure MAY fill in missing values in the instance.
+There is only an error if the inferred value is not consistent with the asserted value.</p>
+<h2 id="validation-procedure-for-instances">Validation procedure for instances</h2>
+<pre><code>Validate(i, m, t):
+    mD = DeriveSchema(m)
+    s = new SlotDefinition(range=t)
+    for check in Checks:
+      if (s,i) matches check:
+        yield check
+      if i == &lt;Class&gt;(a1, ..., an):
+        for s' = i' in a1, ..., an:
+          Validate(i', mD, DerivedSlot(s', &lt;Class&gt;))
+</code></pre>
+<p>Matches are performed against the tables below. The element <code>i</code> is checked against
+the <code>Element</code> column. If the comparison type value <strong>T</strong> is <code>=</code>, this must be identical. If <code>i</code> is a Collection,
+then the match is performed against all members of the collection.</p>
+<p>The notation <code>[...]</code> indicates a collection with at least one value.</p>
+<h3 id="core-checks">Core checks</h3>
+<p>The following core checks apply to multiple instance definition types.</p>
+<table>
+<thead>
+<tr>
+<th><strong>T</strong></th>
+<th>Element</th>
+<th>Check Name</th>
+<th>Fail Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=</code></td>
+<td><code>None</code></td>
+<td><code>Required</code></td>
+<td><code>&lt;slot&gt;.required=True</code></td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td><code>[]</code></td>
+<td><code>Required</code></td>
+<td><code>&lt;slot&gt;.required=True</code></td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td><code>None</code></td>
+<td><code>Recommended</code></td>
+<td><code>&lt;slot&gt;.required=True</code></td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td><code>[]</code></td>
+<td><code>Recommended</code></td>
+<td><code>&lt;slot&gt;.required=True</code></td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td><code>[...]</code></td>
+<td><code>Singlevalued</code></td>
+<td><code>&lt;slot&gt;.multivalued=False</code></td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td><code>[...]</code></td>
+<td><code>UniqueKey</code></td>
+<td><strong>not</strong> <strong>Unique</strong>(<code>[...]</code>)</td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td><code>&lt;V&gt;</code> <code>&lt;V&gt; != [...]</code> <code>&lt;V&gt; != None</code></td>
+<td><code>Multivalued</code></td>
+<td><code>&lt;slot&gt;.multivalued=True</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Type&gt;&amp;&lt;Value&gt;</code></td>
+<td><code>NodeKind</code></td>
+<td><code>&lt;slot&gt;.range  ∉ m.types</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Enum&gt;[&lt;PermissibleValue&gt;]</code></td>
+<td><code>NodeKind</code></td>
+<td><code>&lt;slot&gt;.range  ∉ m.enums</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Class&gt;&amp;&lt;Reference&gt;</code></td>
+<td><code>Inlined</code></td>
+<td><code>&lt;slot&gt;.range.inlined=True</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Class&gt;(&lt;Assignments&gt;)</code></td>
+<td><code>Referenced</code></td>
+<td><code>&lt;slot&gt;.range.inlined=False</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Class&gt;(&lt;Assignments&gt;)</code></td>
+<td><code>NodeKind</code></td>
+<td><code>&lt;slot&gt;.range  ∉ m.classes</code></td>
+</tr>
+</tbody>
+</table>
+<p>The condition <strong>Unique</strong> checks a list of objects for uniqueness.</p>
+<p>For each <code>ClassDefinition</code> in the list, the primary key value is calculated, and this is assumed to be unique.</p>
+<h3 id="deprecation-checks">Deprecation checks</h3>
+<p>The following checks match multiple different instance definition types and check for usage of deprecated elements.</p>
+<table>
+<thead>
+<tr>
+<th><strong>T</strong></th>
+<th>Element</th>
+<th>Check</th>
+<th>Fail Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>in</code></td>
+<td></td>
+<td><code>DeprecatedSlot</code></td>
+<td><code>&lt;slot&gt;.deprecated=True</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Type&gt;&amp;&lt;Value&gt;</code></td>
+<td><code>DeprecatedType</code></td>
+<td><code>&lt;Type&gt;.deprecated=True</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Enum&gt;[&lt;PermissibleValue&gt;]</code></td>
+<td><code>DeprecatedEnum</code></td>
+<td><code>&lt;Enum&gt;.deprecated=True</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Class&gt;&amp;&lt;Reference&gt;</code></td>
+<td><code>DeprecatedClass</code></td>
+<td><code>&lt;Class&gt;.deprecated=True</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Class&gt;(&lt;Assignments&gt;)</code></td>
+<td><code>DeprecatedClass</code></td>
+<td><code>&lt;Class&gt;.deprecated=True</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="atomic-checks">Atomic Checks</h3>
+<p>The following checks only match when <code>i</code> is an <strong>AtomicInstance</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>T</strong></th>
+<th>Element</th>
+<th>Check</th>
+<th>Fail Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Type&gt;^&lt;Value&gt;</code></td>
+<td><code>Datatype</code></td>
+<td><strong>Conforms</strong>(<code>&lt;Value&gt;</code>, <code>&lt;Type&gt;.uri</code>)</td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Type&gt;^&lt;Value&gt;</code></td>
+<td><code>MaximumValue</code></td>
+<td><code>&lt;Value&gt; &gt; &lt;slot&gt;.maximum_value</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Type&gt;^&lt;Value&gt;</code></td>
+<td><code>MinimumValue</code></td>
+<td><code>&lt;Value&gt; &lt; &lt;slot&gt;.minimum_value</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Type&gt;^&lt;Value&gt;</code></td>
+<td><code>Pattern</code></td>
+<td><code>&lt;Value&gt; !~ &lt;slot&gt;.pattern</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Class&gt;&amp;&lt;Reference&gt;</code></td>
+<td><code>Pattern</code></td>
+<td><code>&lt;Reference&gt; !~ &lt;slot&gt;.pattern</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Type&gt;^&lt;Value&gt;</code></td>
+<td><code>EqualsExpression</code></td>
+<td><code>&lt;Value&gt; != Eval(&lt;slot&gt;.equals_expression(parent))</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Type&gt;^&lt;Value&gt;</code></td>
+<td><code>StringSerialization</code></td>
+<td><code>&lt;Value&gt; != Stringify(&lt;slot&gt;.string_serialization(parent))</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="class-checks">Class Checks</h3>
+<p>The following checks only match when <code>i</code> is an <strong>InstanceOfClass</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>T</strong></th>
+<th>Element</th>
+<th>Check</th>
+<th>Fail Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Class&gt;(&lt;Assignments&gt;)</code></td>
+<td><code>Abstract</code></td>
+<td><code>Class.abstract</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Class&gt;(&lt;Assignments&gt;)</code></td>
+<td><code>Mixin</code></td>
+<td><code>Class.mixin</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Class&gt;(&lt;Assignments&gt;)</code></td>
+<td><code>ClassRange</code></td>
+<td><code>slot.range ∉ A*(&lt;Class&gt;)</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Class&gt;(..., &lt;subslot&gt;=&lt;V&gt;, ...)</code></td>
+<td><code>ApplicableSlot</code></td>
+<td><code>subslot ∉ &lt;Class&gt;.attributes</code></td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Class&gt;(..., &lt;ts&gt;=&lt;V&gt;, ...)</code></td>
+<td><code>DesignatedType</code></td>
+<td><code>∃ v ∈ L(&lt;V&gt;): v ∉ Norm(A*(&lt;Class&gt;), ts.range)</code> and <code>ts.designates_type = True</code></td>
+</tr>
+</tbody>
+</table>
+<p>For the DesignatedType check, the <code>Norm</code> function takes as input as a list of classes,
+and expands these according to the range of the slot <code>ts</code> that designates the type.</p>
+<table>
+<thead>
+<tr>
+<th>Range</th>
+<th>Match</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>string</code></td>
+<td>{ <code>c.name</code> }</td>
+</tr>
+<tr>
+<td><code>curie</code></td>
+<td>{ <strong>CURIE</strong>(<code>c.class_uri</code>) }</td>
+</tr>
+<tr>
+<td><code>uri</code></td>
+<td>{ <strong>URI</strong>(<code>c.class_uri</code>) }</td>
+</tr>
+<tr>
+<td><code>uriorcurie</code></td>
+<td>{ <strong>CURIE</strong>(<code>c.class_uri</code>), <strong>URI</strong>(<code>c.class_uri</code>) }</td>
+</tr>
+</tbody>
+</table>
+<p>For example, given an instance</p>
+<blockquote>
+<p><code>Organization(name="acme", type=String^"Business")</code></p>
+</blockquote>
+<p>And a schema that includes:</p>
+<pre><code class="language-python">ClassDefinition(
+  name="Business",
+  is_a=ClassDefinition&amp;Organization,
+)
+ClassDefinition(
+  name="Organization",
+  attributes=[
+    SlotDefinition(name="type", range=TypeDefinition&amp;string),
+    ...
+</code></pre>
+<p>This will pass the <code>DesignatedType</code> check, because:</p>
+<ul>
+<li><code>A*(ClassDefinition&amp;Business) = { ..., ClassDefinition&amp;Organization, ... }</code></li>
+<li><code>Norm(A*(ClassDefinition&amp;Business), TypeDefinition&amp;string) = { ..., String^"Business", ... }</code></li>
+<li><code>String^"Business" ∉ { ..., String^"Business", ... }</code></li>
+</ul>
+<p>DesignatedType checks can also executed in inference mode, where an inference engine
+may choose to assign the most specific value allowed to the slot.</p>
+<h3 id="enum-checks">Enum checks</h3>
+<table>
+<thead>
+<tr>
+<th><strong>T</strong></th>
+<th>Element</th>
+<th>Check</th>
+<th>Fail Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>in</code></td>
+<td><code>&lt;Enum&gt;[&lt;PV&gt;]</code></td>
+<td><code>Permissible</code></td>
+<td><code>&lt;PV&gt;  ∉ &lt;Enum&gt;.permissible_value</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="rules">Rules</h3>
+<h3 id="uniqueness-checks">Uniqueness checks</h3>
+<h3 id="boolean-combinations-of-expressions">Boolean combinations of expressions</h3>
+<p>There are 4 boolean operator metaslots:</p>
+<ul>
+<li>any_of</li>
+<li>exactly_one_of</li>
+<li>none_of</li>
+<li>all_of</li>
+</ul>
+<p>These can apply to classes, slots, types, or enums. The range is always a list of operand expressions
+of the same type.</p>
+<p>In all cases, the semantics are as follows:</p>
+<ul>
+<li>any_of: true if there exists a member of the operands that evaluates to true</li>
+<li>for empty lists this is always false</li>
+<li>exactly_one_of: true if there exists a member of the operands that evaluates to true, and all other members evaluate to false</li>
+<li>for empty lists this is always false</li>
+<li>none_of: true if there does not exist a member of the operands that evaluates to true</li>
+<li>for empty lists this is always true</li>
+<li>for lists of length 1 this is the same as the logical NOT operator</li>
+<li>for lists of length 2 this is the same as the logical XOR operator</li>
+<li>all_of: true if there are no members that evaluate to false</li>
+<li>for empty lists this is always true</li>
+</ul>
+<h3 id="rule-evaluation">Rule evaluation</h3>
+<p>For each rule <code>r</code> in <em>C</em>.rules:</p>
+<ul>
+<li>if <code>r.preconditions</code> is <code>None</code> or <code>r.preconditions</code> is satisfied, then</li>
+<li><code>r.postconditions</code> are applied</li>
+</ul>
+<h3 id="classification-rule-evaluation">Classification Rule evaluation</h3>
+<h2 id="validation-of-typedefinitions">Validation of TypeDefinitions</h2>
+<p>For each slot <code>s</code> in <strong>Assignments</strong>, if <code>i.&lt;s&gt;</code> is not <code>None</code>, and <code>s.range</code> is in <code>m*.types</code>,
+where <code>i.&lt;s&gt; = *T*( **AtomicValue** )</code> must match <code>s.range</code>,</p>
+<p>here <code>T.uri</code> is used to determine the type:</p>
+<ul>
+<li>for xsd floats, doubles, and decimals, AtomicValue must be a decimal- for xsd floats, doubles, and decimals, AtomicValue must be a decimal</li>
+<li>for xsd ints, AtomicValue must be an Integer</li>
+<li>for xsd dates, datetimes, and times, AtomicValue must be a string conforming to the relevant ISO type</li>
+<li>for xsd booleans, AtomicValue must be <code>True</code> or <code>False</code></li>
+</ul>
+<h2 id="inference-of-new-values">Inference of new values</h2>
+<h2 id="schema-validation">Schema Validation</h2>
+<p>A LinkML schema is a LinkML instance that conforms to the LinkML metamodel. As such, it can be validated
+in the same way as any other LinkML instance.</p>
+<h3 id="metamodel-refinement-using-annotations">Metamodel refinement using annotations</h3>
+<h4 id="background">Background</h4>
+<p>The LinkML model provides a fixed set of metamodel slots which can be applied to any schema element.
+Any schema that assigns slot values not in the metamodel is invalid.</p>
+<p>Sometimes it is useful to attach additional information to elements in a schema, this is called
+schema <em>extension</em>. Alternatively, it may be useful to be able to make the metamodel more restrictive
+in some contexts; for example, making the <code>description</code> metamodel slot <code>required</code> rather than <code>recommended</code>.</p>
+<p>The LinkML metamodel can be effectively extended through the use of <code>annotation</code> slot assignments.
+Annotations are <code>tag</code>-<code>value</code> pairs.</p>
+<p>As an example, if we want to add a metamodel slot <code>review</code> intended to store a review of a schema element.</p>
+<pre><code class="language-yaml">classes:
+  Person:
+    annotations:
+      review: A very useful class that is well defined
+      ...
+</code></pre>
+<h4 id="annotation-validation">Annotation validation</h4>
+<p>By default, all annotation tags and values are valid. </p>
+<p>LinkML 1.6 introduces the ability to validate annotation tags and values.</p>
+<p>This is done by adding an <code>instantiates</code> slot-value assignment onto any schema element. The range of
+the <code>instantiates</code> slot is a <code>uriorcurie</code> that references a class that serves as a metamodel extension class.</p>
+<p>If a schema element instantiates at least one class then <em>all</em> annotations are validated.</p>
+<p>For example:</p>
+<pre><code class="language-yaml">classes:
+  Person:
+    instantiates:
+     - mymetamodel:Reviewable
+    annotations:
+      review: A very useful class that is well defined
+      ...
+</code></pre>
+<p>The <code>Reviewable</code> class is defined as follows:</p>
+<pre><code class="language-yaml">classes:
+  Reviewable:
+    class_uri: mymetamodel:Reviewable
+    slots:
+      description: an expert review of a schema element
+      review: string
+</code></pre>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Derived Schemas" class="md-footer__link md-footer__link--prev" href="../04derived-schemas/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Derived Schemas
+            </div>
+</div>
+</a>
+<a aria-label="Next: Mapping of Instances" class="md-footer__link md-footer__link--next" href="../06mapping/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Mapping of Instances
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+<script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</html>
