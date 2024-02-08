@@ -1,0 +1,68 @@
+id: https://example.org/arrays
+name: arrays-temperature-example
+title: Array Temperature Example
+description: |-
+  Example LinkML schema to demonstrate a 3D DataArray of temperature values with labeled axes
+license: MIT
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
+  example: https://example.org/
+
+default_prefix: example
+
+imports:
+  - linkml:types
+
+classes:
+
+  TemperatureDataset:
+    tree_root: true
+    annotations:
+      array_data_mapping:
+        data: temperatures_in_K
+        dims: [x, y, t]
+        coords:
+          latitude_in_deg: x
+          longitude_in_deg: y
+          time_in_d: t
+    attributes:
+      name:
+        identifier: true
+        range: string
+      latitude_in_deg:
+        required: true
+        range: float
+        multivalued: true
+        unit:
+          ucum_code: deg
+        array:
+          exact_number_dimensions: 1
+      longitude_in_deg:
+        required: true
+        range: float
+        multivalued: true
+        unit:
+          ucum_code: deg
+        array:
+          exact_number_dimensions: 1
+      time_in_d:
+        range: float
+        multivalued: true
+        implements:
+          - linkml:elements
+        required: true
+        unit:
+          ucum_code: d
+        array:
+          exact_number_dimensions: 1
+      temperatures_in_K:
+        range: float
+        multivalued: true
+        required: true
+        unit:
+          ucum_code: K
+        array:
+          exact_number_dimensions: 3
+

@@ -1,0 +1,52 @@
+id: https://example.org/arrays
+name: arrays-temperature-example
+title: Array Temperature Example
+description: |-
+  Example LinkML schema to demonstrate a 3D DataArray of temperature values with labeled axes
+license: MIT
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
+  example: https://example.org/
+
+default_prefix: example
+
+imports:
+  - linkml:types
+
+classes:
+
+  RGBImage:
+    attributes:
+      rgb:
+        range: float
+        array:
+          # NPtyping: NDArray[Shape["* x, * y, 3 rgb"]
+          exact_number_dimensions: 3
+          dimensions:
+            - alias: x
+            - alias: y
+            - alias: rgb
+              exact_cardinality: 3
+              description: r, g, b values
+              annotations:
+                names: "[red, green, blue]"
+  SquareDataset:
+    attributes:
+      square_matrix:
+        array:
+          exact_number_dimensions: 2
+          dimensions:
+            - alias: x
+            - alias: y
+
+  UnboundedTimeSeries:
+    attributes:
+      my_matrix:
+        range: float
+        array:
+          dimensions:
+            - alias: time
+          maximum_number_dimensions: False
+
