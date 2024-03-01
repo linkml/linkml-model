@@ -23,6 +23,9 @@ prefixes:
   mediatypes: https://www.iana.org/assignments/media-types/
   oslc: http://open-services.net/ns/core#
   bibo: http://purl.org/ontology/bibo/
+  REPR: https://w3id.org/reproduceme#
+  SIO: http://semanticscience.org/resource/SIO_
+  WIKIDATA_PROPERTY: https://www.wikidata.org/prop/
 
 default_prefix: datasets
 default_range: string
@@ -123,12 +126,25 @@ classes:
 # Slots                            #
 # ==================================
 slots:
+
   id:
     identifier: true
-    description: the unique name of th dataset
+    description: the unique identifier of the entity
     slot_uri: dcterms:identifier
     exact_mappings:
+      - REPR:id
       - schema:name
+    related_mappings:
+      - SIO:000672   # is identifier for
+      - SIO:000674   # is unique identifier for
+    narrow_mappings:
+      - dcterms:eventID
+      - dcterms:parentEventID
+      - dcterms:identificationID
+      - REPR:doi
+      - schema:productID
+      - schema:taxID
+      - WIKIDATA_PROPERTY:P3743  # ITU/ISO/IEC Id
 
   title:
     description: the official title of the element
