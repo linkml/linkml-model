@@ -36,12 +36,11 @@ classes:
         range: string
       latitude_in_deg:
         implements:
-          - linkml:axis  # is this necessary/useful given the above array_data_mapping?
+          - linkml:axis
         range: LatitudeSeries
-        # NOTE: LatitudeSeries could have multiple array attributes. use the one that implements linkml:elements
         required: true
         annotations:
-          axis_index: 0  # is this necessary/useful given the above array_data_mapping?
+          axis_index: 0
       longitude_in_deg:
         implements:
           - linkml:axis
@@ -58,7 +57,7 @@ classes:
           axis_index: 2
       temperatures_in_K:
         implements:
-          - linkml:DataArray_data  # changed from linkml:array
+          - linkml:array
         range: TemperatureMatrix
         required: true
 
