@@ -25,53 +25,36 @@ classes:
     annotations:
       array_data_mapping:
         data: temperatures_in_K
-        dims: [x, "y", t]
+        dims: ["x", "y", "t"]  # YAML 1.1 treats unquoted y as True
         coords:
-          latitude_in_deg: x
+          latitude_in_deg: "x"
           longitude_in_deg: "y"
-          time_in_d: t
+          time_in_d: "t"
     attributes:
       name:
         identifier: true
         range: string
       latitude_in_deg:
-        implements:
-          - linkml:axis
         range: LatitudeSeries
         required: true
-        annotations:
-          axis_index: 0
       longitude_in_deg:
-        implements:
-          - linkml:axis
         range: LongitudeSeries
         required: true
-        annotations:
-          axis_index: 1
       time_in_d:
-        implements:
-          - linkml:axis
         range: DaySeries
         required: true
-        annotations:
-          axis_index: 2
       temperatures_in_K:
-        implements:
-          - linkml:array
         range: TemperatureMatrix
         required: true
 
   TemperatureMatrix:
     description: A 3D array of temperatures
-    implements:
-      - linkml:NDArray
-      - linkml:RowOrderedArray
     attributes:
       values:
         range: float
         multivalued: true
         implements:
-          - linkml:elements
+          - linkml:elements  # signals to a containing DataArray that this has the data
         required: true
         unit:
           ucum_code: K
@@ -80,8 +63,6 @@ classes:
 
   LatitudeSeries:
     description: A series whose values represent latitude
-    implements:
-      - linkml:NDArray
     attributes:
       values:
         range: float
@@ -96,8 +77,6 @@ classes:
 
   LongitudeSeries:
     description: A series whose values represent longitude
-    implements:
-      - linkml:NDArray
     attributes:
       values:
         range: float
@@ -112,8 +91,6 @@ classes:
 
   DaySeries:
     description: A series whose values represent the days since the start of the measurement period
-    implements:
-      - linkml:NDArray
     attributes:
       values:
         range: float

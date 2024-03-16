@@ -22,11 +22,11 @@ classes:
     annotations:
       array_data_mapping:
         data: temperatures_in_K
-        dims: [x, "y", t]
+        dims: ["x", "y", "t"]  # YAML 1.1 treats unquoted y as True
         coords:
-          latitude_in_deg: x
+          latitude_in_deg: "x"
           longitude_in_deg: "y"
-          time_in_d: t
+          time_in_d: "t"
     attributes:
       name:
         identifier: true
@@ -38,7 +38,7 @@ classes:
         unit:
           ucum_code: deg
         array:
-          exact_number_dimensions: 1
+          exact_number_dimensions: 2
       longitude_in_deg:
         required: true
         range: float
@@ -46,7 +46,7 @@ classes:
         unit:
           ucum_code: deg
         array:
-          exact_number_dimensions: 1
+          exact_number_dimensions: 2
       time_in_d:
         range: float
         multivalued: true
@@ -65,4 +65,8 @@ classes:
           ucum_code: K
         array:
           exact_number_dimensions: 3
+          dimensions:
+          - range: LatitudeSeries # or range: float, array: ...
+          - range: LongitudeSeries
+          - range: DaySeries
 
