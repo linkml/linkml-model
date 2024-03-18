@@ -3,6 +3,7 @@ name: arrays-temperature-example
 title: Array Temperature Example
 description: |-
   Example LinkML schema to demonstrate a 3D DataArray of temperature values with labeled axes
+  using array slots for the axes and data instead of classes containing arrays
 license: MIT
 
 prefixes:
@@ -38,7 +39,7 @@ classes:
         unit:
           ucum_code: deg
         array:
-          exact_number_dimensions: 2
+          exact_number_dimensions: 1
       longitude_in_deg:
         required: true
         range: float
@@ -46,7 +47,7 @@ classes:
         unit:
           ucum_code: deg
         array:
-          exact_number_dimensions: 2
+          exact_number_dimensions: 1
       time_in_d:
         range: float
         multivalued: true
@@ -65,8 +66,3 @@ classes:
           ucum_code: K
         array:
           exact_number_dimensions: 3
-          dimensions:
-          - range: LatitudeSeries # or range: float, array: ...
-          - range: LongitudeSeries
-          - range: DaySeries
-
