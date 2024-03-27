@@ -1,0 +1,91 @@
+id: https://example.org/arrays
+name: arrays-temperature-example-3
+title: Array Temperature Example Using NDArray Classes
+description: |-
+  ...
+license: MIT
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
+  example: https://example.org/
+
+default_prefix: example
+
+imports:
+  - linkml:types
+
+classes:
+
+  TemperatureDataset:
+    tree_root: true
+    implements:
+      - linkml:DataArray
+    attributes:
+      name:
+        identifier: true
+        range: string
+      latitude_in_deg:
+        required: true
+        range: float
+        unit:
+          ucum_code: deg
+        array:
+          exact_number_dimensions: 2
+        modifies:
+          temperatures_in_K:
+            type: indexes
+            dimension: [0, 1]
+            # The latitude for the temperature value at index (i,j,k) is equal to latitude_in_deg[i,j].
+            # NOTE in xarray, multi-dimensional coordinates are referenced by name, but here we reference
+            # by index because dimensions are not required to have names.
+      longitude_in_deg:
+        required: true
+        range: float
+        unit:
+          ucum_code: deg
+        array:
+          exact_number_dimensions: 2
+        modifies:
+          temperatures_in_K:
+            type: indexes
+            dimension: [0, 1]
+      date_in_d:
+        required: true
+        range: date
+        array:
+          exact_number_dimensions: 1
+        modifies:
+          temperatures_in_K:
+            type: indexes
+            dimension: 2
+      day:
+        description: Number of days since the reference date
+        required: true
+        range: integer
+        array:
+          exact_number_dimensions: 1
+        modifies:
+          temperatures_in_K:
+            type: indexes
+            dimension: 2
+      reference_date:
+        description: The reference date for the day values
+        required: true
+        range: date
+        modifies:
+          temperatures_in_K:
+            type: indexes
+            # this is a constant coordinate for the entire array. realistically, this should just be an attribute
+            # on `day`. not sure when a constant coordinate would be used, but we might as well support it
+      temperatures_in_K:
+        required: true
+        range: float
+        unit:
+          ucum_code: K
+        array:
+          exact_number_dimensions: 3
+          dimensions:
+            - alias: "x"
+            - alias: "y"
+            - alias: "date"

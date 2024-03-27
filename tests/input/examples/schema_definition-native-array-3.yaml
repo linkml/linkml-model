@@ -1,0 +1,112 @@
+id: https://example.org/arrays
+name: arrays-temperature-example-3
+title: Array Temperature Example Using NDArray Classes
+description: |-
+  Example LinkML schema to demonstrate a complex 3D DataArray of temperature values
+  with labeled axes using array slots for the axes and data instead of classes containing
+  arrays
+license: MIT
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
+  example: https://example.org/
+
+default_prefix: example
+
+imports:
+  - linkml:types
+
+classes:
+
+  TemperatureDataset:
+    tree_root: true
+    implements:
+      - linkml:DataArray
+    annotations:
+      # See also the Xarray DataArray data structure
+      # https://docs.xarray.dev/en/latest/user-guide/data-structures.html#dataarray
+      # with the main differences being
+      # 1) the coordinates are not DataArray objects
+      # 2) coordinates are not named
+      array_data_mapping:
+        # The name of the array attribute within this class that contains the data.
+        # This maps to the "values" attribute of an Xarray DataArray.
+        data: temperatures_in_K
+
+        # The 3 dimensions of the array attribute "temperatures_in_K" are named
+        # "x", "y", and "t" in the DataArray. These dims do not need to be the same as the
+        # dimensions of the array attribute. A name must be provided for each dimension
+        # of the data array.
+        # This maps to the "dims" attribute of an Xarray DataArray.
+        dims: ["x", "y", "t"]  # NOTE: y without quotes is parsed as True in YAML 1.1
+
+        # An array attribute within this class that is not the data array above may
+        # serve as a coordinate for a set of dimensions in the data array.
+        # In most cases, a 1D array is a coordinate for a single dimension in the
+        # data array, but it is possible to have an N-dimensional array that is a
+        # coordinate for N dimensions in the data array. The format is:
+        # <name of array attribute>: <dimension name or list of dimension names from dims>
+        # The number of dimensions of a coordinate must equal the length of the
+        # list specified here. Multiple coordinates can be specified for the same
+        # dimension or set of dimensions.
+        # This maps to the "coords" attribute of an Xarray DataArray.
+        coords:
+          # Here, the latitude for the temperature value at index (i,j,k) is equal to
+          # latitude_in_deg[i,j]. Similarly, the longitude for the temperature value at
+          # index (i,j,k) is equal to longitude_in_deg[i,j]. The date for the temperature
+          # value at index (i,j,k) is equal to date_in_d[k]. The days_with_rain for the
+          # temperature value at index (i,j,k) is equal to days_with_rain[k].
+          latitude_in_deg: ["x", "y"]
+          longitude_in_deg: ["x", "y"]
+          date_in_d: "t"
+          day: "t"
+          # The reference date for the temperature values is the same for all values
+          # in the array. In Xarray terms, this is a non-dimension coordinate.
+          reference_date: False
+
+        # Additional attributes for storing arbitrary metadata about the DataArray may
+        # be specified in the "attributes" below. These map to the "attrs" attribute of
+        # an Xarray DataArray.
+    attributes:
+      name:
+        identifier: true
+        range: string
+      latitude_in_deg:
+        required: true
+        range: float
+        unit:
+          ucum_code: deg
+        array:
+          exact_number_dimensions: 2
+      longitude_in_deg:
+        required: true
+        range: float
+        unit:
+          ucum_code: deg
+        array:
+          exact_number_dimensions: 2
+      date_in_d:
+        required: true
+        range: date
+        array:
+          exact_number_dimensions: 1
+      day:
+        required: true
+        range: integer
+        array:
+          exact_number_dimensions: 1
+      reference_date:
+        required: true
+        range: date
+      temperatures_in_K:
+        required: true
+        range: float
+        unit:
+          ucum_code: K
+        array:
+          exact_number_dimensions: 3
+          dimensions:
+            - alias: lat  # TODO when would the "dims" be used vs "alias"?
+            - alias: lon
+            - alias: date
