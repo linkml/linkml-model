@@ -2,8 +2,7 @@ id: https://w3id.org/linkml/lib/arrays
 name: arrays
 title: LinkML Arrays
 description: >-
-  LinkML templates for storing one-dimensional series, two-dimensional arrays,
-  and arrays of higher dimensionality.
+  LinkML templates for storing arrays.
 
   Status: Experimental
 
@@ -19,6 +18,9 @@ status: testing
 #  - github:mavaylon1
 #  - github:ialarmedalien
 #  - github:cmungall
+#  - github:sneakers-the-rat
+#  - github:bendichter
+#  - github:melonora
 
 prefixes:
   linkml: https://w3id.org/linkml/
@@ -39,141 +41,29 @@ classes:
   DataStructure:
     abstract: true
 
-  NDArray:
+  Array:
     description: >-
-      a data structure consisting of a collection of *elements*, each identified by at least one array index tuple.
-    abstract: true
+      A data structure where an N-dimensional array is represented as a class rather than an attribute. There
+      must be exactly one attribute that is an array. There may be other attributes associated with the array
+      but they must not be arrays themselves.
     is_a: DataStructure
-    slots:
-      - dimensions
-      - elements
-      - array_linearization_order
-    slot_usage:
-      elements:
-        description: >-
-          the collection of values that make up the array. The elements have a *direct* representation which is
-          an ordered sequence of values. The elements also have an *array interpretation*, where each
-          element has a unique index which is determined by array_linearization_order
 
   DataArray:
     description: >-
-      a data structure containing an NDArray and a set of one-dimensional series that are used to label
-      the elements of the array
+      A data structure containing an Array and a set of Arrays that are used to label the elements of the Array.
+      The set of Arrays are also known as coordinates.
     is_a: DataStructure
-    slots:
-      - axis
-      - array
     see_also:
       - https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html
 
-  GroupingByArrayOrder:
-    mixin: true
+  Dataset:
     description: >-
-      A mixin that describes an array whose elements are mapped from a linear sequence to an array index
-      via a specified mapping
-
-  ColumnOrderedArray:
-    mixin: true
-    is_a: GroupingByArrayOrder
-    description: >-
-      An array ordering that is column-order
-    slots:
-      - array_linearization_order
-    slot_usage:
-      array_linearization_order:
-        equals_string: COLUMN_MAJOR_ARRAY_ORDER
-
-  RowOrderedArray:
-    mixin: true
-    is_a: GroupingByArrayOrder
-    description: >-
-      An array ordering that is row-order or generalizations thereof
-    slots:
-      - array_linearization_order
-    slot_usage:
-      array_linearization_order:
-        equals_string: ROW_MAJOR_ARRAY_ORDER
-
-slots:
-  dimensions:
-    description: >-
-      The number of elements in the tuple used to access elements of an array
-    aliases:
-      - rank
-      - dimensionality
-      - number of axes
-      - number of elements
-    range: integer
-  axis:
-    range: NDArray
-    slot_usage:
-      dimensions:
-        equals_number: 1
-    aliases:
-      - dimension
-    description: >-
-      A one-dimensional series that contains elements that form one part of a tuple used to access an array
-    required: true
-  axis_index:
-    range: integer
-    description: >-
-      The position of an axis in a tuple used to access an array
-  array:
-    range: NDArray
-    description: >-
-      An array that is labeled by a set of one-dimensional series
-    required: true
-  elements:
-    # this will be serialized as one big long list that should be interpreted as a 2D array
-    range: Any
-    aliases:
-      - values
-    required: true
-    multivalued: true
-    description: >-
-      A collection of values that make up the contents of an array. These elements may be interpreted
-      as a contiguous linear sequence (direct representation) or as elements to be accessed via an
-      array index
-  series_label:  # the row label
-    key: true
-    description: >-
-      A name that uniquely identifiers a series
-  length:
-    description: >-
-      The number of elements in the array
-    range: integer
-    equals_expression: "length(elements)"
-  array_linearization_order:
-    range: ArrayLinearizationOrderOptions
-    ifabsent: "string(ROW_MAJOR_ARRAY_ORDER)"
-
-  specified_input:
-    range: DataStructure
-    multivalued: true
-  specified_output:
-    range: DataStructure
-    multivalued: true
-  operation_parameters:
-    range: Any
-    multivalued: true
-
-enums:
-  ArrayLinearizationOrderOptions:
-    description: >-
-      Determines how a linear contiguous representation of the elements of an array map
-      to array indices
-    permissible_values:
-      COLUMN_MAJOR_ARRAY_ORDER:
-        meaning: gom:columnMajorArray
-        description: >-
-          An array layout option in which the elements in each column is stored in consecutive positions,
-          or any generalization thereof to dimensionality greater than 2
-        aliases:
-          - F order
-      ROW_MAJOR_ARRAY_ORDER:
-        meaning: gom:rowMajorArray
-        description: >-
-          An array layout option in which the elements in each row is stored in consecutive positions,
-          or any generalization thereof to dimensionality greater than 2
-        aliases:
-          - C order
+      A data structure containing one or more main Arrays with aligned dimensions and a set of Arrays that are used to
+      label the elements of the Arrays. The set of Arrays are also known as coordinates. A Dataset with only one
+      main Array is equivalent to a DataArray. If there are multiple main Arrays, then all dimensions must refer to
+      points in the same shared coordinate system, i.e., if two Arrays have the same dimension "x", that dimension
+      must be identical in both Arrays.
+    is_a: DataStructure
+    see_also:
+      - https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html
+      - https://docs.unidata.ucar.edu/netcdf-c/current/netcdf_data_model.html
