@@ -62,7 +62,7 @@ classes:
           date_in_d: "t"
           day: "t"
           # The reference date for the temperature values is the same for all values
-          # in the array. In Xarray terms, this is a non-dimension coordinate.
+          # in the array. In Xarray terms, this is a non-dimension (constant) coordinate.
           reference_date: False
 
         # Additional attributes for storing arbitrary metadata about the DataArray may
@@ -92,11 +92,13 @@ classes:
         array:
           exact_number_dimensions: 1
       day:
+        description: Number of days since `reference_date`
         required: true
         range: integer
         array:
           exact_number_dimensions: 1
       reference_date:
+        description: The reference date for the `day` values
         required: true
         range: date
       temperatures_in_K:
@@ -107,6 +109,6 @@ classes:
         array:
           exact_number_dimensions: 3
           dimensions:
-            - alias: lat  # TODO when would the "dims" be used vs "alias"?
-            - alias: lon
-            - alias: date
+            - alias: "x"
+            - alias: "y"
+            - alias: "date"

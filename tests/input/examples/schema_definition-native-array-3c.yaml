@@ -34,12 +34,6 @@ classes:
           ucum_code: deg
         array:
           exact_number_dimensions: 2
-          indexes:
-            temperatures_in_K:
-              dimension: [0, 1]
-              # The latitude for the temperature value at index (i,j,k) is equal to latitude_in_deg[i,j].
-              # NOTE in xarray, multi-dimensional coordinates are referenced by name, but here we reference
-              # by index because dimensions are not required to have names.
       longitude_in_deg:
         required: true
         range: float
@@ -47,34 +41,21 @@ classes:
           ucum_code: deg
         array:
           exact_number_dimensions: 2
-          indexes:
-            temperatures_in_K:
-              dimension: [0, 1]
       date_in_d:
         required: true
         range: date
         array:
           exact_number_dimensions: 1
-          indexes:
-            temperatures_in_K:
-              dimension: 2
       day:
         description: Number of days since `reference_date`
         required: true
         range: integer
         array:
           exact_number_dimensions: 1
-          indexes:
-            temperatures_in_K:
-              dimension: 2
       reference_date:
         description: The reference date for the `day` values
         required: true
         range: date
-        # indexes:
-        #   temperatures_in_K:
-        #     # this is a non-dimension (constant) coordinate for the entire array and is supported by xarray
-        #     # but not supported here. the use case is not clear; this should just be an attribute on `day`.
       temperatures_in_K:
         required: true
         range: float
@@ -86,3 +67,20 @@ classes:
             - alias: "x"
             - alias: "y"
             - alias: "date"
+          indexed_by:
+            - alias: lat
+              index_slot: latitude_in_deg
+              index_dims: [0, 1]
+            - alias: lon
+              index_slot: longitude_in_deg
+              index_dims: [0, 1]
+            - alias: date
+              index_slot: date
+              index_dims: [2]
+            - alias: day
+              index_slot: day
+              index_dims: [2]
+            - alias: reference_date
+              index_slot: reference_date
+              # this is a non-dimension (constant) coordinate for the entire array and is supported by xarray.
+              # the use case is not clear; this should just be an attribute on `day`.
