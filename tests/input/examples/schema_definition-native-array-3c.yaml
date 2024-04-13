@@ -41,19 +41,21 @@ classes:
           ucum_code: deg
         array:
           exact_number_dimensions: 2
-      date_in_d:
+      date:
         required: true
         range: date
         array:
           exact_number_dimensions: 1
-      day:
+      day_in_d:
         description: Number of days since `reference_date`
         required: true
         range: integer
+        unit:
+          ucum_code: d
         array:
           exact_number_dimensions: 1
       reference_date:
-        description: The reference date for the `day` values
+        description: The reference date for the `day_in_d` values
         required: true
         range: date
       temperatures_in_K:
@@ -78,9 +80,9 @@ classes:
               index_slot: date
               index_dims: [2]
             - alias: day
-              index_slot: day
+              index_slot: day_in_d
               index_dims: [2]
             - alias: reference_date
               index_slot: reference_date
               # this is a non-dimension (constant) coordinate for the entire array and is supported by xarray.
-              # the use case is not clear; this should just be an attribute on `day`.
+              # the use case is not clear; this should just be an attribute on `day_in_d`.

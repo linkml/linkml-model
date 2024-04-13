@@ -59,8 +59,8 @@ classes:
           # temperature value at index (i,j,k) is equal to days_with_rain[k].
           latitude_in_deg: ["x", "y"]
           longitude_in_deg: ["x", "y"]
-          date_in_d: "t"
-          day: "t"
+          date: "t"
+          day_in_d: "t"
           # The reference date for the temperature values is the same for all values
           # in the array. In Xarray terms, this is a non-dimension (constant) coordinate.
           reference_date: False
@@ -86,21 +86,25 @@ classes:
           ucum_code: deg
         array:
           exact_number_dimensions: 2
-      date_in_d:
+      date:
         required: true
         range: date
         array:
           exact_number_dimensions: 1
-      day:
+      day_in_d:
         description: Number of days since `reference_date`
         required: true
         range: integer
+        unit:
+          ucum_code: d
         array:
           exact_number_dimensions: 1
       reference_date:
-        description: The reference date for the `day` values
+        description: The reference date for the `day_in_d` values
         required: true
         range: date
+        unit:
+          ucum_code: d
       temperatures_in_K:
         required: true
         range: float

@@ -50,7 +50,7 @@ classes:
           indexes:
             temperatures_in_K:
               dimension: [0, 1]
-      date_in_d:
+      date:
         required: true
         range: date
         array:
@@ -58,17 +58,19 @@ classes:
           indexes:
             temperatures_in_K:
               dimension: 2
-      day:
+      day_in_d:
         description: Number of days since `reference_date`
         required: true
         range: integer
+        unit:
+          ucum_code: d
         array:
           exact_number_dimensions: 1
           indexes:
             temperatures_in_K:
               dimension: 2
       reference_date:
-        description: The reference date for the `day` values
+        description: The reference date for the `day_in_d` values
         required: true
         range: date
         # indexes:

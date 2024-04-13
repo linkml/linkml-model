@@ -1,0 +1,146 @@
+id: https://example.org/arrays
+name: arrays-temperature-example-2
+title: Array Temperature Example Using NDArray Classes
+description: |-
+  Example LinkML schema to demonstrate a 3D DataArray of temperature values with labeled axes
+  using classes containing arrays for the axes and data instead of using array slots/attributes.
+  Creating separate types for the array slots enables reuse and extension.
+license: MIT
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
+  example: https://example.org/
+
+default_prefix: example
+
+imports:
+  - linkml:types
+
+classes:
+
+  TemperatureDataset:
+    tree_root: true
+    implements:
+      - linkml:DataArray
+    attributes:
+      name:
+        identifier: true
+        range: string
+      latitude_in_deg:
+        range: LatitudeSeries
+        required: true
+      longitude_in_deg:
+        range: LongitudeSeries
+        required: true
+      date:
+        range: DateSeries
+        required: true
+      day_in_d:
+        range: DaysSinceSeries
+      # one could define `reference_date` at this level but it really should be an attribute on `DaysSinceSeries`.
+      # however, this means `reference_date` cannot be a non-dimension (constant) coordinate of `temperatures_in_K`
+      # as structured in Xarray.
+      temperatures_in_K:
+        range: TemperatureMatrix
+        required: true
+        array:
+          # it does not make sense to put `indexed_by` on `TemperatureMatrix` because the index slots are only
+          # accessible from this DataArray class.
+          indexed_by:
+            - alias: lat
+              index_slot: latitude_in_deg
+              index_dims: [0, 1]
+            - alias: lon
+              index_slot: longitude_in_deg
+              index_dims: [0, 1]
+            - alias: date
+              index_slot: date
+              index_dims: [2]
+            - alias: day
+              index_slot: day_in_d
+              index_dims: [2]
+
+  LatitudeSeries:
+    description: A 2D array whose values represent latitude
+    implements:
+      - linkml:Array
+    attributes:
+      name:
+        identifier: true  # an identifier is required for referencing in other classes
+        range: string
+      latitude_in_deg:  # the name of the attribute does not matter when it is used within a DataArray or Dataset
+        required: true
+        range: float
+        unit:
+          ucum_code: deg
+        array:  # exactly one attribute within this class must be an array
+          exact_number_dimensions: 2
+
+  LongitudeSeries:
+    description: A 2D array whose values represent longitude
+    implements:
+      - linkml:Array
+    attributes:
+      name:
+        identifier: true
+        range: string
+      longitude_in_deg:
+        required: true
+        range: float
+        unit:
+          ucum_code: deg
+        array:
+          exact_number_dimensions: 2
+
+  DateSeries:
+    description: A 1D series of dates
+    implements:
+      - linkml:Array
+    attributes:
+      name:
+        identifier: true
+        range: string
+      date:
+        required: true
+        range: date
+        array:
+          exact_number_dimensions: 1
+
+  DaysSinceSeries:
+    description: A 1D series whose values represent the number of days since a reference date
+    implements:
+      - linkml:Array
+    attributes:
+      name:
+        identifier: true
+        range: string
+      day_in_d:
+        required: true
+        range: integer
+        unit:
+          ucum_code: d
+        array:
+          exact_number_dimensions: 1
+      reference_date:
+        description: The reference date for the `day_in_d` values
+        required: true
+        range: date
+
+  TemperatureMatrix:
+    description: A 3D array of temperatures
+    attributes:
+      name:
+        identifier: true
+        range: string
+      temperatures_in_K:
+        required: true
+        range: float
+        unit:
+          ucum_code: K
+        array:
+          exact_number_dimensions: 3
+          dimensions:
+            - alias: "x"
+            - alias: "y"
+            - alias: "date"
