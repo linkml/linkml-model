@@ -45,26 +45,24 @@ classes:
         range: TemperatureMatrix
         required: true
         array:
-          # it does not make sense to put `indexed_by` on `TemperatureMatrix` because the index slots are only
+          # it does not make sense to put `labeled_by` on `TemperatureMatrix` because the index slots are only
           # accessible from this DataArray class.
-          indexed_by:
+          labeled_by:
             - alias: lat
-              index_slot: latitude_in_deg
-              index_dims: [0, 1]
+              label_slot: latitude_in_deg
+              labeled_dimensions: [0, 1]
             - alias: lon
-              index_slot: longitude_in_deg
-              index_dims: [0, 1]
+              label_slot: longitude_in_deg
+              labeled_dimensions: [0, 1]
             - alias: date
-              index_slot: date
-              index_dims: [2]
+              label_slot: date
+              labeled_dimensions: [2]
             - alias: day
-              index_slot: day_in_d
-              index_dims: [2]
+              label_slot: day_in_d
+              labeled_dimensions: [2]
 
   LatitudeSeries:
     description: A 2D array whose values represent latitude
-    implements:
-      - linkml:Array
     attributes:
       name:
         identifier: true  # an identifier is required for referencing in other classes
@@ -79,8 +77,6 @@ classes:
 
   LongitudeSeries:
     description: A 2D array whose values represent longitude
-    implements:
-      - linkml:Array
     attributes:
       name:
         identifier: true
@@ -95,8 +91,6 @@ classes:
 
   DateSeries:
     description: A 1D series of dates
-    implements:
-      - linkml:Array
     attributes:
       name:
         identifier: true
@@ -109,8 +103,6 @@ classes:
 
   DaysSinceSeries:
     description: A 1D series whose values represent the number of days since a reference date
-    implements:
-      - linkml:Array
     attributes:
       name:
         identifier: true

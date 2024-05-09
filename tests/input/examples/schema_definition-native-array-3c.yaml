@@ -69,20 +69,22 @@ classes:
             - alias: "x"
             - alias: "y"
             - alias: "date"
-          indexed_by:
+          labeled_by:
             - alias: lat
-              index_slot: latitude_in_deg
-              index_dims: [0, 1]
+              label_slot: latitude_in_deg
+              labeled_dimensions: [0, 1]
             - alias: lon
-              index_slot: longitude_in_deg
-              index_dims: [0, 1]
+              label_slot: longitude_in_deg
+              labeled_dimensions: [0, 1]
             - alias: date
-              index_slot: date
-              index_dims: [2]
+              label_slot: date
+              labeled_dimensions: [2]
             - alias: day
-              index_slot: day_in_d
-              index_dims: [2]
+              label_slot: day_in_d
+              labeled_dimensions: [2]
             - alias: reference_date
-              index_slot: reference_date
+              label_slot: reference_date
+              labeled_dimensions: null
               # this is a non-dimension (constant) coordinate for the entire array and is supported by xarray.
-              # the use case is not clear; this should just be an attribute on `day_in_d`.
+              # the use case is not clear; this should just be an attribute on `day_in_d`. but we can support it by
+              # allowing index_dims: null

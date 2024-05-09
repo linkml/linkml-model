@@ -36,7 +36,8 @@ classes:
           exact_number_dimensions: 2
           indexes:
             temperatures_in_K:
-              dimension: [0, 1]
+              alias: lat
+              index_dims: [0, 1]
               # The latitude for the temperature value at index (i,j,k) is equal to latitude_in_deg[i,j].
               # NOTE in xarray, multi-dimensional coordinates are referenced by name, but here we reference
               # by index because dimensions are not required to have names.
@@ -49,7 +50,8 @@ classes:
           exact_number_dimensions: 2
           indexes:
             temperatures_in_K:
-              dimension: [0, 1]
+              alias: lon
+              index_dims: [0, 1]
       date:
         required: true
         range: date
@@ -57,7 +59,8 @@ classes:
           exact_number_dimensions: 1
           indexes:
             temperatures_in_K:
-              dimension: 2
+              alias: date
+              index_dims: [2]
       day_in_d:
         description: Number of days since `reference_date`
         required: true
@@ -68,15 +71,19 @@ classes:
           exact_number_dimensions: 1
           indexes:
             temperatures_in_K:
-              dimension: 2
+              alias: day
+              index_dims: [2]
       reference_date:
         description: The reference date for the `day_in_d` values
         required: true
         range: date
-        # indexes:
-        #   temperatures_in_K:
-        #     # this is a non-dimension (constant) coordinate for the entire array and is supported by xarray
-        #     # but not supported here. the use case is not clear; this should just be an attribute on `day`.
+        indexes:
+          temperatures_in_K:
+            alias: reference_date
+            index_dims: null
+            # this is a non-dimension (constant) coordinate for the entire array and is supported by xarray.
+            # the use case is not clear; this should just be an attribute on `day`. but we can support it by
+            # allowing index_dims: null
       temperatures_in_K:
         required: true
         range: float
