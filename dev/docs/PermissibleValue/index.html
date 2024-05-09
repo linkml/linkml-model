@@ -379,6 +379,10 @@
 
       PermissibleValue : instantiates
 
+      PermissibleValue : is_a
+
+          PermissibleValue --&gt; permissible_value : is_a
+
       PermissibleValue : keywords
 
       PermissibleValue : last_updated_on
@@ -386,6 +390,10 @@
       PermissibleValue : mappings
 
       PermissibleValue : meaning
+
+      PermissibleValue : mixins
+
+          PermissibleValue --&gt; permissible_value : mixins
 
       PermissibleValue : modified_by
 
@@ -468,6 +476,18 @@
 <td><a href="../implements/">implements</a></td>
 <td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>An element in another schema which this element conforms to</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../is_a/">is_a</a></td>
+<td>0..1 <br/> <a href="./">PermissibleValue</a></td>
+<td>A primary parent class or slot from which inheritable metaslots are propagate...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../mixins/">mixins</a></td>
+<td>0..* <br/> <a href="./">PermissibleValue</a></td>
+<td>A collection of secondary parent classes or slots from which inheritable meta...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -717,6 +737,18 @@
 <td>domain</td>
 <td><a href="./">PermissibleValue</a></td>
 </tr>
+<tr>
+<td><a href="./">PermissibleValue</a></td>
+<td><a href="../is_a/">is_a</a></td>
+<td>range</td>
+<td><a href="./">PermissibleValue</a></td>
+</tr>
+<tr>
+<td><a href="./">PermissibleValue</a></td>
+<td><a href="../mixins/">mixins</a></td>
+<td>range</td>
+<td><a href="./">PermissibleValue</a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="aliases">Aliases</h2>
@@ -778,12 +810,21 @@ slots:
 - unit
 - instantiates
 - implements
+- is_a
+- mixins
 slot_usage:
   is_a:
     name: is_a
+    domain_of:
+    - definition
+    - anonymous_class_expression
+    - permissible_value
     range: permissible_value
   mixins:
     name: mixins
+    domain_of:
+    - definition
+    - permissible_value
     range: permissible_value
 
 </code></pre>
@@ -809,9 +850,16 @@ mixins:
 slot_usage:
   is_a:
     name: is_a
+    domain_of:
+    - definition
+    - anonymous_class_expression
+    - permissible_value
     range: permissible_value
   mixins:
     name: mixins
+    domain_of:
+    - definition
+    - permissible_value
     range: permissible_value
 attributes:
   text:
@@ -922,6 +970,38 @@ attributes:
     - element
     - permissible_value
     range: uriorcurie
+  is_a:
+    name: is_a
+    description: A primary parent class or slot from which inheritable metaslots are
+      propagated from. While multiple inheritance is not allowed, mixins can be provided
+      effectively providing the same thing. The semantics are the same when translated
+      to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework
+      (e.g. java classes, python classes) then is a is used. When translating a framework
+      without polymorphism (e.g. json-schema, solr document schema) then is a and
+      mixins are recursively unfolded
+    from_schema: https://w3id.org/linkml/meta
+    rank: 11
+    abstract: true
+    alias: is_a
+    owner: permissible_value
+    domain_of:
+    - definition
+    - anonymous_class_expression
+    - permissible_value
+    range: permissible_value
+  mixins:
+    name: mixins
+    description: A collection of secondary parent classes or slots from which inheritable
+      metaslots are propagated from.
+    from_schema: https://w3id.org/linkml/meta
+    rank: 13
+    multivalued: true
+    alias: mixins
+    owner: permissible_value
+    domain_of:
+    - definition
+    - permissible_value
+    range: permissible_value
   extensions:
     name: extensions
     description: a tag/text tuple attached to an arbitrary element
