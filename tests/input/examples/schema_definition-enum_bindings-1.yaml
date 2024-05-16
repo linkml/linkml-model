@@ -22,15 +22,20 @@ classes:
         identifier: true
       name:
 
-  Biosample:
+
+  Sample:
     attributes:
       name:
       sample_material_type:
         range: Concept
+            
+  EnvironmentalMaterialSample:
+    slot_usage:
+      sample_material_type:
         bindings:
           - binds_value_of: id
             range: ENVOMaterialEnum
-            strength: RECOMMENDED
+            obligation_level: RECOMMENDED
             description: Material type from the ENVO ontology
 
 enums:
