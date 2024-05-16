@@ -1,0 +1,47 @@
+id: https://example.org/enum_bindings
+name: enum_bindings_example
+title: Enum Bindings Example
+description: |-
+  Example LinkML schema to demonstrate Enum bindings
+license: MIT
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  example: https://example.org/
+
+default_prefix: example
+
+imports:
+  - linkml:types
+
+classes:
+
+  Concept:
+    attributes:
+      id:
+        identifier: true
+      name:
+
+  Biosample:
+    attributes:
+      name:
+      sample_material_type:
+        range: Concept
+        bindings:
+          - binds_value_of: id
+            range: ENVOMaterialEnum
+            strength: RECOMMENDED
+            description: Material type from the ENVO ontology
+
+enums:
+  ENVOMaterialEnum:
+    description: Material type from the ENVO ontology
+    reachable_from:
+      source_ontology: obo:envo
+      source_nodes:
+        - ENVO:00010483  ## environmental material
+      is_direct: false
+      relationship_types:
+        - rdfs:subClassOf
+
+
