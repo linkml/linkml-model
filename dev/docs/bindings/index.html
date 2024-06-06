@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://linkml.io/linkml-model/latest/docs/notes/">
+        <link rel="canonical" href="https://linkml.io/linkml-model/latest/docs/bindings/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: notes - LinkML Model</title>
+        <title>Slot: bindings - LinkML Model</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-notes" class="md-skip">
+        <a href="#slot-bindings" class="md-skip">
           Skip to content
         </a>
       
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: notes
+              Slot: bindings
             
           </span>
         </div>
@@ -615,9 +615,11 @@
                   
 
 
-<h1 id="slot-notes">Slot: notes</h1>
-<p><em>editorial notes about an element intended primarily for internal consumption</em></p>
-<p>URI: <a href="http://www.w3.org/2004/02/skos/core#editorialNote">skos:editorialNote</a></p>
+<h1 id="slot-bindings">Slot: bindings</h1>
+<p><em>A collection of enum bindings that specify how a slot can be bound to a permissible value from an enumeration.</em></p>
+<p><em>LinkML provides enums to allow string values to be restricted to one of a set of permissible values (specified statically or dynamically).</em></p>
+<p><em>Enum bindings allow enums to be bound to any object, including complex nested objects. For example, given a (generic) class Concept with slots id and label, it may be desirable to restrict the values the id takes on in a given context. For example, a HumanSample class may have a slot for representing sample site, with a range of concept, but the values of that slot may be restricted to concepts from a particular branch of an anatomy ontology.</em></p>
+<p>URI: <a href="https://w3id.org/linkml/bindings">linkml:bindings</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -631,58 +633,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td>Generic metadata shared across definitions</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Element/">Element</a></td>
-<td>A named element in the model</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
 <td>A collection of definitions that make up a schema or a data model</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td>an element that whose instances are atomic scalar values that can be mapped t...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td>an element that can be used to group other metamodel elements</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td>abstract base class for core metaclasses</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td>an element whose instances must be drawn from a specified set of permissible ...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td>A binding of a slot or a class to a permissible value from an enumeration</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td>object that contains meta data about a synonym or alias including where it ca...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td>An abstract parent class for any nested expression</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td>An expression that describes an abstract path from an object to another throu...</td>
+<td><a href="../SlotExpression/">SlotExpression</a></td>
+<td>an expression that constrains the range of values a slot can take</td>
 <td>no</td>
 </tr>
 <tr>
@@ -695,57 +652,12 @@
 <td>an element that describes how instances are related to other instances</td>
 <td>no</td>
 </tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td>an element whose instances are complex objects that may have slot-value assig...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td>A rule that applies to instances of a class</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td>defines the dimensions of an array</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td>defines one of the dimensions of an array</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td>a regular expression pattern used to evaluate conformance of a string</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td>an expression describing an import</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td>a permissible value, accompanied by intended text and an optional mapping to ...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td>a collection of slots whose values uniquely identify an instance of a class</td>
-<td>no</td>
-</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../String/">String</a></p>
+<p>Range: <a href="../EnumBinding/">EnumBinding</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -759,19 +671,32 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: notes
-description: editorial notes about an element intended primarily for internal consumption
+<pre><code class="language-yaml">name: bindings
+description: 'A collection of enum bindings that specify how a slot can be bound to
+  a permissible value from an enumeration.
+
+  LinkML provides enums to allow string values to be restricted to one of a set of
+  permissible values (specified statically or dynamically).
+
+  Enum bindings allow enums to be bound to any object, including complex nested objects.
+  For example, given a (generic) class Concept with slots id and label, it may be
+  desirable to restrict the values the id takes on in a given context. For example,
+  a HumanSample class may have a slot for representing sample site, with a range of
+  concept, but the values of that slot may be restricted to concepts from a particular
+  branch of an anatomy ontology.'
 in_subset:
-- BasicSubset
+- SpecificationSubset
 from_schema: https://w3id.org/linkml/meta
+status: testing
 rank: 1000
 domain: element
-slot_uri: skos:editorialNote
 multivalued: true
-alias: notes
+alias: bindings
 domain_of:
-- common_metadata
-range: string
+- schema_definition
+- slot_expression
+range: enum_binding
+inlined: true
 
 </code></pre>
 

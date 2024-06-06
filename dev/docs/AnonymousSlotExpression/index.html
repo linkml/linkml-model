@@ -338,6 +338,10 @@
 
           AnonymousSlotExpression --&gt; anonymous_slot_expression : any_of
 
+      AnonymousSlotExpression : bindings
+
+          AnonymousSlotExpression --&gt; enum_binding : bindings
+
       AnonymousSlotExpression : broad_mappings
 
       AnonymousSlotExpression : categories
@@ -519,6 +523,12 @@
 <td><a href="../SlotExpression/">SlotExpression</a></td>
 </tr>
 <tr>
+<td><a href="../bindings/">bindings</a></td>
+<td>0..* <br/> <a href="../EnumBinding/">EnumBinding</a></td>
+<td>A collection of enum bindings that specify how a slot can be bound to a permi...</td>
+<td><a href="../SlotExpression/">SlotExpression</a></td>
+</tr>
+<tr>
 <td><a href="../required/">required</a></td>
 <td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
 <td>true means that the slot must be present in instances of the class definition</td>
@@ -581,7 +591,7 @@
 <tr>
 <td><a href="../value_presence/">value_presence</a></td>
 <td>0..1 <br/> <a href="../PresenceEnum/">PresenceEnum</a></td>
-<td>if true then a value must be present (for lists there must be at least one va...</td>
+<td>if PRESENT then a value must be present (for lists there must be at least one...</td>
 <td><a href="../SlotExpression/">SlotExpression</a></td>
 </tr>
 <tr>
@@ -1062,6 +1072,7 @@ attributes:
     alias: range
     owner: anonymous_slot_expression
     domain_of:
+    - enum_binding
     - slot_expression
     range: element
   range_expression:
@@ -1096,6 +1107,34 @@ attributes:
     domain_of:
     - slot_expression
     range: enum_expression
+  bindings:
+    name: bindings
+    description: 'A collection of enum bindings that specify how a slot can be bound
+      to a permissible value from an enumeration.
+
+      LinkML provides enums to allow string values to be restricted to one of a set
+      of permissible values (specified statically or dynamically).
+
+      Enum bindings allow enums to be bound to any object, including complex nested
+      objects. For example, given a (generic) class Concept with slots id and label,
+      it may be desirable to restrict the values the id takes on in a given context.
+      For example, a HumanSample class may have a slot for representing sample site,
+      with a range of concept, but the values of that slot may be restricted to concepts
+      from a particular branch of an anatomy ontology.'
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    rank: 1000
+    domain: element
+    multivalued: true
+    alias: bindings
+    owner: anonymous_slot_expression
+    domain_of:
+    - schema_definition
+    - slot_expression
+    range: enum_binding
+    inlined: true
   required:
     name: required
     description: true means that the slot must be present in instances of the class
@@ -1299,8 +1338,9 @@ attributes:
     range: string
   value_presence:
     name: value_presence
-    description: if true then a value must be present (for lists there must be at
-      least one value). If false then a value must be absent (for lists, must be empty)
+    description: if PRESENT then a value must be present (for lists there must be
+      at least one value). If ABSENT then a value must be absent (for lists, must
+      be empty)
     comments:
     - if set to true this has the same effect as required=true. In contrast, required=false
       allows a value to be present
