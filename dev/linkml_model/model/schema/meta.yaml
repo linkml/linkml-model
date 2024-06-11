@@ -464,6 +464,14 @@ slots:
     description: >-
       The relationship between an element and its alias.
 
+  alias_contexts:
+    alias: contexts
+    domain: structured_alias
+    range: uri
+    multivalued: true
+    description: >-
+      The context in which an alias should be applied
+
   in_language:
     slot_uri: schema:inLanguage
     range: string
@@ -2131,6 +2139,27 @@ slots:
     in_subset:
       - SpecificationSubset
 
+  type_mappings:
+    range: type_mapping
+    description: >-
+      A collection of type mappings that specify how a slot's range should be mapped or
+      serialized in different frameworks
+    multivalued: true
+      
+  framework_key:
+    range: string
+    alias: framework
+    key: true
+    description: >-
+      The name of a format that can be used to serialize LinkML data.
+      The string value should be a code from the LinkML frameworks vocabulary,
+      but this is not strictly enforced
+    
+  mapped_type:
+    range: type_definition
+    alias: type
+    description: >-
+      type to coerce to
 
   # -----------------------------------
   # Slots for type definition
@@ -2763,6 +2792,7 @@ classes:
       - literal_form
       - alias_predicate
       - categories
+      - alias_contexts
     slot_usage:
       categories:
         description: >-
@@ -2919,6 +2949,7 @@ classes:
       - disjoint_with
       - children_are_mutually_disjoint
       - union_of
+      - type_mappings
     slot_usage:
       is_a:
         range: slot_definition
@@ -3180,6 +3211,20 @@ classes:
       - SpecificationSubset
       - BasicSubset
       - RelationalModelProfile
+
+  type_mapping:
+    rank: 21
+    description: Represents how a slot or type can be serialized to a format.
+    mixins:
+      - extensible
+      - annotatable
+      - common_metadata
+    slots:
+      - framework_key
+      - mapped_type
+      - string_serialization
+    in_subset:
+      - SpecificationSubset
 
 # ==================================
 # Enumerations                     #

@@ -614,6 +614,10 @@
 
           SlotDefinition --&gt; slot_definition : transitive_form_of
 
+      SlotDefinition : type_mappings
+
+          SlotDefinition --&gt; type_mapping : type_mappings
+
       SlotDefinition : union_of
 
           SlotDefinition --&gt; slot_definition : union_of
@@ -879,6 +883,12 @@
 <td><a href="../union_of/">union_of</a></td>
 <td>0..* <br/> <a href="./">SlotDefinition</a></td>
 <td>indicates that the domain element consists exactly of the members of the elem...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../type_mappings/">type_mappings</a></td>
+<td>0..* <br/> <a href="../TypeMapping/">TypeMapping</a></td>
+<td>A collection of type mappings that specify how a slot's range should be mappe...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -1976,6 +1986,7 @@ slots:
 - disjoint_with
 - children_are_mutually_disjoint
 - union_of
+- type_mappings
 slot_usage:
   is_a:
     name: is_a
@@ -2740,6 +2751,18 @@ attributes:
     - slot_definition
     - class_definition
     range: slot_definition
+  type_mappings:
+    name: type_mappings
+    description: A collection of type mappings that specify how a slot's range should
+      be mapped or serialized in different frameworks
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    multivalued: true
+    alias: type_mappings
+    owner: slot_definition
+    domain_of:
+    - slot_definition
+    range: type_mapping
   range:
     name: range
     description: "defines the type of the object of the slot.  Given the following\
@@ -3387,6 +3410,7 @@ attributes:
     owner: slot_definition
     domain_of:
     - definition
+    - type_mapping
     range: string
   name:
     name: name
