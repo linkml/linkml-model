@@ -1,0 +1,97 @@
+id: https://example.org/arrays
+name: arrays-temperature-example-3
+title: Array Temperature Example Using NDArray Classes
+description: |-
+  Example LinkML schema to demonstrate a complex 3D DataArray of temperature values
+  with labeled axes using array slots for the axes and data instead of classes containing
+  arrays
+license: MIT
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
+  example: https://example.org/
+
+default_prefix: example
+
+imports:
+  - linkml:types
+
+classes:
+
+  TemperatureDataset:
+    tree_root: true
+    implements:
+      - linkml:DataArray
+    attributes:
+      name:
+        identifier: true
+        range: string
+      latitude_in_deg:
+        required: true
+        range: float
+        unit:
+          ucum_code: deg
+        array:
+          exact_number_dimensions: 2
+          indexes:
+            temperatures_in_K:
+              alias: lat
+              index_dims: [0, 1]
+              # The latitude for the temperature value at index (i,j,k) is equal to latitude_in_deg[i,j].
+              # NOTE in xarray, multi-dimensional coordinates are referenced by name, but here we reference
+              # by index because dimensions are not required to have names.
+      longitude_in_deg:
+        required: true
+        range: float
+        unit:
+          ucum_code: deg
+        array:
+          exact_number_dimensions: 2
+          indexes:
+            temperatures_in_K:
+              alias: lon
+              index_dims: [0, 1]
+      date:
+        required: true
+        range: date
+        array:
+          exact_number_dimensions: 1
+          indexes:
+            temperatures_in_K:
+              alias: date
+              index_dims: [2]
+      day_in_d:
+        description: Number of days since `reference_date`
+        required: true
+        range: integer
+        unit:
+          ucum_code: d
+        array:
+          exact_number_dimensions: 1
+          indexes:
+            temperatures_in_K:
+              alias: day
+              index_dims: [2]
+      reference_date:
+        description: The reference date for the `day_in_d` values
+        required: true
+        range: date
+        indexes:
+          temperatures_in_K:
+            alias: reference_date
+            index_dims: null
+            # this is a non-dimension (constant) coordinate for the entire array and is supported by xarray.
+            # the use case is not clear; this should just be an attribute on `day`. but we can support it by
+            # allowing index_dims: null
+      temperatures_in_K:
+        required: true
+        range: float
+        unit:
+          ucum_code: K
+        array:
+          exact_number_dimensions: 3
+          dimensions:
+            - alias: "x"
+            - alias: "y"
+            - alias: "date"
