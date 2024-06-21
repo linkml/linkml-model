@@ -382,6 +382,8 @@
 
           SlotExpression --&gt; Anything : minimum_value
 
+      SlotExpression : multivalued
+
       SlotExpression : none_of
 
           SlotExpression --&gt; anonymous_slot_expression : none_of
@@ -466,6 +468,12 @@
 <td><a href="../recommended/">recommended</a></td>
 <td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
 <td>true means that the slot should be present in instances of the class definiti...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../multivalued/">multivalued</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>true means that slot can have more than one value and should be represented u...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -734,6 +742,7 @@ slots:
 - bindings
 - required
 - recommended
+- multivalued
 - inlined
 - inlined_as_list
 - minimum_value
@@ -957,6 +966,24 @@ attributes:
     domain: slot_definition
     inherited: true
     alias: recommended
+    owner: slot_expression
+    domain_of:
+    - slot_expression
+    range: boolean
+  multivalued:
+    name: multivalued
+    description: true means that slot can have more than one value and should be represented
+      using a list or collection structure.
+    in_subset:
+    - SpecificationSubset
+    - MinimalSubset
+    - BasicSubset
+    - ObjectOrientedProfile
+    from_schema: https://w3id.org/linkml/meta
+    rank: 7
+    domain: slot_definition
+    inherited: true
+    alias: multivalued
     owner: slot_expression
     domain_of:
     - slot_expression

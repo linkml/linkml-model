@@ -676,12 +676,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../multivalued/">multivalued</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>true means that slot can have more than one value and should be represented u...</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../array/">array</a></td>
 <td>0..1 <br/> <a href="../ArrayExpression/">ArrayExpression</a></td>
 <td>coerces the value of the slot into an array and defines the dimensions of tha...</td>
@@ -925,6 +919,12 @@
 <td><a href="../recommended/">recommended</a></td>
 <td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
 <td>true means that the slot should be present in instances of the class definiti...</td>
+<td><a href="../SlotExpression/">SlotExpression</a></td>
+</tr>
+<tr>
+<td><a href="../multivalued/">multivalued</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>true means that slot can have more than one value and should be represented u...</td>
 <td><a href="../SlotExpression/">SlotExpression</a></td>
 </tr>
 <tr>
@@ -1446,6 +1446,12 @@
 </tr>
 <tr>
 <td><a href="../SlotExpression/">SlotExpression</a></td>
+<td><a href="../multivalued/">multivalued</a></td>
+<td>domain</td>
+<td><a href="./">SlotDefinition</a></td>
+</tr>
+<tr>
+<td><a href="../SlotExpression/">SlotExpression</a></td>
 <td><a href="../inlined/">inlined</a></td>
 <td>domain</td>
 <td><a href="./">SlotDefinition</a></td>
@@ -1494,6 +1500,12 @@
 </tr>
 <tr>
 <td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
+<td><a href="../multivalued/">multivalued</a></td>
+<td>domain</td>
+<td><a href="./">SlotDefinition</a></td>
+</tr>
+<tr>
+<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
 <td><a href="../inlined/">inlined</a></td>
 <td>domain</td>
 <td><a href="./">SlotDefinition</a></td>
@@ -1537,12 +1549,6 @@
 <tr>
 <td><a href="./">SlotDefinition</a></td>
 <td><a href="../slot_uri/">slot_uri</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../multivalued/">multivalued</a></td>
 <td>domain</td>
 <td><a href="./">SlotDefinition</a></td>
 </tr>
@@ -1782,6 +1788,12 @@
 </tr>
 <tr>
 <td><a href="./">SlotDefinition</a></td>
+<td><a href="../multivalued/">multivalued</a></td>
+<td>domain</td>
+<td><a href="./">SlotDefinition</a></td>
+</tr>
+<tr>
+<td><a href="./">SlotDefinition</a></td>
 <td><a href="../inlined/">inlined</a></td>
 <td>domain</td>
 <td><a href="./">SlotDefinition</a></td>
@@ -1951,7 +1963,6 @@ slots:
 - singular_name
 - domain
 - slot_uri
-- multivalued
 - array
 - inherited
 - readonly
@@ -2144,24 +2155,6 @@ attributes:
     domain_of:
     - slot_definition
     range: uriorcurie
-  multivalued:
-    name: multivalued
-    description: true means that slot can have more than one value and should be represented
-      using a list or collection structure.
-    in_subset:
-    - SpecificationSubset
-    - MinimalSubset
-    - BasicSubset
-    - ObjectOrientedProfile
-    from_schema: https://w3id.org/linkml/meta
-    rank: 7
-    domain: slot_definition
-    inherited: true
-    alias: multivalued
-    owner: slot_definition
-    domain_of:
-    - slot_definition
-    range: boolean
   array:
     name: array
     description: coerces the value of the slot into an array and defines the dimensions
@@ -2887,6 +2880,24 @@ attributes:
     domain: slot_definition
     inherited: true
     alias: recommended
+    owner: slot_definition
+    domain_of:
+    - slot_expression
+    range: boolean
+  multivalued:
+    name: multivalued
+    description: true means that slot can have more than one value and should be represented
+      using a list or collection structure.
+    in_subset:
+    - SpecificationSubset
+    - MinimalSubset
+    - BasicSubset
+    - ObjectOrientedProfile
+    from_schema: https://w3id.org/linkml/meta
+    rank: 7
+    domain: slot_definition
+    inherited: true
+    alias: multivalued
     owner: slot_definition
     domain_of:
     - slot_expression
