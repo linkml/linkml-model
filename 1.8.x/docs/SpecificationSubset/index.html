@@ -1,0 +1,1619 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://linkml.io/linkml-model/latest/docs/SpecificationSubset/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>SpecificationSubset - LinkML Model</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#subset-specificationsubset" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="LinkML Model" class="md-header__button md-logo" aria-label="LinkML Model" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LinkML Model
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SpecificationSubset
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="LinkML Model" class="md-nav__button md-logo" aria-label="LinkML Model" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    LinkML Model
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../home/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Specification
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Specification" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Specification
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specification/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specification/00preamble/" class="md-nav__link">
+        Preface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specification/01introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specification/02instances/" class="md-nav__link">
+        Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specification/03schemas/" class="md-nav__link">
+        Schema Datamodel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specification/04derived-schemas/" class="md-nav__link">
+        Derived Schemas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specification/05validation/" class="md-nav__link">
+        Instance Validation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../specification/06mapping/" class="md-nav__link">
+        Mapping of Instances
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Appendix
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Appendix" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Metamodel Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Profiles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Profiles" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Profiles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MinimalSubset/" class="md-nav__link">
+        MinimalSubset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BasicSubset/" class="md-nav__link">
+        BasicSubset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          SpecificationSubset
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        SpecificationSubset
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#identifier-and-mapping-information" class="md-nav__link">
+    Identifier and Mapping Information
+  </a>
+  
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    Schema Source
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-in-subset" class="md-nav__link">
+    Classes in subset
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes in subset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schemadefinition" class="md-nav__link">
+    SchemaDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classdefinition" class="md-nav__link">
+    ClassDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slotdefinition" class="md-nav__link">
+    SlotDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedefinition" class="md-nav__link">
+    TypeDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumdefinition" class="md-nav__link">
+    EnumDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subsetdefinition" class="md-nav__link">
+    SubsetDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefix" class="md-nav__link">
+    Prefix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permissiblevalue" class="md-nav__link">
+    PermissibleValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uniquekey" class="md-nav__link">
+    UniqueKey
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typemapping" class="md-nav__link">
+    TypeMapping
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumbinding" class="md-nav__link">
+    EnumBinding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matchquery" class="md-nav__link">
+    MatchQuery
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reachabilityquery" class="md-nav__link">
+    ReachabilityQuery
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classrule" class="md-nav__link">
+    ClassRule
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting" class="md-nav__link">
+    Setting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots-in-subset" class="md-nav__link">
+    Slots in subset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations-in-subset" class="md-nav__link">
+    Enumerations in subset
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RelationalModelProfile/" class="md-nav__link">
+        RelationalModelProfile
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ObjectOrientedProfile/" class="md-nav__link">
+        ObjectOrientedProfile
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OwlProfile/" class="md-nav__link">
+        OwlProfile
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#identifier-and-mapping-information" class="md-nav__link">
+    Identifier and Mapping Information
+  </a>
+  
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    Schema Source
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-in-subset" class="md-nav__link">
+    Classes in subset
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes in subset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schemadefinition" class="md-nav__link">
+    SchemaDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classdefinition" class="md-nav__link">
+    ClassDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slotdefinition" class="md-nav__link">
+    SlotDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedefinition" class="md-nav__link">
+    TypeDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumdefinition" class="md-nav__link">
+    EnumDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subsetdefinition" class="md-nav__link">
+    SubsetDefinition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefix" class="md-nav__link">
+    Prefix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permissiblevalue" class="md-nav__link">
+    PermissibleValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uniquekey" class="md-nav__link">
+    UniqueKey
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typemapping" class="md-nav__link">
+    TypeMapping
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumbinding" class="md-nav__link">
+    EnumBinding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matchquery" class="md-nav__link">
+    MatchQuery
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reachabilityquery" class="md-nav__link">
+    ReachabilityQuery
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classrule" class="md-nav__link">
+    ClassRule
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting" class="md-nav__link">
+    Setting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots-in-subset" class="md-nav__link">
+    Slots in subset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations-in-subset" class="md-nav__link">
+    Enumerations in subset
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="subset-specificationsubset">Subset: SpecificationSubset</h1>
+<p><em>A subset that includes all the metamodel elements that form part of the normative LinkML specification.</em></p>
+<p>__</p>
+<p><em>The complete LinkML specification can be found at <a href="https://w3id.org/linkml/specification">linkml:specification</a></em></p>
+<p>URI: <a href="./">SpecificationSubset</a></p>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/linkml/meta</li>
+</ul>
+<h2 id="classes-in-subset">Classes in subset</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
+<td>A collection of definitions that make up a schema or a data model</td>
+</tr>
+<tr>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+<td>an element whose instances are complex objects that may have slot-value assig...</td>
+</tr>
+<tr>
+<td><a href="../SlotDefinition/">SlotDefinition</a></td>
+<td>an element that describes how instances are related to other instances</td>
+</tr>
+<tr>
+<td><a href="../TypeDefinition/">TypeDefinition</a></td>
+<td>an element that whose instances are atomic scalar values that can be mapped t...</td>
+</tr>
+<tr>
+<td><a href="../EnumDefinition/">EnumDefinition</a></td>
+<td>an element whose instances must be drawn from a specified set of permissible ...</td>
+</tr>
+<tr>
+<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
+<td>an element that can be used to group other metamodel elements</td>
+</tr>
+<tr>
+<td><a href="../Prefix/">Prefix</a></td>
+<td>prefix URI tuple</td>
+</tr>
+<tr>
+<td><a href="../PermissibleValue/">PermissibleValue</a></td>
+<td>a permissible value, accompanied by intended text and an optional mapping to ...</td>
+</tr>
+<tr>
+<td><a href="../UniqueKey/">UniqueKey</a></td>
+<td>a collection of slots whose values uniquely identify an instance of a class</td>
+</tr>
+<tr>
+<td><a href="../TypeMapping/">TypeMapping</a></td>
+<td>Represents how a slot or type can be serialized to a format</td>
+</tr>
+<tr>
+<td><a href="../EnumBinding/">EnumBinding</a></td>
+<td>A binding of a slot or a class to a permissible value from an enumeration</td>
+</tr>
+<tr>
+<td><a href="../MatchQuery/">MatchQuery</a></td>
+<td>A query that is used on an enum expression to dynamically obtain a set of per...</td>
+</tr>
+<tr>
+<td><a href="../ReachabilityQuery/">ReachabilityQuery</a></td>
+<td>A query that is used on an enum expression to dynamically obtain a set of per...</td>
+</tr>
+<tr>
+<td><a href="../ClassRule/">ClassRule</a></td>
+<td>A rule that applies to instances of a class</td>
+</tr>
+<tr>
+<td><a href="../Setting/">Setting</a></td>
+<td>assignment of a key to a value</td>
+</tr>
+</tbody>
+</table>
+<h3 id="schemadefinition">SchemaDefinition</h3>
+<p>A collection of definitions that make up a schema or a data model.</p>
+<h3 id="classdefinition">ClassDefinition</h3>
+<p>an element whose instances are complex objects that may have slot-value assignments</p>
+<h3 id="slotdefinition">SlotDefinition</h3>
+<p>an element that describes how instances are related to other instances</p>
+<h3 id="typedefinition">TypeDefinition</h3>
+<p>an element that whose instances are atomic scalar values that can be mapped to primitive types</p>
+<h3 id="enumdefinition">EnumDefinition</h3>
+<p>an element whose instances must be drawn from a specified set of permissible values</p>
+<h3 id="subsetdefinition">SubsetDefinition</h3>
+<p>an element that can be used to group other metamodel elements</p>
+<h3 id="prefix">Prefix</h3>
+<p>prefix URI tuple</p>
+<h3 id="permissiblevalue">PermissibleValue</h3>
+<p>a permissible value, accompanied by intended text and an optional mapping to a concept URI</p>
+<h3 id="uniquekey">UniqueKey</h3>
+<p>a collection of slots whose values uniquely identify an instance of a class</p>
+<h3 id="typemapping">TypeMapping</h3>
+<p>Represents how a slot or type can be serialized to a format.</p>
+<h3 id="enumbinding">EnumBinding</h3>
+<p>A binding of a slot or a class to a permissible value from an enumeration.</p>
+<h3 id="matchquery">MatchQuery</h3>
+<p>A query that is used on an enum expression to dynamically obtain a set of permissivle values via a query that  matches on properties of the external concepts.</p>
+<h3 id="reachabilityquery">ReachabilityQuery</h3>
+<p>A query that is used on an enum expression to dynamically obtain a set of permissible values via walking from a  set of source nodes to a set of descendants or ancestors over a set of relationship types.</p>
+<h3 id="classrule">ClassRule</h3>
+<p>A rule that applies to instances of a class</p>
+<h3 id="setting">Setting</h3>
+<p>assignment of a key to a value</p>
+<h2 id="slots-in-subset">Slots in subset</h2>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>The official schema URI</td>
+</tr>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>the unique name of the element within the context of the schema</td>
+</tr>
+<tr>
+<td><a href="../prefix_prefix/">prefix_prefix</a></td>
+<td>The prefix components of a prefix expansions</td>
+</tr>
+<tr>
+<td><a href="../class_uri/">class_uri</a></td>
+<td>URI of the class that provides a semantic interpretation of the element in a ...</td>
+</tr>
+<tr>
+<td><a href="../slot_uri/">slot_uri</a></td>
+<td>URI of the class that provides a semantic interpretation of the slot in a lin...</td>
+</tr>
+<tr>
+<td><a href="../type_uri/">type_uri</a></td>
+<td>The uri that defines the possible values for the type definition</td>
+</tr>
+<tr>
+<td><a href="../prefix_reference/">prefix_reference</a></td>
+<td>The namespace to which a prefix expands to</td>
+</tr>
+<tr>
+<td><a href="../classes/">classes</a></td>
+<td>An index to the collection of all class definitions in the schema</td>
+</tr>
+<tr>
+<td><a href="../slot_definitions/">slot_definitions</a></td>
+<td>An index to the collection of all slot definitions in the schema</td>
+</tr>
+<tr>
+<td><a href="../enums/">enums</a></td>
+<td>An index to the collection of all enum definitions in the schema</td>
+</tr>
+<tr>
+<td><a href="../identifier/">identifier</a></td>
+<td>True means that the key slot(s) uniquely identifies the elements</td>
+</tr>
+<tr>
+<td><a href="../alias/">alias</a></td>
+<td>the name used for a slot in the context of its owning class</td>
+</tr>
+<tr>
+<td><a href="../multivalued/">multivalued</a></td>
+<td>true means that slot can have more than one value and should be represented u...</td>
+</tr>
+<tr>
+<td><a href="../typeof/">typeof</a></td>
+<td>A parent type from which type properties are inherited</td>
+</tr>
+<tr>
+<td><a href="../subsets/">subsets</a></td>
+<td>An index to the collection of all subset definitions in the schema</td>
+</tr>
+<tr>
+<td><a href="../required/">required</a></td>
+<td>true means that the slot must be present in instances of the class definition</td>
+</tr>
+<tr>
+<td><a href="../base/">base</a></td>
+<td>python base type in the LinkML runtime that implements this type definition</td>
+</tr>
+<tr>
+<td><a href="../recommended/">recommended</a></td>
+<td>true means that the slot should be present in instances of the class definiti...</td>
+</tr>
+<tr>
+<td><a href="../repr/">repr</a></td>
+<td>the name of the python object that implements this type definition</td>
+</tr>
+<tr>
+<td><a href="../prefixes/">prefixes</a></td>
+<td>A collection of prefix expansions that specify how CURIEs can be expanded to ...</td>
+</tr>
+<tr>
+<td><a href="../is_a/">is_a</a></td>
+<td>A primary parent class or slot from which inheritable metaslots are propagate...</td>
+</tr>
+<tr>
+<td><a href="../default_prefix/">default_prefix</a></td>
+<td>The prefix that is used for all elements within a schema</td>
+</tr>
+<tr>
+<td><a href="../mixins/">mixins</a></td>
+<td>A collection of secondary parent classes or slots from which inheritable meta...</td>
+</tr>
+<tr>
+<td><a href="../default_range/">default_range</a></td>
+<td>default slot range to be used if range element is omitted from a slot definit...</td>
+</tr>
+<tr>
+<td><a href="../slots/">slots</a></td>
+<td>collection of slot names that are applicable to a class</td>
+</tr>
+<tr>
+<td><a href="../settings/">settings</a></td>
+<td>A collection of global variable settings</td>
+</tr>
+<tr>
+<td><a href="../text/">text</a></td>
+<td>The actual permissible value itself</td>
+</tr>
+<tr>
+<td><a href="../imports/">imports</a></td>
+<td>A list of schemas that are to be included in this schema</td>
+</tr>
+<tr>
+<td><a href="../meaning/">meaning</a></td>
+<td>the value meaning of a permissible value</td>
+</tr>
+<tr>
+<td><a href="../slot_usage/">slot_usage</a></td>
+<td>the refinement of a slot in the context of the containing class definition</td>
+</tr>
+<tr>
+<td><a href="../inlined/">inlined</a></td>
+<td>True means that keyed or identified slot appears in an outer structure by val...</td>
+</tr>
+<tr>
+<td><a href="../inlined_as_list/">inlined_as_list</a></td>
+<td>True means that an inlined slot is represented as a list of range instances</td>
+</tr>
+<tr>
+<td><a href="../inlined_as_simple_dict/">inlined_as_simple_dict</a></td>
+<td>True means that an inlined slot is represented as a simple dict whose values ...</td>
+</tr>
+<tr>
+<td><a href="../attributes/">attributes</a></td>
+<td>Inline definition of slots</td>
+</tr>
+<tr>
+<td><a href="../tree_root/">tree_root</a></td>
+<td>Indicates that this is the Container class which forms the root of the serial...</td>
+</tr>
+<tr>
+<td><a href="../pattern/">pattern</a></td>
+<td>the string value of the slot must conform to this regular expression expresse...</td>
+</tr>
+<tr>
+<td><a href="../rank/">rank</a></td>
+<td>the relative order in which the element occurs, lower values are given preced...</td>
+</tr>
+<tr>
+<td><a href="../any_of/">any_of</a></td>
+<td>holds if at least one of the expressions hold</td>
+</tr>
+<tr>
+<td><a href="../exactly_one_of/">exactly_one_of</a></td>
+<td>holds if only one of the expressions hold</td>
+</tr>
+<tr>
+<td><a href="../none_of/">none_of</a></td>
+<td>holds if none of the expressions hold</td>
+</tr>
+<tr>
+<td><a href="../all_of/">all_of</a></td>
+<td>holds if all of the expressions hold</td>
+</tr>
+<tr>
+<td><a href="../preconditions/">preconditions</a></td>
+<td>an expression that must hold in order for the rule to be applicable to an ins...</td>
+</tr>
+<tr>
+<td><a href="../postconditions/">postconditions</a></td>
+<td>an expression that must hold for an instance of the class, if the preconditio...</td>
+</tr>
+<tr>
+<td><a href="../elseconditions/">elseconditions</a></td>
+<td>an expression that must hold for an instance of the class, if the preconditio...</td>
+</tr>
+<tr>
+<td><a href="../id_prefixes/">id_prefixes</a></td>
+<td>An allowed list of prefixes for which identifiers must conform</td>
+</tr>
+<tr>
+<td><a href="../from_schema/">from_schema</a></td>
+<td>id of the schema that defined the element</td>
+</tr>
+<tr>
+<td><a href="../abstract/">abstract</a></td>
+<td>Indicates the class or slot cannot be directly instantiated and is intended f...</td>
+</tr>
+<tr>
+<td><a href="../mixin/">mixin</a></td>
+<td>Indicates the class or slot is intended to be inherited from without being an...</td>
+</tr>
+<tr>
+<td><a href="../code_set/">code_set</a></td>
+<td>the identifier of an enumeration code set</td>
+</tr>
+<tr>
+<td><a href="../pv_formula/">pv_formula</a></td>
+<td>Defines the specific formula to be used to generate the permissible values</td>
+</tr>
+<tr>
+<td><a href="../permissible_values/">permissible_values</a></td>
+<td>A list of possible values for a slot range</td>
+</tr>
+<tr>
+<td><a href="../enum_uri/">enum_uri</a></td>
+<td>URI of the enum that provides a semantic interpretation of the element in a l...</td>
+</tr>
+<tr>
+<td><a href="../include/">include</a></td>
+<td>An enum expression that yields a list of permissible values that are to be in...</td>
+</tr>
+<tr>
+<td><a href="../minus/">minus</a></td>
+<td>An enum expression that yields a list of permissible values that are to be su...</td>
+</tr>
+<tr>
+<td><a href="../inherits/">inherits</a></td>
+<td>An enum definition that is used as the basis to create a new enum</td>
+</tr>
+<tr>
+<td><a href="../matches/">matches</a></td>
+<td>Specifies a match query that is used to calculate the list of permissible val...</td>
+</tr>
+<tr>
+<td><a href="../identifier_pattern/">identifier_pattern</a></td>
+<td>A regular expression that is used to obtain a set of identifiers from a sourc...</td>
+</tr>
+<tr>
+<td><a href="../concepts/">concepts</a></td>
+<td>A list of identifiers that are used to construct a set of permissible values</td>
+</tr>
+<tr>
+<td><a href="../reachable_from/">reachable_from</a></td>
+<td>Specifies a query for obtaining a list of permissible values based on graph r...</td>
+</tr>
+<tr>
+<td><a href="../source_ontology/">source_ontology</a></td>
+<td>An ontology or vocabulary or terminology that is used in a query to obtain a ...</td>
+</tr>
+<tr>
+<td><a href="../is_direct/">is_direct</a></td>
+<td>True if the reachability query should only include directly related nodes, if...</td>
+</tr>
+<tr>
+<td><a href="../traverse_up/">traverse_up</a></td>
+<td>True if the direction of the reachability query is reversed and ancestors are...</td>
+</tr>
+<tr>
+<td><a href="../include_self/">include_self</a></td>
+<td>True if the query is reflexive</td>
+</tr>
+<tr>
+<td><a href="../relationship_types/">relationship_types</a></td>
+<td>A list of relationship types (properties) that are used in a reachability que...</td>
+</tr>
+<tr>
+<td><a href="../source_nodes/">source_nodes</a></td>
+<td>A list of nodes that are used in the reachability query</td>
+</tr>
+<tr>
+<td><a href="../enum_range/">enum_range</a></td>
+<td>An inlined enumeration</td>
+</tr>
+<tr>
+<td><a href="../range_expression/">range_expression</a></td>
+<td>A range that is described as a boolean expression combining existing ranges</td>
+</tr>
+<tr>
+<td><a href="../bidirectional/">bidirectional</a></td>
+<td>in addition to preconditions entailing postconditions, the postconditions ent...</td>
+</tr>
+<tr>
+<td><a href="../open_world/">open_world</a></td>
+<td>if true, the the postconditions may be omitted in instance data, but it is va...</td>
+</tr>
+<tr>
+<td><a href="../rules/">rules</a></td>
+<td>the collection of rules that apply to all members of this class</td>
+</tr>
+<tr>
+<td><a href="../classification_rules/">classification_rules</a></td>
+<td>The collection of classification rules that apply to all members of this clas...</td>
+</tr>
+<tr>
+<td><a href="../slot_conditions/">slot_conditions</a></td>
+<td>expresses constraints on a group of slots for a class expression</td>
+</tr>
+<tr>
+<td><a href="../union_of/">union_of</a></td>
+<td>indicates that the domain element consists exactly of the members of the elem...</td>
+</tr>
+<tr>
+<td><a href="../unique_keys/">unique_keys</a></td>
+<td>A collection of named unique keys for this class</td>
+</tr>
+<tr>
+<td><a href="../unique_key_name/">unique_key_name</a></td>
+<td>name of the unique key</td>
+</tr>
+<tr>
+<td><a href="../unique_key_slots/">unique_key_slots</a></td>
+<td>list of slot names that form a key</td>
+</tr>
+<tr>
+<td><a href="../domain/">domain</a></td>
+<td>defines the type of the subject of the slot</td>
+</tr>
+<tr>
+<td><a href="../range/">range</a></td>
+<td>defines the type of the object of the slot</td>
+</tr>
+<tr>
+<td><a href="../inherited/">inherited</a></td>
+<td>true means that the <em>value</em> of a slot is inherited by subclasses</td>
+</tr>
+<tr>
+<td><a href="../ifabsent/">ifabsent</a></td>
+<td>function that provides a default value for the slot</td>
+</tr>
+<tr>
+<td><a href="../implicit_prefix/">implicit_prefix</a></td>
+<td>Causes the slot value to be interpreted as a uriorcurie after prefixing with ...</td>
+</tr>
+<tr>
+<td><a href="../equals_string/">equals_string</a></td>
+<td>the slot must have range string and the value of the slot must equal the spec...</td>
+</tr>
+<tr>
+<td><a href="../equals_expression/">equals_expression</a></td>
+<td>the value of the slot must equal the value of the evaluated expression</td>
+</tr>
+<tr>
+<td><a href="../exact_cardinality/">exact_cardinality</a></td>
+<td>the exact number of entries for a multivalued slot</td>
+</tr>
+<tr>
+<td><a href="../minimum_cardinality/">minimum_cardinality</a></td>
+<td>the minimum number of entries for a multivalued slot</td>
+</tr>
+<tr>
+<td><a href="../maximum_cardinality/">maximum_cardinality</a></td>
+<td>the maximum number of entries for a multivalued slot</td>
+</tr>
+<tr>
+<td><a href="../equals_string_in/">equals_string_in</a></td>
+<td>the slot must have range string and the value of the slot must equal one of t...</td>
+</tr>
+<tr>
+<td><a href="../equals_number_in/">equals_number_in</a></td>
+<td>the slot must have range number and the value of the slot must equal one of t...</td>
+</tr>
+<tr>
+<td><a href="../has_member/">has_member</a></td>
+<td>the value of the slot is multivalued with at least one member satisfying the ...</td>
+</tr>
+<tr>
+<td><a href="../all_members/">all_members</a></td>
+<td>the value of the slot is multivalued with all members satisfying the conditio...</td>
+</tr>
+<tr>
+<td><a href="../inapplicable/">inapplicable</a></td>
+<td>true means that values for this slot must not be present</td>
+</tr>
+<tr>
+<td><a href="../list_elements_ordered/">list_elements_ordered</a></td>
+<td>If True, then the order of elements of a multivalued slot is guaranteed to be...</td>
+</tr>
+<tr>
+<td><a href="../list_elements_unique/">list_elements_unique</a></td>
+<td>If True, then there must be no duplicates in the elements of a multivalued sl...</td>
+</tr>
+<tr>
+<td><a href="../shared/">shared</a></td>
+<td>If True, then the relationship between the slot domain and range is many to o...</td>
+</tr>
+<tr>
+<td><a href="../key/">key</a></td>
+<td>True means that the key slot(s) uniquely identify the elements within a singl...</td>
+</tr>
+<tr>
+<td><a href="../designates_type/">designates_type</a></td>
+<td>True means that the key slot(s) is used to determine the instantiation (types...</td>
+</tr>
+<tr>
+<td><a href="../disjoint_with/">disjoint_with</a></td>
+<td>Two classes are disjoint if they have no instances in common, two slots are d...</td>
+</tr>
+<tr>
+<td><a href="../symmetric/">symmetric</a></td>
+<td>If s is symmetric, and i</td>
+</tr>
+<tr>
+<td><a href="../asymmetric/">asymmetric</a></td>
+<td>If s is antisymmetric, and i</td>
+</tr>
+<tr>
+<td><a href="../reflexive/">reflexive</a></td>
+<td>If s is reflexive, then i</td>
+</tr>
+<tr>
+<td><a href="../irreflexive/">irreflexive</a></td>
+<td>If s is irreflexive, then there exists no i such i</td>
+</tr>
+<tr>
+<td><a href="../locally_reflexive/">locally_reflexive</a></td>
+<td>If s is locally_reflexive, then i</td>
+</tr>
+<tr>
+<td><a href="../transitive/">transitive</a></td>
+<td>If s is transitive, and i</td>
+</tr>
+<tr>
+<td><a href="../transitive_form_of/">transitive_form_of</a></td>
+<td>If s transitive_form_of d, then (1) s holds whenever d holds (2) s is transit...</td>
+</tr>
+<tr>
+<td><a href="../reflexive_transitive_form_of/">reflexive_transitive_form_of</a></td>
+<td>transitive_form_of including the reflexive case</td>
+</tr>
+<tr>
+<td><a href="../inverse/">inverse</a></td>
+<td>indicates that any instance of d s r implies that there is also an instance o...</td>
+</tr>
+<tr>
+<td><a href="../minimum_value/">minimum_value</a></td>
+<td>For ordinal ranges, the value must be equal to or higher than this</td>
+</tr>
+<tr>
+<td><a href="../maximum_value/">maximum_value</a></td>
+<td>For ordinal ranges, the value must be equal to or lower than this</td>
+</tr>
+<tr>
+<td><a href="../interpolated/">interpolated</a></td>
+<td>if true then the pattern is first string interpolated</td>
+</tr>
+<tr>
+<td><a href="../partial_match/">partial_match</a></td>
+<td>if not true then the pattern must match the whole string, as if enclosed in ^</td>
+</tr>
+<tr>
+<td><a href="../syntax/">syntax</a></td>
+<td>the string value of the slot must conform to this regular expression expresse...</td>
+</tr>
+<tr>
+<td><a href="../structured_pattern/">structured_pattern</a></td>
+<td>the string value of the slot must conform to the regular expression in the pa...</td>
+</tr>
+<tr>
+<td><a href="../string_serialization/">string_serialization</a></td>
+<td>Used on a slot that stores the string serialization of the containing object</td>
+</tr>
+<tr>
+<td><a href="../bindings/">bindings</a></td>
+<td>A collection of enum bindings that specify how a slot can be bound to a permi...</td>
+</tr>
+<tr>
+<td><a href="../binds_value_of/">binds_value_of</a></td>
+<td>A path to a slot that is being bound to a permissible value from an enumerati...</td>
+</tr>
+<tr>
+<td><a href="../obligation_level/">obligation_level</a></td>
+<td>The level of obligation or recommendation strength for a metadata element</td>
+</tr>
+<tr>
+<td><a href="../setting_key/">setting_key</a></td>
+<td>the variable name for a setting</td>
+</tr>
+<tr>
+<td><a href="../setting_value/">setting_value</a></td>
+<td>The value assigned for a setting</td>
+</tr>
+<tr>
+<td><a href="../slot_group/">slot_group</a></td>
+<td>allows for grouping of related slots into a grouping slot that serves the rol...</td>
+</tr>
+<tr>
+<td><a href="../is_grouping_slot/">is_grouping_slot</a></td>
+<td>true if this slot is a grouping slot</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enumerations-in-subset">Enumerations in subset</h2>
+<table>
+<thead>
+<tr>
+<th>Enumeration</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>| <a href="../ObligationLevelEnum/">ObligationLevelEnum</a> | The level of obligation or recommendation strength for a metadata element |</p>
+<p>| <a href="../PvFormulaOptions/">PvFormulaOptions</a> | The formula used to generate the set of permissible values from the code_set ... |</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../BasicSubset/" class="md-footer__link md-footer__link--prev" aria-label="Previous: BasicSubset" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              BasicSubset
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../RelationalModelProfile/" class="md-footer__link md-footer__link--next" aria-label="Next: RelationalModelProfile" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              RelationalModelProfile
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+    
+    
+  </body>
+</html>
