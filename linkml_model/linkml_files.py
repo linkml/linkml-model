@@ -17,8 +17,6 @@ GITHUB_RELEASES = GITHUB_BASE + "releases"
 GITHUB_TAGS = GITHUB_BASE + "tags"
 
 
-
-
 class _AutoName(Enum):
     @staticmethod
     def _generate_next_value_(name, start, count, last_values):
@@ -118,7 +116,6 @@ class _Path:
         return getattr(cls, item)
 
 
-
 class ReleaseTag(_AutoName):
     """ Release tags
     LATEST - the absolute latest in the supplied branch
@@ -203,7 +200,8 @@ class ModelFile:
         def file(self) -> str:
             return LOCAL_PATH_FOR(self._model, self._format)
 
-        def github_loc(self, tag: Optional[str] = None, branch: Optional[str] = None, release: ReleaseTag = None) -> str:
+        def github_loc(self, tag: Optional[str] = None, branch: Optional[str] = None,
+                       release: ReleaseTag = None) -> str:
             if not tag and not branch and not release:
                 return GITHUB_IO_PATH_FOR(self._model, self._format)
             if tag:
