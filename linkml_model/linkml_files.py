@@ -1,6 +1,8 @@
 import os
+from dataclasses import dataclass
 from enum import Enum, auto
-from typing import Optional, Union
+from pathlib import Path
+from typing import Optional, Union, Dict
 
 import requests
 from rdflib import Namespace
@@ -34,6 +36,7 @@ class Source(_AutoName):
 
 class Format(Enum):
     """ LinkML package formats """
+    EXCEL = "xlsx"
     GRAPHQL = "graphql"
     HTML = ""
     JSON = "json"
@@ -44,30 +47,76 @@ class Format(Enum):
     NATIVE_SHEXC = "model.shex"
     NATIVE_SHEXJ = "model.shexj"
     OWL = "owl.ttl"
+    PREFIXMAP = "yaml"
+    PROTOBUF = "proto"
     PYTHON = "py"
     RDF = "ttl"
+    SHACL = "shacl.ttl"
     SHEXC = "shex"
     SHEXJ = "shexj"
+    SQLDDL = "sql"
+    SQLSCHEMA = "sql"
     YAML = "yaml"
 
 
-class _Path(Enum):
+META_ONLY = (
+    Format.EXCEL,
+    Format.GRAPHQL,
+    Format.OWL,
+    Format.PREFIXMAP,
+    Format.PROTOBUF,
+    Format.SHACL,
+    Format.SQLDDL,
+    Format.SQLSCHEMA
+)
+
+
+@dataclass
+class FormatPath:
+    path: str
+    extension: str
+
+    def model_path(self, model: str) -> Path:
+        return (Path(self.path) / model).with_suffix(self.extension)
+
+
+class _Path:
     """ LinkML Relative paths"""
-    GRAPHQL = "graphql"
-    HTML = "docs"
-    JSON = "json"
-    JSONLD = "jsonld"
-    JSON_SCHEMA = "jsonschema"
-    NATIVE_JSONLD = "jsonld"
-    NATIVE_RDF = "ttl"
-    NATIVE_SHEXC = "shex"
-    NATIVE_SHEXJ = "shex"
-    OWL = "owl"
-    PYTHON = "linkml_model"
-    RDF = "rdf"
-    SHEXC = "shex"
-    SHEXJ = "shex"
-    YAML = "model/schema"
+    EXCEL = FormatPath("excel", "xlsx")
+    GRAPHQL = FormatPath("graphql", "graphql")
+    HTML = FormatPath("", "html")
+    JSON = FormatPath("json", "json")
+    JSONLD = FormatPath("jsonld", "context.jsonld")
+    JSON_SCHEMA = FormatPath("jsonschema", "schema.json")
+    NATIVE_JSONLD = FormatPath("jsonld", "context.jsonld")
+    NATIVE_RDF = FormatPath("rdf", "ttl")
+    NATIVE_SHEXC = FormatPath("shex", "shex")
+    NATIVE_SHEXJ = FormatPath("shex", "shexj")
+    OWL = FormatPath("owl", "owl.ttl")
+    PREFIXMAP = FormatPath('prefixmap', 'yaml')
+    PROTOBUF = FormatPath("protobuf", "proto")
+    PYTHON = FormatPath("", "py")
+    RDF = FormatPath("rdf", "ttl")
+    SHACL = FormatPath("shacl", "shacl.ttl")
+    SHEXC = FormatPath("shex", "shex")
+    SHEXJ = FormatPath("shex", "shexj")
+    SQLDDL = FormatPath("sqlddl", "sql")
+    SQLSCHEMA = FormatPath("sqlschema", "sql")
+    YAML = FormatPath(str(Path("model") / "schema"), "yaml")
+
+    @classmethod
+    def items(cls) -> Dict[str, FormatPath]:
+        return {k: v for k, v in cls.__dict__.items() if not k.startswith('_')}
+
+    @classmethod
+    def get(cls, item: Union[str, Format]) -> FormatPath:
+        if isinstance(item, Format):
+            item = item.name.upper()
+        return getattr(cls, item)
+
+    def __class_getitem__(cls, item: str) -> FormatPath:
+        return getattr(cls, item)
+
 
 
 class ReleaseTag(_AutoName):
