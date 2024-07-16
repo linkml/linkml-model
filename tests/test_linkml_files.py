@@ -1,8 +1,11 @@
+import re
+
 import pytest
 import requests
 from pathlib import Path
 from itertools import product
 from urllib.parse import urlparse
+import os
 
 try:
     import requests_cache
@@ -153,3 +156,41 @@ def test_fixed_meta_url():
     assert URL_FOR(Source.META, Format.YAML) == 'https://w3id.org/linkml/meta.yaml'
     assert URL_FOR(Source.META, Format.JSONLD) == 'https://w3id.org/linkml/meta.context.jsonld'
 
+
+root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "linkml_model"))
+
+
+def test_basic_rules():
+    assert "https://w3id.org/linkml/annotations.yaml" == URL_FOR(Source.ANNOTATIONS, Format.YAML)
+    assert "https://w3id.org/linkml/meta.context.jsonld" == URL_FOR(Source.META, Format.NATIVE_JSONLD)
+    assert os.path.join(root_path, "model/schema/meta.yaml") == LOCAL_PATH_FOR(Source.META, Format.YAML)
+    print(LOCAL_PATH_FOR(Source.META, Format.YAML))
+    assert os.path.join(root_path, "jsonld/types.context.jsonld") == LOCAL_PATH_FOR(Source.TYPES, Format.NATIVE_JSONLD)
+    assert "https://linkml.github.io/linkml-model/latest/linkml_model/model/schema/meta.yaml" == GITHUB_IO_PATH_FOR(
+        Source.META, Format.YAML)
+    assert "https://linkml.github.io/linkml-model/latest/linkml_model/jsonld/types.context.jsonld" == \
+           GITHUB_IO_PATH_FOR(Source.TYPES, Format.NATIVE_JSONLD)
+    assert "https://raw.githubusercontent.com/linkml/linkml-model/main/linkml_model/jsonld/meta.context.jsonld" == \
+           GITHUB_PATH_FOR(Source.META, Format.NATIVE_JSONLD, ReleaseTag.LATEST)
+    assert "https://raw.githubusercontent.com/linkml/linkml-model/testing_branch/linkml_model/owl/mappings.owl.ttl" == \
+           GITHUB_PATH_FOR(Source.MAPPINGS, Format.OWL, branch="testing_branch")
+
+
+SKIP_GITHUB_API = False
+
+
+@pytest.mark.skipif(SKIP_GITHUB_API, reason="Github API tests skipped")
+def test_github_specific_rules():
+    """
+        Test accesses that require GitHub API to access
+        This is separate because we can only do so many tests per hour w/o getting a 403
+        """
+    assert "https://raw.githubusercontent.com/linkml/linkml-model/f30637f5a585f3fc4b12fd3dbb3e7e95108d4b42/jsonld/meta.context.jsonld" == \
+        GITHUB_PATH_FOR(Source.META, Format.NATIVE_JSONLD, "v0.0.1")
+    current_loc = re.sub(r'linkml-model/[0-9a-f]*/', 'linkml-model/SHA/', GITHUB_PATH_FOR(Source.TYPES, Format.YAML))
+    assert "https://raw.githubusercontent.com/linkml/linkml-model/SHA/model/schema/types.yaml" == current_loc
+    assert 'https://raw.githubusercontent.com/linkml/linkml-model/missing_branch/linkml_model/owl/mappings.owl.ttl' == \
+                     GITHUB_PATH_FOR(Source.MAPPINGS, Format.OWL, branch="missing_branch")
+
+    with pytest.raises(ValueError) as e:
+        GITHUB_PATH_FOR(Source.META, Format.RDF, "vv0.0.1")
