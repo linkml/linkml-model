@@ -24,10 +24,10 @@ from linkml_model.linkml_files import (
     ReleaseTag
 )
 
-EXPECTED_FORMATS = [
-    (source, fmt) for source, fmt in product(Source, Format)
-    if (fmt not in META_ONLY or source == Source.META)
-]
+EXPECTED_FORMATS = []
+for source, fmt in product(Source, Format):
+    if fmt not in META_ONLY or source == Source.META:
+        EXPECTED_FORMATS.append((source, fmt))
 
 W3ID_EXTENSIONS = (
     'html',
