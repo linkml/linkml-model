@@ -1351,6 +1351,22 @@ slots:
     range: boolean
     description: if true then induced/mangled slot names are not created for class_usage and attributes
     status: testing
+
+  extra_slots:
+    description: |
+      How a class instance handles extra data not specified in the class definition.
+      
+      - true: allow any additional data
+      - false: (default) forbid any additional data
+      - anonymous_slot_expression: allow only data matching this anonymous slot expression
+    domain: class_definition
+    ifabsent: false
+    any_of:
+      - range: boolean
+      - range: anonymous_slot_expression
+    in_subset:
+      - SpecificationSubset
+      - BasicSubset
     
 
   # -----------------------------------
@@ -3023,6 +3039,7 @@ classes:
       - represents_relationship
       - disjoint_with
       - children_are_mutually_disjoint
+      - extra_slots
     slot_usage:
       is_a:
         range: class_definition
