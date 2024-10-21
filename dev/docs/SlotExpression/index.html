@@ -338,6 +338,10 @@
 
           SlotExpression --&gt; anonymous_slot_expression : any_of
 
+      SlotExpression : array
+
+          SlotExpression --&gt; array_expression : array
+
       SlotExpression : bindings
 
           SlotExpression --&gt; enum_binding : bindings
@@ -608,6 +612,12 @@
 <td>holds if all of the expressions hold</td>
 <td>direct</td>
 </tr>
+<tr>
+<td><a href="../array/">array</a></td>
+<td>0..1 <br/> <a href="../ArrayExpression/">ArrayExpression</a></td>
+<td>coerces the value of the slot into an array and defines the dimensions of tha...</td>
+<td>direct</td>
+</tr>
 </tbody>
 </table>
 <h2 id="mixin-usage">Mixin Usage</h2>
@@ -765,6 +775,7 @@ slots:
 - exactly_one_of
 - any_of
 - all_of
+- array
 slot_usage:
   any_of:
     name: any_of
@@ -1376,6 +1387,20 @@ attributes:
     - slot_expression
     - class_expression
     range: anonymous_slot_expression
+  array:
+    name: array
+    description: coerces the value of the slot into an array and defines the dimensions
+      of that array
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    rank: 1000
+    domain: slot_definition
+    inherited: true
+    alias: array
+    owner: slot_expression
+    domain_of:
+    - slot_expression
+    range: array_expression
 
 </code></pre>
 </details>

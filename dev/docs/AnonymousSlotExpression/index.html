@@ -338,6 +338,10 @@
 
           AnonymousSlotExpression --&gt; anonymous_slot_expression : any_of
 
+      AnonymousSlotExpression : array
+
+          AnonymousSlotExpression --&gt; array_expression : array
+
       AnonymousSlotExpression : bindings
 
           AnonymousSlotExpression --&gt; enum_binding : bindings
@@ -678,6 +682,12 @@
 <td><a href="../all_of/">all_of</a></td>
 <td>0..* <br/> <a href="./">AnonymousSlotExpression</a></td>
 <td>holds if all of the expressions hold</td>
+<td><a href="../SlotExpression/">SlotExpression</a></td>
+</tr>
+<tr>
+<td><a href="../array/">array</a></td>
+<td>0..1 <br/> <a href="../ArrayExpression/">ArrayExpression</a></td>
+<td>coerces the value of the slot into an array and defines the dimensions of tha...</td>
 <td><a href="../SlotExpression/">SlotExpression</a></td>
 </tr>
 <tr>
@@ -1591,6 +1601,20 @@ attributes:
     - slot_expression
     - class_expression
     range: anonymous_slot_expression
+  array:
+    name: array
+    description: coerces the value of the slot into an array and defines the dimensions
+      of that array
+    from_schema: https://w3id.org/linkml/meta
+    status: testing
+    rank: 1000
+    domain: slot_definition
+    inherited: true
+    alias: array
+    owner: anonymous_slot_expression
+    domain_of:
+    - slot_expression
+    range: array_expression
   extensions:
     name: extensions
     description: a tag/text tuple attached to an arbitrary element
