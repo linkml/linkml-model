@@ -1358,46 +1358,66 @@ slots:
       Note that this does *not* define the constraints that are placed on additional slots defined by inheriting classes.
       
       Possible values:
-      - true: allow any additional data
-      - false: (default) forbid any additional data
-      - anonymous_slot_expression: allow only data matching this anonymous slot expression
+      - `allowed: true` - allow all additional data
+      - `allowed: false` (or `allowed:` or `allowed: null` while `slot_expression` is `null`) - 
+        forbid all additional data (default) 
+      - `slot_expression: ...`  - allow additional data if it matches the slot expression (see examples)
     domain: class_definition
     ifabsent: false
-    any_of:
-      - range: boolean
-      - range: anonymous_slot_expression
+    range: extra_slots_expression
     in_subset:
       - SpecificationSubset
       - BasicSubset
     examples:
-      - value: true
+      - value:
+          allowed: true
         description: Allow all additional data
-      - value: false
+      - value:
+          allowed: false
         description: Forbid any additional data
       - value:
-          range: string
+          slot_expression:
+            range: string
         description: Allow additional data that are strings
       - value:
-          range: AClassDefinition
+          slot_expression:
+            range: AClassDefinition
         description: Allow additional data if they are instances of the class definition "AClassDefinition"
       - value:
-          any_of:
-            - range: string
-            - range: integer
+          slot_expression:
+            any_of:
+              - range: string
+              - range: integer
         description: allow additional data if they are either strings or integers
       - value:
-          range: integer
-          multivalued: true
-          maximum_cardinality: 5
+          slot_expression:
+            range: integer
+            multivalued: true
+            maximum_cardinality: 5
         description: |
           Allow additional data if they are lists of integers of at most length 5.
           Note that this does *not* mean that a maximum of 5 extra slots are allowed.
       - value:
-          range: integer
-          required: true
+          slot_expression:
+            range: integer
+            required: true
         description: |
           Allow additional data if they are integers. 
           `required` is meaningless in this context and ignored, since by definition all "extra" slots are optional.
+      - value:
+          allowed: false
+          slot_expression:
+            range: string
+        description: |
+          A semantically *invalid* use of `extra_slots`, as extra slots will be forbidden and the 
+          `slot_expression` will be ignored.
+
+  allowed:
+    description: Whether or not something is allowed. Usage defined by context.
+    range: boolean
+    in_subset:
+      - SpecificationSubset
+      - BasicSubset
 
   # -----------------------------------
   # Slot definition slots
@@ -3272,6 +3292,18 @@ classes:
       - string_serialization
     in_subset:
       - SpecificationSubset
+
+  extra_slots_expression:
+    description: |
+      An expression that defines how to handle additional data in an instance of class
+      beyond the slots/attributes defined for that class. 
+      See `extra_slots` for usage examples.
+    mixins:
+      - expression
+    slots:
+      - allowed
+      - slot_expression
+
 
 # ==================================
 # Enumerations                     #
