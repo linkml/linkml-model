@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://linkml.io/linkml-model/latest/docs/range_expression/">
+        <link rel="canonical" href="https://linkml.io/linkml-model/latest/docs/extra_slots/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: range_expression - LinkML Model</title>
+        <title>Slot: extra_slots - LinkML Model</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-range_expression" class="md-skip">
+        <a href="#slot-extra_slots" class="md-skip">
           Skip to content
         </a>
       
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: range_expression
+              Slot: extra_slots
             
           </span>
         </div>
@@ -574,8 +574,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    Comments
+  <a href="#examples" class="md-nav__link">
+    Examples
   </a>
   
 </li>
@@ -622,9 +622,17 @@
                   
 
 
-<h1 id="slot-range_expression">Slot: range_expression</h1>
-<p><em>A range that is described as a boolean expression combining existing ranges</em></p>
-<p>URI: <a href="https://w3id.org/linkml/range_expression">linkml:range_expression</a></p>
+<h1 id="slot-extra_slots">Slot: extra_slots</h1>
+<p><em>How a class instance handles extra data not specified in the class definition.</em></p>
+<p><em>Note that this does <em>not</em> define the constraints that are placed on additional slots defined by inheriting classes.</em></p>
+<p>__</p>
+<p><em>Possible values:</em></p>
+<p><em>- <code>allowed: true</code> - allow all additional data</em></p>
+<p>_- <code>allowed: false</code> (or <code>allowed:</code> or <code>allowed: null</code> while <code>range_expression</code> is <code>null</code>) - _</p>
+<p>_  forbid all additional data (default) _</p>
+<p><em>- <code>range_expression: ...</code>  - allow additional data if it matches the slot expression (see examples)</em></p>
+<p>__</p>
+<p>URI: <a href="https://w3id.org/linkml/extra_slots">linkml:extra_slots</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -638,40 +646,50 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td>An expression that describes an abstract path from an object to another throu...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-<td>an expression that constrains the range of values a slot can take</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ExtraSlotsExpression/">ExtraSlotsExpression</a></td>
-<td>An expression that defines how to handle additional data in an instance of cl...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td>an element that describes how instances are related to other instances</td>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+<td>an element whose instances are complex objects that may have slot-value assig...</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></li>
+<li>Range: <a href="../ExtraSlotsExpression/">ExtraSlotsExpression</a></li>
 </ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>one use for this is being able to describe a range using any_of expressions, for example to combine two enums</li>
-</ul>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JsonObj(allowed=True)</td>
+</tr>
+<tr>
+<td>JsonObj(allowed=False)</td>
+</tr>
+<tr>
+<td>JsonObj(range_expression=JsonObj(range='string'))</td>
+</tr>
+<tr>
+<td>JsonObj(range_expression=JsonObj(range='AClassDefinition'))</td>
+</tr>
+<tr>
+<td>JsonObj(range_expression=JsonObj(any_of=[{'range': 'string'}, {'range': 'integer'}]))</td>
+</tr>
+<tr>
+<td>JsonObj(range_expression=JsonObj(range='integer', multivalued=True, maximum_cardinality=5))</td>
+</tr>
+<tr>
+<td>JsonObj(range_expression=JsonObj(range='integer', required=True))</td>
+</tr>
+<tr>
+<td>JsonObj(allowed=False, range_expression=JsonObj(range='string'))</td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -680,24 +698,50 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: range_expression
-description: A range that is described as a boolean expression combining existing
-  ranges
-comments:
-- one use for this is being able to describe a range using any_of expressions, for
-  example to combine two enums
+<pre><code class="language-yaml">name: extra_slots
+description: &quot;How a class instance handles extra data not specified in the class definition.\n\
+  Note that this does *not* define the constraints that are placed on additional slots\
+  \ defined by inheriting classes.\n\nPossible values:\n- `allowed: true` - allow\
+  \ all additional data\n- `allowed: false` (or `allowed:` or `allowed: null` while\
+  \ `range_expression` is `null`) - \n  forbid all additional data (default) \n- `range_expression:\
+  \ ...`  - allow additional data if it matches the slot expression (see examples)\n&quot;
+examples:
+- value: JsonObj(allowed=True)
+  description: Allow all additional data
+- value: JsonObj(allowed=False)
+  description: Forbid any additional data
+- value: JsonObj(range_expression=JsonObj(range='string'))
+  description: Allow additional data that are strings
+- value: JsonObj(range_expression=JsonObj(range='AClassDefinition'))
+  description: Allow additional data if they are instances of the class definition
+    &quot;AClassDefinition&quot;
+- value: 'JsonObj(range_expression=JsonObj(any_of=[{''range'': ''string''}, {''range'':
+    ''integer''}]))'
+  description: allow additional data if they are either strings or integers
+- value: JsonObj(range_expression=JsonObj(range='integer', multivalued=True, maximum_cardinality=5))
+  description: 'Allow additional data if they are lists of integers of at most length
+    5.
+
+    Note that this does *not* mean that a maximum of 5 extra slots are allowed.
+
+    '
+- value: JsonObj(range_expression=JsonObj(range='integer', required=True))
+  description: &quot;Allow additional data if they are integers. \n`required` is meaningless\
+    \ in this context and ignored, since by definition all \&quot;extra\&quot; slots are optional.\n&quot;
+- value: JsonObj(allowed=False, range_expression=JsonObj(range='string'))
+  description: &quot;A semantically *invalid* use of `extra_slots`, as extra slots will\
+    \ be forbidden and the \n`anonymous_slot_expression` will be ignored.\n&quot;
 in_subset:
 - SpecificationSubset
+- BasicSubset
 from_schema: https://w3id.org/linkml/meta
-status: testing
 rank: 1000
-domain: slot_expression
-alias: range_expression
+domain: class_definition
+ifabsent: 'False'
+alias: extra_slots
 domain_of:
-- path_expression
-- slot_expression
-- extra_slots_expression
-range: anonymous_class_expression
+- class_definition
+range: extra_slots_expression
 
 </code></pre>
 

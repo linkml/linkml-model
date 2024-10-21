@@ -406,6 +406,10 @@
 
           ClassDefinition --&gt; extension : extensions
 
+      ClassDefinition : extra_slots
+
+          ClassDefinition --&gt; extra_slots_expression : extra_slots
+
       ClassDefinition : from_schema
 
       ClassDefinition : id_prefixes
@@ -621,6 +625,12 @@
 <td><a href="../children_are_mutually_disjoint/">children_are_mutually_disjoint</a></td>
 <td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
 <td>If true then all direct is_a children are mutually disjoint and share no inst...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../extra_slots/">extra_slots</a></td>
+<td>0..1 <br/> <a href="../ExtraSlotsExpression/">ExtraSlotsExpression</a></td>
+<td>How a class instance handles extra data not specified in the class definition</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -1064,6 +1074,12 @@
 </tr>
 <tr>
 <td><a href="./">ClassDefinition</a></td>
+<td><a href="../extra_slots/">extra_slots</a></td>
+<td>domain</td>
+<td><a href="./">ClassDefinition</a></td>
+</tr>
+<tr>
+<td><a href="./">ClassDefinition</a></td>
 <td><a href="../is_a/">is_a</a></td>
 <td>range</td>
 <td><a href="./">ClassDefinition</a></td>
@@ -1161,6 +1177,7 @@ slots:
 - represents_relationship
 - disjoint_with
 - children_are_mutually_disjoint
+- extra_slots
 slot_usage:
   is_a:
     name: is_a
@@ -1542,6 +1559,54 @@ attributes:
     - slot_definition
     - class_definition
     range: boolean
+  extra_slots:
+    name: extra_slots
+    description: "How a class instance handles extra data not specified in the class\
+      \ definition.\nNote that this does *not* define the constraints that are placed\
+      \ on additional slots defined by inheriting classes.\n\nPossible values:\n-\
+      \ `allowed: true` - allow all additional data\n- `allowed: false` (or `allowed:`\
+      \ or `allowed: null` while `range_expression` is `null`) - \n  forbid all additional\
+      \ data (default) \n- `range_expression: ...`  - allow additional data if it\
+      \ matches the slot expression (see examples)\n"
+    examples:
+    - value: JsonObj(allowed=True)
+      description: Allow all additional data
+    - value: JsonObj(allowed=False)
+      description: Forbid any additional data
+    - value: JsonObj(range_expression=JsonObj(range='string'))
+      description: Allow additional data that are strings
+    - value: JsonObj(range_expression=JsonObj(range='AClassDefinition'))
+      description: Allow additional data if they are instances of the class definition
+        "AClassDefinition"
+    - value: 'JsonObj(range_expression=JsonObj(any_of=[{''range'': ''string''}, {''range'':
+        ''integer''}]))'
+      description: allow additional data if they are either strings or integers
+    - value: JsonObj(range_expression=JsonObj(range='integer', multivalued=True, maximum_cardinality=5))
+      description: 'Allow additional data if they are lists of integers of at most
+        length 5.
+
+        Note that this does *not* mean that a maximum of 5 extra slots are allowed.
+
+        '
+    - value: JsonObj(range_expression=JsonObj(range='integer', required=True))
+      description: "Allow additional data if they are integers. \n`required` is meaningless\
+        \ in this context and ignored, since by definition all \"extra\" slots are\
+        \ optional.\n"
+    - value: JsonObj(allowed=False, range_expression=JsonObj(range='string'))
+      description: "A semantically *invalid* use of `extra_slots`, as extra slots\
+        \ will be forbidden and the \n`anonymous_slot_expression` will be ignored.\n"
+    in_subset:
+    - SpecificationSubset
+    - BasicSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 1000
+    domain: class_definition
+    ifabsent: 'False'
+    alias: extra_slots
+    owner: class_definition
+    domain_of:
+    - class_definition
+    range: extra_slots_expression
   any_of:
     name: any_of
     description: holds if at least one of the expressions hold
