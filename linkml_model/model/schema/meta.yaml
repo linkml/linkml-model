@@ -1363,7 +1363,6 @@ slots:
         forbid all additional data (default) 
       - `range_expression: ...`  - allow additional data if it matches the slot expression (see examples)
     domain: class_definition
-    ifabsent: false
     range: extra_slots_expression
     in_subset:
       - SpecificationSubset
@@ -1444,7 +1443,6 @@ slots:
       - value domain
     domain: slot_definition
     range: element
-    ifabsent: default_range
     inherited: true
     comments:
       - range is underspecified, as not all elements can appear as the range of a slot.
@@ -1472,7 +1470,6 @@ slots:
       - public ID
     domain: slot_definition
     range: uriorcurie
-    ifabsent: slot_curie
     description: >-
       URI of the class that provides a semantic interpretation of the slot in a linked data context. The URI may come from any namespace and may be shared between schemas.
     comments:
