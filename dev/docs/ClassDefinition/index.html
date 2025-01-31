@@ -324,6 +324,8 @@
 
       ClassDefinition : abstract
 
+      ClassDefinition : alias
+
       ClassDefinition : aliases
 
       ClassDefinition : all_of
@@ -631,6 +633,12 @@
 <td><a href="../extra_slots/">extra_slots</a></td>
 <td>0..1 <br/> <a href="../ExtraSlotsExpression/">ExtraSlotsExpression</a></td>
 <td>How a class instance handles extra data not specified in the class definition</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../alias/">alias</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>the name used for a slot in the context of its owning class</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -1178,6 +1186,7 @@ slots:
 - disjoint_with
 - children_are_mutually_disjoint
 - extra_slots
+- alias
 slot_usage:
   is_a:
     name: is_a
@@ -1607,6 +1616,28 @@ attributes:
     domain_of:
     - class_definition
     range: extra_slots_expression
+  alias:
+    name: alias
+    description: the name used for a slot in the context of its owning class.  If
+      present, this is used instead of the actual slot name.
+    comments:
+    - an example of alias is used within this metamodel, slot_definitions is aliases
+      as slots
+    - not to be confused with aliases, which indicates a set of terms to be used for
+      search purposes.
+    in_subset:
+    - SpecificationSubset
+    from_schema: https://w3id.org/linkml/meta
+    rank: 6
+    domain: slot_definition
+    slot_uri: skos:prefLabel
+    alias: alias
+    owner: class_definition
+    domain_of:
+    - slot_definition
+    - class_definition
+    - dimension_expression
+    range: string
   any_of:
     name: any_of
     description: holds if at least one of the expressions hold
