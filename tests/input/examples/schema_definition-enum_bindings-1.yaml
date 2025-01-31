@@ -25,6 +25,9 @@ classes:
 
   Concept:
     description: A generic class for representing an element from a vocabulary or ontology.
+      It is common for data models to have an explicit representation of vocabulary or ontology elements;
+      this allows for the concepts to be queried as other data objects, and provides flexibility in how
+      categorical values of slots can be represented.
     attributes:
       id:
         identifier: true
@@ -32,21 +35,31 @@ classes:
       name:
         description: human-readable label of the concept. E.g. "blood"
       vocabulary:
-        description: E.g. UBERON, PO, ENVO, NCIT
-
+        description: Code for the vocabulary itself, E.g. UBERON, PO, ENVO, NCIT
+    examples:
+      - object:
+          id: UBERON:0000465
+          name: blood
+          vocabulary: UBERON
 
   Sample:
-    description: Abstract grouping for different sample types
+    description: Abstract grouping for different sample types.
+      See individual subtypes for specific examples
     abstract: true
     attributes:
       name:
-        description: E.g. my blood sample
+        description: E.g. my blood sample; my soil sample
       sample_material_type:
         description: The material type for the sample - depending on the type of sample, could be tissue (e.g. blood, muscle) or environmental (rock, soil, ...)
+        comments:
+          - the abstract Sample class leaves open the possibility of using *any* Concept object here
+          - note the value here is inlined.
         range: Concept
+        inlined: false
             
   EnvironmentalMaterialSample:
-    description: A sample taken from the environment
+    is_a: Sample
+    description: A sample taken from the environment.
     slot_usage:
       sample_material_type:
         description: Environmental material type
@@ -55,8 +68,11 @@ classes:
             range: ENVOMaterialEnum
             obligation_level: RECOMMENDED
             description: Material type from the ENVO ontology
+            comments:
+              - This allows for any concept ID/reference to be used here, but recommends it to be one from ENVO
 
-  HumanSampleSample:
+  HumanSample:
+    is_a: Sample
     description: A sample taken from a human subject
     slot_usage:
       sample_material_type:
@@ -66,8 +82,15 @@ classes:
             range: AnatomyMaterialEnum
             obligation_level: RECOMMENDED
             description: Material type from an anatomy ontology
+            comments:
+              - This allows for any concept ID/reference to be used here, but recommends it to be one from an anatomy ontology
+    examples:
+      - object:
+          name: my blood sample
+          sample_material_type: UBERON:0000465  ## referenced, not inlined
 
-  AlternateHumanSampleSample:
+  AlternateHumanSample:
+    is_a: Sample
     description: A sample taken from a human subject (alternative example for illustrative purposes)
     slot_usage:
       sample_material_type:
@@ -76,8 +99,38 @@ classes:
           - binds_value_of: vocabulary
             range: HumanSampleVocabularyEnum
             obligation_level: RECOMMENDED
+    examples:
+      - object:
+          name: my blood sample
+          sample_material_type: UBERON:0000465
+
+  Person:
+    description: A human being
+    attributes:
+      name:
+        description: The name of the person
+      favorite_food:
+        description: The person's favorite food
+        range: string
+        bindings:
+          - range: FoodTypeEnum
+            obligation_level: RECOMMENDED
+            description: Food type from the FoodOn ontology
+            pv_formula: LABEL
+            comments:
+              - This allows for any string value to be used here, but recommends it to be a string corresponding to a FOODON label
+
 
 enums:
+  FoodTypeEnum:
+    description: Food type from the FoodOn ontology
+    reachable_from:
+      source_ontology: obo:foodon
+      source_nodes:
+        - FOODON:00002403  ## food material
+      is_direct: false
+      relationship_types:
+        - rdfs:subClassOf
   ENVOMaterialEnum:
     description: Material type from the ENVO ontology
     reachable_from:
