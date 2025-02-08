@@ -3,7 +3,6 @@
 [![PyPi](https://img.shields.io/pypi/v/linkml_model.svg)](https://pypi.python.org/pypi/linkml_model)
 [![DOI](https://zenodo.org/badge/13996/linkml/linkml-model.svg)](https://zenodo.org/badge/latestdoi/13996/linkml/linkml-model)
 
-
 # LinkML Model
 
 Metamodel schema, documentation, and specification for the Linked Open Data Modeling Language (LinkML)
