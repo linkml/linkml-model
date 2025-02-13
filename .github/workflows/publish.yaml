@@ -56,8 +56,8 @@ jobs:
 
       - name: Publish schema # login with authToken as per https://stackoverflow.com/a/58271202
         env:
-          auth_token: ${{ secrets.CLOUDSMITH_AUTH_TOKEN }}
+          auth_token: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
-          registry=$(awk -F: '/registry/{print $2}' .npmrc)
+          registry='/registry/https://registry.npmjs.org/'
           npm set $registry:_authToken $auth_token
           ./gradlew publishPackage
