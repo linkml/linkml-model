@@ -49,5 +49,5 @@ tasks.register('copyPackageFiles', Copy) {
 tasks.register('publishPackage', Exec) {
     dependsOn(build, copyPackageFiles)
     workingDir(layout.buildDirectory)
-    commandLine "npm", "publish"
+    commandLine "npm", "publish", "--access", "public"
 }
