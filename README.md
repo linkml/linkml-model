@@ -4,4 +4,6 @@ Fork of [linkml-model](https://github.com/linkml/linkml-model/) for use as a bas
 
 Primary goal of repo is to build unified YAML schema of linkml-schema.
 
-[![Hosted By: Cloudsmith](https://img.shields.io/badge/OSS%20hosting%20by-cloudsmith-blue?logo=cloudsmith&style=flat-square)](https://cloudsmith.com)
+## Installation
+
+Run `npm install @oshw/linkml-schema`
