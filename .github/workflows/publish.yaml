@@ -58,6 +58,5 @@ jobs:
         env:
           auth_token: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
-          npm config set @oshw:registry=https://registry.npmjs.org
-          npm config set @oshw:registry:_authToken=$auth_token
+          npm set "//registry.npmjs.org/:_authToken=$auth_token"
           ./gradlew publishPackage
