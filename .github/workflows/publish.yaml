@@ -47,7 +47,7 @@ jobs:
 
       - name: Skip Publish? # as per https://stackoverflow.com/questions/59882715/use-environment-variable-in-github-action-if
         if: env.ON_MAIN != 'true'
-        run: exit -1
+        run: exit 1
 
       - name: Install LinkML
         run: pip install linkml==1.5.6
