@@ -11,6 +11,7 @@ on:
       - 'LICENSE'
       - 'README.md'
     branches: [ main ]
+    tags: [ "*" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -42,13 +43,17 @@ jobs:
         env:
           auth_token: ${{ secrets.NPM_AUTH_TOKEN }}
         run: | # login with authToken as per https://stackoverflow.com/a/58271202
+          GIT_REF_COMMIT=$(git rev-list -n 1 $GITHUB_REF)
+          GIT_MAIN_COMMIT=$(git rev-list -n 1 refs/remotes/origin/main)
           BASENAME=$(basename "$GITHUB_REF") # The only line you need
           echo "This basename is: ($BASENAME)"
           SEMVER_REGEX="v[0-9]+.[0-9]+.[0-9]+*"
           if [[ $BASENAME =~ $SEMVER_REGEX ]]; then
-            echo "Publishing $BASENAME to npmjs.org"
-            npm set "//registry.npmjs.org/:_authToken=$auth_token"
-            ./gradlew publishPackage
+            if [[ $GIT_REF_COMMIT == $GIT_MAIN_COMMIT ]]; then
+              echo "Publishing $BASENAME to npmjs.org"
+              npm set "//registry.npmjs.org/:_authToken=$auth_token"
+              ./gradlew publishPackage
+            fi
           else
             echo "Building $BASENAME"
             ./gradlew build
