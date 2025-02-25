@@ -11,8 +11,6 @@ on:
       - 'LICENSE'
       - 'README.md'
     branches: [ main ]
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+*'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -46,5 +44,8 @@ jobs:
         run: | # login with authToken as per https://stackoverflow.com/a/58271202
           COMMIT_TAG=$(basename "$GITHUB_REF") # The only line you need
           echo "This commit tag is: ($COMMIT_TAG)"
-          npm set "//registry.npmjs.org/:_authToken=$auth_token"
-          ./gradlew publishPackage
+          SEMVER_REGEX="v[0-9]+.[0-9]+.[0-9]+*"
+          if [[ $COMMIT_TAG =~ $SEMVER_REGEX ]]; then
+            npm set "//registry.npmjs.org/:_authToken=$auth_token"
+            ./gradlew publishPackage
+          fi
