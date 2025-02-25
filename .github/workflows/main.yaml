@@ -46,9 +46,11 @@ jobs:
           echo "This basename is: ($BASENAME)"
           SEMVER_REGEX="v[0-9]+.[0-9]+.[0-9]+*"
           if [[ $BASENAME =~ $SEMVER_REGEX ]]; then
+            echo "Publishing $BASENAME to npmjs.org"
             npm set "//registry.npmjs.org/:_authToken=$auth_token"
             ./gradlew publishPackage
           else
+            echo "Building $BASENAME"
             ./gradlew build
           fi
 
