@@ -1,6 +1,6 @@
-# This workflow builds the unified linkml YAML schema
+# This workflow publishes the unified linkml YAML schema to npmjs.org as an npm package
 
-name: schema
+name: Build / Publish (on main branch)
 
 # Controls when the workflow will run
 on:
@@ -10,15 +10,9 @@ on:
       - '.gitignore'
       - 'LICENSE'
       - 'README.md'
-    branches-ignore: [ main ]
-    tags-ignore:
-      - '*'
-  pull_request:
     branches: [ main ]
-    paths-ignore:
-      - '.gitignore'
-      - 'LICENSE'
-      - 'README.md'
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+*'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -33,9 +27,27 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout github repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine if on main # as per https://stackoverflow.com/questions/59882715/use-environment-variable-in-github-action-if
+        run: |
+          GIT_REF_COMMIT=$(git rev-list -n 1 $GITHUB_REF)
+          GIT_MAIN_COMMIT=$(git rev-list -n 1 refs/remotes/origin/main)
+          if [[ $GIT_REF_COMMIT == $GIT_MAIN_COMMIT ]]; then
+              echo "ON_MAIN=true" >> "$GITHUB_ENV"
+          else
+              echo "ON_MAIN=false" >> "$GITHUB_ENV"
+          fi
+          cat $GITHUB_ENV
+
+      - name: Skip Publish? # as per https://stackoverflow.com/questions/59882715/use-environment-variable-in-github-action-if
+        if: env.ON_MAIN != 'true'
+        run: exit 1
 
       - name: Install LinkML
         run: pip install linkml==1.5.6
@@ -43,10 +55,9 @@ jobs:
       - name: Install yq # as per https://github.com/mikefarah/yq#plain-binary
         run: sudo wget https://github.com/mikefarah/yq/releases/download/v4.35.1/yq_linux_amd64 -O /usr/bin/yq && sudo chmod +x /usr/bin/yq
 
-      - name: Build schema
-        run: ./gradlew build
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: linkml-schema
-          path: ./build
+      - name: Publish schema # login with authToken as per https://stackoverflow.com/a/58271202
+        env:
+          auth_token: ${{ secrets.NPM_AUTH_TOKEN }}
+        run: |
+          npm set "//registry.npmjs.org/:_authToken=$auth_token"
+          ./gradlew publishPackage
