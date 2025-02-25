@@ -45,19 +45,26 @@ jobs:
           fi
           cat $GITHUB_ENV
 
-      - name: Skip Publish? # as per https://stackoverflow.com/questions/59882715/use-environment-variable-in-github-action-if
-        if: env.ON_MAIN != 'true'
-        run: exit 1
-
       - name: Install LinkML
         run: pip install linkml==1.5.6
 
       - name: Install yq # as per https://github.com/mikefarah/yq#plain-binary
         run: sudo wget https://github.com/mikefarah/yq/releases/download/v4.35.1/yq_linux_amd64 -O /usr/bin/yq && sudo chmod +x /usr/bin/yq
 
-      - name: Publish schema # login with authToken as per https://stackoverflow.com/a/58271202
+      - name: Publish? # as per https://stackoverflow.com/questions/59882715/use-environment-variable-in-github-action-if
         env:
           auth_token: ${{ secrets.NPM_AUTH_TOKEN }}
-        run: |
+        if: env.ON_MAIN == 'true'
+        run: | # login with authToken as per https://stackoverflow.com/a/58271202
           npm set "//registry.npmjs.org/:_authToken=$auth_token"
           ./gradlew publishPackage
+
+      - name: Build?
+        if: env.ON_MAIN != 'true'
+        run: |
+          ./gradlew build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linkml-schema
+          path: ./build
