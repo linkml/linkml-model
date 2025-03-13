@@ -1,0 +1,43 @@
+id: https://example.org/serializations
+name: serializations_example
+title: Serializaations Example
+description: |-
+  Example LinkML schema to demonstrate serialization exceptions.
+
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  example: https://example.org/
+
+default_prefix: example
+
+imports:
+  - linkml:types
+
+classes:
+
+  A:
+    attributes:
+      my_big_integer:
+        range: integer
+        type_mappings:
+          JSON:
+            type: string
+            description: we serialize this as a string because some json implementations may implement as doubles
+          PROTOBUF:
+            type: int64
+      my_date:
+        range: date
+        type_mappings:
+          PYTHON:
+            type: string
+    examples:
+      - object:
+          my_big_integer: 12345678901234567890
+          my_date: 2021-01-01
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+id: https://example.org/multi-valued-in-any-of
+name: multi_valued_in_any_of
+title: Multi-valued in any of
+description: |-
+  Example LinkML schema to demonstrate mixing multi-valued and single-valued attributes in anyOf
+see_also:
+  - https://github.com/orgs/linkml/discussions/2154
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  example: https://example.org/
+
+default_prefix: example
+
+imports:
+  - linkml:types
+
+classes:
+
+  Any:
+    class_uri: linkml:Any
+
+  A:
+    attributes:
+      s:
+        range: Any
+        any_of:
+          - range: string
+            multivalued: true
+          - range: integer
+
+
+
+
+
+
+
+

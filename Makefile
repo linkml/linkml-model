@@ -74,7 +74,7 @@ gen-doc:
 	rm -rf $(DOCDIR)/$(PYMODEL)/model/docs
 	cp README.md $(DOCDIR)
 
-test: test-schema test-python test-validate-schema
+test: test-schema test-python test-validate-schema test-examples
 test-schema:
 	$(RUN) gen-project -d tmp $(SOURCE_SCHEMA_PATH)
 
@@ -82,9 +82,10 @@ test-python:
 	$(RUN) python -m unittest discover
 
 # TODO: switch to linkml-run-examples when normalize is implemented
-test-examples:
+test-examples: $(SOURCE_SCHEMA_PATH)
+	$(RUN) linkml-validate -s $(SOURCE_SCHEMA_PATH) tests/input/examples/schema_definition-*.yaml
 #	$(RUN) linkml-run-examples -s $(SOURCE_SCHEMA_PATH) -e tests/input/examples -d /tmp/
-	find tests/input/examples | ./utils/run-examples.pl
+#	find tests/input/examples | ./utils/run-examples.pl
 
 test-validate-schema:
 	$(RUN) linkml-normalize -s $(SOURCE_SCHEMA_PATH) $(SOURCE_SCHEMA_PATH) -o /tmp/schema

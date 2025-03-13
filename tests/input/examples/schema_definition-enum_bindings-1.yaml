@@ -1,0 +1,105 @@
+id: https://example.org/enum_bindings
+name: enum_bindings_example
+title: Enum Bindings Example
+description: |-
+  Example LinkML schema to demonstrate Enum bindings.
+
+  Here we define a generic Sample class which has a range indicating
+  the material type of the sample. In an environmental context this
+  could be soil, seawater, etc. In a medical context it may be human
+  tissue.
+
+  In both cases we want to use a generic Concept class
+license: MIT
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  example: https://example.org/
+
+default_prefix: example
+
+imports:
+  - linkml:types
+
+classes:
+
+  Concept:
+    description: A generic class for representing an element from a vocabulary or ontology.
+    attributes:
+      id:
+        identifier: true
+        description: CURIE/identifier for the concept. E.g. ENVO:1234567
+      name:
+        description: human-readable label of the concept. E.g. "blood"
+      vocabulary:
+        description: E.g. UBERON, PO, ENVO, NCIT
+
+
+  Sample:
+    description: Abstract grouping for different sample types
+    abstract: true
+    attributes:
+      name:
+        description: E.g. my blood sample
+      sample_material_type:
+        description: The material type for the sample - depending on the type of sample, could be tissue (e.g. blood, muscle) or environmental (rock, soil, ...)
+        range: Concept
+            
+  EnvironmentalMaterialSample:
+    description: A sample taken from the environment
+    slot_usage:
+      sample_material_type:
+        description: Environmental material type
+        bindings:
+          - binds_value_of: id
+            range: ENVOMaterialEnum
+            obligation_level: RECOMMENDED
+            description: Material type from the ENVO ontology
+
+  HumanSampleSample:
+    description: A sample taken from a human subject
+    slot_usage:
+      sample_material_type:
+        description: Tissue material type
+        bindings:
+          - binds_value_of: id
+            range: AnatomyMaterialEnum
+            obligation_level: RECOMMENDED
+            description: Material type from an anatomy ontology
+
+  AlternateHumanSampleSample:
+    description: A sample taken from a human subject (alternative example for illustrative purposes)
+    slot_usage:
+      sample_material_type:
+        description: Does not constrain the ID that is used, but restricts the vocabulary field to a fixed enum
+        bindings:
+          - binds_value_of: vocabulary
+            range: HumanSampleVocabularyEnum
+            obligation_level: RECOMMENDED
+
+enums:
+  ENVOMaterialEnum:
+    description: Material type from the ENVO ontology
+    reachable_from:
+      source_ontology: obo:envo
+      source_nodes:
+        - ENVO:00010483  ## environmental material
+      is_direct: false
+      relationship_types:
+        - rdfs:subClassOf
+  AnatomyMaterialEnum:
+    description: Material type from the UBERON anatomy ontology
+    reachable_from:
+      source_ontology: obo:uberon
+      source_nodes:
+        - UBERON:0000465 ## material anatomical entity
+      is_direct: false
+      relationship_types:
+        - rdfs:subClassOf
+  HumanSampleVocabularyEnum:
+    permissible_values:
+      UBERON:
+      FMA:
+      NCIT:
+
+

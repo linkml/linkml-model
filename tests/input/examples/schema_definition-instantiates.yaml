@@ -1,0 +1,55 @@
+id: https://w3id.org/linkml/examples/enums
+title: Dynamic Enums Example
+name: dynamicenums-example
+description: This demonstrates the use of dynamic enums
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  ex: https://w3id.org/linkml/examples/enums/
+  mymetamodel: https://w3id.org/linkml/examples/mymetamodel/
+  sh: https://w3id.org/shacl/
+  bioregistry: https://bioregistry.io/registry/
+  MONDO: http://purl.obolibrary.org/obo/MONDO_
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  loinc: http://loinc.org/
+
+default_prefix: ex
+default_range: string
+
+default_curi_maps:
+    - semweb_context
+
+imports:
+  - linkml:types
+
+  
+#==================================
+# Classes                         #
+#==================================
+
+classes:
+  Person:
+    instantiates:
+     - mymetamodel:Reviewable
+    annotations:
+      review.desc: A very useful class that is well defined
+    attributes:
+      id:
+      name:
+      address:
+
+  Reviewable:
+    class_uri: mymetamodel:Reviewable
+    attributes:
+      description:
+        description: an expert review of a schema element
+      review:
+        description: Review
+
+  Review:
+    class_uri: mymetamodel:Review
+    attributes:
+      desc:
+      score:
+        range: float
