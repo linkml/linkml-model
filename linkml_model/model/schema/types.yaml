@@ -31,7 +31,7 @@ types:
     base: str
     description: A character string
     notes: >-
-      In RDF serializations, a slot with range of string is treated as a literal or type xsd:string.  
+      In RDF serializations, a slot with range of string is treated as a literal or type xsd:string.
       If you are authoring schemas in LinkML YAML, the type is referenced with the lower case "string".
     exact_mappings:
       - schema:Text
@@ -132,14 +132,24 @@ types:
 
   curie:
     uri: xsd:string
+    base: URIorCURIE
+    repr: str
+    description: a prefixed ID, which may or may not conform to the w3 CURIE spec.
+    comments:
+      - Allows a wider range of characters than the stricter w3curie type.
+    notes: >-
+      If you are authoring schemas in LinkML YAML, the type is referenced with the lower case "curie".
+
+  w3curie:
+    uri: xsd:string
     base: Curie
     repr: str
-    description: a compact URI
+    description: A compact URI with a restricted character set; conforms to the w3 CURIE spec.
     comments:
       - in RDF serializations this MUST be expanded to a URI
       - in non-RDF serializations MAY be serialized as the compact representation
     notes: >-
-      If you are authoring schemas in LinkML YAML, the type is referenced with the lower case "curie".
+      If you are authoring schemas in LinkML YAML, the type is referenced with the lower case "w3curie".
     conforms_to: https://www.w3.org/TR/curie/
 
   uri:
