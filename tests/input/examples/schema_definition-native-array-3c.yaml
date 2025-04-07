@@ -1,0 +1,90 @@
+id: https://example.org/arrays
+name: arrays-temperature-example-3
+title: Array Temperature Example Using NDArray Classes
+description: |-
+  Example LinkML schema to demonstrate a complex 3D DataArray of temperature values
+  with labeled axes using array slots for the axes and data instead of classes containing
+  arrays
+license: MIT
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
+  example: https://example.org/
+
+default_prefix: example
+
+imports:
+  - linkml:types
+
+classes:
+
+  TemperatureDataset:
+    tree_root: true
+    implements:
+      - linkml:DataArray
+    attributes:
+      name:
+        identifier: true
+        range: string
+      latitude_in_deg:
+        required: true
+        range: float
+        unit:
+          ucum_code: deg
+        array:
+          exact_number_dimensions: 2
+      longitude_in_deg:
+        required: true
+        range: float
+        unit:
+          ucum_code: deg
+        array:
+          exact_number_dimensions: 2
+      date:
+        required: true
+        range: date
+        array:
+          exact_number_dimensions: 1
+      day_in_d:
+        description: Number of days since `reference_date`
+        required: true
+        range: integer
+        unit:
+          ucum_code: d
+        array:
+          exact_number_dimensions: 1
+      reference_date:
+        description: The reference date for the `day_in_d` values
+        required: true
+        range: date
+      temperatures_in_K:
+        required: true
+        range: float
+        unit:
+          ucum_code: K
+        array:
+          exact_number_dimensions: 3
+          dimensions:
+            - alias: "x"
+            - alias: "y"
+            - alias: "date"
+          labeled_by:
+            - alias: lat
+              label_slot: latitude_in_deg
+              labeled_dimensions: [0, 1]
+            - alias: lon
+              label_slot: longitude_in_deg
+              labeled_dimensions: [0, 1]
+            - alias: date
+              label_slot: date
+              labeled_dimensions: [2]
+            - alias: day
+              label_slot: day_in_d
+              labeled_dimensions: [2]
+            - alias: reference_date
+              label_slot: reference_date
+              labeled_dimensions: null
+              # this is a non-dimension (constant) coordinate for the entire array and is supported by xarray.
+              # the use case is not clear; this should just be an attribute on `day_in_d`. but we can support it by
+              # allowing index_dims: null
