@@ -8,7 +8,7 @@
 
 Metamodel schema, documentation, and specification for the Linked Open Data Modeling Language (LinkML)
 
-This documentation is best viewed view the generated web documentation
+This documentation is best viewed through the generated web documentation:
 
 - [https://w3id.org/linkml/](https://linkml.github.io/linkml-model/docs)
 
