@@ -49,6 +49,7 @@ prefixes:
   qudt: http://qudt.org/schema/qudt/
   cdisc: http://rdf.cdisc.org/mms#
   SIO: http://semanticscience.org/resource/SIO_
+  cc: http://creativecommons.org/ns#
 
 default_prefix: linkml
 default_range: string
@@ -497,14 +498,6 @@ slots:
     in_subset:
       - BasicSubset
 
-  publisher:
-    domain: element
-    range: uriorcurie
-    description: An entity responsible for making the resource available
-    slot_uri: dcterms:publisher
-    in_subset:
-      - BasicSubset
-
   # --------------------------------------------------------------
   # Slots that are common to slot definition and class definition
   # --------------------------------------------------------------
@@ -838,8 +831,10 @@ slots:
     slot_uri: pav:version
     exact_mappings:
       - schema:schemaVersion
+      - owl:versionInfo
     in_subset:
       - BasicSubset
+      - OwlProfile
 
   imports:
     rank: 21
@@ -2540,6 +2535,145 @@ slots:
       - in the context of RDF, this should be used for slots that can be modeled using the RDF reification vocabulary
       - in the context of property graphs, this should be used on edge classes to indicate which slots represent the input and output nodes
 
+  issued:
+    description: Date of the first vocabulary publication.
+    domain: schema_definition
+    range: date
+    inherited: true
+    slot_uri: dcterms:issued
+    in_subset:
+      - OwlProfile
+    exact_mappings:
+      - dcterms:issued
+    see_also:
+      - https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/issued
+      - https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+
+  modified:
+    description: Last vocabulary modification date.
+    domain: schema_definition
+    range: date
+    inherited: true
+    slot_uri: dcterms:modified
+    in_subset:
+      - OwlProfile
+    exact_mappings:
+      - dcterms:modified
+    see_also:
+      - https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified
+      - https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+
+  rights:
+    description: Property rights of the vocabulary.
+    domain: schema_definition
+    range: string
+    inherited: true
+    slot_uri: dcterms:rights
+    in_subset:
+      - OwlProfile
+    exact_mappings:
+      - dcterms:rights
+    see_also:
+      - https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/rights
+      - https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+
+  licence:
+    description: >-
+      Licence of the vocabulary. 
+      Recommended practice is to refer to a rights statement with a URI. 
+      If this is not possible or feasible, a literal value (name, label, or short text) may be provided.
+    domain: schema_definition
+    range: string
+    inherited: true
+    slot_uri: cc:licence
+    in_subset:
+      - OwlProfile
+    exact_mappings:
+      - cc:licence
+    see_also:
+      - https://creativecommons.org/ns
+      - https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+
+  creator:
+    description: >-
+      Creator(s) of the vocabulary.
+      Recommended practice is to identify the creator with a URI. 
+      If this is not possible or feasible, a literal value that identifies the creator may be provided.
+    domain: schema_definition
+    range: string
+    inherited: true
+    slot_uri: dcterms:creator
+    in_subset:
+      - OwlProfile
+    exact_mappings:
+      - dcterms:creator
+    see_also:
+      - https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator
+      - https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+
+  contributor:
+    description: >-
+      Contributor(s) of the vocabulary.
+      Recommended practice is to identify the contributor with a URI. 
+      If this is not possible or feasible, a literal value that identifies the contributor may be provided.
+    domain: schema_definition
+    range: string
+    inherited: true
+    slot_uri: dc:contributor
+    in_subset:
+      - OwlProfile
+    exact_mappings:
+      - dc:contributor
+    see_also:
+      - https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/contributor
+      - https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+
+  publisher:
+    description: >-
+      Publisher(s) of the vocabulary.
+      Recommended practice is to identify the contributor with a URI. 
+      If this is not possible or feasible, a literal value that identifies the publisher may be provided.
+    domain: schema_definition
+    range: string
+    inherited: true
+    slot_uri: dc:publisher
+    in_subset:
+      - OwlProfile
+    exact_mappings:
+      - dc:publisher
+    see_also:
+      - https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/publisher
+      - https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+
+  preferred_namespace_prefix:
+    description: >- 
+      Indication of the prefix to be used when referring the vocabulary namespace. 
+      A prefix should be as short as possible (usually less than 5 characters) and avoid conflicts with existing ones.
+    domain: schema_definition
+    range: string
+    inherited: true
+    slot_uri: vann:preferredNamespacePrefix
+    in_subset:
+      - OwlProfile
+    exact_mappings:
+      - vann:preferredNamespacePrefix
+    see_also:
+      - https://vocab.org/vann/
+      - https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+
+  preferred_namespace_uri:
+    description: Indication of the preferred namespace URI to be used for this vocabulary.
+    domain: schema_definition
+    range: uri
+    inherited: true
+    slot_uri: vann:preferredNamespaceUri
+    in_subset:
+      - OwlProfile
+    exact_mappings:
+      - vann:preferredNamespaceUri
+    see_also:
+      - https://vocab.org/vann/
+      - https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
 
 # ==================================
 # Classes                          #
