@@ -1,5 +1,5 @@
 # Auto generated from units.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-02-07T17:29:43
+# Generation date: 2025-01-31T15:56:01
 # Schema: units
 #
 # id: https://w3id.org/linkml/units
@@ -8,18 +8,50 @@
 
 import dataclasses
 import re
-from jsonasobj2 import JsonObj, as_dict
-from typing import Optional, List, Union, Dict, ClassVar, Any
 from dataclasses import dataclass
+from datetime import (
+    date,
+    datetime,
+    time
+)
+from typing import (
+    Any,
+    ClassVar,
+    Dict,
+    List,
+    Optional,
+    Union
+)
 
-from linkml_runtime.utils.slot import Slot
-from linkml_runtime.utils.metamodelcore import empty_list, empty_dict, bnode
-from linkml_runtime.utils.yamlutils import YAMLRoot, extended_str, extended_float, extended_int
-from linkml_runtime.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
-from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
-from linkml_runtime.utils.enumerations import EnumDefinitionImpl
-from rdflib import Namespace, URIRef
+from jsonasobj2 import (
+    JsonObj,
+    as_dict
+)
 from linkml_runtime.utils.curienamespace import CurieNamespace
+from linkml_runtime.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
+from linkml_runtime.utils.enumerations import EnumDefinitionImpl
+from linkml_runtime.utils.formatutils import (
+    camelcase,
+    sfx,
+    underscore
+)
+from linkml_runtime.utils.metamodelcore import (
+    bnode,
+    empty_dict,
+    empty_list
+)
+from linkml_runtime.utils.slot import Slot
+from linkml_runtime.utils.yamlutils import (
+    YAMLRoot,
+    extended_float,
+    extended_int,
+    extended_str
+)
+from rdflib import (
+    Namespace,
+    URIRef
+)
+
 from .types import String, Uriorcurie
 from linkml_runtime.utils.metamodelcore import URIorCURIE
 
@@ -47,7 +79,7 @@ DEFAULT_ = LINKML
 
 
 
-@dataclass
+@dataclass(repr=False)
 class UnitOfMeasure(YAMLRoot):
     """
     A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other
