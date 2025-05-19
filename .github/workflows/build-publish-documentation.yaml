@@ -44,7 +44,8 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .venv
-          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+          # caching behavior influenced by changes to both pyproject.toml and poetry.lock
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock', '**/pyproject.toml') }}
 
       #----------------------------------------------
       # install dependencies if cache does not exist 
