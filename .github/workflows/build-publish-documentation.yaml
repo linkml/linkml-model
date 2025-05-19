@@ -7,6 +7,11 @@ on:
       - main
 
 jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ "3.9" ]
   github-pages:
     runs-on: ubuntu-latest
 
@@ -18,41 +23,33 @@ jobs:
       #       check-out repo and set-up python
       #----------------------------------------------
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0 # fetch all commits/branches so that mike works
-
-      - name: Setup Python 3.9
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.9
               
       #----------------------------------------------
       #          install & configure poetry
       #----------------------------------------------
       - name: Install Poetry
-        uses: snok/install-poetry@v1.3
+        run: |
+          pipx install poetry
+          pipx inject poetry poetry-dynamic-versioning
+
+      # ----------------------------------------------
+      #               setup python 
+      # -----------------------------------------------
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5.6.0
+        id: setup-python
         with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
+          python-version: ${{ matrix.python-version }}
+          cache: 'poetry'
 
       #----------------------------------------------
-      #       load cached venv if cache exists      
-      #----------------------------------------------
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v3
-        with:
-          path: .venv
-          # caching behavior influenced by changes to both pyproject.toml and poetry.lock
-          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock', '**/pyproject.toml') }}
-
-      #----------------------------------------------
-      # install dependencies if cache does not exist 
+      #           install dependencies 
       #----------------------------------------------
       - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction --no-root
+        run: poetry install --no-interaction --no-root --with docs --all-extras
 
       - name: Configure git user
         run: |
