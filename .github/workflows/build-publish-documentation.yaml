@@ -69,9 +69,11 @@ jobs:
           # generate HTML from markdown and put into dev version
           poetry run mike deploy dev
           
+          # ensure the main branch is available locally
+          git fetch origin main
           # switch to gh-pages branch, copy over the latest 404.html from main
           git checkout --force gh-pages
-          git checkout --force main -- 404.html
+          git checkout --force origin/main -- 404.html
           git commit -m "Add 404.html to root" || echo "No changes to 404.html to commit"
           
           # push changes to gh-page branch
