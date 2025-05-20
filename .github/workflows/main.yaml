@@ -26,12 +26,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5.6.0
-        with:
-          python-version: ${{ matrix.python-version }}
-          cache: "poetry"
-
       #----------------------------------------------
       #          install & configure poetry
       #----------------------------------------------
@@ -39,6 +33,12 @@ jobs:
         run: |
           pipx install poetry
           pipx inject poetry poetry-dynamic-versioning
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5.6.0
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "poetry"
 
       #----------------------------------------------
       #             install dependencies

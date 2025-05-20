@@ -29,13 +29,6 @@ jobs:
         with:
           fetch-depth: 0 # fetch all commits/branches so that mike works
 
-      - name: Setup Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5.6.0
-        id: setup-python
-        with:
-          python-version: ${{ matrix.python-version }}
-          cache: 'poetry'
-              
       #----------------------------------------------
       #          install & configure poetry
       #----------------------------------------------
@@ -43,6 +36,13 @@ jobs:
         run: |
           pipx install poetry
           pipx inject poetry poetry-dynamic-versioning
+
+      - name: Setup Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5.6.0
+        id: setup-python
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'poetry'
 
       #----------------------------------------------
       #             install dependencies
