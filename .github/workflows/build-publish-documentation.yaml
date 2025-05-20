@@ -5,10 +5,17 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   github-pages:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: [ "3.10" ]
 
     permissions:
       contents: write
@@ -18,40 +25,30 @@ jobs:
       #       check-out repo and set-up python
       #----------------------------------------------
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0 # fetch all commits/branches so that mike works
 
-      - name: Setup Python 3.9
-        uses: actions/setup-python@v4
+      - name: Setup Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5.6.0
+        id: setup-python
         with:
-          python-version: 3.9
+          python-version: ${{ matrix.python-version }}
+          cache: 'poetry'
               
       #----------------------------------------------
       #          install & configure poetry
       #----------------------------------------------
       - name: Install Poetry
-        uses: snok/install-poetry@v1.3
-        with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
+        run: |
+          pipx install poetry
+          pipx inject poetry poetry-dynamic-versioning
 
       #----------------------------------------------
-      #       load cached venv if cache exists      
-      #----------------------------------------------
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v3
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
-
-      #----------------------------------------------
-      # install dependencies if cache does not exist 
+      #             install dependencies
       #----------------------------------------------
       - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction --no-root
+        run: poetry install --no-interaction --with docs --no-root --all-extras
 
       - name: Configure git user
         run: |
