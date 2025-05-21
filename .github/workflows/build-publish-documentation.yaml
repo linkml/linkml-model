@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   github-pages:
@@ -18,39 +21,29 @@ jobs:
       #       check-out repo and set-up python
       #----------------------------------------------
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0 # fetch all commits/branches so that mike works
 
-      - name: Setup Python 3.9
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.9
-              
       #----------------------------------------------
       #          install & configure poetry
       #----------------------------------------------
       - name: Install Poetry
-        uses: snok/install-poetry@v1.3
+        run: |
+          pipx install poetry
+          pipx inject poetry poetry-dynamic-versioning
+
+      - name: Setup Python
+        uses: actions/setup-python@v5.6.0
+        id: setup-python
         with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
+          python-version: '3.10'
+          cache: 'poetry'
 
       #----------------------------------------------
-      #       load cached venv if cache exists      
-      #----------------------------------------------
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v3
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
-
-      #----------------------------------------------
-      # install dependencies if cache does not exist 
+      #             install dependencies
       #----------------------------------------------
       - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-root
 
       - name: Configure git user
@@ -72,9 +65,11 @@ jobs:
           # generate HTML from markdown and put into dev version
           poetry run mike deploy dev
           
+          # ensure the main branch is available locally
+          git fetch origin main
           # switch to gh-pages branch, copy over the latest 404.html from main
           git checkout --force gh-pages
-          git checkout --force main -- 404.html
+          git checkout --force origin/main -- 404.html
           git commit -m "Add 404.html to root" || echo "No changes to 404.html to commit"
           
           # push changes to gh-page branch
