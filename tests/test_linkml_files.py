@@ -6,6 +6,7 @@ import linkml_model.linkml_files as fileloc
 from linkml_model.linkml_files import URL_FOR, Format, Source, LOCAL_PATH_FOR, GITHUB_IO_PATH_FOR, GITHUB_PATH_FOR, \
     ReleaseTag
 from tests import abspath
+from pathlib import Path
 
 root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "linkml_model"))
 
@@ -55,7 +56,7 @@ class LinkMLFilesTestCase(unittest.TestCase):
         self.assertEqual('meta', str(fileloc.meta))
         self.assertEqual('meta.yaml', str(fileloc.meta.yaml))
         self.assertEqual('meta.py', str(fileloc.meta.python))
-        self.assertEqual(abspath('linkml_model/model/schema/meta.yaml'), str(fileloc.meta.yaml.file))
+        self.assertEqual(Path(abspath('linkml_model/model/schema/meta.yaml')), Path(fileloc.meta.yaml.file))
         self.assertEqual('https://linkml.github.io/linkml-model/model/schema/meta.yaml', str(fileloc.meta.yaml.github_loc()))
         self.assertEqual('https://raw.githubusercontent.com/linkml/linkml-model/f30637f5a585f3fc4b12fd3dbb3e7e95108d4b42/model/schema/meta.yaml', str(fileloc.meta.yaml.github_loc('v0.0.1')))
 

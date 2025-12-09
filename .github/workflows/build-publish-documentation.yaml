@@ -61,6 +61,7 @@ jobs:
       #           deploy documentation
       #----------------------------------------------
       - name: Deploy generated docs
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           # generate HTML from markdown and put into dev version
           poetry run mike deploy dev

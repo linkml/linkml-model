@@ -1,34 +1,25 @@
-# Built from:
-# https://docs.github.com/en/actions/guides/building-and-testing-python
-# https://github.com/snok/install-poetry#workflows-and-tips
-
 name: Build and test linkml-model
 
 on:
+  push:
+    branches: [ main ]
   pull_request:
-    branches: [main]
-    types: [opened, synchronize, reopened]
+  workflow_dispatch:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
-
     strategy:
+      fail-fast: false
       matrix:
+        os: [ubuntu-latest, windows-latest]
         python-version: ["3.9", "3.10"]
-
+    runs-on: ${{ matrix.os }}
     steps:
-      #----------------------------------------------
-      #       check-out repo and set-up python
-      #----------------------------------------------
       - name: Check out repository
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
 
-      #----------------------------------------------
-      #          install & configure poetry
-      #----------------------------------------------
       - name: Install Poetry
         run: |
           pipx install poetry
@@ -40,14 +31,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: "poetry"
 
-      #----------------------------------------------
-      #             install dependencies
-      #----------------------------------------------
       - name: Install dependencies
-        run: poetry install --no-interaction --all-extras --no-root
+        run: poetry install --no-interaction --no-root
 
-      #----------------------------------------------
-      #              run test suite
-      #----------------------------------------------
       - name: Run tests
         run: make test
