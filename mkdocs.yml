@@ -21,16 +21,23 @@ theme:
       name: Switch to dark mode
 plugins:
   - search
-  - mermaid2
+  - mermaid2:
+      version: 10.9.0
   - mike:
       alias_type: symlink
       canonical_version: latest
 extra:
   version:
     provider: mike
-#markdown_extensions:
+markdown_extensions:
+  - admonition
+  - tables
+  - pymdownx.magiclink
 #  - toc:
 #      permalink: true
+extra_javascript:
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - javascripts/tablesort.js
 docs_dir: docs/source
 site_dir: docs/build
 nav:
