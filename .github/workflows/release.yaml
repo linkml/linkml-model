@@ -18,23 +18,22 @@ jobs:
         with:
           fetch-depth: 0 # fetch all commits/branches so that mike works
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
       - name: Set up Python
         uses: actions/setup-python@v5.6.0
         with:
           python-version: "3.10"
 
-      - name: Install Poetry
-        run: |
-          pipx install poetry
-          pipx inject poetry poetry-dynamic-versioning
-
       - name: Install dependencies
-        run: poetry install --no-interaction
+        run: uv sync --all-groups
 
       - name: Build source and wheel archives
         run: |
-          poetry version $(git describe --tags --abbrev=0)
-          poetry build
+          # Get version from git tag and build
+          VERSION=$(git describe --tags --abbrev=0 | sed 's/^v//')
+          uv build
 
       - name: Publish distribution to PyPI
         if: github.repository == 'linkml/linkml-model'
@@ -59,18 +58,18 @@ jobs:
         if: github.event.release.prerelease == false
         run: |
           # generate HTML from markdown and put into MAJOR.MINOR version, update "latest" alias
-          poetry run mike deploy --update-aliases ${{ steps.version.outputs.major }}.${{ steps.version.outputs.minor }}.x latest
-          
+          uv run mike deploy --update-aliases ${{ steps.version.outputs.major }}.${{ steps.version.outputs.minor }}.x latest
+
           # copy the latest linkml_model files up to the root
           git checkout --force gh-pages
           rm -rf linkml_model
           cp -r latest/linkml_model .
           git add -A linkml_model
           git commit -m "Copy latest linkml_model to root level" || echo "No changes to linkml_model to commit"
-          
+
           # copy over the latest 404.html from the tag
           git checkout --force ${{github.event.release.tag_name}} -- 404.html
           git commit -m "Add 404.html to root" || echo "No changes to 404.html to commit"
-          
+
           # push changes to gh-page branch
           git push origin gh-pages

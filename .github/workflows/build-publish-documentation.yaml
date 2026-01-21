@@ -15,7 +15,7 @@ jobs:
 
     permissions:
       contents: write
-    
+
     steps:
       #----------------------------------------------
       #       check-out repo and set-up python
@@ -26,31 +26,28 @@ jobs:
           fetch-depth: 0 # fetch all commits/branches so that mike works
 
       #----------------------------------------------
-      #          install & configure poetry
+      #          install uv
       #----------------------------------------------
-      - name: Install Poetry
-        run: |
-          pipx install poetry
-          pipx inject poetry poetry-dynamic-versioning
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
 
       - name: Setup Python
         uses: actions/setup-python@v5.6.0
         id: setup-python
         with:
-          python-version: '3.10'
-          cache: 'poetry'
+          python-version: "3.10"
 
       #----------------------------------------------
       #             install dependencies
       #----------------------------------------------
       - name: Install dependencies
-        run: poetry install --no-interaction --no-root
+        run: uv sync --all-groups
 
       - name: Configure git user
         run: |
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          
+
       #----------------------------------------------
       #           generate markdown files
       #----------------------------------------------
@@ -63,14 +60,14 @@ jobs:
       - name: Deploy generated docs
         run: |
           # generate HTML from markdown and put into dev version
-          poetry run mike deploy dev
-          
+          uv run mike deploy dev
+
           # ensure the main branch is available locally
           git fetch origin main
           # switch to gh-pages branch, copy over the latest 404.html from main
           git checkout --force gh-pages
           git checkout --force origin/main -- 404.html
           git commit -m "Add 404.html to root" || echo "No changes to 404.html to commit"
-          
+
           # push changes to gh-page branch
           git push origin gh-pages
