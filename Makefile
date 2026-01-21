@@ -79,7 +79,7 @@ test-schema:
 	$(RUN) gen-project -d tmp $(SOURCE_SCHEMA_PATH)
 
 test-python:
-	$(RUN) python -m unittest discover
+	$(RUN) python -m pytest
 
 # TODO: switch to linkml-run-examples when normalize is implemented
 test-examples: $(SOURCE_SCHEMA_PATH)
