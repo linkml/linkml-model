@@ -3,6 +3,7 @@ name: arrays-temperature-example
 title: Array Temperature Example
 description: |-
   Example LinkML schema to demonstrate a 3D DataArray of temperature values with labeled axes
+  using array slots for the axes and data instead of classes containing arrays
 license: MIT
 
 prefixes:
@@ -22,11 +23,11 @@ classes:
     annotations:
       array_data_mapping:
         data: temperatures_in_K
-        dims: [x, y, t]
+        dims: ["x", "y", "t"]  # YAML 1.1 treats unquoted y as True
         coords:
-          latitude_in_deg: x
-          longitude_in_deg: y
-          time_in_d: t
+          latitude_in_deg: "x"
+          longitude_in_deg: "y"
+          time_in_d: "t"
     attributes:
       name:
         identifier: true
@@ -65,4 +66,3 @@ classes:
           ucum_code: K
         array:
           exact_number_dimensions: 3
-
