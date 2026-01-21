@@ -1,6 +1,5 @@
 # Built from:
 # https://docs.github.com/en/actions/guides/building-and-testing-python
-# https://github.com/snok/install-poetry#workflows-and-tips
 
 name: Build and test linkml-model
 
@@ -27,24 +26,21 @@ jobs:
           fetch-depth: 0
 
       #----------------------------------------------
-      #          install & configure poetry
+      #          install uv
       #----------------------------------------------
-      - name: Install Poetry
-        run: |
-          pipx install poetry
-          pipx inject poetry poetry-dynamic-versioning
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5.6.0
         with:
           python-version: ${{ matrix.python-version }}
-          cache: "poetry"
 
       #----------------------------------------------
       #             install dependencies
       #----------------------------------------------
       - name: Install dependencies
-        run: poetry install --no-interaction --all-extras --no-root
+        run: uv sync --all-groups
 
       #----------------------------------------------
       #              run test suite
