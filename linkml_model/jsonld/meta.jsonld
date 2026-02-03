@@ -585,6 +585,41 @@
           "meaning": "skos:narrowerMatch"
         }
       ]
+    },
+    {
+      "name": "obligation_level_enum",
+      "definition_uri": "https://w3id.org/linkml/ObligationLevelEnum",
+      "description": "The level of obligation or recommendation strength for a metadata element",
+      "in_subset": [
+        "SpecificationSubset"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "rank": 10,
+      "permissible_values": [
+        {
+          "text": "REQUIRED",
+          "description": "The metadata element is required to be present in the model"
+        },
+        {
+          "text": "RECOMMENDED",
+          "description": "The metadata element is recommended to be present in the model",
+          "aliases": [
+            "ENCOURAGED"
+          ]
+        },
+        {
+          "text": "OPTIONAL",
+          "description": "The metadata element is optional to be present in the model"
+        },
+        {
+          "text": "EXAMPLE",
+          "description": "The metadata element is an example of how to use the model"
+        },
+        {
+          "text": "DISCOURAGED",
+          "description": "The metadata element is allowed but discouraged to be present in the model"
+        }
+      ]
     }
   ],
   "slots": [
@@ -681,12 +716,13 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "Element",
       "slot_uri": "https://w3id.org/linkml/implements",
-      "multivalued": true,
-      "owner": "Element",
+      "owner": "PermissibleValue",
       "domain_of": [
-        "Element"
+        "Element",
+        "PermissibleValue"
       ],
       "range": "uriorcurie",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -696,12 +732,13 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "Element",
       "slot_uri": "https://w3id.org/linkml/instantiates",
-      "multivalued": true,
-      "owner": "Element",
+      "owner": "PermissibleValue",
       "domain_of": [
-        "Element"
+        "Element",
+        "PermissibleValue"
       ],
       "range": "uriorcurie",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -720,13 +757,13 @@
       ],
       "singular_name": "category",
       "slot_uri": "http://purl.org/dc/terms/subject",
-      "multivalued": true,
       "owner": "StructuredAlias",
       "domain_of": [
         "CommonMetadata",
         "StructuredAlias"
       ],
       "range": "uriorcurie",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -743,12 +780,12 @@
       "singular_name": "keyword",
       "domain": "Element",
       "slot_uri": "http://schema.org/keywords",
-      "multivalued": true,
       "owner": "keywords",
       "domain_of": [
         "CommonMetadata"
       ],
       "range": "string",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -792,12 +829,12 @@
       ],
       "domain": "Element",
       "slot_uri": "https://w3id.org/linkml/id_prefixes",
-      "multivalued": true,
       "owner": "Element",
       "domain_of": [
         "Element"
       ],
       "range": "ncname",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -859,13 +896,14 @@
         "http://www.w3.org/2008/05/skos-xl#altLabel"
       ],
       "slot_uri": "http://www.w3.org/2008/05/skos-xl#altLabel",
-      "multivalued": true,
       "owner": "CommonMetadata",
       "domain_of": [
         "CommonMetadata"
       ],
       "range": "StructuredAlias",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -893,12 +931,12 @@
       ],
       "domain": "Element",
       "slot_uri": "http://www.w3.org/2004/02/skos/core#altLabel",
-      "multivalued": true,
       "owner": "aliases",
       "domain_of": [
         "CommonMetadata"
       ],
       "range": "string",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -934,12 +972,12 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "Element",
       "slot_uri": "https://w3id.org/linkml/todos",
-      "multivalued": true,
       "owner": "todos",
       "domain_of": [
         "CommonMetadata"
       ],
       "range": "string",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -955,12 +993,12 @@
       ],
       "domain": "Element",
       "slot_uri": "http://www.w3.org/2004/02/skos/core#editorialNote",
-      "multivalued": true,
       "owner": "notes",
       "domain_of": [
         "CommonMetadata"
       ],
       "range": "string",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -979,12 +1017,12 @@
       ],
       "domain": "Element",
       "slot_uri": "http://www.w3.org/2004/02/skos/core#note",
-      "multivalued": true,
       "owner": "comments",
       "domain_of": [
         "CommonMetadata"
       ],
       "range": "string",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1003,12 +1041,12 @@
       ],
       "domain": "Element",
       "slot_uri": "http://www.geneontology.org/formats/oboInOwl#inSubset",
-      "multivalued": true,
       "owner": "in_subset",
       "domain_of": [
         "CommonMetadata"
       ],
       "range": "SubsetDefinition",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1063,12 +1101,12 @@
       ],
       "domain": "Element",
       "slot_uri": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
-      "multivalued": true,
       "owner": "see_also",
       "domain_of": [
         "CommonMetadata"
       ],
       "range": "uriorcurie",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1125,12 +1163,12 @@
       ],
       "domain": "Element",
       "slot_uri": "http://purl.org/dc/terms/contributor",
-      "multivalued": true,
       "owner": "contributors",
       "domain_of": [
         "CommonMetadata"
       ],
       "range": "uriorcurie",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1268,6 +1306,22 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "alias_contexts",
+      "definition_uri": "https://w3id.org/linkml/alias_contexts",
+      "description": "The context in which an alias should be applied",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "StructuredAlias",
+      "slot_uri": "https://w3id.org/linkml/contexts",
+      "alias": "contexts",
+      "owner": "StructuredAlias",
+      "domain_of": [
+        "StructuredAlias"
+      ],
+      "range": "uri",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "in_language",
       "definition_uri": "https://w3id.org/linkml/in_language",
       "conforms_to": "https://www.rfc-editor.org/rfc/bcp/bcp47.txt",
@@ -1348,12 +1402,12 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "rank": 11,
       "abstract": true,
-      "domain": "Definition",
       "slot_uri": "https://w3id.org/linkml/is_a",
-      "owner": "AnonymousClassExpression",
+      "owner": "PermissibleValue",
       "domain_of": [
         "Definition",
-        "AnonymousClassExpression"
+        "AnonymousClassExpression",
+        "PermissibleValue"
       ],
       "range": "Definition",
       "@type": "SlotDefinition"
@@ -1423,14 +1477,14 @@
         "traits"
       ],
       "rank": 13,
-      "domain": "Definition",
       "slot_uri": "https://w3id.org/linkml/mixins",
-      "multivalued": true,
-      "owner": "Definition",
+      "owner": "PermissibleValue",
       "domain_of": [
-        "Definition"
+        "Definition",
+        "PermissibleValue"
       ],
       "range": "Definition",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1441,12 +1495,12 @@
       "status": "testing",
       "domain": "Definition",
       "slot_uri": "https://w3id.org/linkml/apply_to",
-      "multivalued": true,
       "owner": "Definition",
       "domain_of": [
         "Definition"
       ],
       "range": "Definition",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1457,12 +1511,12 @@
       "status": "testing",
       "domain": "Definition",
       "slot_uri": "https://w3id.org/linkml/values_from",
-      "multivalued": true,
       "owner": "Definition",
       "domain_of": [
         "Definition"
       ],
       "range": "uriorcurie",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1536,11 +1590,11 @@
         "BasicSubset"
       ],
       "from_schema": "https://w3id.org/linkml/meta",
-      "domain": "EnumExpression",
       "slot_uri": "https://w3id.org/linkml/pv_formula",
-      "owner": "EnumExpression",
+      "owner": "EnumBinding",
       "domain_of": [
-        "EnumExpression"
+        "EnumExpression",
+        "EnumBinding"
       ],
       "range": "pv_formula_options",
       "@type": "SlotDefinition"
@@ -1562,12 +1616,12 @@
       ],
       "domain": "EnumExpression",
       "slot_uri": "https://w3id.org/linkml/permissible_values",
-      "multivalued": true,
       "owner": "EnumExpression",
       "domain_of": [
         "EnumExpression"
       ],
       "range": "PermissibleValue",
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -1603,13 +1657,14 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "EnumExpression",
       "slot_uri": "https://w3id.org/linkml/include",
-      "multivalued": true,
       "owner": "EnumExpression",
       "domain_of": [
         "EnumExpression"
       ],
       "range": "AnonymousEnumExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1622,13 +1677,14 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "EnumExpression",
       "slot_uri": "https://w3id.org/linkml/minus",
-      "multivalued": true,
       "owner": "EnumExpression",
       "domain_of": [
         "EnumExpression"
       ],
       "range": "AnonymousEnumExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1644,12 +1700,12 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "EnumExpression",
       "slot_uri": "https://w3id.org/linkml/inherits",
-      "multivalued": true,
       "owner": "EnumExpression",
       "domain_of": [
         "EnumExpression"
       ],
       "range": "EnumDefinition",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1668,6 +1724,7 @@
       ],
       "range": "MatchQuery",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1697,12 +1754,12 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "EnumExpression",
       "slot_uri": "https://w3id.org/linkml/concepts",
-      "multivalued": true,
       "owner": "EnumExpression",
       "domain_of": [
         "EnumExpression"
       ],
       "range": "uriorcurie",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1721,6 +1778,7 @@
       ],
       "range": "ReachabilityQuery",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1822,12 +1880,12 @@
       ],
       "domain": "ReachabilityQuery",
       "slot_uri": "https://w3id.org/linkml/relationship_types",
-      "multivalued": true,
       "owner": "ReachabilityQuery",
       "domain_of": [
         "ReachabilityQuery"
       ],
       "range": "uriorcurie",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1840,12 +1898,12 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "ReachabilityQuery",
       "slot_uri": "https://w3id.org/linkml/source_nodes",
-      "multivalued": true,
       "owner": "ReachabilityQuery",
       "domain_of": [
         "ReachabilityQuery"
       ],
       "range": "uriorcurie",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1935,12 +1993,12 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "SchemaDefinition",
       "slot_uri": "https://w3id.org/linkml/emit_prefixes",
-      "multivalued": true,
       "owner": "SchemaDefinition",
       "domain_of": [
         "SchemaDefinition"
       ],
       "range": "ncname",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1979,12 +2037,12 @@
       "rank": 21,
       "domain": "SchemaDefinition",
       "slot_uri": "https://w3id.org/linkml/imports",
-      "multivalued": true,
       "owner": "SchemaDefinition",
       "domain_of": [
         "SchemaDefinition"
       ],
       "range": "uriorcurie",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1995,10 +2053,11 @@
       "status": "testing",
       "domain": "SchemaDefinition",
       "slot_uri": "https://w3id.org/linkml/structured_imports",
-      "multivalued": true,
       "owner": "structured_imports",
       "range": "ImportExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2032,12 +2091,12 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "SchemaDefinition",
       "slot_uri": "https://w3id.org/linkml/default_curi_maps",
-      "multivalued": true,
       "owner": "SchemaDefinition",
       "domain_of": [
         "SchemaDefinition"
       ],
       "range": "string",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2096,12 +2155,12 @@
       "rank": 8,
       "domain": "SchemaDefinition",
       "slot_uri": "https://w3id.org/linkml/subsets",
-      "multivalued": true,
       "owner": "SchemaDefinition",
       "domain_of": [
         "SchemaDefinition"
       ],
       "range": "SubsetDefinition",
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -2118,12 +2177,12 @@
       "rank": 6,
       "domain": "SchemaDefinition",
       "slot_uri": "https://w3id.org/linkml/types",
-      "multivalued": true,
       "owner": "SchemaDefinition",
       "domain_of": [
         "SchemaDefinition"
       ],
       "range": "TypeDefinition",
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -2141,12 +2200,12 @@
       "rank": 5,
       "domain": "SchemaDefinition",
       "slot_uri": "https://w3id.org/linkml/enums",
-      "multivalued": true,
       "owner": "SchemaDefinition",
       "domain_of": [
         "SchemaDefinition"
       ],
       "range": "EnumDefinition",
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -2166,13 +2225,13 @@
       "rank": 4,
       "domain": "SchemaDefinition",
       "slot_uri": "https://w3id.org/linkml/slots",
-      "multivalued": true,
       "alias": "slots",
       "owner": "SchemaDefinition",
       "domain_of": [
         "SchemaDefinition"
       ],
       "range": "SlotDefinition",
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -2192,12 +2251,12 @@
       "rank": 3,
       "domain": "SchemaDefinition",
       "slot_uri": "https://w3id.org/linkml/classes",
-      "multivalued": true,
       "owner": "SchemaDefinition",
       "domain_of": [
         "SchemaDefinition"
       ],
       "range": "ClassDefinition",
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -2307,12 +2366,12 @@
       "rank": 19,
       "domain": "ClassDefinition",
       "slot_uri": "https://w3id.org/linkml/slots",
-      "multivalued": true,
       "owner": "ClassDefinition",
       "domain_of": [
         "ClassDefinition"
       ],
       "range": "SlotDefinition",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2320,7 +2379,7 @@
       "definition_uri": "https://w3id.org/linkml/slot_usage",
       "description": "the refinement of a slot in the context of the containing class definition.",
       "comments": [
-        "Many slots may be re-used across different classes, but the meaning of the slot may be refined by context. For example, a generic association model may use slots subject/predicate/object with generic semantics and minimal constraints. When this is subclasses, e.g. to disease-phenotype associations then slot usage may specify both local naming (e.g. subject=disease) and local constraints"
+        "Many slots may be reused across different classes, but the meaning of the slot may be refined by context. For example, a generic association model may use slots subject/predicate/object with generic semantics and minimal constraints. When this is subclasses, e.g. to disease-phenotype associations then slot usage may specify both local naming (e.g. subject=disease) and local constraints"
       ],
       "in_subset": [
         "SpecificationSubset",
@@ -2330,12 +2389,12 @@
       "rank": 23,
       "domain": "ClassDefinition",
       "slot_uri": "https://w3id.org/linkml/slot_usage",
-      "multivalued": true,
       "owner": "ClassDefinition",
       "domain_of": [
         "ClassDefinition"
       ],
       "range": "SlotDefinition",
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -2355,6 +2414,7 @@
       ],
       "range": "EnumExpression",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2371,13 +2431,15 @@
       "status": "testing",
       "domain": "SlotExpression",
       "slot_uri": "https://w3id.org/linkml/range_expression",
-      "owner": "SlotExpression",
+      "owner": "ExtraSlotsExpression",
       "domain_of": [
         "PathExpression",
-        "SlotExpression"
+        "SlotExpression",
+        "ExtraSlotsExpression"
       ],
       "range": "AnonymousClassExpression",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2387,9 +2449,10 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "abstract": true,
       "slot_uri": "https://w3id.org/linkml/boolean_slot",
-      "multivalued": true,
       "range": "Expression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2409,7 +2472,6 @@
       "rank": 101,
       "is_a": "boolean_slot",
       "slot_uri": "https://w3id.org/linkml/any_of",
-      "multivalued": true,
       "owner": "ClassExpression",
       "domain_of": [
         "TypeExpression",
@@ -2418,7 +2480,9 @@
         "ClassExpression"
       ],
       "range": "Expression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2438,7 +2502,6 @@
       "rank": 103,
       "is_a": "boolean_slot",
       "slot_uri": "https://w3id.org/linkml/exactly_one_of",
-      "multivalued": true,
       "owner": "ClassExpression",
       "domain_of": [
         "TypeExpression",
@@ -2447,7 +2510,9 @@
         "ClassExpression"
       ],
       "range": "Expression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2467,7 +2532,6 @@
       "rank": 105,
       "is_a": "boolean_slot",
       "slot_uri": "https://w3id.org/linkml/none_of",
-      "multivalued": true,
       "owner": "ClassExpression",
       "domain_of": [
         "TypeExpression",
@@ -2476,7 +2540,9 @@
         "ClassExpression"
       ],
       "range": "Expression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2496,7 +2562,6 @@
       "rank": 107,
       "is_a": "boolean_slot",
       "slot_uri": "https://w3id.org/linkml/all_of",
-      "multivalued": true,
       "owner": "ClassExpression",
       "domain_of": [
         "TypeExpression",
@@ -2505,7 +2570,9 @@
         "ClassExpression"
       ],
       "range": "Expression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2538,6 +2605,7 @@
       ],
       "range": "AnonymousClassExpression",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2567,6 +2635,7 @@
       ],
       "range": "AnonymousClassExpression",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2591,6 +2660,7 @@
       ],
       "range": "AnonymousClassExpression",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2692,13 +2762,14 @@
       ],
       "domain": "ClassDefinition",
       "slot_uri": "http://www.w3.org/ns/shacl#rule",
-      "multivalued": true,
       "owner": "ClassDefinition",
       "domain_of": [
         "ClassDefinition"
       ],
       "range": "ClassRule",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2711,13 +2782,14 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "ClassDefinition",
       "slot_uri": "https://w3id.org/linkml/classification_rules",
-      "multivalued": true,
       "owner": "ClassDefinition",
       "domain_of": [
         "ClassDefinition"
       ],
       "range": "AnonymousClassExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2730,12 +2802,12 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "ClassExpression",
       "slot_uri": "https://w3id.org/linkml/slot_conditions",
-      "multivalued": true,
       "owner": "ClassExpression",
       "domain_of": [
         "ClassExpression"
       ],
       "range": "SlotDefinition",
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -2758,12 +2830,12 @@
       "rank": 29,
       "domain": "ClassDefinition",
       "slot_uri": "https://w3id.org/linkml/attributes",
-      "multivalued": true,
       "owner": "ClassDefinition",
       "domain_of": [
         "ClassDefinition"
       ],
       "range": "SlotDefinition",
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -2822,13 +2894,13 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "ClassDefinition",
       "slot_uri": "https://w3id.org/linkml/defining_slots",
-      "multivalued": true,
       "inherited": true,
       "owner": "ClassDefinition",
       "domain_of": [
         "ClassDefinition"
       ],
       "range": "SlotDefinition",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2845,7 +2917,6 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "Element",
       "slot_uri": "https://w3id.org/linkml/union_of",
-      "multivalued": true,
       "owner": "union_of",
       "domain_of": [
         "TypeDefinition",
@@ -2853,6 +2924,7 @@
         "ClassDefinition"
       ],
       "range": "Element",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2898,12 +2970,12 @@
       ],
       "domain": "ClassDefinition",
       "slot_uri": "https://w3id.org/linkml/unique_keys",
-      "multivalued": true,
       "owner": "ClassDefinition",
       "domain_of": [
         "ClassDefinition"
       ],
       "range": "UniqueKey",
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -2954,13 +3026,13 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "UniqueKey",
       "slot_uri": "https://w3id.org/linkml/unique_key_slots",
-      "multivalued": true,
       "owner": "UniqueKey",
       "domain_of": [
         "UniqueKey"
       ],
       "range": "SlotDefinition",
       "required": true,
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2975,6 +3047,85 @@
       "domain_of": [
         "SchemaDefinition",
         "ClassDefinition"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "extra_slots",
+      "definition_uri": "https://w3id.org/linkml/extra_slots",
+      "description": "How a class instance handles extra data not specified in the class definition.\nNote that this does *not* define the constraints that are placed on additional slots defined by inheriting classes.\n\nPossible values:\n- `allowed: true` - allow all additional data\n- `allowed: false` (or `allowed:` or `allowed: null` while `range_expression` is `null`) - \n  forbid all additional data (default) \n- `range_expression: ...`  - allow additional data if it matches the slot expression (see examples)\n",
+      "examples": [
+        {
+          "value": "JsonObj(allowed=True)",
+          "description": "Allow all additional data",
+          "@type": "Example"
+        },
+        {
+          "value": "JsonObj(allowed=False)",
+          "description": "Forbid any additional data",
+          "@type": "Example"
+        },
+        {
+          "value": "JsonObj(range_expression=JsonObj(range='string'))",
+          "description": "Allow additional data that are strings",
+          "@type": "Example"
+        },
+        {
+          "value": "JsonObj(range_expression=JsonObj(range='AClassDefinition'))",
+          "description": "Allow additional data if they are instances of the class definition \"AClassDefinition\"",
+          "@type": "Example"
+        },
+        {
+          "value": "JsonObj(range_expression=JsonObj(any_of=[{'range': 'string'}, {'range': 'integer'}]))",
+          "description": "allow additional data if they are either strings or integers",
+          "@type": "Example"
+        },
+        {
+          "value": "JsonObj(range_expression=JsonObj(range='integer', multivalued=True, maximum_cardinality=5))",
+          "description": "Allow additional data if they are lists of integers of at most length 5.\nNote that this does *not* mean that a maximum of 5 extra slots are allowed.\n",
+          "@type": "Example"
+        },
+        {
+          "value": "JsonObj(range_expression=JsonObj(range='integer', required=True))",
+          "description": "Allow additional data if they are integers. \n`required` is meaningless in this context and ignored, since by definition all \"extra\" slots are optional.\n",
+          "@type": "Example"
+        },
+        {
+          "value": "JsonObj(allowed=False, range_expression=JsonObj(range='string'))",
+          "description": "A semantically *invalid* use of `extra_slots`, as extra slots will be forbidden and the \n`anonymous_slot_expression` will be ignored.\n",
+          "@type": "Example"
+        }
+      ],
+      "in_subset": [
+        "SpecificationSubset",
+        "BasicSubset"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "ClassDefinition",
+      "slot_uri": "https://w3id.org/linkml/extra_slots",
+      "owner": "ClassDefinition",
+      "domain_of": [
+        "ClassDefinition"
+      ],
+      "range": "ExtraSlotsExpression",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "allowed",
+      "definition_uri": "https://w3id.org/linkml/allowed",
+      "description": "Whether or not something is allowed. Usage defined by context.",
+      "in_subset": [
+        "SpecificationSubset",
+        "BasicSubset"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "slot_uri": "https://w3id.org/linkml/allowed",
+      "owner": "ExtraSlotsExpression",
+      "domain_of": [
+        "ExtraSlotsExpression"
       ],
       "range": "boolean",
       "@type": "SlotDefinition"
@@ -3002,7 +3153,8 @@
       "definition_uri": "https://w3id.org/linkml/range",
       "description": "defines the type of the object of the slot.  Given the following slot definition\n  S1:\n    domain: C1\n    range:  C2\nthe declaration\n  X:\n    S1: Y\n\nimplicitly asserts Y is an instance of C2\n",
       "comments": [
-        "range is underspecified, as not all elements can appear as the range of a slot."
+        "range is underspecified, as not all elements can appear as the range of a slot.",
+        "to use a URI or CURIE as the range, create a class with the URI or curie as the class_uri"
       ],
       "in_subset": [
         "SpecificationSubset",
@@ -3021,6 +3173,7 @@
       "ifabsent": "default_range",
       "owner": "range",
       "domain_of": [
+        "EnumBinding",
         "SlotExpression"
       ],
       "range": "Element",
@@ -3031,7 +3184,8 @@
       "definition_uri": "https://w3id.org/linkml/slot_uri",
       "description": "URI of the class that provides a semantic interpretation of the slot in a linked data context. The URI may come from any namespace and may be shared between schemas.",
       "comments": [
-        "Assigning slot_uris can provide additional hooks for interoperation, indicating a common conceptual model"
+        "Assigning slot_uris can provide additional hooks for interoperation, indicating a common conceptual model",
+        "To use a URI or CURIE as a range, create a class with the URI or CURIE as the class_uri"
       ],
       "in_subset": [
         "SpecificationSubset",
@@ -3071,9 +3225,9 @@
       "domain": "SlotDefinition",
       "slot_uri": "https://w3id.org/linkml/multivalued",
       "inherited": true,
-      "owner": "SlotDefinition",
+      "owner": "multivalued",
       "domain_of": [
-        "SlotDefinition"
+        "SlotExpression"
       ],
       "range": "boolean",
       "@type": "SlotDefinition"
@@ -3087,12 +3241,13 @@
       "domain": "SlotDefinition",
       "slot_uri": "https://w3id.org/linkml/array",
       "inherited": true,
-      "owner": "SlotDefinition",
+      "owner": "array",
       "domain_of": [
-        "SlotDefinition"
+        "SlotExpression"
       ],
       "range": "ArrayExpression",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3106,14 +3261,15 @@
       "status": "testing",
       "domain": "ArrayExpression",
       "slot_uri": "https://w3id.org/linkml/dimensions",
-      "multivalued": true,
       "list_elements_ordered": true,
       "owner": "ArrayExpression",
       "domain_of": [
         "ArrayExpression"
       ],
       "range": "DimensionExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3151,6 +3307,7 @@
       ],
       "range": "Anything",
       "inlined": true,
+      "inlined_as_list": true,
       "any_of": [
         {
           "range": "integer",
@@ -3179,21 +3336,6 @@
         "ArrayExpression"
       ],
       "range": "integer",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "has_extra_dimensions",
-      "definition_uri": "https://w3id.org/linkml/has_extra_dimensions",
-      "description": "If this is set to true",
-      "from_schema": "https://w3id.org/linkml/meta",
-      "status": "testing",
-      "domain": "ArrayExpression",
-      "slot_uri": "https://w3id.org/linkml/has_extra_dimensions",
-      "owner": "ArrayExpression",
-      "domain_of": [
-        "ArrayExpression"
-      ],
-      "range": "boolean",
       "@type": "SlotDefinition"
     },
     {
@@ -3239,7 +3381,7 @@
     {
       "name": "ifabsent",
       "definition_uri": "https://w3id.org/linkml/ifabsent",
-      "description": "function that provides a default value for the slot.  Possible values for this slot are defined in linkml.utils.ifabsent_functions.default_library:\n  * [Tt]rue -- boolean True\n  * [Ff]alse -- boolean False\n  * bnode -- blank node identifier\n  * class_curie -- CURIE for the containing class\n  * class_uri -- URI for the containing class\n  * default_ns -- schema default namespace\n  * default_range -- schema default range\n  * int(value) -- integer value\n  * slot_uri -- URI for the slot\n  * slot_curie -- CURIE for the slot\n  * string(value) -- string value",
+      "description": "function that provides a default value for the slot.\n  * [Tt]rue -- boolean True\n  * [Ff]alse -- boolean False\n  * bnode -- blank node identifier\n  * class_curie -- CURIE for the containing class\n  * class_uri -- URI for the containing class\n  * default_ns -- schema default namespace\n  * default_range -- schema default range\n  * int(value) -- integer value\n  * slot_uri -- URI for the slot\n  * slot_curie -- CURIE for the slot\n  * string(value) -- string value\n  * EnumName(PermissibleValue) -- enum value",
       "in_subset": [
         "SpecificationSubset"
       ],
@@ -3304,7 +3446,7 @@
     {
       "name": "value_presence",
       "definition_uri": "https://w3id.org/linkml/value_presence",
-      "description": "if true then a value must be present (for lists there must be at least one value). If false then a value must be absent (for lists, must be empty)",
+      "description": "if PRESENT then a value must be present (for lists there must be at least one value). If ABSENT then a value must be absent (for lists, must be empty)",
       "comments": [
         "if set to true this has the same effect as required=true. In contrast, required=false allows a value to be present"
       ],
@@ -3459,7 +3601,6 @@
       "status": "testing",
       "is_a": "list_value_specification_constant",
       "slot_uri": "https://w3id.org/linkml/equals_string_in",
-      "multivalued": true,
       "inherited": true,
       "owner": "SlotExpression",
       "domain_of": [
@@ -3467,6 +3608,7 @@
         "SlotExpression"
       ],
       "range": "string",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3480,9 +3622,9 @@
       "status": "testing",
       "is_a": "list_value_specification_constant",
       "slot_uri": "https://w3id.org/linkml/equals_number_in",
-      "multivalued": true,
       "inherited": true,
       "range": "integer",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3502,6 +3644,7 @@
       ],
       "range": "AnonymousSlotExpression",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3521,6 +3664,7 @@
       ],
       "range": "AnonymousSlotExpression",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3867,6 +4011,7 @@
       "owner": "DimensionExpression",
       "domain_of": [
         "SlotDefinition",
+        "ClassDefinition",
         "DimensionExpression"
       ],
       "range": "string",
@@ -3899,13 +4044,13 @@
       ],
       "domain": "SlotDefinition",
       "slot_uri": "https://w3id.org/linkml/domain_of",
-      "multivalued": true,
       "readonly": "filled in by the loader",
       "owner": "SlotDefinition",
       "domain_of": [
         "SlotDefinition"
       ],
       "range": "ClassDefinition",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3973,13 +4118,13 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "Definition",
       "slot_uri": "https://w3id.org/linkml/disjoint_with",
-      "multivalued": true,
       "owner": "disjoint_with",
       "domain_of": [
         "SlotDefinition",
         "ClassDefinition"
       ],
       "range": "Definition",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -4251,6 +4396,7 @@
       ],
       "range": "Anything",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -4278,6 +4424,7 @@
       ],
       "range": "Anything",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -4374,12 +4521,13 @@
       ],
       "range": "PatternExpression",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "string_serialization",
       "definition_uri": "https://w3id.org/linkml/string_serialization",
-      "description": "Used on a slot that stores the string serialization of the containing object. The syntax follows python formatted strings, with slot names enclosed in {}s. These are expanded using the values of those slots.\nWe call the slot with the serialization the s-slot, the slots used in the {}s are v-slots. If both s-slots and v-slots are populated on an object then the value of the s-slot should correspond to the expansion.\nImplementations of frameworks may choose to use this property to either (a) PARSE: implement automated normalizations by parsing denormalized strings into complex objects (b) GENERARE: implement automated to_string labeling of complex objects\nFor example, a Measurement class may have 3 fields: unit, value, and string_value. The string_value slot may have a string_serialization of {value}{unit} such that if unit=cm and value=2, the value of string_value shouldd be 2cm",
+      "description": "Used on a slot that stores the string serialization of the containing object. The syntax follows python formatted strings, with slot names enclosed in {}s. These are expanded using the values of those slots.\nWe call the slot with the serialization the s-slot, the slots used in the {}s are v-slots. If both s-slots and v-slots are populated on an object then the value of the s-slot should correspond to the expansion.\nImplementations of frameworks may choose to use this property to either (a) PARSE: implement automated normalizations by parsing denormalized strings into complex objects (b) GENERATE: implement automated to_string labeling of complex objects\nFor example, a Measurement class may have 3 fields: unit, value, and string_value. The string_value slot may have a string_serialization of {value}{unit} such that if unit=cm and value=2, the value of string_value shouldd be 2cm",
       "in_subset": [
         "SpecificationSubset"
       ],
@@ -4389,11 +4537,111 @@
       ],
       "domain": "Definition",
       "slot_uri": "https://w3id.org/linkml/string_serialization",
-      "owner": "Definition",
+      "owner": "TypeMapping",
       "domain_of": [
-        "Definition"
+        "Definition",
+        "TypeMapping"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bindings",
+      "definition_uri": "https://w3id.org/linkml/bindings",
+      "description": "A collection of enum bindings that specify how a slot can be bound to a permissible value from an enumeration.\nLinkML provides enums to allow string values to be restricted to one of a set of permissible values (specified statically or dynamically).\nEnum bindings allow enums to be bound to any object, including complex nested objects. For example, given a (generic) class Concept with slots id and label, it may be desirable to restrict the values the id takes on in a given context. For example, a HumanSample class may have a slot for representing sample site, with a range of concept, but the values of that slot may be restricted to concepts from a particular branch of an anatomy ontology.",
+      "in_subset": [
+        "SpecificationSubset"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "status": "testing",
+      "domain": "Element",
+      "slot_uri": "https://w3id.org/linkml/bindings",
+      "owner": "bindings",
+      "domain_of": [
+        "SchemaDefinition",
+        "SlotExpression"
+      ],
+      "range": "EnumBinding",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "binds_value_of",
+      "definition_uri": "https://w3id.org/linkml/binds_value_of",
+      "description": "A path to a slot that is being bound to a permissible value from an enumeration.",
+      "in_subset": [
+        "SpecificationSubset"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "domain": "EnumBinding",
+      "slot_uri": "https://w3id.org/linkml/binds_value_of",
+      "owner": "EnumBinding",
+      "domain_of": [
+        "EnumBinding"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "obligation_level",
+      "definition_uri": "https://w3id.org/linkml/obligation_level",
+      "description": "The level of obligation or recommendation strength for a metadata element",
+      "in_subset": [
+        "SpecificationSubset"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "slot_uri": "https://w3id.org/linkml/obligation_level",
+      "owner": "EnumBinding",
+      "domain_of": [
+        "EnumBinding"
+      ],
+      "range": "obligation_level_enum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "type_mappings",
+      "definition_uri": "https://w3id.org/linkml/type_mappings",
+      "description": "A collection of type mappings that specify how a slot's range should be mapped or serialized in different frameworks",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "slot_uri": "https://w3id.org/linkml/type_mappings",
+      "owner": "SlotDefinition",
+      "domain_of": [
+        "SlotDefinition"
+      ],
+      "range": "TypeMapping",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "framework_key",
+      "definition_uri": "https://w3id.org/linkml/framework_key",
+      "description": "The name of a format that can be used to serialize LinkML data. The string value should be a code from the LinkML frameworks vocabulary, but this is not strictly enforced",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "slot_uri": "https://w3id.org/linkml/framework",
+      "key": true,
+      "alias": "framework",
+      "owner": "TypeMapping",
+      "domain_of": [
+        "TypeMapping"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mapped_type",
+      "definition_uri": "https://w3id.org/linkml/mapped_type",
+      "description": "type to coerce to",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "slot_uri": "https://w3id.org/linkml/type",
+      "alias": "type",
+      "owner": "TypeMapping",
+      "domain_of": [
+        "TypeMapping"
+      ],
+      "range": "TypeDefinition",
       "@type": "SlotDefinition"
     },
     {
@@ -4541,12 +4789,12 @@
       ],
       "domain": "Element",
       "slot_uri": "https://w3id.org/linkml/alt_descriptions",
-      "multivalued": true,
       "owner": "alt_descriptions",
       "domain_of": [
         "CommonMetadata"
       ],
       "range": "AltDescription",
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -4605,6 +4853,7 @@
       ],
       "range": "Anything",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -4621,13 +4870,14 @@
       "singular_name": "example",
       "domain": "Element",
       "slot_uri": "https://w3id.org/linkml/examples",
-      "multivalued": true,
       "owner": "examples",
       "domain_of": [
         "CommonMetadata"
       ],
       "range": "Example",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -4692,12 +4942,12 @@
       "rank": 10,
       "domain": "SchemaDefinition",
       "slot_uri": "http://www.w3.org/ns/shacl#declare",
-      "multivalued": true,
       "owner": "SchemaDefinition",
       "domain_of": [
         "SchemaDefinition"
       ],
       "range": "Prefix",
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -4755,12 +5005,12 @@
       "rank": 20,
       "domain": "SchemaDefinition",
       "slot_uri": "https://w3id.org/linkml/settings",
-      "multivalued": true,
       "owner": "SchemaDefinition",
       "domain_of": [
         "SchemaDefinition"
       ],
       "range": "Setting",
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -4800,12 +5050,12 @@
       "status": "testing",
       "domain": "ImportExpression",
       "slot_uri": "https://w3id.org/linkml/import_map",
-      "multivalued": true,
       "owner": "ImportExpression",
       "domain_of": [
         "ImportExpression"
       ],
       "range": "Setting",
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -4849,12 +5099,12 @@
       "from_schema": "https://w3id.org/linkml/meta",
       "domain": "Element",
       "slot_uri": "https://w3id.org/linkml/local_names",
-      "multivalued": true,
       "owner": "Element",
       "domain_of": [
         "Element"
       ],
       "range": "LocalName",
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -4925,6 +5175,7 @@
       ],
       "range": "Expression",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -4966,6 +5217,7 @@
       ],
       "range": "PathExpression",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5036,12 +5288,12 @@
         "http://www.w3.org/2004/02/skos/core#mappingRelation"
       ],
       "slot_uri": "http://www.w3.org/2004/02/skos/core#mappingRelation",
-      "multivalued": true,
       "owner": "CommonMetadata",
       "domain_of": [
         "CommonMetadata"
       ],
       "range": "uriorcurie",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5055,13 +5307,13 @@
       ],
       "is_a": "mappings",
       "slot_uri": "http://www.w3.org/2004/02/skos/core#exactMatch",
-      "multivalued": true,
       "owner": "UnitOfMeasure",
       "domain_of": [
         "CommonMetadata",
         "UnitOfMeasure"
       ],
       "range": "uriorcurie",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5075,12 +5327,12 @@
       ],
       "is_a": "mappings",
       "slot_uri": "http://www.w3.org/2004/02/skos/core#closeMatch",
-      "multivalued": true,
       "owner": "CommonMetadata",
       "domain_of": [
         "CommonMetadata"
       ],
       "range": "uriorcurie",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5094,12 +5346,12 @@
       ],
       "is_a": "mappings",
       "slot_uri": "http://www.w3.org/2004/02/skos/core#relatedMatch",
-      "multivalued": true,
       "owner": "CommonMetadata",
       "domain_of": [
         "CommonMetadata"
       ],
       "range": "uriorcurie",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5113,12 +5365,12 @@
       ],
       "is_a": "mappings",
       "slot_uri": "http://www.w3.org/2004/02/skos/core#narrowMatch",
-      "multivalued": true,
       "owner": "CommonMetadata",
       "domain_of": [
         "CommonMetadata"
       ],
       "range": "uriorcurie",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5132,12 +5384,12 @@
       ],
       "is_a": "mappings",
       "slot_uri": "http://www.w3.org/2004/02/skos/core#broadMatch",
-      "multivalued": true,
       "owner": "CommonMetadata",
       "domain_of": [
         "CommonMetadata"
       ],
       "range": "uriorcurie",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5182,13 +5434,13 @@
       "imported_from": "linkml:extensions",
       "domain": "Extensible",
       "slot_uri": "https://w3id.org/linkml/extensions",
-      "multivalued": true,
       "owner": "Extensible",
       "domain_of": [
         "Extension",
         "Extensible"
       ],
       "range": "Extension",
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -5213,6 +5465,13 @@
     {
       "name": "extension_value",
       "definition_uri": "https://w3id.org/linkml/extension_value",
+      "annotations": [
+        {
+          "tag": "simple_dict_value",
+          "value": true,
+          "@type": "Annotation"
+        }
+      ],
       "description": "the actual annotation",
       "from_schema": "https://w3id.org/linkml/extensions",
       "imported_from": "linkml:extensions",
@@ -5226,6 +5485,7 @@
       "range": "AnyValue",
       "required": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5237,13 +5497,13 @@
       "is_a": "extensions",
       "domain": "Annotatable",
       "slot_uri": "https://w3id.org/linkml/annotations",
-      "multivalued": true,
       "owner": "Annotation",
       "domain_of": [
         "Annotatable",
         "Annotation"
       ],
       "range": "Annotation",
+      "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -5265,6 +5525,7 @@
       ],
       "range": "UnitOfMeasure",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5448,7 +5709,6 @@
       "is_a": "any_of",
       "domain": "TypeExpression",
       "slot_uri": "https://w3id.org/linkml/any_of",
-      "multivalued": true,
       "alias": "any_of",
       "owner": "TypeExpression",
       "domain_of": [
@@ -5457,7 +5717,9 @@
       "is_usage_slot": true,
       "usage_slot_name": "any_of",
       "range": "AnonymousTypeExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5478,7 +5740,6 @@
       "is_a": "all_of",
       "domain": "TypeExpression",
       "slot_uri": "https://w3id.org/linkml/all_of",
-      "multivalued": true,
       "alias": "all_of",
       "owner": "TypeExpression",
       "domain_of": [
@@ -5487,7 +5748,9 @@
       "is_usage_slot": true,
       "usage_slot_name": "all_of",
       "range": "AnonymousTypeExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5508,7 +5771,6 @@
       "is_a": "exactly_one_of",
       "domain": "TypeExpression",
       "slot_uri": "https://w3id.org/linkml/exactly_one_of",
-      "multivalued": true,
       "alias": "exactly_one_of",
       "owner": "TypeExpression",
       "domain_of": [
@@ -5517,7 +5779,9 @@
       "is_usage_slot": true,
       "usage_slot_name": "exactly_one_of",
       "range": "AnonymousTypeExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5538,7 +5802,6 @@
       "is_a": "none_of",
       "domain": "TypeExpression",
       "slot_uri": "https://w3id.org/linkml/none_of",
-      "multivalued": true,
       "alias": "none_of",
       "owner": "TypeExpression",
       "domain_of": [
@@ -5547,7 +5810,9 @@
       "is_usage_slot": true,
       "usage_slot_name": "none_of",
       "range": "AnonymousTypeExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5565,7 +5830,6 @@
       "is_a": "union_of",
       "domain": "TypeDefinition",
       "slot_uri": "https://w3id.org/linkml/union_of",
-      "multivalued": true,
       "alias": "union_of",
       "owner": "TypeDefinition",
       "domain_of": [
@@ -5574,6 +5838,41 @@
       "is_usage_slot": true,
       "usage_slot_name": "union_of",
       "range": "TypeDefinition",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "enum_binding_range",
+      "definition_uri": "https://w3id.org/linkml/range",
+      "description": "defines the type of the object of the slot.  Given the following slot definition\n  S1:\n    domain: C1\n    range:  C2\nthe declaration\n  X:\n    S1: Y\n\nimplicitly asserts Y is an instance of C2\n",
+      "comments": [
+        "range is underspecified, as not all elements can appear as the range of a slot.",
+        "to use a URI or CURIE as the range, create a class with the URI or curie as the class_uri"
+      ],
+      "in_subset": [
+        "SpecificationSubset",
+        "MinimalSubset",
+        "BasicSubset",
+        "RelationalModelProfile",
+        "ObjectOrientedProfile"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "aliases": [
+        "value domain"
+      ],
+      "is_a": "range",
+      "domain": "EnumBinding",
+      "slot_uri": "https://w3id.org/linkml/range",
+      "inherited": true,
+      "ifabsent": "default_range",
+      "alias": "range",
+      "owner": "EnumBinding",
+      "domain_of": [
+        "EnumBinding"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "range",
+      "range": "EnumDefinition",
       "@type": "SlotDefinition"
     },
     {
@@ -5601,7 +5900,6 @@
       "singular_name": "category",
       "domain": "StructuredAlias",
       "slot_uri": "http://purl.org/dc/terms/subject",
-      "multivalued": true,
       "alias": "categories",
       "owner": "StructuredAlias",
       "domain_of": [
@@ -5610,6 +5908,7 @@
       "is_usage_slot": true,
       "usage_slot_name": "categories",
       "range": "uriorcurie",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5629,6 +5928,7 @@
       "usage_slot_name": "followed_by",
       "range": "PathExpression",
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5649,7 +5949,6 @@
       "is_a": "any_of",
       "domain": "PathExpression",
       "slot_uri": "https://w3id.org/linkml/any_of",
-      "multivalued": true,
       "alias": "any_of",
       "owner": "PathExpression",
       "domain_of": [
@@ -5658,7 +5957,9 @@
       "is_usage_slot": true,
       "usage_slot_name": "any_of",
       "range": "PathExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5679,7 +5980,6 @@
       "is_a": "exactly_one_of",
       "domain": "PathExpression",
       "slot_uri": "https://w3id.org/linkml/exactly_one_of",
-      "multivalued": true,
       "alias": "exactly_one_of",
       "owner": "PathExpression",
       "domain_of": [
@@ -5688,7 +5988,9 @@
       "is_usage_slot": true,
       "usage_slot_name": "exactly_one_of",
       "range": "PathExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5709,7 +6011,6 @@
       "is_a": "none_of",
       "domain": "PathExpression",
       "slot_uri": "https://w3id.org/linkml/none_of",
-      "multivalued": true,
       "alias": "none_of",
       "owner": "PathExpression",
       "domain_of": [
@@ -5718,7 +6019,9 @@
       "is_usage_slot": true,
       "usage_slot_name": "none_of",
       "range": "PathExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5739,7 +6042,6 @@
       "is_a": "all_of",
       "domain": "PathExpression",
       "slot_uri": "https://w3id.org/linkml/all_of",
-      "multivalued": true,
       "alias": "all_of",
       "owner": "PathExpression",
       "domain_of": [
@@ -5748,7 +6050,9 @@
       "is_usage_slot": true,
       "usage_slot_name": "all_of",
       "range": "PathExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5769,7 +6073,6 @@
       "is_a": "any_of",
       "domain": "SlotExpression",
       "slot_uri": "https://w3id.org/linkml/any_of",
-      "multivalued": true,
       "alias": "any_of",
       "owner": "SlotExpression",
       "domain_of": [
@@ -5778,7 +6081,9 @@
       "is_usage_slot": true,
       "usage_slot_name": "any_of",
       "range": "AnonymousSlotExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5799,7 +6104,6 @@
       "is_a": "all_of",
       "domain": "SlotExpression",
       "slot_uri": "https://w3id.org/linkml/all_of",
-      "multivalued": true,
       "alias": "all_of",
       "owner": "SlotExpression",
       "domain_of": [
@@ -5808,7 +6112,9 @@
       "is_usage_slot": true,
       "usage_slot_name": "all_of",
       "range": "AnonymousSlotExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5829,7 +6135,6 @@
       "is_a": "exactly_one_of",
       "domain": "SlotExpression",
       "slot_uri": "https://w3id.org/linkml/exactly_one_of",
-      "multivalued": true,
       "alias": "exactly_one_of",
       "owner": "SlotExpression",
       "domain_of": [
@@ -5838,7 +6143,9 @@
       "is_usage_slot": true,
       "usage_slot_name": "exactly_one_of",
       "range": "AnonymousSlotExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5859,7 +6166,6 @@
       "is_a": "none_of",
       "domain": "SlotExpression",
       "slot_uri": "https://w3id.org/linkml/none_of",
-      "multivalued": true,
       "alias": "none_of",
       "owner": "SlotExpression",
       "domain_of": [
@@ -5868,7 +6174,9 @@
       "is_usage_slot": true,
       "usage_slot_name": "none_of",
       "range": "AnonymousSlotExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5921,7 +6229,6 @@
       "is_a": "mixins",
       "domain": "SlotDefinition",
       "slot_uri": "https://w3id.org/linkml/mixins",
-      "multivalued": true,
       "alias": "mixins",
       "owner": "SlotDefinition",
       "domain_of": [
@@ -5930,6 +6237,7 @@
       "is_usage_slot": true,
       "usage_slot_name": "mixins",
       "range": "SlotDefinition",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5941,7 +6249,6 @@
       "is_a": "apply_to",
       "domain": "SlotDefinition",
       "slot_uri": "https://w3id.org/linkml/apply_to",
-      "multivalued": true,
       "alias": "apply_to",
       "owner": "SlotDefinition",
       "domain_of": [
@@ -5950,6 +6257,7 @@
       "is_usage_slot": true,
       "usage_slot_name": "apply_to",
       "range": "SlotDefinition",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5963,7 +6271,6 @@
       "is_a": "disjoint_with",
       "domain": "SlotDefinition",
       "slot_uri": "https://w3id.org/linkml/disjoint_with",
-      "multivalued": true,
       "alias": "disjoint_with",
       "owner": "SlotDefinition",
       "domain_of": [
@@ -5972,6 +6279,7 @@
       "is_usage_slot": true,
       "usage_slot_name": "disjoint_with",
       "range": "SlotDefinition",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5989,7 +6297,6 @@
       "is_a": "union_of",
       "domain": "SlotDefinition",
       "slot_uri": "https://w3id.org/linkml/union_of",
-      "multivalued": true,
       "alias": "union_of",
       "owner": "SlotDefinition",
       "domain_of": [
@@ -5998,6 +6305,7 @@
       "is_usage_slot": true,
       "usage_slot_name": "union_of",
       "range": "SlotDefinition",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6018,7 +6326,6 @@
       "is_a": "any_of",
       "domain": "ClassExpression",
       "slot_uri": "https://w3id.org/linkml/any_of",
-      "multivalued": true,
       "alias": "any_of",
       "owner": "ClassExpression",
       "domain_of": [
@@ -6027,7 +6334,9 @@
       "is_usage_slot": true,
       "usage_slot_name": "any_of",
       "range": "AnonymousClassExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6048,7 +6357,6 @@
       "is_a": "all_of",
       "domain": "ClassExpression",
       "slot_uri": "https://w3id.org/linkml/all_of",
-      "multivalued": true,
       "alias": "all_of",
       "owner": "ClassExpression",
       "domain_of": [
@@ -6057,7 +6365,9 @@
       "is_usage_slot": true,
       "usage_slot_name": "all_of",
       "range": "AnonymousClassExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6078,7 +6388,6 @@
       "is_a": "exactly_one_of",
       "domain": "ClassExpression",
       "slot_uri": "https://w3id.org/linkml/exactly_one_of",
-      "multivalued": true,
       "alias": "exactly_one_of",
       "owner": "ClassExpression",
       "domain_of": [
@@ -6087,7 +6396,9 @@
       "is_usage_slot": true,
       "usage_slot_name": "exactly_one_of",
       "range": "AnonymousClassExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6108,7 +6419,6 @@
       "is_a": "none_of",
       "domain": "ClassExpression",
       "slot_uri": "https://w3id.org/linkml/none_of",
-      "multivalued": true,
       "alias": "none_of",
       "owner": "ClassExpression",
       "domain_of": [
@@ -6117,7 +6427,9 @@
       "is_usage_slot": true,
       "usage_slot_name": "none_of",
       "range": "AnonymousClassExpression",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6170,7 +6482,6 @@
       "is_a": "mixins",
       "domain": "ClassDefinition",
       "slot_uri": "https://w3id.org/linkml/mixins",
-      "multivalued": true,
       "alias": "mixins",
       "owner": "ClassDefinition",
       "domain_of": [
@@ -6179,6 +6490,7 @@
       "is_usage_slot": true,
       "usage_slot_name": "mixins",
       "range": "ClassDefinition",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6190,7 +6502,6 @@
       "is_a": "apply_to",
       "domain": "ClassDefinition",
       "slot_uri": "https://w3id.org/linkml/apply_to",
-      "multivalued": true,
       "alias": "apply_to",
       "owner": "ClassDefinition",
       "domain_of": [
@@ -6199,6 +6510,7 @@
       "is_usage_slot": true,
       "usage_slot_name": "apply_to",
       "range": "ClassDefinition",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6215,7 +6527,6 @@
       "is_a": "rules",
       "domain": "ClassDefinition",
       "slot_uri": "http://www.w3.org/ns/shacl#rule",
-      "multivalued": true,
       "alias": "rules",
       "owner": "ClassDefinition",
       "domain_of": [
@@ -6224,7 +6535,9 @@
       "is_usage_slot": true,
       "usage_slot_name": "rules",
       "range": "ClassRule",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6238,7 +6551,6 @@
       "is_a": "disjoint_with",
       "domain": "ClassDefinition",
       "slot_uri": "https://w3id.org/linkml/disjoint_with",
-      "multivalued": true,
       "alias": "disjoint_with",
       "owner": "ClassDefinition",
       "domain_of": [
@@ -6247,6 +6559,7 @@
       "is_usage_slot": true,
       "usage_slot_name": "disjoint_with",
       "range": "ClassDefinition",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6264,7 +6577,6 @@
       "is_a": "union_of",
       "domain": "ClassDefinition",
       "slot_uri": "https://w3id.org/linkml/union_of",
-      "multivalued": true,
       "alias": "union_of",
       "owner": "ClassDefinition",
       "domain_of": [
@@ -6273,6 +6585,7 @@
       "is_usage_slot": true,
       "usage_slot_name": "union_of",
       "range": "ClassDefinition",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6325,7 +6638,6 @@
       "is_a": "mixins",
       "domain": "PermissibleValue",
       "slot_uri": "https://w3id.org/linkml/mixins",
-      "multivalued": true,
       "alias": "mixins",
       "owner": "PermissibleValue",
       "domain_of": [
@@ -6334,6 +6646,7 @@
       "is_usage_slot": true,
       "usage_slot_name": "mixins",
       "range": "PermissibleValue",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6351,7 +6664,6 @@
       "is_a": "exact_mappings",
       "domain": "UnitOfMeasure",
       "slot_uri": "http://www.w3.org/2004/02/skos/core#exactMatch",
-      "multivalued": true,
       "alias": "exact mappings",
       "owner": "UnitOfMeasure",
       "domain_of": [
@@ -6360,6 +6672,7 @@
       "is_usage_slot": true,
       "usage_slot_name": "exact mappings",
       "range": "uriorcurie",
+      "multivalued": true,
       "@type": "SlotDefinition"
     }
   ],
@@ -6587,6 +6900,7 @@
         "generation_date",
         "slot_names_unique",
         "settings",
+        "bindings",
         "schema_definition_name"
       ],
       "slot_usage": {},
@@ -7012,6 +7326,64 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "EnumBinding",
+      "definition_uri": "https://w3id.org/linkml/EnumBinding",
+      "description": "A binding of a slot or a class to a permissible value from an enumeration.",
+      "in_subset": [
+        "SpecificationSubset"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "mixins": [
+        "Extensible",
+        "Annotatable",
+        "CommonMetadata"
+      ],
+      "slots": [
+        "enum_binding_range",
+        "obligation_level",
+        "binds_value_of",
+        "pv_formula",
+        "extensions",
+        "annotations",
+        "description",
+        "alt_descriptions",
+        "title",
+        "deprecated",
+        "todos",
+        "notes",
+        "comments",
+        "examples",
+        "in_subset",
+        "from_schema",
+        "imported_from",
+        "source",
+        "in_language",
+        "see_also",
+        "deprecated_element_has_exact_replacement",
+        "deprecated_element_has_possible_replacement",
+        "aliases",
+        "structured_aliases",
+        "mappings",
+        "exact_mappings",
+        "close_mappings",
+        "related_mappings",
+        "narrow_mappings",
+        "broad_mappings",
+        "created_by",
+        "contributors",
+        "created_on",
+        "last_updated_on",
+        "modified_by",
+        "status",
+        "rank",
+        "categories",
+        "keywords"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/EnumBinding",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "MatchQuery",
       "definition_uri": "https://w3id.org/linkml/MatchQuery",
       "description": "A query that is used on an enum expression to dynamically obtain a set of permissivle values via a query that  matches on properties of the external concepts.",
@@ -7065,6 +7437,7 @@
         "literal_form",
         "alias_predicate",
         "structured_alias_categories",
+        "alias_contexts",
         "extensions",
         "annotations",
         "description",
@@ -7242,8 +7615,10 @@
         "range",
         "range_expression",
         "enum_range",
+        "bindings",
         "required",
         "recommended",
+        "multivalued",
         "inlined",
         "inlined_as_list",
         "minimum_value",
@@ -7265,7 +7640,8 @@
         "slot_expression_none_of",
         "slot_expression_exactly_one_of",
         "slot_expression_any_of",
-        "slot_expression_all_of"
+        "slot_expression_all_of",
+        "array"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/linkml/SlotExpression",
@@ -7318,8 +7694,10 @@
         "range",
         "range_expression",
         "enum_range",
+        "bindings",
         "required",
         "recommended",
+        "multivalued",
         "inlined",
         "inlined_as_list",
         "minimum_value",
@@ -7341,7 +7719,8 @@
         "slot_expression_none_of",
         "slot_expression_exactly_one_of",
         "slot_expression_any_of",
-        "slot_expression_all_of"
+        "slot_expression_all_of",
+        "array"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/linkml/AnonymousSlotExpression",
@@ -7426,8 +7805,6 @@
         "singular_name",
         "domain",
         "slot_uri",
-        "multivalued",
-        "array",
         "inherited",
         "readonly",
         "ifabsent",
@@ -7461,14 +7838,17 @@
         "slot_definition_disjoint_with",
         "children_are_mutually_disjoint",
         "slot_definition_union_of",
+        "type_mappings",
         "slot_definition_is_a",
         "slot_definition_mixins",
         "slot_definition_apply_to",
         "range",
         "range_expression",
         "enum_range",
+        "bindings",
         "required",
         "recommended",
+        "multivalued",
         "inlined",
         "inlined_as_list",
         "minimum_value",
@@ -7490,7 +7870,8 @@
         "slot_expression_none_of",
         "slot_expression_exactly_one_of",
         "slot_expression_any_of",
-        "slot_expression_all_of"
+        "slot_expression_all_of",
+        "array"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/linkml/SlotDefinition",
@@ -7659,6 +8040,8 @@
         "represents_relationship",
         "class_definition_disjoint_with",
         "children_are_mutually_disjoint",
+        "extra_slots",
+        "alias",
         "class_definition_is_a",
         "class_definition_mixins",
         "class_definition_apply_to",
@@ -7765,7 +8148,6 @@
         "exact_number_dimensions",
         "minimum_number_dimensions",
         "maximum_number_dimensions",
-        "has_extra_dimensions",
         "dimensions",
         "extensions",
         "annotations",
@@ -8081,6 +8463,8 @@
         "description",
         "meaning",
         "unit",
+        "instantiates",
+        "implements",
         "permissible_value_is_a",
         "permissible_value_mixins",
         "extensions",
@@ -8180,6 +8564,80 @@
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/linkml/UniqueKey",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "TypeMapping",
+      "definition_uri": "https://w3id.org/linkml/TypeMapping",
+      "description": "Represents how a slot or type can be serialized to a format.",
+      "in_subset": [
+        "SpecificationSubset"
+      ],
+      "from_schema": "https://w3id.org/linkml/meta",
+      "rank": 21,
+      "mixins": [
+        "Extensible",
+        "Annotatable",
+        "CommonMetadata"
+      ],
+      "slots": [
+        "framework_key",
+        "mapped_type",
+        "string_serialization",
+        "extensions",
+        "annotations",
+        "description",
+        "alt_descriptions",
+        "title",
+        "deprecated",
+        "todos",
+        "notes",
+        "comments",
+        "examples",
+        "in_subset",
+        "from_schema",
+        "imported_from",
+        "source",
+        "in_language",
+        "see_also",
+        "deprecated_element_has_exact_replacement",
+        "deprecated_element_has_possible_replacement",
+        "aliases",
+        "structured_aliases",
+        "mappings",
+        "exact_mappings",
+        "close_mappings",
+        "related_mappings",
+        "narrow_mappings",
+        "broad_mappings",
+        "created_by",
+        "contributors",
+        "created_on",
+        "last_updated_on",
+        "modified_by",
+        "status",
+        "rank",
+        "categories",
+        "keywords"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/TypeMapping",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ExtraSlotsExpression",
+      "definition_uri": "https://w3id.org/linkml/ExtraSlotsExpression",
+      "description": "An expression that defines how to handle additional data in an instance of class\nbeyond the slots/attributes defined for that class. \nSee `extra_slots` for usage examples.\n",
+      "from_schema": "https://w3id.org/linkml/meta",
+      "mixins": [
+        "Expression"
+      ],
+      "slots": [
+        "allowed",
+        "range_expression"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/ExtraSlotsExpression",
       "@type": "ClassDefinition"
     },
     {
@@ -8325,9 +8783,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "meta.yaml",
-  "source_file_date": "2024-02-07T17:29:17",
-  "source_file_size": 93289,
-  "generation_date": "2024-02-07T17:29:51",
+  "source_file_date": "2026-01-15T18:51:07",
+  "source_file_size": 99810,
+  "generation_date": "2026-02-03T08:48:47",
   "@type": "SchemaDefinition",
   "@context": [
     "staging/jsonld/meta.context.jsonld",
