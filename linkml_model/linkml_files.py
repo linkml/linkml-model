@@ -1,4 +1,5 @@
 import os
+from collections import namedtuple
 from enum import Enum, auto
 from typing import Optional, Union
 
@@ -15,8 +16,6 @@ GITHUB_RELEASES = GITHUB_BASE + "releases"
 GITHUB_TAGS = GITHUB_BASE + "tags"
 
 
-
-
 class _AutoName(Enum):
     @staticmethod
     def _generate_next_value_(name, start, count, last_values):
@@ -24,7 +23,7 @@ class _AutoName(Enum):
 
 
 class Source(_AutoName):
-    """ LinkML package source name """
+    """LinkML package source name"""
     META = auto()
     TYPES = auto()
     MAPPINGS = auto()
@@ -32,55 +31,94 @@ class Source(_AutoName):
     EXTENSIONS = auto()
 
 
-class Format(Enum):
-    """ LinkML package formats """
-    GRAPHQL = "graphql"
-    HTML = ""
-    JSON = "json"
-    JSONLD = "context.jsonld"
-    JSON_SCHEMA = "schema.json"
-    NATIVE_JSONLD = "model.context.jsonld"
-    NATIVE_RDF = "model.ttl"
-    NATIVE_SHEXC = "model.shex"
-    NATIVE_SHEXJ = "model.shexj"
-    OWL = "owl.ttl"
-    PYTHON = "py"
-    RDF = "ttl"
-    SHEXC = "shex"
-    SHEXJ = "shexj"
-    YAML = "yaml"
+class Format(_AutoName):
+    """LinkML package formats"""
+    EXCEL = auto()
+    GRAPHQL = auto()
+    JSON = auto()
+    JSONLD = auto()
+    JSON_SCHEMA = auto()
+    NATIVE_JSONLD = auto()
+    NATIVE_RDF = auto()
+    NATIVE_SHEXC = auto()
+    NATIVE_SHEXJ = auto()
+    OWL = auto()
+    PREFIXMAP = auto()
+    PROTOBUF = auto()
+    PYTHON = auto()
+    RDF = auto()
+    SHACL = auto()
+    SHEXC = auto()
+    SHEXJ = auto()
+    SQLDDL = auto()
+    SQLSCHEMA = auto()
+    YAML = auto()
 
 
-class _Path(Enum):
-    """ LinkML Relative paths"""
-    GRAPHQL = "graphql"
-    HTML = "docs"
-    JSON = "json"
-    JSONLD = "jsonld"
-    JSON_SCHEMA = "jsonschema"
-    NATIVE_JSONLD = "jsonld"
-    NATIVE_RDF = "ttl"
-    NATIVE_SHEXC = "shex"
-    NATIVE_SHEXJ = "shex"
-    OWL = "owl"
-    PYTHON = "linkml_model"
-    RDF = "rdf"
-    SHEXC = "shex"
-    SHEXJ = "shex"
-    YAML = "model/schema"
+_PathInfo = namedtuple("_PathInfo", ["path", "extension"])
+
+
+class _Path:
+    """LinkML Relative paths — maps each Format to its directory and file extension."""
+    EXCEL = _PathInfo("excel", "xlsx")
+    GRAPHQL = _PathInfo("graphql", "graphql")
+    JSON = _PathInfo("json", "json")
+    JSONLD = _PathInfo("jsonld", "context.jsonld")
+    JSON_SCHEMA = _PathInfo("jsonschema", "schema.json")
+    NATIVE_JSONLD = _PathInfo("jsonld", "model.context.jsonld")
+    NATIVE_RDF = _PathInfo("rdf", "model.ttl")
+    NATIVE_SHEXC = _PathInfo("shex", "shex")
+    NATIVE_SHEXJ = _PathInfo("shex", "shexj")
+    OWL = _PathInfo("owl", "owl.ttl")
+    PREFIXMAP = _PathInfo("prefixmap", "yaml")
+    PROTOBUF = _PathInfo("protobuf", "proto")
+    PYTHON = _PathInfo("", "py")
+    RDF = _PathInfo("rdf", "ttl")
+    SHACL = _PathInfo("shacl", "shacl.ttl")
+    SHEXC = _PathInfo("shex", "shex")
+    SHEXJ = _PathInfo("shex", "shexj")
+    SQLDDL = _PathInfo("sqlddl", "sql")
+    SQLSCHEMA = _PathInfo("sqlschema", "sql")
+    YAML = _PathInfo("model/schema", "yaml")
+
+    @classmethod
+    def items(cls):
+        return {k: v for k, v in cls.__dict__.items() if isinstance(v, _PathInfo)}
+
+    @classmethod
+    def get(cls, item):
+        if isinstance(item, Format):
+            item = item.name
+        return getattr(cls, item)
+
+
+META_ONLY = (
+    Format.EXCEL,
+    Format.GRAPHQL,
+    Format.OWL,
+    Format.PREFIXMAP,
+    Format.PROTOBUF,
+    Format.SHACL,
+    Format.SQLDDL,
+    Format.SQLSCHEMA,
+)
 
 
 class ReleaseTag(_AutoName):
-    """ Release tags
+    """Release tags
     LATEST - the absolute latest in the supplied branch
-    CURRENT - the latest _released_ version in the supplied branch """
+    CURRENT - the latest _released_ version in the supplied branch"""
     LATEST = auto()
     CURRENT = auto()
 
 
 def _build_path(source: Source, fmt: Format) -> str:
-    """ Create the relative path for source and fmt """
-    return f"{_Path[fmt.name].value}/{source.value}.{fmt.value}"
+    """Create the relative path for source and fmt."""
+    info = _Path.get(fmt.name)
+    filename = f"{source.value}.{info.extension}"
+    if info.path:
+        return f"{info.path}/{filename}"
+    return filename
 
 
 def _build_loc(base: str, source: Source, fmt: Format) -> str:
@@ -88,8 +126,9 @@ def _build_loc(base: str, source: Source, fmt: Format) -> str:
 
 
 def URL_FOR(source: Source, fmt: Format) -> str:
-    """ Return the URL to retrieve source in format """
-    return f"{LINKML_URL_BASE}{source.value}.{fmt.value}"
+    """Return the URL to retrieve source in format."""
+    info = _Path.get(fmt.name)
+    return f"{LINKML_URL_BASE}{source.value}.{info.extension}"
 
 
 def LOCAL_PATH_FOR(source: Source, fmt: Format) -> str:
@@ -139,9 +178,10 @@ class ModelFile:
         def __init__(self, model: Source, fmt: Format) -> str:
             self._model = model
             self._format = fmt
+            self._path_info = _Path.get(fmt.name)
 
         def __str__(self):
-            return f"{self._model.value}.{self._format.value}"
+            return f"{self._model.value}.{self._path_info.extension}"
 
         def __repr__(self):
             return str(self)
@@ -172,16 +212,8 @@ class ModelFile:
         return str(self)
 
     @property
-    def yaml(self) -> ModelLoc:
-        return ModelFile.ModelLoc(self._model, Format.YAML)
-
-    @property
     def graphql(self) -> ModelLoc:
         return ModelFile.ModelLoc(self._model, Format.GRAPHQL)
-
-    @property
-    def html(self) -> ModelLoc:
-        return ModelFile.ModelLoc(self._model, Format.HTML)
 
     @property
     def json(self) -> ModelLoc:
