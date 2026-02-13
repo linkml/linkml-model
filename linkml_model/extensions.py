@@ -1,5 +1,5 @@
 # Auto generated from extensions.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-09T12:53:51
+# Generation date: 2026-02-13T15:18:47
 # Schema: extensions
 #
 # id: https://w3id.org/linkml/extensions
