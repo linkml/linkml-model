@@ -250,6 +250,11 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#class-properties">
+    Class Properties
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
     Slots
   </a>
@@ -314,27 +319,63 @@
 <p>URI: <a href="https://w3id.org/linkml/Extensible">linkml:Extensible</a></p>
 <div class="mermaid"> classDiagram
     class Extensible
+    click Extensible href "../Extensible/"
       Extensible &lt;|-- Element
+        click Element href "../Element/"
       Extensible &lt;|-- EnumBinding
+        click EnumBinding href "../EnumBinding/"
       Extensible &lt;|-- StructuredAlias
+        click StructuredAlias href "../StructuredAlias/"
       Extensible &lt;|-- AnonymousExpression
+        click AnonymousExpression href "../AnonymousExpression/"
       Extensible &lt;|-- PathExpression
+        click PathExpression href "../PathExpression/"
       Extensible &lt;|-- ClassRule
+        click ClassRule href "../ClassRule/"
       Extensible &lt;|-- ArrayExpression
+        click ArrayExpression href "../ArrayExpression/"
       Extensible &lt;|-- DimensionExpression
+        click DimensionExpression href "../DimensionExpression/"
       Extensible &lt;|-- PatternExpression
+        click PatternExpression href "../PatternExpression/"
       Extensible &lt;|-- ImportExpression
+        click ImportExpression href "../ImportExpression/"
       Extensible &lt;|-- PermissibleValue
+        click PermissibleValue href "../PermissibleValue/"
       Extensible &lt;|-- UniqueKey
+        click UniqueKey href "../UniqueKey/"
       Extensible &lt;|-- TypeMapping
+        click TypeMapping href "../TypeMapping/"
 
       Extensible : extensions
 
-          Extensible --&gt; extension : extensions
+
+
+
+
+        Extensible --&gt; "*" Extension : extensions
+        click Extension href "../Extension/"
+
+
 
 
 </div>
 <!-- no inheritance hierarchy -->
+<h2 id="class-properties">Class Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mixin</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -348,7 +389,7 @@
 <tbody>
 <tr>
 <td><a href="../extensions/">extensions</a></td>
-<td>0..* <br/> <a href="../Extension/">Extension</a></td>
+<td>* <br/> <a href="../Extension/">Extension</a></td>
 <td>a tag/text tuple attached to an arbitrary element</td>
 <td>direct</td>
 </tr>
@@ -561,12 +602,6 @@
 <td><a href="./">Extensible</a></td>
 </tr>
 <tr>
-<td><a href="../Annotation/">Annotation</a></td>
-<td><a href="../extensions/">extensions</a></td>
-<td>domain</td>
-<td><a href="./">Extensible</a></td>
-</tr>
-<tr>
 <td><a href="../Extension/">Extension</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>domain</td>
@@ -574,6 +609,12 @@
 </tr>
 <tr>
 <td><a href="./">Extensible</a></td>
+<td><a href="../extensions/">extensions</a></td>
+<td>domain</td>
+<td><a href="./">Extensible</a></td>
+</tr>
+<tr>
+<td><a href="../Annotation/">Annotation</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>domain</td>
 <td><a href="./">Extensible</a></td>
@@ -630,13 +671,13 @@ attributes:
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
     domain: extensible
-    multivalued: true
     alias: extensions
     owner: extensible
     domain_of:
     - extension
     - extensible
     range: extension
+    multivalued: true
     inlined: true
 
 </code></pre>

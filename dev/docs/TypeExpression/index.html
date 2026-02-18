@@ -255,6 +255,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#class-properties">
+    Class Properties
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
     Slots
   </a>
@@ -314,20 +319,38 @@
 <p>URI: <a href="https://w3id.org/linkml/TypeExpression">linkml:TypeExpression</a></p>
 <div class="mermaid"> classDiagram
     class TypeExpression
+    click TypeExpression href "../TypeExpression/"
       Expression &lt;|-- TypeExpression
+        click Expression href "../Expression/"
 
 
       TypeExpression &lt;|-- AnonymousTypeExpression
+        click AnonymousTypeExpression href "../AnonymousTypeExpression/"
       TypeExpression &lt;|-- TypeDefinition
+        click TypeDefinition href "../TypeDefinition/"
 
 
       TypeExpression : all_of
 
-          TypeExpression --&gt; anonymous_type_expression : all_of
+
+
+
+
+        TypeExpression --&gt; "*" AnonymousTypeExpression : all_of
+        click AnonymousTypeExpression href "../AnonymousTypeExpression/"
+
+
 
       TypeExpression : any_of
 
-          TypeExpression --&gt; anonymous_type_expression : any_of
+
+
+
+
+        TypeExpression --&gt; "*" AnonymousTypeExpression : any_of
+        click AnonymousTypeExpression href "../AnonymousTypeExpression/"
+
+
 
       TypeExpression : equals_number
 
@@ -337,31 +360,73 @@
 
       TypeExpression : exactly_one_of
 
-          TypeExpression --&gt; anonymous_type_expression : exactly_one_of
+
+
+
+
+        TypeExpression --&gt; "*" AnonymousTypeExpression : exactly_one_of
+        click AnonymousTypeExpression href "../AnonymousTypeExpression/"
+
+
 
       TypeExpression : implicit_prefix
 
       TypeExpression : maximum_value
 
-          TypeExpression --&gt; Anything : maximum_value
+
+
+
+
+        TypeExpression --&gt; "0..1" Anything : maximum_value
+        click Anything href "../Anything/"
+
+
 
       TypeExpression : minimum_value
 
-          TypeExpression --&gt; Anything : minimum_value
+
+
+
+
+        TypeExpression --&gt; "0..1" Anything : minimum_value
+        click Anything href "../Anything/"
+
+
 
       TypeExpression : none_of
 
-          TypeExpression --&gt; anonymous_type_expression : none_of
+
+
+
+
+        TypeExpression --&gt; "*" AnonymousTypeExpression : none_of
+        click AnonymousTypeExpression href "../AnonymousTypeExpression/"
+
+
 
       TypeExpression : pattern
 
       TypeExpression : structured_pattern
 
-          TypeExpression --&gt; pattern_expression : structured_pattern
+
+
+
+
+        TypeExpression --&gt; "0..1" PatternExpression : structured_pattern
+        click PatternExpression href "../PatternExpression/"
+
+
 
       TypeExpression : unit
 
-          TypeExpression --&gt; UnitOfMeasure : unit
+
+
+
+
+        TypeExpression --&gt; "0..1" UnitOfMeasure : unit
+        click UnitOfMeasure href "../UnitOfMeasure/"
+
+
 
 
 </div>
@@ -372,6 +437,21 @@
 </ul>
 </li>
 </ul>
+<h2 id="class-properties">Class Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mixin</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -415,7 +495,7 @@
 </tr>
 <tr>
 <td><a href="../equals_string_in/">equals_string_in</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>the slot must have range string and the value of the slot must equal one of t...</td>
 <td>direct</td>
 </tr>
@@ -439,25 +519,25 @@
 </tr>
 <tr>
 <td><a href="../none_of/">none_of</a></td>
-<td>0..* <br/> <a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
+<td>* <br/> <a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
 <td>holds if none of the expressions hold</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../exactly_one_of/">exactly_one_of</a></td>
-<td>0..* <br/> <a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
+<td>* <br/> <a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
 <td>holds if only one of the expressions hold</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../any_of/">any_of</a></td>
-<td>0..* <br/> <a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
+<td>* <br/> <a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
 <td>holds if at least one of the expressions hold</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../all_of/">all_of</a></td>
-<td>0..* <br/> <a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
+<td>* <br/> <a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
 <td>holds if all of the expressions hold</td>
 <td>direct</td>
 </tr>
@@ -532,35 +612,15 @@ slots:
 slot_usage:
   any_of:
     name: any_of
-    domain_of:
-    - type_expression
-    - path_expression
-    - slot_expression
-    - class_expression
     range: anonymous_type_expression
   all_of:
     name: all_of
-    domain_of:
-    - type_expression
-    - path_expression
-    - slot_expression
-    - class_expression
     range: anonymous_type_expression
   exactly_one_of:
     name: exactly_one_of
-    domain_of:
-    - type_expression
-    - path_expression
-    - slot_expression
-    - class_expression
     range: anonymous_type_expression
   none_of:
     name: none_of
-    domain_of:
-    - type_expression
-    - path_expression
-    - slot_expression
-    - class_expression
     range: anonymous_type_expression
 
 </code></pre>
@@ -575,35 +635,15 @@ mixin: true
 slot_usage:
   any_of:
     name: any_of
-    domain_of:
-    - type_expression
-    - path_expression
-    - slot_expression
-    - class_expression
     range: anonymous_type_expression
   all_of:
     name: all_of
-    domain_of:
-    - type_expression
-    - path_expression
-    - slot_expression
-    - class_expression
     range: anonymous_type_expression
   exactly_one_of:
     name: exactly_one_of
-    domain_of:
-    - type_expression
-    - path_expression
-    - slot_expression
-    - class_expression
     range: anonymous_type_expression
   none_of:
     name: none_of
-    domain_of:
-    - type_expression
-    - path_expression
-    - slot_expression
-    - class_expression
     range: anonymous_type_expression
 attributes:
   pattern:
@@ -696,7 +736,6 @@ attributes:
     status: testing
     rank: 1000
     is_a: list_value_specification_constant
-    multivalued: true
     inherited: true
     alias: equals_string_in
     owner: type_expression
@@ -704,6 +743,7 @@ attributes:
     - type_expression
     - slot_expression
     range: string
+    multivalued: true
   equals_number:
     name: equals_number
     description: the slot must have range of a number and the value of the slot must
@@ -762,10 +802,15 @@ attributes:
   none_of:
     name: none_of
     description: holds if none of the expressions hold
+    in_subset:
+    - SpecificationSubset
     from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    exact_mappings:
+    - sh:not
     rank: 105
     is_a: boolean_slot
-    multivalued: true
     alias: none_of
     owner: type_expression
     domain_of:
@@ -774,13 +819,19 @@ attributes:
     - slot_expression
     - class_expression
     range: anonymous_type_expression
+    multivalued: true
   exactly_one_of:
     name: exactly_one_of
     description: holds if only one of the expressions hold
+    in_subset:
+    - SpecificationSubset
     from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    exact_mappings:
+    - sh:xone
     rank: 103
     is_a: boolean_slot
-    multivalued: true
     alias: exactly_one_of
     owner: type_expression
     domain_of:
@@ -789,13 +840,19 @@ attributes:
     - slot_expression
     - class_expression
     range: anonymous_type_expression
+    multivalued: true
   any_of:
     name: any_of
     description: holds if at least one of the expressions hold
+    in_subset:
+    - SpecificationSubset
     from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    exact_mappings:
+    - sh:or
     rank: 101
     is_a: boolean_slot
-    multivalued: true
     alias: any_of
     owner: type_expression
     domain_of:
@@ -804,13 +861,19 @@ attributes:
     - slot_expression
     - class_expression
     range: anonymous_type_expression
+    multivalued: true
   all_of:
     name: all_of
     description: holds if all of the expressions hold
+    in_subset:
+    - SpecificationSubset
     from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    exact_mappings:
+    - sh:and
     rank: 107
     is_a: boolean_slot
-    multivalued: true
     alias: all_of
     owner: type_expression
     domain_of:
@@ -819,6 +882,7 @@ attributes:
     - slot_expression
     - class_expression
     range: anonymous_type_expression
+    multivalued: true
 
 </code></pre>
 </details>

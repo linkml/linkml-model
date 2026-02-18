@@ -250,6 +250,11 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#class-properties">
+    Class Properties
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
     Slots
   </a>
@@ -309,6 +314,7 @@
 <p>URI: <a href="http://qudt.org/schema/qudt/Unit">qudt:Unit</a></p>
 <div class="mermaid"> classDiagram
     class UnitOfMeasure
+    click UnitOfMeasure href "../UnitOfMeasure/"
       UnitOfMeasure : abbreviation
 
       UnitOfMeasure : derivation
@@ -328,6 +334,21 @@
 
 </div>
 <!-- no inheritance hierarchy -->
+<h2 id="class-properties">Class Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Class URI</td>
+<td><a href="http://qudt.org/schema/qudt/Unit">qudt:Unit</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -359,7 +380,7 @@
 </tr>
 <tr>
 <td><a href="../exact_mappings/">exact_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>Used to link a unit to equivalent concepts in ontologies such as UO, SNOMED, ...</td>
 <td>direct</td>
 </tr>
@@ -389,6 +410,25 @@
 </tr>
 </tbody>
 </table>
+<details>
+<summary>Expressions &amp; Logic</summary>
+#### Any Of
+
+The class must satisfy at least one of:
+- AnonymousClassExpression({
+  'slot_conditions': {'ucum_code': SlotDefinition({'name': 'ucum_code', 'required': True})}
+})
+- AnonymousClassExpression({
+  'slot_conditions': {'iec61360code': SlotDefinition({'name': 'iec61360code', 'required': True})}
+})
+- AnonymousClassExpression({
+  'slot_conditions': {'symbol': SlotDefinition({'name': 'symbol', 'required': True})}
+})
+- AnonymousClassExpression({
+  'slot_conditions': {'exact_mappings': SlotDefinition({'name': 'exact_mappings', 'required': True})}
+})
+
+</details>
 <h2 id="usages">Usages</h2>
 <table>
 <thead>
@@ -499,9 +539,6 @@ slot_usage:
       UO, SNOMED, OEM, OBOE, NCIT
     comments:
     - Do not use this to encode mappings to systems for which a dedicated field exists
-    domain_of:
-    - common_metadata
-    - UnitOfMeasure
 class_uri: qudt:Unit
 any_of:
 - slot_conditions:
@@ -537,9 +574,6 @@ slot_usage:
       UO, SNOMED, OEM, OBOE, NCIT
     comments:
     - Do not use this to encode mappings to systems for which a dedicated field exists
-    domain_of:
-    - common_metadata
-    - UnitOfMeasure
 attributes:
   symbol:
     name: symbol
@@ -588,7 +622,6 @@ attributes:
     rank: 1000
     is_a: mappings
     slot_uri: skos:exactMatch
-    multivalued: true
     inherited: false
     alias: exact_mappings
     owner: UnitOfMeasure
@@ -596,6 +629,7 @@ attributes:
     - common_metadata
     - UnitOfMeasure
     range: uriorcurie
+    multivalued: true
   ucum_code:
     name: ucum_code
     description: associates a QUDT unit with its UCUM code (case-sensitive).

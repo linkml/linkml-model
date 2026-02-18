@@ -317,13 +317,22 @@
 <p>URI: <a href="https://w3id.org/linkml/ExtraSlotsExpression">linkml:ExtraSlotsExpression</a></p>
 <div class="mermaid"> classDiagram
     class ExtraSlotsExpression
+    click ExtraSlotsExpression href "../ExtraSlotsExpression/"
       Expression &lt;|-- ExtraSlotsExpression
+        click Expression href "../Expression/"
 
       ExtraSlotsExpression : allowed
 
       ExtraSlotsExpression : range_expression
 
-          ExtraSlotsExpression --&gt; anonymous_class_expression : range_expression
+
+
+
+
+        ExtraSlotsExpression --&gt; "0..1" AnonymousClassExpression : range_expression
+        click AnonymousClassExpression href "../AnonymousClassExpression/"
+
+
 
 
 </div>

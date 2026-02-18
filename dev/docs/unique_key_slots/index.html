@@ -571,6 +571,33 @@
     Properties
   </a>
   
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-and-range" class="md-nav__link">
+    Type and Range
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinality-and-requirements" class="md-nav__link">
+    Cardinality and Requirements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-subsets" class="md-nav__link">
+    In Subsets
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -590,6 +617,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mappings" class="md-nav__link">
+    Mappings
+  </a>
   
 </li>
       
@@ -617,7 +651,8 @@
 
 <h1 id="slot-unique_key_slots">Slot: unique_key_slots</h1>
 <p><em>list of slot names that form a key. The tuple formed from the values of all these slots should be unique.</em></p>
-<p>URI: <a href="https://w3id.org/linkml/unique_key_slots">linkml:unique_key_slots</a></p>
+<p>URI: <a href="https://w3id.org/linkml/unique_key_slots">linkml:unique_key_slots</a>
+Alias: unique_key_slots</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -638,22 +673,78 @@
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
+<h3 id="type-and-range">Type and Range</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Range</td>
+<td><a href="../SlotDefinition/">SlotDefinition</a></td>
+</tr>
+<tr>
+<td>Domain</td>
+<td><a href="../UniqueKey/">UniqueKey</a></td>
+</tr>
+<tr>
+<td>Domain Of</td>
+<td><a href="../UniqueKey/">UniqueKey</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cardinality-and-requirements">Cardinality and Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Required</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Multivalued</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="in-subsets">In Subsets</h2>
 <ul>
-<li>
-<p>Range: <a href="../SlotDefinition/">SlotDefinition</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
-</li>
-<li>
-<p>Required: True</p>
-</li>
+<li><a href="../SpecificationSubset/">SpecificationSubset</a></li>
+<li><a href="../BasicSubset/">BasicSubset</a></li>
+<li><a href="../RelationalModelProfile/">RelationalModelProfile</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: https://w3id.org/linkml/meta</li>
 </ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>linkml:unique_key_slots</td>
+</tr>
+<tr>
+<td>native</td>
+<td>linkml:unique_key_slots</td>
+</tr>
+</tbody>
+</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
@@ -667,12 +758,12 @@ in_subset:
 from_schema: https://w3id.org/linkml/meta
 rank: 1000
 domain: unique_key
-multivalued: true
 alias: unique_key_slots
 domain_of:
 - unique_key
 range: slot_definition
 required: true
+multivalued: true
 
 </code></pre>
 

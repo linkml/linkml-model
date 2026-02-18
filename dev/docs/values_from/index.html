@@ -571,6 +571,26 @@
     Properties
   </a>
   
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-and-range" class="md-nav__link">
+    Type and Range
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinality-and-requirements" class="md-nav__link">
+    Cardinality and Requirements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -582,6 +602,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#administrative-metadata" class="md-nav__link">
+    Administrative Metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     Schema Source
   </a>
@@ -590,6 +617,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mappings" class="md-nav__link">
+    Mappings
+  </a>
   
 </li>
       
@@ -617,7 +651,8 @@
 
 <h1 id="slot-values_from">Slot: values_from</h1>
 <p><em>The identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot. Note: this is different than 'subproperty_of' in that 'subproperty_of' is intended to be a single ontology term while 'values_from' is the identifier of an entire value set.  Additionally, this is different than an enumeration in that in an enumeration, the values of the enumeration are listed directly in the model itself. Setting this property on a slot does not guarantee an expansion of the ontological hierarchy into an enumerated list of possible values in every serialization of the model.</em></p>
-<p>URI: <a href="https://w3id.org/linkml/values_from">linkml:values_from</a></p>
+<p>URI: <a href="https://w3id.org/linkml/values_from">linkml:values_from</a>
+Alias: values_from</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -631,8 +666,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Definition/">Definition</a></td>
-<td>abstract base class for core metaclasses</td>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+<td>an element whose instances are complex objects that may have slot-value assig...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -641,31 +676,82 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td>an element that describes how instances are related to other instances</td>
+<td><a href="../Definition/">Definition</a></td>
+<td>abstract base class for core metaclasses</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td>an element whose instances are complex objects that may have slot-value assig...</td>
+<td><a href="../SlotDefinition/">SlotDefinition</a></td>
+<td>an element that describes how instances are related to other instances</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
-<ul>
-<li>
-<p>Range: <a href="../Uriorcurie/">Uriorcurie</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
-</li>
-</ul>
+<h3 id="type-and-range">Type and Range</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Range</td>
+<td><a href="../Uriorcurie/">Uriorcurie</a></td>
+</tr>
+<tr>
+<td>Domain</td>
+<td><a href="../Definition/">Definition</a></td>
+</tr>
+<tr>
+<td>Domain Of</td>
+<td><a href="../Definition/">Definition</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cardinality-and-requirements">Cardinality and Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Multivalued</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="administrative-metadata">Administrative Metadata</h3>
+<p><strong>Status:</strong> testing</p>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: https://w3id.org/linkml/meta</li>
 </ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>linkml:values_from</td>
+</tr>
+<tr>
+<td>native</td>
+<td>linkml:values_from</td>
+</tr>
+</tbody>
+</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
@@ -682,11 +768,11 @@ from_schema: https://w3id.org/linkml/meta
 status: testing
 rank: 1000
 domain: definition
-multivalued: true
 alias: values_from
 domain_of:
 - definition
 range: uriorcurie
+multivalued: true
 
 </code></pre>
 

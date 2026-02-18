@@ -578,6 +578,33 @@
     Properties
   </a>
   
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-and-range" class="md-nav__link">
+    Type and Range
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinality-and-requirements" class="md-nav__link">
+    Cardinality and Requirements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-subsets" class="md-nav__link">
+    In Subsets
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -596,6 +623,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#administrative-metadata" class="md-nav__link">
+    Administrative Metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     Schema Source
   </a>
@@ -604,6 +638,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mappings" class="md-nav__link">
+    Mappings
+  </a>
   
 </li>
       
@@ -631,7 +672,8 @@
 
 <h1 id="slot-all_of">Slot: all_of</h1>
 <p><em>holds if all of the expressions hold</em></p>
-<p>URI: <a href="https://w3id.org/linkml/all_of">linkml:all_of</a></p>
+<p>URI: <a href="https://w3id.org/linkml/all_of">linkml:all_of</a>
+Alias: all_of</p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../boolean_slot/">boolean_slot</a><ul>
@@ -650,46 +692,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../TypeExpression/">TypeExpression</a></td>
-<td>An abstract class grouping named types and anonymous type expressions</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td>An expression that describes an abstract path from an object to another throu...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-<td>an expression that constrains the range of values a slot can take</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ClassExpression/">ClassExpression</a></td>
-<td>A boolean expression that can be used to dynamically determine membership of ...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
-<td>A type expression that is not a top-level named type definition</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td>an element that whose instances are atomic scalar values that can be mapped t...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td>an element that describes how instances are related to other instances</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
 <td></td>
 <td>no</td>
@@ -699,26 +701,121 @@
 <td>an element whose instances are complex objects that may have slot-value assig...</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../SlotDefinition/">SlotDefinition</a></td>
+<td>an element that describes how instances are related to other instances</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ClassExpression/">ClassExpression</a></td>
+<td>A boolean expression that can be used to dynamically determine membership of ...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../TypeExpression/">TypeExpression</a></td>
+<td>An abstract class grouping named types and anonymous type expressions</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../SlotExpression/">SlotExpression</a></td>
+<td>an expression that constrains the range of values a slot can take</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TypeDefinition/">TypeDefinition</a></td>
+<td>an element that whose instances are atomic scalar values that can be mapped t...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PathExpression/">PathExpression</a></td>
+<td>An expression that describes an abstract path from an object to another throu...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
+<td>A type expression that is not a top-level named type definition</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
+<h3 id="type-and-range">Type and Range</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Range</td>
+<td><a href="../Expression/">Expression</a></td>
+</tr>
+<tr>
+<td>Domain Of</td>
+<td><a href="../TypeExpression/">TypeExpression</a>, <a href="../PathExpression/">PathExpression</a>, <a href="../SlotExpression/">SlotExpression</a>, <a href="../ClassExpression/">ClassExpression</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cardinality-and-requirements">Cardinality and Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Multivalued</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="in-subsets">In Subsets</h2>
 <ul>
-<li>
-<p>Range: <a href="../Expression/">Expression</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
-</li>
+<li><a href="../SpecificationSubset/">SpecificationSubset</a></li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="https://w3id.org/linkml/docs/specification/05validation/#rules">https://w3id.org/linkml/docs/specification/05validation/#rules</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="administrative-metadata">Administrative Metadata</h3>
+<p><strong>Rank:</strong> 107</p>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: https://w3id.org/linkml/meta</li>
 </ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>linkml:all_of</td>
+</tr>
+<tr>
+<td>native</td>
+<td>linkml:all_of</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>sh:and</td>
+</tr>
+</tbody>
+</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
@@ -733,7 +830,6 @@ exact_mappings:
 - sh:and
 rank: 107
 is_a: boolean_slot
-multivalued: true
 alias: all_of
 domain_of:
 - type_expression
@@ -741,6 +837,7 @@ domain_of:
 - slot_expression
 - class_expression
 range: expression
+multivalued: true
 
 </code></pre>
 

@@ -313,26 +313,57 @@
 <p>URI: <a href="https://w3id.org/linkml/AnonymousClassExpression">linkml:AnonymousClassExpression</a></p>
 <div class="mermaid"> classDiagram
     class AnonymousClassExpression
+    click AnonymousClassExpression href "../AnonymousClassExpression/"
       ClassExpression &lt;|-- AnonymousClassExpression
+        click ClassExpression href "../ClassExpression/"
       AnonymousExpression &lt;|-- AnonymousClassExpression
+        click AnonymousExpression href "../AnonymousExpression/"
 
       AnonymousClassExpression : aliases
 
       AnonymousClassExpression : all_of
 
-          AnonymousClassExpression --&gt; anonymous_class_expression : all_of
+
+
+
+
+        AnonymousClassExpression --&gt; "*" AnonymousClassExpression : all_of
+        click AnonymousClassExpression href "../AnonymousClassExpression/"
+
+
 
       AnonymousClassExpression : alt_descriptions
 
-          AnonymousClassExpression --&gt; alt_description : alt_descriptions
+
+
+
+
+        AnonymousClassExpression --&gt; "*" AltDescription : alt_descriptions
+        click AltDescription href "../AltDescription/"
+
+
 
       AnonymousClassExpression : annotations
 
-          AnonymousClassExpression --&gt; annotation : annotations
+
+
+
+
+        AnonymousClassExpression --&gt; "*" Annotation : annotations
+        click Annotation href "../Annotation/"
+
+
 
       AnonymousClassExpression : any_of
 
-          AnonymousClassExpression --&gt; anonymous_class_expression : any_of
+
+
+
+
+        AnonymousClassExpression --&gt; "*" AnonymousClassExpression : any_of
+        click AnonymousClassExpression href "../AnonymousClassExpression/"
+
+
 
       AnonymousClassExpression : broad_mappings
 
@@ -360,15 +391,36 @@
 
       AnonymousClassExpression : exactly_one_of
 
-          AnonymousClassExpression --&gt; anonymous_class_expression : exactly_one_of
+
+
+
+
+        AnonymousClassExpression --&gt; "*" AnonymousClassExpression : exactly_one_of
+        click AnonymousClassExpression href "../AnonymousClassExpression/"
+
+
 
       AnonymousClassExpression : examples
 
-          AnonymousClassExpression --&gt; example : examples
+
+
+
+
+        AnonymousClassExpression --&gt; "*" Example : examples
+        click Example href "../Example/"
+
+
 
       AnonymousClassExpression : extensions
 
-          AnonymousClassExpression --&gt; extension : extensions
+
+
+
+
+        AnonymousClassExpression --&gt; "*" Extension : extensions
+        click Extension href "../Extension/"
+
+
 
       AnonymousClassExpression : from_schema
 
@@ -378,11 +430,25 @@
 
       AnonymousClassExpression : in_subset
 
-          AnonymousClassExpression --&gt; subset_definition : in_subset
+
+
+
+
+        AnonymousClassExpression --&gt; "*" SubsetDefinition : in_subset
+        click SubsetDefinition href "../SubsetDefinition/"
+
+
 
       AnonymousClassExpression : is_a
 
-          AnonymousClassExpression --&gt; definition : is_a
+
+
+
+
+        AnonymousClassExpression --&gt; "0..1" Definition : is_a
+        click Definition href "../Definition/"
+
+
 
       AnonymousClassExpression : keywords
 
@@ -396,7 +462,14 @@
 
       AnonymousClassExpression : none_of
 
-          AnonymousClassExpression --&gt; anonymous_class_expression : none_of
+
+
+
+
+        AnonymousClassExpression --&gt; "*" AnonymousClassExpression : none_of
+        click AnonymousClassExpression href "../AnonymousClassExpression/"
+
+
 
       AnonymousClassExpression : notes
 
@@ -408,7 +481,14 @@
 
       AnonymousClassExpression : slot_conditions
 
-          AnonymousClassExpression --&gt; slot_definition : slot_conditions
+
+
+
+
+        AnonymousClassExpression --&gt; "*" SlotDefinition : slot_conditions
+        click SlotDefinition href "../SlotDefinition/"
+
+
 
       AnonymousClassExpression : source
 
@@ -416,7 +496,14 @@
 
       AnonymousClassExpression : structured_aliases
 
-          AnonymousClassExpression --&gt; structured_alias : structured_aliases
+
+
+
+
+        AnonymousClassExpression --&gt; "*" StructuredAlias : structured_aliases
+        click StructuredAlias href "../StructuredAlias/"
+
+
 
       AnonymousClassExpression : title
 
@@ -450,43 +537,43 @@
 </tr>
 <tr>
 <td><a href="../any_of/">any_of</a></td>
-<td>0..* <br/> <a href="./">AnonymousClassExpression</a></td>
+<td>* <br/> <a href="./">AnonymousClassExpression</a></td>
 <td>holds if at least one of the expressions hold</td>
 <td><a href="../ClassExpression/">ClassExpression</a></td>
 </tr>
 <tr>
 <td><a href="../exactly_one_of/">exactly_one_of</a></td>
-<td>0..* <br/> <a href="./">AnonymousClassExpression</a></td>
+<td>* <br/> <a href="./">AnonymousClassExpression</a></td>
 <td>holds if only one of the expressions hold</td>
 <td><a href="../ClassExpression/">ClassExpression</a></td>
 </tr>
 <tr>
 <td><a href="../none_of/">none_of</a></td>
-<td>0..* <br/> <a href="./">AnonymousClassExpression</a></td>
+<td>* <br/> <a href="./">AnonymousClassExpression</a></td>
 <td>holds if none of the expressions hold</td>
 <td><a href="../ClassExpression/">ClassExpression</a></td>
 </tr>
 <tr>
 <td><a href="../all_of/">all_of</a></td>
-<td>0..* <br/> <a href="./">AnonymousClassExpression</a></td>
+<td>* <br/> <a href="./">AnonymousClassExpression</a></td>
 <td>holds if all of the expressions hold</td>
 <td><a href="../ClassExpression/">ClassExpression</a></td>
 </tr>
 <tr>
 <td><a href="../slot_conditions/">slot_conditions</a></td>
-<td>0..* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
+<td>* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
 <td>expresses constraints on a group of slots for a class expression</td>
 <td><a href="../ClassExpression/">ClassExpression</a></td>
 </tr>
 <tr>
 <td><a href="../extensions/">extensions</a></td>
-<td>0..* <br/> <a href="../Extension/">Extension</a></td>
+<td>* <br/> <a href="../Extension/">Extension</a></td>
 <td>a tag/text tuple attached to an arbitrary element</td>
 <td><a href="../Extensible/">Extensible</a></td>
 </tr>
 <tr>
 <td><a href="../annotations/">annotations</a></td>
-<td>0..* <br/> <a href="../Annotation/">Annotation</a></td>
+<td>* <br/> <a href="../Annotation/">Annotation</a></td>
 <td>a collection of tag/text tuples with the semantics of OWL Annotation</td>
 <td><a href="../Annotatable/">Annotatable</a></td>
 </tr>
@@ -498,7 +585,7 @@
 </tr>
 <tr>
 <td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>0..* <br/> <a href="../AltDescription/">AltDescription</a></td>
+<td>* <br/> <a href="../AltDescription/">AltDescription</a></td>
 <td>A sourced alternative description for an element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -516,31 +603,31 @@
 </tr>
 <tr>
 <td><a href="../todos/">todos</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>Outstanding issues that needs resolution</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../notes/">notes</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>editorial notes about an element intended primarily for internal consumption</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../comments/">comments</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>notes and comments about an element intended primarily for external consumpti...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../examples/">examples</a></td>
-<td>0..* <br/> <a href="../Example/">Example</a></td>
+<td>* <br/> <a href="../Example/">Example</a></td>
 <td>example usages of an element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../in_subset/">in_subset</a></td>
-<td>0..* <br/> <a href="../SubsetDefinition/">SubsetDefinition</a></td>
+<td>* <br/> <a href="../SubsetDefinition/">SubsetDefinition</a></td>
 <td>used to indicate membership of a term in a defined subset of terms used for a...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -570,7 +657,7 @@
 </tr>
 <tr>
 <td><a href="../see_also/">see_also</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of related entities or URLs that may be of relevance</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -588,49 +675,49 @@
 </tr>
 <tr>
 <td><a href="../aliases/">aliases</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>Alternate names/labels for the element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../structured_aliases/">structured_aliases</a></td>
-<td>0..* <br/> <a href="../StructuredAlias/">StructuredAlias</a></td>
+<td>* <br/> <a href="../StructuredAlias/">StructuredAlias</a></td>
 <td>A list of structured_alias objects, used to provide aliases in conjunction wi...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../mappings/">mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have compa...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../exact_mappings/">exact_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have ident...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../close_mappings/">close_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have close...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../related_mappings/">related_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have relat...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../narrow_mappings/">narrow_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have narro...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../broad_mappings/">broad_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have broad...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -642,7 +729,7 @@
 </tr>
 <tr>
 <td><a href="../contributors/">contributors</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>agent that contributed to the element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -678,13 +765,13 @@
 </tr>
 <tr>
 <td><a href="../categories/">categories</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>Controlled terms used to categorize an element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../keywords/">keywords</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>Keywords or tags used to describe the element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -902,10 +989,15 @@ attributes:
   any_of:
     name: any_of
     description: holds if at least one of the expressions hold
+    in_subset:
+    - SpecificationSubset
     from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    exact_mappings:
+    - sh:or
     rank: 101
     is_a: boolean_slot
-    multivalued: true
     alias: any_of
     owner: anonymous_class_expression
     domain_of:
@@ -914,13 +1006,19 @@ attributes:
     - slot_expression
     - class_expression
     range: anonymous_class_expression
+    multivalued: true
   exactly_one_of:
     name: exactly_one_of
     description: holds if only one of the expressions hold
+    in_subset:
+    - SpecificationSubset
     from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    exact_mappings:
+    - sh:xone
     rank: 103
     is_a: boolean_slot
-    multivalued: true
     alias: exactly_one_of
     owner: anonymous_class_expression
     domain_of:
@@ -929,13 +1027,19 @@ attributes:
     - slot_expression
     - class_expression
     range: anonymous_class_expression
+    multivalued: true
   none_of:
     name: none_of
     description: holds if none of the expressions hold
+    in_subset:
+    - SpecificationSubset
     from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    exact_mappings:
+    - sh:not
     rank: 105
     is_a: boolean_slot
-    multivalued: true
     alias: none_of
     owner: anonymous_class_expression
     domain_of:
@@ -944,13 +1048,19 @@ attributes:
     - slot_expression
     - class_expression
     range: anonymous_class_expression
+    multivalued: true
   all_of:
     name: all_of
     description: holds if all of the expressions hold
+    in_subset:
+    - SpecificationSubset
     from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    exact_mappings:
+    - sh:and
     rank: 107
     is_a: boolean_slot
-    multivalued: true
     alias: all_of
     owner: anonymous_class_expression
     domain_of:
@@ -959,6 +1069,7 @@ attributes:
     - slot_expression
     - class_expression
     range: anonymous_class_expression
+    multivalued: true
   slot_conditions:
     name: slot_conditions
     description: expresses constraints on a group of slots for a class expression
@@ -967,12 +1078,12 @@ attributes:
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
     domain: class_expression
-    multivalued: true
     alias: slot_conditions
     owner: anonymous_class_expression
     domain_of:
     - class_expression
     range: slot_definition
+    multivalued: true
     inlined: true
   extensions:
     name: extensions
@@ -980,13 +1091,13 @@ attributes:
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
     domain: extensible
-    multivalued: true
     alias: extensions
     owner: anonymous_class_expression
     domain_of:
     - extension
     - extensible
     range: extension
+    multivalued: true
     inlined: true
   annotations:
     name: annotations
@@ -995,13 +1106,13 @@ attributes:
     rank: 1000
     is_a: extensions
     domain: annotatable
-    multivalued: true
     alias: annotations
     owner: anonymous_class_expression
     domain_of:
     - annotatable
     - annotation
     range: annotation
+    multivalued: true
     inlined: true
   description:
     name: description
@@ -1034,12 +1145,12 @@ attributes:
     - alternate definitions
     rank: 1000
     domain: element
-    multivalued: true
     alias: alt_descriptions
     owner: anonymous_class_expression
     domain_of:
     - common_metadata
     range: alt_description
+    multivalued: true
     inlined: true
   title:
     name: title
@@ -1084,12 +1195,12 @@ attributes:
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
     domain: element
-    multivalued: true
     alias: todos
     owner: anonymous_class_expression
     domain_of:
     - common_metadata
     range: string
+    multivalued: true
   notes:
     name: notes
     description: editorial notes about an element intended primarily for internal
@@ -1100,12 +1211,12 @@ attributes:
     rank: 1000
     domain: element
     slot_uri: skos:editorialNote
-    multivalued: true
     alias: notes
     owner: anonymous_class_expression
     domain_of:
     - common_metadata
     range: string
+    multivalued: true
   comments:
     name: comments
     description: notes and comments about an element intended primarily for external
@@ -1118,12 +1229,12 @@ attributes:
     rank: 1000
     domain: element
     slot_uri: skos:note
-    multivalued: true
     alias: comments
     owner: anonymous_class_expression
     domain_of:
     - common_metadata
     range: string
+    multivalued: true
   examples:
     name: examples
     description: example usages of an element
@@ -1135,12 +1246,12 @@ attributes:
     rank: 1000
     singular_name: example
     domain: element
-    multivalued: true
     alias: examples
     owner: anonymous_class_expression
     domain_of:
     - common_metadata
     range: example
+    multivalued: true
     inlined: true
   in_subset:
     name: in_subset
@@ -1155,12 +1266,12 @@ attributes:
     rank: 1000
     domain: element
     slot_uri: OIO:inSubset
-    multivalued: true
     alias: in_subset
     owner: anonymous_class_expression
     domain_of:
     - common_metadata
     range: subset_definition
+    multivalued: true
   from_schema:
     name: from_schema
     description: id of the schema that defined the element
@@ -1238,12 +1349,12 @@ attributes:
     rank: 1000
     domain: element
     slot_uri: rdfs:seeAlso
-    multivalued: true
     alias: see_also
     owner: anonymous_class_expression
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   deprecated element has exact replacement:
     name: deprecated element has exact replacement
     description: When an element is deprecated, it can be automatically replaced by
@@ -1289,12 +1400,12 @@ attributes:
     rank: 1000
     domain: element
     slot_uri: skos:altLabel
-    multivalued: true
     alias: aliases
     owner: anonymous_class_expression
     domain_of:
     - common_metadata
     range: string
+    multivalued: true
   structured_aliases:
     name: structured_aliases
     description: A list of structured_alias objects, used to provide aliases in conjunction
@@ -1304,12 +1415,12 @@ attributes:
     - linkml:aliases
     rank: 1000
     slot_uri: skosxl:altLabel
-    multivalued: true
     alias: structured_aliases
     owner: anonymous_class_expression
     domain_of:
     - common_metadata
     range: structured_alias
+    multivalued: true
     inlined: true
   mappings:
     name: mappings
@@ -1325,12 +1436,12 @@ attributes:
     - alternate ids
     rank: 1000
     slot_uri: skos:mappingRelation
-    multivalued: true
     alias: mappings
     owner: anonymous_class_expression
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   exact mappings:
     name: exact mappings
     description: A list of terms from different schemas or terminology systems that
@@ -1339,7 +1450,6 @@ attributes:
     rank: 1000
     is_a: mappings
     slot_uri: skos:exactMatch
-    multivalued: true
     inherited: false
     alias: exact_mappings
     owner: anonymous_class_expression
@@ -1347,6 +1457,7 @@ attributes:
     - common_metadata
     - UnitOfMeasure
     range: uriorcurie
+    multivalued: true
   close mappings:
     name: close mappings
     description: A list of terms from different schemas or terminology systems that
@@ -1355,13 +1466,13 @@ attributes:
     rank: 1000
     is_a: mappings
     slot_uri: skos:closeMatch
-    multivalued: true
     inherited: false
     alias: close_mappings
     owner: anonymous_class_expression
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   related mappings:
     name: related mappings
     description: A list of terms from different schemas or terminology systems that
@@ -1370,13 +1481,13 @@ attributes:
     rank: 1000
     is_a: mappings
     slot_uri: skos:relatedMatch
-    multivalued: true
     inherited: false
     alias: related_mappings
     owner: anonymous_class_expression
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   narrow mappings:
     name: narrow mappings
     description: A list of terms from different schemas or terminology systems that
@@ -1385,13 +1496,13 @@ attributes:
     rank: 1000
     is_a: mappings
     slot_uri: skos:narrowMatch
-    multivalued: true
     inherited: false
     alias: narrow_mappings
     owner: anonymous_class_expression
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   broad mappings:
     name: broad mappings
     description: A list of terms from different schemas or terminology systems that
@@ -1400,13 +1511,13 @@ attributes:
     rank: 1000
     is_a: mappings
     slot_uri: skos:broadMatch
-    multivalued: true
     inherited: false
     alias: broad_mappings
     owner: anonymous_class_expression
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   created_by:
     name: created_by
     description: agent that created the element
@@ -1430,12 +1541,12 @@ attributes:
     rank: 1000
     domain: element
     slot_uri: dcterms:contributor
-    multivalued: true
     alias: contributors
     owner: anonymous_class_expression
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   created_on:
     name: created_on
     description: time at which the element was created
@@ -1536,13 +1647,13 @@ attributes:
     rank: 1000
     singular_name: category
     slot_uri: dcterms:subject
-    multivalued: true
     alias: categories
     owner: anonymous_class_expression
     domain_of:
     - common_metadata
     - structured_alias
     range: uriorcurie
+    multivalued: true
   keywords:
     name: keywords
     description: Keywords or tags used to describe the element
@@ -1553,12 +1664,12 @@ attributes:
     singular_name: keyword
     domain: element
     slot_uri: schema:keywords
-    multivalued: true
     alias: keywords
     owner: anonymous_class_expression
     domain_of:
     - common_metadata
     range: string
+    multivalued: true
 
 </code></pre>
 </details>

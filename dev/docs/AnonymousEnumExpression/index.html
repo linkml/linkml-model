@@ -314,7 +314,9 @@
 <p>URI: <a href="https://w3id.org/linkml/AnonymousEnumExpression">linkml:AnonymousEnumExpression</a></p>
 <div class="mermaid"> classDiagram
     class AnonymousEnumExpression
+    click AnonymousEnumExpression href "../AnonymousEnumExpression/"
       EnumExpression &lt;|-- AnonymousEnumExpression
+        click EnumExpression href "../EnumExpression/"
 
       AnonymousEnumExpression : code_set
 
@@ -326,31 +328,80 @@
 
       AnonymousEnumExpression : include
 
-          AnonymousEnumExpression --&gt; anonymous_enum_expression : include
+
+
+
+
+        AnonymousEnumExpression --&gt; "*" AnonymousEnumExpression : include
+        click AnonymousEnumExpression href "../AnonymousEnumExpression/"
+
+
 
       AnonymousEnumExpression : inherits
 
-          AnonymousEnumExpression --&gt; enum_definition : inherits
+
+
+
+
+        AnonymousEnumExpression --&gt; "*" EnumDefinition : inherits
+        click EnumDefinition href "../EnumDefinition/"
+
+
 
       AnonymousEnumExpression : matches
 
-          AnonymousEnumExpression --&gt; match_query : matches
+
+
+
+
+        AnonymousEnumExpression --&gt; "0..1" MatchQuery : matches
+        click MatchQuery href "../MatchQuery/"
+
+
 
       AnonymousEnumExpression : minus
 
-          AnonymousEnumExpression --&gt; anonymous_enum_expression : minus
+
+
+
+
+        AnonymousEnumExpression --&gt; "*" AnonymousEnumExpression : minus
+        click AnonymousEnumExpression href "../AnonymousEnumExpression/"
+
+
 
       AnonymousEnumExpression : permissible_values
 
-          AnonymousEnumExpression --&gt; permissible_value : permissible_values
+
+
+
+
+        AnonymousEnumExpression --&gt; "*" PermissibleValue : permissible_values
+        click PermissibleValue href "../PermissibleValue/"
+
+
 
       AnonymousEnumExpression : pv_formula
 
-          AnonymousEnumExpression --&gt; pv_formula_options : pv_formula
+
+
+
+
+        AnonymousEnumExpression --&gt; "0..1" PvFormulaOptions : pv_formula
+        click PvFormulaOptions href "../PvFormulaOptions/"
+
+
 
       AnonymousEnumExpression : reachable_from
 
-          AnonymousEnumExpression --&gt; reachability_query : reachable_from
+
+
+
+
+        AnonymousEnumExpression --&gt; "0..1" ReachabilityQuery : reachable_from
+        click ReachabilityQuery href "../ReachabilityQuery/"
+
+
 
 
 </div>
@@ -395,25 +446,25 @@
 </tr>
 <tr>
 <td><a href="../permissible_values/">permissible_values</a></td>
-<td>0..* <br/> <a href="../PermissibleValue/">PermissibleValue</a></td>
+<td>* <br/> <a href="../PermissibleValue/">PermissibleValue</a></td>
 <td>A list of possible values for a slot range</td>
 <td><a href="../EnumExpression/">EnumExpression</a></td>
 </tr>
 <tr>
 <td><a href="../include/">include</a></td>
-<td>0..* <br/> <a href="./">AnonymousEnumExpression</a></td>
+<td>* <br/> <a href="./">AnonymousEnumExpression</a></td>
 <td>An enum expression that yields a list of permissible values that are to be in...</td>
 <td><a href="../EnumExpression/">EnumExpression</a></td>
 </tr>
 <tr>
 <td><a href="../minus/">minus</a></td>
-<td>0..* <br/> <a href="./">AnonymousEnumExpression</a></td>
+<td>* <br/> <a href="./">AnonymousEnumExpression</a></td>
 <td>An enum expression that yields a list of permissible values that are to be su...</td>
 <td><a href="../EnumExpression/">EnumExpression</a></td>
 </tr>
 <tr>
 <td><a href="../inherits/">inherits</a></td>
-<td>0..* <br/> <a href="../EnumDefinition/">EnumDefinition</a></td>
+<td>* <br/> <a href="../EnumDefinition/">EnumDefinition</a></td>
 <td>An enum definition that is used as the basis to create a new enum</td>
 <td><a href="../EnumExpression/">EnumExpression</a></td>
 </tr>
@@ -431,7 +482,7 @@
 </tr>
 <tr>
 <td><a href="../concepts/">concepts</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of identifiers that are used to construct a set of permissible values</td>
 <td><a href="../EnumExpression/">EnumExpression</a></td>
 </tr>
@@ -606,12 +657,12 @@ attributes:
     - cdisc:PermissibleValue
     rank: 1000
     domain: enum_expression
-    multivalued: true
     alias: permissible_values
     owner: anonymous_enum_expression
     domain_of:
     - enum_expression
     range: permissible_value
+    multivalued: true
     inlined: true
   include:
     name: include
@@ -622,12 +673,12 @@ attributes:
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
     domain: enum_expression
-    multivalued: true
     alias: include
     owner: anonymous_enum_expression
     domain_of:
     - enum_expression
     range: anonymous_enum_expression
+    multivalued: true
   minus:
     name: minus
     description: An enum expression that yields a list of permissible values that
@@ -637,12 +688,12 @@ attributes:
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
     domain: enum_expression
-    multivalued: true
     alias: minus
     owner: anonymous_enum_expression
     domain_of:
     - enum_expression
     range: anonymous_enum_expression
+    multivalued: true
   inherits:
     name: inherits
     description: An enum definition that is used as the basis to create a new enum
@@ -654,12 +705,12 @@ attributes:
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
     domain: enum_expression
-    multivalued: true
     alias: inherits
     owner: anonymous_enum_expression
     domain_of:
     - enum_expression
     range: enum_definition
+    multivalued: true
   reachable_from:
     name: reachable_from
     description: Specifies a query for obtaining a list of permissible values based
@@ -697,12 +748,12 @@ attributes:
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
     domain: enum_expression
-    multivalued: true
     alias: concepts
     owner: anonymous_enum_expression
     domain_of:
     - enum_expression
     range: uriorcurie
+    multivalued: true
 
 </code></pre>
 </details>

@@ -250,6 +250,11 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#class-properties">
+    Class Properties
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
     Slots
   </a>
@@ -314,28 +319,65 @@
 <p>URI: <a href="https://w3id.org/linkml/Annotatable">linkml:Annotatable</a></p>
 <div class="mermaid"> classDiagram
     class Annotatable
+    click Annotatable href "../Annotatable/"
       Annotatable &lt;|-- Element
+        click Element href "../Element/"
       Annotatable &lt;|-- EnumBinding
+        click EnumBinding href "../EnumBinding/"
       Annotatable &lt;|-- StructuredAlias
+        click StructuredAlias href "../StructuredAlias/"
       Annotatable &lt;|-- AnonymousExpression
+        click AnonymousExpression href "../AnonymousExpression/"
       Annotatable &lt;|-- PathExpression
+        click PathExpression href "../PathExpression/"
       Annotatable &lt;|-- ClassRule
+        click ClassRule href "../ClassRule/"
       Annotatable &lt;|-- ArrayExpression
+        click ArrayExpression href "../ArrayExpression/"
       Annotatable &lt;|-- DimensionExpression
+        click DimensionExpression href "../DimensionExpression/"
       Annotatable &lt;|-- PatternExpression
+        click PatternExpression href "../PatternExpression/"
       Annotatable &lt;|-- ImportExpression
+        click ImportExpression href "../ImportExpression/"
       Annotatable &lt;|-- PermissibleValue
+        click PermissibleValue href "../PermissibleValue/"
       Annotatable &lt;|-- UniqueKey
+        click UniqueKey href "../UniqueKey/"
       Annotatable &lt;|-- TypeMapping
+        click TypeMapping href "../TypeMapping/"
       Annotatable &lt;|-- Annotation
+        click Annotation href "../Annotation/"
 
       Annotatable : annotations
 
-          Annotatable --&gt; annotation : annotations
+
+
+
+
+        Annotatable --&gt; "*" Annotation : annotations
+        click Annotation href "../Annotation/"
+
+
 
 
 </div>
 <!-- no inheritance hierarchy -->
+<h2 id="class-properties">Class Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mixin</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -349,7 +391,7 @@
 <tbody>
 <tr>
 <td><a href="../annotations/">annotations</a></td>
-<td>0..* <br/> <a href="../Annotation/">Annotation</a></td>
+<td>* <br/> <a href="../Annotation/">Annotation</a></td>
 <td>a collection of tag/text tuples with the semantics of OWL Annotation</td>
 <td>direct</td>
 </tr>
@@ -630,13 +672,13 @@ attributes:
     rank: 1000
     is_a: extensions
     domain: annotatable
-    multivalued: true
     alias: annotations
     owner: annotatable
     domain_of:
     - annotatable
     - annotation
     range: annotation
+    multivalued: true
     inlined: true
 
 </code></pre>

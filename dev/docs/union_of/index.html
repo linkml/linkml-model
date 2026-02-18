@@ -571,6 +571,40 @@
     Properties
   </a>
   
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-and-range" class="md-nav__link">
+    Type and Range
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinality-and-requirements" class="md-nav__link">
+    Cardinality and Requirements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-subsets" class="md-nav__link">
+    In Subsets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -590,6 +624,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mappings" class="md-nav__link">
+    Mappings
+  </a>
   
 </li>
       
@@ -617,7 +658,8 @@
 
 <h1 id="slot-union_of">Slot: union_of</h1>
 <p><em>indicates that the domain element consists exactly of the members of the element in the range.</em></p>
-<p>URI: <a href="https://w3id.org/linkml/union_of">linkml:union_of</a></p>
+<p>URI: <a href="https://w3id.org/linkml/union_of">linkml:union_of</a>
+Alias: union_of</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -631,8 +673,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td>an element that whose instances are atomic scalar values that can be mapped t...</td>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+<td>an element whose instances are complex objects that may have slot-value assig...</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -641,26 +683,84 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td>an element whose instances are complex objects that may have slot-value assig...</td>
+<td><a href="../TypeDefinition/">TypeDefinition</a></td>
+<td>an element that whose instances are atomic scalar values that can be mapped t...</td>
 <td>yes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
+<h3 id="type-and-range">Type and Range</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Range</td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td>Domain</td>
+<td><a href="../Element/">Element</a></td>
+</tr>
+<tr>
+<td>Domain Of</td>
+<td><a href="../TypeDefinition/">TypeDefinition</a>, <a href="../SlotDefinition/">SlotDefinition</a>, <a href="../ClassDefinition/">ClassDefinition</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cardinality-and-requirements">Cardinality and Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Multivalued</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="in-subsets">In Subsets</h2>
 <ul>
-<li>
-<p>Range: <a href="../Element/">Element</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
-</li>
+<li><a href="../SpecificationSubset/">SpecificationSubset</a></li>
+<li><a href="../OwlProfile/">OwlProfile</a></li>
+</ul>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>this only applies in the OWL generation</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: https://w3id.org/linkml/meta</li>
 </ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>linkml:union_of</td>
+</tr>
+<tr>
+<td>native</td>
+<td>linkml:union_of</td>
+</tr>
+</tbody>
+</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
@@ -675,13 +775,13 @@ in_subset:
 from_schema: https://w3id.org/linkml/meta
 rank: 1000
 domain: element
-multivalued: true
 alias: union_of
 domain_of:
 - type_definition
 - slot_definition
 - class_definition
 range: element
+multivalued: true
 
 </code></pre>
 

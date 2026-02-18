@@ -314,22 +314,46 @@
 <p>URI: <a href="https://w3id.org/linkml/Annotation">linkml:Annotation</a></p>
 <div class="mermaid"> classDiagram
     class Annotation
+    click Annotation href "../Annotation/"
       Annotatable &lt;|-- Annotation
+        click Annotatable href "../Annotatable/"
       Extension &lt;|-- Annotation
+        click Extension href "../Extension/"
 
       Annotation : annotations
 
-          Annotation --&gt; annotation : annotations
+
+
+
+
+        Annotation --&gt; "*" Annotation : annotations
+        click Annotation href "../Annotation/"
+
+
 
       Annotation : extension_tag
 
       Annotation : extension_value
 
-          Annotation --&gt; AnyValue : extension_value
+
+
+
+
+        Annotation --&gt; "1" AnyValue : extension_value
+        click AnyValue href "../AnyValue/"
+
+
 
       Annotation : extensions
 
-          Annotation --&gt; extension : extensions
+
+
+
+
+        Annotation --&gt; "*" Extension : extensions
+        click Extension href "../Extension/"
+
+
 
 
 </div>
@@ -353,25 +377,25 @@
 <tbody>
 <tr>
 <td><a href="../annotations/">annotations</a></td>
-<td>0..* <br/> <a href="./">Annotation</a></td>
+<td>* <br/> <a href="./">Annotation</a></td>
 <td>a collection of tag/text tuples with the semantics of OWL Annotation</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../extension_tag/">extension_tag</a></td>
-<td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>a tag associated with an extension</td>
 <td><a href="../Extension/">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../extension_value/">extension_value</a></td>
-<td>1..1 <br/> <a href="../AnyValue/">AnyValue</a></td>
+<td>1 <br/> <a href="../AnyValue/">AnyValue</a></td>
 <td>the actual annotation</td>
 <td><a href="../Extension/">Extension</a></td>
 </tr>
 <tr>
 <td><a href="../extensions/">extensions</a></td>
-<td>0..* <br/> <a href="../Extension/">Extension</a></td>
+<td>* <br/> <a href="../Extension/">Extension</a></td>
 <td>a tag/text tuple attached to an arbitrary element</td>
 <td><a href="../Extension/">Extension</a></td>
 </tr>
@@ -589,13 +613,13 @@ attributes:
     rank: 1000
     is_a: extensions
     domain: annotatable
-    multivalued: true
     alias: annotations
     owner: annotation
     domain_of:
     - annotatable
     - annotation
     range: annotation
+    multivalued: true
     inlined: true
   extension_tag:
     name: extension_tag
@@ -612,6 +636,10 @@ attributes:
     required: true
   extension_value:
     name: extension_value
+    annotations:
+      simple_dict_value:
+        tag: simple_dict_value
+        value: true
     description: the actual annotation
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
@@ -628,13 +656,13 @@ attributes:
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
     domain: extensible
-    multivalued: true
     alias: extensions
     owner: annotation
     domain_of:
     - extension
     - extensible
     range: extension
+    multivalued: true
     inlined: true
 
 </code></pre>

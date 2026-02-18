@@ -250,6 +250,11 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#class-properties">
+    Class Properties
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
     Slots
   </a>
@@ -314,32 +319,85 @@
 <p>URI: <a href="https://w3id.org/linkml/ClassExpression">linkml:ClassExpression</a></p>
 <div class="mermaid"> classDiagram
     class ClassExpression
+    click ClassExpression href "../ClassExpression/"
       ClassExpression &lt;|-- AnonymousClassExpression
+        click AnonymousClassExpression href "../AnonymousClassExpression/"
       ClassExpression &lt;|-- ClassDefinition
+        click ClassDefinition href "../ClassDefinition/"
 
       ClassExpression : all_of
 
-          ClassExpression --&gt; anonymous_class_expression : all_of
+
+
+
+
+        ClassExpression --&gt; "*" AnonymousClassExpression : all_of
+        click AnonymousClassExpression href "../AnonymousClassExpression/"
+
+
 
       ClassExpression : any_of
 
-          ClassExpression --&gt; anonymous_class_expression : any_of
+
+
+
+
+        ClassExpression --&gt; "*" AnonymousClassExpression : any_of
+        click AnonymousClassExpression href "../AnonymousClassExpression/"
+
+
 
       ClassExpression : exactly_one_of
 
-          ClassExpression --&gt; anonymous_class_expression : exactly_one_of
+
+
+
+
+        ClassExpression --&gt; "*" AnonymousClassExpression : exactly_one_of
+        click AnonymousClassExpression href "../AnonymousClassExpression/"
+
+
 
       ClassExpression : none_of
 
-          ClassExpression --&gt; anonymous_class_expression : none_of
+
+
+
+
+        ClassExpression --&gt; "*" AnonymousClassExpression : none_of
+        click AnonymousClassExpression href "../AnonymousClassExpression/"
+
+
 
       ClassExpression : slot_conditions
 
-          ClassExpression --&gt; slot_definition : slot_conditions
+
+
+
+
+        ClassExpression --&gt; "*" SlotDefinition : slot_conditions
+        click SlotDefinition href "../SlotDefinition/"
+
+
 
 
 </div>
 <!-- no inheritance hierarchy -->
+<h2 id="class-properties">Class Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mixin</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -353,31 +411,31 @@
 <tbody>
 <tr>
 <td><a href="../any_of/">any_of</a></td>
-<td>0..* <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
+<td>* <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
 <td>holds if at least one of the expressions hold</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../exactly_one_of/">exactly_one_of</a></td>
-<td>0..* <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
+<td>* <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
 <td>holds if only one of the expressions hold</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../none_of/">none_of</a></td>
-<td>0..* <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
+<td>* <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
 <td>holds if none of the expressions hold</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../all_of/">all_of</a></td>
-<td>0..* <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
+<td>* <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
 <td>holds if all of the expressions hold</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../slot_conditions/">slot_conditions</a></td>
-<td>0..* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
+<td>* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
 <td>expresses constraints on a group of slots for a class expression</td>
 <td>direct</td>
 </tr>
@@ -475,35 +533,15 @@ slots:
 slot_usage:
   any_of:
     name: any_of
-    domain_of:
-    - type_expression
-    - path_expression
-    - slot_expression
-    - class_expression
     range: anonymous_class_expression
   all_of:
     name: all_of
-    domain_of:
-    - type_expression
-    - path_expression
-    - slot_expression
-    - class_expression
     range: anonymous_class_expression
   exactly_one_of:
     name: exactly_one_of
-    domain_of:
-    - type_expression
-    - path_expression
-    - slot_expression
-    - class_expression
     range: anonymous_class_expression
   none_of:
     name: none_of
-    domain_of:
-    - type_expression
-    - path_expression
-    - slot_expression
-    - class_expression
     range: anonymous_class_expression
 
 </code></pre>
@@ -518,44 +556,29 @@ mixin: true
 slot_usage:
   any_of:
     name: any_of
-    domain_of:
-    - type_expression
-    - path_expression
-    - slot_expression
-    - class_expression
     range: anonymous_class_expression
   all_of:
     name: all_of
-    domain_of:
-    - type_expression
-    - path_expression
-    - slot_expression
-    - class_expression
     range: anonymous_class_expression
   exactly_one_of:
     name: exactly_one_of
-    domain_of:
-    - type_expression
-    - path_expression
-    - slot_expression
-    - class_expression
     range: anonymous_class_expression
   none_of:
     name: none_of
-    domain_of:
-    - type_expression
-    - path_expression
-    - slot_expression
-    - class_expression
     range: anonymous_class_expression
 attributes:
   any_of:
     name: any_of
     description: holds if at least one of the expressions hold
+    in_subset:
+    - SpecificationSubset
     from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    exact_mappings:
+    - sh:or
     rank: 101
     is_a: boolean_slot
-    multivalued: true
     alias: any_of
     owner: class_expression
     domain_of:
@@ -564,13 +587,19 @@ attributes:
     - slot_expression
     - class_expression
     range: anonymous_class_expression
+    multivalued: true
   exactly_one_of:
     name: exactly_one_of
     description: holds if only one of the expressions hold
+    in_subset:
+    - SpecificationSubset
     from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    exact_mappings:
+    - sh:xone
     rank: 103
     is_a: boolean_slot
-    multivalued: true
     alias: exactly_one_of
     owner: class_expression
     domain_of:
@@ -579,13 +608,19 @@ attributes:
     - slot_expression
     - class_expression
     range: anonymous_class_expression
+    multivalued: true
   none_of:
     name: none_of
     description: holds if none of the expressions hold
+    in_subset:
+    - SpecificationSubset
     from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    exact_mappings:
+    - sh:not
     rank: 105
     is_a: boolean_slot
-    multivalued: true
     alias: none_of
     owner: class_expression
     domain_of:
@@ -594,13 +629,19 @@ attributes:
     - slot_expression
     - class_expression
     range: anonymous_class_expression
+    multivalued: true
   all_of:
     name: all_of
     description: holds if all of the expressions hold
+    in_subset:
+    - SpecificationSubset
     from_schema: https://w3id.org/linkml/meta
+    see_also:
+    - https://w3id.org/linkml/docs/specification/05validation/#rules
+    exact_mappings:
+    - sh:and
     rank: 107
     is_a: boolean_slot
-    multivalued: true
     alias: all_of
     owner: class_expression
     domain_of:
@@ -609,6 +650,7 @@ attributes:
     - slot_expression
     - class_expression
     range: anonymous_class_expression
+    multivalued: true
   slot_conditions:
     name: slot_conditions
     description: expresses constraints on a group of slots for a class expression
@@ -617,12 +659,12 @@ attributes:
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
     domain: class_expression
-    multivalued: true
     alias: slot_conditions
     owner: class_expression
     domain_of:
     - class_expression
     range: slot_definition
+    multivalued: true
     inlined: true
 
 </code></pre>

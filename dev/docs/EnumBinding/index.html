@@ -265,6 +265,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#in-subsets">
+    In Subsets
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
     Identifier and Mapping Information
   </a>
@@ -314,19 +319,37 @@
 <p>URI: <a href="https://w3id.org/linkml/EnumBinding">linkml:EnumBinding</a></p>
 <div class="mermaid"> classDiagram
     class EnumBinding
+    click EnumBinding href "../EnumBinding/"
       Extensible &lt;|-- EnumBinding
+        click Extensible href "../Extensible/"
       Annotatable &lt;|-- EnumBinding
+        click Annotatable href "../Annotatable/"
       CommonMetadata &lt;|-- EnumBinding
+        click CommonMetadata href "../CommonMetadata/"
 
       EnumBinding : aliases
 
       EnumBinding : alt_descriptions
 
-          EnumBinding --&gt; alt_description : alt_descriptions
+
+
+
+
+        EnumBinding --&gt; "*" AltDescription : alt_descriptions
+        click AltDescription href "../AltDescription/"
+
+
 
       EnumBinding : annotations
 
-          EnumBinding --&gt; annotation : annotations
+
+
+
+
+        EnumBinding --&gt; "*" Annotation : annotations
+        click Annotation href "../Annotation/"
+
+
 
       EnumBinding : binds_value_of
 
@@ -356,11 +379,25 @@
 
       EnumBinding : examples
 
-          EnumBinding --&gt; example : examples
+
+
+
+
+        EnumBinding --&gt; "*" Example : examples
+        click Example href "../Example/"
+
+
 
       EnumBinding : extensions
 
-          EnumBinding --&gt; extension : extensions
+
+
+
+
+        EnumBinding --&gt; "*" Extension : extensions
+        click Extension href "../Extension/"
+
+
 
       EnumBinding : from_schema
 
@@ -370,7 +407,14 @@
 
       EnumBinding : in_subset
 
-          EnumBinding --&gt; subset_definition : in_subset
+
+
+
+
+        EnumBinding --&gt; "*" SubsetDefinition : in_subset
+        click SubsetDefinition href "../SubsetDefinition/"
+
+
 
       EnumBinding : keywords
 
@@ -386,15 +430,36 @@
 
       EnumBinding : obligation_level
 
-          EnumBinding --&gt; obligation_level_enum : obligation_level
+
+
+
+
+        EnumBinding --&gt; "0..1" ObligationLevelEnum : obligation_level
+        click ObligationLevelEnum href "../ObligationLevelEnum/"
+
+
 
       EnumBinding : pv_formula
 
-          EnumBinding --&gt; pv_formula_options : pv_formula
+
+
+
+
+        EnumBinding --&gt; "0..1" PvFormulaOptions : pv_formula
+        click PvFormulaOptions href "../PvFormulaOptions/"
+
+
 
       EnumBinding : range
 
-          EnumBinding --&gt; enum_definition : range
+
+
+
+
+        EnumBinding --&gt; "0..1" EnumDefinition : range
+        click EnumDefinition href "../EnumDefinition/"
+
+
 
       EnumBinding : rank
 
@@ -408,7 +473,14 @@
 
       EnumBinding : structured_aliases
 
-          EnumBinding --&gt; structured_alias : structured_aliases
+
+
+
+
+        EnumBinding --&gt; "*" StructuredAlias : structured_aliases
+        click StructuredAlias href "../StructuredAlias/"
+
+
 
       EnumBinding : title
 
@@ -457,13 +529,13 @@
 </tr>
 <tr>
 <td><a href="../extensions/">extensions</a></td>
-<td>0..* <br/> <a href="../Extension/">Extension</a></td>
+<td>* <br/> <a href="../Extension/">Extension</a></td>
 <td>a tag/text tuple attached to an arbitrary element</td>
 <td><a href="../Extensible/">Extensible</a></td>
 </tr>
 <tr>
 <td><a href="../annotations/">annotations</a></td>
-<td>0..* <br/> <a href="../Annotation/">Annotation</a></td>
+<td>* <br/> <a href="../Annotation/">Annotation</a></td>
 <td>a collection of tag/text tuples with the semantics of OWL Annotation</td>
 <td><a href="../Annotatable/">Annotatable</a></td>
 </tr>
@@ -475,7 +547,7 @@
 </tr>
 <tr>
 <td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>0..* <br/> <a href="../AltDescription/">AltDescription</a></td>
+<td>* <br/> <a href="../AltDescription/">AltDescription</a></td>
 <td>A sourced alternative description for an element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -493,31 +565,31 @@
 </tr>
 <tr>
 <td><a href="../todos/">todos</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>Outstanding issues that needs resolution</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../notes/">notes</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>editorial notes about an element intended primarily for internal consumption</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../comments/">comments</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>notes and comments about an element intended primarily for external consumpti...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../examples/">examples</a></td>
-<td>0..* <br/> <a href="../Example/">Example</a></td>
+<td>* <br/> <a href="../Example/">Example</a></td>
 <td>example usages of an element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../in_subset/">in_subset</a></td>
-<td>0..* <br/> <a href="../SubsetDefinition/">SubsetDefinition</a></td>
+<td>* <br/> <a href="../SubsetDefinition/">SubsetDefinition</a></td>
 <td>used to indicate membership of a term in a defined subset of terms used for a...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -547,7 +619,7 @@
 </tr>
 <tr>
 <td><a href="../see_also/">see_also</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of related entities or URLs that may be of relevance</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -565,49 +637,49 @@
 </tr>
 <tr>
 <td><a href="../aliases/">aliases</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>Alternate names/labels for the element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../structured_aliases/">structured_aliases</a></td>
-<td>0..* <br/> <a href="../StructuredAlias/">StructuredAlias</a></td>
+<td>* <br/> <a href="../StructuredAlias/">StructuredAlias</a></td>
 <td>A list of structured_alias objects, used to provide aliases in conjunction wi...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../mappings/">mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have compa...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../exact_mappings/">exact_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have ident...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../close_mappings/">close_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have close...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../related_mappings/">related_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have relat...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../narrow_mappings/">narrow_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have narro...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../broad_mappings/">broad_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have broad...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -619,7 +691,7 @@
 </tr>
 <tr>
 <td><a href="../contributors/">contributors</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>agent that contributed to the element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -655,13 +727,13 @@
 </tr>
 <tr>
 <td><a href="../categories/">categories</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>Controlled terms used to categorize an element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../keywords/">keywords</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>Keywords or tags used to describe the element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -710,6 +782,10 @@
 </tr>
 </tbody>
 </table>
+<h2 id="in-subsets">In Subsets</h2>
+<ul>
+<li><a href="../SpecificationSubset/">SpecificationSubset</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -755,9 +831,6 @@ slots:
 slot_usage:
   range:
     name: range
-    domain_of:
-    - enum_binding
-    - slot_expression
     range: enum_definition
 
 </code></pre>
@@ -776,9 +849,6 @@ mixins:
 slot_usage:
   range:
     name: range
-    domain_of:
-    - enum_binding
-    - slot_expression
     range: enum_definition
 attributes:
   range:
@@ -786,7 +856,19 @@ attributes:
     description: "defines the type of the object of the slot.  Given the following\
       \ slot definition\n  S1:\n    domain: C1\n    range:  C2\nthe declaration\n\
       \  X:\n    S1: Y\n\nimplicitly asserts Y is an instance of C2\n"
+    comments:
+    - range is underspecified, as not all elements can appear as the range of a slot.
+    - to use a URI or CURIE as the range, create a class with the URI or curie as
+      the class_uri
+    in_subset:
+    - SpecificationSubset
+    - MinimalSubset
+    - BasicSubset
+    - RelationalModelProfile
+    - ObjectOrientedProfile
     from_schema: https://w3id.org/linkml/meta
+    aliases:
+    - value domain
     rank: 1000
     domain: slot_definition
     inherited: true
@@ -848,13 +930,13 @@ attributes:
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
     domain: extensible
-    multivalued: true
     alias: extensions
     owner: enum_binding
     domain_of:
     - extension
     - extensible
     range: extension
+    multivalued: true
     inlined: true
   annotations:
     name: annotations
@@ -863,13 +945,13 @@ attributes:
     rank: 1000
     is_a: extensions
     domain: annotatable
-    multivalued: true
     alias: annotations
     owner: enum_binding
     domain_of:
     - annotatable
     - annotation
     range: annotation
+    multivalued: true
     inlined: true
   description:
     name: description
@@ -902,12 +984,12 @@ attributes:
     - alternate definitions
     rank: 1000
     domain: element
-    multivalued: true
     alias: alt_descriptions
     owner: enum_binding
     domain_of:
     - common_metadata
     range: alt_description
+    multivalued: true
     inlined: true
   title:
     name: title
@@ -952,12 +1034,12 @@ attributes:
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
     domain: element
-    multivalued: true
     alias: todos
     owner: enum_binding
     domain_of:
     - common_metadata
     range: string
+    multivalued: true
   notes:
     name: notes
     description: editorial notes about an element intended primarily for internal
@@ -968,12 +1050,12 @@ attributes:
     rank: 1000
     domain: element
     slot_uri: skos:editorialNote
-    multivalued: true
     alias: notes
     owner: enum_binding
     domain_of:
     - common_metadata
     range: string
+    multivalued: true
   comments:
     name: comments
     description: notes and comments about an element intended primarily for external
@@ -986,12 +1068,12 @@ attributes:
     rank: 1000
     domain: element
     slot_uri: skos:note
-    multivalued: true
     alias: comments
     owner: enum_binding
     domain_of:
     - common_metadata
     range: string
+    multivalued: true
   examples:
     name: examples
     description: example usages of an element
@@ -1003,12 +1085,12 @@ attributes:
     rank: 1000
     singular_name: example
     domain: element
-    multivalued: true
     alias: examples
     owner: enum_binding
     domain_of:
     - common_metadata
     range: example
+    multivalued: true
     inlined: true
   in_subset:
     name: in_subset
@@ -1023,12 +1105,12 @@ attributes:
     rank: 1000
     domain: element
     slot_uri: OIO:inSubset
-    multivalued: true
     alias: in_subset
     owner: enum_binding
     domain_of:
     - common_metadata
     range: subset_definition
+    multivalued: true
   from_schema:
     name: from_schema
     description: id of the schema that defined the element
@@ -1106,12 +1188,12 @@ attributes:
     rank: 1000
     domain: element
     slot_uri: rdfs:seeAlso
-    multivalued: true
     alias: see_also
     owner: enum_binding
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   deprecated element has exact replacement:
     name: deprecated element has exact replacement
     description: When an element is deprecated, it can be automatically replaced by
@@ -1157,12 +1239,12 @@ attributes:
     rank: 1000
     domain: element
     slot_uri: skos:altLabel
-    multivalued: true
     alias: aliases
     owner: enum_binding
     domain_of:
     - common_metadata
     range: string
+    multivalued: true
   structured_aliases:
     name: structured_aliases
     description: A list of structured_alias objects, used to provide aliases in conjunction
@@ -1172,12 +1254,12 @@ attributes:
     - linkml:aliases
     rank: 1000
     slot_uri: skosxl:altLabel
-    multivalued: true
     alias: structured_aliases
     owner: enum_binding
     domain_of:
     - common_metadata
     range: structured_alias
+    multivalued: true
     inlined: true
   mappings:
     name: mappings
@@ -1193,12 +1275,12 @@ attributes:
     - alternate ids
     rank: 1000
     slot_uri: skos:mappingRelation
-    multivalued: true
     alias: mappings
     owner: enum_binding
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   exact mappings:
     name: exact mappings
     description: A list of terms from different schemas or terminology systems that
@@ -1207,7 +1289,6 @@ attributes:
     rank: 1000
     is_a: mappings
     slot_uri: skos:exactMatch
-    multivalued: true
     inherited: false
     alias: exact_mappings
     owner: enum_binding
@@ -1215,6 +1296,7 @@ attributes:
     - common_metadata
     - UnitOfMeasure
     range: uriorcurie
+    multivalued: true
   close mappings:
     name: close mappings
     description: A list of terms from different schemas or terminology systems that
@@ -1223,13 +1305,13 @@ attributes:
     rank: 1000
     is_a: mappings
     slot_uri: skos:closeMatch
-    multivalued: true
     inherited: false
     alias: close_mappings
     owner: enum_binding
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   related mappings:
     name: related mappings
     description: A list of terms from different schemas or terminology systems that
@@ -1238,13 +1320,13 @@ attributes:
     rank: 1000
     is_a: mappings
     slot_uri: skos:relatedMatch
-    multivalued: true
     inherited: false
     alias: related_mappings
     owner: enum_binding
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   narrow mappings:
     name: narrow mappings
     description: A list of terms from different schemas or terminology systems that
@@ -1253,13 +1335,13 @@ attributes:
     rank: 1000
     is_a: mappings
     slot_uri: skos:narrowMatch
-    multivalued: true
     inherited: false
     alias: narrow_mappings
     owner: enum_binding
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   broad mappings:
     name: broad mappings
     description: A list of terms from different schemas or terminology systems that
@@ -1268,13 +1350,13 @@ attributes:
     rank: 1000
     is_a: mappings
     slot_uri: skos:broadMatch
-    multivalued: true
     inherited: false
     alias: broad_mappings
     owner: enum_binding
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   created_by:
     name: created_by
     description: agent that created the element
@@ -1298,12 +1380,12 @@ attributes:
     rank: 1000
     domain: element
     slot_uri: dcterms:contributor
-    multivalued: true
     alias: contributors
     owner: enum_binding
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   created_on:
     name: created_on
     description: time at which the element was created
@@ -1404,13 +1486,13 @@ attributes:
     rank: 1000
     singular_name: category
     slot_uri: dcterms:subject
-    multivalued: true
     alias: categories
     owner: enum_binding
     domain_of:
     - common_metadata
     - structured_alias
     range: uriorcurie
+    multivalued: true
   keywords:
     name: keywords
     description: Keywords or tags used to describe the element
@@ -1421,12 +1503,12 @@ attributes:
     singular_name: keyword
     domain: element
     slot_uri: schema:keywords
-    multivalued: true
     alias: keywords
     owner: enum_binding
     domain_of:
     - common_metadata
     range: string
+    multivalued: true
 
 </code></pre>
 </details>

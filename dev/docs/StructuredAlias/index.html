@@ -255,6 +255,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#class-properties">
+    Class Properties
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
     Slots
   </a>
@@ -314,26 +319,52 @@
 <p>URI: <a href="http://www.w3.org/2008/05/skos-xl#Label">skosxl:Label</a></p>
 <div class="mermaid"> classDiagram
     class StructuredAlias
+    click StructuredAlias href "../StructuredAlias/"
       Expression &lt;|-- StructuredAlias
+        click Expression href "../Expression/"
       Extensible &lt;|-- StructuredAlias
+        click Extensible href "../Extensible/"
       Annotatable &lt;|-- StructuredAlias
+        click Annotatable href "../Annotatable/"
       CommonMetadata &lt;|-- StructuredAlias
+        click CommonMetadata href "../CommonMetadata/"
 
       StructuredAlias : alias_contexts
 
       StructuredAlias : alias_predicate
 
-          StructuredAlias --&gt; alias_predicate_enum : alias_predicate
+
+
+
+
+        StructuredAlias --&gt; "0..1 _recommended_" AliasPredicateEnum : alias_predicate
+        click AliasPredicateEnum href "../AliasPredicateEnum/"
+
+
 
       StructuredAlias : aliases
 
       StructuredAlias : alt_descriptions
 
-          StructuredAlias --&gt; alt_description : alt_descriptions
+
+
+
+
+        StructuredAlias --&gt; "*" AltDescription : alt_descriptions
+        click AltDescription href "../AltDescription/"
+
+
 
       StructuredAlias : annotations
 
-          StructuredAlias --&gt; annotation : annotations
+
+
+
+
+        StructuredAlias --&gt; "*" Annotation : annotations
+        click Annotation href "../Annotation/"
+
+
 
       StructuredAlias : broad_mappings
 
@@ -361,11 +392,25 @@
 
       StructuredAlias : examples
 
-          StructuredAlias --&gt; example : examples
+
+
+
+
+        StructuredAlias --&gt; "*" Example : examples
+        click Example href "../Example/"
+
+
 
       StructuredAlias : extensions
 
-          StructuredAlias --&gt; extension : extensions
+
+
+
+
+        StructuredAlias --&gt; "*" Extension : extensions
+        click Extension href "../Extension/"
+
+
 
       StructuredAlias : from_schema
 
@@ -375,7 +420,14 @@
 
       StructuredAlias : in_subset
 
-          StructuredAlias --&gt; subset_definition : in_subset
+
+
+
+
+        StructuredAlias --&gt; "*" SubsetDefinition : in_subset
+        click SubsetDefinition href "../SubsetDefinition/"
+
+
 
       StructuredAlias : keywords
 
@@ -403,7 +455,14 @@
 
       StructuredAlias : structured_aliases
 
-          StructuredAlias --&gt; structured_alias : structured_aliases
+
+
+
+
+        StructuredAlias --&gt; "*" StructuredAlias : structured_aliases
+        click StructuredAlias href "../StructuredAlias/"
+
+
 
       StructuredAlias : title
 
@@ -415,6 +474,21 @@
 <ul>
 <li><strong>StructuredAlias</strong> [ <a href="../Expression/">Expression</a> <a href="../Extensible/">Extensible</a> <a href="../Annotatable/">Annotatable</a> <a href="../CommonMetadata/">CommonMetadata</a>]</li>
 </ul>
+<h2 id="class-properties">Class Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Class URI</td>
+<td><a href="http://www.w3.org/2008/05/skos-xl#Label">skosxl:Label</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -428,7 +502,7 @@
 <tbody>
 <tr>
 <td><a href="../literal_form/">literal_form</a></td>
-<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
 <td>The literal lexical form of a structured alias; i</td>
 <td>direct</td>
 </tr>
@@ -440,25 +514,25 @@
 </tr>
 <tr>
 <td><a href="../categories/">categories</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>The category or categories of an alias</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../alias_contexts/">alias_contexts</a></td>
-<td>0..* <br/> <a href="../Uri/">Uri</a></td>
+<td>* <br/> <a href="../Uri/">Uri</a></td>
 <td>The context in which an alias should be applied</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../extensions/">extensions</a></td>
-<td>0..* <br/> <a href="../Extension/">Extension</a></td>
+<td>* <br/> <a href="../Extension/">Extension</a></td>
 <td>a tag/text tuple attached to an arbitrary element</td>
 <td><a href="../Extensible/">Extensible</a></td>
 </tr>
 <tr>
 <td><a href="../annotations/">annotations</a></td>
-<td>0..* <br/> <a href="../Annotation/">Annotation</a></td>
+<td>* <br/> <a href="../Annotation/">Annotation</a></td>
 <td>a collection of tag/text tuples with the semantics of OWL Annotation</td>
 <td><a href="../Annotatable/">Annotatable</a></td>
 </tr>
@@ -470,7 +544,7 @@
 </tr>
 <tr>
 <td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>0..* <br/> <a href="../AltDescription/">AltDescription</a></td>
+<td>* <br/> <a href="../AltDescription/">AltDescription</a></td>
 <td>A sourced alternative description for an element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -488,31 +562,31 @@
 </tr>
 <tr>
 <td><a href="../todos/">todos</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>Outstanding issues that needs resolution</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../notes/">notes</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>editorial notes about an element intended primarily for internal consumption</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../comments/">comments</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>notes and comments about an element intended primarily for external consumpti...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../examples/">examples</a></td>
-<td>0..* <br/> <a href="../Example/">Example</a></td>
+<td>* <br/> <a href="../Example/">Example</a></td>
 <td>example usages of an element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../in_subset/">in_subset</a></td>
-<td>0..* <br/> <a href="../SubsetDefinition/">SubsetDefinition</a></td>
+<td>* <br/> <a href="../SubsetDefinition/">SubsetDefinition</a></td>
 <td>used to indicate membership of a term in a defined subset of terms used for a...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -542,7 +616,7 @@
 </tr>
 <tr>
 <td><a href="../see_also/">see_also</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of related entities or URLs that may be of relevance</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -560,49 +634,49 @@
 </tr>
 <tr>
 <td><a href="../aliases/">aliases</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>Alternate names/labels for the element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../structured_aliases/">structured_aliases</a></td>
-<td>0..* <br/> <a href="./">StructuredAlias</a></td>
+<td>* <br/> <a href="./">StructuredAlias</a></td>
 <td>A list of structured_alias objects, used to provide aliases in conjunction wi...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../mappings/">mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have compa...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../exact_mappings/">exact_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have ident...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../close_mappings/">close_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have close...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../related_mappings/">related_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have relat...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../narrow_mappings/">narrow_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have narro...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../broad_mappings/">broad_mappings</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of terms from different schemas or terminology systems that have broad...</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -614,7 +688,7 @@
 </tr>
 <tr>
 <td><a href="../contributors/">contributors</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>agent that contributed to the element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -650,7 +724,7 @@
 </tr>
 <tr>
 <td><a href="../keywords/">keywords</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>Keywords or tags used to describe the element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -875,9 +949,6 @@ slot_usage:
     examples:
     - value: https://w3id.org/mod#acronym
       description: An acronym
-    domain_of:
-    - common_metadata
-    - structured_alias
 class_uri: skosxl:Label
 
 </code></pre>
@@ -901,9 +972,6 @@ slot_usage:
     examples:
     - value: https://w3id.org/mod#acronym
       description: An acronym
-    domain_of:
-    - common_metadata
-    - structured_alias
 attributes:
   literal_form:
     name: literal_form
@@ -939,45 +1007,50 @@ attributes:
     name: categories
     description: The category or categories of an alias. This can be drawn from any
       relevant vocabulary
+    comments:
+    - if you wish to use uncontrolled terms or terms that lack identifiers then use
+      the keywords element
     examples:
     - value: https://w3id.org/mod#acronym
       description: An acronym
+    in_subset:
+    - BasicSubset
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
     singular_name: category
     slot_uri: dcterms:subject
-    multivalued: true
     alias: categories
     owner: structured_alias
     domain_of:
     - common_metadata
     - structured_alias
     range: uriorcurie
+    multivalued: true
   alias_contexts:
     name: alias_contexts
     description: The context in which an alias should be applied
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
     domain: structured_alias
-    multivalued: true
     alias: contexts
     owner: structured_alias
     domain_of:
     - structured_alias
     range: uri
+    multivalued: true
   extensions:
     name: extensions
     description: a tag/text tuple attached to an arbitrary element
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
     domain: extensible
-    multivalued: true
     alias: extensions
     owner: structured_alias
     domain_of:
     - extension
     - extensible
     range: extension
+    multivalued: true
     inlined: true
   annotations:
     name: annotations
@@ -986,13 +1059,13 @@ attributes:
     rank: 1000
     is_a: extensions
     domain: annotatable
-    multivalued: true
     alias: annotations
     owner: structured_alias
     domain_of:
     - annotatable
     - annotation
     range: annotation
+    multivalued: true
     inlined: true
   description:
     name: description
@@ -1025,12 +1098,12 @@ attributes:
     - alternate definitions
     rank: 1000
     domain: element
-    multivalued: true
     alias: alt_descriptions
     owner: structured_alias
     domain_of:
     - common_metadata
     range: alt_description
+    multivalued: true
     inlined: true
   title:
     name: title
@@ -1075,12 +1148,12 @@ attributes:
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
     domain: element
-    multivalued: true
     alias: todos
     owner: structured_alias
     domain_of:
     - common_metadata
     range: string
+    multivalued: true
   notes:
     name: notes
     description: editorial notes about an element intended primarily for internal
@@ -1091,12 +1164,12 @@ attributes:
     rank: 1000
     domain: element
     slot_uri: skos:editorialNote
-    multivalued: true
     alias: notes
     owner: structured_alias
     domain_of:
     - common_metadata
     range: string
+    multivalued: true
   comments:
     name: comments
     description: notes and comments about an element intended primarily for external
@@ -1109,12 +1182,12 @@ attributes:
     rank: 1000
     domain: element
     slot_uri: skos:note
-    multivalued: true
     alias: comments
     owner: structured_alias
     domain_of:
     - common_metadata
     range: string
+    multivalued: true
   examples:
     name: examples
     description: example usages of an element
@@ -1126,12 +1199,12 @@ attributes:
     rank: 1000
     singular_name: example
     domain: element
-    multivalued: true
     alias: examples
     owner: structured_alias
     domain_of:
     - common_metadata
     range: example
+    multivalued: true
     inlined: true
   in_subset:
     name: in_subset
@@ -1146,12 +1219,12 @@ attributes:
     rank: 1000
     domain: element
     slot_uri: OIO:inSubset
-    multivalued: true
     alias: in_subset
     owner: structured_alias
     domain_of:
     - common_metadata
     range: subset_definition
+    multivalued: true
   from_schema:
     name: from_schema
     description: id of the schema that defined the element
@@ -1229,12 +1302,12 @@ attributes:
     rank: 1000
     domain: element
     slot_uri: rdfs:seeAlso
-    multivalued: true
     alias: see_also
     owner: structured_alias
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   deprecated element has exact replacement:
     name: deprecated element has exact replacement
     description: When an element is deprecated, it can be automatically replaced by
@@ -1280,12 +1353,12 @@ attributes:
     rank: 1000
     domain: element
     slot_uri: skos:altLabel
-    multivalued: true
     alias: aliases
     owner: structured_alias
     domain_of:
     - common_metadata
     range: string
+    multivalued: true
   structured_aliases:
     name: structured_aliases
     description: A list of structured_alias objects, used to provide aliases in conjunction
@@ -1295,12 +1368,12 @@ attributes:
     - linkml:aliases
     rank: 1000
     slot_uri: skosxl:altLabel
-    multivalued: true
     alias: structured_aliases
     owner: structured_alias
     domain_of:
     - common_metadata
     range: structured_alias
+    multivalued: true
     inlined: true
   mappings:
     name: mappings
@@ -1316,12 +1389,12 @@ attributes:
     - alternate ids
     rank: 1000
     slot_uri: skos:mappingRelation
-    multivalued: true
     alias: mappings
     owner: structured_alias
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   exact mappings:
     name: exact mappings
     description: A list of terms from different schemas or terminology systems that
@@ -1330,7 +1403,6 @@ attributes:
     rank: 1000
     is_a: mappings
     slot_uri: skos:exactMatch
-    multivalued: true
     inherited: false
     alias: exact_mappings
     owner: structured_alias
@@ -1338,6 +1410,7 @@ attributes:
     - common_metadata
     - UnitOfMeasure
     range: uriorcurie
+    multivalued: true
   close mappings:
     name: close mappings
     description: A list of terms from different schemas or terminology systems that
@@ -1346,13 +1419,13 @@ attributes:
     rank: 1000
     is_a: mappings
     slot_uri: skos:closeMatch
-    multivalued: true
     inherited: false
     alias: close_mappings
     owner: structured_alias
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   related mappings:
     name: related mappings
     description: A list of terms from different schemas or terminology systems that
@@ -1361,13 +1434,13 @@ attributes:
     rank: 1000
     is_a: mappings
     slot_uri: skos:relatedMatch
-    multivalued: true
     inherited: false
     alias: related_mappings
     owner: structured_alias
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   narrow mappings:
     name: narrow mappings
     description: A list of terms from different schemas or terminology systems that
@@ -1376,13 +1449,13 @@ attributes:
     rank: 1000
     is_a: mappings
     slot_uri: skos:narrowMatch
-    multivalued: true
     inherited: false
     alias: narrow_mappings
     owner: structured_alias
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   broad mappings:
     name: broad mappings
     description: A list of terms from different schemas or terminology systems that
@@ -1391,13 +1464,13 @@ attributes:
     rank: 1000
     is_a: mappings
     slot_uri: skos:broadMatch
-    multivalued: true
     inherited: false
     alias: broad_mappings
     owner: structured_alias
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   created_by:
     name: created_by
     description: agent that created the element
@@ -1421,12 +1494,12 @@ attributes:
     rank: 1000
     domain: element
     slot_uri: dcterms:contributor
-    multivalued: true
     alias: contributors
     owner: structured_alias
     domain_of:
     - common_metadata
     range: uriorcurie
+    multivalued: true
   created_on:
     name: created_on
     description: time at which the element was created
@@ -1525,12 +1598,12 @@ attributes:
     singular_name: keyword
     domain: element
     slot_uri: schema:keywords
-    multivalued: true
     alias: keywords
     owner: structured_alias
     domain_of:
     - common_metadata
     range: string
+    multivalued: true
 class_uri: skosxl:Label
 
 </code></pre>

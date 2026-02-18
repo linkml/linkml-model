@@ -314,17 +314,33 @@
 <p>URI: <a href="https://w3id.org/linkml/Extension">linkml:Extension</a></p>
 <div class="mermaid"> classDiagram
     class Extension
+    click Extension href "../Extension/"
       Extension &lt;|-- Annotation
+        click Annotation href "../Annotation/"
 
       Extension : extension_tag
 
       Extension : extension_value
 
-          Extension --&gt; AnyValue : extension_value
+
+
+
+
+        Extension --&gt; "1" AnyValue : extension_value
+        click AnyValue href "../AnyValue/"
+
+
 
       Extension : extensions
 
-          Extension --&gt; extension : extensions
+
+
+
+
+        Extension --&gt; "*" Extension : extensions
+        click Extension href "../Extension/"
+
+
 
 
 </div>
@@ -348,19 +364,19 @@
 <tbody>
 <tr>
 <td><a href="../extension_tag/">extension_tag</a></td>
-<td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>a tag associated with an extension</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../extension_value/">extension_value</a></td>
-<td>1..1 <br/> <a href="../AnyValue/">AnyValue</a></td>
+<td>1 <br/> <a href="../AnyValue/">AnyValue</a></td>
 <td>the actual annotation</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../extensions/">extensions</a></td>
-<td>0..* <br/> <a href="./">Extension</a></td>
+<td>* <br/> <a href="./">Extension</a></td>
 <td>a tag/text tuple attached to an arbitrary element</td>
 <td>direct</td>
 </tr>
@@ -510,24 +526,6 @@
 <td><a href="./">Extension</a></td>
 </tr>
 <tr>
-<td><a href="../Annotation/">Annotation</a></td>
-<td><a href="../extension_tag/">extension_tag</a></td>
-<td>domain</td>
-<td><a href="./">Extension</a></td>
-</tr>
-<tr>
-<td><a href="../Annotation/">Annotation</a></td>
-<td><a href="../extension_value/">extension_value</a></td>
-<td>domain</td>
-<td><a href="./">Extension</a></td>
-</tr>
-<tr>
-<td><a href="../Annotation/">Annotation</a></td>
-<td><a href="../extensions/">extensions</a></td>
-<td>range</td>
-<td><a href="./">Extension</a></td>
-</tr>
-<tr>
 <td><a href="./">Extension</a></td>
 <td><a href="../extension_tag/">extension_tag</a></td>
 <td>domain</td>
@@ -547,6 +545,24 @@
 </tr>
 <tr>
 <td><a href="../Extensible/">Extensible</a></td>
+<td><a href="../extensions/">extensions</a></td>
+<td>range</td>
+<td><a href="./">Extension</a></td>
+</tr>
+<tr>
+<td><a href="../Annotation/">Annotation</a></td>
+<td><a href="../extension_tag/">extension_tag</a></td>
+<td>domain</td>
+<td><a href="./">Extension</a></td>
+</tr>
+<tr>
+<td><a href="../Annotation/">Annotation</a></td>
+<td><a href="../extension_value/">extension_value</a></td>
+<td>domain</td>
+<td><a href="./">Extension</a></td>
+</tr>
+<tr>
+<td><a href="../Annotation/">Annotation</a></td>
 <td><a href="../extensions/">extensions</a></td>
 <td>range</td>
 <td><a href="./">Extension</a></td>
@@ -612,6 +628,10 @@ attributes:
     required: true
   extension_value:
     name: extension_value
+    annotations:
+      simple_dict_value:
+        tag: simple_dict_value
+        value: true
     description: the actual annotation
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
@@ -628,13 +648,13 @@ attributes:
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
     domain: extensible
-    multivalued: true
     alias: extensions
     owner: extension
     domain_of:
     - extension
     - extensible
     range: extension
+    multivalued: true
     inlined: true
 
 </code></pre>

@@ -530,6 +530,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#administrative-metadata" class="md-nav__link">
+    Administrative Metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     Schema Source
   </a>
@@ -550,29 +557,29 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#schemadefinition" class="md-nav__link">
-    SchemaDefinition
+  <a href="#slots-from-schemadefinition-also-in-relationalmodelprofile" class="md-nav__link">
+    Slots from SchemaDefinition also in RelationalModelProfile
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#classdefinition" class="md-nav__link">
-    ClassDefinition
+  <a href="#slots-from-classdefinition-also-in-relationalmodelprofile" class="md-nav__link">
+    Slots from ClassDefinition also in RelationalModelProfile
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#enumdefinition" class="md-nav__link">
-    EnumDefinition
+  <a href="#slots-from-enumdefinition-also-in-relationalmodelprofile" class="md-nav__link">
+    Slots from EnumDefinition also in RelationalModelProfile
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#uniquekey" class="md-nav__link">
-    UniqueKey
+  <a href="#slots-from-uniquekey-also-in-relationalmodelprofile" class="md-nav__link">
+    Slots from UniqueKey also in RelationalModelProfile
   </a>
   
 </li>
@@ -674,6 +681,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#administrative-metadata" class="md-nav__link">
+    Administrative Metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     Schema Source
   </a>
@@ -694,29 +708,29 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#schemadefinition" class="md-nav__link">
-    SchemaDefinition
+  <a href="#slots-from-schemadefinition-also-in-relationalmodelprofile" class="md-nav__link">
+    Slots from SchemaDefinition also in RelationalModelProfile
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#classdefinition" class="md-nav__link">
-    ClassDefinition
+  <a href="#slots-from-classdefinition-also-in-relationalmodelprofile" class="md-nav__link">
+    Slots from ClassDefinition also in RelationalModelProfile
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#enumdefinition" class="md-nav__link">
-    EnumDefinition
+  <a href="#slots-from-enumdefinition-also-in-relationalmodelprofile" class="md-nav__link">
+    Slots from EnumDefinition also in RelationalModelProfile
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#uniquekey" class="md-nav__link">
-    UniqueKey
+  <a href="#slots-from-uniquekey-also-in-relationalmodelprofile" class="md-nav__link">
+    Slots from UniqueKey also in RelationalModelProfile
   </a>
   
 </li>
@@ -757,6 +771,8 @@
 <p><em>concrete classes or otherwise transformed.</em></p>
 <p>URI: <a href="./">RelationalModelProfile</a></p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="administrative-metadata">Administrative Metadata</h3>
+<p><strong>Rank:</strong> 3</p>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: https://w3id.org/linkml/meta</li>
@@ -788,14 +804,94 @@
 </tr>
 </tbody>
 </table>
-<h3 id="schemadefinition">SchemaDefinition</h3>
-<p>A collection of definitions that make up a schema or a data model.</p>
-<h3 id="classdefinition">ClassDefinition</h3>
-<p>an element whose instances are complex objects that may have slot-value assignments</p>
-<h3 id="enumdefinition">EnumDefinition</h3>
-<p>an element whose instances must be drawn from a specified set of permissible values</p>
-<h3 id="uniquekey">UniqueKey</h3>
-<p>a collection of slots whose values uniquely identify an instance of a class</p>
+<h3 id="slots-from-schemadefinition-also-in-relationalmodelprofile">Slots from <a href="../SchemaDefinition/">SchemaDefinition</a> also in <em>RelationalModelProfile</em></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>1 <br/> <a href="../Ncname/">Ncname</a></td>
+<td>a unique name for the schema that is both human-readable and consists of only... <strong>identifier</strong></td>
+</tr>
+<tr>
+<td><a href="../classes/">classes</a></td>
+<td>* <br/> <a href="../ClassDefinition/">ClassDefinition</a></td>
+<td>An index to the collection of all class definitions in the schema</td>
+</tr>
+</tbody>
+</table>
+<h3 id="slots-from-classdefinition-also-in-relationalmodelprofile">Slots from <a href="../ClassDefinition/">ClassDefinition</a> also in <em>RelationalModelProfile</em></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>the unique name of the element within the context of the schema <strong>identifier</strong></td>
+</tr>
+<tr>
+<td><a href="../attributes/">attributes</a></td>
+<td>* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
+<td>Inline definition of slots</td>
+</tr>
+<tr>
+<td><a href="../unique_keys/">unique_keys</a></td>
+<td>* <br/> <a href="../UniqueKey/">UniqueKey</a></td>
+<td>A collection of named unique keys for this class</td>
+</tr>
+</tbody>
+</table>
+<h3 id="slots-from-enumdefinition-also-in-relationalmodelprofile">Slots from <a href="../EnumDefinition/">EnumDefinition</a> also in <em>RelationalModelProfile</em></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>the unique name of the element within the context of the schema <strong>identifier</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="slots-from-uniquekey-also-in-relationalmodelprofile">Slots from <a href="../UniqueKey/">UniqueKey</a> also in <em>RelationalModelProfile</em></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../unique_key_name/">unique_key_name</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>name of the unique key</td>
+</tr>
+<tr>
+<td><a href="../unique_key_slots/">unique_key_slots</a></td>
+<td>1..* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
+<td>list of slot names that form a key</td>
+</tr>
+</tbody>
+</table>
 <h2 id="slots-in-subset">Slots in subset</h2>
 <table>
 <thead>

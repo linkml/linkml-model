@@ -260,6 +260,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#in-subsets">
+    In Subsets
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
     Identifier and Mapping Information
   </a>
@@ -309,6 +314,7 @@
 <p>URI: <a href="https://w3id.org/linkml/ReachabilityQuery">linkml:ReachabilityQuery</a></p>
 <div class="mermaid"> classDiagram
     class ReachabilityQuery
+    click ReachabilityQuery href "../ReachabilityQuery/"
       ReachabilityQuery : include_self
 
       ReachabilityQuery : is_direct
@@ -343,13 +349,13 @@
 </tr>
 <tr>
 <td><a href="../source_nodes/">source_nodes</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of nodes that are used in the reachability query</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../relationship_types/">relationship_types</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of relationship types (properties) that are used in a reachability que...</td>
 <td>direct</td>
 </tr>
@@ -434,6 +440,10 @@
 </tr>
 </tbody>
 </table>
+<h2 id="in-subsets">In Subsets</h2>
+<ul>
+<li><a href="../SpecificationSubset/">SpecificationSubset</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -517,12 +527,12 @@ attributes:
     from_schema: https://w3id.org/linkml/meta
     rank: 1000
     domain: reachability_query
-    multivalued: true
     alias: source_nodes
     owner: reachability_query
     domain_of:
     - reachability_query
     range: uriorcurie
+    multivalued: true
   relationship_types:
     name: relationship_types
     description: A list of relationship types (properties) that are used in a reachability
@@ -535,12 +545,12 @@ attributes:
     - properties
     rank: 1000
     domain: reachability_query
-    multivalued: true
     alias: relationship_types
     owner: reachability_query
     domain_of:
     - reachability_query
     range: uriorcurie
+    multivalued: true
   is_direct:
     name: is_direct
     description: True if the reachability query should only include directly related

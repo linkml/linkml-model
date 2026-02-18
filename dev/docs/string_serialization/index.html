@@ -571,6 +571,33 @@
     Properties
   </a>
   
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-and-range" class="md-nav__link">
+    Type and Range
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinality-and-requirements" class="md-nav__link">
+    Cardinality and Requirements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-subsets" class="md-nav__link">
+    In Subsets
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -601,6 +628,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mappings" class="md-nav__link">
+    Mappings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#linkml-source" class="md-nav__link">
     LinkML Source
   </a>
@@ -627,7 +661,8 @@
 <p><em>We call the slot with the serialization the s-slot, the slots used in the {}s are v-slots. If both s-slots and v-slots are populated on an object then the value of the s-slot should correspond to the expansion.</em></p>
 <p><em>Implementations of frameworks may choose to use this property to either (a) PARSE: implement automated normalizations by parsing denormalized strings into complex objects (b) GENERATE: implement automated to_string labeling of complex objects</em></p>
 <p><em>For example, a Measurement class may have 3 fields: unit, value, and string_value. The string_value slot may have a string_serialization of {value}{unit} such that if unit=cm and value=2, the value of string_value shouldd be 2cm</em></p>
-<p>URI: <a href="https://w3id.org/linkml/string_serialization">linkml:string_serialization</a></p>
+<p>URI: <a href="https://w3id.org/linkml/string_serialization">linkml:string_serialization</a>
+Alias: string_serialization</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -641,23 +676,23 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Definition/">Definition</a></td>
-<td>abstract base class for core metaclasses</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td>Represents how a slot or type can be serialized to a format</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../EnumDefinition/">EnumDefinition</a></td>
 <td>an element whose instances must be drawn from a specified set of permissible ...</td>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../Definition/">Definition</a></td>
+<td>abstract base class for core metaclasses</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../SlotDefinition/">SlotDefinition</a></td>
 <td>an element that describes how instances are related to other instances</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TypeMapping/">TypeMapping</a></td>
+<td>Represents how a slot or type can be serialized to a format</td>
 <td>no</td>
 </tr>
 <tr>
@@ -668,8 +703,47 @@
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
+<h3 id="type-and-range">Type and Range</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Range</td>
+<td><a href="../String/">String</a></td>
+</tr>
+<tr>
+<td>Domain</td>
+<td><a href="../Definition/">Definition</a></td>
+</tr>
+<tr>
+<td>Domain Of</td>
+<td><a href="../Definition/">Definition</a>, <a href="../TypeMapping/">TypeMapping</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cardinality-and-requirements">Cardinality and Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="in-subsets">In Subsets</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li><a href="../SpecificationSubset/">SpecificationSubset</a></li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
@@ -680,6 +754,25 @@
 <ul>
 <li>from schema: https://w3id.org/linkml/meta</li>
 </ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>linkml:string_serialization</td>
+</tr>
+<tr>
+<td>native</td>
+<td>linkml:string_serialization</td>
+</tr>
+</tbody>
+</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 

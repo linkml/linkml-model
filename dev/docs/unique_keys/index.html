@@ -571,6 +571,33 @@
     Properties
   </a>
   
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-and-range" class="md-nav__link">
+    Type and Range
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinality-and-requirements" class="md-nav__link">
+    Cardinality and Requirements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-subsets" class="md-nav__link">
+    In Subsets
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -601,6 +628,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mappings" class="md-nav__link">
+    Mappings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#linkml-source" class="md-nav__link">
     LinkML Source
   </a>
@@ -624,7 +658,8 @@
 
 <h1 id="slot-unique_keys">Slot: unique_keys</h1>
 <p><em>A collection of named unique keys for this class. Unique keys may be singular or compound.</em></p>
-<p>URI: <a href="https://w3id.org/linkml/unique_keys">linkml:unique_keys</a></p>
+<p>URI: <a href="https://w3id.org/linkml/unique_keys">linkml:unique_keys</a>
+Alias: unique_keys</p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -645,13 +680,49 @@
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
+<h3 id="type-and-range">Type and Range</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Range</td>
+<td><a href="../UniqueKey/">UniqueKey</a></td>
+</tr>
+<tr>
+<td>Domain</td>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+</tr>
+<tr>
+<td>Domain Of</td>
+<td><a href="../ClassDefinition/">ClassDefinition</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cardinality-and-requirements">Cardinality and Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Multivalued</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="in-subsets">In Subsets</h2>
 <ul>
-<li>
-<p>Range: <a href="../UniqueKey/">UniqueKey</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
-</li>
+<li><a href="../SpecificationSubset/">SpecificationSubset</a></li>
+<li><a href="../BasicSubset/">BasicSubset</a></li>
+<li><a href="../RelationalModelProfile/">RelationalModelProfile</a></li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
@@ -662,6 +733,29 @@
 <ul>
 <li>from schema: https://w3id.org/linkml/meta</li>
 </ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>linkml:unique_keys</td>
+</tr>
+<tr>
+<td>native</td>
+<td>linkml:unique_keys</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>owl:hasKey</td>
+</tr>
+</tbody>
+</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
@@ -679,11 +773,11 @@ exact_mappings:
 - owl:hasKey
 rank: 1000
 domain: class_definition
-multivalued: true
 alias: unique_keys
 domain_of:
 - class_definition
 range: unique_key
+multivalued: true
 inlined: true
 
 </code></pre>
