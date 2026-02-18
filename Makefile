@@ -60,8 +60,11 @@ gen-py: $(DEST)
 	# for all the files in the schema folder, run the gen-python command and output the result to the top
 	# level of the project.  In other repos, we'd include mergeimports=True, but we don't do that with
 	# linkml-model.
+	# extended_types.yaml is excluded because gen-python produces an empty file for it;
+	# the schema is not ready for Python code generation yet.
 	@for file in $(wildcard $(PYMODEL)/model/schema/*.yaml); do \
 		base=$$(basename $$file); \
+		if [ "$$base" = "extended_types.yaml" ]; then continue; fi; \
 		filename_without_suffix=$${base%.*}; \
 		$(RUN) gen-python --genmeta $$file > $(DEST)/$$filename_without_suffix.py; \
 	done
