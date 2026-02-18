@@ -1,5 +1,5 @@
 # Auto generated from validation.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-02-07T17:29:45
+# Generation date: 2026-02-18T21:04:57
 # Schema: reporting
 #
 # id: https://w3id.org/linkml/reporting
@@ -8,26 +8,54 @@
 
 import dataclasses
 import re
-from jsonasobj2 import JsonObj, as_dict
-from typing import Optional, List, Union, Dict, ClassVar, Any
 from dataclasses import dataclass
+from datetime import (
+    date,
+    datetime,
+    time
+)
+from typing import (
+    Any,
+    ClassVar,
+    Dict,
+    List,
+    Optional,
+    Union
+)
 
-from linkml_runtime.utils.slot import Slot
-from linkml_runtime.utils.metamodelcore import empty_list, empty_dict, bnode
-from linkml_runtime.utils.yamlutils import YAMLRoot, extended_str, extended_float, extended_int
-from linkml_runtime.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
-from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
-from linkml_runtime.utils.enumerations import EnumDefinitionImpl
-from rdflib import Namespace, URIRef
+from jsonasobj2 import (
+    JsonObj,
+    as_dict
+)
 from linkml_runtime.utils.curienamespace import CurieNamespace
+from linkml_runtime.utils.enumerations import EnumDefinitionImpl
+from linkml_runtime.utils.formatutils import (
+    camelcase,
+    sfx,
+    underscore
+)
+from linkml_runtime.utils.metamodelcore import (
+    bnode,
+    empty_dict,
+    empty_list
+)
+from linkml_runtime.utils.slot import Slot
+from linkml_runtime.utils.yamlutils import (
+    YAMLRoot,
+    extended_float,
+    extended_int,
+    extended_str
+)
+from rdflib import (
+    Namespace,
+    URIRef
+)
+
 from .types import Nodeidentifier, String
 from linkml_runtime.utils.metamodelcore import NodeIdentifier
 
 metamodel_version = "1.7.0"
 version = None
-
-# Overwrite dataclasses _init_fn to add **kwargs in __init__
-dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
@@ -49,21 +77,21 @@ DEFAULT_ = REPORTING
 
 
 
-@dataclass
+@dataclass(repr=False)
 class ValidationReport(YAMLRoot):
     """
     A report object
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = SH["ValidationReport"]
     class_class_curie: ClassVar[str] = "sh:ValidationReport"
     class_name: ClassVar[str] = "ValidationReport"
     class_model_uri: ClassVar[URIRef] = REPORTING.ValidationReport
 
-    results: Optional[Union[Union[dict, "ValidationResult"], List[Union[dict, "ValidationResult"]]]] = empty_list()
+    results: Optional[Union[Union[dict, "ValidationResult"], list[Union[dict, "ValidationResult"]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if not isinstance(self.results, list):
             self.results = [self.results] if self.results is not None else []
         self.results = [v if isinstance(v, ValidationResult) else ValidationResult(**as_dict(v)) for v in self.results]
@@ -71,12 +99,12 @@ class ValidationReport(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class ValidationResult(YAMLRoot):
     """
     An individual result arising from validation of a data instance using a particular rule
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = SH["ValidationResult"]
     class_class_curie: ClassVar[str] = "sh:ValidationResult"
@@ -93,7 +121,7 @@ class ValidationResult(YAMLRoot):
     node_source: Optional[Union[str, NodeIdentifier]] = None
     info: Optional[str] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self.type is not None and not isinstance(self.type, NodeIdentifier):
             self.type = NodeIdentifier(self.type)
 
@@ -199,4 +227,5 @@ slots.info = Slot(uri=REPORTING.info, name="info", curie=REPORTING.curie('info')
                    model_uri=REPORTING.info, domain=None, range=Optional[str])
 
 slots.validationReport__results = Slot(uri=REPORTING.results, name="validationReport__results", curie=REPORTING.curie('results'),
-                   model_uri=REPORTING.validationReport__results, domain=None, range=Optional[Union[Union[dict, ValidationResult], List[Union[dict, ValidationResult]]]])
+                   model_uri=REPORTING.validationReport__results, domain=None, range=Optional[Union[Union[dict, ValidationResult], list[Union[dict, ValidationResult]]]])
+
