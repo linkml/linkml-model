@@ -35,7 +35,6 @@ class Format(_AutoName):
     """LinkML package formats"""
     EXCEL = auto()
     GRAPHQL = auto()
-    JSON = auto()
     JSONLD = auto()
     JSON_SCHEMA = auto()
     NATIVE_JSONLD = auto()
@@ -62,7 +61,6 @@ class _Path:
     """LinkML Relative paths — maps each Format to its directory and file extension."""
     EXCEL = _PathInfo("excel", "xlsx")
     GRAPHQL = _PathInfo("graphql", "graphql")
-    JSON = _PathInfo("json", "json")
     JSONLD = _PathInfo("jsonld", "context.jsonld")
     JSON_SCHEMA = _PathInfo("jsonschema", "schema.json")
     NATIVE_JSONLD = _PathInfo("jsonld", "model.context.jsonld")
@@ -214,10 +212,6 @@ class ModelFile:
     @property
     def graphql(self) -> ModelLoc:
         return ModelFile.ModelLoc(self._model, Format.GRAPHQL)
-
-    @property
-    def json(self) -> ModelLoc:
-        return ModelFile.ModelLoc(self._model, Format.JSON)
 
     @property
     def jsonld(self) -> ModelLoc:
