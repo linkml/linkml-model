@@ -11,7 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v6
+
+      - uses: astral-sh/setup-uv@v7.2.1
+
+      - name: Install yamllint
+        run: uv pip install --system yamllint
 
       - name: Validate YAML file
         run: yamllint -c .yamllint-config linkml_model/model/schema/*.yaml

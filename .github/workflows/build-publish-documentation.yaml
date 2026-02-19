@@ -1,6 +1,8 @@
 name: Build and deploy documentation
 
-# Controls when the action will run. Triggers the workflow on PR to main
+env:
+  UV_VERSION: "0.7.13"
+
 on:
   push:
     branches:
@@ -15,63 +17,45 @@ jobs:
 
     permissions:
       contents: write
-    
-    steps:
-      #----------------------------------------------
-      #       check-out repo and set-up python
-      #----------------------------------------------
-      - name: Check out repository
-        uses: actions/checkout@v4.2.2
-        with:
-          fetch-depth: 0 # fetch all commits/branches so that mike works
 
-      #----------------------------------------------
-      #          install & configure poetry
-      #----------------------------------------------
-      - name: Install Poetry
-        run: |
-          pipx install poetry
-          pipx inject poetry poetry-dynamic-versioning
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: astral-sh/setup-uv@v7.2.1
+        with:
+          version: ${{ env.UV_VERSION }}
 
       - name: Setup Python
-        uses: actions/setup-python@v5.6.0
-        id: setup-python
+        uses: actions/setup-python@v6.2.0
         with:
-          python-version: '3.10'
-          cache: 'poetry'
+          python-version: "3.13"
 
-      #----------------------------------------------
-      #             install dependencies
-      #----------------------------------------------
       - name: Install dependencies
-        run: poetry install --no-interaction --no-root
+        run: uv sync --all-groups
 
       - name: Configure git user
         run: |
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          
-      #----------------------------------------------
-      #           generate markdown files
-      #----------------------------------------------
-      - name: Generate markdown docs from schema
-        run: make gen-doc
 
-      #----------------------------------------------
-      #           deploy documentation
-      #----------------------------------------------
+      - name: Generate markdown docs from schema
+        run: uv run make gen-doc
+
       - name: Deploy generated docs
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           # generate HTML from markdown and put into dev version
-          poetry run mike deploy dev
-          
+          uv run mike deploy dev
+
           # ensure the main branch is available locally
           git fetch origin main
           # switch to gh-pages branch, copy over the latest 404.html from main
           git checkout --force gh-pages
           git checkout --force origin/main -- 404.html
           git commit -m "Add 404.html to root" || echo "No changes to 404.html to commit"
-          
+
           # push changes to gh-page branch
           git push origin gh-pages
