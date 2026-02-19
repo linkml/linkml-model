@@ -6,7 +6,7 @@ SHELL := bash
 .SUFFIXES:
 .SECONDARY:
 
-RUN = poetry run
+RUN = uv run
 # get values from about.yaml file
 SCHEMA_NAME = linkml_model
 SOURCE_SCHEMA_PATH = $(shell sh ./utils/get-value.sh source_schema_path)
@@ -43,7 +43,7 @@ status: check-config
 setup: install gen-project gen-doc git-init-add
 
 install:
-	poetry install
+	uv sync
 .PHONY: install
 
 all: gen-project gen-doc
@@ -97,7 +97,7 @@ check-config:
 	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n  - Remember to edit 'about.yaml'\n\n" || exit 0)
 
 convert-examples-to-%:
-	$(patsubst %, $(RUN) linkml-convert  % -s $(SOURCE_SCHEMA_PATH) -C Person, $(shell find src/data/examples -name "*.yaml")) 
+	$(patsubst %, $(RUN) linkml-convert  % -s $(SOURCE_SCHEMA_PATH) -C Person, $(shell find src/data/examples -name "*.yaml"))
 
 examples/%.yaml: src/data/examples/%.yaml
 	$(RUN) linkml-convert -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
@@ -107,7 +107,7 @@ examples/%.ttl: src/data/examples/%.yaml
 	$(RUN) linkml-convert -P EXAMPLE=http://example.org/ -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
 
 upgrade:
-	poetry add -D linkml@latest
+	uv add --group dev linkml
 
 # Test documentation locally
 serve: mkd-serve
@@ -126,7 +126,7 @@ git-init-add: git-init git-add git-commit git-status
 git-init:
 	git init
 git-add:
-	git add .gitignore .github Makefile LICENSE *.md examples utils about.yaml mkdocs.yml poetry.lock project.Makefile pyproject.toml src/linkml/*yaml src/*/datamodel/*py src/data
+	git add .gitignore .github Makefile LICENSE *.md examples utils about.yaml mkdocs.yml uv.lock project.Makefile pyproject.toml src/linkml/*yaml src/*/datamodel/*py src/data
 	git add $(patsubst %, project/%, $(PROJECT_FOLDERS))
 git-commit:
 	git commit -m 'Initial commit' -a
@@ -139,10 +139,9 @@ clean:
 	rm -rf tmp
 
 spell:
-	poetry run codespell
+	$(RUN) codespell
 
 lint:
-	poetry run yamllint -c .yamllint-config linkml_model/model/schema/*.yaml
+	$(RUN) yamllint -c .yamllint-config linkml_model/model/schema/*.yaml
 
 include project.Makefile
-
