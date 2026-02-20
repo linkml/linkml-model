@@ -510,8 +510,8 @@
 
 
 
-        ExtraSlotsExpression --&gt; "0..1" AnonymousClassExpression : range_expression
-        click AnonymousClassExpression href "../AnonymousClassExpression/"
+        ExtraSlotsExpression --&gt; "0..1" AnonymousSlotExpression : range_expression
+        click AnonymousSlotExpression href "../AnonymousSlotExpression/"
 
 
 
@@ -540,7 +540,7 @@
 </tr>
 <tr>
 <td><a href="../range_expression/">range_expression</a></td>
-<td>0..1 <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
+<td>0..1 <br/> <a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
 <td>A range that is described as a boolean expression combining existing ranges</td>
 <td>direct</td>
 </tr>
@@ -608,6 +608,10 @@ mixins:
 slots:
 - allowed
 - range_expression
+slot_usage:
+  range_expression:
+    name: range_expression
+    range: anonymous_slot_expression
 
 </code></pre>
 </details>
@@ -625,6 +629,10 @@ description: 'An expression that defines how to handle additional data in an ins
 from_schema: https://w3id.org/linkml/meta
 mixins:
 - expression
+slot_usage:
+  range_expression:
+    name: range_expression
+    range: anonymous_slot_expression
 attributes:
   allowed:
     name: allowed
@@ -658,7 +666,7 @@ attributes:
     - path_expression
     - slot_expression
     - extra_slots_expression
-    range: anonymous_class_expression
+    range: anonymous_slot_expression
 
 </code></pre>
 </details>
