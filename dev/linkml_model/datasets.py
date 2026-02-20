@@ -570,4 +570,3 @@ slots.formatDialect__header = Slot(uri=DATASETS.header, name="formatDialect__hea
 
 slots.formatDialect__quote_char = Slot(uri=DATASETS.quote_char, name="formatDialect__quote_char", curie=DATASETS.curie('quote_char'),
                    model_uri=DATASETS.formatDialect__quote_char, domain=None, range=Optional[str])
-

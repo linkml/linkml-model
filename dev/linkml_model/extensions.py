@@ -133,4 +133,3 @@ slots.extension_tag = Slot(uri=LINKML.tag, name="extension_tag", curie=LINKML.cu
 
 slots.extension_value = Slot(uri=LINKML.value, name="extension_value", curie=LINKML.curie('value'),
                    model_uri=LINKML.extension_value, domain=Extension, range=Union[dict, AnyValue])
-

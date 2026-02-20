@@ -5320,4 +5320,3 @@ slots.permissible_value_is_a = Slot(uri=LINKML.is_a, name="permissible_value_is_
 
 slots.permissible_value_mixins = Slot(uri=LINKML.mixins, name="permissible_value_mixins", curie=LINKML.curie('mixins'),
                    model_uri=LINKML.permissible_value_mixins, domain=PermissibleValue, range=Optional[Union[Union[str, PermissibleValueText], list[Union[str, PermissibleValueText]]]])
-
