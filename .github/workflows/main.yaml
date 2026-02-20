@@ -13,8 +13,8 @@ jobs:
   quality-checks:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: astral-sh/setup-uv@v7.2.1
+      - uses: actions/checkout@v6.0.2
+      - uses: astral-sh/setup-uv@v7.3.0
         with:
           version: ${{ env.UV_VERSION }}
       - uses: actions/setup-python@v6.2.0
@@ -39,7 +39,7 @@ jobs:
       run:
         shell: bash
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 0
       - name: Ensure tags if not run from main repo
@@ -47,7 +47,7 @@ jobs:
         run: |
           git remote add upstream https://github.com/linkml/linkml-model
           git fetch upstream --tags
-      - uses: astral-sh/setup-uv@v7.2.1
+      - uses: astral-sh/setup-uv@v7.3.0
         with:
           version: ${{ env.UV_VERSION }}
           enable-cache: true
