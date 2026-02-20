@@ -76,6 +76,8 @@ gen-doc:
 	cp -r $(PYMODEL) $(DOCDIR)/$(PYMODEL)
 	rm -rf $(DOCDIR)/$(PYMODEL)/model/docs
 	cp README.md $(DOCDIR)
+	mkdir -p $(DOCDIR)/javascripts
+	cp $(SRC)/utils/scripts/*.js $(DOCDIR)/javascripts/
 
 test: test-schema test-python test-validate-schema test-examples
 test-schema:
