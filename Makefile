@@ -79,7 +79,7 @@ gen-doc:
 
 test: test-schema test-python test-validate-schema test-examples
 test-schema:
-	$(RUN) gen-project -d tmp $(SOURCE_SCHEMA_PATH)
+	$(RUN) gen-project -d tmp --config-file gen_project_config.yaml $(SOURCE_SCHEMA_PATH)
 
 test-python:
 	$(RUN) pytest
