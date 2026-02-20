@@ -33,11 +33,11 @@ See the [contributing docs](https://linkml.io/linkml/contributing/contributing.h
 
 ### Installation
 
-This project uses poetry:
+This project uses [uv](https://docs.astral.sh/uv/):
 
 ```bash
 > cd linkml-model
-> poetry install
+> uv sync
 ```
 
 ## Running tests

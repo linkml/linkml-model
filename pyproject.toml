@@ -1,20 +1,18 @@
-[tool.poetry]
+[build-system]
+requires = ["hatchling", "uv-dynamic-versioning"]
+build-backend = "hatchling.build"
+
+[project]
 name = "linkml-model"
-version = "0.0.0"
+dynamic = ["version"]
 description = "Metamodel schema, documentation, and specification for the Linked Open Data Modeling Language (LinkML)"
 license = "MIT"
-authors = [
-    "Chris Mungall <cjmungall@lbl.gov>"
-]
-
 readme = "README.md"
-
-homepage = "https://linkml.io/"
-repository = "https://github.com/linkml/linkml-model/"
-documentation = "https://linkml.io/linkml-model/docs/"
-
+requires-python = ">=3.10,<3.14"
+authors = [
+    {name = "Chris Mungall", email = "cjmungall@lbl.gov"},
+]
 keywords = ["linked data", "linkml", "metamodel"]
-
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Console",
@@ -23,30 +21,57 @@ classifiers = [
     "Intended Audience :: Healthcare Industry",
     "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
     "Topic :: Software Development :: Libraries :: Python Modules",
-    "Programming Language :: Python :: 3.10"
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "linkml-runtime>=1.6.3,<2",
 ]
 
-packages = [
-    { include = "linkml_model" }
+[project.urls]
+Homepage = "https://linkml.io/"
+Repository = "https://github.com/linkml/linkml-model/"
+Documentation = "https://linkml.io/linkml-model/docs/"
+
+[tool.uv-dynamic-versioning]
+vcs = "git"
+style = "pep440"
+fallback-version = "0.0.0"
+
+[tool.hatch.version]
+source = "uv-dynamic-versioning"
+
+[tool.hatch.build.targets.wheel]
+packages = ["linkml_model"]
+
+[dependency-groups]
+dev = [
+    "linkml>=1.10.0rc5",
+    "codespell>=2.2.5",
+    "yamllint>=1.32.0",
+    "pytest>=7.0",
+]
+docs = [
+    "mkdocs>=1.4.2",
+    "mkdocs-material>=8.2.8",
+    "mkdocs-mermaid2-plugin>=0.6.0",
+    "mike>=2.0.0",
 ]
 
-[tool.poetry.dependencies]
-python = "^3.10"
+[tool.tox]
+requires = ["tox>=4", "tox-uv"]
+env_list = ["py{310,313}"]
 
-[tool.poetry.group.dev.dependencies]
-linkml = "1.10.0-rc5"
-codespell = "^2.2.5"
-yamllint = "^1.32.0"
+[tool.tox.env_run_base]
+runner = "uv-venv-lock-runner"
+commands = [
+    ["pytest", "{posargs:tests}"],
+]
 
-[tool.poetry.group.docs.dependencies]
-mkdocs = "^1.4.2"
-mkdocs-material = "^8.2.8"
-mkdocs-mermaid2-plugin = "^0.6.0"
-mike = "^2.0.0"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
 [tool.codespell]
 skip = '.git,*.pdf,*.svg,*.min.*,*.json,*.ttl,*.html,*.jsonld'
@@ -56,5 +81,5 @@ skip = '.git,*.pdf,*.svg,*.min.*,*.json,*.ttl,*.html,*.jsonld'
 # ignore-regex = '(\|.*\|.*\|.*\||[a-z]*\.\.\.</td>|\[[A-Z][a-z]\][a-z][a-z]|\\[fnrstv])'
 # ND,LOD - names/keywords
 # ans - variable in JS
-# egal - Harmony egal. 
+# egal - Harmony egal.
 ignore-words-list = 'nd,lod,ans,egal,alse,linke'

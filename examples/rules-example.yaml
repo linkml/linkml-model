@@ -40,7 +40,7 @@ types:
     exactly_one_of:
       - equals_string: schema:foo
       - equals_string: schema:bar
-  
+
 
 #==================================
 # Slots                           #
@@ -70,7 +70,7 @@ slots:
     multivalued: true
   manufactured_by:
     range: Organization
-  
+
   analyte:
     required: true
     # union ranges: https://github.com/linkml/linkml/issues/215
@@ -114,9 +114,9 @@ slots:
     any_of:
       - equals_string: geonames:1
       - equals_string: geonames:2
-  
 
-    
+
+
 #==================================
 # Classes                         #
 #==================================
@@ -131,7 +131,7 @@ classes:
       label:
   CountryCode:
     is_a: ControlledTerm
-  
+
   # https://json-schema.org/understanding-json-schema/reference/conditionals.html
   Address:
     slots:
@@ -173,7 +173,7 @@ classes:
         slot_conditions:
           encodes:
             range: Protein
-          
+
   Sample:
     slots:
       - id
@@ -186,7 +186,7 @@ classes:
           analyte:
             equals_string: DNA
 
-            
+
   Person:
     slots:
       - id
@@ -232,7 +232,7 @@ classes:
         #  OCL: "context Person inv: self.age<18 implies self.cars->isEmpty()"
         see_also:
           - https://en.wikipedia.org/wiki/Object_Constraint_Language#Alternatives
-          
+
       - postconditions:
           slot_conditions:
             fiction_status:
@@ -253,12 +253,12 @@ classes:
                         any_of:
                           - equals_string: Narnia
                           - equals_string: Lilliput
-                            
+
       - postconditions:
           slot_conditions:
             employer_name:
               equals_expression: "employer/name"
-              
+
       - postconditions:
           slot_conditions:
             ancestors:
@@ -269,7 +269,7 @@ classes:
     slots:
       - id
       - name
-      
+
   Product:
     slots:
       - id
@@ -297,8 +297,8 @@ classes:
         description: There is at least one Person which owns a car.
         #annotations:
         #  OCL: "context Person inv: Person.allInstances()->exists(p | p.cars->size() > 0)"
-        
-      
+
+
   FunctionalAnnotation:
     attributes:
       gene:
@@ -313,8 +313,8 @@ classes:
       - postconditions:
           none_of:
             - title: IPI should not be used with GO:0003824 catalytic activity or descendents
-              see_also: [GORULE:0000007]
-              #exact_mappings: [GORULE:0000007]
+              see_also: ["GORULE:0000007"]
+              # exact_mappings: ["GORULE:0000007"]
               all_of:
               - slot_conditions:
                   evidence_type:
@@ -323,7 +323,7 @@ classes:
                     has_member:
                       equals_string: GO:0003824
             - title: No annotations should be made to uninformative high level terms
-              see_also: [GORULE:0000008]
+              see_also: ["GORULE:0000008"]
               any_of:
                 - slot_conditions:
                     term_subsets:
@@ -337,15 +337,15 @@ classes:
                       none_of:
                         - equals_string_in: [IEA, ISS, ISO, IBA]
             - title: ND evidence code should be to root nodes only, and no terms other than root nodes can have the evidence code ND
-              see_also: [GORULE:0000011]
+              see_also: ["GORULE:0000011"]
               slot_conditions:
                 evidence_type:
                   equals_string: ND
                 term:
                   none_of:
-                    - equals_string_in: [GO:0008150, GO:0003674, GO:0005575]
-            
-                
+                    - equals_string_in: ["GO:0008150", "GO:0003674", "GO:0005575"]
+
+
 #==================================
 # Enums
 #==================================
@@ -366,5 +366,3 @@ enums:
       LIVING:
       DEAD:
       UNDEAD:
-    
-              
