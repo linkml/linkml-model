@@ -9,7 +9,7 @@ SHELL := bash
 RUN = uv run
 # get values from about.yaml file
 SCHEMA_NAME = linkml_model
-SOURCE_SCHEMA_PATH = $(shell sh ./utils/get-value.sh source_schema_path)
+SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 SRC = .
 DEST = staging
 PYMODEL = linkml_model
@@ -82,7 +82,7 @@ test-schema:
 	$(RUN) gen-project -d tmp $(SOURCE_SCHEMA_PATH)
 
 test-python:
-	$(RUN) python -m unittest discover
+	$(RUN) pytest
 
 # TODO: switch to linkml-run-examples when normalize is implemented
 test-examples: $(SOURCE_SCHEMA_PATH)
