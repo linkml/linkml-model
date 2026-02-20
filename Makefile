@@ -6,10 +6,10 @@ SHELL := bash
 .SUFFIXES:
 .SECONDARY:
 
-RUN = poetry run
+RUN = uv run
 # get values from about.yaml file
 SCHEMA_NAME = linkml_model
-SOURCE_SCHEMA_PATH = $(shell sh ./utils/get-value.sh source_schema_path)
+SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 SRC = .
 DEST = staging
 PYMODEL = linkml_model
@@ -43,7 +43,7 @@ status: check-config
 setup: install gen-project gen-doc git-init-add
 
 install:
-	poetry install
+	uv sync
 .PHONY: install
 
 all: gen-project gen-doc
@@ -60,8 +60,11 @@ gen-py: $(DEST)
 	# for all the files in the schema folder, run the gen-python command and output the result to the top
 	# level of the project.  In other repos, we'd include mergeimports=True, but we don't do that with
 	# linkml-model.
+	# extended_types.yaml is excluded because gen-python produces an empty file for it;
+	# the schema is not ready for Python code generation yet.
 	@for file in $(wildcard $(PYMODEL)/model/schema/*.yaml); do \
 		base=$$(basename $$file); \
+		if [ "$$base" = "extended_types.yaml" ]; then continue; fi; \
 		filename_without_suffix=$${base%.*}; \
 		$(RUN) gen-python --genmeta $$file > $(DEST)/$$filename_without_suffix.py; \
 	done
@@ -78,10 +81,10 @@ gen-doc:
 
 test: test-schema test-python test-validate-schema test-examples
 test-schema:
-	$(RUN) gen-project -d tmp $(SOURCE_SCHEMA_PATH)
+	$(RUN) gen-project -d tmp --config-file gen_project_config.yaml $(SOURCE_SCHEMA_PATH)
 
 test-python:
-	$(RUN) python -m unittest discover
+	$(RUN) pytest
 
 # TODO: switch to linkml-run-examples when normalize is implemented
 test-examples: $(SOURCE_SCHEMA_PATH)
@@ -96,7 +99,7 @@ check-config:
 	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n  - Remember to edit 'about.yaml'\n\n" || exit 0)
 
 convert-examples-to-%:
-	$(patsubst %, $(RUN) linkml-convert  % -s $(SOURCE_SCHEMA_PATH) -C Person, $(shell find src/data/examples -name "*.yaml")) 
+	$(patsubst %, $(RUN) linkml-convert  % -s $(SOURCE_SCHEMA_PATH) -C Person, $(shell find src/data/examples -name "*.yaml"))
 
 examples/%.yaml: src/data/examples/%.yaml
 	$(RUN) linkml-convert -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
@@ -106,7 +109,7 @@ examples/%.ttl: src/data/examples/%.yaml
 	$(RUN) linkml-convert -P EXAMPLE=http://example.org/ -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
 
 upgrade:
-	poetry add -D linkml@latest
+	uv add --group dev linkml
 
 # Test documentation locally
 serve: mkd-serve
@@ -125,7 +128,7 @@ git-init-add: git-init git-add git-commit git-status
 git-init:
 	git init
 git-add:
-	git add .gitignore .github Makefile LICENSE *.md examples utils about.yaml mkdocs.yml poetry.lock project.Makefile pyproject.toml src/linkml/*yaml src/*/datamodel/*py src/data
+	git add .gitignore .github Makefile LICENSE *.md examples utils about.yaml mkdocs.yml uv.lock project.Makefile pyproject.toml src/linkml/*yaml src/*/datamodel/*py src/data
 	git add $(patsubst %, project/%, $(PROJECT_FOLDERS))
 git-commit:
 	git commit -m 'Initial commit' -a
@@ -138,10 +141,9 @@ clean:
 	rm -rf tmp
 
 spell:
-	poetry run codespell
+	$(RUN) codespell
 
 lint:
-	poetry run yamllint -c .yamllint-config linkml_model/model/schema/*.yaml
+	$(RUN) yamllint -c .yamllint-config linkml_model/model/schema/*.yaml
 
 include project.Makefile
-

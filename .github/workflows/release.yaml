@@ -1,76 +1,100 @@
 name: Publish Docs & PyPI Package
 
+# Publishes with trusted publishing to
+# - PyPI on releases created in GitHub UI if status is published.
+#   For draft status, nothing happens.
+# - TestPyPI on new tags "v1.2.3" or "v1.2.3.something" on main branch
+#
+# More on trusted publishing: https://docs.pypi.org/trusted-publishers/
+
+env:
+  UV_VERSION: "0.7.13"
+
 on:
   release:
-    types: [ created ]
+    types: [created]
 
 jobs:
-  release:
-    name: Create release artifacts
+  build:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6.2.0
+        with:
+          python-version: "3.13"
+      - uses: astral-sh/setup-uv@v7.3.0
+        with:
+          version: ${{ env.UV_VERSION }}
+      - name: Build source and wheel archives
+        run: uv build
+      - uses: actions/upload-artifact@v6.0.0
+        with:
+          name: distribution-files
+          path: dist/
 
+  pypi-publish:
+    name: Build and publish Python package to PyPI and TestPyPI
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.repository == 'linkml/linkml-model'
+    environment:
+      name: pypi-release
+      url: https://pypi.org/p/linkml-model
+    permissions:
+      id-token: write # this permission is mandatory for trusted publishing
+    steps:
+      - uses: actions/download-artifact@v7.0.0
+        with:
+          name: distribution-files
+          path: dist
+      - uses: pypa/gh-action-pypi-publish@v1.13.0
+        with:
+          verbose: true
+
+  deploy-docs:
+    needs: build
+    runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v6.0.2
         with:
-          fetch-depth: 0 # fetch all commits/branches so that mike works
-
-      - name: Set up Python
-        uses: actions/setup-python@v5.6.0
+          fetch-depth: 0
+      - uses: actions/setup-python@v6.2.0
         with:
-          python-version: "3.10"
-
-      - name: Install Poetry
-        run: |
-          pipx install poetry
-          pipx inject poetry poetry-dynamic-versioning
-
+          python-version: "3.13"
+      - uses: astral-sh/setup-uv@v7.3.0
+        with:
+          version: ${{ env.UV_VERSION }}
       - name: Install dependencies
-        run: poetry install --no-interaction
-
-      - name: Build source and wheel archives
-        run: |
-          poetry version $(git describe --tags --abbrev=0)
-          poetry build
-
-      - name: Publish distribution to PyPI
-        if: github.repository == 'linkml/linkml-model'
-        uses: pypa/gh-action-pypi-publish@v1.12.4
-        with:
-          user: __token__
-          password: ${{ secrets.pypi_password }}
-
-      - name: Parse version from tag
-        id: version
-        uses: release-kit/semver@v2.0.7
-
+        run: uv sync --all-groups
       - name: Configure git user
         run: |
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-
       - name: Generate markdown docs from schema
-        run: make gen-doc
-
+        run: uv run make gen-doc
+      - name: Parse version from tag
+        id: version
+        uses: release-kit/semver@v2.0.7
       - name: Deploy docs
         if: github.event.release.prerelease == false
         run: |
           # generate HTML from markdown and put into MAJOR.MINOR version, update "latest" alias
-          poetry run mike deploy --update-aliases ${{ steps.version.outputs.major }}.${{ steps.version.outputs.minor }}.x latest
-          
+          uv run mike deploy --update-aliases ${{ steps.version.outputs.major }}.${{ steps.version.outputs.minor }}.x latest
+
           # copy the latest linkml_model files up to the root
           git checkout --force gh-pages
           rm -rf linkml_model
           cp -r latest/linkml_model .
           git add -A linkml_model
           git commit -m "Copy latest linkml_model to root level" || echo "No changes to linkml_model to commit"
-          
+
           # copy over the latest 404.html from the tag
           git checkout --force ${{github.event.release.tag_name}} -- 404.html
           git commit -m "Add 404.html to root" || echo "No changes to 404.html to commit"
-          
+
           # push changes to gh-page branch
           git push origin gh-pages
