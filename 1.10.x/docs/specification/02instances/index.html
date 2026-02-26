@@ -1,0 +1,991 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://linkml.io/linkml-model/latest/docs/specification/02instances/" rel="canonical"/>
+<link href="../01introduction/" rel="prev"/>
+<link href="../03schemas/" rel="next"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.2" name="generator"/>
+<title>Instances - LinkML Model</title>
+<link href="../../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="amber" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#linkml-instances">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<div data-md-color-scheme="default" data-md-component="outdated" hidden="">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="LinkML Model" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="LinkML Model">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            LinkML Model
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Instances
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="amber" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="teal" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"></path></svg>
+</label>
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="amber" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="teal" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="LinkML Model" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="LinkML Model">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    LinkML Model
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../home/">
+<span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Specification
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Specification
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../00preamble/">
+<span class="md-ellipsis">
+    
+  
+    Preface
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01introduction/">
+<span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Instances
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Instances
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#abstract-functional-instance-syntax-and-structure">
+<span class="md-ellipsis">
+      
+        Abstract Functional Instance Syntax and Structure
+      
+    </span>
+</a>
+<nav aria-label="Abstract Functional Instance Syntax and Structure" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instances">
+<span class="md-ellipsis">
+      
+        Instances
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#definition-types-and-names">
+<span class="md-ellipsis">
+      
+        Definition Types and Names
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instances-of-classes-objects">
+<span class="md-ellipsis">
+      
+        Instances of Classes (Objects)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#primitive-atomic-instances">
+<span class="md-ellipsis">
+      
+        Primitive (Atomic) Instances
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#atomic-values">
+<span class="md-ellipsis">
+      
+        Atomic Values
+      
+    </span>
+</a>
+<nav aria-label="Atomic Values" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#atomic-instance-examples">
+<span class="md-ellipsis">
+      
+        Atomic Instance Examples
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#collections">
+<span class="md-ellipsis">
+      
+        Collections
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#none-null-instances">
+<span class="md-ellipsis">
+      
+        None (Null) instances
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#combined-example">
+<span class="md-ellipsis">
+      
+        Combined Example
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identity-conditions">
+<span class="md-ellipsis">
+      
+        Identity conditions
+      
+    </span>
+</a>
+<nav aria-label="Identity conditions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identity-conditions-for-classdefinition-instances">
+<span class="md-ellipsis">
+      
+        Identity conditions for ClassDefinition Instances
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instance-accessor-syntax">
+<span class="md-ellipsis">
+      
+        Instance Accessor Syntax
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03schemas/">
+<span class="md-ellipsis">
+    
+  
+    Schema Datamodel
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04derived-schemas/">
+<span class="md-ellipsis">
+    
+  
+    Derived Schemas
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05validation/">
+<span class="md-ellipsis">
+    
+  
+    Instance Validation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06mapping/">
+<span class="md-ellipsis">
+    
+  
+    Mapping of Instances
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Appendix
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Appendix
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../">
+<span class="md-ellipsis">
+    
+  
+    Metamodel Index
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Profiles
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Profiles
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../MinimalSubset/">
+<span class="md-ellipsis">
+    
+  
+    MinimalSubset
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../BasicSubset/">
+<span class="md-ellipsis">
+    
+  
+    BasicSubset
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../SpecificationSubset/">
+<span class="md-ellipsis">
+    
+  
+    SpecificationSubset
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../RelationalModelProfile/">
+<span class="md-ellipsis">
+    
+  
+    RelationalModelProfile
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ObjectOrientedProfile/">
+<span class="md-ellipsis">
+    
+  
+    ObjectOrientedProfile
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../OwlProfile/">
+<span class="md-ellipsis">
+    
+  
+    OwlProfile
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#abstract-functional-instance-syntax-and-structure">
+<span class="md-ellipsis">
+      
+        Abstract Functional Instance Syntax and Structure
+      
+    </span>
+</a>
+<nav aria-label="Abstract Functional Instance Syntax and Structure" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instances">
+<span class="md-ellipsis">
+      
+        Instances
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#definition-types-and-names">
+<span class="md-ellipsis">
+      
+        Definition Types and Names
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instances-of-classes-objects">
+<span class="md-ellipsis">
+      
+        Instances of Classes (Objects)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#primitive-atomic-instances">
+<span class="md-ellipsis">
+      
+        Primitive (Atomic) Instances
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#atomic-values">
+<span class="md-ellipsis">
+      
+        Atomic Values
+      
+    </span>
+</a>
+<nav aria-label="Atomic Values" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#atomic-instance-examples">
+<span class="md-ellipsis">
+      
+        Atomic Instance Examples
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#collections">
+<span class="md-ellipsis">
+      
+        Collections
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#none-null-instances">
+<span class="md-ellipsis">
+      
+        None (Null) instances
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#combined-example">
+<span class="md-ellipsis">
+      
+        Combined Example
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identity-conditions">
+<span class="md-ellipsis">
+      
+        Identity conditions
+      
+    </span>
+</a>
+<nav aria-label="Identity conditions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identity-conditions-for-classdefinition-instances">
+<span class="md-ellipsis">
+      
+        Identity conditions for ClassDefinition Instances
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instance-accessor-syntax">
+<span class="md-ellipsis">
+      
+        Instance Accessor Syntax
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="linkml-instances">LinkML Instances</h1>
+<h2 id="abstract-functional-instance-syntax-and-structure">Abstract Functional Instance Syntax and Structure</h2>
+<p>This specification provides a grammar for a <strong>functional syntax</strong> for expressing the structure of LinkML instances. A LinkML instance is a tree-like structure conforming to the syntax specified here.</p>
+<p>This syntax is not intended for data exchange, but instead for unambiguous describing data in LinkML in a way that is independent of any particular syntax.</p>
+<p><a href="../06mapping">Section 6</a> specifies how the instance model is serialized as JSON, YAML, and RDF, and guidelines for mapping to object-oriented programming representations.</p>
+<p>This section uses BNF to define the structure of the LinkML instance abstract model.
+We also include UML-style diagrams for informative purposes.</p>
+<h3 id="instances">Instances</h3>
+<p>An instance is a tree-like structure conforming to either one of four <em>definition</em> types, or a <em>collection</em>, or the special token <code>None</code>. The four definition types are subdivided into instances of classes (aka objects), or atomic instances:</p>
+<blockquote>
+<p><strong>Instance</strong> := <strong>None</strong> | <strong>InstanceOfClass</strong> | <strong>AtomicInstance</strong> | <strong>CollectionInstance</strong></p>
+<p><strong>AtomicInstance</strong> := <strong>InstanceOfType</strong> | <strong>InstanceOfEnum</strong> | <strong>InstanceOfReference</strong></p>
+</blockquote>
+<div class="mermaid">classDiagram
+    Instance &lt;|-- InstanceOfClass
+    Instance &lt;|-- AtomicInstance
+    AtomicInstance &lt;|-- InstanceOfReference
+    AtomicInstance &lt;|-- InstanceOfType
+    AtomicInstance &lt;|-- InstanceOfEnum
+    Instance &lt;|-- CollectionInstance
+    Instance &lt;-- None
+
+</div>
+<h3 id="definition-types-and-names">Definition Types and Names</h3>
+<p>Definition names are used to unambiguously indicate <em>elements</em> specified in a <strong>Schema</strong> (described in <a href="../03schemas">Part 3</a>):</p>
+<blockquote>
+<p><strong>ClassDefinitionName</strong> := <strong>ElementName</strong></p>
+<p><strong>TypeDefinitionName</strong> := <strong>ElementName</strong></p>
+<p><strong>EnumDefinitionName</strong> := <strong>ElementName</strong></p>
+<p><strong>SlotDefinitionName</strong> := <strong>ElementName</strong></p>
+<p><strong>ElementName</strong> := <em>a finite sequence of characters matching the PN_LOCAL production of <a href="https://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> and not matching any of the keyword terminals of the syntax</em></p>
+</blockquote>
+<p>Names MUST NOT be shared across definition types</p>
+<h3 id="instances-of-classes-objects">Instances of Classes (Objects)</h3>
+<p>An <strong>InstanceOfClass</strong> is a pair consisting of (1) a ClassDefinition <em>Name</em> that indicates the <em>instantiation type</em> of the instance, and (2) zero to many <em>Assignments</em><em>, where each
+assignment is a key-value pair of a </em><em>SlotName</em><em> and an </em><em>Instance</em>* value.</p>
+<blockquote>
+<p><strong>InstanceOfClass</strong> := <strong>ClassDefinitionName</strong> '(' &lt;<strong>Assignment</strong>&gt;List ')'</p>
+<p><strong>Assignment</strong> := <strong>SlotDefinitionName</strong> '=' <strong>Instance</strong></p>
+</blockquote>
+<div class="mermaid">classDiagram
+    Instance &lt;|-- InstanceOfClass
+    InstanceOfClass "1" --&gt; "1..*" Assignment
+    Assignment "1" --&gt; Instance
+
+    class InstanceOfClass {
+      +ClassDefinitionName type
+      +Assignment assignments
+    }
+    class Assignment {
+      +SlotDefinitionName slot
+      +Instance value
+    }
+</div>
+<p>No SlotDefinitionName can appear twice in any set of Assignments (i.e. SlotDefinitionName is a <em>key</em>)</p>
+<p>An example instance might be written in functional syntax as:</p>
+<pre><code class="language-python">Person(id=...,
+       name=...,
+       age=...,
+       &lt;other Assignments&gt;)
+</code></pre>
+<p>Here the <strong>ClassDefinitionName</strong> is <code>Person</code>, and the <strong>SlotDefinitionName</strong>s are <code>id</code>, <code>name</code>, <code>age</code>.</p>
+<h3 id="primitive-atomic-instances">Primitive (Atomic) Instances</h3>
+<p>There are 3 types of primitive (aka atomic aka scalar) instances, each is a pair consisting of (1) a <em>Name</em> of the element instantiated (2) an atomic value. Different syntaxes are used to unambiguously distinguish the different types of primitive instances.</p>
+<blockquote>
+<p><strong>InstanceOfType</strong> := <strong>TypeDefinitionName</strong> '^' <strong>AtomicValue</strong></p>
+<p><strong>InstanceOfEnum</strong> := <strong>EnumDefinitionName</strong> '[' <strong>PermissibleValue</strong> ']'</p>
+<p><strong>PermissibleValue</strong> := <strong>AtomicValue</strong></p>
+<p><strong>InstanceOfReference</strong> := <strong>ClassDefinitionName</strong> '&amp;' <strong>ObjectReference</strong></p>
+<p><strong>ObjectReference</strong> := <strong>AtomicValue</strong></p>
+</blockquote>
+<div class="mermaid">classDiagram
+    Instance &lt;|-- AtomicInstance
+    AtomicInstance &lt;|-- InstanceOfReference
+    AtomicInstance &lt;|-- InstanceOfType
+    AtomicInstance &lt;|-- InstanceOfEnum
+    class Instance {
+
+    }
+    class AtomicInstance {
+      +AtomicValue value
+    }
+    class InstanceOfReference {
+      +ClassDefinitionName type
+    }
+    class InstanceOfType {
+      +TypeDefinitionName type
+    }
+    class InstanceOfEnum {
+      +EnumDefinitionName type
+    }
+</div>
+<p>Terminology note: Primitive instances are also known as "literals" or "scalars".</p>
+<h3 id="atomic-values">Atomic Values</h3>
+<p>An atomic value is either a string or number or boolean, where numbers can be floating points, decimals, or integers.</p>
+<blockquote>
+<p><strong>AtomicValue</strong> := <strong>QuotedString</strong> | <strong>NumberValue</strong> | <strong>BooleanValue</strong></p>
+<p><strong>QuotedString</strong> := '"' <strong>StringValue</strong> '"'</p>
+<p><strong>StringValue</strong> := <em>a finite sequence of characters in which " (U+22) and \ (U+5C) occur only in pairs of the form \" (U+5C, U+22) and \ (U+5C, U+5C), enclosed in a pair of " (U+22) characters</em></p>
+<p><strong>NumberValue</strong> := <strong>FloatingPointValue</strong> | <strong>DecimalValue</strong> | <strong>IntegerValue</strong></p>
+<p><strong>FloatingPointValue</strong> ::= [ '+' | '-'] ( <strong>Digits</strong> ['.'<strong>Digits</strong>] [ <strong>Exponent</strong> ] | '.' <strong>Digits</strong> [ <strong>Exponent</strong> ]) ( 'f' | 'F' )</p>
+<p><strong>Exponent</strong> ::= ('e' | 'E') ['+' | '-'] <strong>Digits</strong></p>
+<p><strong>DecimalValue</strong> ::= ['+' | '-'] <strong>Digits</strong> '.' <strong>Digits</strong></p>
+<p><strong>IntegerValue</strong> ::= ['+' | '-'] <strong>Digits</strong></p>
+<p><strong>NonNegativeInteger</strong> ::= <strong>Zero</strong> | <strong>PositiveInteger</strong></p>
+<p><strong>PositiveInteger</strong> ::= <strong>NonZero</strong> { <strong>Digit</strong> }</p>
+<p><strong>Digits</strong> ::= <strong>Digit</strong> { <strong>Digit</strong> }</p>
+<p><strong>Digit</strong> ::= <strong>Zero</strong> | <strong>NonZero</strong></p>
+<p><strong>NonZero</strong> := '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'</p>
+<p><strong>Zero</strong> ::= '0'</p>
+<p><strong>BooleanValue</strong> ::= 'True' | 'False'</p>
+</blockquote>
+<p>Examples of atomic values are:</p>
+<ul>
+<li><code>180.2</code> -- a DecimalValue</li>
+<li><code>5</code> -- an IntegerValue</li>
+<li><code>"Alex"</code> -- a StringValue</li>
+<li><code>True</code> -- a BooleanValue</li>
+<li><code>"2023-01-01"</code> -- a StringValue (which happens to be interpetable as a date)</li>
+</ul>
+<h4 id="atomic-instance-examples">Atomic Instance Examples</h4>
+<p>An <strong>InstanceOfType</strong> instance might look like:</p>
+<pre><code class="language-python">Integer^23
+</code></pre>
+<p>In this example, the <strong>TypeDefinitionName</strong> is <code>Integer</code>, and the <strong>AtomicValue</strong> is the number <code>23</code>.</p>
+<p>Note that this is necessarily a syntactically valid Instance according to this part of the specification. Part 6 describes schema-level validation, and for this to be valid according to a schema, that schema must (a) provide a TypeDefinition with the name "Integer" (b) map this to an XSD number type (presumably, xsd:integer).</p>
+<p>Note that the following is <em>syntactically valid</em>:</p>
+<pre><code class="language-python">Integer^"ABC"
+</code></pre>
+<p>If <code>Integer</code> is a TypeDefinition that is mapped to the XSD type for integers, then this will be invalid according to the schema, but at the syntactic level the structure is valid.</p>
+<p>Another example if a syntactically valid <strong>InstanceOfType</strong>:</p>
+<pre><code class="language-python">PhoneNumber^"+1 800 555 0100"
+</code></pre>
+<p>For this to be a valid according to a schema InstanceOfType, "PhoneNumber" must be the name of a TypeDefinition in the schema, mapped to an XSD string type.</p>
+<p>An example of a syntactically valid <strong>InstanceOfReference</strong>:</p>
+<pre><code class="language-python">Person&amp;"SSN:456"
+</code></pre>
+<p>This is syntactically valid, but for it to be valid according to a schema, the schema must include a ClassDefinition with the name <code>Person</code>, and that ClassDefinition must have an <em>identifier</em> (see Part 6).</p>
+<h3 id="collections">Collections</h3>
+<p>A collection is zero or more instances, serialized as a comma-delimited list inside square brackets:</p>
+<blockquote>
+<p><strong>CollectionInstance</strong> := '[' &lt;<strong>Instance</strong>&gt;List ']'</p>
+</blockquote>
+<div class="mermaid">
+classDiagram
+Instance &lt;|-- CollectionInstance
+CollectionInstance "*" --&gt; "0..*" Instance
+</div>
+<p>Examples of collections:</p>
+<ul>
+<li><code>[String^"A", String^"B", Integer^5]</code> -- a list of primitive instances</li>
+<li><code>[Person(name=..., ...), Person(name=..., ...)]</code> -- a list of class instances</li>
+<li><code>[Person(name=..., ...), Integer^5, None]</code> -- a heterogeneous collection</li>
+<li><code>[]</code> -- an empty collection</li>
+</ul>
+<p>Note that collections can be serialized in different ways depending on the target syntax, for examples, lists vs dictionaries. See section <a href="../06mapping">6</a> for details of serializations.</p>
+<h3 id="none-null-instances">None (Null) instances</h3>
+<p>A special symbol is included to indicate null or missing values</p>
+<blockquote>
+<p><strong>None</strong> := 'None'</p>
+</blockquote>
+<p>An assignment of a slot to None is equivalent to omitting that assignment. I.e. the following two instance serializations are equivalent:</p>
+<pre><code>Person(address=None)
+</code></pre>
+<pre><code>Person()
+</code></pre>
+<h3 id="combined-example">Combined Example</h3>
+<p>The following is an example of an <strong>InstanceOfClass</strong> where the instantiated type is a class with name "Person":</p>
+<pre><code class="language-python">Person(
+  id=String^"SSN:123",
+  name=String^"Alex",
+  aliases=[String^"Alexandra"],
+  address=None,
+  phone=PhoneNumber^"+1 800 555 0100",
+  height=
+    Measurement(value=Decimal^170.2
+                unit=UnitCode["cm"]),
+  relationships=[
+    FamilialRelationship(
+      type=RelationshipType["SIBLING_OF"],
+      related_to=Person&amp;"SSN:456"
+    )
+  ]
+)
+</code></pre>
+<h2 id="identity-conditions">Identity conditions</h2>
+<p>Two instances <code>i</code> and <code>j</code> are identical if one of the following conditions is met:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><code>i</code></th>
+<th><code>j</code></th>
+<th>Additional Conditions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>None</code></td>
+<td><code>None</code></td>
+<td><code>None</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>TypeDefinition</code></td>
+<td><code>&lt;TypeDefinitionName&gt;^&lt;AtomicValue&gt;</code></td>
+<td><code>&lt;TypeDefinitionName&gt;^&lt;AtomicValue&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ObjectReference</code></td>
+<td><code>&lt;ClassDefinitionName&gt;&amp;&lt;AtomicValue&gt;</code></td>
+<td><code>&lt;ClassDefinitionName&gt;&amp;&lt;AtomicValue&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>EnumDefinition</code></td>
+<td><code>&lt;EnumDefinitionName&gt;[&lt;AtomicValue&gt;]</code></td>
+<td><code>&lt;EnumDefinitionName&gt;[&lt;AtomicValue&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ClassDefinition</code></td>
+<td><code>&lt;ClassDefinition&gt;(ai1, ..., aiN)</code></td>
+<td><code>&lt;ClassDefinition&gt;(aj1, ..., ajN)</code></td>
+<td>See below</td>
+</tr>
+<tr>
+<td><code>Collection</code></td>
+<td><code>[i1, ..., iN]</code></td>
+<td><code>[j1, ..., jN]</code></td>
+<td><code>i1=j</code>, ..., <code>iN=jN</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="identity-conditions-for-classdefinition-instances">Identity conditions for ClassDefinition Instances</h3>
+<p>Two ClassDefinition instances <code>i</code> and <code>j</code> are identical if (1) both instantiate the same class, and all slot assignments can be matched, regardless of order.</p>
+<p>Note that prior to comparison, the representation is first <em>normalized</em> and all assignments whose value is <code>None</code> are removed.</p>
+<pre><code>if
+  i == &lt;ClassName&gt;(&lt;Assignments_i&gt;) and j == &lt;ClassName&gt;(&lt;Assignments_j&gt;) and
+  all(a_i in Assignments_i if any(a_j in Assignments_j if a_i == a_j)) and
+  all(a_j in Assignments_j if any(a_i in Assignments_i if a_i == a_j))
+then
+  i == j
+</code></pre>
+<p>Two slot value assignments are identical if either (1) either is None (b) slot and value match</p>
+<p>Assignment identity conditions:</p>
+<pre><code>if
+  a_i == &lt;SlotName&gt;=&lt;Value_i&gt; and a_j == &lt;SlotName&gt;=&lt;Value_j&gt; and Value_i == Value_j
+then
+  a_i == a_j
+</code></pre>
+<h2 id="instance-accessor-syntax">Instance Accessor Syntax</h2>
+<p>For a given instance <code>i</code>, <strong>Path</strong> syntax can be used to dereference values.</p>
+<blockquote>
+<p><strong>PathComponent</strong> := '.' <strong>SlotDefinitionName</strong> | '[' <strong>Identifier</strong> ']'</p>
+<p><strong>Identifier</strong> := <strong>AtomicValue</strong></p>
+</blockquote>
+<p>An path is a name of a variable denoting an instance followed by zero or more <strong>PathComponent</strong>s.</p>
+<blockquote>
+<p><strong>Path</strong> := <strong>VariableName</strong> [  <strong>PathComponent</strong> ]</p>
+</blockquote>
+<p>To interpret a path <em>p</em>:</p>
+<ol>
+<li><strong>VariableName</strong> is resolved to an instance <em>i</em></li>
+<li>For each path component in the path, reset <em>i</em> to be the value of looking up that component:<ul>
+<li>if the path extension is <code>.&lt;s&gt;</code> then <em>r</em> must be an *<em>InstanceOfClass</em>, and the value is equal to the value of the slot assignment for slot <code>s</code></li>
+<li>if the path extension is <code>[&lt;key&gt;]</code> then <em>r</em> must be an <strong>InstanceOfCollection</strong>, and the value is equals to the member of that list that has a slot with the role of <em>identifier</em> whose value is <code>&lt;key&gt;</code></li>
+</ul>
+</li>
+</ol>
+<p>For example, if <em>i</em> is equal to the Person instance in the Combined Example above:</p>
+<ul>
+<li><code>i</code> == <code>i</code></li>
+<li><code>i.id</code> == <code>String^"SSN:123"</code></li>
+<li><code>i.height.unit</code> == <code>String^"cm"</code></li>
+<li><code>i.relationships[0].related_to</code> == <code>Person&amp;"SSN:456"</code></li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+<script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../../../javascripts/tablesort.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>
