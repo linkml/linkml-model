@@ -1,5 +1,5 @@
 # Auto generated from datasets.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-18T21:04:48
+# Generation date: 2026-02-26T08:29:51
 # Schema: datasets
 #
 # id: https://w3id.org/linkml/datasets
@@ -570,3 +570,4 @@ slots.formatDialect__header = Slot(uri=DATASETS.header, name="formatDialect__hea
 
 slots.formatDialect__quote_char = Slot(uri=DATASETS.quote_char, name="formatDialect__quote_char", curie=DATASETS.curie('quote_char'),
                    model_uri=DATASETS.formatDialect__quote_char, domain=None, range=Optional[str])
+

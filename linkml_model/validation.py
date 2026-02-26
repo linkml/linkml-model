@@ -1,5 +1,5 @@
 # Auto generated from validation.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-18T21:04:57
+# Generation date: 2026-02-26T08:29:57
 # Schema: reporting
 #
 # id: https://w3id.org/linkml/reporting
@@ -228,3 +228,4 @@ slots.info = Slot(uri=REPORTING.info, name="info", curie=REPORTING.curie('info')
 
 slots.validationReport__results = Slot(uri=REPORTING.results, name="validationReport__results", curie=REPORTING.curie('results'),
                    model_uri=REPORTING.validationReport__results, domain=None, range=Optional[Union[Union[dict, ValidationResult], list[Union[dict, ValidationResult]]]])
+

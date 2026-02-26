@@ -1,5 +1,5 @@
 # Auto generated from units.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-18T21:04:55
+# Generation date: 2026-02-26T08:29:56
 # Schema: units
 #
 # id: https://w3id.org/linkml/units
@@ -156,3 +156,4 @@ slots.abbreviation = Slot(uri=QUDT.abbreviation, name="abbreviation", curie=QUDT
 
 slots.descriptive_name = Slot(uri=RDFS.label, name="descriptive_name", curie=RDFS.curie('label'),
                    model_uri=LINKML.descriptive_name, domain=None, range=Optional[str])
+
