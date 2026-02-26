@@ -2132,7 +2132,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "How a class instance handles extra data not specified in the class definition.\nNote that this does *not* define the constraints that are placed on additional slots defined by inheriting classes.\n\nPossible values:\n- `allowed: true` - allow all additional data\n- `allowed: false` (or `allowed:` or `allowed: null` while `range_expression` is `null`) - \n  forbid all additional data (default) \n- `range_expression: ...`  - allow additional data if it matches the slot expression (see examples)\n"
+                    "description": "How a class instance handles extra data not specified in the class definition.\nNote that this does *not* define the constraints that are placed on additional slots defined by inheriting classes.\n\nPossible values:\n- `allowed: true` - allow all additional data\n- `allowed: false` (or `allowed:` or `allowed: null` while `range_expression` is `null`) -\n  forbid all additional data (default)\n- `range_expression: ...`  - allow additional data if it matches the slot expression (see examples)\n"
                 },
                 "from_schema": {
                     "description": "id of the schema that defined the element",
@@ -2836,7 +2836,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "How a class instance handles extra data not specified in the class definition.\nNote that this does *not* define the constraints that are placed on additional slots defined by inheriting classes.\n\nPossible values:\n- `allowed: true` - allow all additional data\n- `allowed: false` (or `allowed:` or `allowed: null` while `range_expression` is `null`) - \n  forbid all additional data (default) \n- `range_expression: ...`  - allow additional data if it matches the slot expression (see examples)\n"
+                    "description": "How a class instance handles extra data not specified in the class definition.\nNote that this does *not* define the constraints that are placed on additional slots defined by inheriting classes.\n\nPossible values:\n- `allowed: true` - allow all additional data\n- `allowed: false` (or `allowed:` or `allowed: null` while `range_expression` is `null`) -\n  forbid all additional data (default)\n- `range_expression: ...`  - allow additional data if it matches the slot expression (see examples)\n"
                 },
                 "from_schema": {
                     "description": "id of the schema that defined the element",
@@ -5726,7 +5726,7 @@
         },
         "ExtraSlotsExpression": {
             "additionalProperties": false,
-            "description": "An expression that defines how to handle additional data in an instance of class\nbeyond the slots/attributes defined for that class. \nSee `extra_slots` for usage examples.",
+            "description": "An expression that defines how to handle additional data in an instance of class\nbeyond the slots/attributes defined for that class.\nSee `extra_slots` for usage examples.",
             "properties": {
                 "allowed": {
                     "description": "Whether or not something is allowed. Usage defined by context.",
@@ -5738,7 +5738,7 @@
                 "range_expression": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/AnonymousClassExpression"
+                            "$ref": "#/$defs/AnonymousSlotExpression"
                         },
                         {
                             "type": "null"
@@ -6165,7 +6165,7 @@
         },
         "MatchQuery": {
             "additionalProperties": false,
-            "description": "A query that is used on an enum expression to dynamically obtain a set of permissivle values via a query that  matches on properties of the external concepts.",
+            "description": "A query that is used on an enum expression to dynamically obtain a set of permissivle values via a query that matches on properties of the external concepts.",
             "properties": {
                 "identifier_pattern": {
                     "description": "A regular expression that is used to obtain a set of identifiers from a source_ontology to construct a set of permissible values",
@@ -7847,7 +7847,7 @@
         },
         "ReachabilityQuery": {
             "additionalProperties": false,
-            "description": "A query that is used on an enum expression to dynamically obtain a set of permissible values via walking from a  set of source nodes to a set of descendants or ancestors over a set of relationship types.",
+            "description": "A query that is used on an enum expression to dynamically obtain a set of permissible values via walking from a set of source nodes to a set of descendants or ancestors over a set of relationship types.",
             "properties": {
                 "include_self": {
                     "description": "True if the query is reflexive",
