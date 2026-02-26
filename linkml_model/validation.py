@@ -228,4 +228,3 @@ slots.info = Slot(uri=REPORTING.info, name="info", curie=REPORTING.curie('info')
 
 slots.validationReport__results = Slot(uri=REPORTING.results, name="validationReport__results", curie=REPORTING.curie('results'),
                    model_uri=REPORTING.validationReport__results, domain=None, range=Optional[Union[Union[dict, ValidationResult], list[Union[dict, ValidationResult]]]])
-
