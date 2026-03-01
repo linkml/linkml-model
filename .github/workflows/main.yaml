@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6.0.2
-      - uses: astral-sh/setup-uv@v7.3.0
+      - uses: astral-sh/setup-uv@v7.3.1
         with:
           version: ${{ env.UV_VERSION }}
       - uses: actions/setup-python@v6.2.0
@@ -47,7 +47,7 @@ jobs:
         run: |
           git remote add upstream https://github.com/linkml/linkml-model
           git fetch upstream --tags
-      - uses: astral-sh/setup-uv@v7.3.0
+      - uses: astral-sh/setup-uv@v7.3.1
         with:
           version: ${{ env.UV_VERSION }}
           enable-cache: true

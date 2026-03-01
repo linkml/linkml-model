@@ -24,12 +24,12 @@ jobs:
       - uses: actions/setup-python@v6.2.0
         with:
           python-version: "3.13"
-      - uses: astral-sh/setup-uv@v7.3.0
+      - uses: astral-sh/setup-uv@v7.3.1
         with:
           version: ${{ env.UV_VERSION }}
       - name: Build source and wheel archives
         run: uv build
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.0
         with:
           name: distribution-files
           path: dist/
@@ -45,7 +45,7 @@ jobs:
     permissions:
       id-token: write # this permission is mandatory for trusted publishing
     steps:
-      - uses: actions/download-artifact@v7.0.0
+      - uses: actions/download-artifact@v8.0.0
         with:
           name: distribution-files
           path: dist
@@ -65,7 +65,7 @@ jobs:
       - uses: actions/setup-python@v6.2.0
         with:
           python-version: "3.13"
-      - uses: astral-sh/setup-uv@v7.3.0
+      - uses: astral-sh/setup-uv@v7.3.1
         with:
           version: ${{ env.UV_VERSION }}
       - name: Install dependencies
