@@ -5323,4 +5323,3 @@ slots.permissible_value_mixins = Slot(uri=LINKML.mixins, name="permissible_value
 
 slots.extra_slots_expression_range_expression = Slot(uri=LINKML.range_expression, name="extra_slots_expression_range_expression", curie=LINKML.curie('range_expression'),
                    model_uri=LINKML.extra_slots_expression_range_expression, domain=ExtraSlotsExpression, range=Optional[Union[dict, AnonymousSlotExpression]])
-
