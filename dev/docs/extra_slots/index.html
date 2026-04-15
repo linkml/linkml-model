@@ -1085,28 +1085,28 @@
 </thead>
 <tbody>
 <tr>
-<td>JsonObj(allowed=True)</td>
+<td>None</td>
 </tr>
 <tr>
-<td>JsonObj(allowed=False)</td>
+<td>None</td>
 </tr>
 <tr>
-<td>JsonObj(range_expression=JsonObj(range='string'))</td>
+<td>None</td>
 </tr>
 <tr>
-<td>JsonObj(range_expression=JsonObj(range='AClassDefinition'))</td>
+<td>None</td>
 </tr>
 <tr>
-<td>JsonObj(range_expression=JsonObj(any_of=[{'range': 'string'}, {'range': 'integer'}]))</td>
+<td>None</td>
 </tr>
 <tr>
-<td>JsonObj(range_expression=JsonObj(range='integer', multivalued=True, maximum_cardinality=5))</td>
+<td>None</td>
 </tr>
 <tr>
-<td>JsonObj(range_expression=JsonObj(range='integer', required=True))</td>
+<td>None</td>
 </tr>
 <tr>
-<td>JsonObj(allowed=False, range_expression=JsonObj(range='string'))</td>
+<td>None</td>
 </tr>
 </tbody>
 </table>
@@ -1145,39 +1145,58 @@ description: &quot;How a class instance handles extra data not specified in the 
   \ `range_expression` is `null`) -\n  forbid all additional data (default)\n- `range_expression:\
   \ ...`  - allow additional data if it matches the slot expression (see examples)\n&quot;
 examples:
-- value: JsonObj(allowed=True)
-  description: Allow all additional data
-- value: JsonObj(allowed=False)
-  description: Forbid any additional data
-- value: JsonObj(range_expression=JsonObj(range='string'))
-  description: Allow additional data that are strings
-- value: JsonObj(range_expression=JsonObj(range='AClassDefinition'))
-  description: Allow additional data if they are instances of the class definition
+- description: Allow all additional data
+  object:
+    allowed: true
+- description: Forbid any additional data
+  object:
+    allowed: false
+- description: Allow additional data that are strings
+  object:
+    range_expression:
+      range: string
+- description: Allow additional data if they are instances of the class definition
     &quot;AClassDefinition&quot;
-- value: 'JsonObj(range_expression=JsonObj(any_of=[{''range'': ''string''}, {''range'':
-    ''integer''}]))'
-  description: allow additional data if they are either strings or integers
-- value: JsonObj(range_expression=JsonObj(range='integer', multivalued=True, maximum_cardinality=5))
-  description: 'Allow additional data if they are lists of integers of at most length
+  object:
+    range_expression:
+      range: AClassDefinition
+- description: allow additional data if they are either strings or integers
+  object:
+    range_expression:
+      any_of:
+      - range: string
+      - range: integer
+- description: 'Allow additional data if they are lists of integers of at most length
     5.
 
     Note that this does *not* mean that a maximum of 5 extra slots are allowed.
 
     '
-- value: JsonObj(range_expression=JsonObj(range='integer', required=True))
-  description: 'Allow additional data if they are integers.
+  object:
+    range_expression:
+      range: integer
+      multivalued: true
+      maximum_cardinality: 5
+- description: 'Allow additional data if they are integers.
 
     `required` is meaningless in this context and ignored, since by definition all
     &quot;extra&quot; slots are optional.
 
     '
-- value: JsonObj(allowed=False, range_expression=JsonObj(range='string'))
-  description: 'A semantically *invalid* use of `extra_slots`, as extra slots will
+  object:
+    range_expression:
+      range: integer
+      required: true
+- description: 'A semantically *invalid* use of `extra_slots`, as extra slots will
     be forbidden and the
 
     `anonymous_slot_expression` will be ignored.
 
     '
+  object:
+    allowed: false
+    range_expression:
+      range: string
 in_subset:
 - SpecificationSubset
 - BasicSubset
