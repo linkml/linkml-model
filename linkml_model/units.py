@@ -156,4 +156,3 @@ slots.abbreviation = Slot(uri=QUDT.abbreviation, name="abbreviation", curie=QUDT
 
 slots.descriptive_name = Slot(uri=RDFS.label, name="descriptive_name", curie=RDFS.curie('label'),
                    model_uri=LINKML.descriptive_name, domain=None, range=Optional[str])
-

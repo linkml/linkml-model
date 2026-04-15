@@ -126,4 +126,3 @@ class slots:
 
 slots.annotations = Slot(uri=LINKML.annotations, name="annotations", curie=LINKML.curie('annotations'),
                    model_uri=LINKML.annotations, domain=None, range=Optional[Union[dict[Union[str, AnnotationTag], Union[dict, "Annotation"]], list[Union[dict, "Annotation"]]]])
-
