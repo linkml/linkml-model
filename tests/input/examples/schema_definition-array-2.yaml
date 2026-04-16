@@ -24,13 +24,15 @@ classes:
 
   TimestampSeries:
     implements:
-      - linkml:OneDimensionalSeries
+      - linkml:NDArray
+    annotations:
+      dimensions: "1"
     # TODO abstract from children
 
   IrregularlySampledTimestampSeries:
     is_a: TimestampSeries
     implements:
-      - linkml:OneDimensionalSeries
+      - linkml:NDArray
     attributes:
       name:  # the row label
         key: true  # unique when nested (unlike identifier, which is a global identifier)
@@ -44,11 +46,13 @@ classes:
           - linkml:elements
         unit:
           ucum_code: s
+    annotations:
+      dimensions: "1"
 
   RegularlySampledTimestampSeries:
     is_a: TimestampSeries
     implements:
-      - linkml:OneDimensionalSeries
+      - linkml:NDArray
     attributes:
       name:  # the row label
         key: true  # unique when nested (unlike identifier, which is a global identifier)
@@ -77,6 +81,8 @@ classes:
           - linkml:elements
         unit:
           ucum_code: s
+    annotations:
+      dimensions: "1"
 
   Electrode:
     attributes:
@@ -90,54 +96,89 @@ classes:
 
   ElectrodeSeries:
     implements:
-      - linkml:OneDimensionalSeries
+      - linkml:NDArray
     attributes:
-      name:  # the row label
-        key: true  # unique when nested (unlike identifier, which is a global identifier)
-        implements:
-          - linkml:name
       values:
         range: Electrode
         multivalued: true
         required: true
-        inlined: true  # not needed if value is not an object
-        inlined_as_list: true
+        # this will be serialized as an array of string keys/identifiers of the electrodes
         implements:
           - linkml:elements
+    annotations:
+      dimensions: "1"
 
-  ElectricalArray:
+  ElectricalDataMatrix:
+    description: >-
+      A 2D array of electrode voltage measurements over time.
+      See ElectricalDataArray for its usage with axes labels.
     implements:
-      - linkml:TwoDimensionalArray
+      - linkml:NDArray
+      - linkml:RowOrderedArray
+    attributes:
+      values:
+        range: float
+        multivalued: true
+        implements:
+          - linkml:elements
+        required: true
+        unit:
+          ucum_code: V
+    annotations:
+      dimensions: 3
+
+  ElectricalDataArray:
+    implements:
+      - linkml:DataArray
     attributes:
       time:
         range: TimestampSeries  # abstract - could be IrregularlySampled... or RegularlySampled...
         required: true
         implements:
-          - linkml:axis0
+          - linkml:axis
         inlined: true
+        annotations:
+          axis_index: 0
       electrode:
         range: ElectrodeSeries
         required: true
         implements:
-          - linkml:axis1
+          - linkml:axis
         inlined: true
+        annotations:
+          axis_index: 1
       values:
-        range: float
-        multivalued: true
+        range: ElectricalDataMatrix
         required: true
-        unit:
-          ucum_code: V
+        inlined: true
         implements:
-          - linkml:elements
+          - linkml:array
+    annotations:
+      dimensions: 2
 
-  IrregularlySampledElectricalArray:
-    is_a: ElectricalArray
+  IrregularlySampledElectricalDataArray:
+    is_a: ElectricalDataArray
     slot_usage:
       time:
         range: IrregularlySampledTimestampSeries
+    annotations:
+      dimensions: 2
 
-  RegularlySampledElectricalArray:
-    is_a: ElectricalArray
+  RegularlySampledElectricalDataArray:
+    is_a: ElectricalDataArray
     attributes:
       time:
         range: RegularlySampledTimestampSeries
+    annotations:
+      dimensions: 2
+
+  File:
+    tree_root: true
+    attributes:
+      electrical_data_arrays:
+        range: ElectricalDataArray  # inlined by default
+        multivalued: true
+      electrodes:
+        range: Electrode
+        multivalued: true
+        inlined_as_list: true

@@ -55,7 +55,7 @@ slots:
         ifabsent: string(s1)
     mt_string_slot:
         ifabsent: string()
-        
+
 classes:
     HighClass:
         slots:

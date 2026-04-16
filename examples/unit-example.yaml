@@ -42,15 +42,15 @@ classes:
       - arm_length
 
   Measurement:
-    description: 
+    description:
     attributes:
       unit_code:
         range: UnitCodeEnum
       numeric_value:
         range: float
-      
+
   Measurement_v2:
-    description: 
+    description:
     attributes:
       unit_code:
         range: UnitTerm
@@ -62,7 +62,7 @@ classes:
       id:
         identifier: true
       label:
-      
+
 
 #==================================
 # Slots                           #
@@ -79,14 +79,14 @@ slots:
         - UO:0000015 ## centimeter
         - uom:cm
       has_quantity_kind: PATO:0000119 ## height
-      
+
   id:
     identifier: true
     range: string
   name:
     range: string
 
-      
+
   ## Example 2: unit is a property of the scalar type;
   ## this is equivalent to making it a property of the slot/field,
   ## however, the type can be reused in multiple places
@@ -98,8 +98,8 @@ slots:
   ## This is both a pro (flexibility) and a con (less standardization)
   arm_length:
     range: Measurement
-  
-      
+
+
 #==================================
 # Types
 #==================================
@@ -109,9 +109,9 @@ types:
     typeof: float
     unit:
       ucum_code: kg
-    
 
-      
+
+
 #==================================
 # Enums
 #==================================

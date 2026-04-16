@@ -1,5 +1,5 @@
-# Auto generated from datasets.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-09-01T13:21:13
+# Auto generated from datasets.yaml by pythongen.py version: 0.0.1
+# Generation date: 2026-02-26T08:29:51
 # Schema: datasets
 #
 # id: https://w3id.org/linkml/datasets
@@ -8,29 +8,57 @@
 
 import dataclasses
 import re
-from jsonasobj2 import JsonObj, as_dict
-from typing import Optional, List, Union, Dict, ClassVar, Any
 from dataclasses import dataclass
+from datetime import (
+    date,
+    datetime,
+    time
+)
+from typing import (
+    Any,
+    ClassVar,
+    Dict,
+    List,
+    Optional,
+    Union
+)
 
-from linkml_runtime.utils.slot import Slot
-from linkml_runtime.utils.metamodelcore import empty_list, empty_dict, bnode
-from linkml_runtime.utils.yamlutils import YAMLRoot, extended_str, extended_float, extended_int
-from linkml_runtime.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
-from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
-from linkml_runtime.utils.enumerations import EnumDefinitionImpl
-from rdflib import Namespace, URIRef
+from jsonasobj2 import (
+    JsonObj,
+    as_dict
+)
 from linkml_runtime.utils.curienamespace import CurieNamespace
+from linkml_runtime.utils.enumerations import EnumDefinitionImpl
+from linkml_runtime.utils.formatutils import (
+    camelcase,
+    sfx,
+    underscore
+)
+from linkml_runtime.utils.metamodelcore import (
+    bnode,
+    empty_dict,
+    empty_list
+)
+from linkml_runtime.utils.slot import Slot
+from linkml_runtime.utils.yamlutils import (
+    YAMLRoot,
+    extended_float,
+    extended_int,
+    extended_str
+)
+from rdflib import (
+    Namespace,
+    URIRef
+)
+
 from .types import Datetime, Integer, String, Uri, Uriorcurie
 from linkml_runtime.utils.metamodelcore import URI, URIorCURIE, XSDDateTime
 
 metamodel_version = "1.7.0"
 version = None
 
-# Overwrite dataclasses _init_fn to add **kwargs in __init__
-dataclasses._init_fn = dataclasses_init_fn_with_kwargs
-
 # Namespaces
-BIBO = CurieNamespace('bibo', 'http://example.org/UNKNOWN/bibo/')
+BIBO = CurieNamespace('bibo', 'http://purl.org/ontology/bibo/')
 CSVW = CurieNamespace('csvw', 'http://www.w3.org/ns/csvw#')
 DATASETS = CurieNamespace('datasets', 'https://w3id.org/linkml/report')
 DCAT = CurieNamespace('dcat', 'http://www.w3.org/ns/dcat#')
@@ -39,7 +67,7 @@ FORMATS = CurieNamespace('formats', 'http://www.w3.org/ns/formats/')
 FRICTIONLESS = CurieNamespace('frictionless', 'https://specs.frictionlessdata.io/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 MEDIATYPES = CurieNamespace('mediatypes', 'https://www.iana.org/assignments/media-types/')
-OSLC = CurieNamespace('oslc', 'http://example.org/UNKNOWN/oslc/')
+OSLC = CurieNamespace('oslc', 'http://open-services.net/ns/core#')
 OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 PAV = CurieNamespace('pav', 'http://purl.org/pav/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
@@ -68,14 +96,14 @@ class DataResourceId(InformationId):
     pass
 
 
-@dataclass
+@dataclass(repr=False)
 class Information(YAMLRoot):
     """
     Grouping for datasets and data files
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DATASETS.Information
+    class_class_uri: ClassVar[URIRef] = DATASETS["Information"]
     class_class_curie: ClassVar[str] = "datasets:Information"
     class_name: ClassVar[str] = "Information"
     class_model_uri: ClassVar[URIRef] = DATASETS.Information
@@ -91,16 +119,16 @@ class Information(YAMLRoot):
     version: Optional[str] = None
     language: Optional[str] = None
     publisher: Optional[Union[str, URIorCURIE]] = None
-    keywords: Optional[Union[str, List[str]]] = empty_list()
+    keywords: Optional[Union[str, list[str]]] = empty_list()
     issued: Optional[Union[str, XSDDateTime]] = None
     created_by: Optional[Union[str, URIorCURIE]] = None
     created_on: Optional[Union[str, XSDDateTime]] = None
     compression: Optional[str] = None
     was_derived_from: Optional[str] = None
     page: Optional[str] = None
-    test_roles: Optional[Union[Union[str, "TestRole"], List[Union[str, "TestRole"]]]] = empty_list()
+    test_roles: Optional[Union[Union[str, "TestRole"], list[Union[str, "TestRole"]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, InformationId):
@@ -165,22 +193,22 @@ class Information(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class DataPackage(Information):
     """
     A collection of data resources
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = VOID.Dataset
+    class_class_uri: ClassVar[URIRef] = VOID["Dataset"]
     class_class_curie: ClassVar[str] = "void:Dataset"
     class_name: ClassVar[str] = "DataPackage"
     class_model_uri: ClassVar[URIRef] = DATASETS.DataPackage
 
     id: Union[str, DataPackageId] = None
-    resources: Optional[Union[Union[str, DataResourceId], List[Union[str, DataResourceId]]]] = empty_list()
+    resources: Optional[Union[Union[str, DataResourceId], list[Union[str, DataResourceId]]]] = empty_list()
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, DataPackageId):
@@ -193,14 +221,14 @@ class DataPackage(Information):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class DataResource(Information):
     """
     An individual file or table
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DCAT.Distribution
+    class_class_uri: ClassVar[URIRef] = DCAT["Distribution"]
     class_class_curie: ClassVar[str] = "dcat:Distribution"
     class_name: ClassVar[str] = "DataResource"
     class_model_uri: ClassVar[URIRef] = DATASETS.DataResource
@@ -218,7 +246,7 @@ class DataResource(Information):
     sha256: Optional[str] = None
     dialect: Optional[str] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, DataResourceId):
@@ -260,14 +288,14 @@ class DataResource(Information):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class FormatDialect(YAMLRoot):
     """
     Additional format information for a file
     """
-    _inherited_slots: ClassVar[List[str]] = []
+    _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DATASETS.FormatDialect
+    class_class_uri: ClassVar[URIRef] = DATASETS["FormatDialect"]
     class_class_curie: ClassVar[str] = "datasets:FormatDialect"
     class_name: ClassVar[str] = "FormatDialect"
     class_model_uri: ClassVar[URIRef] = DATASETS.FormatDialect
@@ -278,7 +306,7 @@ class FormatDialect(YAMLRoot):
     header: Optional[str] = None
     quote_char: Optional[str] = None
 
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self.comment_prefix is not None and not isinstance(self.comment_prefix, str):
             self.comment_prefix = str(self.comment_prefix)
 
@@ -328,22 +356,22 @@ class FormatEnum(EnumDefinitionImpl):
 
     N3 = PermissibleValue(
         text="N3",
-        meaning=FORMATS.N3)
+        meaning=FORMATS["N3"])
     Microdata = PermissibleValue(
         text="Microdata",
-        meaning=FORMATS.microdata)
+        meaning=FORMATS["microdata"])
     POWDER = PermissibleValue(
         text="POWDER",
-        meaning=FORMATS.POWDER)
+        meaning=FORMATS["POWDER"])
     RDFa = PermissibleValue(
         text="RDFa",
-        meaning=FORMATS.RDFa)
+        meaning=FORMATS["RDFa"])
     Turtle = PermissibleValue(
         text="Turtle",
-        meaning=FORMATS.Turtle)
+        meaning=FORMATS["Turtle"])
     TriG = PermissibleValue(
         text="TriG",
-        meaning=FORMATS.TriG)
+        meaning=FORMATS["TriG"])
     YAML = PermissibleValue(text="YAML")
     JSON = PermissibleValue(text="JSON")
 
@@ -368,19 +396,19 @@ class FormatEnum(EnumDefinitionImpl):
         setattr(cls, "LD Patch",
             PermissibleValue(
                 text="LD Patch",
-                meaning=FORMATS.LD_Patch))
+                meaning=FORMATS["LD_Patch"]))
         setattr(cls, "OWL XML Serialization",
             PermissibleValue(
                 text="OWL XML Serialization",
-                meaning=FORMATS.OWL_XML))
+                meaning=FORMATS["OWL_XML"]))
         setattr(cls, "OWL Functional Syntax",
             PermissibleValue(
                 text="OWL Functional Syntax",
-                meaning=FORMATS.OWL_Functional))
+                meaning=FORMATS["OWL_Functional"]))
         setattr(cls, "OWL Manchester Syntax",
             PermissibleValue(
                 text="OWL Manchester Syntax",
-                meaning=FORMATS.OWL_Manchester))
+                meaning=FORMATS["OWL_Manchester"]))
         setattr(cls, "POWDER-S",
             PermissibleValue(
                 text="POWDER-S",
@@ -396,31 +424,31 @@ class FormatEnum(EnumDefinitionImpl):
         setattr(cls, "RDF/JSON",
             PermissibleValue(
                 text="RDF/JSON",
-                meaning=FORMATS.RDF_JSON))
+                meaning=FORMATS["RDF_JSON"]))
         setattr(cls, "RDF/XML",
             PermissibleValue(
                 text="RDF/XML",
-                meaning=FORMATS.RDF_XML))
+                meaning=FORMATS["RDF_XML"]))
         setattr(cls, "RIF XML Syntax",
             PermissibleValue(
                 text="RIF XML Syntax",
-                meaning=FORMATS.RIF_XML))
+                meaning=FORMATS["RIF_XML"]))
         setattr(cls, "SPARQL Results in XML",
             PermissibleValue(
                 text="SPARQL Results in XML",
-                meaning=FORMATS.SPARQL_Results_XML))
+                meaning=FORMATS["SPARQL_Results_XML"]))
         setattr(cls, "SPARQL Results in JSON",
             PermissibleValue(
                 text="SPARQL Results in JSON",
-                meaning=FORMATS.SPARQL_Results_JSON))
+                meaning=FORMATS["SPARQL_Results_JSON"]))
         setattr(cls, "SPARQL Results in CSV",
             PermissibleValue(
                 text="SPARQL Results in CSV",
-                meaning=FORMATS.SPARQL_Results_CSV))
+                meaning=FORMATS["SPARQL_Results_CSV"]))
         setattr(cls, "SPARQL Results in TSV",
             PermissibleValue(
                 text="SPARQL Results in TSV",
-                meaning=FORMATS.SPARQL_Results_TSV))
+                meaning=FORMATS["SPARQL_Results_TSV"]))
 
 # Slots
 class slots:
@@ -493,16 +521,16 @@ slots.profile = Slot(uri=DATASETS.profile, name="profile", curie=DATASETS.curie(
                    model_uri=DATASETS.profile, domain=None, range=Optional[Union[str, URIorCURIE]])
 
 slots.keywords = Slot(uri=DCAT.keyword, name="keywords", curie=DCAT.curie('keyword'),
-                   model_uri=DATASETS.keywords, domain=None, range=Optional[Union[str, List[str]]])
+                   model_uri=DATASETS.keywords, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.themes = Slot(uri=DCAT.theme, name="themes", curie=DCAT.curie('theme'),
-                   model_uri=DATASETS.themes, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
+                   model_uri=DATASETS.themes, domain=None, range=Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]])
 
 slots.resources = Slot(uri=DCAT.distribution, name="resources", curie=DCAT.curie('distribution'),
-                   model_uri=DATASETS.resources, domain=None, range=Optional[Union[Union[str, DataResourceId], List[Union[str, DataResourceId]]]])
+                   model_uri=DATASETS.resources, domain=None, range=Optional[Union[Union[str, DataResourceId], list[Union[str, DataResourceId]]]])
 
 slots.test_roles = Slot(uri=DATASETS.test_roles, name="test_roles", curie=DATASETS.curie('test_roles'),
-                   model_uri=DATASETS.test_roles, domain=None, range=Optional[Union[Union[str, "TestRole"], List[Union[str, "TestRole"]]]])
+                   model_uri=DATASETS.test_roles, domain=None, range=Optional[Union[Union[str, "TestRole"], list[Union[str, "TestRole"]]]])
 
 slots.created_by = Slot(uri=PAV.createdBy, name="created_by", curie=PAV.curie('createdBy'),
                    model_uri=DATASETS.created_by, domain=None, range=Optional[Union[str, URIorCURIE]])
