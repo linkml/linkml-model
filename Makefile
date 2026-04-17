@@ -111,6 +111,9 @@ examples/%.ttl: src/data/examples/%.yaml
 upgrade:
 	uv add --group dev linkml
 
+precommit:
+	$(RUN) pre-commit run --all-files
+
 # Test documentation locally
 serve: mkd-serve
 
