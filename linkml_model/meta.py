@@ -1215,7 +1215,7 @@ class EnumBinding(YAMLRoot):
 @dataclass(repr=False)
 class MatchQuery(YAMLRoot):
     """
-    A query that is used on an enum expression to dynamically obtain a set of permissivle values via a query that
+    A query that is used on an enum expression to dynamically obtain a set of permissible values via a query that
     matches on properties of the external concepts.
     """
     _inherited_slots: ClassVar[list[str]] = []
