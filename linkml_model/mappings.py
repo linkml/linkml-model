@@ -1,5 +1,5 @@
 # Auto generated from mappings.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-02T20:01:19
+# Generation date: 2026-04-28T23:24:54
 # Schema: mappings
 #
 # id: https://w3id.org/linkml/mappings
@@ -105,3 +105,4 @@ slots.deprecated_element_has_exact_replacement = Slot(uri=LINKML.deprecated_elem
 
 slots.deprecated_element_has_possible_replacement = Slot(uri=LINKML.deprecated_element_has_possible_replacement, name="deprecated element has possible replacement", curie=LINKML.curie('deprecated_element_has_possible_replacement'),
                    model_uri=LINKML.deprecated_element_has_possible_replacement, domain=None, range=Optional[Union[str, URIorCURIE]], mappings = [OIO["consider"]])
+
