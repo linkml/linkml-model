@@ -389,110 +389,6 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#inheritance">
-<span class="md-ellipsis">
-      
-        Inheritance
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#class-properties">
-<span class="md-ellipsis">
-      
-        Class Properties
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#slots">
-<span class="md-ellipsis">
-      
-        Slots
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#mixin-usage">
-<span class="md-ellipsis">
-      
-        Mixin Usage
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#identifier-and-mapping-information">
-<span class="md-ellipsis">
-      
-        Identifier and Mapping Information
-      
-    </span>
-</a>
-<nav aria-label="Identifier and Mapping Information" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#schema-source">
-<span class="md-ellipsis">
-      
-        Schema Source
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#mappings">
-<span class="md-ellipsis">
-      
-        Mappings
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#linkml-source">
-<span class="md-ellipsis">
-      
-        LinkML Source
-      
-    </span>
-</a>
-<nav aria-label="LinkML Source" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#direct">
-<span class="md-ellipsis">
-      
-        Direct
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#induced">
-<span class="md-ellipsis">
-      
-        Induced
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
 </nav>
 </div>
 </div>
@@ -501,7 +397,17 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-typeexpression">Class: TypeExpression</h1>
 <p><em>An abstract class grouping named types and anonymous type expressions</em></p>
-<p>URI: <a href="https://w3id.org/linkml/TypeExpression">linkml:TypeExpression</a></p>
+<div data-search-exclude="" markdown="1">
+
+
+
+URI: [linkml:TypeExpression](https://w3id.org/linkml/TypeExpression)
+
+
+
+
+
+
 <div class="mermaid"> classDiagram
     class TypeExpression
     click TypeExpression href "../TypeExpression/"
@@ -615,165 +521,96 @@
 
 
 </div>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../Expression/">Expression</a><ul>
-<li><strong>TypeExpression</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="class-properties">Class Properties</h2>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Mixin</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
-<h2 id="slots">Slots</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-<th>Inheritance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../pattern/">pattern</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the string value of the slot must conform to this regular expression expresse...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../structured_pattern/">structured_pattern</a></td>
-<td>0..1 <br/> <a href="../PatternExpression/">PatternExpression</a></td>
-<td>the string value of the slot must conform to the regular expression in the pa...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../unit/">unit</a></td>
-<td>0..1 <br/> <a href="../UnitOfMeasure/">UnitOfMeasure</a></td>
-<td>an encoding of a unit</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../implicit_prefix/">implicit_prefix</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Causes the slot value to be interpreted as a uriorcurie after prefixing with ...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../equals_string/">equals_string</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the slot must have range string and the value of the slot must equal the spec...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../equals_string_in/">equals_string_in</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>the slot must have range string and the value of the slot must equal one of t...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../equals_number/">equals_number</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the slot must have range of a number and the value of the slot must equal the...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../minimum_value/">minimum_value</a></td>
-<td>0..1 <br/> <a href="../Anything/">Anything</a></td>
-<td>For ordinal ranges, the value must be equal to or higher than this</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../maximum_value/">maximum_value</a></td>
-<td>0..1 <br/> <a href="../Anything/">Anything</a></td>
-<td>For ordinal ranges, the value must be equal to or lower than this</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../none_of/">none_of</a></td>
-<td>* <br/> <a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
-<td>holds if none of the expressions hold</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../exactly_one_of/">exactly_one_of</a></td>
-<td>* <br/> <a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
-<td>holds if only one of the expressions hold</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../any_of/">any_of</a></td>
-<td>* <br/> <a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
-<td>holds if at least one of the expressions hold</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../all_of/">all_of</a></td>
-<td>* <br/> <a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
-<td>holds if all of the expressions hold</td>
-<td>direct</td>
-</tr>
-</tbody>
-</table>
-<h2 id="mixin-usage">Mixin Usage</h2>
-<table>
-<thead>
-<tr>
-<th>mixed into</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
-<td>A type expression that is not a top-level named type definition</td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td>an element that whose instances are atomic scalar values that can be mapped t...</td>
-</tr>
-</tbody>
-</table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: <a href="https://w3id.org/linkml/meta">https://w3id.org/linkml/meta</a></li>
-</ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>linkml:TypeExpression</td>
-</tr>
-<tr>
-<td>native</td>
-<td>linkml:TypeExpression</td>
-</tr>
-</tbody>
-</table>
-<h2 id="linkml-source">LinkML Source</h2>
+
+
+
+
+
+
+## Inheritance
+* [Expression](Expression.md)
+    * **TypeExpression**
+
+
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Mixin | Yes |
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [pattern](pattern.md) | 0..1 <br/> [String](String.md) | the string value of the slot must conform to this regular expression expresse... | direct |
+| [structured_pattern](structured_pattern.md) | 0..1 <br/> [PatternExpression](PatternExpression.md) | the string value of the slot must conform to the regular expression in the pa... | direct |
+| [unit](unit.md) | 0..1 <br/> [UnitOfMeasure](UnitOfMeasure.md) | an encoding of a unit | direct |
+| [implicit_prefix](implicit_prefix.md) | 0..1 <br/> [String](String.md) | Causes the slot value to be interpreted as a uriorcurie after prefixing with ... | direct |
+| [equals_string](equals_string.md) | 0..1 <br/> [String](String.md) | the slot must have range string and the value of the slot must equal the spec... | direct |
+| [equals_string_in](equals_string_in.md) | * <br/> [String](String.md) | the slot must have range string and the value of the slot must equal one of t... | direct |
+| [equals_number](equals_number.md) | 0..1 <br/> [Integer](Integer.md) | the slot must have range of a number and the value of the slot must equal the... | direct |
+| [minimum_value](minimum_value.md) | 0..1 <br/> [Anything](Anything.md) | For ordinal ranges, the value must be equal to or higher than this | direct |
+| [maximum_value](maximum_value.md) | 0..1 <br/> [Anything](Anything.md) | For ordinal ranges, the value must be equal to or lower than this | direct |
+| [none_of](none_of.md) | * <br/> [AnonymousTypeExpression](AnonymousTypeExpression.md) | holds if none of the expressions hold | direct |
+| [exactly_one_of](exactly_one_of.md) | * <br/> [AnonymousTypeExpression](AnonymousTypeExpression.md) | holds if only one of the expressions hold | direct |
+| [any_of](any_of.md) | * <br/> [AnonymousTypeExpression](AnonymousTypeExpression.md) | holds if at least one of the expressions hold | direct |
+| [all_of](all_of.md) | * <br/> [AnonymousTypeExpression](AnonymousTypeExpression.md) | holds if all of the expressions hold | direct |
+
+
+
+## Mixin Usage
+
+| mixed into | description |
+| --- | --- |
+| [AnonymousTypeExpression](AnonymousTypeExpression.md) | A type expression that is not a top-level named type definition |
+| [TypeDefinition](TypeDefinition.md) | an element that whose instances are atomic scalar values that can be mapped t... |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/linkml/meta
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | linkml:TypeExpression |
+| native | linkml:TypeExpression |
+
+
+
+
+
+
+## LinkML Source
+
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
-<h3 id="direct">Direct</h3>
+
+### Direct
+
 <details>
 <pre><code class="language-yaml">name: type_expression
 description: An abstract class grouping named types and anonymous type expressions
@@ -810,7 +647,9 @@ slot_usage:
 
 </code></pre>
 </details>
-<h3 id="induced">Induced</h3>
+
+### Induced
+
 <details>
 <pre><code class="language-yaml">name: type_expression
 description: An abstract class grouping named types and anonymous type expressions
@@ -1057,7 +896,7 @@ attributes:
     multivalued: true
 
 </code></pre>
-</details>
+</details></div>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>

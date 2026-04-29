@@ -389,128 +389,6 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#inheritance">
-<span class="md-ellipsis">
-      
-        Inheritance
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#slots">
-<span class="md-ellipsis">
-      
-        Slots
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-<span class="md-ellipsis">
-      
-        Usages
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#in-subsets">
-<span class="md-ellipsis">
-      
-        In Subsets
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#aliases">
-<span class="md-ellipsis">
-      
-        Aliases
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#see-also">
-<span class="md-ellipsis">
-      
-        See Also
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#identifier-and-mapping-information">
-<span class="md-ellipsis">
-      
-        Identifier and Mapping Information
-      
-    </span>
-</a>
-<nav aria-label="Identifier and Mapping Information" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#schema-source">
-<span class="md-ellipsis">
-      
-        Schema Source
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#mappings">
-<span class="md-ellipsis">
-      
-        Mappings
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#linkml-source">
-<span class="md-ellipsis">
-      
-        LinkML Source
-      
-    </span>
-</a>
-<nav aria-label="LinkML Source" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#direct">
-<span class="md-ellipsis">
-      
-        Direct
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#induced">
-<span class="md-ellipsis">
-      
-        Induced
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
 </nav>
 </div>
 </div>
@@ -519,10 +397,19 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-element">Class: Element</h1>
 <p><em>A named element in the model</em></p>
-<ul>
-<li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
-</ul>
-<p>URI: <a href="https://w3id.org/linkml/Element">linkml:Element</a></p>
+<div data-search-exclude="" markdown="1">
+
+
+* __NOTE__: this is an abstract class and should not be instantiated directly
+
+
+URI: [linkml:Element](https://w3id.org/linkml/Element)
+
+
+
+
+
+
 <div class="mermaid"> classDiagram
     class Element
     click Element href "../Element/"
@@ -695,3694 +582,695 @@
 
 
 </div>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><strong>Element</strong> [ <a href="../Extensible/">Extensible</a> <a href="../Annotatable/">Annotatable</a> <a href="../CommonMetadata/">CommonMetadata</a>]<ul>
-<li><a href="../SchemaDefinition/">SchemaDefinition</a></li>
-<li><a href="../TypeDefinition/">TypeDefinition</a> [ <a href="../TypeExpression/">TypeExpression</a>]</li>
-<li><a href="../SubsetDefinition/">SubsetDefinition</a></li>
-<li><a href="../Definition/">Definition</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="slots">Slots</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-<th>Inheritance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../name/">name</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>the unique name of the element within the context of the schema</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../id_prefixes/">id_prefixes</a></td>
-<td>* <br/> <a href="../Ncname/">Ncname</a></td>
-<td>An allowed list of prefixes for which identifiers must conform</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>If true, then the id_prefixes slot is treated as being closed, and any use of...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../definition_uri/">definition_uri</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The native URI of the element</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../local_names/">local_names</a></td>
-<td>* <br/> <a href="../LocalName/">LocalName</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../conforms_to/">conforms_to</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>An established standard to which the element conforms</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../implements/">implements</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>An element in another schema which this element conforms to</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../instantiates/">instantiates</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>An element in another schema which this element instantiates</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../extensions/">extensions</a></td>
-<td>* <br/> <a href="../Extension/">Extension</a></td>
-<td>a tag/text tuple attached to an arbitrary element</td>
-<td><a href="../Extensible/">Extensible</a></td>
-</tr>
-<tr>
-<td><a href="../annotations/">annotations</a></td>
-<td>* <br/> <a href="../Annotation/">Annotation</a></td>
-<td>a collection of tag/text tuples with the semantics of OWL Annotation</td>
-<td><a href="../Annotatable/">Annotatable</a></td>
-</tr>
-<tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
-<td>a textual description of the element's purpose and use</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>* <br/> <a href="../AltDescription/">AltDescription</a></td>
-<td>A sourced alternative description for an element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../title/">title</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A concise human-readable display label for the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Description of why and when this element will no longer be used</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../todos/">todos</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>Outstanding issues that needs resolution</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../notes/">notes</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>editorial notes about an element intended primarily for internal consumption</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../comments/">comments</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>notes and comments about an element intended primarily for external consumpti...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../examples/">examples</a></td>
-<td>* <br/> <a href="../Example/">Example</a></td>
-<td>example usages of an element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>* <br/> <a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td>used to indicate membership of a term in a defined subset of terms used for a...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>0..1 <br/> <a href="../Uri/">Uri</a></td>
-<td>id of the schema that defined the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the imports entry that this element was derived from</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../source/">source</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A related resource from which the element is derived</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../in_language/">in_language</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the primary language used in the sources</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../see_also/">see_also</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of related entities or URLs that may be of relevance</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../deprecated_element_has_exact_replacement/">deprecated_element_has_exact_replacement</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>When an element is deprecated, it can be automatically replaced by this uri o...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../deprecated_element_has_possible_replacement/">deprecated_element_has_possible_replacement</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>When an element is deprecated, it can be potentially replaced by this uri or ...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../aliases/">aliases</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>Alternate names/labels for the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../structured_aliases/">structured_aliases</a></td>
-<td>* <br/> <a href="../StructuredAlias/">StructuredAlias</a></td>
-<td>A list of structured_alias objects, used to provide aliases in conjunction wi...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../mappings/">mappings</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have compa...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../exact_mappings/">exact_mappings</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have ident...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../close_mappings/">close_mappings</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have close...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../related_mappings/">related_mappings</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have relat...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../narrow_mappings/">narrow_mappings</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have narro...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../broad_mappings/">broad_mappings</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have broad...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../created_by/">created_by</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>agent that created the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../contributors/">contributors</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>agent that contributed to the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../created_on/">created_on</a></td>
-<td>0..1 <br/> <a href="../Datetime/">Datetime</a></td>
-<td>time at which the element was created</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>0..1 <br/> <a href="../Datetime/">Datetime</a></td>
-<td>time at which the element was last updated</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>agent that modified the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../status/">status</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>status of the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../rank/">rank</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the relative order in which the element occurs, lower values are given preced...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../categories/">categories</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>Controlled terms used to categorize an element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../keywords/">keywords</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>Keywords or tags used to describe the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
-<tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../name/">name</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../id_prefixes/">id_prefixes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../definition_uri/">definition_uri</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../local_names/">local_names</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../conforms_to/">conforms_to</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../implements/">implements</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../instantiates/">instantiates</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="./">Element</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../bindings/">bindings</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../name/">name</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../id_prefixes/">id_prefixes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../definition_uri/">definition_uri</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../local_names/">local_names</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../conforms_to/">conforms_to</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../implements/">implements</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../instantiates/">instantiates</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../union_of/">union_of</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../name/">name</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../id_prefixes/">id_prefixes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../definition_uri/">definition_uri</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../local_names/">local_names</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../conforms_to/">conforms_to</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../implements/">implements</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../instantiates/">instantiates</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../name/">name</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../id_prefixes/">id_prefixes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../definition_uri/">definition_uri</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../local_names/">local_names</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../conforms_to/">conforms_to</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../implements/">implements</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../instantiates/">instantiates</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../name/">name</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../id_prefixes/">id_prefixes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../definition_uri/">definition_uri</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../local_names/">local_names</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../conforms_to/">conforms_to</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../implements/">implements</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../instantiates/">instantiates</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../Definition/">Definition</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../name/">name</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../id_prefixes/">id_prefixes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../definition_uri/">definition_uri</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../local_names/">local_names</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../conforms_to/">conforms_to</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../implements/">implements</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../instantiates/">instantiates</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumDefinition/">EnumDefinition</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../StructuredAlias/">StructuredAlias</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-<td><a href="../range/">range</a></td>
-<td>range</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-<td><a href="../bindings/">bindings</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../range/">range</a></td>
-<td>range</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../bindings/">bindings</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../union_of/">union_of</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../range/">range</a></td>
-<td>range</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../bindings/">bindings</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../name/">name</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../id_prefixes/">id_prefixes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../definition_uri/">definition_uri</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../local_names/">local_names</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../conforms_to/">conforms_to</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../implements/">implements</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../instantiates/">instantiates</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../union_of/">union_of</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../name/">name</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../id_prefixes/">id_prefixes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../definition_uri/">definition_uri</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../local_names/">local_names</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../conforms_to/">conforms_to</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../implements/">implements</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../instantiates/">instantiates</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ClassRule/">ClassRule</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ArrayExpression/">ArrayExpression</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PatternExpression/">PatternExpression</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../ImportExpression/">ImportExpression</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../instantiates/">instantiates</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../implements/">implements</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../PermissibleValue/">PermissibleValue</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../description/">description</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../title/">title</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../todos/">todos</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../notes/">notes</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../comments/">comments</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../examples/">examples</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../source/">source</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../see_also/">see_also</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../aliases/">aliases</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../created_by/">created_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../contributors/">contributors</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../created_on/">created_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../status/">status</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-<tr>
-<td><a href="../TypeMapping/">TypeMapping</a></td>
-<td><a href="../keywords/">keywords</a></td>
-<td>domain</td>
-<td><a href="./">Element</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="in-subsets">In Subsets</h2>
-<ul>
-<li><a href="../BasicSubset/">BasicSubset</a></li>
-</ul>
-<h2 id="aliases">Aliases</h2>
-<ul>
-<li>data element</li>
-<li>object</li>
-</ul>
-<h2 id="see-also">See Also</h2>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Data_element">https://en.wikipedia.org/wiki/Data_element</a></li>
-</ul>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: <a href="https://w3id.org/linkml/meta">https://w3id.org/linkml/meta</a></li>
-</ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>linkml:Element</td>
-</tr>
-<tr>
-<td>native</td>
-<td>linkml:Element</td>
-</tr>
-</tbody>
-</table>
-<h2 id="linkml-source">LinkML Source</h2>
+
+
+
+
+
+
+## Inheritance
+* **Element** [ [Extensible](Extensible.md) [Annotatable](Annotatable.md) [CommonMetadata](CommonMetadata.md)]
+    * [SchemaDefinition](SchemaDefinition.md)
+    * [TypeDefinition](TypeDefinition.md) [ [TypeExpression](TypeExpression.md)]
+    * [SubsetDefinition](SubsetDefinition.md)
+    * [Definition](Definition.md)
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [name](name.md) | 1 <br/> [String](String.md) | the unique name of the element within the context of the schema | direct |
+| [id_prefixes](id_prefixes.md) | * <br/> [Ncname](Ncname.md) | An allowed list of prefixes for which identifiers must conform | direct |
+| [id_prefixes_are_closed](id_prefixes_are_closed.md) | 0..1 <br/> [Boolean](Boolean.md) | If true, then the id_prefixes slot is treated as being closed, and any use of... | direct |
+| [definition_uri](definition_uri.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | The native URI of the element | direct |
+| [local_names](local_names.md) | * <br/> [LocalName](LocalName.md) |  | direct |
+| [conforms_to](conforms_to.md) | 0..1 <br/> [String](String.md) | An established standard to which the element conforms | direct |
+| [implements](implements.md) | * <br/> [Uriorcurie](Uriorcurie.md) | An element in another schema which this element conforms to | direct |
+| [instantiates](instantiates.md) | * <br/> [Uriorcurie](Uriorcurie.md) | An element in another schema which this element instantiates | direct |
+| [extensions](extensions.md) | * <br/> [Extension](Extension.md) | a tag/text tuple attached to an arbitrary element | [Extensible](Extensible.md) |
+| [annotations](annotations.md) | * <br/> [Annotation](Annotation.md) | a collection of tag/text tuples with the semantics of OWL Annotation | [Annotatable](Annotatable.md) |
+| [description](description.md) | 0..1 _recommended_ <br/> [String](String.md) | a textual description of the element's purpose and use | [CommonMetadata](CommonMetadata.md) |
+| [alt_descriptions](alt_descriptions.md) | * <br/> [AltDescription](AltDescription.md) | A sourced alternative description for an element | [CommonMetadata](CommonMetadata.md) |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A concise human-readable display label for the element | [CommonMetadata](CommonMetadata.md) |
+| [deprecated](deprecated.md) | 0..1 <br/> [String](String.md) | Description of why and when this element will no longer be used | [CommonMetadata](CommonMetadata.md) |
+| [todos](todos.md) | * <br/> [String](String.md) | Outstanding issues that needs resolution | [CommonMetadata](CommonMetadata.md) |
+| [notes](notes.md) | * <br/> [String](String.md) | editorial notes about an element intended primarily for internal consumption | [CommonMetadata](CommonMetadata.md) |
+| [comments](comments.md) | * <br/> [String](String.md) | notes and comments about an element intended primarily for external consumpti... | [CommonMetadata](CommonMetadata.md) |
+| [examples](examples.md) | * <br/> [Example](Example.md) | example usages of an element | [CommonMetadata](CommonMetadata.md) |
+| [in_subset](in_subset.md) | * <br/> [SubsetDefinition](SubsetDefinition.md) | used to indicate membership of a term in a defined subset of terms used for a... | [CommonMetadata](CommonMetadata.md) |
+| [from_schema](from_schema.md) | 0..1 <br/> [Uri](Uri.md) | id of the schema that defined the element | [CommonMetadata](CommonMetadata.md) |
+| [imported_from](imported_from.md) | 0..1 <br/> [String](String.md) | the imports entry that this element was derived from | [CommonMetadata](CommonMetadata.md) |
+| [source](source.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | A related resource from which the element is derived | [CommonMetadata](CommonMetadata.md) |
+| [in_language](in_language.md) | 0..1 <br/> [String](String.md) | the primary language used in the sources | [CommonMetadata](CommonMetadata.md) |
+| [see_also](see_also.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of related entities or URLs that may be of relevance | [CommonMetadata](CommonMetadata.md) |
+| [deprecated_element_has_exact_replacement](deprecated_element_has_exact_replacement.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | When an element is deprecated, it can be automatically replaced by this uri o... | [CommonMetadata](CommonMetadata.md) |
+| [deprecated_element_has_possible_replacement](deprecated_element_has_possible_replacement.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | When an element is deprecated, it can be potentially replaced by this uri or ... | [CommonMetadata](CommonMetadata.md) |
+| [aliases](aliases.md) | * <br/> [String](String.md) | Alternate names/labels for the element | [CommonMetadata](CommonMetadata.md) |
+| [structured_aliases](structured_aliases.md) | * <br/> [StructuredAlias](StructuredAlias.md) | A list of structured_alias objects, used to provide aliases in conjunction wi... | [CommonMetadata](CommonMetadata.md) |
+| [mappings](mappings.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of terms from different schemas or terminology systems that have compa... | [CommonMetadata](CommonMetadata.md) |
+| [exact_mappings](exact_mappings.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of terms from different schemas or terminology systems that have ident... | [CommonMetadata](CommonMetadata.md) |
+| [close_mappings](close_mappings.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of terms from different schemas or terminology systems that have close... | [CommonMetadata](CommonMetadata.md) |
+| [related_mappings](related_mappings.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of terms from different schemas or terminology systems that have relat... | [CommonMetadata](CommonMetadata.md) |
+| [narrow_mappings](narrow_mappings.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of terms from different schemas or terminology systems that have narro... | [CommonMetadata](CommonMetadata.md) |
+| [broad_mappings](broad_mappings.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of terms from different schemas or terminology systems that have broad... | [CommonMetadata](CommonMetadata.md) |
+| [created_by](created_by.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | agent that created the element | [CommonMetadata](CommonMetadata.md) |
+| [contributors](contributors.md) | * <br/> [Uriorcurie](Uriorcurie.md) | agent that contributed to the element | [CommonMetadata](CommonMetadata.md) |
+| [created_on](created_on.md) | 0..1 <br/> [Datetime](Datetime.md) | time at which the element was created | [CommonMetadata](CommonMetadata.md) |
+| [last_updated_on](last_updated_on.md) | 0..1 <br/> [Datetime](Datetime.md) | time at which the element was last updated | [CommonMetadata](CommonMetadata.md) |
+| [modified_by](modified_by.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | agent that modified the element | [CommonMetadata](CommonMetadata.md) |
+| [status](status.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | status of the element | [CommonMetadata](CommonMetadata.md) |
+| [rank](rank.md) | 0..1 <br/> [Integer](Integer.md) | the relative order in which the element occurs, lower values are given preced... | [CommonMetadata](CommonMetadata.md) |
+| [categories](categories.md) | * <br/> [Uriorcurie](Uriorcurie.md) | Controlled terms used to categorize an element | [CommonMetadata](CommonMetadata.md) |
+| [keywords](keywords.md) | * <br/> [String](String.md) | Keywords or tags used to describe the element | [CommonMetadata](CommonMetadata.md) |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [CommonMetadata](CommonMetadata.md) | [description](description.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [title](title.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [source](source.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [status](status.md) | domain | [Element](Element.md) |
+| [CommonMetadata](CommonMetadata.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [name](name.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [id_prefixes](id_prefixes.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [id_prefixes_are_closed](id_prefixes_are_closed.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [definition_uri](definition_uri.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [local_names](local_names.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [conforms_to](conforms_to.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [implements](implements.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [instantiates](instantiates.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [description](description.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [title](title.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [source](source.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [status](status.md) | domain | [Element](Element.md) |
+| [Element](Element.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [bindings](bindings.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [name](name.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [id_prefixes](id_prefixes.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [id_prefixes_are_closed](id_prefixes_are_closed.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [definition_uri](definition_uri.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [local_names](local_names.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [conforms_to](conforms_to.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [implements](implements.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [instantiates](instantiates.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [description](description.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [title](title.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [source](source.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [status](status.md) | domain | [Element](Element.md) |
+| [SchemaDefinition](SchemaDefinition.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [union_of](union_of.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [name](name.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [id_prefixes](id_prefixes.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [id_prefixes_are_closed](id_prefixes_are_closed.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [definition_uri](definition_uri.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [local_names](local_names.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [conforms_to](conforms_to.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [implements](implements.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [instantiates](instantiates.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [description](description.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [title](title.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [source](source.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [status](status.md) | domain | [Element](Element.md) |
+| [TypeDefinition](TypeDefinition.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [name](name.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [id_prefixes](id_prefixes.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [id_prefixes_are_closed](id_prefixes_are_closed.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [definition_uri](definition_uri.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [local_names](local_names.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [conforms_to](conforms_to.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [implements](implements.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [instantiates](instantiates.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [description](description.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [title](title.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [source](source.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [status](status.md) | domain | [Element](Element.md) |
+| [SubsetDefinition](SubsetDefinition.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [name](name.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [id_prefixes](id_prefixes.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [id_prefixes_are_closed](id_prefixes_are_closed.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [definition_uri](definition_uri.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [local_names](local_names.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [conforms_to](conforms_to.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [implements](implements.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [instantiates](instantiates.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [description](description.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [title](title.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [source](source.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [status](status.md) | domain | [Element](Element.md) |
+| [Definition](Definition.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [name](name.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [id_prefixes](id_prefixes.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [id_prefixes_are_closed](id_prefixes_are_closed.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [definition_uri](definition_uri.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [local_names](local_names.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [conforms_to](conforms_to.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [implements](implements.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [instantiates](instantiates.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [description](description.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [title](title.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [source](source.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [status](status.md) | domain | [Element](Element.md) |
+| [EnumDefinition](EnumDefinition.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [description](description.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [title](title.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [source](source.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [status](status.md) | domain | [Element](Element.md) |
+| [EnumBinding](EnumBinding.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [description](description.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [title](title.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [source](source.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [status](status.md) | domain | [Element](Element.md) |
+| [StructuredAlias](StructuredAlias.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [description](description.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [title](title.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [source](source.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [status](status.md) | domain | [Element](Element.md) |
+| [AnonymousExpression](AnonymousExpression.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [description](description.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [title](title.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [source](source.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [status](status.md) | domain | [Element](Element.md) |
+| [PathExpression](PathExpression.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [SlotExpression](SlotExpression.md) | [range](range.md) | range | [Element](Element.md) |
+| [SlotExpression](SlotExpression.md) | [bindings](bindings.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [range](range.md) | range | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [bindings](bindings.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [description](description.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [title](title.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [source](source.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [status](status.md) | domain | [Element](Element.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [union_of](union_of.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [range](range.md) | range | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [bindings](bindings.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [name](name.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [id_prefixes](id_prefixes.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [id_prefixes_are_closed](id_prefixes_are_closed.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [definition_uri](definition_uri.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [local_names](local_names.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [conforms_to](conforms_to.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [implements](implements.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [instantiates](instantiates.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [description](description.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [title](title.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [source](source.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [status](status.md) | domain | [Element](Element.md) |
+| [SlotDefinition](SlotDefinition.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [description](description.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [title](title.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [source](source.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [status](status.md) | domain | [Element](Element.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [union_of](union_of.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [name](name.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [id_prefixes](id_prefixes.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [id_prefixes_are_closed](id_prefixes_are_closed.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [definition_uri](definition_uri.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [local_names](local_names.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [conforms_to](conforms_to.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [implements](implements.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [instantiates](instantiates.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [description](description.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [title](title.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [source](source.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [status](status.md) | domain | [Element](Element.md) |
+| [ClassDefinition](ClassDefinition.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [description](description.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [title](title.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [source](source.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [status](status.md) | domain | [Element](Element.md) |
+| [ClassRule](ClassRule.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [description](description.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [title](title.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [source](source.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [status](status.md) | domain | [Element](Element.md) |
+| [ArrayExpression](ArrayExpression.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [description](description.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [title](title.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [source](source.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [status](status.md) | domain | [Element](Element.md) |
+| [DimensionExpression](DimensionExpression.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [description](description.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [title](title.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [source](source.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [status](status.md) | domain | [Element](Element.md) |
+| [PatternExpression](PatternExpression.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [description](description.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [title](title.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [source](source.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [status](status.md) | domain | [Element](Element.md) |
+| [ImportExpression](ImportExpression.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [description](description.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [instantiates](instantiates.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [implements](implements.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [title](title.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [source](source.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [status](status.md) | domain | [Element](Element.md) |
+| [PermissibleValue](PermissibleValue.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [description](description.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [title](title.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [source](source.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [status](status.md) | domain | [Element](Element.md) |
+| [UniqueKey](UniqueKey.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [description](description.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [alt_descriptions](alt_descriptions.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [title](title.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [deprecated](deprecated.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [todos](todos.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [notes](notes.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [comments](comments.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [examples](examples.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [in_subset](in_subset.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [from_schema](from_schema.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [imported_from](imported_from.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [source](source.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [see_also](see_also.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [aliases](aliases.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [created_by](created_by.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [contributors](contributors.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [created_on](created_on.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [last_updated_on](last_updated_on.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [modified_by](modified_by.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [status](status.md) | domain | [Element](Element.md) |
+| [TypeMapping](TypeMapping.md) | [keywords](keywords.md) | domain | [Element](Element.md) |
+
+
+
+
+
+
+
+
+## In Subsets
+
+
+* [BasicSubset](BasicSubset.md)
+
+
+
+## Aliases
+
+
+* data element
+* object
+
+
+## See Also
+
+* [https://en.wikipedia.org/wiki/Data_element](https://en.wikipedia.org/wiki/Data_element)
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/linkml/meta
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | linkml:Element |
+| native | linkml:Element |
+
+
+
+
+
+
+## LinkML Source
+
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
-<h3 id="direct">Direct</h3>
+
+### Direct
+
 <details>
 <pre><code class="language-yaml">name: element
 description: A named element in the model
@@ -4411,7 +1299,9 @@ slots:
 
 </code></pre>
 </details>
-<h3 id="induced">Induced</h3>
+
+### Induced
+
 <details>
 <pre><code class="language-yaml">name: element
 description: A named element in the model
@@ -5125,7 +2015,7 @@ attributes:
     multivalued: true
 
 </code></pre>
-</details>
+</details></div>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>

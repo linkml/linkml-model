@@ -389,119 +389,6 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#inheritance">
-<span class="md-ellipsis">
-      
-        Inheritance
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#class-properties">
-<span class="md-ellipsis">
-      
-        Class Properties
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#slots">
-<span class="md-ellipsis">
-      
-        Slots
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#mixin-usage">
-<span class="md-ellipsis">
-      
-        Mixin Usage
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-<span class="md-ellipsis">
-      
-        Usages
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#identifier-and-mapping-information">
-<span class="md-ellipsis">
-      
-        Identifier and Mapping Information
-      
-    </span>
-</a>
-<nav aria-label="Identifier and Mapping Information" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#schema-source">
-<span class="md-ellipsis">
-      
-        Schema Source
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#mappings">
-<span class="md-ellipsis">
-      
-        Mappings
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#linkml-source">
-<span class="md-ellipsis">
-      
-        LinkML Source
-      
-    </span>
-</a>
-<nav aria-label="LinkML Source" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#direct">
-<span class="md-ellipsis">
-      
-        Direct
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#induced">
-<span class="md-ellipsis">
-      
-        Induced
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
 </nav>
 </div>
 </div>
@@ -510,7 +397,17 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-slotexpression">Class: SlotExpression</h1>
 <p><em>an expression that constrains the range of values a slot can take</em></p>
-<p>URI: <a href="https://w3id.org/linkml/SlotExpression">linkml:SlotExpression</a></p>
+<div data-search-exclude="" markdown="1">
+
+
+
+URI: [linkml:SlotExpression](https://w3id.org/linkml/SlotExpression)
+
+
+
+
+
+
 <div class="mermaid"> classDiagram
     class SlotExpression
     click SlotExpression href "../SlotExpression/"
@@ -730,346 +627,130 @@
 
 
 </div>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../Expression/">Expression</a><ul>
-<li><strong>SlotExpression</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="class-properties">Class Properties</h2>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Mixin</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
-<h2 id="slots">Slots</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-<th>Inheritance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../range/">range</a></td>
-<td>0..1 <br/> <a href="../Element/">Element</a></td>
-<td>defines the type of the object of the slot</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../range_expression/">range_expression</a></td>
-<td>0..1 <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td>A range that is described as a boolean expression combining existing ranges</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../enum_range/">enum_range</a></td>
-<td>0..1 <br/> <a href="../EnumExpression/">EnumExpression</a></td>
-<td>An inlined enumeration</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../bindings/">bindings</a></td>
-<td>* <br/> <a href="../EnumBinding/">EnumBinding</a></td>
-<td>A collection of enum bindings that specify how a slot can be bound to a permi...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../required/">required</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>true means that the slot must be present in instances of the class definition</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../recommended/">recommended</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>true means that the slot should be present in instances of the class definiti...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../multivalued/">multivalued</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>true means that slot can have more than one value and should be represented u...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../inlined/">inlined</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>True means that keyed or identified slot appears in an outer structure by val...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../inlined_as_list/">inlined_as_list</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>True means that an inlined slot is represented as a list of range instances</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../minimum_value/">minimum_value</a></td>
-<td>0..1 <br/> <a href="../Anything/">Anything</a></td>
-<td>For ordinal ranges, the value must be equal to or higher than this</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../maximum_value/">maximum_value</a></td>
-<td>0..1 <br/> <a href="../Anything/">Anything</a></td>
-<td>For ordinal ranges, the value must be equal to or lower than this</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../pattern/">pattern</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the string value of the slot must conform to this regular expression expresse...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../structured_pattern/">structured_pattern</a></td>
-<td>0..1 <br/> <a href="../PatternExpression/">PatternExpression</a></td>
-<td>the string value of the slot must conform to the regular expression in the pa...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../unit/">unit</a></td>
-<td>0..1 <br/> <a href="../UnitOfMeasure/">UnitOfMeasure</a></td>
-<td>an encoding of a unit</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../implicit_prefix/">implicit_prefix</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Causes the slot value to be interpreted as a uriorcurie after prefixing with ...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../value_presence/">value_presence</a></td>
-<td>0..1 <br/> <a href="../PresenceEnum/">PresenceEnum</a></td>
-<td>if PRESENT then a value must be present (for lists there must be at least one...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../equals_string/">equals_string</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the slot must have range string and the value of the slot must equal the spec...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../equals_string_in/">equals_string_in</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>the slot must have range string and the value of the slot must equal one of t...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../equals_number/">equals_number</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the slot must have range of a number and the value of the slot must equal the...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../equals_expression/">equals_expression</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the value of the slot must equal the value of the evaluated expression</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../exact_cardinality/">exact_cardinality</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the exact number of entries for a multivalued slot</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../minimum_cardinality/">minimum_cardinality</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the minimum number of entries for a multivalued slot</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../maximum_cardinality/">maximum_cardinality</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the maximum number of entries for a multivalued slot</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../has_member/">has_member</a></td>
-<td>0..1 <br/> <a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td>the value of the slot is multivalued with at least one member satisfying the ...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../all_members/">all_members</a></td>
-<td>0..1 <br/> <a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td>the value of the slot is multivalued with all members satisfying the conditio...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../none_of/">none_of</a></td>
-<td>* <br/> <a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td>holds if none of the expressions hold</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../exactly_one_of/">exactly_one_of</a></td>
-<td>* <br/> <a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td>holds if only one of the expressions hold</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../any_of/">any_of</a></td>
-<td>* <br/> <a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td>holds if at least one of the expressions hold</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../all_of/">all_of</a></td>
-<td>* <br/> <a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td>holds if all of the expressions hold</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../array/">array</a></td>
-<td>0..1 <br/> <a href="../ArrayExpression/">ArrayExpression</a></td>
-<td>coerces the value of the slot into an array and defines the dimensions of tha...</td>
-<td>direct</td>
-</tr>
-</tbody>
-</table>
-<h2 id="mixin-usage">Mixin Usage</h2>
-<table>
-<thead>
-<tr>
-<th>mixed into</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td>an element that describes how instances are related to other instances</td>
-</tr>
-</tbody>
-</table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
-<tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../TypeExpression/">TypeExpression</a></td>
-<td><a href="../implicit_prefix/">implicit_prefix</a></td>
-<td>domain</td>
-<td><a href="./">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
-<td><a href="../implicit_prefix/">implicit_prefix</a></td>
-<td>domain</td>
-<td><a href="./">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../implicit_prefix/">implicit_prefix</a></td>
-<td>domain</td>
-<td><a href="./">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../range_expression/">range_expression</a></td>
-<td>domain</td>
-<td><a href="./">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotExpression</a></td>
-<td><a href="../range_expression/">range_expression</a></td>
-<td>domain</td>
-<td><a href="./">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotExpression</a></td>
-<td><a href="../implicit_prefix/">implicit_prefix</a></td>
-<td>domain</td>
-<td><a href="./">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../range_expression/">range_expression</a></td>
-<td>domain</td>
-<td><a href="./">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../implicit_prefix/">implicit_prefix</a></td>
-<td>domain</td>
-<td><a href="./">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../range_expression/">range_expression</a></td>
-<td>domain</td>
-<td><a href="./">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../implicit_prefix/">implicit_prefix</a></td>
-<td>domain</td>
-<td><a href="./">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../ExtraSlotsExpression/">ExtraSlotsExpression</a></td>
-<td><a href="../range_expression/">range_expression</a></td>
-<td>domain</td>
-<td><a href="./">SlotExpression</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: <a href="https://w3id.org/linkml/meta">https://w3id.org/linkml/meta</a></li>
-</ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>linkml:SlotExpression</td>
-</tr>
-<tr>
-<td>native</td>
-<td>linkml:SlotExpression</td>
-</tr>
-</tbody>
-</table>
-<h2 id="linkml-source">LinkML Source</h2>
+
+
+
+
+
+
+## Inheritance
+* [Expression](Expression.md)
+    * **SlotExpression**
+
+
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Mixin | Yes |
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [range](range.md) | 0..1 <br/> [Element](Element.md) | defines the type of the object of the slot | direct |
+| [range_expression](range_expression.md) | 0..1 <br/> [AnonymousClassExpression](AnonymousClassExpression.md) | A range that is described as a boolean expression combining existing ranges | direct |
+| [enum_range](enum_range.md) | 0..1 <br/> [EnumExpression](EnumExpression.md) | An inlined enumeration | direct |
+| [bindings](bindings.md) | * <br/> [EnumBinding](EnumBinding.md) | A collection of enum bindings that specify how a slot can be bound to a permi... | direct |
+| [required](required.md) | 0..1 <br/> [Boolean](Boolean.md) | true means that the slot must be present in instances of the class definition | direct |
+| [recommended](recommended.md) | 0..1 <br/> [Boolean](Boolean.md) | true means that the slot should be present in instances of the class definiti... | direct |
+| [multivalued](multivalued.md) | 0..1 <br/> [Boolean](Boolean.md) | true means that slot can have more than one value and should be represented u... | direct |
+| [inlined](inlined.md) | 0..1 <br/> [Boolean](Boolean.md) | True means that keyed or identified slot appears in an outer structure by val... | direct |
+| [inlined_as_list](inlined_as_list.md) | 0..1 <br/> [Boolean](Boolean.md) | True means that an inlined slot is represented as a list of range instances | direct |
+| [minimum_value](minimum_value.md) | 0..1 <br/> [Anything](Anything.md) | For ordinal ranges, the value must be equal to or higher than this | direct |
+| [maximum_value](maximum_value.md) | 0..1 <br/> [Anything](Anything.md) | For ordinal ranges, the value must be equal to or lower than this | direct |
+| [pattern](pattern.md) | 0..1 <br/> [String](String.md) | the string value of the slot must conform to this regular expression expresse... | direct |
+| [structured_pattern](structured_pattern.md) | 0..1 <br/> [PatternExpression](PatternExpression.md) | the string value of the slot must conform to the regular expression in the pa... | direct |
+| [unit](unit.md) | 0..1 <br/> [UnitOfMeasure](UnitOfMeasure.md) | an encoding of a unit | direct |
+| [implicit_prefix](implicit_prefix.md) | 0..1 <br/> [String](String.md) | Causes the slot value to be interpreted as a uriorcurie after prefixing with ... | direct |
+| [value_presence](value_presence.md) | 0..1 <br/> [PresenceEnum](PresenceEnum.md) | if PRESENT then a value must be present (for lists there must be at least one... | direct |
+| [equals_string](equals_string.md) | 0..1 <br/> [String](String.md) | the slot must have range string and the value of the slot must equal the spec... | direct |
+| [equals_string_in](equals_string_in.md) | * <br/> [String](String.md) | the slot must have range string and the value of the slot must equal one of t... | direct |
+| [equals_number](equals_number.md) | 0..1 <br/> [Integer](Integer.md) | the slot must have range of a number and the value of the slot must equal the... | direct |
+| [equals_expression](equals_expression.md) | 0..1 <br/> [String](String.md) | the value of the slot must equal the value of the evaluated expression | direct |
+| [exact_cardinality](exact_cardinality.md) | 0..1 <br/> [Integer](Integer.md) | the exact number of entries for a multivalued slot | direct |
+| [minimum_cardinality](minimum_cardinality.md) | 0..1 <br/> [Integer](Integer.md) | the minimum number of entries for a multivalued slot | direct |
+| [maximum_cardinality](maximum_cardinality.md) | 0..1 <br/> [Integer](Integer.md) | the maximum number of entries for a multivalued slot | direct |
+| [has_member](has_member.md) | 0..1 <br/> [AnonymousSlotExpression](AnonymousSlotExpression.md) | the value of the slot is multivalued with at least one member satisfying the ... | direct |
+| [all_members](all_members.md) | 0..1 <br/> [AnonymousSlotExpression](AnonymousSlotExpression.md) | the value of the slot is multivalued with all members satisfying the conditio... | direct |
+| [none_of](none_of.md) | * <br/> [AnonymousSlotExpression](AnonymousSlotExpression.md) | holds if none of the expressions hold | direct |
+| [exactly_one_of](exactly_one_of.md) | * <br/> [AnonymousSlotExpression](AnonymousSlotExpression.md) | holds if only one of the expressions hold | direct |
+| [any_of](any_of.md) | * <br/> [AnonymousSlotExpression](AnonymousSlotExpression.md) | holds if at least one of the expressions hold | direct |
+| [all_of](all_of.md) | * <br/> [AnonymousSlotExpression](AnonymousSlotExpression.md) | holds if all of the expressions hold | direct |
+| [array](array.md) | 0..1 <br/> [ArrayExpression](ArrayExpression.md) | coerces the value of the slot into an array and defines the dimensions of tha... | direct |
+
+
+
+## Mixin Usage
+
+| mixed into | description |
+| --- | --- |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) |  |
+| [SlotDefinition](SlotDefinition.md) | an element that describes how instances are related to other instances |
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [TypeExpression](TypeExpression.md) | [implicit_prefix](implicit_prefix.md) | domain | [SlotExpression](SlotExpression.md) |
+| [AnonymousTypeExpression](AnonymousTypeExpression.md) | [implicit_prefix](implicit_prefix.md) | domain | [SlotExpression](SlotExpression.md) |
+| [TypeDefinition](TypeDefinition.md) | [implicit_prefix](implicit_prefix.md) | domain | [SlotExpression](SlotExpression.md) |
+| [PathExpression](PathExpression.md) | [range_expression](range_expression.md) | domain | [SlotExpression](SlotExpression.md) |
+| [SlotExpression](SlotExpression.md) | [range_expression](range_expression.md) | domain | [SlotExpression](SlotExpression.md) |
+| [SlotExpression](SlotExpression.md) | [implicit_prefix](implicit_prefix.md) | domain | [SlotExpression](SlotExpression.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [range_expression](range_expression.md) | domain | [SlotExpression](SlotExpression.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [implicit_prefix](implicit_prefix.md) | domain | [SlotExpression](SlotExpression.md) |
+| [SlotDefinition](SlotDefinition.md) | [range_expression](range_expression.md) | domain | [SlotExpression](SlotExpression.md) |
+| [SlotDefinition](SlotDefinition.md) | [implicit_prefix](implicit_prefix.md) | domain | [SlotExpression](SlotExpression.md) |
+| [ExtraSlotsExpression](ExtraSlotsExpression.md) | [range_expression](range_expression.md) | domain | [SlotExpression](SlotExpression.md) |
+
+
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/linkml/meta
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | linkml:SlotExpression |
+| native | linkml:SlotExpression |
+
+
+
+
+
+
+## LinkML Source
+
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
-<h3 id="direct">Direct</h3>
+
+### Direct
+
 <details>
 <pre><code class="language-yaml">name: slot_expression
 description: an expression that constrains the range of values a slot can take
@@ -1123,7 +804,9 @@ slot_usage:
 
 </code></pre>
 </details>
-<h3 id="induced">Induced</h3>
+
+### Induced
+
 <details>
 <pre><code class="language-yaml">name: slot_expression
 description: an expression that constrains the range of values a slot can take
@@ -1691,7 +1374,7 @@ attributes:
     range: array_expression
 
 </code></pre>
-</details>
+</details></div>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>

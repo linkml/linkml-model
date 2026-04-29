@@ -389,128 +389,6 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#inheritance">
-<span class="md-ellipsis">
-      
-        Inheritance
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#slots">
-<span class="md-ellipsis">
-      
-        Slots
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-<span class="md-ellipsis">
-      
-        Usages
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#in-subsets">
-<span class="md-ellipsis">
-      
-        In Subsets
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#aliases">
-<span class="md-ellipsis">
-      
-        Aliases
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#identifier-and-mapping-information">
-<span class="md-ellipsis">
-      
-        Identifier and Mapping Information
-      
-    </span>
-</a>
-<nav aria-label="Identifier and Mapping Information" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#administrative-metadata">
-<span class="md-ellipsis">
-      
-        Administrative Metadata
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#schema-source">
-<span class="md-ellipsis">
-      
-        Schema Source
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#mappings">
-<span class="md-ellipsis">
-      
-        Mappings
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#linkml-source">
-<span class="md-ellipsis">
-      
-        LinkML Source
-      
-    </span>
-</a>
-<nav aria-label="LinkML Source" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#direct">
-<span class="md-ellipsis">
-      
-        Direct
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#induced">
-<span class="md-ellipsis">
-      
-        Induced
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
 </nav>
 </div>
 </div>
@@ -519,7 +397,17 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-classdefinition">Class: ClassDefinition</h1>
 <p><em>an element whose instances are complex objects that may have slot-value assignments</em></p>
-<p>URI: <a href="https://w3id.org/linkml/ClassDefinition">linkml:ClassDefinition</a></p>
+<div data-search-exclude="" markdown="1">
+
+
+
+URI: [linkml:ClassDefinition](https://w3id.org/linkml/ClassDefinition)
+
+
+
+
+
+
 <div class="mermaid"> classDiagram
     class ClassDefinition
     click ClassDefinition href "../ClassDefinition/"
@@ -899,644 +787,192 @@
 
 
 </div>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../Element/">Element</a> [ <a href="../Extensible/">Extensible</a> <a href="../Annotatable/">Annotatable</a> <a href="../CommonMetadata/">CommonMetadata</a>]<ul>
-<li><a href="../Definition/">Definition</a><ul>
-<li><strong>ClassDefinition</strong> [ <a href="../ClassExpression/">ClassExpression</a>]</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="slots">Slots</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-<th>Inheritance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../slots/">slots</a></td>
-<td>* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
-<td>collection of slot names that are applicable to a class</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../slot_usage/">slot_usage</a></td>
-<td>* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
-<td>the refinement of a slot in the context of the containing class definition</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../attributes/">attributes</a></td>
-<td>* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
-<td>Inline definition of slots</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../class_uri/">class_uri</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>URI of the class that provides a semantic interpretation of the element in a ...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../subclass_of/">subclass_of</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>DEPRECATED -- rdfs:subClassOf to be emitted in OWL generation</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../union_of/">union_of</a></td>
-<td>* <br/> <a href="./">ClassDefinition</a></td>
-<td>indicates that the domain element consists exactly of the members of the elem...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../defining_slots/">defining_slots</a></td>
-<td>* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
-<td>The combination of is a plus defining slots form a genus-differentia definiti...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../tree_root/">tree_root</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>Indicates that this is the Container class which forms the root of the serial...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../unique_keys/">unique_keys</a></td>
-<td>* <br/> <a href="../UniqueKey/">UniqueKey</a></td>
-<td>A collection of named unique keys for this class</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../rules/">rules</a></td>
-<td>* <br/> <a href="../ClassRule/">ClassRule</a></td>
-<td>the collection of rules that apply to all members of this class</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../classification_rules/">classification_rules</a></td>
-<td>* <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td>The collection of classification rules that apply to all members of this clas...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../slot_names_unique/">slot_names_unique</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>if true then induced/mangled slot names are not created for class_usage and a...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../represents_relationship/">represents_relationship</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>true if this class represents a relationship rather than an entity</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../disjoint_with/">disjoint_with</a></td>
-<td>* <br/> <a href="./">ClassDefinition</a></td>
-<td>Two classes are disjoint if they have no instances in common, two slots are d...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../children_are_mutually_disjoint/">children_are_mutually_disjoint</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>If true then all direct is_a children are mutually disjoint and share no inst...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../extra_slots/">extra_slots</a></td>
-<td>0..1 <br/> <a href="../ExtraSlotsExpression/">ExtraSlotsExpression</a></td>
-<td>How a class instance handles extra data not specified in the class definition</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../alias/">alias</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the name used for a slot in the context of its owning class</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../any_of/">any_of</a></td>
-<td>* <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td>holds if at least one of the expressions hold</td>
-<td><a href="../ClassExpression/">ClassExpression</a></td>
-</tr>
-<tr>
-<td><a href="../exactly_one_of/">exactly_one_of</a></td>
-<td>* <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td>holds if only one of the expressions hold</td>
-<td><a href="../ClassExpression/">ClassExpression</a></td>
-</tr>
-<tr>
-<td><a href="../none_of/">none_of</a></td>
-<td>* <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td>holds if none of the expressions hold</td>
-<td><a href="../ClassExpression/">ClassExpression</a></td>
-</tr>
-<tr>
-<td><a href="../all_of/">all_of</a></td>
-<td>* <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td>holds if all of the expressions hold</td>
-<td><a href="../ClassExpression/">ClassExpression</a></td>
-</tr>
-<tr>
-<td><a href="../slot_conditions/">slot_conditions</a></td>
-<td>* <br/> <a href="../SlotDefinition/">SlotDefinition</a></td>
-<td>expresses constraints on a group of slots for a class expression</td>
-<td><a href="../ClassExpression/">ClassExpression</a></td>
-</tr>
-<tr>
-<td><a href="../is_a/">is_a</a></td>
-<td>0..1 <br/> <a href="./">ClassDefinition</a></td>
-<td>A primary parent class from which inheritable metaslots are propagated</td>
-<td><a href="../Definition/">Definition</a></td>
-</tr>
-<tr>
-<td><a href="../abstract/">abstract</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>Indicates the class or slot cannot be directly instantiated and is intended f...</td>
-<td><a href="../Definition/">Definition</a></td>
-</tr>
-<tr>
-<td><a href="../mixin/">mixin</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>Indicates the class or slot is intended to be inherited from without being an...</td>
-<td><a href="../Definition/">Definition</a></td>
-</tr>
-<tr>
-<td><a href="../mixins/">mixins</a></td>
-<td>* <br/> <a href="./">ClassDefinition</a></td>
-<td>A collection of secondary parent mixin classes from which inheritable metaslo...</td>
-<td><a href="../Definition/">Definition</a></td>
-</tr>
-<tr>
-<td><a href="../apply_to/">apply_to</a></td>
-<td>* <br/> <a href="./">ClassDefinition</a></td>
-<td>Used to extend class or slot definitions</td>
-<td><a href="../Definition/">Definition</a></td>
-</tr>
-<tr>
-<td><a href="../values_from/">values_from</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The identifier of a "value set" -- a set of identifiers that form the possibl...</td>
-<td><a href="../Definition/">Definition</a></td>
-</tr>
-<tr>
-<td><a href="../string_serialization/">string_serialization</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Used on a slot that stores the string serialization of the containing object</td>
-<td><a href="../Definition/">Definition</a></td>
-</tr>
-<tr>
-<td><a href="../name/">name</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>the unique name of the element within the context of the schema</td>
-<td><a href="../Element/">Element</a></td>
-</tr>
-<tr>
-<td><a href="../id_prefixes/">id_prefixes</a></td>
-<td>* <br/> <a href="../Ncname/">Ncname</a></td>
-<td>An allowed list of prefixes for which identifiers must conform</td>
-<td><a href="../Element/">Element</a></td>
-</tr>
-<tr>
-<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>If true, then the id_prefixes slot is treated as being closed, and any use of...</td>
-<td><a href="../Element/">Element</a></td>
-</tr>
-<tr>
-<td><a href="../definition_uri/">definition_uri</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The native URI of the element</td>
-<td><a href="../Element/">Element</a></td>
-</tr>
-<tr>
-<td><a href="../local_names/">local_names</a></td>
-<td>* <br/> <a href="../LocalName/">LocalName</a></td>
-<td></td>
-<td><a href="../Element/">Element</a></td>
-</tr>
-<tr>
-<td><a href="../conforms_to/">conforms_to</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>An established standard to which the element conforms</td>
-<td><a href="../Element/">Element</a></td>
-</tr>
-<tr>
-<td><a href="../implements/">implements</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>An element in another schema which this element conforms to</td>
-<td><a href="../Element/">Element</a></td>
-</tr>
-<tr>
-<td><a href="../instantiates/">instantiates</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>An element in another schema which this element instantiates</td>
-<td><a href="../Element/">Element</a></td>
-</tr>
-<tr>
-<td><a href="../extensions/">extensions</a></td>
-<td>* <br/> <a href="../Extension/">Extension</a></td>
-<td>a tag/text tuple attached to an arbitrary element</td>
-<td><a href="../Extensible/">Extensible</a></td>
-</tr>
-<tr>
-<td><a href="../annotations/">annotations</a></td>
-<td>* <br/> <a href="../Annotation/">Annotation</a></td>
-<td>a collection of tag/text tuples with the semantics of OWL Annotation</td>
-<td><a href="../Annotatable/">Annotatable</a></td>
-</tr>
-<tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
-<td>a textual description of the element's purpose and use</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>* <br/> <a href="../AltDescription/">AltDescription</a></td>
-<td>A sourced alternative description for an element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../title/">title</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A concise human-readable display label for the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Description of why and when this element will no longer be used</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../todos/">todos</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>Outstanding issues that needs resolution</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../notes/">notes</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>editorial notes about an element intended primarily for internal consumption</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../comments/">comments</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>notes and comments about an element intended primarily for external consumpti...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../examples/">examples</a></td>
-<td>* <br/> <a href="../Example/">Example</a></td>
-<td>example usages of an element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>* <br/> <a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td>used to indicate membership of a term in a defined subset of terms used for a...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>0..1 <br/> <a href="../Uri/">Uri</a></td>
-<td>id of the schema that defined the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the imports entry that this element was derived from</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../source/">source</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A related resource from which the element is derived</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../in_language/">in_language</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the primary language used in the sources</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../see_also/">see_also</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of related entities or URLs that may be of relevance</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../deprecated_element_has_exact_replacement/">deprecated_element_has_exact_replacement</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>When an element is deprecated, it can be automatically replaced by this uri o...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../deprecated_element_has_possible_replacement/">deprecated_element_has_possible_replacement</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>When an element is deprecated, it can be potentially replaced by this uri or ...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../aliases/">aliases</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>Alternate names/labels for the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../structured_aliases/">structured_aliases</a></td>
-<td>* <br/> <a href="../StructuredAlias/">StructuredAlias</a></td>
-<td>A list of structured_alias objects, used to provide aliases in conjunction wi...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../mappings/">mappings</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have compa...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../exact_mappings/">exact_mappings</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have ident...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../close_mappings/">close_mappings</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have close...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../related_mappings/">related_mappings</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have relat...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../narrow_mappings/">narrow_mappings</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have narro...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../broad_mappings/">broad_mappings</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have broad...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../created_by/">created_by</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>agent that created the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../contributors/">contributors</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>agent that contributed to the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../created_on/">created_on</a></td>
-<td>0..1 <br/> <a href="../Datetime/">Datetime</a></td>
-<td>time at which the element was created</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>0..1 <br/> <a href="../Datetime/">Datetime</a></td>
-<td>time at which the element was last updated</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>agent that modified the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../status/">status</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>status of the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../rank/">rank</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the relative order in which the element occurs, lower values are given preced...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../categories/">categories</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>Controlled terms used to categorize an element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../keywords/">keywords</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>Keywords or tags used to describe the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
-<tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../classes/">classes</a></td>
-<td>range</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../domain/">domain</a></td>
-<td>range</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../SlotDefinition/">SlotDefinition</a></td>
-<td><a href="../domain_of/">domain_of</a></td>
-<td>range</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">ClassDefinition</a></td>
-<td><a href="../slots/">slots</a></td>
-<td>domain</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">ClassDefinition</a></td>
-<td><a href="../slot_usage/">slot_usage</a></td>
-<td>domain</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">ClassDefinition</a></td>
-<td><a href="../attributes/">attributes</a></td>
-<td>domain</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">ClassDefinition</a></td>
-<td><a href="../class_uri/">class_uri</a></td>
-<td>domain</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">ClassDefinition</a></td>
-<td><a href="../subclass_of/">subclass_of</a></td>
-<td>domain</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">ClassDefinition</a></td>
-<td><a href="../union_of/">union_of</a></td>
-<td>range</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">ClassDefinition</a></td>
-<td><a href="../defining_slots/">defining_slots</a></td>
-<td>domain</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">ClassDefinition</a></td>
-<td><a href="../tree_root/">tree_root</a></td>
-<td>domain</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">ClassDefinition</a></td>
-<td><a href="../unique_keys/">unique_keys</a></td>
-<td>domain</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">ClassDefinition</a></td>
-<td><a href="../rules/">rules</a></td>
-<td>domain</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">ClassDefinition</a></td>
-<td><a href="../classification_rules/">classification_rules</a></td>
-<td>domain</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">ClassDefinition</a></td>
-<td><a href="../represents_relationship/">represents_relationship</a></td>
-<td>domain</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">ClassDefinition</a></td>
-<td><a href="../disjoint_with/">disjoint_with</a></td>
-<td>range</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">ClassDefinition</a></td>
-<td><a href="../extra_slots/">extra_slots</a></td>
-<td>domain</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">ClassDefinition</a></td>
-<td><a href="../is_a/">is_a</a></td>
-<td>range</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">ClassDefinition</a></td>
-<td><a href="../mixins/">mixins</a></td>
-<td>range</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">ClassDefinition</a></td>
-<td><a href="../apply_to/">apply_to</a></td>
-<td>range</td>
-<td><a href="./">ClassDefinition</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="in-subsets">In Subsets</h2>
-<ul>
-<li><a href="../SpecificationSubset/">SpecificationSubset</a></li>
-<li><a href="../MinimalSubset/">MinimalSubset</a></li>
-<li><a href="../BasicSubset/">BasicSubset</a></li>
-<li><a href="../RelationalModelProfile/">RelationalModelProfile</a></li>
-<li><a href="../ObjectOrientedProfile/">ObjectOrientedProfile</a></li>
-<li><a href="../OwlProfile/">OwlProfile</a></li>
-</ul>
-<h2 id="aliases">Aliases</h2>
-<ul>
-<li>table</li>
-<li>record</li>
-<li>template</li>
-<li>message</li>
-<li>observation</li>
-</ul>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="administrative-metadata">Administrative Metadata</h3>
-<p><strong>Rank:</strong> 2</p>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: <a href="https://w3id.org/linkml/meta">https://w3id.org/linkml/meta</a></li>
-</ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>linkml:ClassDefinition</td>
-</tr>
-<tr>
-<td>native</td>
-<td>linkml:ClassDefinition</td>
-</tr>
-<tr>
-<td>close</td>
-<td>owl:Class</td>
-</tr>
-</tbody>
-</table>
-<h2 id="linkml-source">LinkML Source</h2>
+
+
+
+
+
+
+## Inheritance
+* [Element](Element.md) [ [Extensible](Extensible.md) [Annotatable](Annotatable.md) [CommonMetadata](CommonMetadata.md)]
+    * [Definition](Definition.md)
+        * **ClassDefinition** [ [ClassExpression](ClassExpression.md)]
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [slots](slots.md) | * <br/> [SlotDefinition](SlotDefinition.md) | collection of slot names that are applicable to a class | direct |
+| [slot_usage](slot_usage.md) | * <br/> [SlotDefinition](SlotDefinition.md) | the refinement of a slot in the context of the containing class definition | direct |
+| [attributes](attributes.md) | * <br/> [SlotDefinition](SlotDefinition.md) | Inline definition of slots | direct |
+| [class_uri](class_uri.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | URI of the class that provides a semantic interpretation of the element in a ... | direct |
+| [subclass_of](subclass_of.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | DEPRECATED -- rdfs:subClassOf to be emitted in OWL generation | direct |
+| [union_of](union_of.md) | * <br/> [ClassDefinition](ClassDefinition.md) | indicates that the domain element consists exactly of the members of the elem... | direct |
+| [defining_slots](defining_slots.md) | * <br/> [SlotDefinition](SlotDefinition.md) | The combination of is a plus defining slots form a genus-differentia definiti... | direct |
+| [tree_root](tree_root.md) | 0..1 <br/> [Boolean](Boolean.md) | Indicates that this is the Container class which forms the root of the serial... | direct |
+| [unique_keys](unique_keys.md) | * <br/> [UniqueKey](UniqueKey.md) | A collection of named unique keys for this class | direct |
+| [rules](rules.md) | * <br/> [ClassRule](ClassRule.md) | the collection of rules that apply to all members of this class | direct |
+| [classification_rules](classification_rules.md) | * <br/> [AnonymousClassExpression](AnonymousClassExpression.md) | The collection of classification rules that apply to all members of this clas... | direct |
+| [slot_names_unique](slot_names_unique.md) | 0..1 <br/> [Boolean](Boolean.md) | if true then induced/mangled slot names are not created for class_usage and a... | direct |
+| [represents_relationship](represents_relationship.md) | 0..1 <br/> [Boolean](Boolean.md) | true if this class represents a relationship rather than an entity | direct |
+| [disjoint_with](disjoint_with.md) | * <br/> [ClassDefinition](ClassDefinition.md) | Two classes are disjoint if they have no instances in common, two slots are d... | direct |
+| [children_are_mutually_disjoint](children_are_mutually_disjoint.md) | 0..1 <br/> [Boolean](Boolean.md) | If true then all direct is_a children are mutually disjoint and share no inst... | direct |
+| [extra_slots](extra_slots.md) | 0..1 <br/> [ExtraSlotsExpression](ExtraSlotsExpression.md) | How a class instance handles extra data not specified in the class definition | direct |
+| [alias](alias.md) | 0..1 <br/> [String](String.md) | the name used for a slot in the context of its owning class | direct |
+| [any_of](any_of.md) | * <br/> [AnonymousClassExpression](AnonymousClassExpression.md) | holds if at least one of the expressions hold | [ClassExpression](ClassExpression.md) |
+| [exactly_one_of](exactly_one_of.md) | * <br/> [AnonymousClassExpression](AnonymousClassExpression.md) | holds if only one of the expressions hold | [ClassExpression](ClassExpression.md) |
+| [none_of](none_of.md) | * <br/> [AnonymousClassExpression](AnonymousClassExpression.md) | holds if none of the expressions hold | [ClassExpression](ClassExpression.md) |
+| [all_of](all_of.md) | * <br/> [AnonymousClassExpression](AnonymousClassExpression.md) | holds if all of the expressions hold | [ClassExpression](ClassExpression.md) |
+| [slot_conditions](slot_conditions.md) | * <br/> [SlotDefinition](SlotDefinition.md) | expresses constraints on a group of slots for a class expression | [ClassExpression](ClassExpression.md) |
+| [is_a](is_a.md) | 0..1 <br/> [ClassDefinition](ClassDefinition.md) | A primary parent class from which inheritable metaslots are propagated | [Definition](Definition.md) |
+| [abstract](abstract.md) | 0..1 <br/> [Boolean](Boolean.md) | Indicates the class or slot cannot be directly instantiated and is intended f... | [Definition](Definition.md) |
+| [mixin](mixin.md) | 0..1 <br/> [Boolean](Boolean.md) | Indicates the class or slot is intended to be inherited from without being an... | [Definition](Definition.md) |
+| [mixins](mixins.md) | * <br/> [ClassDefinition](ClassDefinition.md) | A collection of secondary parent mixin classes from which inheritable metaslo... | [Definition](Definition.md) |
+| [apply_to](apply_to.md) | * <br/> [ClassDefinition](ClassDefinition.md) | Used to extend class or slot definitions | [Definition](Definition.md) |
+| [values_from](values_from.md) | * <br/> [Uriorcurie](Uriorcurie.md) | The identifier of a "value set" -- a set of identifiers that form the possibl... | [Definition](Definition.md) |
+| [string_serialization](string_serialization.md) | 0..1 <br/> [String](String.md) | Used on a slot that stores the string serialization of the containing object | [Definition](Definition.md) |
+| [name](name.md) | 1 <br/> [String](String.md) | the unique name of the element within the context of the schema | [Element](Element.md) |
+| [id_prefixes](id_prefixes.md) | * <br/> [Ncname](Ncname.md) | An allowed list of prefixes for which identifiers must conform | [Element](Element.md) |
+| [id_prefixes_are_closed](id_prefixes_are_closed.md) | 0..1 <br/> [Boolean](Boolean.md) | If true, then the id_prefixes slot is treated as being closed, and any use of... | [Element](Element.md) |
+| [definition_uri](definition_uri.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | The native URI of the element | [Element](Element.md) |
+| [local_names](local_names.md) | * <br/> [LocalName](LocalName.md) |  | [Element](Element.md) |
+| [conforms_to](conforms_to.md) | 0..1 <br/> [String](String.md) | An established standard to which the element conforms | [Element](Element.md) |
+| [implements](implements.md) | * <br/> [Uriorcurie](Uriorcurie.md) | An element in another schema which this element conforms to | [Element](Element.md) |
+| [instantiates](instantiates.md) | * <br/> [Uriorcurie](Uriorcurie.md) | An element in another schema which this element instantiates | [Element](Element.md) |
+| [extensions](extensions.md) | * <br/> [Extension](Extension.md) | a tag/text tuple attached to an arbitrary element | [Extensible](Extensible.md) |
+| [annotations](annotations.md) | * <br/> [Annotation](Annotation.md) | a collection of tag/text tuples with the semantics of OWL Annotation | [Annotatable](Annotatable.md) |
+| [description](description.md) | 0..1 _recommended_ <br/> [String](String.md) | a textual description of the element's purpose and use | [CommonMetadata](CommonMetadata.md) |
+| [alt_descriptions](alt_descriptions.md) | * <br/> [AltDescription](AltDescription.md) | A sourced alternative description for an element | [CommonMetadata](CommonMetadata.md) |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A concise human-readable display label for the element | [CommonMetadata](CommonMetadata.md) |
+| [deprecated](deprecated.md) | 0..1 <br/> [String](String.md) | Description of why and when this element will no longer be used | [CommonMetadata](CommonMetadata.md) |
+| [todos](todos.md) | * <br/> [String](String.md) | Outstanding issues that needs resolution | [CommonMetadata](CommonMetadata.md) |
+| [notes](notes.md) | * <br/> [String](String.md) | editorial notes about an element intended primarily for internal consumption | [CommonMetadata](CommonMetadata.md) |
+| [comments](comments.md) | * <br/> [String](String.md) | notes and comments about an element intended primarily for external consumpti... | [CommonMetadata](CommonMetadata.md) |
+| [examples](examples.md) | * <br/> [Example](Example.md) | example usages of an element | [CommonMetadata](CommonMetadata.md) |
+| [in_subset](in_subset.md) | * <br/> [SubsetDefinition](SubsetDefinition.md) | used to indicate membership of a term in a defined subset of terms used for a... | [CommonMetadata](CommonMetadata.md) |
+| [from_schema](from_schema.md) | 0..1 <br/> [Uri](Uri.md) | id of the schema that defined the element | [CommonMetadata](CommonMetadata.md) |
+| [imported_from](imported_from.md) | 0..1 <br/> [String](String.md) | the imports entry that this element was derived from | [CommonMetadata](CommonMetadata.md) |
+| [source](source.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | A related resource from which the element is derived | [CommonMetadata](CommonMetadata.md) |
+| [in_language](in_language.md) | 0..1 <br/> [String](String.md) | the primary language used in the sources | [CommonMetadata](CommonMetadata.md) |
+| [see_also](see_also.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of related entities or URLs that may be of relevance | [CommonMetadata](CommonMetadata.md) |
+| [deprecated_element_has_exact_replacement](deprecated_element_has_exact_replacement.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | When an element is deprecated, it can be automatically replaced by this uri o... | [CommonMetadata](CommonMetadata.md) |
+| [deprecated_element_has_possible_replacement](deprecated_element_has_possible_replacement.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | When an element is deprecated, it can be potentially replaced by this uri or ... | [CommonMetadata](CommonMetadata.md) |
+| [aliases](aliases.md) | * <br/> [String](String.md) | Alternate names/labels for the element | [CommonMetadata](CommonMetadata.md) |
+| [structured_aliases](structured_aliases.md) | * <br/> [StructuredAlias](StructuredAlias.md) | A list of structured_alias objects, used to provide aliases in conjunction wi... | [CommonMetadata](CommonMetadata.md) |
+| [mappings](mappings.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of terms from different schemas or terminology systems that have compa... | [CommonMetadata](CommonMetadata.md) |
+| [exact_mappings](exact_mappings.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of terms from different schemas or terminology systems that have ident... | [CommonMetadata](CommonMetadata.md) |
+| [close_mappings](close_mappings.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of terms from different schemas or terminology systems that have close... | [CommonMetadata](CommonMetadata.md) |
+| [related_mappings](related_mappings.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of terms from different schemas or terminology systems that have relat... | [CommonMetadata](CommonMetadata.md) |
+| [narrow_mappings](narrow_mappings.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of terms from different schemas or terminology systems that have narro... | [CommonMetadata](CommonMetadata.md) |
+| [broad_mappings](broad_mappings.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of terms from different schemas or terminology systems that have broad... | [CommonMetadata](CommonMetadata.md) |
+| [created_by](created_by.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | agent that created the element | [CommonMetadata](CommonMetadata.md) |
+| [contributors](contributors.md) | * <br/> [Uriorcurie](Uriorcurie.md) | agent that contributed to the element | [CommonMetadata](CommonMetadata.md) |
+| [created_on](created_on.md) | 0..1 <br/> [Datetime](Datetime.md) | time at which the element was created | [CommonMetadata](CommonMetadata.md) |
+| [last_updated_on](last_updated_on.md) | 0..1 <br/> [Datetime](Datetime.md) | time at which the element was last updated | [CommonMetadata](CommonMetadata.md) |
+| [modified_by](modified_by.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | agent that modified the element | [CommonMetadata](CommonMetadata.md) |
+| [status](status.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | status of the element | [CommonMetadata](CommonMetadata.md) |
+| [rank](rank.md) | 0..1 <br/> [Integer](Integer.md) | the relative order in which the element occurs, lower values are given preced... | [CommonMetadata](CommonMetadata.md) |
+| [categories](categories.md) | * <br/> [Uriorcurie](Uriorcurie.md) | Controlled terms used to categorize an element | [CommonMetadata](CommonMetadata.md) |
+| [keywords](keywords.md) | * <br/> [String](String.md) | Keywords or tags used to describe the element | [CommonMetadata](CommonMetadata.md) |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [SchemaDefinition](SchemaDefinition.md) | [classes](classes.md) | range | [ClassDefinition](ClassDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [domain](domain.md) | range | [ClassDefinition](ClassDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [domain_of](domain_of.md) | range | [ClassDefinition](ClassDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [slots](slots.md) | domain | [ClassDefinition](ClassDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [slot_usage](slot_usage.md) | domain | [ClassDefinition](ClassDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [attributes](attributes.md) | domain | [ClassDefinition](ClassDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [class_uri](class_uri.md) | domain | [ClassDefinition](ClassDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [subclass_of](subclass_of.md) | domain | [ClassDefinition](ClassDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [union_of](union_of.md) | range | [ClassDefinition](ClassDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [defining_slots](defining_slots.md) | domain | [ClassDefinition](ClassDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [tree_root](tree_root.md) | domain | [ClassDefinition](ClassDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [unique_keys](unique_keys.md) | domain | [ClassDefinition](ClassDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [rules](rules.md) | domain | [ClassDefinition](ClassDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [classification_rules](classification_rules.md) | domain | [ClassDefinition](ClassDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [represents_relationship](represents_relationship.md) | domain | [ClassDefinition](ClassDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [disjoint_with](disjoint_with.md) | range | [ClassDefinition](ClassDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [extra_slots](extra_slots.md) | domain | [ClassDefinition](ClassDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [is_a](is_a.md) | range | [ClassDefinition](ClassDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [mixins](mixins.md) | range | [ClassDefinition](ClassDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [apply_to](apply_to.md) | range | [ClassDefinition](ClassDefinition.md) |
+
+
+
+
+
+
+
+
+## In Subsets
+
+
+* [SpecificationSubset](SpecificationSubset.md)
+* [MinimalSubset](MinimalSubset.md)
+* [BasicSubset](BasicSubset.md)
+* [RelationalModelProfile](RelationalModelProfile.md)
+* [ObjectOrientedProfile](ObjectOrientedProfile.md)
+* [OwlProfile](OwlProfile.md)
+
+
+
+## Aliases
+
+
+* table
+* record
+* template
+* message
+* observation
+
+
+
+
+## Identifier and Mapping Information
+### Administrative Metadata
+
+**Rank:** 2
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/linkml/meta
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | linkml:ClassDefinition |
+| native | linkml:ClassDefinition |
+| close | owl:Class |
+
+
+
+
+
+
+## LinkML Source
+
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
-<h3 id="direct">Direct</h3>
+
+### Direct
+
 <details>
 <pre><code class="language-yaml">name: class_definition
 description: an element whose instances are complex objects that may have slot-value
@@ -1604,7 +1040,9 @@ slot_usage:
 
 </code></pre>
 </details>
-<h3 id="induced">Induced</h3>
+
+### Induced
+
 <details>
 <pre><code class="language-yaml">name: class_definition
 description: an element whose instances are complex objects that may have slot-value
@@ -2944,7 +2382,7 @@ attributes:
     multivalued: true
 
 </code></pre>
-</details>
+</details></div>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>

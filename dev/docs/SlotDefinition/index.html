@@ -389,128 +389,6 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#inheritance">
-<span class="md-ellipsis">
-      
-        Inheritance
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#slots">
-<span class="md-ellipsis">
-      
-        Slots
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-<span class="md-ellipsis">
-      
-        Usages
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#in-subsets">
-<span class="md-ellipsis">
-      
-        In Subsets
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#aliases">
-<span class="md-ellipsis">
-      
-        Aliases
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#identifier-and-mapping-information">
-<span class="md-ellipsis">
-      
-        Identifier and Mapping Information
-      
-    </span>
-</a>
-<nav aria-label="Identifier and Mapping Information" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#administrative-metadata">
-<span class="md-ellipsis">
-      
-        Administrative Metadata
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#schema-source">
-<span class="md-ellipsis">
-      
-        Schema Source
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#mappings">
-<span class="md-ellipsis">
-      
-        Mappings
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#linkml-source">
-<span class="md-ellipsis">
-      
-        LinkML Source
-      
-    </span>
-</a>
-<nav aria-label="LinkML Source" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#direct">
-<span class="md-ellipsis">
-      
-        Direct
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#induced">
-<span class="md-ellipsis">
-      
-        Induced
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
 </nav>
 </div>
 </div>
@@ -519,7 +397,17 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-slotdefinition">Class: SlotDefinition</h1>
 <p><em>an element that describes how instances are related to other instances</em></p>
-<p>URI: <a href="https://w3id.org/linkml/SlotDefinition">linkml:SlotDefinition</a></p>
+<div data-search-exclude="" markdown="1">
+
+
+
+URI: [linkml:SlotDefinition](https://w3id.org/linkml/SlotDefinition)
+
+
+
+
+
+
 <div class="mermaid"> classDiagram
     class SlotDefinition
     click SlotDefinition href "../SlotDefinition/"
@@ -1115,1333 +1003,306 @@
 
 
 </div>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../Element/">Element</a> [ <a href="../Extensible/">Extensible</a> <a href="../Annotatable/">Annotatable</a> <a href="../CommonMetadata/">CommonMetadata</a>]<ul>
-<li><a href="../Definition/">Definition</a><ul>
-<li><strong>SlotDefinition</strong> [ <a href="../SlotExpression/">SlotExpression</a>]</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="slots">Slots</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-<th>Inheritance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../singular_name/">singular_name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>a name that is used in the singular form</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../domain/">domain</a></td>
-<td>0..1 <br/> <a href="../ClassDefinition/">ClassDefinition</a></td>
-<td>defines the type of the subject of the slot</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../slot_uri/">slot_uri</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>URI of the class that provides a semantic interpretation of the slot in a lin...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../inherited/">inherited</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>true means that the <em>value</em> of a slot is inherited by subclasses</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../readonly/">readonly</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>If present, slot is read only</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../ifabsent/">ifabsent</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>function that provides a default value for the slot</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../list_elements_unique/">list_elements_unique</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>If True, then there must be no duplicates in the elements of a multivalued sl...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../list_elements_ordered/">list_elements_ordered</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>If True, then the order of elements of a multivalued slot is guaranteed to be...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../shared/">shared</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>If True, then the relationship between the slot domain and range is many to o...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../key/">key</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>True means that the key slot(s) uniquely identify the elements within a singl...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../identifier/">identifier</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>True means that the key slot(s) uniquely identifies the elements</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../designates_type/">designates_type</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>True means that the key slot(s) is used to determine the instantiation (types...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../alias/">alias</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the name used for a slot in the context of its owning class</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../owner/">owner</a></td>
-<td>0..1 <br/> <a href="../Definition/">Definition</a></td>
-<td>the "owner" of the slot</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../domain_of/">domain_of</a></td>
-<td>* <br/> <a href="../ClassDefinition/">ClassDefinition</a></td>
-<td>the class(es) that reference the slot in a "slots" or "slot_usage" context</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../subproperty_of/">subproperty_of</a></td>
-<td>0..1 <br/> <a href="./">SlotDefinition</a></td>
-<td>Ontology property which this slot is a subproperty of</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../symmetric/">symmetric</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>If s is symmetric, and i</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../reflexive/">reflexive</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>If s is reflexive, then i</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../locally_reflexive/">locally_reflexive</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>If s is locally_reflexive, then i</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../irreflexive/">irreflexive</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>If s is irreflexive, then there exists no i such i</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../asymmetric/">asymmetric</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>If s is antisymmetric, and i</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../transitive/">transitive</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>If s is transitive, and i</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../inverse/">inverse</a></td>
-<td>0..1 <br/> <a href="./">SlotDefinition</a></td>
-<td>indicates that any instance of d s r implies that there is also an instance o...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../is_class_field/">is_class_field</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>indicates that for any instance, i, the domain of this slot will include an a...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../transitive_form_of/">transitive_form_of</a></td>
-<td>0..1 <br/> <a href="./">SlotDefinition</a></td>
-<td>If s transitive_form_of d, then (1) s holds whenever d holds (2) s is transit...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../reflexive_transitive_form_of/">reflexive_transitive_form_of</a></td>
-<td>0..1 <br/> <a href="./">SlotDefinition</a></td>
-<td>transitive_form_of including the reflexive case</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../role/">role</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>a textual descriptor that indicates the role played by the slot range</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../is_usage_slot/">is_usage_slot</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>True means that this slot was defined in a slot_usage situation</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../usage_slot_name/">usage_slot_name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The name of the slot referenced in the slot_usage</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../relational_role/">relational_role</a></td>
-<td>0..1 <br/> <a href="../RelationalRoleEnum/">RelationalRoleEnum</a></td>
-<td>the role a slot on a relationship class plays, for example, the subject, obje...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../slot_group/">slot_group</a></td>
-<td>0..1 <br/> <a href="./">SlotDefinition</a></td>
-<td>allows for grouping of related slots into a grouping slot that serves the rol...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../is_grouping_slot/">is_grouping_slot</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>true if this slot is a grouping slot</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../path_rule/">path_rule</a></td>
-<td>0..1 <br/> <a href="../PathExpression/">PathExpression</a></td>
-<td>a rule for inferring a slot assignment based on evaluating a path through a s...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../disjoint_with/">disjoint_with</a></td>
-<td>* <br/> <a href="./">SlotDefinition</a></td>
-<td>Two classes are disjoint if they have no instances in common, two slots are d...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../children_are_mutually_disjoint/">children_are_mutually_disjoint</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>If true then all direct is_a children are mutually disjoint and share no inst...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../union_of/">union_of</a></td>
-<td>* <br/> <a href="./">SlotDefinition</a></td>
-<td>indicates that the domain element consists exactly of the members of the elem...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../type_mappings/">type_mappings</a></td>
-<td>* <br/> <a href="../TypeMapping/">TypeMapping</a></td>
-<td>A collection of type mappings that specify how a slot's range should be mappe...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../range/">range</a></td>
-<td>0..1 <br/> <a href="../Element/">Element</a></td>
-<td>defines the type of the object of the slot</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../range_expression/">range_expression</a></td>
-<td>0..1 <br/> <a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td>A range that is described as a boolean expression combining existing ranges</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../enum_range/">enum_range</a></td>
-<td>0..1 <br/> <a href="../EnumExpression/">EnumExpression</a></td>
-<td>An inlined enumeration</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../bindings/">bindings</a></td>
-<td>* <br/> <a href="../EnumBinding/">EnumBinding</a></td>
-<td>A collection of enum bindings that specify how a slot can be bound to a permi...</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../required/">required</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>true means that the slot must be present in instances of the class definition</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../recommended/">recommended</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>true means that the slot should be present in instances of the class definiti...</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../multivalued/">multivalued</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>true means that slot can have more than one value and should be represented u...</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../inlined/">inlined</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>True means that keyed or identified slot appears in an outer structure by val...</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../inlined_as_list/">inlined_as_list</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>True means that an inlined slot is represented as a list of range instances</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../minimum_value/">minimum_value</a></td>
-<td>0..1 <br/> <a href="../Anything/">Anything</a></td>
-<td>For ordinal ranges, the value must be equal to or higher than this</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../maximum_value/">maximum_value</a></td>
-<td>0..1 <br/> <a href="../Anything/">Anything</a></td>
-<td>For ordinal ranges, the value must be equal to or lower than this</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../pattern/">pattern</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the string value of the slot must conform to this regular expression expresse...</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../structured_pattern/">structured_pattern</a></td>
-<td>0..1 <br/> <a href="../PatternExpression/">PatternExpression</a></td>
-<td>the string value of the slot must conform to the regular expression in the pa...</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../unit/">unit</a></td>
-<td>0..1 <br/> <a href="../UnitOfMeasure/">UnitOfMeasure</a></td>
-<td>an encoding of a unit</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../implicit_prefix/">implicit_prefix</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Causes the slot value to be interpreted as a uriorcurie after prefixing with ...</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../value_presence/">value_presence</a></td>
-<td>0..1 <br/> <a href="../PresenceEnum/">PresenceEnum</a></td>
-<td>if PRESENT then a value must be present (for lists there must be at least one...</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../equals_string/">equals_string</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the slot must have range string and the value of the slot must equal the spec...</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../equals_string_in/">equals_string_in</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>the slot must have range string and the value of the slot must equal one of t...</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../equals_number/">equals_number</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the slot must have range of a number and the value of the slot must equal the...</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../equals_expression/">equals_expression</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the value of the slot must equal the value of the evaluated expression</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../exact_cardinality/">exact_cardinality</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the exact number of entries for a multivalued slot</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../minimum_cardinality/">minimum_cardinality</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the minimum number of entries for a multivalued slot</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../maximum_cardinality/">maximum_cardinality</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the maximum number of entries for a multivalued slot</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../has_member/">has_member</a></td>
-<td>0..1 <br/> <a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td>the value of the slot is multivalued with at least one member satisfying the ...</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../all_members/">all_members</a></td>
-<td>0..1 <br/> <a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td>the value of the slot is multivalued with all members satisfying the conditio...</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../none_of/">none_of</a></td>
-<td>* <br/> <a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td>holds if none of the expressions hold</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../exactly_one_of/">exactly_one_of</a></td>
-<td>* <br/> <a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td>holds if only one of the expressions hold</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../any_of/">any_of</a></td>
-<td>* <br/> <a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td>holds if at least one of the expressions hold</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../all_of/">all_of</a></td>
-<td>* <br/> <a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td>holds if all of the expressions hold</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../array/">array</a></td>
-<td>0..1 <br/> <a href="../ArrayExpression/">ArrayExpression</a></td>
-<td>coerces the value of the slot into an array and defines the dimensions of tha...</td>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-</tr>
-<tr>
-<td><a href="../is_a/">is_a</a></td>
-<td>0..1 <br/> <a href="./">SlotDefinition</a></td>
-<td>A primary parent slot from which inheritable metaslots are propagated</td>
-<td><a href="../Definition/">Definition</a></td>
-</tr>
-<tr>
-<td><a href="../abstract/">abstract</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>Indicates the class or slot cannot be directly instantiated and is intended f...</td>
-<td><a href="../Definition/">Definition</a></td>
-</tr>
-<tr>
-<td><a href="../mixin/">mixin</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>Indicates the class or slot is intended to be inherited from without being an...</td>
-<td><a href="../Definition/">Definition</a></td>
-</tr>
-<tr>
-<td><a href="../mixins/">mixins</a></td>
-<td>* <br/> <a href="./">SlotDefinition</a></td>
-<td>A collection of secondary parent mixin slots from which inheritable metaslots...</td>
-<td><a href="../Definition/">Definition</a></td>
-</tr>
-<tr>
-<td><a href="../apply_to/">apply_to</a></td>
-<td>* <br/> <a href="./">SlotDefinition</a></td>
-<td>Used to extend class or slot definitions</td>
-<td><a href="../Definition/">Definition</a></td>
-</tr>
-<tr>
-<td><a href="../values_from/">values_from</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The identifier of a "value set" -- a set of identifiers that form the possibl...</td>
-<td><a href="../Definition/">Definition</a></td>
-</tr>
-<tr>
-<td><a href="../string_serialization/">string_serialization</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Used on a slot that stores the string serialization of the containing object</td>
-<td><a href="../Definition/">Definition</a></td>
-</tr>
-<tr>
-<td><a href="../name/">name</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>the unique name of the element within the context of the schema</td>
-<td><a href="../Element/">Element</a></td>
-</tr>
-<tr>
-<td><a href="../id_prefixes/">id_prefixes</a></td>
-<td>* <br/> <a href="../Ncname/">Ncname</a></td>
-<td>An allowed list of prefixes for which identifiers must conform</td>
-<td><a href="../Element/">Element</a></td>
-</tr>
-<tr>
-<td><a href="../id_prefixes_are_closed/">id_prefixes_are_closed</a></td>
-<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>If true, then the id_prefixes slot is treated as being closed, and any use of...</td>
-<td><a href="../Element/">Element</a></td>
-</tr>
-<tr>
-<td><a href="../definition_uri/">definition_uri</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The native URI of the element</td>
-<td><a href="../Element/">Element</a></td>
-</tr>
-<tr>
-<td><a href="../local_names/">local_names</a></td>
-<td>* <br/> <a href="../LocalName/">LocalName</a></td>
-<td></td>
-<td><a href="../Element/">Element</a></td>
-</tr>
-<tr>
-<td><a href="../conforms_to/">conforms_to</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>An established standard to which the element conforms</td>
-<td><a href="../Element/">Element</a></td>
-</tr>
-<tr>
-<td><a href="../implements/">implements</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>An element in another schema which this element conforms to</td>
-<td><a href="../Element/">Element</a></td>
-</tr>
-<tr>
-<td><a href="../instantiates/">instantiates</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>An element in another schema which this element instantiates</td>
-<td><a href="../Element/">Element</a></td>
-</tr>
-<tr>
-<td><a href="../extensions/">extensions</a></td>
-<td>* <br/> <a href="../Extension/">Extension</a></td>
-<td>a tag/text tuple attached to an arbitrary element</td>
-<td><a href="../Extensible/">Extensible</a></td>
-</tr>
-<tr>
-<td><a href="../annotations/">annotations</a></td>
-<td>* <br/> <a href="../Annotation/">Annotation</a></td>
-<td>a collection of tag/text tuples with the semantics of OWL Annotation</td>
-<td><a href="../Annotatable/">Annotatable</a></td>
-</tr>
-<tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
-<td>a textual description of the element's purpose and use</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../alt_descriptions/">alt_descriptions</a></td>
-<td>* <br/> <a href="../AltDescription/">AltDescription</a></td>
-<td>A sourced alternative description for an element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../title/">title</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A concise human-readable display label for the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../deprecated/">deprecated</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Description of why and when this element will no longer be used</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../todos/">todos</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>Outstanding issues that needs resolution</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../notes/">notes</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>editorial notes about an element intended primarily for internal consumption</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../comments/">comments</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>notes and comments about an element intended primarily for external consumpti...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../examples/">examples</a></td>
-<td>* <br/> <a href="../Example/">Example</a></td>
-<td>example usages of an element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../in_subset/">in_subset</a></td>
-<td>* <br/> <a href="../SubsetDefinition/">SubsetDefinition</a></td>
-<td>used to indicate membership of a term in a defined subset of terms used for a...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../from_schema/">from_schema</a></td>
-<td>0..1 <br/> <a href="../Uri/">Uri</a></td>
-<td>id of the schema that defined the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../imported_from/">imported_from</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the imports entry that this element was derived from</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../source/">source</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A related resource from which the element is derived</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../in_language/">in_language</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the primary language used in the sources</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../see_also/">see_also</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of related entities or URLs that may be of relevance</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../deprecated_element_has_exact_replacement/">deprecated_element_has_exact_replacement</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>When an element is deprecated, it can be automatically replaced by this uri o...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../deprecated_element_has_possible_replacement/">deprecated_element_has_possible_replacement</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>When an element is deprecated, it can be potentially replaced by this uri or ...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../aliases/">aliases</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>Alternate names/labels for the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../structured_aliases/">structured_aliases</a></td>
-<td>* <br/> <a href="../StructuredAlias/">StructuredAlias</a></td>
-<td>A list of structured_alias objects, used to provide aliases in conjunction wi...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../mappings/">mappings</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have compa...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../exact_mappings/">exact_mappings</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have ident...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../close_mappings/">close_mappings</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have close...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../related_mappings/">related_mappings</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have relat...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../narrow_mappings/">narrow_mappings</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have narro...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../broad_mappings/">broad_mappings</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of terms from different schemas or terminology systems that have broad...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../created_by/">created_by</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>agent that created the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../contributors/">contributors</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>agent that contributed to the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../created_on/">created_on</a></td>
-<td>0..1 <br/> <a href="../Datetime/">Datetime</a></td>
-<td>time at which the element was created</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../last_updated_on/">last_updated_on</a></td>
-<td>0..1 <br/> <a href="../Datetime/">Datetime</a></td>
-<td>time at which the element was last updated</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../modified_by/">modified_by</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>agent that modified the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../status/">status</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>status of the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../rank/">rank</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>the relative order in which the element occurs, lower values are given preced...</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../categories/">categories</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>Controlled terms used to categorize an element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td><a href="../keywords/">keywords</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>Keywords or tags used to describe the element</td>
-<td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
-<tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../SchemaDefinition/">SchemaDefinition</a></td>
-<td><a href="../slot_definitions/">slot_definitions</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../TypeExpression/">TypeExpression</a></td>
-<td><a href="../minimum_value/">minimum_value</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../TypeExpression/">TypeExpression</a></td>
-<td><a href="../maximum_value/">maximum_value</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
-<td><a href="../minimum_value/">minimum_value</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousTypeExpression/">AnonymousTypeExpression</a></td>
-<td><a href="../maximum_value/">maximum_value</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../minimum_value/">minimum_value</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../TypeDefinition/">TypeDefinition</a></td>
-<td><a href="../maximum_value/">maximum_value</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../EnumBinding/">EnumBinding</a></td>
-<td><a href="../range/">range</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../PathExpression/">PathExpression</a></td>
-<td><a href="../traverse/">traverse</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-<td><a href="../range/">range</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-<td><a href="../required/">required</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-<td><a href="../recommended/">recommended</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-<td><a href="../multivalued/">multivalued</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-<td><a href="../inlined/">inlined</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-<td><a href="../inlined_as_list/">inlined_as_list</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-<td><a href="../minimum_value/">minimum_value</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-<td><a href="../maximum_value/">maximum_value</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-<td><a href="../value_presence/">value_presence</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../SlotExpression/">SlotExpression</a></td>
-<td><a href="../array/">array</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../range/">range</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../required/">required</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../recommended/">recommended</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../multivalued/">multivalued</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../inlined/">inlined</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../inlined_as_list/">inlined_as_list</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../minimum_value/">minimum_value</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../maximum_value/">maximum_value</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../value_presence/">value_presence</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousSlotExpression/">AnonymousSlotExpression</a></td>
-<td><a href="../array/">array</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../singular_name/">singular_name</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../domain/">domain</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../slot_uri/">slot_uri</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../inherited/">inherited</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../readonly/">readonly</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../ifabsent/">ifabsent</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../list_elements_unique/">list_elements_unique</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../list_elements_ordered/">list_elements_ordered</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../shared/">shared</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../key/">key</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../identifier/">identifier</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../designates_type/">designates_type</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../alias/">alias</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../owner/">owner</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../domain_of/">domain_of</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../subproperty_of/">subproperty_of</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../subproperty_of/">subproperty_of</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../symmetric/">symmetric</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../reflexive/">reflexive</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../locally_reflexive/">locally_reflexive</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../irreflexive/">irreflexive</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../asymmetric/">asymmetric</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../transitive/">transitive</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../inverse/">inverse</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../inverse/">inverse</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../is_class_field/">is_class_field</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../transitive_form_of/">transitive_form_of</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../reflexive_transitive_form_of/">reflexive_transitive_form_of</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../role/">role</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../is_usage_slot/">is_usage_slot</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../usage_slot_name/">usage_slot_name</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../relational_role/">relational_role</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../slot_group/">slot_group</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../slot_group/">slot_group</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../is_grouping_slot/">is_grouping_slot</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../path_rule/">path_rule</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../disjoint_with/">disjoint_with</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../union_of/">union_of</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../range/">range</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../required/">required</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../recommended/">recommended</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../multivalued/">multivalued</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../inlined/">inlined</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../inlined_as_list/">inlined_as_list</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../minimum_value/">minimum_value</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../maximum_value/">maximum_value</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../value_presence/">value_presence</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../array/">array</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../is_a/">is_a</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../mixins/">mixins</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="./">SlotDefinition</a></td>
-<td><a href="../apply_to/">apply_to</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../ClassExpression/">ClassExpression</a></td>
-<td><a href="../slot_conditions/">slot_conditions</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td><a href="../slot_conditions/">slot_conditions</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../slots/">slots</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../slot_usage/">slot_usage</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../attributes/">attributes</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../defining_slots/">defining_slots</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../alias/">alias</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../ClassDefinition/">ClassDefinition</a></td>
-<td><a href="../slot_conditions/">slot_conditions</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../DimensionExpression/">DimensionExpression</a></td>
-<td><a href="../alias/">alias</a></td>
-<td>domain</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-<tr>
-<td><a href="../UniqueKey/">UniqueKey</a></td>
-<td><a href="../unique_key_slots/">unique_key_slots</a></td>
-<td>range</td>
-<td><a href="./">SlotDefinition</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="in-subsets">In Subsets</h2>
-<ul>
-<li><a href="../SpecificationSubset/">SpecificationSubset</a></li>
-<li><a href="../MinimalSubset/">MinimalSubset</a></li>
-<li><a href="../BasicSubset/">BasicSubset</a></li>
-<li><a href="../OwlProfile/">OwlProfile</a></li>
-</ul>
-<h2 id="aliases">Aliases</h2>
-<ul>
-<li>slot</li>
-<li>field</li>
-<li>property</li>
-<li>attribute</li>
-<li>column</li>
-<li>variable</li>
-</ul>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="administrative-metadata">Administrative Metadata</h3>
-<p><strong>Rank:</strong> 3</p>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: <a href="https://w3id.org/linkml/meta">https://w3id.org/linkml/meta</a></li>
-</ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>linkml:SlotDefinition</td>
-</tr>
-<tr>
-<td>native</td>
-<td>linkml:SlotDefinition</td>
-</tr>
-<tr>
-<td>close</td>
-<td>rdf:Property, qb:ComponentProperty</td>
-</tr>
-</tbody>
-</table>
-<h2 id="linkml-source">LinkML Source</h2>
+
+
+
+
+
+
+## Inheritance
+* [Element](Element.md) [ [Extensible](Extensible.md) [Annotatable](Annotatable.md) [CommonMetadata](CommonMetadata.md)]
+    * [Definition](Definition.md)
+        * **SlotDefinition** [ [SlotExpression](SlotExpression.md)]
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [singular_name](singular_name.md) | 0..1 <br/> [String](String.md) | a name that is used in the singular form | direct |
+| [domain](domain.md) | 0..1 <br/> [ClassDefinition](ClassDefinition.md) | defines the type of the subject of the slot | direct |
+| [slot_uri](slot_uri.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | URI of the class that provides a semantic interpretation of the slot in a lin... | direct |
+| [inherited](inherited.md) | 0..1 <br/> [Boolean](Boolean.md) | true means that the *value* of a slot is inherited by subclasses | direct |
+| [readonly](readonly.md) | 0..1 <br/> [String](String.md) | If present, slot is read only | direct |
+| [ifabsent](ifabsent.md) | 0..1 <br/> [String](String.md) | function that provides a default value for the slot | direct |
+| [list_elements_unique](list_elements_unique.md) | 0..1 <br/> [Boolean](Boolean.md) | If True, then there must be no duplicates in the elements of a multivalued sl... | direct |
+| [list_elements_ordered](list_elements_ordered.md) | 0..1 <br/> [Boolean](Boolean.md) | If True, then the order of elements of a multivalued slot is guaranteed to be... | direct |
+| [shared](shared.md) | 0..1 <br/> [Boolean](Boolean.md) | If True, then the relationship between the slot domain and range is many to o... | direct |
+| [key](key.md) | 0..1 <br/> [Boolean](Boolean.md) | True means that the key slot(s) uniquely identify the elements within a singl... | direct |
+| [identifier](identifier.md) | 0..1 <br/> [Boolean](Boolean.md) | True means that the key slot(s) uniquely identifies the elements | direct |
+| [designates_type](designates_type.md) | 0..1 <br/> [Boolean](Boolean.md) | True means that the key slot(s) is used to determine the instantiation (types... | direct |
+| [alias](alias.md) | 0..1 <br/> [String](String.md) | the name used for a slot in the context of its owning class | direct |
+| [owner](owner.md) | 0..1 <br/> [Definition](Definition.md) | the "owner" of the slot | direct |
+| [domain_of](domain_of.md) | * <br/> [ClassDefinition](ClassDefinition.md) | the class(es) that reference the slot in a "slots" or "slot_usage" context | direct |
+| [subproperty_of](subproperty_of.md) | 0..1 <br/> [SlotDefinition](SlotDefinition.md) | Ontology property which this slot is a subproperty of | direct |
+| [symmetric](symmetric.md) | 0..1 <br/> [Boolean](Boolean.md) | If s is symmetric, and i | direct |
+| [reflexive](reflexive.md) | 0..1 <br/> [Boolean](Boolean.md) | If s is reflexive, then i | direct |
+| [locally_reflexive](locally_reflexive.md) | 0..1 <br/> [Boolean](Boolean.md) | If s is locally_reflexive, then i | direct |
+| [irreflexive](irreflexive.md) | 0..1 <br/> [Boolean](Boolean.md) | If s is irreflexive, then there exists no i such i | direct |
+| [asymmetric](asymmetric.md) | 0..1 <br/> [Boolean](Boolean.md) | If s is antisymmetric, and i | direct |
+| [transitive](transitive.md) | 0..1 <br/> [Boolean](Boolean.md) | If s is transitive, and i | direct |
+| [inverse](inverse.md) | 0..1 <br/> [SlotDefinition](SlotDefinition.md) | indicates that any instance of d s r implies that there is also an instance o... | direct |
+| [is_class_field](is_class_field.md) | 0..1 <br/> [Boolean](Boolean.md) | indicates that for any instance, i, the domain of this slot will include an a... | direct |
+| [transitive_form_of](transitive_form_of.md) | 0..1 <br/> [SlotDefinition](SlotDefinition.md) | If s transitive_form_of d, then (1) s holds whenever d holds (2) s is transit... | direct |
+| [reflexive_transitive_form_of](reflexive_transitive_form_of.md) | 0..1 <br/> [SlotDefinition](SlotDefinition.md) | transitive_form_of including the reflexive case | direct |
+| [role](role.md) | 0..1 <br/> [String](String.md) | a textual descriptor that indicates the role played by the slot range | direct |
+| [is_usage_slot](is_usage_slot.md) | 0..1 <br/> [Boolean](Boolean.md) | True means that this slot was defined in a slot_usage situation | direct |
+| [usage_slot_name](usage_slot_name.md) | 0..1 <br/> [String](String.md) | The name of the slot referenced in the slot_usage | direct |
+| [relational_role](relational_role.md) | 0..1 <br/> [RelationalRoleEnum](RelationalRoleEnum.md) | the role a slot on a relationship class plays, for example, the subject, obje... | direct |
+| [slot_group](slot_group.md) | 0..1 <br/> [SlotDefinition](SlotDefinition.md) | allows for grouping of related slots into a grouping slot that serves the rol... | direct |
+| [is_grouping_slot](is_grouping_slot.md) | 0..1 <br/> [Boolean](Boolean.md) | true if this slot is a grouping slot | direct |
+| [path_rule](path_rule.md) | 0..1 <br/> [PathExpression](PathExpression.md) | a rule for inferring a slot assignment based on evaluating a path through a s... | direct |
+| [disjoint_with](disjoint_with.md) | * <br/> [SlotDefinition](SlotDefinition.md) | Two classes are disjoint if they have no instances in common, two slots are d... | direct |
+| [children_are_mutually_disjoint](children_are_mutually_disjoint.md) | 0..1 <br/> [Boolean](Boolean.md) | If true then all direct is_a children are mutually disjoint and share no inst... | direct |
+| [union_of](union_of.md) | * <br/> [SlotDefinition](SlotDefinition.md) | indicates that the domain element consists exactly of the members of the elem... | direct |
+| [type_mappings](type_mappings.md) | * <br/> [TypeMapping](TypeMapping.md) | A collection of type mappings that specify how a slot's range should be mappe... | direct |
+| [range](range.md) | 0..1 <br/> [Element](Element.md) | defines the type of the object of the slot | [SlotExpression](SlotExpression.md) |
+| [range_expression](range_expression.md) | 0..1 <br/> [AnonymousClassExpression](AnonymousClassExpression.md) | A range that is described as a boolean expression combining existing ranges | [SlotExpression](SlotExpression.md) |
+| [enum_range](enum_range.md) | 0..1 <br/> [EnumExpression](EnumExpression.md) | An inlined enumeration | [SlotExpression](SlotExpression.md) |
+| [bindings](bindings.md) | * <br/> [EnumBinding](EnumBinding.md) | A collection of enum bindings that specify how a slot can be bound to a permi... | [SlotExpression](SlotExpression.md) |
+| [required](required.md) | 0..1 <br/> [Boolean](Boolean.md) | true means that the slot must be present in instances of the class definition | [SlotExpression](SlotExpression.md) |
+| [recommended](recommended.md) | 0..1 <br/> [Boolean](Boolean.md) | true means that the slot should be present in instances of the class definiti... | [SlotExpression](SlotExpression.md) |
+| [multivalued](multivalued.md) | 0..1 <br/> [Boolean](Boolean.md) | true means that slot can have more than one value and should be represented u... | [SlotExpression](SlotExpression.md) |
+| [inlined](inlined.md) | 0..1 <br/> [Boolean](Boolean.md) | True means that keyed or identified slot appears in an outer structure by val... | [SlotExpression](SlotExpression.md) |
+| [inlined_as_list](inlined_as_list.md) | 0..1 <br/> [Boolean](Boolean.md) | True means that an inlined slot is represented as a list of range instances | [SlotExpression](SlotExpression.md) |
+| [minimum_value](minimum_value.md) | 0..1 <br/> [Anything](Anything.md) | For ordinal ranges, the value must be equal to or higher than this | [SlotExpression](SlotExpression.md) |
+| [maximum_value](maximum_value.md) | 0..1 <br/> [Anything](Anything.md) | For ordinal ranges, the value must be equal to or lower than this | [SlotExpression](SlotExpression.md) |
+| [pattern](pattern.md) | 0..1 <br/> [String](String.md) | the string value of the slot must conform to this regular expression expresse... | [SlotExpression](SlotExpression.md) |
+| [structured_pattern](structured_pattern.md) | 0..1 <br/> [PatternExpression](PatternExpression.md) | the string value of the slot must conform to the regular expression in the pa... | [SlotExpression](SlotExpression.md) |
+| [unit](unit.md) | 0..1 <br/> [UnitOfMeasure](UnitOfMeasure.md) | an encoding of a unit | [SlotExpression](SlotExpression.md) |
+| [implicit_prefix](implicit_prefix.md) | 0..1 <br/> [String](String.md) | Causes the slot value to be interpreted as a uriorcurie after prefixing with ... | [SlotExpression](SlotExpression.md) |
+| [value_presence](value_presence.md) | 0..1 <br/> [PresenceEnum](PresenceEnum.md) | if PRESENT then a value must be present (for lists there must be at least one... | [SlotExpression](SlotExpression.md) |
+| [equals_string](equals_string.md) | 0..1 <br/> [String](String.md) | the slot must have range string and the value of the slot must equal the spec... | [SlotExpression](SlotExpression.md) |
+| [equals_string_in](equals_string_in.md) | * <br/> [String](String.md) | the slot must have range string and the value of the slot must equal one of t... | [SlotExpression](SlotExpression.md) |
+| [equals_number](equals_number.md) | 0..1 <br/> [Integer](Integer.md) | the slot must have range of a number and the value of the slot must equal the... | [SlotExpression](SlotExpression.md) |
+| [equals_expression](equals_expression.md) | 0..1 <br/> [String](String.md) | the value of the slot must equal the value of the evaluated expression | [SlotExpression](SlotExpression.md) |
+| [exact_cardinality](exact_cardinality.md) | 0..1 <br/> [Integer](Integer.md) | the exact number of entries for a multivalued slot | [SlotExpression](SlotExpression.md) |
+| [minimum_cardinality](minimum_cardinality.md) | 0..1 <br/> [Integer](Integer.md) | the minimum number of entries for a multivalued slot | [SlotExpression](SlotExpression.md) |
+| [maximum_cardinality](maximum_cardinality.md) | 0..1 <br/> [Integer](Integer.md) | the maximum number of entries for a multivalued slot | [SlotExpression](SlotExpression.md) |
+| [has_member](has_member.md) | 0..1 <br/> [AnonymousSlotExpression](AnonymousSlotExpression.md) | the value of the slot is multivalued with at least one member satisfying the ... | [SlotExpression](SlotExpression.md) |
+| [all_members](all_members.md) | 0..1 <br/> [AnonymousSlotExpression](AnonymousSlotExpression.md) | the value of the slot is multivalued with all members satisfying the conditio... | [SlotExpression](SlotExpression.md) |
+| [none_of](none_of.md) | * <br/> [AnonymousSlotExpression](AnonymousSlotExpression.md) | holds if none of the expressions hold | [SlotExpression](SlotExpression.md) |
+| [exactly_one_of](exactly_one_of.md) | * <br/> [AnonymousSlotExpression](AnonymousSlotExpression.md) | holds if only one of the expressions hold | [SlotExpression](SlotExpression.md) |
+| [any_of](any_of.md) | * <br/> [AnonymousSlotExpression](AnonymousSlotExpression.md) | holds if at least one of the expressions hold | [SlotExpression](SlotExpression.md) |
+| [all_of](all_of.md) | * <br/> [AnonymousSlotExpression](AnonymousSlotExpression.md) | holds if all of the expressions hold | [SlotExpression](SlotExpression.md) |
+| [array](array.md) | 0..1 <br/> [ArrayExpression](ArrayExpression.md) | coerces the value of the slot into an array and defines the dimensions of tha... | [SlotExpression](SlotExpression.md) |
+| [is_a](is_a.md) | 0..1 <br/> [SlotDefinition](SlotDefinition.md) | A primary parent slot from which inheritable metaslots are propagated | [Definition](Definition.md) |
+| [abstract](abstract.md) | 0..1 <br/> [Boolean](Boolean.md) | Indicates the class or slot cannot be directly instantiated and is intended f... | [Definition](Definition.md) |
+| [mixin](mixin.md) | 0..1 <br/> [Boolean](Boolean.md) | Indicates the class or slot is intended to be inherited from without being an... | [Definition](Definition.md) |
+| [mixins](mixins.md) | * <br/> [SlotDefinition](SlotDefinition.md) | A collection of secondary parent mixin slots from which inheritable metaslots... | [Definition](Definition.md) |
+| [apply_to](apply_to.md) | * <br/> [SlotDefinition](SlotDefinition.md) | Used to extend class or slot definitions | [Definition](Definition.md) |
+| [values_from](values_from.md) | * <br/> [Uriorcurie](Uriorcurie.md) | The identifier of a "value set" -- a set of identifiers that form the possibl... | [Definition](Definition.md) |
+| [string_serialization](string_serialization.md) | 0..1 <br/> [String](String.md) | Used on a slot that stores the string serialization of the containing object | [Definition](Definition.md) |
+| [name](name.md) | 1 <br/> [String](String.md) | the unique name of the element within the context of the schema | [Element](Element.md) |
+| [id_prefixes](id_prefixes.md) | * <br/> [Ncname](Ncname.md) | An allowed list of prefixes for which identifiers must conform | [Element](Element.md) |
+| [id_prefixes_are_closed](id_prefixes_are_closed.md) | 0..1 <br/> [Boolean](Boolean.md) | If true, then the id_prefixes slot is treated as being closed, and any use of... | [Element](Element.md) |
+| [definition_uri](definition_uri.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | The native URI of the element | [Element](Element.md) |
+| [local_names](local_names.md) | * <br/> [LocalName](LocalName.md) |  | [Element](Element.md) |
+| [conforms_to](conforms_to.md) | 0..1 <br/> [String](String.md) | An established standard to which the element conforms | [Element](Element.md) |
+| [implements](implements.md) | * <br/> [Uriorcurie](Uriorcurie.md) | An element in another schema which this element conforms to | [Element](Element.md) |
+| [instantiates](instantiates.md) | * <br/> [Uriorcurie](Uriorcurie.md) | An element in another schema which this element instantiates | [Element](Element.md) |
+| [extensions](extensions.md) | * <br/> [Extension](Extension.md) | a tag/text tuple attached to an arbitrary element | [Extensible](Extensible.md) |
+| [annotations](annotations.md) | * <br/> [Annotation](Annotation.md) | a collection of tag/text tuples with the semantics of OWL Annotation | [Annotatable](Annotatable.md) |
+| [description](description.md) | 0..1 _recommended_ <br/> [String](String.md) | a textual description of the element's purpose and use | [CommonMetadata](CommonMetadata.md) |
+| [alt_descriptions](alt_descriptions.md) | * <br/> [AltDescription](AltDescription.md) | A sourced alternative description for an element | [CommonMetadata](CommonMetadata.md) |
+| [title](title.md) | 0..1 <br/> [String](String.md) | A concise human-readable display label for the element | [CommonMetadata](CommonMetadata.md) |
+| [deprecated](deprecated.md) | 0..1 <br/> [String](String.md) | Description of why and when this element will no longer be used | [CommonMetadata](CommonMetadata.md) |
+| [todos](todos.md) | * <br/> [String](String.md) | Outstanding issues that needs resolution | [CommonMetadata](CommonMetadata.md) |
+| [notes](notes.md) | * <br/> [String](String.md) | editorial notes about an element intended primarily for internal consumption | [CommonMetadata](CommonMetadata.md) |
+| [comments](comments.md) | * <br/> [String](String.md) | notes and comments about an element intended primarily for external consumpti... | [CommonMetadata](CommonMetadata.md) |
+| [examples](examples.md) | * <br/> [Example](Example.md) | example usages of an element | [CommonMetadata](CommonMetadata.md) |
+| [in_subset](in_subset.md) | * <br/> [SubsetDefinition](SubsetDefinition.md) | used to indicate membership of a term in a defined subset of terms used for a... | [CommonMetadata](CommonMetadata.md) |
+| [from_schema](from_schema.md) | 0..1 <br/> [Uri](Uri.md) | id of the schema that defined the element | [CommonMetadata](CommonMetadata.md) |
+| [imported_from](imported_from.md) | 0..1 <br/> [String](String.md) | the imports entry that this element was derived from | [CommonMetadata](CommonMetadata.md) |
+| [source](source.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | A related resource from which the element is derived | [CommonMetadata](CommonMetadata.md) |
+| [in_language](in_language.md) | 0..1 <br/> [String](String.md) | the primary language used in the sources | [CommonMetadata](CommonMetadata.md) |
+| [see_also](see_also.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of related entities or URLs that may be of relevance | [CommonMetadata](CommonMetadata.md) |
+| [deprecated_element_has_exact_replacement](deprecated_element_has_exact_replacement.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | When an element is deprecated, it can be automatically replaced by this uri o... | [CommonMetadata](CommonMetadata.md) |
+| [deprecated_element_has_possible_replacement](deprecated_element_has_possible_replacement.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | When an element is deprecated, it can be potentially replaced by this uri or ... | [CommonMetadata](CommonMetadata.md) |
+| [aliases](aliases.md) | * <br/> [String](String.md) | Alternate names/labels for the element | [CommonMetadata](CommonMetadata.md) |
+| [structured_aliases](structured_aliases.md) | * <br/> [StructuredAlias](StructuredAlias.md) | A list of structured_alias objects, used to provide aliases in conjunction wi... | [CommonMetadata](CommonMetadata.md) |
+| [mappings](mappings.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of terms from different schemas or terminology systems that have compa... | [CommonMetadata](CommonMetadata.md) |
+| [exact_mappings](exact_mappings.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of terms from different schemas or terminology systems that have ident... | [CommonMetadata](CommonMetadata.md) |
+| [close_mappings](close_mappings.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of terms from different schemas or terminology systems that have close... | [CommonMetadata](CommonMetadata.md) |
+| [related_mappings](related_mappings.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of terms from different schemas or terminology systems that have relat... | [CommonMetadata](CommonMetadata.md) |
+| [narrow_mappings](narrow_mappings.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of terms from different schemas or terminology systems that have narro... | [CommonMetadata](CommonMetadata.md) |
+| [broad_mappings](broad_mappings.md) | * <br/> [Uriorcurie](Uriorcurie.md) | A list of terms from different schemas or terminology systems that have broad... | [CommonMetadata](CommonMetadata.md) |
+| [created_by](created_by.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | agent that created the element | [CommonMetadata](CommonMetadata.md) |
+| [contributors](contributors.md) | * <br/> [Uriorcurie](Uriorcurie.md) | agent that contributed to the element | [CommonMetadata](CommonMetadata.md) |
+| [created_on](created_on.md) | 0..1 <br/> [Datetime](Datetime.md) | time at which the element was created | [CommonMetadata](CommonMetadata.md) |
+| [last_updated_on](last_updated_on.md) | 0..1 <br/> [Datetime](Datetime.md) | time at which the element was last updated | [CommonMetadata](CommonMetadata.md) |
+| [modified_by](modified_by.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | agent that modified the element | [CommonMetadata](CommonMetadata.md) |
+| [status](status.md) | 0..1 <br/> [Uriorcurie](Uriorcurie.md) | status of the element | [CommonMetadata](CommonMetadata.md) |
+| [rank](rank.md) | 0..1 <br/> [Integer](Integer.md) | the relative order in which the element occurs, lower values are given preced... | [CommonMetadata](CommonMetadata.md) |
+| [categories](categories.md) | * <br/> [Uriorcurie](Uriorcurie.md) | Controlled terms used to categorize an element | [CommonMetadata](CommonMetadata.md) |
+| [keywords](keywords.md) | * <br/> [String](String.md) | Keywords or tags used to describe the element | [CommonMetadata](CommonMetadata.md) |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [SchemaDefinition](SchemaDefinition.md) | [slot_definitions](slot_definitions.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [TypeExpression](TypeExpression.md) | [minimum_value](minimum_value.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [TypeExpression](TypeExpression.md) | [maximum_value](maximum_value.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [AnonymousTypeExpression](AnonymousTypeExpression.md) | [minimum_value](minimum_value.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [AnonymousTypeExpression](AnonymousTypeExpression.md) | [maximum_value](maximum_value.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [TypeDefinition](TypeDefinition.md) | [minimum_value](minimum_value.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [TypeDefinition](TypeDefinition.md) | [maximum_value](maximum_value.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [EnumBinding](EnumBinding.md) | [range](range.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [PathExpression](PathExpression.md) | [traverse](traverse.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [SlotExpression](SlotExpression.md) | [range](range.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotExpression](SlotExpression.md) | [required](required.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotExpression](SlotExpression.md) | [recommended](recommended.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotExpression](SlotExpression.md) | [multivalued](multivalued.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotExpression](SlotExpression.md) | [inlined](inlined.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotExpression](SlotExpression.md) | [inlined_as_list](inlined_as_list.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotExpression](SlotExpression.md) | [minimum_value](minimum_value.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotExpression](SlotExpression.md) | [maximum_value](maximum_value.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotExpression](SlotExpression.md) | [value_presence](value_presence.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotExpression](SlotExpression.md) | [array](array.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [range](range.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [required](required.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [recommended](recommended.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [multivalued](multivalued.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [inlined](inlined.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [inlined_as_list](inlined_as_list.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [minimum_value](minimum_value.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [maximum_value](maximum_value.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [value_presence](value_presence.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [AnonymousSlotExpression](AnonymousSlotExpression.md) | [array](array.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [singular_name](singular_name.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [domain](domain.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [slot_uri](slot_uri.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [inherited](inherited.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [readonly](readonly.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [ifabsent](ifabsent.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [list_elements_unique](list_elements_unique.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [list_elements_ordered](list_elements_ordered.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [shared](shared.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [key](key.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [identifier](identifier.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [designates_type](designates_type.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [alias](alias.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [owner](owner.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [domain_of](domain_of.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [subproperty_of](subproperty_of.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [subproperty_of](subproperty_of.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [symmetric](symmetric.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [reflexive](reflexive.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [locally_reflexive](locally_reflexive.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [irreflexive](irreflexive.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [asymmetric](asymmetric.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [transitive](transitive.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [inverse](inverse.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [inverse](inverse.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [is_class_field](is_class_field.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [transitive_form_of](transitive_form_of.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [reflexive_transitive_form_of](reflexive_transitive_form_of.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [role](role.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [is_usage_slot](is_usage_slot.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [usage_slot_name](usage_slot_name.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [relational_role](relational_role.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [slot_group](slot_group.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [slot_group](slot_group.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [is_grouping_slot](is_grouping_slot.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [path_rule](path_rule.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [disjoint_with](disjoint_with.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [union_of](union_of.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [range](range.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [required](required.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [recommended](recommended.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [multivalued](multivalued.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [inlined](inlined.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [inlined_as_list](inlined_as_list.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [minimum_value](minimum_value.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [maximum_value](maximum_value.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [value_presence](value_presence.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [array](array.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [is_a](is_a.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [mixins](mixins.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [SlotDefinition](SlotDefinition.md) | [apply_to](apply_to.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [ClassExpression](ClassExpression.md) | [slot_conditions](slot_conditions.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [AnonymousClassExpression](AnonymousClassExpression.md) | [slot_conditions](slot_conditions.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [slots](slots.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [slot_usage](slot_usage.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [attributes](attributes.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [defining_slots](defining_slots.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [alias](alias.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [ClassDefinition](ClassDefinition.md) | [slot_conditions](slot_conditions.md) | range | [SlotDefinition](SlotDefinition.md) |
+| [DimensionExpression](DimensionExpression.md) | [alias](alias.md) | domain | [SlotDefinition](SlotDefinition.md) |
+| [UniqueKey](UniqueKey.md) | [unique_key_slots](unique_key_slots.md) | range | [SlotDefinition](SlotDefinition.md) |
+
+
+
+
+
+
+
+
+## In Subsets
+
+
+* [SpecificationSubset](SpecificationSubset.md)
+* [MinimalSubset](MinimalSubset.md)
+* [BasicSubset](BasicSubset.md)
+* [OwlProfile](OwlProfile.md)
+
+
+
+## Aliases
+
+
+* slot
+* field
+* property
+* attribute
+* column
+* variable
+
+
+
+
+## Identifier and Mapping Information
+### Administrative Metadata
+
+**Rank:** 3
+
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/linkml/meta
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | linkml:SlotDefinition |
+| native | linkml:SlotDefinition |
+| close | rdf:Property, qb:ComponentProperty |
+
+
+
+
+
+
+## LinkML Source
+
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
-<h3 id="direct">Direct</h3>
+
+### Direct
+
 <details>
 <pre><code class="language-yaml">name: slot_definition
 description: an element that describes how instances are related to other instances
@@ -2525,7 +1386,9 @@ slot_usage:
 
 </code></pre>
 </details>
-<h3 id="induced">Induced</h3>
+
+### Induced
+
 <details>
 <pre><code class="language-yaml">name: slot_definition
 description: an element that describes how instances are related to other instances
@@ -4571,7 +3434,7 @@ attributes:
     multivalued: true
 
 </code></pre>
-</details>
+</details></div>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
