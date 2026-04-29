@@ -181,7 +181,7 @@
 --     * Slot: schema_definition_name Description: Autocreated FK slot
 --     * Slot: reachable_from_id Description: Specifies a query for obtaining a list of permissible values based on graph reachability
 --     * Slot: matches_id Description: Specifies a match query that is used to calculate the list of permissible values
--- # Class: "match_query" Description: "A query that is used on an enum expression to dynamically obtain a set of permissible values via a query that matches on properties of the external concepts"
+-- # Class: "match_query" Description: "A query that is used on an enum expression to dynamically obtain a set of permissivle values via a query that matches on properties of the external concepts"
 --     * Slot: id Description:
 --     * Slot: identifier_pattern Description: A regular expression that is used to obtain a set of identifiers from a source_ontology to construct a set of permissible values
 --     * Slot: source_ontology Description: An ontology or vocabulary or terminology that is used in a query to obtain a set of permissible values
