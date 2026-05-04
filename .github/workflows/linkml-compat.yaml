@@ -1,0 +1,120 @@
+# Weekly compatibility test against the linkml toolkit
+#
+# This workflow checks out the linkml toolkit and runs gen-project against
+# the metamodel to ensure compatibility.
+
+name: LinkML Toolkit Compatibility
+env:
+  UV_VERSION: "0.7.13"
+on:
+  schedule:
+    # Run every Monday at 10:00 UTC (1 hour after linkml's metamodel check)
+    - cron: "0 10 * * 1"
+  workflow_dispatch:
+
+jobs:
+  linkml-compat:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Check out linkml-model repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Check out linkml toolkit
+        uses: actions/checkout@v4.2.2
+        with:
+          repository: linkml/linkml
+          path: linkml-toolkit
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7.2.0
+        with:
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5.6.0
+        with:
+          python-version: "3.12"
+
+      - name: Install linkml toolkit dependencies
+        working-directory: linkml-toolkit
+        run: uv sync --all-groups
+
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v2.0.2
+
+      - name: Run gen-project against metamodel
+        id: run_genproject
+        working-directory: linkml-toolkit
+        run: |
+          mkdir -p ../output
+          uv run gen-project ../linkml_model/model/schema/meta.yaml -d ../output 2>&1 | tee ../genproject_output.txt
+
+      - name: Verify key outputs were generated
+        id: verify_outputs
+        run: |
+          MISSING=""
+          # Python files go in root, others in subdirectories (per GEN_MAP in projectgen.py)
+          for file in output/meta.py output/jsonschema/meta.schema.json output/owl/meta.owl.ttl output/shex/meta.shex output/graphql/meta.graphql; do
+            if [ ! -f "$file" ]; then
+              MISSING="${MISSING}${file}\n"
+            fi
+          done
+
+          if [ -n "$MISSING" ]; then
+            echo "Missing outputs:"
+            echo -e "$MISSING"
+            exit 1
+          fi
+
+      - name: Check for existing issue
+        if: failure()
+        id: check_issue
+        run: |
+          EXISTING_ISSUE=$(gh issue list --label "linkml-compat" --state open --json number --jq '.[0].number // empty')
+          echo "existing_issue=${EXISTING_ISSUE}" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Ensure linkml-compat label exists
+        if: failure()
+        run: |
+          gh label create "linkml-compat" --description "LinkML toolkit compatibility test" --color "d93f0b" 2>/dev/null || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create or update issue on failure
+        if: failure()
+        run: |
+          ISSUE_TITLE="LinkML toolkit compatibility test failure"
+          LOG_OUTPUT=$(tail -n 100 genproject_output.txt)
+          ISSUE_BODY="## LinkML Toolkit Compatibility Test Failure
+
+          The weekly LinkML toolkit compatibility test has failed. This indicates that the
+          current linkml-model metamodel may not be compatible with the latest linkml toolkit.
+
+          **Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+          ### gen-project Output (last 100 lines)
+          \`\`\`
+          ${LOG_OUTPUT}
+          \`\`\`
+
+          ### Next Steps
+          1. Review the output above
+          2. Check for recent changes in [linkml](https://github.com/linkml/linkml)
+          3. Update the metamodel if needed to maintain compatibility"
+
+          if [ -n "${{ steps.check_issue.outputs.existing_issue }}" ]; then
+            gh issue comment "${{ steps.check_issue.outputs.existing_issue }}" --body "${ISSUE_BODY}"
+          else
+            gh issue create \
+              --title "${ISSUE_TITLE}" \
+              --body "${ISSUE_BODY}" \
+              --label "linkml-compat"
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
