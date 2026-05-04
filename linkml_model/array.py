@@ -282,4 +282,3 @@ slots.ColumnOrderedArray_array_linearization_order = Slot(uri=LINKML.array_linea
 
 slots.RowOrderedArray_array_linearization_order = Slot(uri=LINKML.array_linearization_order, name="RowOrderedArray_array_linearization_order", curie=LINKML.curie('array_linearization_order'),
                    model_uri=LINKML.RowOrderedArray_array_linearization_order, domain=None, range=Optional[Union[str, "ArrayLinearizationOrderOptions"]])
-
