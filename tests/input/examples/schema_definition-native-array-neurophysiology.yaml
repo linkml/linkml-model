@@ -1,0 +1,195 @@
+id: https://example.org/arrays
+name: native-arrays-neurophysiology-example
+title: Native Array Example for Neurophysiology
+description: |-
+  Example LinkML schema using native arrays to demonstrate labeled arrays for a neurophysiology use case.
+license: MIT
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+
+default_curi_maps:
+  - semweb_context
+default_range: string
+
+imports:
+  - linkml:types
+
+classes:
+
+  TimestampSeries:
+    attributes:
+      name:  # the row label
+        key: true  # unique when nested (unlike identifier, which is a global identifier)
+        implements:
+          - linkml:name
+      values_in_s:
+        range: float
+        required: true
+        multivalued: true
+        unit:
+          ucum_code: s
+        array:
+          exact_number_dimensions: "1"  # quote 1 to avoid YAML interpretation as a boolean
+
+  RegularlySampledTimestampSeries:
+    description: >-
+      A 1D array of timestamps, represented efficiently using a sampling rate, starting time,
+      and number of elements (length).
+    is_a: TimestampSeries
+    # TODO: do we want to be able to say that this represents a 1D array? and if so, how? previously used
+    # `implements: NDArray` and `annotations: dimensions: "1"`. there is no "array" attribute here because it is
+    # computed.
+    attributes:
+      sampling_rate_in_Hz:
+        range: float
+        required: true
+        unit:
+          ucum_code: Hz
+      starting_time_in_s:
+        range: float
+        required: true
+        unit:
+          ucum_code: s
+      length:  # must be defined by outer container when it cannot be inferred
+        range: integer
+        implements:
+          - linkml:length
+      values_in_s:  # inherited from TimestampSeries
+        # TODO: technically this is an array, but it is computed from the other attributes
+        # do values need to be provided here since `required: true` and `array: ...` in the parent class?
+        # if so, then we might need to define IrregularlySampledTimestampSeries.
+        equals_expression: "{array_index} / {sampling_rate_in_Hz} + {starting_time_in_s}"
+        # TODO define array_index
+        # equals_expression_per_all: "[i / {sampling_rate_in_Hz} + {starting_time_in_s} for i in range({length})]"
+
+  Electrode:
+    attributes:
+      name:
+        key: true  # unique when nested (unlike identifier, which is a global identifier)
+        implements:
+          - linkml:name
+      impedance_in_Ohm:
+        range: float
+        unit:
+          ucum_code: Ohm
+      # additional attributes...
+
+  # Analogous to HDMF's DynamicTableRegion used to select rows of an Electrodes table.
+  # NOTE: This class may not be necessary. There are no additional attributes besides the values.
+  # ElectrodeRecording.electrode could just be defined as
+  # a multivalued attribute with range Electrode since this need not be an NDArray.
+  # Serialization of this class could be a list of string keys/identifiers of the electrodes.
+  # or alternatively, a list of int indices into the File.electrodes list
+  ElectrodeSeries:
+    description: >-
+      A 1D array of Electrode objects. In the current schema, this is used to represent
+      the second axis of an ElectrodeRecording.
+    implements:
+      - linkml:NDArray
+    attributes:
+      values:
+        range: Electrode
+        multivalued: true
+        required: true
+        # this will be serialized as an array of string keys/identifiers of the electrodes
+        implements:
+          - linkml:elements
+    annotations:
+      dimensions: "1"
+
+  ElectrodeRecordingData:
+    description: >-
+      A 2D array of voltage measurements from electrodes over time.
+      This class is designed to represent either:
+      1) raw data from a data acquisition system in ADC units (ADU),
+          e.g., int16 values that span a range of -32768 to 32767, that need to be converted to volts,
+          e.g., float values from -150 mV to 250 mV, using a conversion factor (e.g., 200/32768)
+          and offset (e.g., 50 mV).
+      2) data that has already been converted to volts.
+      Storage of the raw ADC values is preferred over conversion and then storage in volts
+      to be more efficient and represent the resolution of the original data.
+      See ElectrodeRecording for its usage with axes labels.
+    attributes:
+      per_electrode_conversion_factor:
+        range: float
+        multivalued: true  # length must match range({values}.shape[1])
+        # default value is a list of 1s
+      conversion_factor:
+        range: float
+        # default value is 1
+      offset_in_V:
+        range: float
+        unit:
+          ucum_code: V
+        # default value is 0
+      values:
+        range: float
+        required: true
+        array:
+          exact_number_dimensions: 2
+      values_in_V:
+        range: float
+        required: true
+        unit:
+          ucum_code: V
+        array:
+          exact_number_dimensions: 2
+        equals_expression: "{conversion_factor} * {values} + {offset_in_V}"
+        # equals_expression: "[{per_electrode_conversion_factor}[i] * {values}[:,i] + {offset_in_V}
+        #                     for i in range({values}.shape[1])]""
+      resolution_in_V:
+        # this is useful if the values are stored in volts post-conversion and the original resolution is known
+        # but the conversion factor is not necessarily known. if the conversion factor is known, then this
+        # value should be = 1/conversion_factor.
+        range: float
+        unit:
+          ucum_code: V
+
+  ElectrodeRecording:
+    implements:
+      - linkml:DataArray
+    attributes:
+      time_in_s:
+        range: TimestampSeries
+        # NOTE: This container class *could* contain multiple arrays. How do we specify in the containing
+        # DataArray class which array to use? Or do we instead say as we did before that the class itself
+        # represents a 1D array?
+        required: true
+        implements:
+          - linkml:axis  # this is nice to be explicit but not necessary given array_data_mapping
+        inlined: true
+        annotations:
+          axis_index: "0"  # this is nice to be explicit but not necessary given array_data_mapping
+      electrode:
+        range: ElectrodeSeries  # TODO does this need to be an array to work? or can it just be a list?
+        required: true
+        implements:
+          - linkml:axis
+        inlined: true
+        annotations:
+          axis_index: "1"
+      values_in_V:
+        range: ElectrodeRecordingData
+        required: true
+        inlined: true
+        implements:
+          - linkml:array  # this is nice to be explicit but not necessary given array_data_mapping
+    annotations:
+      array_data_mapping:
+        data: values_in_V
+        dims: [time, electrode]  # dims provides names for the dimensions of data
+        coords:  # coords maps arrays in this object to dimensions of data by name (see dims)
+          time_in_s: time
+          electrode: electrode
+
+  File:
+    tree_root: true
+    attributes:
+      electrical_data_arrays:
+        range: ElectrodeRecording  # inlined by default
+        multivalued: true
+      electrodes:
+        range: Electrode
+        multivalued: true
+        inlined_as_list: true
