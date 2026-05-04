@@ -1,5 +1,5 @@
 # Auto generated from extensions.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-28T23:24:53
+# Generation date: 2026-05-04T15:36:36
 # Schema: extensions
 #
 # id: https://w3id.org/linkml/extensions
@@ -133,3 +133,4 @@ slots.extension_tag = Slot(uri=LINKML.tag, name="extension_tag", curie=LINKML.cu
 
 slots.extension_value = Slot(uri=LINKML.value, name="extension_value", curie=LINKML.curie('value'),
                    model_uri=LINKML.extension_value, domain=Extension, range=Union[dict, AnyValue])
+

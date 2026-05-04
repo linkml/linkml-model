@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-28T23:24:55
+# Generation date: 2026-05-04T15:36:38
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -1215,7 +1215,7 @@ class EnumBinding(YAMLRoot):
 @dataclass(repr=False)
 class MatchQuery(YAMLRoot):
     """
-    A query that is used on an enum expression to dynamically obtain a set of permissivle values via a query that
+    A query that is used on an enum expression to dynamically obtain a set of permissible values via a query that
     matches on properties of the external concepts.
     """
     _inherited_slots: ClassVar[list[str]] = []
@@ -5323,3 +5323,4 @@ slots.permissible_value_mixins = Slot(uri=LINKML.mixins, name="permissible_value
 
 slots.extra_slots_expression_range_expression = Slot(uri=LINKML.range_expression, name="extra_slots_expression_range_expression", curie=LINKML.curie('range_expression'),
                    model_uri=LINKML.extra_slots_expression_range_expression, domain=ExtraSlotsExpression, range=Optional[Union[dict, AnonymousSlotExpression]])
+
