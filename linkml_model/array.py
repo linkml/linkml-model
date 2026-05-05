@@ -1,5 +1,5 @@
 # Auto generated from array.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-05-04T15:36:33
+# Generation date: 2026-05-05T18:49:10
 # Schema: arrays
 #
 # id: https://w3id.org/linkml/lib/arrays
