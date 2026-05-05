@@ -46,13 +46,13 @@ install:
 	uv sync
 .PHONY: install
 
-all: gen-project gen-doc
+all: gen-project gen-doc precommit
 %.yaml: gen-project
 deploy: gen-doc mkd-gh-deploy
 
 # generates all project files
 # and updates the artifacts in linkml-model
-gen-project: $(PYMODEL) gen-py
+gen-project: $(PYMODEL) gen-py gen-rdf gen-sqlddl
 	$(RUN) gen-project -d $(DEST) --config-file gen_project_config.yaml $(SOURCE_SCHEMA_PATH)
 	cp -r $(DEST)/* $(PYMODEL)
 
@@ -69,6 +69,30 @@ gen-py: $(DEST)
 		$(RUN) gen-python --genmeta $$file > $(DEST)/$$filename_without_suffix.py; \
 	done
 	cp $(DEST)/*.py $(PYMODEL)
+
+# gen-rdf and gen-sqlddl are run separately because they are no longer part of
+# the default gen-project GEN_MAP (which only emits sqlschema/, owl/, shacl/, etc.).
+# We keep generating rdf/ and sqlddl/ outputs to preserve the public API surface
+# in linkml_files.py (Format.RDF, Format.NATIVE_RDF, Format.SQLDDL) and to stay
+# in step with the artifacts shipped by linkml-runtime.
+# array.yaml and extended_types.yaml are excluded to match the schema scope of
+# jsonld/, jsonschema/, and shex/.
+gen-rdf: $(DEST)
+	mkdir -p $(DEST)/rdf
+	@for file in $(wildcard $(PYMODEL)/model/schema/*.yaml); do \
+		base=$$(basename $$file); \
+		if [ "$$base" = "extended_types.yaml" ] || [ "$$base" = "array.yaml" ]; then continue; fi; \
+		stem=$${base%.*}; \
+		$(RUN) gen-rdf $$file > $(DEST)/rdf/$$stem.ttl; \
+		$(RUN) gen-rdf --metauris $$file > $(DEST)/rdf/$$stem.model.ttl; \
+	done
+
+# sqlddl is an alias for the SQL-DDL output (gen-sqlddl shares its implementation
+# with gen-sqltables, which feeds sqlschema/). The two directories therefore hold
+# the same content; sqlddl/ is preserved purely for backwards compatibility.
+gen-sqlddl: $(DEST)
+	mkdir -p $(DEST)/sqlddl
+	$(RUN) gen-sqlddl $(SOURCE_SCHEMA_PATH) > $(DEST)/sqlddl/meta.sql
 
 gen-doc:
 	$(RUN) gen-doc --genmeta --sort-by rank -d $(DOCDIR)/docs $(SOURCE_SCHEMA_PATH)
