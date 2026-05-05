@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-05-04T15:36:38
+# Generation date: 2026-05-05T18:49:13
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -81,7 +81,7 @@ from .types import Boolean, Datetime, Integer, Ncname, String, Uri, Uriorcurie
 from .units import UnitOfMeasure
 from linkml_runtime.utils.metamodelcore import Bool, NCName, URI, URIorCURIE, XSDDateTime
 
-metamodel_version = "1.7.0"
+metamodel_version = "1.11.0"
 version = None
 
 # Namespaces
