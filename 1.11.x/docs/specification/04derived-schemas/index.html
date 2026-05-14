@@ -1,0 +1,1677 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://linkml.io/linkml-model/latest/docs/specification/04derived-schemas/" rel="canonical"/>
+<link href="../03schemas/" rel="prev"/>
+<link href="../05validation/" rel="next"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.2" name="generator"/>
+<title>Derived Schemas - LinkML Model</title>
+<link href="../../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="amber" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#derived-schemas">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<div data-md-color-scheme="default" data-md-component="outdated" hidden="">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="LinkML Model" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="LinkML Model">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            LinkML Model
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Derived Schemas
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="amber" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="teal" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"></path></svg>
+</label>
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="amber" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="teal" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="LinkML Model" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="LinkML Model">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    LinkML Model
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../home/">
+<span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Specification
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Specification
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../00preamble/">
+<span class="md-ellipsis">
+    
+  
+    Preface
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01introduction/">
+<span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02instances/">
+<span class="md-ellipsis">
+    
+  
+    Instances
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03schemas/">
+<span class="md-ellipsis">
+    
+  
+    Schema Datamodel
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Derived Schemas
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Derived Schemas
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conventions">
+<span class="md-ellipsis">
+      
+        Conventions
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#informative-example">
+<span class="md-ellipsis">
+      
+        Informative Example
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#functions">
+<span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+</a>
+<nav aria-label="Functions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#normalize-as-list-function">
+<span class="md-ellipsis">
+      
+        Normalize as List Function
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifier-value-function">
+<span class="md-ellipsis">
+      
+        Identifier Value Function
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uri-and-curie-functions">
+<span class="md-ellipsis">
+      
+        URI and CURIE functions
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#resolve-functions">
+<span class="md-ellipsis">
+      
+        Resolve Functions
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#lookup-functions">
+<span class="md-ellipsis">
+      
+        Lookup Functions
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#closure-function">
+<span class="md-ellipsis">
+      
+        Closure Function
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#function-parents">
+<span class="md-ellipsis">
+      
+        Function: Parents
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#function-ancestors">
+<span class="md-ellipsis">
+      
+        Function: Ancestors
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#function-imports-closure">
+<span class="md-ellipsis">
+      
+        Function: Imports Closure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#function-element-curies-and-uris">
+<span class="md-ellipsis">
+      
+        Function: Element CURIEs and URIs
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#function-applicable-slots">
+<span class="md-ellipsis">
+      
+        Function: Applicable Slots
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#algorithm-combine-slots">
+<span class="md-ellipsis">
+      
+        Algorithm: Combine Slots
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#algorithm-combine-schemas">
+<span class="md-ellipsis">
+      
+        Algorithm: Combine Schemas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#algorithm-calculate-derived-slot">
+<span class="md-ellipsis">
+      
+        Algorithm: Calculate Derived Slot
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#algorithm-calculate-permissible-values">
+<span class="md-ellipsis">
+      
+        Algorithm: Calculate Permissible Values
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#derivation-rules">
+<span class="md-ellipsis">
+      
+        Derivation Rules
+      
+    </span>
+</a>
+<nav aria-label="Derivation Rules" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rule-ensure-metamodel-ids-are-unique">
+<span class="md-ellipsis">
+      
+        Rule: Ensure Metamodel ids are unique
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rule-populate-schema-metadata">
+<span class="md-ellipsis">
+      
+        Rule: Populate Schema Metadata
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rule-combine-import-closure">
+<span class="md-ellipsis">
+      
+        Rule: Combine Import Closure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rule-derived-attributes">
+<span class="md-ellipsis">
+      
+        Rule: Derived Attributes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rule-derived-class-and-slot-uris">
+<span class="md-ellipsis">
+      
+        Rule: Derived Class and Slot URIs
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rule-derived-permissible-values">
+<span class="md-ellipsis">
+      
+        Rule: Derived Permissible Values
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rule-generation-of-patterns-from-structured-patterns">
+<span class="md-ellipsis">
+      
+        Rule: Generation of patterns from structured patterns
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#structural-conformance-rules">
+<span class="md-ellipsis">
+      
+        Structural Conformance Rules
+      
+    </span>
+</a>
+<nav aria-label="Structural Conformance Rules" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rule-each-referenced-entity-must-be-present">
+<span class="md-ellipsis">
+      
+        Rule: Each referenced entity must be present
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#classdefinition-structural-conformance-rules">
+<span class="md-ellipsis">
+      
+        ClassDefinition Structural Conformance Rules
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slotdefinition-structural-conformance-rules">
+<span class="md-ellipsis">
+      
+        SlotDefinition Structural Conformance Rules
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#typedefinition-structural-conformance-rules">
+<span class="md-ellipsis">
+      
+        TypeDefinition Structural Conformance Rules
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enumdefinition-structural-conformance-rules">
+<span class="md-ellipsis">
+      
+        EnumDefinition Structural Conformance Rules
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#classdefinitionreference-structural-conformance-rules">
+<span class="md-ellipsis">
+      
+        ClassDefinitionReference Structural Conformance Rules
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#metamodel-conformance-rules">
+<span class="md-ellipsis">
+      
+        Metamodel Conformance Rules
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05validation/">
+<span class="md-ellipsis">
+    
+  
+    Instance Validation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06mapping/">
+<span class="md-ellipsis">
+    
+  
+    Mapping of Instances
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Appendix
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Appendix
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../">
+<span class="md-ellipsis">
+    
+  
+    Metamodel Index
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Profiles
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Profiles
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../MinimalSubset/">
+<span class="md-ellipsis">
+    
+  
+    MinimalSubset
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../BasicSubset/">
+<span class="md-ellipsis">
+    
+  
+    BasicSubset
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../SpecificationSubset/">
+<span class="md-ellipsis">
+    
+  
+    SpecificationSubset
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../RelationalModelProfile/">
+<span class="md-ellipsis">
+    
+  
+    RelationalModelProfile
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ObjectOrientedProfile/">
+<span class="md-ellipsis">
+    
+  
+    ObjectOrientedProfile
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../OwlProfile/">
+<span class="md-ellipsis">
+    
+  
+    OwlProfile
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conventions">
+<span class="md-ellipsis">
+      
+        Conventions
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#informative-example">
+<span class="md-ellipsis">
+      
+        Informative Example
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#functions">
+<span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+</a>
+<nav aria-label="Functions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#normalize-as-list-function">
+<span class="md-ellipsis">
+      
+        Normalize as List Function
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifier-value-function">
+<span class="md-ellipsis">
+      
+        Identifier Value Function
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uri-and-curie-functions">
+<span class="md-ellipsis">
+      
+        URI and CURIE functions
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#resolve-functions">
+<span class="md-ellipsis">
+      
+        Resolve Functions
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#lookup-functions">
+<span class="md-ellipsis">
+      
+        Lookup Functions
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#closure-function">
+<span class="md-ellipsis">
+      
+        Closure Function
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#function-parents">
+<span class="md-ellipsis">
+      
+        Function: Parents
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#function-ancestors">
+<span class="md-ellipsis">
+      
+        Function: Ancestors
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#function-imports-closure">
+<span class="md-ellipsis">
+      
+        Function: Imports Closure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#function-element-curies-and-uris">
+<span class="md-ellipsis">
+      
+        Function: Element CURIEs and URIs
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#function-applicable-slots">
+<span class="md-ellipsis">
+      
+        Function: Applicable Slots
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#algorithm-combine-slots">
+<span class="md-ellipsis">
+      
+        Algorithm: Combine Slots
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#algorithm-combine-schemas">
+<span class="md-ellipsis">
+      
+        Algorithm: Combine Schemas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#algorithm-calculate-derived-slot">
+<span class="md-ellipsis">
+      
+        Algorithm: Calculate Derived Slot
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#algorithm-calculate-permissible-values">
+<span class="md-ellipsis">
+      
+        Algorithm: Calculate Permissible Values
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#derivation-rules">
+<span class="md-ellipsis">
+      
+        Derivation Rules
+      
+    </span>
+</a>
+<nav aria-label="Derivation Rules" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rule-ensure-metamodel-ids-are-unique">
+<span class="md-ellipsis">
+      
+        Rule: Ensure Metamodel ids are unique
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rule-populate-schema-metadata">
+<span class="md-ellipsis">
+      
+        Rule: Populate Schema Metadata
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rule-combine-import-closure">
+<span class="md-ellipsis">
+      
+        Rule: Combine Import Closure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rule-derived-attributes">
+<span class="md-ellipsis">
+      
+        Rule: Derived Attributes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rule-derived-class-and-slot-uris">
+<span class="md-ellipsis">
+      
+        Rule: Derived Class and Slot URIs
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rule-derived-permissible-values">
+<span class="md-ellipsis">
+      
+        Rule: Derived Permissible Values
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rule-generation-of-patterns-from-structured-patterns">
+<span class="md-ellipsis">
+      
+        Rule: Generation of patterns from structured patterns
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#structural-conformance-rules">
+<span class="md-ellipsis">
+      
+        Structural Conformance Rules
+      
+    </span>
+</a>
+<nav aria-label="Structural Conformance Rules" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rule-each-referenced-entity-must-be-present">
+<span class="md-ellipsis">
+      
+        Rule: Each referenced entity must be present
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#classdefinition-structural-conformance-rules">
+<span class="md-ellipsis">
+      
+        ClassDefinition Structural Conformance Rules
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slotdefinition-structural-conformance-rules">
+<span class="md-ellipsis">
+      
+        SlotDefinition Structural Conformance Rules
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#typedefinition-structural-conformance-rules">
+<span class="md-ellipsis">
+      
+        TypeDefinition Structural Conformance Rules
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enumdefinition-structural-conformance-rules">
+<span class="md-ellipsis">
+      
+        EnumDefinition Structural Conformance Rules
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#classdefinitionreference-structural-conformance-rules">
+<span class="md-ellipsis">
+      
+        ClassDefinitionReference Structural Conformance Rules
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#metamodel-conformance-rules">
+<span class="md-ellipsis">
+      
+        Metamodel Conformance Rules
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="derived-schemas">Derived Schemas</h1>
+<p>This section describes rules that can be applied to a schema to obtain a <em>derived</em> schema.</p>
+<p>The derived schema can be <em>materialized</em> as a static schema object, or it may be a dynamic <em>view</em> onto a schema object.</p>
+<p>Derived schemas are also known as <em>induced</em> schemas or <em>inferred</em> schemas.</p>
+<div class="mermaid">flowchart TD
+    M[Asserted Schema] --&gt;|input| Derivation{Derivation Procedure}
+    Derivation --&gt;|output| Mstar[Derived Schema]
+    R[Rules] --&gt;|input| Derivation
+</div>
+<p>Derivations happen via <em>derivation rules</em>, using a collection of defined <em>functions</em>.</p>
+<h2 id="conventions">Conventions</h2>
+<p>We use <em>m</em> to denote the input or asserted schema (model), and <em>m<sup>D</sup></em> to denote the derived schema</p>
+<h2 id="informative-example">Informative Example</h2>
+<p>We provide a non-normative example of a schema in canonical YAML. This will be referred to
+in the remainder of the document.</p>
+<p>The schema is organized in a local folder as follows:</p>
+<p>person.yaml:</p>
+<pre><code class="language-yaml">id: https://w3id.org/linkml/examples/person
+name: person
+prefixes:
+  person: https://w3id.org/linkml/examples/person
+  linkml: https://w3id.org/linkml/
+default_prefix: person
+imports:
+  - linkml:types
+  - core
+
+classes:
+  Person:
+    is_a: NameThing
+    description: &gt;-
+      A person, living or dead
+    slots:
+      - age_in_years
+      - vital_status
+
+slots:
+    age_in_years:
+      description: &gt;-
+        The age of a person in years
+      range: integer
+      multivalued: false
+    vital_status:
+      description: &gt;-
+        The vital status of a person
+      range: VitalStatusEnum
+
+enums:
+  VitalStatusEnum:
+    description: &gt;-
+      The vital status of a person
+    permissible_values:
+      ALIVE:
+      DECEASED:
+</code></pre>
+<p>core.yaml:</p>
+<pre><code class="language-yaml">id: https://w3id.org/linkml/examples/core
+name: person-core
+prefixes:
+  person: https://w3id.org/linkml/examples/person
+  linkml: https://w3id.org/linkml/
+default_prefix: person
+imports:
+  - linkml:types
+
+classes:
+  NamedThing:
+    attributes:
+      id:
+        range: string
+        identifier: true
+      name:
+        range: string
+...
+</code></pre>
+<h2 id="functions">Functions</h2>
+<p>This section defines functions that can be used in schema derivation rules.</p>
+<h3 id="normalize-as-list-function">Normalize as List Function</h3>
+<p>The function <strong>L</strong>(<em>v</em>) normalizes <code>v</code> to a list/collection:</p>
+<table>
+<thead>
+<tr>
+<th><em>v</em></th>
+<th><strong>L</strong>(<em>v</em>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>None</code></td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>[v1, v2, ...]</code></td>
+<td><code>[v1, v2, ...]</code></td>
+</tr>
+<tr>
+<td><code>v</code> <em>if no preceding matches apply</em></td>
+<td><code>[v]</code></td>
+</tr>
+</tbody>
+</table>
+<p>i.e.</p>
+<pre><code>L(v) =
+  [] if v == None
+  v if v == [...]
+  [v] otherwise
+</code></pre>
+<h3 id="identifier-value-function">Identifier Value Function</h3>
+<p>The function <strong>K</strong>(<em>v</em>) returns the identifier value of an <strong>InstanceOfClassDefinition</strong>, if present, otherwise <code>None</code></p>
+<p>In the metamodel, the identifier <strong>SlotDefinitionName</strong> is always <code>name</code>, so this can be calculated:</p>
+<blockquote>
+<p><strong>K</strong>(<em>v</em>) = <em>v</em>.<strong>name</strong></p>
+</blockquote>
+<h3 id="uri-and-curie-functions">URI and CURIE functions</h3>
+<ul>
+<li>a CURIE is a string that conforms to the <a href="https://www.w3.org/TR/curie/">W3 CURIE specification</a></li>
+<li>a URI is a string that conforms to <a href="https://www.ietf.org/rfc/rfc3987.txt">rfc3987</a></li>
+<li>The function <strong>URI</strong>(<em>s</em>, <em>v</em>) takes a string as input and normalizes it to a URI<ul>
+<li>if the input is already a URI, then return it</li>
+<li>if the input is a CURIE, then expand it using the prefix map in <em>s</em>; this is known as <em>expansion</em></li>
+</ul>
+</li>
+<li>The function <strong>CURIE</strong>(<em>s</em>, <em>v</em>) takes a string as input and normalizes it to a CURIE<ul>
+<li>if the input is already a CURIE, then return it</li>
+<li>if the input is a URI, then shorten it using the prefix map in <em>s</em>; this is known as <em>contraction</em></li>
+</ul>
+</li>
+</ul>
+<p>When a CURIE is expanded, it is first decomposed according to the grammar defined in <a href="https://www.w3.org/TR/curie/">W3 CURIE specification</a>:</p>
+<blockquote>
+<p>curie       :=   [ [ prefix ] ':' ] reference</p>
+<p>prefix      :=   <a href="http://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName">NCName</a></p>
+<p>reference   :=   irelative-ref (as defined in <a href="https://www.w3.org/TR/curie/#ref_IRI">IRI</a>)</p>
+</blockquote>
+<p>The following concatenation is applied</p>
+<blockquote>
+<p><strong>URI</strong>(<code>&lt;prefix&gt;</code>: <code>&lt;reference&gt;</code>) = <code>m.prefixes</code>[<code>prefix</code>]<code>.prefix_reference</code> + <code>&lt;reference&gt;</code></p>
+</blockquote>
+<p>For the reverse operation, any URI that starts with a prefix reference can be used to generate a valid CURIE.
+The one with the shortest reference is chosen as the canonical.</p>
+<h3 id="resolve-functions">Resolve Functions</h3>
+<p>The function <strong>Resolve</strong> takes as input a <strong>InstanceOfReference</strong> and returns an <strong>InstanceOfClass</strong>
+that is the referenced object.</p>
+<table>
+<thead>
+<tr>
+<th><em>i</em></th>
+<th><strong>Resolve</strong>(<em>i</em>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SlotDefinition&amp;&lt;V&gt;</code></td>
+<td><code>m.slots[&lt;V&gt;]</code></td>
+</tr>
+<tr>
+<td><code>ClassDefinition&amp;&lt;V&gt;</code></td>
+<td><code>m.classes[&lt;V&gt;]</code></td>
+</tr>
+<tr>
+<td><code>EnumDefinition&amp;&lt;V&gt;</code></td>
+<td><code>m.enums[&lt;V&gt;]</code></td>
+</tr>
+<tr>
+<td><code>TypeDefinition&amp;&lt;V&gt;</code></td>
+<td><code>m.types[&lt;V&gt;]</code></td>
+</tr>
+<tr>
+<td><code>SchemaDefinition&amp;&lt;V&gt;</code></td>
+<td>see below</td>
+</tr>
+</tbody>
+</table>
+<p>The rules for schema resolution are as follows:</p>
+<ol>
+<li>Determine the <em>location</em> of <em>V</em>, which may be on the local file system or on a network<ul>
+<li>if <em>V</em> is in a user-supplied <em>import map</em>, then look up this value</li>
+<li>if <em>V</em> is a URL, then retrieve from this location</li>
+<li>if <em>V</em> is a CURIE, then expand using the rules below, and retrieve from this location</li>
+<li>otherwise retrieve from local file system, relative to the current schema, assuming a <code>.yaml</code> suffix</li>
+</ul>
+</li>
+<li>Load the YAML file at this location following the rules for parsing YAML in Part 6, yielding a SchemaDefinition instance.</li>
+</ol>
+<p>Examples:</p>
+<table>
+<thead>
+<tr>
+<th><em>i</em></th>
+<th><strong>Resolve</strong>(<em>i</em>) in <em>m<sup>D</sup></em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ClassDefinition&amp;Person</code></td>
+<td><code>m.classes["Person"]</code> = <code>ClassDefinition(name="Person", ...)</code></td>
+</tr>
+<tr>
+<td><code>SlotDefinition&amp;vital_status</code></td>
+<td><code>m.slots["vital_status"]</code> = <code>SlotDefinition(name="vital_status", ...)</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="lookup-functions">Lookup Functions</h3>
+<p>The notation <strong>i</strong>.<code>&lt;slot&gt;</code> denotes a function that looks up the slot assignment <code>slot</code>
+in instance <code>i</code>. If <code>i</code> is a <strong>InstanceOfReference</strong> it is first <em>Resolved</em>, as per the table above. If <code>i</code> is collection of
+references, then each element is resolved.</p>
+<h3 id="closure-function">Closure Function</h3>
+<p>The function <strong>C</strong>(<em>e</em>, <em>f</em>) takes as input an element <em>e</em> and a function <em>f</em> and returns
+the mathematical closure of <em>f</em></p>
+<pre><code>C(e, f) = { f(e) } U { f(e') | e' in C(e, f) }
+</code></pre>
+<p>The <em>ReflexiveClosure</em> <strong>C<sup>*</sup></strong> includes <em>e</em></p>
+<pre><code>C*(e, f) = C(e, f) U { e }
+</code></pre>
+<h3 id="function-parents">Function: Parents</h3>
+<p><strong>Parents</strong> itself is the union of <code>is_a</code> and <code>mixins</code>, plus the builtin ClassDefinition <code>Any</code>:</p>
+<blockquote>
+<p><strong>P</strong>(<em>e</em>) = <strong>L</strong>(<em>e</em>.<code>is_a</code>) ∪ <strong>L</strong>(<em>e</em>.<code>mixins</code>) } ∪ { <code>Any</code> }</p>
+</blockquote>
+<h3 id="function-ancestors">Function: Ancestors</h3>
+<p>The ancestors function <strong>A</strong> returns the <strong>Closure</strong> of the <strong>Parents</strong> function</p>
+<blockquote>
+<p><strong>A</strong>(<em>e</em>) = <strong>C</strong>(<em>e</em>, <strong>P</strong>)</p>
+</blockquote>
+<p>The function <strong>ReflexiveAncestors</strong> <strong>A</strong><em> uses the </em><em>ReflexiveClosure</em>*.</p>
+<blockquote>
+<p><strong>A</strong><em>(</em>e<em>) = </em><em>C</em><strong>(<em>e</em>, </strong>P**)</p>
+</blockquote>
+<h3 id="function-imports-closure">Function: Imports Closure</h3>
+<p>The imports closure function <strong>I</strong> returns the reflexive <strong>ReferenceClosure</strong> of the direct imports.</p>
+<blockquote>
+<p><strong>I</strong>(<em>s</em>) = <strong>C</strong><em>(</em>s<em>, </em><em>s.imports</em>*)</p>
+</blockquote>
+<h3 id="function-element-curies-and-uris">Function: Element CURIEs and URIs</h3>
+<p>For each element in the schema, we can derive a model URI and an element URI. These <em>may</em> be identical.</p>
+<p>The following table is used:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Element URI</th>
+<th>Model URI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ClassDefinition</code></td>
+<td><code>e.class_uri</code></td>
+<td><code>&lt;m.default_prefix&gt;:&lt;SafeCamel(e.name)&gt;</code></td>
+</tr>
+<tr>
+<td><code>SlotDefinition</code></td>
+<td><code>e.slot_uri</code></td>
+<td><code>&lt;m.default_prefix&gt;:&lt;SafeSnake(e.name)&gt;</code></td>
+</tr>
+<tr>
+<td><code>TypeDefinition</code></td>
+<td><code>e.uri</code></td>
+<td><code>&lt;m.default_prefix&gt;:&lt;SafeCamel(e.name)&gt;</code></td>
+</tr>
+<tr>
+<td><code>EnumDefinition</code></td>
+<td><code>e.enum_uri</code></td>
+<td><code>&lt;m.default_prefix&gt;:&lt;SafeCamel(e.name)&gt;</code></td>
+</tr>
+<tr>
+<td><code>PermissibleValue</code></td>
+<td><code>e.meaning</code></td>
+<td><code>ModelURI(Enum) + "." + Safe(e.text)</code></td>
+</tr>
+</tbody>
+</table>
+<p>If the element URI slot is not set, then the model URI is used as the element URI.</p>
+<p>URIs can be contracted to CURIEs using the <code>prefixes</code> map in the model, see next function.</p>
+<h3 id="function-applicable-slots">Function: Applicable Slots</h3>
+<p>The applicable slots for a class are all valid slots to use for an instance of that class.
+It is the set of all direct slots for that class and its ancestors.</p>
+<blockquote>
+<p><strong>ApplicableSlots</strong>(<em>c</em>) = <sub><em>c'</em> ∈ <strong>A</strong><em>(</em>c<em>)</em></sub> <em>DirectSlots</em><em>(</em>c'*)</p>
+<p><strong>DirectSlots(c)</strong> = <strong>L</strong>(c.<code>slots</code>) ∪ <strong>L</strong>(c.<code>attributes</code>)</p>
+</blockquote>
+<h3 id="algorithm-combine-slots">Algorithm: Combine Slots</h3>
+<p>The combine slot algorithm takes two slots s1 and s2. s1 is assumed to have <em>precedence</em> over s2.</p>
+<pre><code>CombineSlots(s1, s2) =
+  s = SlotDefinition()
+  for ms in MetaModel.slots:
+    s.ms = CombineSlotsMetaslots(ms, s1.ms, s2.ms)
+</code></pre>
+<p>The <code>CombineSlotsMetaslots</code> function is evaluated by looking up the table below:</p>
+<table>
+<thead>
+<tr>
+<th>metaslot</th>
+<th>v1</th>
+<th>v2</th>
+<th>expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><code>v</code></td>
+<td><code>v</code></td>
+<td>v</td>
+</tr>
+<tr>
+<td></td>
+<td><code>None</code></td>
+<td><code>v2</code></td>
+<td>v2</td>
+</tr>
+<tr>
+<td></td>
+<td><code>v1</code></td>
+<td><code>None</code></td>
+<td>v1</td>
+</tr>
+<tr>
+<td><code>.name == maximum_value</code></td>
+<td></td>
+<td></td>
+<td><code>min(v1,v2)</code></td>
+</tr>
+<tr>
+<td><code>.name == minimum_value</code></td>
+<td></td>
+<td></td>
+<td><code>max(v1,v2)</code></td>
+</tr>
+<tr>
+<td><code>.name == pattern</code></td>
+<td></td>
+<td></td>
+<td><code>CombinePattern(v1,v2)</code></td>
+</tr>
+<tr>
+<td><code>.name == range</code></td>
+<td></td>
+<td></td>
+<td><strong>A</strong><em>(</em>r1<em>) ∩ </em><em>A</em><em><em>(</em>r2</em>)</td>
+</tr>
+<tr>
+<td><code>.multivalued == True</code></td>
+<td></td>
+<td></td>
+<td><code>L(v1) U L(v2)</code></td>
+</tr>
+<tr>
+<td><code>.range == boolean</code></td>
+<td></td>
+<td></td>
+<td><code>v1 OR v2</code></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><code>v1</code></td>
+</tr>
+</tbody>
+</table>
+<p>The preconditions are matched in order of precedence, thus if no
+preconditions save the last one match, then the value is taken from the
+first, higher precedence slot.</p>
+<h3 id="algorithm-combine-schemas">Algorithm: Combine Schemas</h3>
+<p>Two schemas combined by combining their individual elements</p>
+<pre><code>CombineSchemas(m1, m2):
+  m = SchemaDefinition()
+  m.classes = CombineElements(m1.classes, m2.classes)
+  m.types = CombineElements(m1.types, m2.types)
+  m.slots = CombineElements(m1.slots, m2.slots)
+  m.enums = CombineElements(m1.enums, m2.enums)
+  m.subsets = CombineElements(m1.subsets, m2.subsets)
+</code></pre>
+<pre><code>CombineElements(E1, E2):
+  E1ids = { e.id for e in E1 }
+  E2ids = { e.id for e in E2 }
+  for e in E1:
+    if e.id in E2ids:
+      raise Error
+    else:
+      yield e
+  for e in E2:
+    if e.id in E1ids:
+      raise Error
+    else:
+      yield e
+</code></pre>
+<h3 id="algorithm-calculate-derived-slot">Algorithm: Calculate Derived Slot</h3>
+<p><strong>DerivedSlot(<em>s</em>, <em>c</em>)</strong> takes a slot definition name <em>s</em> and a class definition name <em>c</em> and returns
+a <em>derived</em> slot that is pre-populated with the appropriate inferred values.</p>
+<p>The procedure first applies slot usage and attributes from the class and its ancestors, then
+it applies top level slot definitions for that slot and the slot ancestors. In the latter case, only
+metaslots marked inheritable are propagated.</p>
+<pre><code>DerivedSlot(m,s,c):
+  d = SlotDefinition(name=s, alias=s)
+  ApplySlotUsage(d,s,c)
+  if s in m.slots:
+    d = CombineSlots(d, m.slots[s])
+    for s' in A(s):
+      for ms in MetaModel.slots:
+        if ms.inheritable:
+          d.ms = CombineSlotsMetaslots(ms, d.ms, m.slots[s'].ms)
+  AddMissingValues(d, c)
+  return d
+</code></pre>
+<p>The <code>ApplySlotUsage</code> function iteratively combines the value of the <code>slot_usage</code> and <code>attributes</code>
+metaslots for a class, and then for class ancestors, with mixins having priority.</p>
+<pre><code>ApplySlotUsage(d, s, c):
+  for s' in { c.slot_usage, c.attributes}
+    s' = CombineSlots(d, s')
+  for c' in **L**(c.`mixins`) ∪ **L**(c.`is_a`)
+    ApplySlotUsage(d, s, c')
+</code></pre>
+<p>The function <code>AddMissingValues(s, c)</code> is calculated for a <strong>SlotDefinition</strong> according to the following table</p>
+<table>
+<thead>
+<tr>
+<th>Preconditions</th>
+<th>Postconditions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s.inlined_as_dict=True</code></td>
+<td><code>s.inlined=True</code></td>
+</tr>
+<tr>
+<td><code>PK(c)=None</code></td>
+<td><code>s.inlined=True</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="algorithm-calculate-permissible-values">Algorithm: Calculate Permissible Values</h3>
+<p>The set of permissible values for an Enum may be specified as a static fixes list OR as a dynamic query OR both</p>
+<pre><code>PVs(e):
+  pvs = Texts(e.permissible_values)
+  for e' in e.inherits:
+    pvs = pvs U PVs(e')
+  for e' in e.minus:
+    pvs = pvs - PVs(e')
+  for pv in e.concepts:
+    pvs = pvs U pv
+  for q in e.reachable_from:
+    pvs = pvs U ResolveQuery(q)
+</code></pre>
+<p>The <code>ResolveQuery</code> applied to <code>q</code> operates over an external ontology of vocabulary resource
+indicated by <code>r.source_ontology</code>. Each such ontology has a <em>graph presentation</em> which the
+query is resolved against. Each resource may choose to present itself as a graph in an application
+specific way. For OWL ontologies, it is recommended that the OWL TBox is presented as a graph
+following the Relation Graph pattern, i.e. axioms such as <code>A SubClassOf R some B</code> are presented as
+edges from <code>A</code> to <code>B</code> with label <code>R</code>.</p>
+<pre><code>ResolveQuery(q: EnumExpression):
+  G = as_graph(q.source_ontology)
+  G = FilterEdges(p in g.relationship_types)
+  pvs = {}
+  for n in q.source_nodes
+    pvs = pvs U Closure(G, parent, n)
+    if q.reflexive:
+      pvs = pvs U {n}
+  return pvs
+</code></pre>
+<h2 id="derivation-rules">Derivation Rules</h2>
+<p>The following rules are applied to deduce a derived schema <em>m<sup>D</sup></em>.</p>
+<h3 id="rule-ensure-metamodel-ids-are-unique">Rule: Ensure Metamodel ids are unique</h3>
+<p>Each <strong>m'</strong> in <strong>I</strong>(<em>m</em>) must have a unique identifier, <code>m'.id</code>.</p>
+<blockquote>
+<p>not exists m' in <strong>I</strong>(<em>m</em>) and m' in <strong>I</strong>(<em>m</em>) and m'.id == m'.id</p>
+</blockquote>
+<h3 id="rule-populate-schema-metadata">Rule: Populate Schema Metadata</h3>
+<p>For each <strong>m'</strong> in <strong>I</strong>(<em>m</em>), populate the following metamodel slots:</p>
+<ul>
+<li>for each element <code>e</code> in <code>m'</code>, set <code>e.from_schema</code> to <code>m'</code></li>
+<li>if <code>m'.default_range</code> is not set, set it to <code>string</code>.</li>
+</ul>
+<h3 id="rule-combine-import-closure">Rule: Combine Import Closure</h3>
+<p>A derived model <em>m</em><sup>D</sup> is the result of combining the import closure of <em>m</em>:</p>
+<p><em>m<sup>D</sup></em> = <strong>Aggregate</strong>(<strong>CombineSchemas</strong>, <strong>I</strong>(<em>m</em>))</p>
+<p>When copying an element <code>x</code> from an import into <em>m<sup>D</sup></em>, the name <code>x.name</code> must be unique - if the same name has been used in another model, the derivation procedure fails, and an error is thrown.</p>
+<h3 id="rule-derived-attributes">Rule: Derived Attributes</h3>
+<p>Derived attributes are populated by applying the <code>DerivedSlot</code> algorithm to each applicable slot for any class</p>
+<pre><code>for c in m.classes:
+  for s in ApplicableSlots(c):
+    d = DerivedSlot(m,s,c)
+    c.attributes[s] = d
+</code></pre>
+<h3 id="rule-derived-class-and-slot-uris">Rule: Derived Class and Slot URIs</h3>
+<p>For each class or slot, if a class_uri or slot_uri is not specified, then this is derived using the rules specified
+for Element URIs above.</p>
+<p>For example, given:</p>
+<pre><code class="language-yaml">prefixes:
+  foo: http://example.org/foo/
+  bar: http://example.org/bar/
+default_prefix: foo
+classes:
+  A:
+    class_uri: bar:A
+    ...
+  B:
+    ...
+</code></pre>
+<p>the following values would be set:</p>
+<ul>
+<li><code>A.class_uri</code> = <code>http://example.org/bar/A</code></li>
+<li><code>B.class_uri</code> = <code>http://example.org/foo/B</code></li>
+</ul>
+<h3 id="rule-derived-permissible-values">Rule: Derived Permissible Values</h3>
+<p>TODO</p>
+<h3 id="rule-generation-of-patterns-from-structured-patterns">Rule: Generation of patterns from structured patterns</h3>
+<p>For any slot <code>s</code>, if <code>s.structured_pattern = p</code> and <code>p</code> is not <strong>None</strong> then <code>s.pattern</code> is assigned a value based on the following
+procedure:</p>
+<p>If <code>p.interpolated</code> is True, then the value of <code>s.syntax</code> is <em>interpolated</em>, by replacing all occurrences of braced text <code>{VAR}</code>
+with the value of <code>VAR</code>. The value of <code>VAR</code> is obtained using <code>m.settings[VAR]</code>, where <em>m</em> is the schema in which <code>p</code> is introduced.</p>
+<p>If <code>p.interpolated</code> is not True, then the value of <code>s.syntax</code> is used directly.</p>
+<p>If <code>p.partial_match</code> is not True, then <code>s.pattern</code> has a '^' character inserted at the beginning and a '$' character inserted as the end.</p>
+<h2 id="structural-conformance-rules">Structural Conformance Rules</h2>
+<p>This section specifies conformance rules which the derived schema must satisfy.</p>
+<p>Note that some of these rules may be derivable from treating the schema as an instance of
+the metamodel and applying validation rules in part 5, but we still list them below for
+completeness.</p>
+<h3 id="rule-each-referenced-entity-must-be-present">Rule: Each referenced entity must be present</h3>
+<p>Every <strong>ClassDefinition</strong>, <strong>ClassDefinitionReference</strong>, <strong>SlotDefinitionReference</strong>, <strong>EnumDefinitionReference</strong>, and <strong>TypeDefinitionReference</strong> must be resolvable within <em>m<sup>D</sup></em></p>
+<p>However, not every element needs to be referenced. For example, it is valid to have a list of SlotDefinitions that are never used in <em>m<sup>D</sup></em>.</p>
+<h3 id="classdefinition-structural-conformance-rules">ClassDefinition Structural Conformance Rules</h3>
+<p>Each <code>c</code> in <em>m<sup>D</sup></em><code>.classes</code> must conform to the rules below:</p>
+<ul>
+<li><code>c</code> must be an instance of a <strong>ClassDefinition</strong></li>
+<li><code>c</code> must have a unique name <code>c.name</code>, and this name must not be shared by any other class or element in <em>m<sup>D</sup></em></li>
+<li><code>c</code> lists permissible slots in <code>c.slots</code>, the range of this is a reference to a SlotDefinition in <em>m<sup>D</sup></em><code>.slots</code></li>
+<li><code>c</code> defines how slots are used in the context of <code>c</code> via a collection of SlotDefinitions specified in <code>c.slot_usage</code></li>
+<li><code>c</code> may define local slots using <code>c.attributes</code>, the value of this is a. collection of SlotDefinitions</li>
+<li><code>c</code> may have certain boolean properties defined such as <code>c.mixin</code> and <code>c.abstract</code></li>
+<li><code>c</code> must have exactly one value for <code>c.class_uri</code> in <em>m<sup>D</sup></em>, and the value must be an instance of the builtin type UriOrCurie</li>
+<li><code>c</code> may have parent ClassDefinitions defined via <code>c.is_a</code> and <code>c.mixins</code><ul>
+<li>the value of <code>c.is_a</code> must be a ClassDefinitionReference</li>
+<li>the value of <code>c.mixins</code> must be a collection of ClassDefinitonReferences</li>
+</ul>
+</li>
+<li>For any parent <code>p</code> of <code>c</code>, if <code>p.mixin</code> is True, then <code>c.mixin</code> SHOULD be True</li>
+<li><code>c</code> includes additional rules in <code>c.rules</code> and <code>c.classificiation_rules</code></li>
+<li><code>c</code> may have any number of additional slot-value assignments consistent with the validation rules provided here with the metamodel <code>MM</code></li>
+</ul>
+<h3 id="slotdefinition-structural-conformance-rules">SlotDefinition Structural Conformance Rules</h3>
+<p>Each <code>s</code> in <em>m<sup>D</sup></em><code>.slots</code> must conform to the rules below:</p>
+<ul>
+<li><code>s</code> must be an instance of a <strong>SlotDefinition</strong></li>
+<li><code>s</code> must have a unique name <code>s.name</code>, and this name must not be shared by any other type or element</li>
+<li><code>s</code> must have a range specified via <code>s.range</code> in <em>m<sup>D</sup></em></li>
+<li><code>s</code> may have an assignment <code>s.identifier</code> which is True if <code>s</code> plays the role of a unique identifier</li>
+<li><code>s</code> may have certain boolean properties defined such as <code>s.mixin</code> and <code>s.abstract</code></li>
+<li><code>s</code> must have exactly one value for <code>s.slot_uri</code> in <em>m<sup>D</sup></em>, and the value must be an instance of the builtin type UriOrCurie</li>
+<li><code>s</code> may have parent SlotDefinitions defined via <code>s.is_a</code> and <code>s.mixins</code><ul>
+<li>the value of <code>s.is_a</code> must be a <strong>SlotDefinitionReference</strong></li>
+<li>the value of <code>s.mixins</code> must be a collection of <strong>SlotDefinitionReference</strong>s</li>
+<li>For any parent <code>p</code> of <code>s</code>, if <code>p.mixin</code> is True, then <code>s.mixin</code> SHOULD be True</li>
+</ul>
+</li>
+<li><code>s</code> may have any number of additional slot-value assignments consistent with the validation rules provided here with the metamodel <code>MM</code></li>
+</ul>
+<h3 id="typedefinition-structural-conformance-rules">TypeDefinition Structural Conformance Rules</h3>
+<p>Each <code>s</code> in <em>m<sup>D</sup></em><code>.types</code> must conform to the rules below:</p>
+<ul>
+<li><code>t</code> must be an instance of a <strong>TypeDefinition</strong></li>
+<li><code>t</code> must have a unique name <code>t.name</code>, and this name must not be shared by any other type or element</li>
+<li><code>t</code> must have a mapping to an xsd type provided via <code>t.uri</code> in <em>m<sup>D</sup></em></li>
+<li><code>t</code> may have a parent type declared via <code>t.typeof</code></li>
+<li><code>t</code> may have any number of additional slot-value assignments consistent with the validation rules provided here with the metamodel <code>MM</code></li>
+</ul>
+<h3 id="enumdefinition-structural-conformance-rules">EnumDefinition Structural Conformance Rules</h3>
+<p>Each <code>e</code> in <em>m<sup>D</sup></em><code>.enums</code> must conform to the rules below:</p>
+<ul>
+<li><code>e</code> must be an instance of a <strong>EnumDefinition</strong></li>
+<li><code>e</code> must have a unique name <code>e.name</code>, and this name must not be shared by any other enum or element</li>
+<li><code>e</code> lists all static permissible values via <code>e.permissible_values</code>, the value of which is a list of instances of the MM class PermissibleValue</li>
+<li><code>e</code> may have any number of additional slot-value assignments consistent with the validation rules provided here with the metamodel <code>MM</code></li>
+</ul>
+<h3 id="classdefinitionreference-structural-conformance-rules">ClassDefinitionReference Structural Conformance Rules</h3>
+<p>Each <code>r</code> in <em>m<sup>D</sup></em><code>.class_references</code> must conform to the rules below:</p>
+<ul>
+<li><code>r</code> must be an instance of a <strong>ClassDefinitionReference</strong></li>
+<li><code>r</code> must have a unique name <code>r.name</code>, and this name must not be shared by any other type or element</li>
+</ul>
+<h3 id="metamodel-conformance-rules">Metamodel Conformance Rules</h3>
+<p>Both the asserted and derived schema should be valid instances of the LinkML metamodel <strong>MM</strong>
+using the instance validation rules described in the next section</p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+<script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../../../javascripts/tablesort.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>
