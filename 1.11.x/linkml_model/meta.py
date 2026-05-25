@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-05-05T18:49:13
+# Generation date: 2026-02-03T08:48:40
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -81,7 +81,7 @@ from .types import Boolean, Datetime, Integer, Ncname, String, Uri, Uriorcurie
 from .units import UnitOfMeasure
 from linkml_runtime.utils.metamodelcore import Bool, NCName, URI, URIorCURIE, XSDDateTime
 
-metamodel_version = "1.11.0"
+metamodel_version = "1.7.0"
 version = None
 
 # Namespaces
@@ -280,7 +280,9 @@ class CommonMetadata(YAMLRoot):
             self.aliases = [self.aliases] if self.aliases is not None else []
         self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
 
-        self._normalize_inlined_as_list(slot_name="structured_aliases", slot_type=StructuredAlias, key_name="literal_form", keyed=False)
+        if not isinstance(self.structured_aliases, list):
+            self.structured_aliases = [self.structured_aliases] if self.structured_aliases is not None else []
+        self.structured_aliases = [v if isinstance(v, StructuredAlias) else StructuredAlias(**as_dict(v)) for v in self.structured_aliases]
 
         if not isinstance(self.mappings, list):
             self.mappings = [self.mappings] if self.mappings is not None else []
@@ -485,7 +487,9 @@ class Element(YAMLRoot):
             self.aliases = [self.aliases] if self.aliases is not None else []
         self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
 
-        self._normalize_inlined_as_list(slot_name="structured_aliases", slot_type=StructuredAlias, key_name="literal_form", keyed=False)
+        if not isinstance(self.structured_aliases, list):
+            self.structured_aliases = [self.structured_aliases] if self.structured_aliases is not None else []
+        self.structured_aliases = [v if isinstance(v, StructuredAlias) else StructuredAlias(**as_dict(v)) for v in self.structured_aliases]
 
         if not isinstance(self.mappings, list):
             self.mappings = [self.mappings] if self.mappings is not None else []
@@ -611,8 +615,8 @@ class SchemaDefinition(Element):
             self.default_curi_maps = [self.default_curi_maps] if self.default_curi_maps is not None else []
         self.default_curi_maps = [v if isinstance(v, str) else str(v) for v in self.default_curi_maps]
 
-        if self.default_prefix is None:
-            self.default_prefix = sfx(str(self.id))
+        if self.default_prefix is not None and not isinstance(self.default_prefix, str):
+            self.default_prefix = str(self.default_prefix)
 
         if self.default_range is not None and not isinstance(self.default_range, TypeDefinitionName):
             self.default_range = TypeDefinitionName(self.default_range)
@@ -1153,7 +1157,9 @@ class EnumBinding(YAMLRoot):
             self.aliases = [self.aliases] if self.aliases is not None else []
         self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
 
-        self._normalize_inlined_as_list(slot_name="structured_aliases", slot_type=StructuredAlias, key_name="literal_form", keyed=False)
+        if not isinstance(self.structured_aliases, list):
+            self.structured_aliases = [self.structured_aliases] if self.structured_aliases is not None else []
+        self.structured_aliases = [v if isinstance(v, StructuredAlias) else StructuredAlias(**as_dict(v)) for v in self.structured_aliases]
 
         if not isinstance(self.mappings, list):
             self.mappings = [self.mappings] if self.mappings is not None else []
@@ -1215,7 +1221,7 @@ class EnumBinding(YAMLRoot):
 @dataclass(repr=False)
 class MatchQuery(YAMLRoot):
     """
-    A query that is used on an enum expression to dynamically obtain a set of permissible values via a query that
+    A query that is used on an enum expression to dynamically obtain a set of permissivle values via a query that
     matches on properties of the external concepts.
     """
     _inherited_slots: ClassVar[list[str]] = []
@@ -1412,7 +1418,9 @@ class StructuredAlias(YAMLRoot):
             self.aliases = [self.aliases] if self.aliases is not None else []
         self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
 
-        self._normalize_inlined_as_list(slot_name="structured_aliases", slot_type=StructuredAlias, key_name="literal_form", keyed=False)
+        if not isinstance(self.structured_aliases, list):
+            self.structured_aliases = [self.structured_aliases] if self.structured_aliases is not None else []
+        self.structured_aliases = [v if isinstance(v, StructuredAlias) else StructuredAlias(**as_dict(v)) for v in self.structured_aliases]
 
         if not isinstance(self.mappings, list):
             self.mappings = [self.mappings] if self.mappings is not None else []
@@ -1721,7 +1729,9 @@ class AnonymousExpression(YAMLRoot):
             self.aliases = [self.aliases] if self.aliases is not None else []
         self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
 
-        self._normalize_inlined_as_list(slot_name="structured_aliases", slot_type=StructuredAlias, key_name="literal_form", keyed=False)
+        if not isinstance(self.structured_aliases, list):
+            self.structured_aliases = [self.structured_aliases] if self.structured_aliases is not None else []
+        self.structured_aliases = [v if isinstance(v, StructuredAlias) else StructuredAlias(**as_dict(v)) for v in self.structured_aliases]
 
         if not isinstance(self.mappings, list):
             self.mappings = [self.mappings] if self.mappings is not None else []
@@ -1926,7 +1936,9 @@ class PathExpression(YAMLRoot):
             self.aliases = [self.aliases] if self.aliases is not None else []
         self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
 
-        self._normalize_inlined_as_list(slot_name="structured_aliases", slot_type=StructuredAlias, key_name="literal_form", keyed=False)
+        if not isinstance(self.structured_aliases, list):
+            self.structured_aliases = [self.structured_aliases] if self.structured_aliases is not None else []
+        self.structured_aliases = [v if isinstance(v, StructuredAlias) else StructuredAlias(**as_dict(v)) for v in self.structured_aliases]
 
         if not isinstance(self.mappings, list):
             self.mappings = [self.mappings] if self.mappings is not None else []
@@ -2926,7 +2938,9 @@ class ClassRule(ClassLevelRule):
             self.aliases = [self.aliases] if self.aliases is not None else []
         self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
 
-        self._normalize_inlined_as_list(slot_name="structured_aliases", slot_type=StructuredAlias, key_name="literal_form", keyed=False)
+        if not isinstance(self.structured_aliases, list):
+            self.structured_aliases = [self.structured_aliases] if self.structured_aliases is not None else []
+        self.structured_aliases = [v if isinstance(v, StructuredAlias) else StructuredAlias(**as_dict(v)) for v in self.structured_aliases]
 
         if not isinstance(self.mappings, list):
             self.mappings = [self.mappings] if self.mappings is not None else []
@@ -3106,7 +3120,9 @@ class ArrayExpression(YAMLRoot):
             self.aliases = [self.aliases] if self.aliases is not None else []
         self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
 
-        self._normalize_inlined_as_list(slot_name="structured_aliases", slot_type=StructuredAlias, key_name="literal_form", keyed=False)
+        if not isinstance(self.structured_aliases, list):
+            self.structured_aliases = [self.structured_aliases] if self.structured_aliases is not None else []
+        self.structured_aliases = [v if isinstance(v, StructuredAlias) else StructuredAlias(**as_dict(v)) for v in self.structured_aliases]
 
         if not isinstance(self.mappings, list):
             self.mappings = [self.mappings] if self.mappings is not None else []
@@ -3291,7 +3307,9 @@ class DimensionExpression(YAMLRoot):
             self.aliases = [self.aliases] if self.aliases is not None else []
         self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
 
-        self._normalize_inlined_as_list(slot_name="structured_aliases", slot_type=StructuredAlias, key_name="literal_form", keyed=False)
+        if not isinstance(self.structured_aliases, list):
+            self.structured_aliases = [self.structured_aliases] if self.structured_aliases is not None else []
+        self.structured_aliases = [v if isinstance(v, StructuredAlias) else StructuredAlias(**as_dict(v)) for v in self.structured_aliases]
 
         if not isinstance(self.mappings, list):
             self.mappings = [self.mappings] if self.mappings is not None else []
@@ -3472,7 +3490,9 @@ class PatternExpression(YAMLRoot):
             self.aliases = [self.aliases] if self.aliases is not None else []
         self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
 
-        self._normalize_inlined_as_list(slot_name="structured_aliases", slot_type=StructuredAlias, key_name="literal_form", keyed=False)
+        if not isinstance(self.structured_aliases, list):
+            self.structured_aliases = [self.structured_aliases] if self.structured_aliases is not None else []
+        self.structured_aliases = [v if isinstance(v, StructuredAlias) else StructuredAlias(**as_dict(v)) for v in self.structured_aliases]
 
         if not isinstance(self.mappings, list):
             self.mappings = [self.mappings] if self.mappings is not None else []
@@ -3654,7 +3674,9 @@ class ImportExpression(YAMLRoot):
             self.aliases = [self.aliases] if self.aliases is not None else []
         self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
 
-        self._normalize_inlined_as_list(slot_name="structured_aliases", slot_type=StructuredAlias, key_name="literal_form", keyed=False)
+        if not isinstance(self.structured_aliases, list):
+            self.structured_aliases = [self.structured_aliases] if self.structured_aliases is not None else []
+        self.structured_aliases = [v if isinstance(v, StructuredAlias) else StructuredAlias(**as_dict(v)) for v in self.structured_aliases]
 
         if not isinstance(self.mappings, list):
             self.mappings = [self.mappings] if self.mappings is not None else []
@@ -3998,7 +4020,9 @@ class PermissibleValue(YAMLRoot):
             self.aliases = [self.aliases] if self.aliases is not None else []
         self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
 
-        self._normalize_inlined_as_list(slot_name="structured_aliases", slot_type=StructuredAlias, key_name="literal_form", keyed=False)
+        if not isinstance(self.structured_aliases, list):
+            self.structured_aliases = [self.structured_aliases] if self.structured_aliases is not None else []
+        self.structured_aliases = [v if isinstance(v, StructuredAlias) else StructuredAlias(**as_dict(v)) for v in self.structured_aliases]
 
         if not isinstance(self.mappings, list):
             self.mappings = [self.mappings] if self.mappings is not None else []
@@ -4184,7 +4208,9 @@ class UniqueKey(YAMLRoot):
             self.aliases = [self.aliases] if self.aliases is not None else []
         self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
 
-        self._normalize_inlined_as_list(slot_name="structured_aliases", slot_type=StructuredAlias, key_name="literal_form", keyed=False)
+        if not isinstance(self.structured_aliases, list):
+            self.structured_aliases = [self.structured_aliases] if self.structured_aliases is not None else []
+        self.structured_aliases = [v if isinstance(v, StructuredAlias) else StructuredAlias(**as_dict(v)) for v in self.structured_aliases]
 
         if not isinstance(self.mappings, list):
             self.mappings = [self.mappings] if self.mappings is not None else []
@@ -4367,7 +4393,9 @@ class TypeMapping(YAMLRoot):
             self.aliases = [self.aliases] if self.aliases is not None else []
         self.aliases = [v if isinstance(v, str) else str(v) for v in self.aliases]
 
-        self._normalize_inlined_as_list(slot_name="structured_aliases", slot_type=StructuredAlias, key_name="literal_form", keyed=False)
+        if not isinstance(self.structured_aliases, list):
+            self.structured_aliases = [self.structured_aliases] if self.structured_aliases is not None else []
+        self.structured_aliases = [v if isinstance(v, StructuredAlias) else StructuredAlias(**as_dict(v)) for v in self.structured_aliases]
 
         if not isinstance(self.mappings, list):
             self.mappings = [self.mappings] if self.mappings is not None else []
@@ -4441,14 +4469,14 @@ class ExtraSlotsExpression(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = LINKML.ExtraSlotsExpression
 
     allowed: Optional[Union[bool, Bool]] = None
-    range_expression: Optional[Union[dict, AnonymousSlotExpression]] = None
+    range_expression: Optional[Union[dict, AnonymousClassExpression]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.allowed is not None and not isinstance(self.allowed, Bool):
             self.allowed = Bool(self.allowed)
 
-        if self.range_expression is not None and not isinstance(self.range_expression, AnonymousSlotExpression):
-            self.range_expression = AnonymousSlotExpression(**as_dict(self.range_expression))
+        if self.range_expression is not None and not isinstance(self.range_expression, AnonymousClassExpression):
+            self.range_expression = AnonymousClassExpression(**as_dict(self.range_expression))
 
         super().__post_init__(**kwargs)
 
@@ -5321,5 +5349,3 @@ slots.permissible_value_is_a = Slot(uri=LINKML.is_a, name="permissible_value_is_
 slots.permissible_value_mixins = Slot(uri=LINKML.mixins, name="permissible_value_mixins", curie=LINKML.curie('mixins'),
                    model_uri=LINKML.permissible_value_mixins, domain=PermissibleValue, range=Optional[Union[Union[str, PermissibleValueText], list[Union[str, PermissibleValueText]]]])
 
-slots.extra_slots_expression_range_expression = Slot(uri=LINKML.range_expression, name="extra_slots_expression_range_expression", curie=LINKML.curie('range_expression'),
-                   model_uri=LINKML.extra_slots_expression_range_expression, domain=ExtraSlotsExpression, range=Optional[Union[dict, AnonymousSlotExpression]])

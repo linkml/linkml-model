@@ -1,5 +1,5 @@
 # Auto generated from types.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-05-05T18:49:15
+# Generation date: 2026-02-03T08:48:42
 # Schema: types
 #
 # id: https://w3id.org/linkml/types
@@ -228,3 +228,4 @@ class Sparqlpath(str):
 # Slots
 class slots:
     pass
+
