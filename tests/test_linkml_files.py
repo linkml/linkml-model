@@ -21,7 +21,7 @@ root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "linkm
 # The GitHub API tests resolve tags/releases to commits via the live GitHub API,
 # which is rate-limited and flaky in CI, so they are opt-in.
 # Set LINKML_TEST_GITHUB_API=1 to run them.
-RUN_GITHUB_API = bool(os.environ.get("LINKML_TEST_GITHUB_API"))
+RUN_GITHUB_API = os.environ.get("LINKML_TEST_GITHUB_API", "").lower() in {"1", "true", "yes", "on"}
 
 
 def test_url_for():
@@ -85,9 +85,10 @@ def test_github_path_for_release_and_branch_conflict():
 def test_github_specific_rules():
     """Tag / release resolution via the GitHub API.
 
-    Note: pre-restructure tags (e.g. v0.0.1) predate the move of artifacts under
-    the ``linkml_model`` package directory, so the constructed URL is correct in
-    form but will not resolve for those very old tags.
+    Note: the builder applies the current ``linkml_model/`` layout uniformly to
+    all tags. Pre-restructure tags (e.g. v0.0.1) stored artifacts at the repo
+    root, so the URL generated for those very old tags uses the current layout
+    rather than their historical one and will not resolve.
     """
     assert GITHUB_PATH_FOR(Source.META, Format.NATIVE_JSONLD, "v0.0.1") == (
         "https://raw.githubusercontent.com/linkml/linkml-model/"
