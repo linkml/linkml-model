@@ -1036,7 +1036,7 @@
 
 
 <h1 id="slot-identifier">Slot: identifier</h1>
-<p><em>True means that the key slot(s) uniquely identifies the elements. There can be at most one identifier or key per container</em></p>
+<p><em>True means that the slot is the identifier slot of its class. Such a slot uniquely identifies instances of the class throughout an entire document, meaning there cannot be two (or more) instances of the class (or instances of any of its descendants) with the same value for the identifier slot anywhere in the document.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/linkml/identifier">linkml:identifier</a></p>
 <!-- no inheritance hierarchy -->
@@ -1126,15 +1126,19 @@
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>identifier is inherited</li>
-<li>a key slot is automatically required.  Identifiers cannot be optional</li>
-<li>a given domain can have at most one identifier</li>
-<li>identifiers and keys are mutually exclusive.  A given domain cannot have both</li>
+<li>The identifier slot is inherited.</li>
+<li>A domain can have at most one identifier slot OR a key slot. However a domain can have both an identifier slot and any number of compound keys.</li>
+<li>An identifier slot is automatically required. Identifiers cannot be optional.</li>
+<li>The presence of an identifier slot makes a class eligible for inlining as a dictionary.</li>
+<li>The presence of an identifier slot makes a class eligible for being referenced rather than inlined.</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Identifier">https://en.wikipedia.org/wiki/Identifier</a></li>
+<li><a href="https://linkml.io/linkml/schemas/constraints.html#unique-keys">https://linkml.io/linkml/schemas/constraints.html#unique-keys</a></li>
+<li><a href="https://linkml.io/linkml/schemas/inlining.html">https://linkml.io/linkml/schemas/inlining.html</a></li>
 <li><a href="https://w3id.org/linkml/unique_keys">linkml:unique_keys</a></li>
+<li><a href="https://w3id.org/linkml/key">linkml:key</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="administrative-metadata">Administrative Metadata</h3>
@@ -1166,13 +1170,18 @@
 <details>
 
 <pre><code class="language-yaml">name: identifier
-description: True means that the key slot(s) uniquely identifies the elements. There
-  can be at most one identifier or key per container
+description: True means that the slot is the identifier slot of its class. Such a
+  slot uniquely identifies instances of the class throughout an entire document, meaning
+  there cannot be two (or more) instances of the class (or instances of any of its
+  descendants) with the same value for the identifier slot anywhere in the document.
 comments:
-- identifier is inherited
-- a key slot is automatically required.  Identifiers cannot be optional
-- a given domain can have at most one identifier
-- identifiers and keys are mutually exclusive.  A given domain cannot have both
+- The identifier slot is inherited.
+- A domain can have at most one identifier slot OR a key slot. However a domain can
+  have both an identifier slot and any number of compound keys.
+- An identifier slot is automatically required. Identifiers cannot be optional.
+- The presence of an identifier slot makes a class eligible for inlining as a dictionary.
+- The presence of an identifier slot makes a class eligible for being referenced rather
+  than inlined.
 in_subset:
 - SpecificationSubset
 - MinimalSubset
@@ -1181,7 +1190,10 @@ in_subset:
 from_schema: https://w3id.org/linkml/meta
 see_also:
 - https://en.wikipedia.org/wiki/Identifier
+- https://linkml.io/linkml/schemas/constraints.html#unique-keys
+- https://linkml.io/linkml/schemas/inlining.html
 - linkml:unique_keys
+- linkml:key
 aliases:
 - primary key
 - ID
