@@ -1934,6 +1934,39 @@ slots:
       - SpecificationSubset
     see_also:
       - https://linkml.io/linkml/schemas/type-designators.html
+      - linkml:type_designator_mapping
+
+  type_designator_mapping:
+    domain: slot_definition
+    range: designated_type_mapping
+    multivalued: true
+    inlined: true
+    inlined_as_list: false
+    inherited: true
+    description: >-
+      Additional mappings between type designator values and instantiation types.
+
+      Mappings defined here are taken into account after a type designator value failed to match the
+      name, URI, or CURIE of any known subclass of the class carrying the type designator slot.
+    comments:
+      - This slot only makes sense for a slot that is a type designator slot.
+    examples:
+      - object:
+          foo: FooClass
+          bar: BarClass
+          "*": FallbackClass
+        description: >-
+          Assuming FooClass, BarClass, and FallbackClass all refers to classes that are compatible
+          with the base class carrying the type designator slot, this example would allow to use
+          'foo' to designate an instance of FooClass and 'bar' to designate an instance of BarClass;
+          in addition, any unrecognised type name is to be interpreted as designating an instance of
+          FallbackClass.
+    in_subset:
+      - SpecificationSubset
+    see_also:
+      - https://linkml.io/linkml/schemas/type-designators.html
+      - linkml:designates_type
+      - linkml:designated_type_mapping
 
   alias:
     rank: 6
@@ -3331,6 +3364,33 @@ classes:
     slot_usage:
       range_expression:
         range: anonymous_slot_expression
+
+  designated_type_mapping:
+    description: >-
+      A custom mapping between a pattern and a class definition.
+    attributes:
+      pattern:
+        description: >-
+          The pattern to map to a class definition.
+
+          This is a shell-like pattern, where '*' represents any substring (including an
+          empty string) and '?' represents any character.
+
+          If the value found in a type designator slot (1) matches the pattern and
+          (2) does not match any longer pattern in the same 'type_designator_mapping'
+          map, then the object carrying the type designator value is to be treated as
+          an instance of the class associated to the pattern.
+        range: string
+        key: true
+      designated_type:
+        description: >-
+          The class to associate to the pattern.
+
+          It must be a class that is compatible with the base class that is carrying the
+          type designator slot (that is, it must either be that class or a subclass of it).
+        range: class_definition
+    see_also:
+      - linkml:type_designator_mapping
 
 
 # ==================================
