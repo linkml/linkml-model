@@ -11,34 +11,34 @@ linkml:datasets a linkml:SchemaDefinition ;
     rdfs:seeAlso "https://specs.frictionlessdata.io/data-resource"^^xsd:anyURI,
         "https://www.w3.org/TR/hcls-dataset/"^^xsd:anyURI,
         "https://www.w3.org/TR/void/"^^xsd:anyURI ;
-    sh:declare [ sh:namespace "https://w3id.org/linkml/report"^^xsd:anyURI ;
-            sh:prefix "datasets" ],
-        [ sh:namespace "http://rdfs.org/ns/void#"^^xsd:anyURI ;
-            sh:prefix "void" ],
+    sh:declare [ sh:namespace "http://schema.org/"^^xsd:anyURI ;
+            sh:prefix "schema" ],
         [ sh:namespace "https://www.iana.org/assignments/media-types/"^^xsd:anyURI ;
             sh:prefix "mediatypes" ],
-        [ sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ;
-            sh:prefix "skos" ],
-        [ sh:namespace "http://www.w3.org/ns/formats/"^^xsd:anyURI ;
-            sh:prefix "formats" ],
-        [ sh:namespace "http://open-services.net/ns/core#"^^xsd:anyURI ;
-            sh:prefix "oslc" ],
-        [ sh:namespace "http://purl.org/pav/"^^xsd:anyURI ;
-            sh:prefix "pav" ],
+        [ sh:namespace "https://w3id.org/shacl/"^^xsd:anyURI ;
+            sh:prefix "sh" ],
         [ sh:namespace "https://w3id.org/linkml/"^^xsd:anyURI ;
             sh:prefix "linkml" ],
+        [ sh:namespace "https://w3id.org/linkml/report"^^xsd:anyURI ;
+            sh:prefix "datasets" ],
+        [ sh:namespace "https://specs.frictionlessdata.io/"^^xsd:anyURI ;
+            sh:prefix "frictionless" ],
         [ sh:namespace "http://www.w3.org/ns/dcat#"^^xsd:anyURI ;
             sh:prefix "dcat" ],
         [ sh:namespace "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
             sh:prefix "bibo" ],
-        [ sh:namespace "http://schema.org/"^^xsd:anyURI ;
-            sh:prefix "schema" ],
-        [ sh:namespace "https://specs.frictionlessdata.io/"^^xsd:anyURI ;
-            sh:prefix "frictionless" ],
         [ sh:namespace "http://www.w3.org/ns/csvw#"^^xsd:anyURI ;
             sh:prefix "csvw" ],
-        [ sh:namespace "https://w3id.org/shacl/"^^xsd:anyURI ;
-            sh:prefix "sh" ] ;
+        [ sh:namespace "http://open-services.net/ns/core#"^^xsd:anyURI ;
+            sh:prefix "oslc" ],
+        [ sh:namespace "http://www.w3.org/ns/formats/"^^xsd:anyURI ;
+            sh:prefix "formats" ],
+        [ sh:namespace "http://purl.org/pav/"^^xsd:anyURI ;
+            sh:prefix "pav" ],
+        [ sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ;
+            sh:prefix "skos" ],
+        [ sh:namespace "http://rdfs.org/ns/void#"^^xsd:anyURI ;
+            sh:prefix "void" ] ;
     linkml:classes linkml:DataPackage,
         linkml:DataResource,
         linkml:FormatDialect,
@@ -55,10 +55,10 @@ linkml:datasets a linkml:SchemaDefinition ;
     linkml:enums linkml:FormatEnum,
         linkml:MediaTypeEnum,
         linkml:TestRole ;
-    linkml:generation_date "2026-05-05T18:49:23"^^xsd:dateTime ;
+    linkml:generation_date "2026-07-27T16:30:32"^^xsd:dateTime ;
     linkml:id "https://w3id.org/linkml/datasets"^^xsd:anyURI ;
     linkml:imports "linkml:types"^^xsd:anyURI ;
-    linkml:metamodel_version "1.7.0" ;
+    linkml:metamodel_version "1.11.0" ;
     linkml:slots linkml:bytes,
         linkml:compression,
         linkml:conforms_to,
@@ -99,7 +99,7 @@ linkml:datasets a linkml:SchemaDefinition ;
         linkml:version,
         linkml:was_derived_from ;
     linkml:source_file "datasets.yaml" ;
-    linkml:source_file_date "2026-05-05T18:15:53"^^xsd:dateTime ;
+    linkml:source_file_date "2026-07-02T12:53:02"^^xsd:dateTime ;
     linkml:source_file_size 7835 ;
     linkml:types linkml:boolean,
         linkml:curie,
@@ -516,9 +516,9 @@ linkml:media_type a linkml:SlotDefinition ;
     linkml:definition_uri "https://w3id.org/linkml/reportmedia_type"^^xsd:anyURI ;
     linkml:domain_of linkml:DataResource ;
     linkml:examples [ a linkml:Example ;
-            skos:example "text/csv" ],
+            skos:example "application/json" ],
         [ a linkml:Example ;
-            skos:example "application/json" ] ;
+            skos:example "text/csv" ] ;
     linkml:owner linkml:DataResource ;
     linkml:range linkml:string ;
     linkml:slot_uri "http://www.w3.org/ns/dcat#mediaType"^^xsd:anyURI .
@@ -916,3 +916,4 @@ linkml:Information a linkml:ClassDefinition ;
         linkml:title,
         linkml:version,
         linkml:was_derived_from .
+

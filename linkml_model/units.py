@@ -1,5 +1,5 @@
 # Auto generated from units.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-05-05T18:49:15
+# Generation date: 2026-07-27T16:30:22
 # Schema: units
 #
 # id: https://w3id.org/linkml/units
@@ -54,7 +54,7 @@ from rdflib import (
 from .types import String, Uriorcurie
 from linkml_runtime.utils.metamodelcore import URIorCURIE
 
-metamodel_version = "1.7.0"
+metamodel_version = "1.11.0"
 version = None
 
 # Namespaces
@@ -156,3 +156,4 @@ slots.abbreviation = Slot(uri=QUDT.abbreviation, name="abbreviation", curie=QUDT
 
 slots.descriptive_name = Slot(uri=RDFS.label, name="descriptive_name", curie=RDFS.curie('label'),
                    model_uri=LINKML.descriptive_name, domain=None, range=Optional[str])
+

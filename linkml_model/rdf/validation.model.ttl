@@ -9,16 +9,16 @@ linkml:reporting a linkml:SchemaDefinition ;
     dcterms:title "LinkML Report Metamodel" ;
     sh:declare [ sh:namespace "https://w3id.org/shacl/"^^xsd:anyURI ;
             sh:prefix "sh" ],
-        [ sh:namespace "https://w3id.org/linkml/report"^^xsd:anyURI ;
-            sh:prefix "reporting" ],
-        [ sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ;
-            sh:prefix "skos" ],
         [ sh:namespace "http://schema.org/"^^xsd:anyURI ;
             sh:prefix "schema" ],
+        [ sh:namespace "http://purl.org/pav/"^^xsd:anyURI ;
+            sh:prefix "pav" ],
+        [ sh:namespace "https://w3id.org/linkml/report"^^xsd:anyURI ;
+            sh:prefix "reporting" ],
         [ sh:namespace "https://w3id.org/linkml/"^^xsd:anyURI ;
             sh:prefix "linkml" ],
-        [ sh:namespace "http://purl.org/pav/"^^xsd:anyURI ;
-            sh:prefix "pav" ] ;
+        [ sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ;
+            sh:prefix "skos" ] ;
     linkml:classes linkml:ValidationReport,
         linkml:ValidationResult ;
     linkml:default_curi_maps "semweb_context" ;
@@ -32,10 +32,10 @@ linkml:reporting a linkml:SchemaDefinition ;
         "xsd" ;
     linkml:enums linkml:problem_type,
         linkml:severity_options ;
-    linkml:generation_date "2026-05-05T18:49:52"^^xsd:dateTime ;
+    linkml:generation_date "2026-07-27T16:31:02"^^xsd:dateTime ;
     linkml:id "https://w3id.org/linkml/reporting"^^xsd:anyURI ;
     linkml:imports "linkml:types"^^xsd:anyURI ;
-    linkml:metamodel_version "1.7.0" ;
+    linkml:metamodel_version "1.11.0" ;
     linkml:slots linkml:info,
         linkml:instantiates,
         linkml:node_source,
@@ -47,7 +47,7 @@ linkml:reporting a linkml:SchemaDefinition ;
         linkml:type,
         linkml:validationReport__results ;
     linkml:source_file "validation.yaml" ;
-    linkml:source_file_date "2026-05-05T18:16:03"^^xsd:dateTime ;
+    linkml:source_file_date "2026-07-02T12:53:02"^^xsd:dateTime ;
     linkml:source_file_size 2959 ;
     linkml:types linkml:boolean,
         linkml:curie,
@@ -429,3 +429,4 @@ linkml:ValidationResult a linkml:ClassDefinition ;
         linkml:severity,
         linkml:subject,
         linkml:type .
+
