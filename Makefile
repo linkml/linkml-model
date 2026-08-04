@@ -146,7 +146,7 @@ serve: mkd-serve
 
 testdoc: gen-doc serve
 
-# --strict promotes mkdocs warnings (e.g., broken internal links) to errors, 
+# --strict promotes mkdocs warnings (e.g., broken internal links) to errors,
 # so CI fails on them.
 builddoc:
 	$(RUN) mkdocs build --strict
