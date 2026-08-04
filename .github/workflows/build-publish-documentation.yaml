@@ -44,6 +44,9 @@ jobs:
       - name: Generate markdown docs from schema
         run: uv run make gen-doc
 
+      - name: Build docs with mkdocs in strict mode
+        run: uv run make builddoc
+
       - name: Deploy generated docs
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |

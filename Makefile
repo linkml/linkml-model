@@ -97,6 +97,9 @@ gen-sqlddl: $(DEST)
 gen-doc:
 	$(RUN) gen-doc --genmeta --sort-by rank -d $(DOCDIR)/docs $(SOURCE_SCHEMA_PATH)
 	cp -r linkml_model/model/docs/* $(DOCDIR)/docs
+	# the destination must be removed first, otherwise a re-run copies the
+	# source *into* the existing directory, yielding a nested $(PYMODEL)/$(PYMODEL)
+	rm -rf $(DOCDIR)/$(PYMODEL)
 	cp -r $(PYMODEL) $(DOCDIR)/$(PYMODEL)
 	rm -rf $(DOCDIR)/$(PYMODEL)/model/docs
 	cp README.md $(DOCDIR)
@@ -143,8 +146,10 @@ serve: mkd-serve
 
 testdoc: gen-doc serve
 
+# --strict promotes mkdocs warnings (e.g., broken internal links) to errors, 
+# so CI fails on them.
 builddoc:
-	$(RUN) mkdocs build
+	$(RUN) mkdocs build --strict
 
 MKDOCS = $(RUN) mkdocs
 mkd-%:
