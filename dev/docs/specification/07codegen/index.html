@@ -1164,6 +1164,10 @@ a single module (e.g. Java), a single module will correspond to a single LinkML 
 <td>Typescript</td>
 <td>One file per schema</td>
 </tr>
+<tr>
+<td>Scala</td>
+<td>One file per class</td>
+</tr>
 </tbody>
 </table>
 <h3 id="imports">Imports</h3>
@@ -1207,6 +1211,10 @@ ways to make schema metadata introspectable at runtime, these mechanisms SHOULD 
 <td>Typescript</td>
 <td>CamelCase</td>
 </tr>
+<tr>
+<td>Scala</td>
+<td>CamelCase</td>
+</tr>
 </tbody>
 </table>
 <h2 id="mapping-of-linkml-classes">Mapping of LinkML Classes</h2>
@@ -1218,6 +1226,7 @@ appropriate targets for LinkML classes. For example:</p>
 <li>Scala has traits and sealed traits</li>
 <li>Rust has structs, traits, and enums</li>
 <li>Typescript has classes and interfaces</li>
+<li>Scala has final case classes and abstract classes or traits</li>
 </ul>
 <p>The choice should reflect whatever is most idiomatic for the target language.
 The generation MAY allow for different mappings, controlled by either user configuration,
@@ -1267,6 +1276,10 @@ allowing for translation to language idioms.</p>
 </tr>
 <tr>
 <td>Typescript</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Scala</td>
 <td>none</td>
 </tr>
 </tbody>
