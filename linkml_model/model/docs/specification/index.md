@@ -9,3 +9,4 @@
 - [Derived Schemas](04derived-schemas.md)
 - [Validation](05validation.md)
 - [Mapping](06mapping.md)
+- [Code Generation](07codegen.md)
