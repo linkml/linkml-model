@@ -1,5 +1,5 @@
 # Auto generated from array.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-05-05T18:49:10
+# Generation date: 2026-08-07T16:08:05
 # Schema: arrays
 #
 # id: https://w3id.org/linkml/lib/arrays
@@ -55,7 +55,7 @@ from rdflib import (
 
 from .types import Integer, String
 
-metamodel_version = "1.7.0"
+metamodel_version = "1.11.0"
 version = None
 
 # Namespaces
@@ -282,3 +282,4 @@ slots.ColumnOrderedArray_array_linearization_order = Slot(uri=LINKML.array_linea
 
 slots.RowOrderedArray_array_linearization_order = Slot(uri=LINKML.array_linearization_order, name="RowOrderedArray_array_linearization_order", curie=LINKML.curie('array_linearization_order'),
                    model_uri=LINKML.RowOrderedArray_array_linearization_order, domain=None, range=Optional[Union[str, "ArrayLinearizationOrderOptions"]])
+

@@ -1,5 +1,5 @@
 # Auto generated from types.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-05-05T18:49:15
+# Generation date: 2026-08-07T16:08:10
 # Schema: types
 #
 # id: https://w3id.org/linkml/types
@@ -53,7 +53,7 @@ from rdflib import (
 
 from linkml_runtime.utils.metamodelcore import Bool, Curie, Decimal, ElementIdentifier, NCName, NodeIdentifier, URI, URIorCURIE, XSDDate, XSDDateTime, XSDTime
 
-metamodel_version = "1.7.0"
+metamodel_version = "1.11.0"
 version = None
 
 # Namespaces
@@ -228,3 +228,4 @@ class Sparqlpath(str):
 # Slots
 class slots:
     pass
+
