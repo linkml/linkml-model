@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-05-05T18:49:13
+# Generation date: 2026-08-12T09:42:13
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -5323,3 +5323,4 @@ slots.permissible_value_mixins = Slot(uri=LINKML.mixins, name="permissible_value
 
 slots.extra_slots_expression_range_expression = Slot(uri=LINKML.range_expression, name="extra_slots_expression_range_expression", curie=LINKML.curie('range_expression'),
                    model_uri=LINKML.extra_slots_expression_range_expression, domain=ExtraSlotsExpression, range=Optional[Union[dict, AnonymousSlotExpression]])
+
