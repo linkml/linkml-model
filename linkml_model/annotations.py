@@ -1,5 +1,5 @@
 # Auto generated from annotations.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-05-05T18:49:09
+# Generation date: 2026-08-12T09:42:07
 # Schema: annotations
 #
 # id: https://w3id.org/linkml/annotations
@@ -55,7 +55,7 @@ from .extensions import AnyValue, Extension, ExtensionTag
 from .types import Uriorcurie
 from linkml_runtime.utils.metamodelcore import URIorCURIE
 
-metamodel_version = "1.7.0"
+metamodel_version = "1.11.0"
 version = "2.0.0"
 
 # Namespaces
@@ -126,3 +126,4 @@ class slots:
 
 slots.annotations = Slot(uri=LINKML.annotations, name="annotations", curie=LINKML.curie('annotations'),
                    model_uri=LINKML.annotations, domain=None, range=Optional[Union[dict[Union[str, AnnotationTag], Union[dict, "Annotation"]], list[Union[dict, "Annotation"]]]])
+
