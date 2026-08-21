@@ -1596,9 +1596,9 @@ completeness.</p>
 <li><code>c</code> may have parent ClassDefinitions defined via <code>c.is_a</code> and <code>c.mixins</code><ul>
 <li>the value of <code>c.is_a</code> must be a ClassDefinitionReference</li>
 <li>the value of <code>c.mixins</code> must be a collection of ClassDefinitonReferences</li>
+<li>for any direct <code>is_a</code> parent <code>p</code> of <code>c</code>, if <code>p.mixin</code> is True, then <code>c.mixin</code> SHOULD be True</li>
 </ul>
 </li>
-<li>For any parent <code>p</code> of <code>c</code>, if <code>p.mixin</code> is True, then <code>c.mixin</code> SHOULD be True</li>
 <li><code>c</code> includes additional rules in <code>c.rules</code> and <code>c.classificiation_rules</code></li>
 <li><code>c</code> may have any number of additional slot-value assignments consistent with the validation rules provided here with the metamodel <code>MM</code></li>
 </ul>
@@ -1614,7 +1614,7 @@ completeness.</p>
 <li><code>s</code> may have parent SlotDefinitions defined via <code>s.is_a</code> and <code>s.mixins</code><ul>
 <li>the value of <code>s.is_a</code> must be a <strong>SlotDefinitionReference</strong></li>
 <li>the value of <code>s.mixins</code> must be a collection of <strong>SlotDefinitionReference</strong>s</li>
-<li>For any parent <code>p</code> of <code>s</code>, if <code>p.mixin</code> is True, then <code>s.mixin</code> SHOULD be True</li>
+<li>for any direct <code>is_a</code> parent <code>p</code> of <code>s</code>, if <code>p.mixin</code> is True, then <code>s.mixin</code> SHOULD be True</li>
 </ul>
 </li>
 <li><code>s</code> may have any number of additional slot-value assignments consistent with the validation rules provided here with the metamodel <code>MM</code></li>
