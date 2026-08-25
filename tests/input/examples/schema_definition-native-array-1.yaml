@@ -20,13 +20,17 @@ classes:
   TemperatureDataset:
     tree_root: true
     annotations:
+      # An annotation is a tag/value pair. A structured payload must be nested
+      # under `value` (range AnyValue); keys placed directly under the tag are
+      # otherwise read as slots of Annotation itself.
       array_data_mapping:
-        data: temperatures_in_K
-        dims: [x, y, t]
-        coords:
-          latitude_in_deg: x
-          longitude_in_deg: y
-          time_in_d: t
+        value:
+          data: temperatures_in_K
+          dims: [x, y, t]
+          coords:
+            latitude_in_deg: x
+            longitude_in_deg: y
+            time_in_d: t
     attributes:
       name:
         identifier: true
