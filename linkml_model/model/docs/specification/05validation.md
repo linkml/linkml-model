@@ -133,13 +133,13 @@ The following checks only match when `i` is an **AtomicInstance**
 
 The following checks only match when `i` is an **InstanceOfClass**
 
-| **T**  | Element                            | Check             | Fail Condition                                                                  |
-|--------|------------------------------------|-------------------|---------------------------------------------------------------------------------|
-| `in`   | `<Class>(<Assignments>)`           | `Abstract`        | `Class.abstract`                                                                |
-| `in`   | `<Class>(<Assignments>)`           | `Mixin`           | `Class.mixin`                                                                   |
-| `in`   | `<Class>(<Assignments>)`           | `ClassRange`      | `slot.range ∉ A*(<Class>)`                                                      |
-| `in`   | `<Class>(..., <subslot>=<V>, ...)` | `ApplicableSlot`  | `subslot ∉ <Class>.attributes`                                                  |
-| `in`   | `<Class>(..., <ts>=<V>, ...)`      | `DesignatedType`  | `∃ v ∈ L(<V>): v ∉ Norm(A*(<Class>), ts.range)` and `ts.designates_type = True` |
+| **T**  | Element                            | Check             | Fail Condition                                                                                                            |
+|--------|------------------------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------|
+| `in`   | `<Class>(<Assignments>)`           | `Abstract`        | `Class.abstract`                                                                                                          |
+| `in`   | `<Class>(<Assignments>)`           | `Mixin`           | `Class.mixin`                                                                                                             |
+| `in`   | `<Class>(<Assignments>)`           | `ClassRange`      | `slot.range ∉ A*(<Class>)`                                                                                                |
+| `in`   | `<Class>(..., <subslot>=<V>, ...)` | `ApplicableSlot`  | `subslot ∉ <Class>.attributes`                                                                                            |
+| `in`   | `<Class>(..., <ts>=<V>, ...)`      | `DesignatedType`  | `∃ v ∈ L(<V>): v ∉ Norm(A*(<Class>), ts.range)` and `ts.designates_type = True` and `ts.allow_unknown_designator = False` |
 
 For the DesignatedType check, the `Norm` function takes as input as a list of classes,
 and expands these according to the range of the slot `ts` that designates the type.
