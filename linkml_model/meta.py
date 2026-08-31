@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-12T09:42:13
+# Generation date: 2026-08-31T23:36:32
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -906,6 +906,7 @@ class AnonymousEnumExpression(YAMLRoot):
     code_set_version: Optional[str] = None
     pv_formula: Optional[Union[str, "PvFormulaOptions"]] = None
     permissible_values: Optional[Union[dict[Union[str, PermissibleValueText], Union[dict, "PermissibleValue"]], list[Union[dict, "PermissibleValue"]]]] = empty_dict()
+    is_open: Optional[Union[bool, Bool]] = None
     include: Optional[Union[Union[dict, "AnonymousEnumExpression"], list[Union[dict, "AnonymousEnumExpression"]]]] = empty_list()
     minus: Optional[Union[Union[dict, "AnonymousEnumExpression"], list[Union[dict, "AnonymousEnumExpression"]]]] = empty_list()
     inherits: Optional[Union[Union[str, EnumDefinitionName], list[Union[str, EnumDefinitionName]]]] = empty_list()
@@ -927,6 +928,9 @@ class AnonymousEnumExpression(YAMLRoot):
             self.pv_formula = PvFormulaOptions(self.pv_formula)
 
         self._normalize_inlined_as_dict(slot_name="permissible_values", slot_type=PermissibleValue, key_name="text", keyed=True)
+
+        if self.is_open is not None and not isinstance(self.is_open, Bool):
+            self.is_open = Bool(self.is_open)
 
         if not isinstance(self.include, list):
             self.include = [self.include] if self.include is not None else []
@@ -972,6 +976,7 @@ class EnumDefinition(Definition):
     code_set_version: Optional[str] = None
     pv_formula: Optional[Union[str, "PvFormulaOptions"]] = None
     permissible_values: Optional[Union[dict[Union[str, PermissibleValueText], Union[dict, "PermissibleValue"]], list[Union[dict, "PermissibleValue"]]]] = empty_dict()
+    is_open: Optional[Union[bool, Bool]] = None
     include: Optional[Union[Union[dict, AnonymousEnumExpression], list[Union[dict, AnonymousEnumExpression]]]] = empty_list()
     minus: Optional[Union[Union[dict, AnonymousEnumExpression], list[Union[dict, AnonymousEnumExpression]]]] = empty_list()
     inherits: Optional[Union[Union[str, EnumDefinitionName], list[Union[str, EnumDefinitionName]]]] = empty_list()
@@ -1001,6 +1006,9 @@ class EnumDefinition(Definition):
             self.pv_formula = PvFormulaOptions(self.pv_formula)
 
         self._normalize_inlined_as_dict(slot_name="permissible_values", slot_type=PermissibleValue, key_name="text", keyed=True)
+
+        if self.is_open is not None and not isinstance(self.is_open, Bool):
+            self.is_open = Bool(self.is_open)
 
         if not isinstance(self.include, list):
             self.include = [self.include] if self.include is not None else []
@@ -1564,6 +1572,7 @@ class EnumExpression(Expression):
     code_set_version: Optional[str] = None
     pv_formula: Optional[Union[str, "PvFormulaOptions"]] = None
     permissible_values: Optional[Union[dict[Union[str, PermissibleValueText], Union[dict, "PermissibleValue"]], list[Union[dict, "PermissibleValue"]]]] = empty_dict()
+    is_open: Optional[Union[bool, Bool]] = None
     include: Optional[Union[Union[dict, AnonymousEnumExpression], list[Union[dict, AnonymousEnumExpression]]]] = empty_list()
     minus: Optional[Union[Union[dict, AnonymousEnumExpression], list[Union[dict, AnonymousEnumExpression]]]] = empty_list()
     inherits: Optional[Union[Union[str, EnumDefinitionName], list[Union[str, EnumDefinitionName]]]] = empty_list()
@@ -1585,6 +1594,9 @@ class EnumExpression(Expression):
             self.pv_formula = PvFormulaOptions(self.pv_formula)
 
         self._normalize_inlined_as_dict(slot_name="permissible_values", slot_type=PermissibleValue, key_name="text", keyed=True)
+
+        if self.is_open is not None and not isinstance(self.is_open, Bool):
+            self.is_open = Bool(self.is_open)
 
         if not isinstance(self.include, list):
             self.include = [self.include] if self.include is not None else []
@@ -2614,7 +2626,7 @@ class AnonymousClassExpression(AnonymousExpression):
     class_name: ClassVar[str] = "anonymous_class_expression"
     class_model_uri: ClassVar[URIRef] = LINKML.AnonymousClassExpression
 
-    is_a: Optional[Union[str, DefinitionName]] = None
+    is_a: Optional[Union[str, ClassDefinitionName]] = None
     any_of: Optional[Union[Union[dict, "AnonymousClassExpression"], list[Union[dict, "AnonymousClassExpression"]]]] = empty_list()
     exactly_one_of: Optional[Union[Union[dict, "AnonymousClassExpression"], list[Union[dict, "AnonymousClassExpression"]]]] = empty_list()
     none_of: Optional[Union[Union[dict, "AnonymousClassExpression"], list[Union[dict, "AnonymousClassExpression"]]]] = empty_list()
@@ -2622,8 +2634,8 @@ class AnonymousClassExpression(AnonymousExpression):
     slot_conditions: Optional[Union[dict[Union[str, SlotDefinitionName], Union[dict, SlotDefinition]], list[Union[dict, SlotDefinition]]]] = empty_dict()
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.is_a is not None and not isinstance(self.is_a, DefinitionName):
-            self.is_a = DefinitionName(self.is_a)
+        if self.is_a is not None and not isinstance(self.is_a, ClassDefinitionName):
+            self.is_a = ClassDefinitionName(self.is_a)
 
         if not isinstance(self.any_of, list):
             self.any_of = [self.any_of] if self.any_of is not None else []
@@ -4706,6 +4718,9 @@ slots.pv_formula = Slot(uri=LINKML.pv_formula, name="pv_formula", curie=LINKML.c
 slots.permissible_values = Slot(uri=LINKML.permissible_values, name="permissible_values", curie=LINKML.curie('permissible_values'),
                    model_uri=LINKML.permissible_values, domain=EnumExpression, range=Optional[Union[dict[Union[str, PermissibleValueText], Union[dict, "PermissibleValue"]], list[Union[dict, "PermissibleValue"]]]])
 
+slots.is_open = Slot(uri=LINKML.is_open, name="is_open", curie=LINKML.curie('is_open'),
+                   model_uri=LINKML.is_open, domain=EnumExpression, range=Optional[Union[bool, Bool]])
+
 slots.enum_uri = Slot(uri=LINKML.enum_uri, name="enum_uri", curie=LINKML.curie('enum_uri'),
                    model_uri=LINKML.enum_uri, domain=EnumDefinition, range=Optional[Union[str, URIorCURIE]])
 
@@ -5296,6 +5311,9 @@ slots.class_expression_exactly_one_of = Slot(uri=LINKML.exactly_one_of, name="cl
 
 slots.class_expression_none_of = Slot(uri=LINKML.none_of, name="class_expression_none_of", curie=LINKML.curie('none_of'),
                    model_uri=LINKML.class_expression_none_of, domain=None, range=Optional[Union[Union[dict, "AnonymousClassExpression"], list[Union[dict, "AnonymousClassExpression"]]]])
+
+slots.anonymous_class_expression_is_a = Slot(uri=LINKML.is_a, name="anonymous_class_expression_is_a", curie=LINKML.curie('is_a'),
+                   model_uri=LINKML.anonymous_class_expression_is_a, domain=AnonymousClassExpression, range=Optional[Union[str, ClassDefinitionName]])
 
 slots.class_definition_is_a = Slot(uri=LINKML.is_a, name="class_definition_is_a", curie=LINKML.curie('is_a'),
                    model_uri=LINKML.class_definition_is_a, domain=ClassDefinition, range=Optional[Union[str, ClassDefinitionName]])
