@@ -23,42 +23,42 @@
 linkml:meta a linkml:SchemaDefinition ;
     dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
     dcterms:title "LinkML Schema Metamodel" ;
-    sh:declare [ sh:namespace "http://www.w3.org/ns/prov#"^^xsd:anyURI ;
-            sh:prefix "prov" ],
-        [ sh:namespace "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
-            sh:prefix "bibo" ],
-        [ sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ;
+    sh:declare [ sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ;
             sh:prefix "skos" ],
-        [ sh:namespace "http://www.w3.org/2008/05/skos-xl#"^^xsd:anyURI ;
-            sh:prefix "skosxl" ],
-        [ sh:namespace "http://open-services.net/ns/core#"^^xsd:anyURI ;
-            sh:prefix "oslc" ],
-        [ sh:namespace "http://www.w3.org/2003/11/swrl#"^^xsd:anyURI ;
-            sh:prefix "swrl" ],
-        [ sh:namespace "http://qudt.org/schema/qudt/"^^xsd:anyURI ;
-            sh:prefix "qudt" ],
-        [ sh:namespace "https://vocab.org/vann/"^^xsd:anyURI ;
-            sh:prefix "vann" ],
-        [ sh:namespace "http://rdf.cdisc.org/mms#"^^xsd:anyURI ;
-            sh:prefix "cdisc" ],
-        [ sh:namespace "http://schema.org/"^^xsd:anyURI ;
-            sh:prefix "schema" ],
-        [ sh:namespace "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#"^^xsd:anyURI ;
-            sh:prefix "NCIT" ],
-        [ sh:namespace "http://www.w3.org/ns/shacl#"^^xsd:anyURI ;
-            sh:prefix "sh" ],
-        [ sh:namespace "http://purl.org/pav/"^^xsd:anyURI ;
-            sh:prefix "pav" ],
-        [ sh:namespace "http://semanticscience.org/resource/SIO_"^^xsd:anyURI ;
-            sh:prefix "SIO" ],
+        [ sh:namespace "http://www.w3.org/ns/prov#"^^xsd:anyURI ;
+            sh:prefix "prov" ],
         [ sh:namespace "https://w3id.org/linkml/"^^xsd:anyURI ;
             sh:prefix "linkml" ],
         [ sh:namespace "http://purl.org/linked-data/cube#"^^xsd:anyURI ;
             sh:prefix "qb" ],
+        [ sh:namespace "http://open-services.net/ns/core#"^^xsd:anyURI ;
+            sh:prefix "oslc" ],
+        [ sh:namespace "http://purl.org/pav/"^^xsd:anyURI ;
+            sh:prefix "pav" ],
+        [ sh:namespace "http://qudt.org/schema/qudt/"^^xsd:anyURI ;
+            sh:prefix "qudt" ],
+        [ sh:namespace "http://www.w3.org/2003/11/swrl#"^^xsd:anyURI ;
+            sh:prefix "swrl" ],
+        [ sh:namespace "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#"^^xsd:anyURI ;
+            sh:prefix "NCIT" ],
+        [ sh:namespace "http://www.w3.org/ns/shacl#"^^xsd:anyURI ;
+            sh:prefix "sh" ],
+        [ sh:namespace "http://semanticscience.org/resource/SIO_"^^xsd:anyURI ;
+            sh:prefix "SIO" ],
+        [ sh:namespace "http://rdf.cdisc.org/mms#"^^xsd:anyURI ;
+            sh:prefix "cdisc" ],
         [ sh:namespace "http://www.w3.org/2002/07/owl#"^^xsd:anyURI ;
             sh:prefix "owl" ],
         [ sh:namespace "http://www.geneontology.org/formats/oboInOwl#"^^xsd:anyURI ;
-            sh:prefix "OIO" ] ;
+            sh:prefix "OIO" ],
+        [ sh:namespace "https://vocab.org/vann/"^^xsd:anyURI ;
+            sh:prefix "vann" ],
+        [ sh:namespace "http://www.w3.org/2008/05/skos-xl#"^^xsd:anyURI ;
+            sh:prefix "skosxl" ],
+        [ sh:namespace "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
+            sh:prefix "bibo" ],
+        [ sh:namespace "http://schema.org/"^^xsd:anyURI ;
+            sh:prefix "schema" ] ;
     linkml:classes linkml:AltDescription,
         linkml:Annotatable,
         linkml:Annotation,
@@ -148,7 +148,7 @@ refer to the official URI for each construct, e.g.
         linkml:presence_enum,
         linkml:pv_formula_options,
         linkml:relational_role_enum ;
-    linkml:generation_date "2026-05-05T18:49:36"^^xsd:dateTime ;
+    linkml:generation_date "2026-07-27T16:30:46"^^xsd:dateTime ;
     linkml:id "https://w3id.org/linkml/meta"^^xsd:anyURI ;
     linkml:imports "linkml:annotations"^^xsd:anyURI,
         "linkml:extensions"^^xsd:anyURI,
@@ -283,6 +283,7 @@ refer to the official URI for each construct, e.g.
         linkml:is_class_field,
         linkml:is_direct,
         linkml:is_grouping_slot,
+        linkml:is_open,
         linkml:is_usage_slot,
         linkml:key,
         linkml:keywords,
@@ -429,8 +430,8 @@ refer to the official URI for each construct, e.g.
         linkml:values_from,
         linkml:version ;
     linkml:source_file "meta.yaml" ;
-    linkml:source_file_date "2026-05-05T16:16:44"^^xsd:dateTime ;
-    linkml:source_file_size 99888 ;
+    linkml:source_file_date "2026-07-27T16:17:57"^^xsd:dateTime ;
+    linkml:source_file_size 102848 ;
     linkml:subsets linkml:BasicSubset,
         linkml:MinimalSubset,
         linkml:ObjectOrientedProfile,
@@ -692,7 +693,7 @@ linkml:abbreviation a linkml:SlotDefinition ;
     skos:inScheme "https://w3id.org/linkml/units"^^xsd:anyURI ;
     skos:mappingRelation qudt:abbreviation ;
     linkml:definition_uri "https://w3id.org/linkml/abbreviation"^^xsd:anyURI ;
-    linkml:description "An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in  contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance  readability. When a power of a base unit needs to be expressed, such as squares this can be done using  abbreviations rather than symbols (source: qudt)" ;
+    linkml:description "An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of a base unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols (source: qudt)" ;
     linkml:domain_of linkml:UnitOfMeasure ;
     linkml:imported_from "linkml:units" ;
     linkml:owner linkml:UnitOfMeasure ;
@@ -1285,17 +1286,11 @@ Possible values:
     linkml:domain linkml:ClassDefinition ;
     linkml:domain_of linkml:ClassDefinition ;
     linkml:examples [ a linkml:Example ;
+            linkml:description "Allow all additional data" ;
+            linkml:object [ linkml:allowed true ] ],
+        [ a linkml:Example ;
             linkml:description "Allow additional data if they are instances of the class definition \"AClassDefinition\"" ;
             linkml:object [ linkml:range_expression [ linkml:range linkml:AClassDefinition ] ] ],
-        [ a linkml:Example ;
-            linkml:description """Allow additional data if they are integers.
-`required` is meaningless in this context and ignored, since by definition all "extra" slots are optional.
-""" ;
-            linkml:object [ linkml:range_expression [ linkml:range linkml:integer ;
-                            linkml:required true ] ] ],
-        [ a linkml:Example ;
-            linkml:description "Forbid any additional data" ;
-            linkml:object [ linkml:allowed false ] ],
         [ a linkml:Example ;
             linkml:description """Allow additional data if they are lists of integers of at most length 5.
 Note that this does *not* mean that a maximum of 5 extra slots are allowed.
@@ -1307,18 +1302,24 @@ Note that this does *not* mean that a maximum of 5 extra slots are allowed.
             linkml:description "Allow additional data that are strings" ;
             linkml:object [ linkml:range_expression [ linkml:range linkml:string ] ] ],
         [ a linkml:Example ;
+            linkml:description "allow additional data if they are either strings or integers" ;
+            linkml:object [ linkml:range_expression [ linkml:any_of [ linkml:range linkml:integer ],
+                                [ linkml:range linkml:string ] ] ] ],
+        [ a linkml:Example ;
             linkml:description """A semantically *invalid* use of `extra_slots`, as extra slots will be forbidden and the
 `anonymous_slot_expression` will be ignored.
 """ ;
             linkml:object [ linkml:allowed false ;
                     linkml:range_expression [ linkml:range linkml:string ] ] ],
         [ a linkml:Example ;
-            linkml:description "allow additional data if they are either strings or integers" ;
-            linkml:object [ linkml:range_expression [ linkml:any_of [ linkml:range linkml:integer ],
-                                [ linkml:range linkml:string ] ] ] ],
+            linkml:description "Forbid any additional data" ;
+            linkml:object [ linkml:allowed false ] ],
         [ a linkml:Example ;
-            linkml:description "Allow all additional data" ;
-            linkml:object [ linkml:allowed true ] ] ;
+            linkml:description """Allow additional data if they are integers.
+`required` is meaningless in this context and ignored, since by definition all "extra" slots are optional.
+""" ;
+            linkml:object [ linkml:range_expression [ linkml:range linkml:integer ;
+                            linkml:required true ] ] ] ;
     linkml:inlined true ;
     linkml:inlined_as_list true ;
     linkml:owner linkml:ClassDefinition ;
@@ -1413,19 +1414,23 @@ linkml:identifier a linkml:SlotDefinition ;
         linkml:RelationalModelProfile,
         linkml:SpecificationSubset ;
     rdfs:seeAlso "https://en.wikipedia.org/wiki/Identifier"^^xsd:anyURI,
+        "https://linkml.io/linkml/schemas/constraints.html#unique-keys"^^xsd:anyURI,
+        "https://linkml.io/linkml/schemas/inlining.html"^^xsd:anyURI,
+        "linkml:key"^^xsd:anyURI,
         "linkml:unique_keys"^^xsd:anyURI ;
     skos:altLabel "ID",
         "UID",
         "code",
         "primary key" ;
     skos:inScheme "https://w3id.org/linkml/meta"^^xsd:anyURI ;
-    skos:note "a given domain can have at most one identifier",
-        "a key slot is automatically required.  Identifiers cannot be optional",
-        "identifier is inherited",
-        "identifiers and keys are mutually exclusive.  A given domain cannot have both" ;
+    skos:note "A domain can have at most one identifier slot OR a key slot. However a domain can have both an identifier slot and any number of compound keys.",
+        "An identifier slot is automatically required. Identifiers cannot be optional.",
+        "The identifier slot is inherited.",
+        "The presence of an identifier slot makes a class eligible for being referenced rather than inlined.",
+        "The presence of an identifier slot makes a class eligible for inlining as a dictionary." ;
     sh:order 5 ;
     linkml:definition_uri "https://w3id.org/linkml/identifier"^^xsd:anyURI ;
-    linkml:description "True means that the key slot(s) uniquely identifies the elements. There can be at most one identifier or key per container" ;
+    linkml:description "True means that the slot is the identifier slot of its class. Such a slot uniquely identifies instances of the class throughout an entire document, meaning there cannot be two (or more) instances of the class (or instances of any of its descendants) with the same value for the identifier slot anywhere in the document." ;
     linkml:domain linkml:SlotDefinition ;
     linkml:domain_of linkml:SlotDefinition ;
     linkml:inherited true ;
@@ -1644,14 +1649,17 @@ linkml:key a linkml:SlotDefinition ;
     OIO:inSubset linkml:BasicSubset,
         linkml:RelationalModelProfile,
         linkml:SpecificationSubset ;
-    rdfs:seeAlso "linkml:unique_keys"^^xsd:anyURI ;
+    rdfs:seeAlso "https://linkml.io/linkml/schemas/constraints.html#singular-unique-keys"^^xsd:anyURI,
+        "https://linkml.io/linkml/schemas/inlining.html"^^xsd:anyURI,
+        "linkml:identifier"^^xsd:anyURI,
+        "linkml:unique_keys"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/linkml/meta"^^xsd:anyURI ;
-    skos:note "a given domain can have at most one key slot (restriction to be removed in the future)",
-        "a key slot is automatically required.  Keys cannot be optional",
-        "identifiers and keys are mutually exclusive.  A given domain cannot have both",
-        "key is inherited" ;
+    skos:note "A domain can have at most one key slot OR one identifier slot. However a domain can have both a key slot and any number of compound keys.",
+        "A key slot is automatically required. Singular unique keys cannot be optional.",
+        "The key slot is inherited.",
+        "The presence of a key slot makes a class eligible for inlining as a dictionary." ;
     linkml:definition_uri "https://w3id.org/linkml/key"^^xsd:anyURI ;
-    linkml:description "True means that the key slot(s) uniquely identify the elements within a single container" ;
+    linkml:description "True means that the slot is the \"singular unique key\" (also known more simply as the \"key slot\") of its class. Such a slot uniquely identifies instances of the class within a single container, meaning there cannot be two (or more) instances of the class (or instances of any of its descendants) with the same value for the key slot within the container." ;
     linkml:domain linkml:SlotDefinition ;
     linkml:domain_of linkml:SlotDefinition ;
     linkml:inherited true ;
@@ -1764,9 +1772,9 @@ linkml:maximum_number_dimensions a linkml:SlotDefinition ;
     skos:inScheme "https://w3id.org/linkml/meta"^^xsd:anyURI ;
     skos:note "maximum_number_dimensions cannot be less than minimum_number_dimensions" ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range linkml:boolean ],
+            linkml:range linkml:integer ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range linkml:integer ] ;
+            linkml:range linkml:boolean ] ;
     linkml:definition_uri "https://w3id.org/linkml/maximum_number_dimensions"^^xsd:anyURI ;
     linkml:description "maximum number of dimensions in the array, or False if explicitly no maximum. If this is unset, and an explicit list of dimensions are passed using dimensions, then this is interpreted as a closed list and the maximum_number_dimensions is the length of the dimensions list, unless this value is set to False" ;
     linkml:domain linkml:ArrayExpression ;
@@ -2903,11 +2911,15 @@ linkml:unique_keys a linkml:SlotDefinition ;
     OIO:inSubset linkml:BasicSubset,
         linkml:RelationalModelProfile,
         linkml:SpecificationSubset ;
-    rdfs:seeAlso "https://linkml.io/linkml/schemas/constraints.html#unique-key"^^xsd:anyURI ;
+    rdfs:seeAlso "https://linkml.io/linkml/schemas/constraints.html#unique-keys"^^xsd:anyURI,
+        "linkml:identifier"^^xsd:anyURI,
+        "linkml:key"^^xsd:anyURI ;
     skos:exactMatch owl:hasKey ;
     skos:inScheme "https://w3id.org/linkml/meta"^^xsd:anyURI ;
+    skos:note """Not to be confused with a "singular unique key", which is defined by means of the `key` slot, or with an "identifier", which is defined by means of the "identifier" slot. Compound keys, singular unique keys, and identifiers all create a unicity constraint, but singular unique keys and identifiers have additional effects that compound keys do not have.
+""" ;
     linkml:definition_uri "https://w3id.org/linkml/unique_keys"^^xsd:anyURI ;
-    linkml:description "A collection of named unique keys for this class. Unique keys may be singular or compound." ;
+    linkml:description "A collection of named unique keys for this class. Such unique keys may be spread over several slots, which is why there are also called \"compound keys\". A unique key uniquely identifies instances of the class within a given container, meaning there cannot be two (or more) instances of the class with the same values for all the slots that make up the unique key." ;
     linkml:domain linkml:ClassDefinition ;
     linkml:domain_of linkml:ClassDefinition ;
     linkml:inlined true ;
@@ -2991,6 +3003,7 @@ linkml:AnonymousEnumExpression a linkml:ClassDefinition ;
         linkml:concepts,
         linkml:include,
         linkml:inherits,
+        linkml:is_open,
         linkml:matches,
         linkml:minus,
         linkml:permissible_values,
@@ -3062,6 +3075,9 @@ linkml:extension_tag a linkml:SlotDefinition ;
 linkml:extension_value a linkml:SlotDefinition ;
     skos:inScheme "https://w3id.org/linkml/extensions"^^xsd:anyURI ;
     skos:prefLabel "value" ;
+    linkml:annotations [ a linkml:Annotation ;
+            skos:example true ;
+            linkml:tag linkml:simple_dict_value ] ;
     linkml:definition_uri "https://w3id.org/linkml/extension_value"^^xsd:anyURI ;
     linkml:description "the actual annotation" ;
     linkml:domain linkml:Extension ;
@@ -3150,20 +3166,6 @@ linkml:ucum_code a linkml:SlotDefinition ;
     linkml:recommended true ;
     linkml:required true ;
     linkml:slot_uri "http://qudt.org/schema/qudt/ucumCode"^^xsd:anyURI .
-
-linkml:Annotation a linkml:ClassDefinition ;
-    skos:inScheme "https://w3id.org/linkml/annotations"^^xsd:anyURI ;
-    linkml:class_uri "https://w3id.org/linkml/Annotation"^^xsd:anyURI ;
-    linkml:definition_uri "https://w3id.org/linkml/Annotation"^^xsd:anyURI ;
-    linkml:description "a tag/value pair with the semantics of OWL Annotation" ;
-    linkml:imported_from "linkml:annotations" ;
-    linkml:is_a linkml:Extension ;
-    linkml:mixins linkml:Annotatable ;
-    linkml:slot_usage [ ] ;
-    linkml:slots linkml:annotations,
-        linkml:extension_tag,
-        linkml:extension_value,
-        linkml:extensions .
 
 linkml:alias a linkml:SlotDefinition ;
     OIO:inSubset linkml:SpecificationSubset ;
@@ -3421,6 +3423,23 @@ linkml:inherits a linkml:SlotDefinition ;
     linkml:range linkml:EnumDefinition ;
     linkml:slot_uri "https://w3id.org/linkml/inherits"^^xsd:anyURI .
 
+linkml:is_open a linkml:SlotDefinition ;
+    bibo:status "testing"^^xsd:anyURI ;
+    OIO:inSubset linkml:SpecificationSubset ;
+    rdfs:seeAlso "https://github.com/linkml/linkml/issues/127"^^xsd:anyURI,
+        "https://github.com/linkml/linkml/pull/3712"^^xsd:anyURI,
+        "https://pages.nist.gov/metaschema/specification/syntax/constraints/#allow-other"^^xsd:anyURI ;
+    skos:inScheme "https://w3id.org/linkml/meta"^^xsd:anyURI ;
+    skos:note "An open enumeration is analogous to the `allow-other=\"yes\"` construct in the OSCAL Metamodel.",
+        "When an enum is open, the permissible value set is not exhaustive - they document the advised, recommended, or expected values but allow values outside the permissible set." ;
+    linkml:definition_uri "https://w3id.org/linkml/is_open"^^xsd:anyURI ;
+    linkml:description "Whether the enumeration is open, meaning that values outside of the set of permissible values are allowed. If true, the enumeration is open and data values that are not in the set of permissible values are permitted (though they SHOULD be drawn from the permissible values if available). If false (runtime default), the enumeration is closed and data values MUST be drawn from the set of permissible values." ;
+    linkml:domain linkml:EnumExpression ;
+    linkml:domain_of linkml:EnumExpression ;
+    linkml:owner linkml:EnumExpression ;
+    linkml:range linkml:boolean ;
+    linkml:slot_uri "https://w3id.org/linkml/is_open"^^xsd:anyURI .
+
 linkml:matches a linkml:SlotDefinition ;
     OIO:inSubset linkml:SpecificationSubset ;
     skos:inScheme "https://w3id.org/linkml/meta"^^xsd:anyURI ;
@@ -3669,6 +3688,20 @@ linkml:type_expression_none_of a linkml:SlotDefinition ;
     linkml:range linkml:AnonymousTypeExpression ;
     linkml:slot_uri "https://w3id.org/linkml/none_of"^^xsd:anyURI ;
     linkml:usage_slot_name "none_of" .
+
+linkml:Annotation a linkml:ClassDefinition ;
+    skos:inScheme "https://w3id.org/linkml/annotations"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/linkml/Annotation"^^xsd:anyURI ;
+    linkml:definition_uri "https://w3id.org/linkml/Annotation"^^xsd:anyURI ;
+    linkml:description "a tag/value pair with the semantics of OWL Annotation" ;
+    linkml:imported_from "linkml:annotations" ;
+    linkml:is_a linkml:Extension ;
+    linkml:mixins linkml:Annotatable ;
+    linkml:slot_usage [ ] ;
+    linkml:slots linkml:annotations,
+        linkml:extension_tag,
+        linkml:extension_value,
+        linkml:extensions .
 
 linkml:AnonymousTypeExpression a linkml:ClassDefinition ;
     skos:inScheme "https://w3id.org/linkml/meta"^^xsd:anyURI ;
@@ -4229,6 +4262,7 @@ linkml:EnumDefinition a linkml:ClassDefinition ;
         linkml:inherits,
         linkml:instantiates,
         linkml:is_a,
+        linkml:is_open,
         linkml:keywords,
         linkml:last_updated_on,
         linkml:local_names,
@@ -5339,16 +5373,16 @@ linkml:UnitOfMeasure a linkml:ClassDefinition ;
     skos:inScheme "https://w3id.org/linkml/units"^^xsd:anyURI ;
     skos:mappingRelation qudt:Unit ;
     linkml:any_of [ a linkml:AnonymousClassExpression ;
-            linkml:slot_conditions linkml:iec61360code ],
+            linkml:slot_conditions linkml:symbol ],
         [ a linkml:AnonymousClassExpression ;
             linkml:slot_conditions linkml:exact_mappings ],
         [ a linkml:AnonymousClassExpression ;
             linkml:slot_conditions linkml:ucum_code ],
         [ a linkml:AnonymousClassExpression ;
-            linkml:slot_conditions linkml:symbol ] ;
+            linkml:slot_conditions linkml:iec61360code ] ;
     linkml:class_uri "http://qudt.org/schema/qudt/Unit"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/linkml/UnitOfMeasure"^^xsd:anyURI ;
-    linkml:description "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for  measuring other quantities the same kind (more generally of equivalent dimension)." ;
+    linkml:description "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension)." ;
     linkml:imported_from "linkml:units" ;
     linkml:slot_usage [ ] ;
     linkml:slots linkml:UnitOfMeasure_exact_mappings,
@@ -6084,6 +6118,7 @@ linkml:EnumExpression a linkml:ClassDefinition ;
         linkml:concepts,
         linkml:include,
         linkml:inherits,
+        linkml:is_open,
         linkml:matches,
         linkml:minus,
         linkml:permissible_values,
@@ -6678,3 +6713,4 @@ linkml:SlotDefinition a linkml:ClassDefinition ;
         linkml:usage_slot_name,
         linkml:value_presence,
         linkml:values_from .
+

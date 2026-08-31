@@ -1,5 +1,5 @@
 # Auto generated from datasets.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-05-05T18:49:10
+# Generation date: 2026-07-27T16:30:15
 # Schema: datasets
 #
 # id: https://w3id.org/linkml/datasets
@@ -54,7 +54,7 @@ from rdflib import (
 from .types import Datetime, Integer, String, Uri, Uriorcurie
 from linkml_runtime.utils.metamodelcore import URI, URIorCURIE, XSDDateTime
 
-metamodel_version = "1.7.0"
+metamodel_version = "1.11.0"
 version = None
 
 # Namespaces
@@ -570,3 +570,4 @@ slots.formatDialect__header = Slot(uri=DATASETS.header, name="formatDialect__hea
 
 slots.formatDialect__quote_char = Slot(uri=DATASETS.quote_char, name="formatDialect__quote_char", curie=DATASETS.curie('quote_char'),
                    model_uri=DATASETS.formatDialect__quote_char, domain=None, range=Optional[str])
+

@@ -1,0 +1,163 @@
+id: https://w3id.org/linkml/examples/open-enums
+title: Open Enums Example
+name: openenums-example
+description: |-
+  This demonstrates the use of open enumerations via the `is_open` slot on
+  enum expressions.
+
+  An open enumeration (`is_open: true`) permits data values outside of the set
+  of permissible values; the permissible values are advisory, documenting the
+  recommended or expected values. A closed enumeration (`is_open: false`, the
+  runtime default) requires that data values are drawn from the set of
+  permissible values.
+
+  `is_open` is a slot on `enum_expression`, so it can be used on named enums
+  (`enum_definition`) as well as on anonymous enum expressions, such as those
+  appearing under `enum_range`, `any_of`, or in `slot_usage`.
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  ex: https://w3id.org/linkml/examples/open-enums/
+  bioregistry: https://bioregistry.io/registry/
+  MONDO: http://purl.obolibrary.org/obo/MONDO_
+
+default_prefix: ex
+default_range: string
+
+imports:
+  - linkml:types
+
+#==================================
+# Classes                         #
+#==================================
+
+classes:
+  Person:
+    slots:
+      - name
+      - job_title
+      - marital_status
+      - eye_color
+      - primary_language
+      - diagnosis
+
+  Researcher:
+    is_a: Person
+    slot_usage:
+      job_title:
+        description: >-
+          Researchers may hold titles that are not in the advisory list; the
+          anonymous enum expression is open.
+        range: JobTitleEnum
+      marital_status:
+        description: >-
+          Narrowing an open enum to a closed anonymous enum expression.
+        enum_range:
+          is_open: false
+          permissible_values:
+            SINGLE:
+            MARRIED:
+
+#==================================
+# Slots                           #
+#==================================
+
+slots:
+  name:
+    range: string
+
+  job_title:
+    description: An open enum - any string is permitted
+    range: JobTitleEnum
+
+  marital_status:
+    description: A closed enum - values must be drawn from the permissible values
+    range: MaritalStatusEnum
+
+  eye_color:
+    description: An anonymous, inlined open enum expression
+    enum_range:
+      is_open: true
+      permissible_values:
+        BLUE:
+        BROWN:
+        GREEN:
+
+  primary_language:
+    description: An anonymous enum expression that does not declare is_open (defaults to closed)
+    enum_range:
+      permissible_values:
+        EN:
+        FR:
+        DE:
+
+  diagnosis:
+    description: An open dynamic enum
+    range: HumanDiseaseEnum
+
+#==================================
+# Enums                            #
+#==================================
+
+enums:
+  JobTitleEnum:
+    description: >-
+      An open enumeration. The permissible values document the expected job
+      titles, but other values are permitted.
+    is_open: true
+    comments:
+      - Analogous to allow-other="yes" in the OSCAL Metamodel
+    permissible_values:
+      RESEARCH_SCIENTIST:
+      SOFTWARE_ENGINEER:
+      DATA_STEWARD:
+
+  MaritalStatusEnum:
+    description: >-
+      A closed enumeration, stated explicitly. Values MUST be drawn from the
+      permissible values.
+    is_open: false
+    permissible_values:
+      SINGLE:
+      MARRIED:
+      DIVORCED:
+      WIDOWED:
+
+  DefaultedEnum:
+    description: >-
+      An enumeration that does not declare is_open; the runtime default is
+      closed.
+    permissible_values:
+      YES:
+      NO:
+
+  HumanDiseaseEnum:
+    description: >-
+      An open dynamic enum - the reachable_from expression seeds the advisory
+      value set, but values outside of it are permitted.
+    is_open: true
+    reachable_from:
+      source_ontology: bioregistry:mondo
+      source_nodes:
+        - MONDO:0000001 ## disease or disorder
+      is_direct: false
+      relationship_types:
+        - rdfs:subClassOf
+
+  InheritedOpenEnum:
+    description: >-
+      Composition of enum expressions where the outer expression is open and a
+      composed expression is closed.
+    is_open: true
+    inherits:
+      - JobTitleEnum
+    include:
+      - is_open: false
+        permissible_values:
+          PRINCIPAL_INVESTIGATOR:
+          POSTDOC:
+    minus:
+      - permissible_values:
+          DATA_STEWARD:
+            description: Example of excluding a single advisory value
