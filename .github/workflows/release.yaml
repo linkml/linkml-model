@@ -18,13 +18,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7.0.0
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v6.3.0
+      - uses: actions/setup-python@v7.0.0
         with:
           python-version: "3.13"
-      - uses: astral-sh/setup-uv@v8.2.0
+      - uses: astral-sh/setup-uv@v9.0.0
         with:
           version: ${{ env.UV_VERSION }}
       - name: Build source and wheel archives
@@ -49,7 +49,7 @@ jobs:
         with:
           name: distribution-files
           path: dist
-      - uses: pypa/gh-action-pypi-publish@v1.14.0
+      - uses: pypa/gh-action-pypi-publish@v1.14.2
         with:
           verbose: true
 
@@ -59,13 +59,13 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v7.0.0
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v6.3.0
+      - uses: actions/setup-python@v7.0.0
         with:
           python-version: "3.13"
-      - uses: astral-sh/setup-uv@v8.2.0
+      - uses: astral-sh/setup-uv@v9.0.0
         with:
           version: ${{ env.UV_VERSION }}
       - name: Install dependencies

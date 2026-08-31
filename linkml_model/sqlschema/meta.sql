@@ -490,7 +490,7 @@
 --     * Slot: id
 -- # Class: anonymous_class_expression
 --     * Slot: id
---     * Slot: is_a Description: A primary parent class or slot from which inheritable metaslots are propagated from. While multiple inheritance is not allowed, mixins can be provided effectively providing the same thing. The semantics are the same when translated to formalisms that allow MI (e.g. RDFS/OWL). When translating to a SI framework (e.g. java classes, python classes) then is a is used. When translating a framework without polymorphism (e.g. json-schema, solr document schema) then is a and mixins are recursively unfolded
+--     * Slot: is_a Description: A class that any instance satisfying this expression must also be an instance of
 --     * Slot: description Description: a textual description of the element's purpose and use
 --     * Slot: title Description: A concise human-readable display label for the element. The title should mirror the name, and should use ordinary textual punctuation.
 --     * Slot: deprecated Description: Description of why and when this element will no longer be used
@@ -2661,7 +2661,7 @@ CREATE TABLE anonymous_class_expression (
 	rank INTEGER,
 	class_definition_name TEXT,
 	PRIMARY KEY (id),
-	FOREIGN KEY(is_a) REFERENCES definition (name),
+	FOREIGN KEY(is_a) REFERENCES class_definition (name),
 	FOREIGN KEY(class_definition_name) REFERENCES class_definition (name)
 );
 CREATE INDEX ix_anonymous_class_expression_id ON anonymous_class_expression (id);
@@ -3026,11 +3026,11 @@ CREATE TABLE setting (
 	FOREIGN KEY(import_expression_id) REFERENCES import_expression (id)
 );
 CREATE INDEX ix_setting_setting_key ON setting (setting_key);
-CREATE INDEX ix_setting_import_expression_id ON setting (import_expression_id);
-CREATE INDEX ix_setting_schema_definition_name ON setting (schema_definition_name);
-CREATE INDEX ix_setting_setting_value ON setting (setting_value);
 CREATE INDEX setting_schema_definition_name_setting_key_idx ON setting (schema_definition_name, setting_key);
+CREATE INDEX ix_setting_schema_definition_name ON setting (schema_definition_name);
 CREATE INDEX setting_import_expression_id_setting_key_idx ON setting (import_expression_id, setting_key);
+CREATE INDEX ix_setting_import_expression_id ON setting (import_expression_id);
+CREATE INDEX ix_setting_setting_value ON setting (setting_value);
 
 CREATE TABLE prefix (
 	prefix_prefix TEXT NOT NULL,
@@ -3040,8 +3040,8 @@ CREATE TABLE prefix (
 	UNIQUE (schema_definition_name, prefix_prefix),
 	FOREIGN KEY(schema_definition_name) REFERENCES schema_definition (name)
 );
-CREATE INDEX ix_prefix_schema_definition_name ON prefix (schema_definition_name);
 CREATE INDEX ix_prefix_prefix_reference ON prefix (prefix_reference);
+CREATE INDEX ix_prefix_schema_definition_name ON prefix (schema_definition_name);
 CREATE INDEX prefix_schema_definition_name_prefix_prefix_idx ON prefix (schema_definition_name, prefix_prefix);
 CREATE INDEX ix_prefix_prefix_prefix ON prefix (prefix_prefix);
 
@@ -7573,6 +7573,7 @@ CREATE INDEX ix_alt_description_source ON alt_description (source);
 CREATE INDEX ix_alt_description_unique_key_unique_key_name ON alt_description (unique_key_unique_key_name);
 CREATE INDEX ix_alt_description_subset_definition_name ON alt_description (subset_definition_name);
 CREATE INDEX alt_description_element_name_source_idx ON alt_description (element_name, source);
+CREATE INDEX alt_description_anonymous_class_expression_id_source_idx ON alt_description (anonymous_class_expression_id, source);
 CREATE INDEX alt_description_class_definition_name_source_idx ON alt_description (class_definition_name, source);
 CREATE INDEX ix_alt_description_dimension_expression_id ON alt_description (dimension_expression_id);
 CREATE INDEX alt_description_schema_definition_name_source_idx ON alt_description (schema_definition_name, source);
@@ -7589,7 +7590,6 @@ CREATE INDEX alt_description_dimension_expression_id_source_idx ON alt_descripti
 CREATE INDEX ix_alt_description_pattern_expression_id ON alt_description (pattern_expression_id);
 CREATE INDEX alt_description_definition_name_source_idx ON alt_description (definition_name, source);
 CREATE INDEX alt_description_pattern_expression_id_source_idx ON alt_description (pattern_expression_id, source);
-CREATE INDEX ix_alt_description_common_metadata_id ON alt_description (common_metadata_id);
 CREATE INDEX ix_alt_description_class_definition_name ON alt_description (class_definition_name);
 CREATE INDEX ix_alt_description_element_name ON alt_description (element_name);
 CREATE INDEX alt_description_enum_definition_name_source_idx ON alt_description (enum_definition_name, source);
@@ -7602,9 +7602,9 @@ CREATE INDEX ix_alt_description_import_expression_id ON alt_description (import_
 CREATE INDEX alt_description_structured_alias_id_source_idx ON alt_description (structured_alias_id, source);
 CREATE INDEX alt_description_unique_key_unique_key_name_source_idx ON alt_description (unique_key_unique_key_name, source);
 CREATE INDEX ix_alt_description_class_rule_id ON alt_description (class_rule_id);
+CREATE INDEX ix_alt_description_common_metadata_id ON alt_description (common_metadata_id);
 CREATE INDEX ix_alt_description_schema_definition_name ON alt_description (schema_definition_name);
 CREATE INDEX alt_description_anonymous_expression_id_source_idx ON alt_description (anonymous_expression_id, source);
-CREATE INDEX alt_description_anonymous_class_expression_id_source_idx ON alt_description (anonymous_class_expression_id, source);
 CREATE INDEX ix_alt_description_anonymous_slot_expression_id ON alt_description (anonymous_slot_expression_id);
 CREATE INDEX alt_description_type_mapping_framework_source_idx ON alt_description (type_mapping_framework, source);
 CREATE INDEX ix_alt_description_enum_binding_id ON alt_description (enum_binding_id);
@@ -7703,7 +7703,6 @@ CREATE INDEX annotation_definition_name_tag_idx ON annotation (definition_name, 
 CREATE INDEX ix_annotation_class_rule_id ON annotation (class_rule_id);
 CREATE INDEX annotation_pattern_expression_id_tag_idx ON annotation (pattern_expression_id, tag);
 CREATE INDEX annotation_enum_definition_name_tag_idx ON annotation (enum_definition_name, tag);
-CREATE INDEX annotation_array_expression_id_tag_idx ON annotation (array_expression_id, tag);
 CREATE INDEX ix_annotation_anonymous_slot_expression_id ON annotation (anonymous_slot_expression_id);
 CREATE INDEX annotation_import_expression_id_tag_idx ON annotation (import_expression_id, tag);
 CREATE INDEX ix_annotation_annotation_tag ON annotation (annotation_tag);
@@ -7717,7 +7716,7 @@ CREATE INDEX annotation_unique_key_unique_key_name_tag_idx ON annotation (unique
 CREATE INDEX ix_annotation_type_definition_name ON annotation (type_definition_name);
 CREATE INDEX annotation_anonymous_expression_id_tag_idx ON annotation (anonymous_expression_id, tag);
 CREATE INDEX ix_annotation_slot_definition_name ON annotation (slot_definition_name);
-CREATE INDEX annotation_subset_definition_name_tag_idx ON annotation (subset_definition_name, tag);
+CREATE INDEX annotation_array_expression_id_tag_idx ON annotation (array_expression_id, tag);
 CREATE INDEX annotation_type_mapping_framework_tag_idx ON annotation (type_mapping_framework, tag);
 CREATE INDEX ix_annotation_value_id ON annotation (value_id);
 CREATE INDEX ix_annotation_structured_alias_id ON annotation (structured_alias_id);
@@ -7730,6 +7729,7 @@ CREATE INDEX annotation_annotation_tag_tag_idx ON annotation (annotation_tag, ta
 CREATE INDEX ix_annotation_subset_definition_name ON annotation (subset_definition_name);
 CREATE INDEX annotation_slot_definition_name_tag_idx ON annotation (slot_definition_name, tag);
 CREATE INDEX ix_annotation_anonymous_class_expression_id ON annotation (anonymous_class_expression_id);
+CREATE INDEX annotation_subset_definition_name_tag_idx ON annotation (subset_definition_name, tag);
 CREATE INDEX ix_annotation_anonymous_expression_id ON annotation (anonymous_expression_id);
 CREATE INDEX annotation_anonymous_class_expression_id_tag_idx ON annotation (anonymous_class_expression_id, tag);
 CREATE INDEX ix_annotation_definition_name ON annotation (definition_name);

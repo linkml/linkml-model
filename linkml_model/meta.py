@@ -1,5 +1,5 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-27T16:30:19
+# Generation date: 2026-08-31T23:36:32
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -2626,7 +2626,7 @@ class AnonymousClassExpression(AnonymousExpression):
     class_name: ClassVar[str] = "anonymous_class_expression"
     class_model_uri: ClassVar[URIRef] = LINKML.AnonymousClassExpression
 
-    is_a: Optional[Union[str, DefinitionName]] = None
+    is_a: Optional[Union[str, ClassDefinitionName]] = None
     any_of: Optional[Union[Union[dict, "AnonymousClassExpression"], list[Union[dict, "AnonymousClassExpression"]]]] = empty_list()
     exactly_one_of: Optional[Union[Union[dict, "AnonymousClassExpression"], list[Union[dict, "AnonymousClassExpression"]]]] = empty_list()
     none_of: Optional[Union[Union[dict, "AnonymousClassExpression"], list[Union[dict, "AnonymousClassExpression"]]]] = empty_list()
@@ -2634,8 +2634,8 @@ class AnonymousClassExpression(AnonymousExpression):
     slot_conditions: Optional[Union[dict[Union[str, SlotDefinitionName], Union[dict, SlotDefinition]], list[Union[dict, SlotDefinition]]]] = empty_dict()
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.is_a is not None and not isinstance(self.is_a, DefinitionName):
-            self.is_a = DefinitionName(self.is_a)
+        if self.is_a is not None and not isinstance(self.is_a, ClassDefinitionName):
+            self.is_a = ClassDefinitionName(self.is_a)
 
         if not isinstance(self.any_of, list):
             self.any_of = [self.any_of] if self.any_of is not None else []
@@ -5311,6 +5311,9 @@ slots.class_expression_exactly_one_of = Slot(uri=LINKML.exactly_one_of, name="cl
 
 slots.class_expression_none_of = Slot(uri=LINKML.none_of, name="class_expression_none_of", curie=LINKML.curie('none_of'),
                    model_uri=LINKML.class_expression_none_of, domain=None, range=Optional[Union[Union[dict, "AnonymousClassExpression"], list[Union[dict, "AnonymousClassExpression"]]]])
+
+slots.anonymous_class_expression_is_a = Slot(uri=LINKML.is_a, name="anonymous_class_expression_is_a", curie=LINKML.curie('is_a'),
+                   model_uri=LINKML.anonymous_class_expression_is_a, domain=AnonymousClassExpression, range=Optional[Union[str, ClassDefinitionName]])
 
 slots.class_definition_is_a = Slot(uri=LINKML.is_a, name="class_definition_is_a", curie=LINKML.curie('is_a'),
                    model_uri=LINKML.class_definition_is_a, domain=ClassDefinition, range=Optional[Union[str, ClassDefinitionName]])

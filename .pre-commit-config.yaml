@@ -6,14 +6,13 @@ default_language_version:
 # LinkML generators, which emit trailing whitespace and inconsistent final
 # newlines (e.g. the bare "// " comment line in protobuf/meta.proto). Native
 # sources stay covered: model/schema/, model/docs/, linkml_files.py, etc.
-# Note: Keep the two exclude patterns in sync.
 
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v6.0.0
   hooks:
   - id: end-of-file-fixer
-    exclude: |
+    exclude: &generated-artefacts |
       (?x)^linkml_model/(
         (excel|graphql|jsonld|jsonschema|owl|prefixmap|protobuf|rdf|shacl|shex|sqlddl|sqlschema)/
         |(annotations|array|datasets|extensions|mappings|meta|types|units|validation)\.py$
@@ -21,11 +20,7 @@ repos:
   - id: check-yaml
   - id: check-toml
   - id: trailing-whitespace
-    exclude: |
-      (?x)^linkml_model/(
-        (excel|graphql|jsonld|jsonschema|owl|prefixmap|protobuf|rdf|shacl|shex|sqlddl|sqlschema)/
-        |(annotations|array|datasets|extensions|mappings|meta|types|units|validation)\.py$
-      )
+    exclude: *generated-artefacts
 
 - repo: https://github.com/codespell-project/codespell
   rev: v2.4.1
