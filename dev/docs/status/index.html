@@ -1027,7 +1027,7 @@
 <h1 id="slot-status">Slot: status</h1>
 <p><em>status of the element</em></p>
 <div>
-<p>URI: <a href="http://purl.org/ontology/bibo/status">bibo:status</a></p>
+<p>URI: <a href="https://w3id.org/linkml/status">linkml:status</a></p>
 <!-- no inheritance hierarchy -->
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
@@ -1168,7 +1168,7 @@
 <tbody>
 <tr>
 <td>Range</td>
-<td><a href="../Uriorcurie/">Uriorcurie</a></td>
+<td><a href="../String/">String</a></td>
 </tr>
 <tr>
 <td>Domain</td>
@@ -1177,10 +1177,6 @@
 <tr>
 <td>Domain Of</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
-</tr>
-<tr>
-<td>Slot URI</td>
-<td><a href="http://purl.org/ontology/bibo/status">bibo:status</a></td>
 </tr>
 </tbody>
 </table>
@@ -1216,7 +1212,10 @@
 </thead>
 <tbody>
 <tr>
-<td>bibo:draft</td>
+<td>testing</td>
+</tr>
+<tr>
+<td>unstable</td>
 </tr>
 </tbody>
 </table>
@@ -1241,11 +1240,15 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>bibo:status</td>
+<td>linkml:status</td>
 </tr>
 <tr>
 <td>native</td>
 <td>linkml:status</td>
+</tr>
+<tr>
+<td>close</td>
+<td>bibo:status</td>
 </tr>
 </tbody>
 </table>
@@ -1255,7 +1258,8 @@
 <pre><code class="language-yaml">name: status
 description: status of the element
 examples:
-- value: bibo:draft
+- value: testing
+- value: unstable
 in_subset:
 - BasicSubset
 from_schema: https://w3id.org/linkml/meta
@@ -1264,12 +1268,13 @@ see_also:
 - https://www.hl7.org/fhir/versions.html#std-process
 aliases:
 - workflow status
+close_mappings:
+- bibo:status
 rank: 1000
 domain: element
-slot_uri: bibo:status
 domain_of:
 - common_metadata
-range: uriorcurie
+range: string
 
 </code></pre>
 

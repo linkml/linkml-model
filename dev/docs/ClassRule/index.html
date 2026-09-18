@@ -937,7 +937,7 @@
 </tr>
 <tr>
 <td><a href="../status/">status</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>status of the element</td>
 <td><a href="../CommonMetadata/">CommonMetadata</a></td>
 </tr>
@@ -1663,7 +1663,8 @@ attributes:
     name: status
     description: status of the element
     examples:
-    - value: bibo:draft
+    - value: testing
+    - value: unstable
     in_subset:
     - BasicSubset
     from_schema: https://w3id.org/linkml/meta
@@ -1672,13 +1673,14 @@ attributes:
     - https://www.hl7.org/fhir/versions.html#std-process
     aliases:
     - workflow status
+    close_mappings:
+    - bibo:status
     rank: 1000
     domain: element
-    slot_uri: bibo:status
     owner: class_rule
     domain_of:
     - common_metadata
-    range: uriorcurie
+    range: string
   categories:
     name: categories
     description: Controlled terms used to categorize an element.
