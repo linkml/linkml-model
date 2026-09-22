@@ -41,8 +41,12 @@ Documentation = "https://linkml.io/linkml-model/docs/"
 # expected to become the next linkml release. Dev-side only -- uv strips sources
 # from built metadata, so the published wheel carries project.dependencies as-is.
 # Replace with the released versions before cutting the final release.
-linkml = { git = "https://github.com/linkml/linkml", rev = "063d4665f", subdirectory = "packages/linkml" }
-linkml-runtime = { git = "https://github.com/linkml/linkml", rev = "063d4665f", subdirectory = "packages/linkml_runtime" }
+#
+# Currently linkml/linkml#4021, which restores the metamodel's closed-by-default
+# semantics in jsonschemagen (linkml/linkml#4018). Without it meta.schema.json
+# publishes with every class open. Re-pin to main once that merges.
+linkml = { git = "https://github.com/linkml/linkml", rev = "e53325aa2", subdirectory = "packages/linkml" }
+linkml-runtime = { git = "https://github.com/linkml/linkml", rev = "e53325aa2", subdirectory = "packages/linkml_runtime" }
 
 [tool.uv-dynamic-versioning]
 vcs = "git"
