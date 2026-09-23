@@ -1934,11 +1934,49 @@ slots:
     range: boolean
     inherited: true
     description: >-
-      True means that the key slot(s) is used to determine the instantiation (types) relation between objects and a ClassDefinition
+      True makes the slot the "type designator slot" for its class. A type designator slot is used to determine the runtime type
+      of an object.
+
+      When the type designator slot is present in an object, its value MUST match either the name, the URI, or the CURIE
+      (depending on the range of the slot) of a known subclass of the class in which the type designator slot is defined (or that
+      class itself).
+    comments:
+      - >-
+        The constraint that the value of the type designator must designate a known subclass can be relaxed by also marking the
+        slot with `allow_unknown_designator`.
+      - Multi-valued type designator slots are theoretically possible, but they should be considered unsupported.
     in_subset:
       - SpecificationSubset
     see_also:
       - https://linkml.io/linkml/schemas/type-designators.html
+      - linkml:allow_unknown_designator
+
+  allow_unknown_designator:
+    domain: slot_definition
+    range: boolean
+    inherited: true
+    description: >-
+      True means that the value of the type designator slot in a given object MAY refer to an unknown class, in which case
+      (i) the object should be assumed to be an instance of the base class (the class in which the type designator slot is
+      defined), and (ii) the value of the type designator slot should be preserved as it is.
+    comments:
+      - This slot only makes sense for a slot that is a type designator slot.
+      - >-
+        Setting this slot to True only makes sense if the base class is NOT abstract; if the base class is abstract, then by
+        definition it cannot be instantiated, so an object cannot be assumed to be an instance of the base class.
+      - >-
+        This slot is intended to allow a schema to be extended by another schema (that could add new subclasses to the original
+        base class) while ensuring that data conformant to the extended schema can still be considered valid against the original
+        schema.
+      - >-
+        In most cases, schema authors will want to make sure that the base class is configured to allow "extra slots", so that
+        any slot defined by an unknown subclass can be accepted without triggering an error.
+    in_subset:
+      - SpecificationSubset
+    see_also:
+      - https://linkml.io/linkml/schemas/type-designators.html
+      - linkml:designates_type
+      - linkml:extra_slots
 
   alias:
     rank: 6
