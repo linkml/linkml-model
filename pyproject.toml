@@ -27,14 +27,25 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
 ]
 dependencies = [
-    "linkml-runtime==1.11.1,<2",
-    "linkml==1.11.1",
+    "linkml-runtime>=1.11.0,<2",
+    "linkml>=1.11.0,<2",
 ]
 
 [project.urls]
 Homepage = "https://linkml.io/"
 Repository = "https://github.com/linkml/linkml-model/"
 Documentation = "https://linkml.io/linkml-model/docs/"
+
+[tool.uv.sources]
+# Release-prep pin: generate this rc's artifacts with the linkml commit that is
+# expected to become the next linkml release. Dev-side only -- uv strips sources
+# from built metadata, so the published wheel carries project.dependencies as-is.
+# Replace with the released versions before cutting the final release.
+#
+# Currently linkml main as of the linkml/linkml#4021 merge, which restores the
+# metamodel's closed-by-default semantics in jsonschemagen (linkml/linkml#4018).
+linkml = { git = "https://github.com/linkml/linkml", rev = "b07d0a0fd", subdirectory = "packages/linkml" }
+linkml-runtime = { git = "https://github.com/linkml/linkml", rev = "b07d0a0fd", subdirectory = "packages/linkml_runtime" }
 
 [tool.uv-dynamic-versioning]
 vcs = "git"
@@ -49,8 +60,8 @@ packages = ["linkml_model"]
 
 [dependency-groups]
 dev = [
-    "linkml==1.11.1",
-    "linkml-runtime==1.11.1",
+    "linkml>=1.11.0,<2",
+    "linkml-runtime>=1.11.0,<2",
     "codespell>=2.2.5",
     "yamllint>=1.32.0",
     "pytest>=7.0",
