@@ -52,7 +52,7 @@ message AnonymousClassExpression
   integer rank = 51
  repeated  uriorcurie categories = 0
  repeated  string keywords = 0
-  definition isA = 11
+  classDefinition isA = 11
  repeated  anonymousClassExpression anyOf = 101
  repeated  anonymousClassExpression exactlyOneOf = 103
  repeated  anonymousClassExpression noneOf = 105
@@ -67,6 +67,7 @@ message AnonymousEnumExpression
   string codeSetVersion = 0
   pvFormulaOptions pvFormula = 0
  repeated  permissibleValue permissibleValues = 0
+  boolean isOpen = 0
  repeated  anonymousEnumExpression include = 0
  repeated  anonymousEnumExpression minus = 0
  repeated  enumDefinition inherits = 0
@@ -468,6 +469,7 @@ message EnumDefinition
   string codeSetVersion = 0
   pvFormulaOptions pvFormula = 0
  repeated  permissibleValue permissibleValues = 0
+  boolean isOpen = 0
  repeated  anonymousEnumExpression include = 0
  repeated  anonymousEnumExpression minus = 0
  repeated  enumDefinition inherits = 0
@@ -483,6 +485,7 @@ message EnumExpression
   string codeSetVersion = 0
   pvFormulaOptions pvFormula = 0
  repeated  permissibleValue permissibleValues = 0
+  boolean isOpen = 0
  repeated  anonymousEnumExpression include = 0
  repeated  anonymousEnumExpression minus = 0
  repeated  enumDefinition inherits = 0
