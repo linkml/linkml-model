@@ -5,3 +5,6 @@ generator_args:
 excludes:
   - markdown  # gen-doc is run separately
   - python    # gen-python is run separately for each source YAML file
+  - java      # javagen joined gen-project's defaults; linkml-model has never
+              # shipped Java artifacts and nothing can address them (Format has
+              # no JAVA member, and the w3id rewrite rules mirror that list)
