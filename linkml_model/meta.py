@@ -106,6 +106,7 @@ SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
 SKOSXL = CurieNamespace('skosxl', 'http://www.w3.org/2008/05/skos-xl#')
 SWRL = CurieNamespace('swrl', 'http://www.w3.org/2003/11/swrl#')
 VANN = CurieNamespace('vann', 'https://vocab.org/vann/')
+VS = CurieNamespace('vs', 'http://www.w3.org/2003/06/sw-vocab-status/ns#')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
 DEFAULT_ = LINKML
 
@@ -4662,7 +4663,7 @@ slots.last_updated_on = Slot(uri=PAV.lastUpdatedOn, name="last_updated_on", curi
 slots.modified_by = Slot(uri=OSLC.modifiedBy, name="modified_by", curie=OSLC.curie('modifiedBy'),
                    model_uri=LINKML.modified_by, domain=Element, range=Optional[Union[str, URIorCURIE]])
 
-slots.status = Slot(uri=LINKML.status, name="status", curie=LINKML.curie('status'),
+slots.status = Slot(uri=VS.term_status, name="status", curie=VS.curie('term_status'),
                    model_uri=LINKML.status, domain=Element, range=Optional[str])
 
 slots.literal_form = Slot(uri=SKOSXL.literalForm, name="literal_form", curie=SKOSXL.curie('literalForm'),
