@@ -9,8 +9,8 @@
 @prefix linkml: <https://w3id.org/linkml/> .
 @prefix schema1: <http://schema.org/> .
 linkml:Annotatable a linkml:ClassDefinition ;
-	skos:exactMatch linkml:Annotatable ;
 	skos:inScheme "https://w3id.org/linkml/annotations"^^xsd:anyURI ;
+	linkml:class_uri "https://w3id.org/linkml/Annotatable"^^xsd:anyURI ;
 	linkml:definition_uri "https://w3id.org/linkml/Annotatable"^^xsd:anyURI ;
 	linkml:description "mixin for classes that support annotations" ;
 	linkml:imported_from "linkml:annotations" ;
@@ -18,8 +18,8 @@ linkml:Annotatable a linkml:ClassDefinition ;
 	linkml:slot_usage _:c14n3 ;
 	linkml:slots linkml:annotations .
 linkml:Annotation a linkml:ClassDefinition ;
-	skos:exactMatch linkml:Annotation ;
 	skos:inScheme "https://w3id.org/linkml/annotations"^^xsd:anyURI ;
+	linkml:class_uri "https://w3id.org/linkml/Annotation"^^xsd:anyURI ;
 	linkml:definition_uri "https://w3id.org/linkml/Annotation"^^xsd:anyURI ;
 	linkml:description "a tag/value pair with the semantics of OWL Annotation" ;
 	linkml:imported_from "linkml:annotations" ;
@@ -30,12 +30,13 @@ linkml:Annotation a linkml:ClassDefinition ;
 linkml:AnyValue a linkml:ClassDefinition ;
 	skos:exactMatch linkml:Any ;
 	skos:inScheme "https://w3id.org/linkml/extensions"^^xsd:anyURI ;
+	linkml:class_uri "https://w3id.org/linkml/Any"^^xsd:anyURI ;
 	linkml:definition_uri "https://w3id.org/linkml/AnyValue"^^xsd:anyURI ;
 	linkml:imported_from "linkml:extensions" ;
 	linkml:slot_usage _:c14n4 .
 linkml:Extensible a linkml:ClassDefinition ;
-	skos:exactMatch linkml:Extensible ;
 	skos:inScheme "https://w3id.org/linkml/extensions"^^xsd:anyURI ;
+	linkml:class_uri "https://w3id.org/linkml/Extensible"^^xsd:anyURI ;
 	linkml:definition_uri "https://w3id.org/linkml/Extensible"^^xsd:anyURI ;
 	linkml:description "mixin for classes that support extension" ;
 	linkml:imported_from "linkml:extensions" ;
@@ -43,8 +44,8 @@ linkml:Extensible a linkml:ClassDefinition ;
 	linkml:slot_usage _:c14n10 ;
 	linkml:slots linkml:extensions .
 linkml:Extension a linkml:ClassDefinition ;
-	skos:exactMatch linkml:Extension ;
 	skos:inScheme "https://w3id.org/linkml/extensions"^^xsd:anyURI ;
+	linkml:class_uri "https://w3id.org/linkml/Extension"^^xsd:anyURI ;
 	linkml:definition_uri "https://w3id.org/linkml/Extension"^^xsd:anyURI ;
 	linkml:description "a tag/value pair used to add non-model information to an entry" ;
 	linkml:imported_from "linkml:extensions" ;
@@ -54,6 +55,7 @@ linkml:UnitOfMeasure a linkml:ClassDefinition ;
 	skos:exactMatch qudt:Unit ;
 	skos:inScheme "https://w3id.org/linkml/units"^^xsd:anyURI ;
 	linkml:any_of _:c14n0 , _:c14n1 , _:c14n5 , _:c14n7 ;
+	linkml:class_uri "http://qudt.org/schema/qudt/Unit"^^xsd:anyURI ;
 	linkml:definition_uri "https://w3id.org/linkml/UnitOfMeasure"^^xsd:anyURI ;
 	linkml:description "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension)." ;
 	linkml:slot_usage _:c14n2 ;
