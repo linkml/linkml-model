@@ -1,5 +1,4 @@
 # Auto generated from validation.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-05-05T18:49:16
 # Schema: reporting
 #
 # id: https://w3id.org/linkml/reporting
@@ -54,7 +53,7 @@ from rdflib import (
 from .types import Nodeidentifier, String
 from linkml_runtime.utils.metamodelcore import NodeIdentifier
 
-metamodel_version = "1.7.0"
+metamodel_version = "1.12.0"
 version = None
 
 # Namespaces
@@ -228,3 +227,4 @@ slots.info = Slot(uri=REPORTING.info, name="info", curie=REPORTING.curie('info')
 
 slots.validationReport__results = Slot(uri=REPORTING.results, name="validationReport__results", curie=REPORTING.curie('results'),
                    model_uri=REPORTING.validationReport__results, domain=None, range=Optional[Union[Union[dict, ValidationResult], list[Union[dict, ValidationResult]]]])
+

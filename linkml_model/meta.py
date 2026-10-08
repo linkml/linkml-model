@@ -1,5 +1,4 @@
 # Auto generated from meta.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-05-05T18:49:13
 # Schema: meta
 #
 # id: https://w3id.org/linkml/meta
@@ -81,7 +80,7 @@ from .types import Boolean, Datetime, Integer, Ncname, String, Uri, Uriorcurie
 from .units import UnitOfMeasure
 from linkml_runtime.utils.metamodelcore import Bool, NCName, URI, URIorCURIE, XSDDateTime
 
-metamodel_version = "1.11.0"
+metamodel_version = "1.12.0"
 version = None
 
 # Namespaces
@@ -217,7 +216,7 @@ class CommonMetadata(YAMLRoot):
     created_on: Optional[Union[str, XSDDateTime]] = None
     last_updated_on: Optional[Union[str, XSDDateTime]] = None
     modified_by: Optional[Union[str, URIorCURIE]] = None
-    status: Optional[Union[str, URIorCURIE]] = None
+    status: Optional[str] = None
     rank: Optional[int] = None
     categories: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     keywords: Optional[Union[str, list[str]]] = empty_list()
@@ -322,8 +321,8 @@ class CommonMetadata(YAMLRoot):
         if self.modified_by is not None and not isinstance(self.modified_by, URIorCURIE):
             self.modified_by = URIorCURIE(self.modified_by)
 
-        if self.status is not None and not isinstance(self.status, URIorCURIE):
-            self.status = URIorCURIE(self.status)
+        if self.status is not None and not isinstance(self.status, str):
+            self.status = str(self.status)
 
         if self.rank is not None and not isinstance(self.rank, int):
             self.rank = int(self.rank)
@@ -390,7 +389,7 @@ class Element(YAMLRoot):
     created_on: Optional[Union[str, XSDDateTime]] = None
     last_updated_on: Optional[Union[str, XSDDateTime]] = None
     modified_by: Optional[Union[str, URIorCURIE]] = None
-    status: Optional[Union[str, URIorCURIE]] = None
+    status: Optional[str] = None
     rank: Optional[int] = None
     categories: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     keywords: Optional[Union[str, list[str]]] = empty_list()
@@ -527,8 +526,8 @@ class Element(YAMLRoot):
         if self.modified_by is not None and not isinstance(self.modified_by, URIorCURIE):
             self.modified_by = URIorCURIE(self.modified_by)
 
-        if self.status is not None and not isinstance(self.status, URIorCURIE):
-            self.status = URIorCURIE(self.status)
+        if self.status is not None and not isinstance(self.status, str):
+            self.status = str(self.status)
 
         if self.rank is not None and not isinstance(self.rank, int):
             self.rank = int(self.rank)
@@ -1074,7 +1073,7 @@ class EnumBinding(YAMLRoot):
     created_on: Optional[Union[str, XSDDateTime]] = None
     last_updated_on: Optional[Union[str, XSDDateTime]] = None
     modified_by: Optional[Union[str, URIorCURIE]] = None
-    status: Optional[Union[str, URIorCURIE]] = None
+    status: Optional[str] = None
     rank: Optional[int] = None
     categories: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     keywords: Optional[Union[str, list[str]]] = empty_list()
@@ -1195,8 +1194,8 @@ class EnumBinding(YAMLRoot):
         if self.modified_by is not None and not isinstance(self.modified_by, URIorCURIE):
             self.modified_by = URIorCURIE(self.modified_by)
 
-        if self.status is not None and not isinstance(self.status, URIorCURIE):
-            self.status = URIorCURIE(self.status)
+        if self.status is not None and not isinstance(self.status, str):
+            self.status = str(self.status)
 
         if self.rank is not None and not isinstance(self.rank, int):
             self.rank = int(self.rank)
@@ -1330,7 +1329,7 @@ class StructuredAlias(YAMLRoot):
     created_on: Optional[Union[str, XSDDateTime]] = None
     last_updated_on: Optional[Union[str, XSDDateTime]] = None
     modified_by: Optional[Union[str, URIorCURIE]] = None
-    status: Optional[Union[str, URIorCURIE]] = None
+    status: Optional[str] = None
     rank: Optional[int] = None
     keywords: Optional[Union[str, list[str]]] = empty_list()
 
@@ -1454,8 +1453,8 @@ class StructuredAlias(YAMLRoot):
         if self.modified_by is not None and not isinstance(self.modified_by, URIorCURIE):
             self.modified_by = URIorCURIE(self.modified_by)
 
-        if self.status is not None and not isinstance(self.status, URIorCURIE):
-            self.status = URIorCURIE(self.status)
+        if self.status is not None and not isinstance(self.status, str):
+            self.status = str(self.status)
 
         if self.rank is not None and not isinstance(self.rank, int):
             self.rank = int(self.rank)
@@ -1654,7 +1653,7 @@ class AnonymousExpression(YAMLRoot):
     created_on: Optional[Union[str, XSDDateTime]] = None
     last_updated_on: Optional[Union[str, XSDDateTime]] = None
     modified_by: Optional[Union[str, URIorCURIE]] = None
-    status: Optional[Union[str, URIorCURIE]] = None
+    status: Optional[str] = None
     rank: Optional[int] = None
     categories: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     keywords: Optional[Union[str, list[str]]] = empty_list()
@@ -1763,8 +1762,8 @@ class AnonymousExpression(YAMLRoot):
         if self.modified_by is not None and not isinstance(self.modified_by, URIorCURIE):
             self.modified_by = URIorCURIE(self.modified_by)
 
-        if self.status is not None and not isinstance(self.status, URIorCURIE):
-            self.status = URIorCURIE(self.status)
+        if self.status is not None and not isinstance(self.status, str):
+            self.status = str(self.status)
 
         if self.rank is not None and not isinstance(self.rank, int):
             self.rank = int(self.rank)
@@ -1831,7 +1830,7 @@ class PathExpression(YAMLRoot):
     created_on: Optional[Union[str, XSDDateTime]] = None
     last_updated_on: Optional[Union[str, XSDDateTime]] = None
     modified_by: Optional[Union[str, URIorCURIE]] = None
-    status: Optional[Union[str, URIorCURIE]] = None
+    status: Optional[str] = None
     rank: Optional[int] = None
     categories: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     keywords: Optional[Union[str, list[str]]] = empty_list()
@@ -1968,8 +1967,8 @@ class PathExpression(YAMLRoot):
         if self.modified_by is not None and not isinstance(self.modified_by, URIorCURIE):
             self.modified_by = URIorCURIE(self.modified_by)
 
-        if self.status is not None and not isinstance(self.status, URIorCURIE):
-            self.status = URIorCURIE(self.status)
+        if self.status is not None and not isinstance(self.status, str):
+            self.status = str(self.status)
 
         if self.rank is not None and not isinstance(self.rank, int):
             self.rank = int(self.rank)
@@ -2614,7 +2613,7 @@ class AnonymousClassExpression(AnonymousExpression):
     class_name: ClassVar[str] = "anonymous_class_expression"
     class_model_uri: ClassVar[URIRef] = LINKML.AnonymousClassExpression
 
-    is_a: Optional[Union[str, DefinitionName]] = None
+    is_a: Optional[Union[str, ClassDefinitionName]] = None
     any_of: Optional[Union[Union[dict, "AnonymousClassExpression"], list[Union[dict, "AnonymousClassExpression"]]]] = empty_list()
     exactly_one_of: Optional[Union[Union[dict, "AnonymousClassExpression"], list[Union[dict, "AnonymousClassExpression"]]]] = empty_list()
     none_of: Optional[Union[Union[dict, "AnonymousClassExpression"], list[Union[dict, "AnonymousClassExpression"]]]] = empty_list()
@@ -2622,8 +2621,8 @@ class AnonymousClassExpression(AnonymousExpression):
     slot_conditions: Optional[Union[dict[Union[str, SlotDefinitionName], Union[dict, SlotDefinition]], list[Union[dict, SlotDefinition]]]] = empty_dict()
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.is_a is not None and not isinstance(self.is_a, DefinitionName):
-            self.is_a = DefinitionName(self.is_a)
+        if self.is_a is not None and not isinstance(self.is_a, ClassDefinitionName):
+            self.is_a = ClassDefinitionName(self.is_a)
 
         if not isinstance(self.any_of, list):
             self.any_of = [self.any_of] if self.any_of is not None else []
@@ -2839,7 +2838,7 @@ class ClassRule(ClassLevelRule):
     created_on: Optional[Union[str, XSDDateTime]] = None
     last_updated_on: Optional[Union[str, XSDDateTime]] = None
     modified_by: Optional[Union[str, URIorCURIE]] = None
-    status: Optional[Union[str, URIorCURIE]] = None
+    status: Optional[str] = None
     categories: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     keywords: Optional[Union[str, list[str]]] = empty_list()
 
@@ -2968,8 +2967,8 @@ class ClassRule(ClassLevelRule):
         if self.modified_by is not None and not isinstance(self.modified_by, URIorCURIE):
             self.modified_by = URIorCURIE(self.modified_by)
 
-        if self.status is not None and not isinstance(self.status, URIorCURIE):
-            self.status = URIorCURIE(self.status)
+        if self.status is not None and not isinstance(self.status, str):
+            self.status = str(self.status)
 
         if not isinstance(self.categories, list):
             self.categories = [self.categories] if self.categories is not None else []
@@ -2996,7 +2995,7 @@ class ArrayExpression(YAMLRoot):
 
     exact_number_dimensions: Optional[int] = None
     minimum_number_dimensions: Optional[int] = None
-    maximum_number_dimensions: Optional[Union[dict, Anything]] = None
+    maximum_number_dimensions: Optional[Union[int, bool, Bool]] = None
     dimensions: Optional[Union[Union[dict, "DimensionExpression"], list[Union[dict, "DimensionExpression"]]]] = empty_list()
     extensions: Optional[Union[dict[Union[str, ExtensionTag], Union[dict, Extension]], list[Union[dict, Extension]]]] = empty_dict()
     annotations: Optional[Union[dict[Union[str, AnnotationTag], Union[dict, Annotation]], list[Union[dict, Annotation]]]] = empty_dict()
@@ -3029,7 +3028,7 @@ class ArrayExpression(YAMLRoot):
     created_on: Optional[Union[str, XSDDateTime]] = None
     last_updated_on: Optional[Union[str, XSDDateTime]] = None
     modified_by: Optional[Union[str, URIorCURIE]] = None
-    status: Optional[Union[str, URIorCURIE]] = None
+    status: Optional[str] = None
     rank: Optional[int] = None
     categories: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     keywords: Optional[Union[str, list[str]]] = empty_list()
@@ -3040,6 +3039,17 @@ class ArrayExpression(YAMLRoot):
 
         if self.minimum_number_dimensions is not None and not isinstance(self.minimum_number_dimensions, int):
             self.minimum_number_dimensions = int(self.minimum_number_dimensions)
+
+        if self.maximum_number_dimensions is not None and not isinstance(self.maximum_number_dimensions, (int, Bool)):
+            value = self.maximum_number_dimensions
+            for _coerce in (lambda: int(value), lambda: Bool(value)):
+                try:
+                    self.maximum_number_dimensions = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[int, Bool] could be constructed from {value!r} for slot maximum_number_dimensions")
 
         if not isinstance(self.dimensions, list):
             self.dimensions = [self.dimensions] if self.dimensions is not None else []
@@ -3148,8 +3158,8 @@ class ArrayExpression(YAMLRoot):
         if self.modified_by is not None and not isinstance(self.modified_by, URIorCURIE):
             self.modified_by = URIorCURIE(self.modified_by)
 
-        if self.status is not None and not isinstance(self.status, URIorCURIE):
-            self.status = URIorCURIE(self.status)
+        if self.status is not None and not isinstance(self.status, str):
+            self.status = str(self.status)
 
         if self.rank is not None and not isinstance(self.rank, int):
             self.rank = int(self.rank)
@@ -3212,7 +3222,7 @@ class DimensionExpression(YAMLRoot):
     created_on: Optional[Union[str, XSDDateTime]] = None
     last_updated_on: Optional[Union[str, XSDDateTime]] = None
     modified_by: Optional[Union[str, URIorCURIE]] = None
-    status: Optional[Union[str, URIorCURIE]] = None
+    status: Optional[str] = None
     rank: Optional[int] = None
     categories: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     keywords: Optional[Union[str, list[str]]] = empty_list()
@@ -3333,8 +3343,8 @@ class DimensionExpression(YAMLRoot):
         if self.modified_by is not None and not isinstance(self.modified_by, URIorCURIE):
             self.modified_by = URIorCURIE(self.modified_by)
 
-        if self.status is not None and not isinstance(self.status, URIorCURIE):
-            self.status = URIorCURIE(self.status)
+        if self.status is not None and not isinstance(self.status, str):
+            self.status = str(self.status)
 
         if self.rank is not None and not isinstance(self.rank, int):
             self.rank = int(self.rank)
@@ -3396,7 +3406,7 @@ class PatternExpression(YAMLRoot):
     created_on: Optional[Union[str, XSDDateTime]] = None
     last_updated_on: Optional[Union[str, XSDDateTime]] = None
     modified_by: Optional[Union[str, URIorCURIE]] = None
-    status: Optional[Union[str, URIorCURIE]] = None
+    status: Optional[str] = None
     rank: Optional[int] = None
     categories: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     keywords: Optional[Union[str, list[str]]] = empty_list()
@@ -3514,8 +3524,8 @@ class PatternExpression(YAMLRoot):
         if self.modified_by is not None and not isinstance(self.modified_by, URIorCURIE):
             self.modified_by = URIorCURIE(self.modified_by)
 
-        if self.status is not None and not isinstance(self.status, URIorCURIE):
-            self.status = URIorCURIE(self.status)
+        if self.status is not None and not isinstance(self.status, str):
+            self.status = str(self.status)
 
         if self.rank is not None and not isinstance(self.rank, int):
             self.rank = int(self.rank)
@@ -3577,7 +3587,7 @@ class ImportExpression(YAMLRoot):
     created_on: Optional[Union[str, XSDDateTime]] = None
     last_updated_on: Optional[Union[str, XSDDateTime]] = None
     modified_by: Optional[Union[str, URIorCURIE]] = None
-    status: Optional[Union[str, URIorCURIE]] = None
+    status: Optional[str] = None
     rank: Optional[int] = None
     categories: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     keywords: Optional[Union[str, list[str]]] = empty_list()
@@ -3696,8 +3706,8 @@ class ImportExpression(YAMLRoot):
         if self.modified_by is not None and not isinstance(self.modified_by, URIorCURIE):
             self.modified_by = URIorCURIE(self.modified_by)
 
-        if self.status is not None and not isinstance(self.status, URIorCURIE):
-            self.status = URIorCURIE(self.status)
+        if self.status is not None and not isinstance(self.status, str):
+            self.status = str(self.status)
 
         if self.rank is not None and not isinstance(self.rank, int):
             self.rank = int(self.rank)
@@ -3905,7 +3915,7 @@ class PermissibleValue(YAMLRoot):
     created_on: Optional[Union[str, XSDDateTime]] = None
     last_updated_on: Optional[Union[str, XSDDateTime]] = None
     modified_by: Optional[Union[str, URIorCURIE]] = None
-    status: Optional[Union[str, URIorCURIE]] = None
+    status: Optional[str] = None
     rank: Optional[int] = None
     categories: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     keywords: Optional[Union[str, list[str]]] = empty_list()
@@ -4040,8 +4050,8 @@ class PermissibleValue(YAMLRoot):
         if self.modified_by is not None and not isinstance(self.modified_by, URIorCURIE):
             self.modified_by = URIorCURIE(self.modified_by)
 
-        if self.status is not None and not isinstance(self.status, URIorCURIE):
-            self.status = URIorCURIE(self.status)
+        if self.status is not None and not isinstance(self.status, str):
+            self.status = str(self.status)
 
         if self.rank is not None and not isinstance(self.rank, int):
             self.rank = int(self.rank)
@@ -4103,7 +4113,7 @@ class UniqueKey(YAMLRoot):
     created_on: Optional[Union[str, XSDDateTime]] = None
     last_updated_on: Optional[Union[str, XSDDateTime]] = None
     modified_by: Optional[Union[str, URIorCURIE]] = None
-    status: Optional[Union[str, URIorCURIE]] = None
+    status: Optional[str] = None
     rank: Optional[int] = None
     categories: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     keywords: Optional[Union[str, list[str]]] = empty_list()
@@ -4226,8 +4236,8 @@ class UniqueKey(YAMLRoot):
         if self.modified_by is not None and not isinstance(self.modified_by, URIorCURIE):
             self.modified_by = URIorCURIE(self.modified_by)
 
-        if self.status is not None and not isinstance(self.status, URIorCURIE):
-            self.status = URIorCURIE(self.status)
+        if self.status is not None and not isinstance(self.status, str):
+            self.status = str(self.status)
 
         if self.rank is not None and not isinstance(self.rank, int):
             self.rank = int(self.rank)
@@ -4289,7 +4299,7 @@ class TypeMapping(YAMLRoot):
     created_on: Optional[Union[str, XSDDateTime]] = None
     last_updated_on: Optional[Union[str, XSDDateTime]] = None
     modified_by: Optional[Union[str, URIorCURIE]] = None
-    status: Optional[Union[str, URIorCURIE]] = None
+    status: Optional[str] = None
     rank: Optional[int] = None
     categories: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     keywords: Optional[Union[str, list[str]]] = empty_list()
@@ -4409,8 +4419,8 @@ class TypeMapping(YAMLRoot):
         if self.modified_by is not None and not isinstance(self.modified_by, URIorCURIE):
             self.modified_by = URIorCURIE(self.modified_by)
 
-        if self.status is not None and not isinstance(self.status, URIorCURIE):
-            self.status = URIorCURIE(self.status)
+        if self.status is not None and not isinstance(self.status, str):
+            self.status = str(self.status)
 
         if self.rank is not None and not isinstance(self.rank, int):
             self.rank = int(self.rank)
@@ -4652,8 +4662,8 @@ slots.last_updated_on = Slot(uri=PAV.lastUpdatedOn, name="last_updated_on", curi
 slots.modified_by = Slot(uri=OSLC.modifiedBy, name="modified_by", curie=OSLC.curie('modifiedBy'),
                    model_uri=LINKML.modified_by, domain=Element, range=Optional[Union[str, URIorCURIE]])
 
-slots.status = Slot(uri=BIBO.status, name="status", curie=BIBO.curie('status'),
-                   model_uri=LINKML.status, domain=Element, range=Optional[Union[str, URIorCURIE]])
+slots.status = Slot(uri=LINKML.status, name="status", curie=LINKML.curie('status'),
+                   model_uri=LINKML.status, domain=Element, range=Optional[str])
 
 slots.literal_form = Slot(uri=SKOSXL.literalForm, name="literal_form", curie=SKOSXL.curie('literalForm'),
                    model_uri=LINKML.literal_form, domain=StructuredAlias, range=str)
@@ -4929,7 +4939,7 @@ slots.minimum_number_dimensions = Slot(uri=LINKML.minimum_number_dimensions, nam
                    model_uri=LINKML.minimum_number_dimensions, domain=ArrayExpression, range=Optional[int])
 
 slots.maximum_number_dimensions = Slot(uri=LINKML.maximum_number_dimensions, name="maximum_number_dimensions", curie=LINKML.curie('maximum_number_dimensions'),
-                   model_uri=LINKML.maximum_number_dimensions, domain=ArrayExpression, range=Optional[Union[dict, Anything]])
+                   model_uri=LINKML.maximum_number_dimensions, domain=ArrayExpression, range=Optional[Union[int, bool, Bool]])
 
 slots.exact_number_dimensions = Slot(uri=LINKML.exact_number_dimensions, name="exact_number_dimensions", curie=LINKML.curie('exact_number_dimensions'),
                    model_uri=LINKML.exact_number_dimensions, domain=ArrayExpression, range=Optional[int])
@@ -5297,6 +5307,9 @@ slots.class_expression_exactly_one_of = Slot(uri=LINKML.exactly_one_of, name="cl
 slots.class_expression_none_of = Slot(uri=LINKML.none_of, name="class_expression_none_of", curie=LINKML.curie('none_of'),
                    model_uri=LINKML.class_expression_none_of, domain=None, range=Optional[Union[Union[dict, "AnonymousClassExpression"], list[Union[dict, "AnonymousClassExpression"]]]])
 
+slots.anonymous_class_expression_is_a = Slot(uri=LINKML.is_a, name="anonymous_class_expression_is_a", curie=LINKML.curie('is_a'),
+                   model_uri=LINKML.anonymous_class_expression_is_a, domain=AnonymousClassExpression, range=Optional[Union[str, ClassDefinitionName]])
+
 slots.class_definition_is_a = Slot(uri=LINKML.is_a, name="class_definition_is_a", curie=LINKML.curie('is_a'),
                    model_uri=LINKML.class_definition_is_a, domain=ClassDefinition, range=Optional[Union[str, ClassDefinitionName]])
 
@@ -5323,3 +5336,4 @@ slots.permissible_value_mixins = Slot(uri=LINKML.mixins, name="permissible_value
 
 slots.extra_slots_expression_range_expression = Slot(uri=LINKML.range_expression, name="extra_slots_expression_range_expression", curie=LINKML.curie('range_expression'),
                    model_uri=LINKML.extra_slots_expression_range_expression, domain=ExtraSlotsExpression, range=Optional[Union[dict, AnonymousSlotExpression]])
+
