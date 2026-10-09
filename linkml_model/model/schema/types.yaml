@@ -165,6 +165,31 @@ types:
     notes: >-
       If you are authoring schemas in LinkML YAML, the type is referenced with the lower case "ncname".
 
+  langstring:
+    uri: linkml:LocalizedText
+    base: LocalizedText
+    description: >-
+      String with optional localization variants. Either a plain, non-langauge-tagged string or a multi-language mapping with at least one value.
+      Defines 2 operations that allow converting to a single string: 'plain()' and 'in_language(tag)'.
+    notes:
+      - In JSON serializations, plain strings should be mapped to JSON strings, and multi-language strings should be represented as a dictionary object of a language tag to a value in that language.
+      - In RDF serializations, plain strings should be mapped to xsd:string, and multi-language strings to rdf:langString with appropriate language tags.
+      - |
+        'plain()' yields a string that is populated from:
+        (1) the plain text if available,
+        (2) the English text if available, or
+        (3) the text of the alphabetically first language tag.
+      - |
+        'in_language(tag)' yields a string that is populated from:
+        (1) the plain text if available,
+        (2) the text of the specified language if available,
+        (3) the English text if available, or
+        (4) the text of the alphabetically first language tag.
+
+    todos:
+      - Implement support for the type in linkml_runtime
+      - Decide the base/repr slots of this type
+
   objectidentifier:
     uri: shex:iri
     base: ElementIdentifier
