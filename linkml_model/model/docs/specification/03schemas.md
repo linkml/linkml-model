@@ -68,6 +68,36 @@ However, it should be understood these are not precisely equivalent.
 
 * metamodel documentation: [SchemaDefinition](https://w3id.org/linkml/SchemaDefinition)
 
+### Open enumerations
+
+An **open enumeration** is an EnumDefinition that has no explicit permissible
+values and no other value-set constraint. Its `permissible_values` may be omitted
+or empty. It MUST accept any string as an enum value; it does not permit arbitrary
+non-string values. Other applicable slot and instance validation checks still
+apply.
+
+For example:
+
+```yaml
+enums:
+  Jurisdiction:
+    description: An open set of jurisdiction codes
+```
+
+A slot ranged to this enum permits strings such as `IE` and `GB` without a
+fixed-list membership check.
+
+An enum is not open merely because it omits `permissible_values`. A value set
+may instead be specified by `code_set`, `pv_formula`, `concepts`, `inherits`,
+`include`, `minus`, `reachable_from`, `matches`, or boolean enum expressions.
+Such constraints may also be inherited or obtained through schema derivation.
+An empty result from evaluating a value-set expression is an empty constrained
+set, not an open enumeration. An unevaluated query is not evidence that an enum
+is open.
+
+The corresponding validation rules are defined in
+[Enum checks](05validation.md#enum-checks).
+
 ### SchemaDefinition: Normative subset metaslots
 
 A schema *m* is an instance of a SchemaDefinition, with normative elements:
