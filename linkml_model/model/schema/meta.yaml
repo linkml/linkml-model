@@ -1942,15 +1942,15 @@ slots:
 
   alias:
     rank: 6
-    domain: slot_definition
     range: string
     slot_uri: skos:prefLabel
     description: >-
-      the name used for a slot in the context of its owning class.  If present, this is used instead of the actual
-      slot name.
+      The alternative name to be used in serializations of an instance instead of the canonical name.
     comments:
       - an example of alias is used within this metamodel, slot_definitions is aliases as slots
       - not to be confused with aliases, which indicates a set of terms to be used for search purposes.
+      - This should be used for describing the structure of already existing instances.
+      - For human-readable labels, prefer 'title' instead.
     in_subset:
       - SpecificationSubset
 
@@ -2745,6 +2745,7 @@ classes:
       - type_uri
       - repr
       - union_of
+      - alias
     slot_usage:
       union_of:
         range: type_definition
@@ -2830,6 +2831,7 @@ classes:
       - OwlProfile
     slots:
       - enum_uri
+      - alias
 
   enum_binding:
     description: >-
@@ -3287,6 +3289,7 @@ classes:
     slots:
       - text
       - description
+      - alias
       - meaning
       - unit
       - instantiates
