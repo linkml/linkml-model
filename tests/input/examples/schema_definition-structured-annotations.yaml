@@ -1,0 +1,48 @@
+id: https://example.org/structured-annotations
+name: structured-annotations-example
+title: Structured Annotations Example
+description: |-
+  Example LinkML schema exercising the annotation forms accepted by the
+  metamodel: simple tag/value pairs, structured payloads nested under
+  `value`, and annotations that carry their own nested annotations.
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  example: https://example.org/
+
+default_prefix: example
+
+imports:
+  - linkml:types
+
+classes:
+
+  Sample:
+    tree_root: true
+    annotations:
+      # simple tag/value pair
+      display_hint: table
+      # structured payload must be nested under `value` (range AnyValue)
+      provenance:
+        value:
+          source: https://example.org/source-db
+          retrieved_on: "2026-08-05"
+          pipeline:
+            name: ingest
+            version: 1.2.3
+      # an annotation may itself be annotated
+      review_status:
+        value: approved
+        annotations:
+          reviewed_by: curator-team
+    attributes:
+      name:
+        identifier: true
+        range: string
+      measurement:
+        range: float
+        annotations:
+          units_note:
+            value:
+              system: SI
+              quantity: mass
