@@ -1,8 +1,8 @@
 name: Publish Docs & PyPI Package
 
 # Publishes with trusted publishing to
-# - PyPI on releases created in GitHub UI if status is published.
-#   For draft status, nothing happens.
+# - PyPI when a release is published, either directly or from a draft.
+#   Saving a draft does nothing until it is published.
 # - TestPyPI on new tags "v1.2.3" or "v1.2.3.something" on main branch
 #
 # More on trusted publishing: https://docs.pypi.org/trusted-publishers/
@@ -12,7 +12,7 @@ env:
 
 on:
   release:
-    types: [created]
+    types: [published]
 
 jobs:
   build:
