@@ -88,9 +88,8 @@ A slot ranged to this enum permits strings such as `IE` and `GB` without a
 fixed-list membership check.
 
 An enum is not open merely because it omits `permissible_values`.
-Its permitted values may instead be defined by `code_set`, `pv_formula`, `concepts`,
-`inherits`, `include`, `minus`, `reachable_from`, `matches`, boolean enum
-expressions, or inherited and derived constraints.
+Its permitted values may instead be defined by `EnumDefinition` slots capable of
+identifying and/or generating the permissible values (like `pv_formula`, `matches`,...).
 These define a constrained value set; they do not make the enum open.
 If that value set evaluates to empty, no value satisfies it.
 If the constraint has not been evaluated, that does not establish that the enum
