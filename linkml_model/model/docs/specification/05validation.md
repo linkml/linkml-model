@@ -181,10 +181,23 @@ may choose to assign the most specific value allowed to the slot.
 
 ### Enum checks
 
+An enum's permitted values are determined after schema derivation, including
+inherited and dynamic value-set constraints. `IsOpen(e)` means that `e` is
+an [open enumeration](03schemas.md#open-enumerations). `PVs(e)` denotes the
+permitted values obtained from the enum's applicable value-set constraints, as described
+in [Calculate Permissible Values](04derived-schemas.md#algorithm-calculate-permissible-values).
 
-| **T**  | Element         | Check         | Fail Condition                     |
-|--------|-----------------|---------------|------------------------------------|
-| `in`   | `<Enum>[<PV>]`  | `Permissible` | `<PV>  ∉ <Enum>.permissible_value` |
+| **T** | Element | Check | Fail Condition |
+|-------|---------|-------|----------------|
+| `in` | `<Enum>[<PV>]` | `Permissible` | `IsOpen(<Enum>)` and `<PV>` is not a string |
+| `in` | `<Enum>[<PV>]` | `Permissible` | not `IsOpen(<Enum>)` and `<PV>` is not in `PVs(<Enum>)` |
+
+An empty or missing static `permissible_values` collection alone does not
+determine openness; other value-set constraints may apply.
+If a constrained value set evaluates to empty, no value passes the membership check.
+If a tool cannot evaluate an applicable dynamic constraint, it cannot establish
+membership from that constraint; any permissive string-schema fallback is
+incomplete validation, not evidence that the enum is open.
 
 ### Rules
 
