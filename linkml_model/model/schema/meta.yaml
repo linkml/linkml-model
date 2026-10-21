@@ -2156,6 +2156,25 @@ slots:
       - SpecificationSubset
       - BasicSubset
 
+  minimum_length:
+    rank: 36
+    range: integer
+#    minimum_value: 0
+    description: >-
+      the string value must contain at least this many characters (Unicode code-points).
+    comments:
+      - For binary values (like base64Binary), this restriction should measure the number of octets instead.
+
+  maximum_length:
+    rank: 37
+    range: integer
+#    minimum_value: 0
+    description: >-
+      the string value must contain at most this many characters (Unicode code-points).
+    comments:
+      - For binary values (like base64Binary), this restriction should measure the number of octets instead.
+
+
   syntax:
     domain: pattern_expression
     range: string
@@ -2706,6 +2725,8 @@ classes:
     slots:
       - pattern
       - structured_pattern
+      - minimum_length
+      - maximum_length
       - unit
       - implicit_prefix
       - equals_string
@@ -2959,6 +2980,8 @@ classes:
       - maximum_value
       - pattern
       - structured_pattern
+      - minimum_length
+      - maximum_length
       - unit
       - implicit_prefix
       - value_presence
