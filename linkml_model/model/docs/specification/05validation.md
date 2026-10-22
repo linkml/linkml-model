@@ -188,8 +188,140 @@ may choose to assign the most specific value allowed to the slot.
 
 ### Rules
 
+Rules allow conditional constraints on classes: if certain **preconditions** hold for an
+instance, then **postconditions** must also hold. Rules are declared under the `rules` slot
+of a class definition.
+
+Each rule is a `ClassRule` with the following structure:
+
+- **preconditions** — an anonymous class expression that acts as the trigger ("if")
+- **postconditions** — an anonymous class expression that must hold when the preconditions hold ("then")
+- **elseconditions** — an anonymous class expression that must hold when the preconditions do *not* hold ("else")
+- **open_world** — if `true`, the postconditions may be omitted from instance data; an inference engine may add them (absent counts as `false`)
+- **bidirectional** — if `true`, the postconditions also entail the preconditions (absent counts as `false`)
+- **deactivated** — if `true`, the rule is not evaluated (absent counts as `false`)
+
+Preconditions, postconditions and elseconditions use `slot_conditions` to constrain
+individual slots. A slot condition is a slot definition, so it may use `required`,
+`equals_string`, `minimum_value`, `maximum_value`, `pattern`, `range` and the other
+slot constraints. The boolean combinators `any_of`, `all_of`, `none_of` and
+`exactly_one_of` (see below) apply to both the class expressions and the slot conditions.
+
+#### Example: simple conditional requirement
+
+If a `confidence` value is provided, then a `confidence_source` must also be provided:
+
+```yaml
+classes:
+  Mapping:
+    attributes:
+      subject_id:
+        required: true
+      object_id:
+        required: true
+      confidence:
+        range: float
+      confidence_source:
+    rules:
+      - preconditions:
+          slot_conditions:
+            confidence:
+              required: true
+        postconditions:
+          slot_conditions:
+            confidence_source:
+              required: true
+```
+
+#### Example: conditional requirement with `any_of` in postconditions
+
+If one field is present, then *at least one* of two other fields must be provided.
+Use `any_of` inside `postconditions`; each branch is a separate class expression:
+
+```yaml
+classes:
+  Mapping:
+    attributes:
+      subject_id:
+        required: true
+      object_id:
+        required: true
+      reviewer_confidence:
+        range: float
+      reviewer_id:
+      reviewer_label:
+    rules:
+      - description: >-
+          If reviewer_confidence is provided, then at least one of
+          reviewer_id or reviewer_label must also be provided.
+        preconditions:
+          slot_conditions:
+            reviewer_confidence:
+              required: true
+        postconditions:
+          any_of:
+            - slot_conditions:
+                reviewer_id:
+                  required: true
+            - slot_conditions:
+                reviewer_label:
+                  required: true
+```
+
+#### Example: preconditions with pattern matching
+
+Rules can also constrain values, not just presence. Here, if `country` is "USA",
+the `postal_code` must match a US zip code pattern:
+
+```yaml
+classes:
+  Address:
+    attributes:
+      country:
+      postal_code:
+    rules:
+      - preconditions:
+          slot_conditions:
+            country:
+              equals_string: "USA"
+        postconditions:
+          slot_conditions:
+            postal_code:
+              pattern: "[0-9]{5}(-[0-9]{4})?"
+```
+
 ### Uniqueness checks
 
+A *unique key* is a set of slots whose combined values identify an instance of a class.
+A `key` slot is a unique key of one slot, and each entry of a class's `unique_keys`
+declares a compound key over the slots in its `unique_key_slots`; both identify an
+instance within the collection that contains it. An `identifier` slot is also a unique
+key of one slot, and it identifies an instance throughout the whole document.
+
+The condition **Unique** of the core checks holds for a collection if no two members of
+the collection that are instances of the class, or of any of its descendants, have the
+same values for all slots of a unique key of that class. By default, two missing values
+count as equal for this comparison; if a compound key sets `consider_nulls_inequal` to
+`true`, a missing value never equals another, as for SQL `NULL`.
+
+```yaml
+classes:
+  Person:
+    attributes:
+      given_name:
+      family_name:
+      birth_date:
+        range: date
+    unique_keys:
+      name_and_birth_date:
+        unique_key_slots:
+          - given_name
+          - family_name
+          - birth_date
+```
+
+A collection of `Person` instances fails the check if two of them share the same
+`given_name`, `family_name` and `birth_date`.
 
 ### Boolean combinations of expressions
 
@@ -209,10 +341,11 @@ In all cases, the semantics are as follows:
   * for empty lists this is always false
 - exactly_one_of: true if there exists a member of the operands that evaluates to true, and all other members evaluate to false
   * for empty lists this is always false
+  * for lists of length 2 this is the same as the logical XOR operator
 - none_of: true if there does not exist a member of the operands that evaluates to true
   * for empty lists this is always true
   * for lists of length 1 this is the same as the logical NOT operator
-  * for lists of length 2 this is the same as the logical XOR operator
+  * for lists of length 2 this is the same as the logical NOR operator
 - all_of: true if there are no members that evaluate to false
   * for empty lists this is always true
 
@@ -220,8 +353,15 @@ In all cases, the semantics are as follows:
 
 For each rule `r` in *C*.rules:
 
-- if `r.preconditions` is `None` or `r.preconditions` is satisfied, then
-- `r.postconditions` are applied
+- if `r.deactivated` is `True`, skip this rule
+- if `r.preconditions` is `None` or `r.preconditions` is satisfied by the instance, then:
+  - `r.postconditions` MUST be satisfied (validation error if not)
+- otherwise (preconditions not satisfied):
+  - if `r.elseconditions` is not `None`, then `r.elseconditions` MUST be satisfied
+- if `r.open_world` is `True`, a slot that the postconditions or elseconditions require MAY be
+  absent from the instance; the other constraints of those conditions still apply, and an
+  inference engine MAY supply the absent values
+- if `r.bidirectional` is `True`, the rule is also evaluated in reverse (the postconditions entail the preconditions)
 
 ### Classification Rule evaluation
 
