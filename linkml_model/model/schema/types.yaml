@@ -10,6 +10,7 @@ prefixes:
   xsd: http://www.w3.org/2001/XMLSchema#
   shex: http://www.w3.org/ns/shex#
   schema: http://schema.org/
+  xh11d: http://www.w3.org/1999/xhtml/datatypes/
 
 default_prefix: linkml
 default_range: string
@@ -129,6 +130,8 @@ types:
     description: a URI or a CURIE
     notes: >-
       If you are authoring schemas in LinkML YAML, the type is referenced with the lower case "uriorcurie".
+    exact_mappings:
+      - xh11d:CURIEorIRI
 
   curie:
     uri: xsd:string
@@ -141,6 +144,8 @@ types:
     notes: >-
       If you are authoring schemas in LinkML YAML, the type is referenced with the lower case "curie".
     conforms_to: https://www.w3.org/TR/curie/
+    exact_mappings:
+      - xh11d:CURIE
 
   uri:
     uri: xsd:anyURI
