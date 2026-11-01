@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7.0.1
-      - uses: astral-sh/setup-uv@v10.2.0
+      - uses: astral-sh/setup-uv@v10.3.3
         with:
           version: ${{ env.UV_VERSION }}
-      - uses: actions/setup-python@v7.0.0
+      - uses: actions/setup-python@v7.1.0
         with:
           python-version: "3.13"
       - name: Check pyproject.toml and uv.lock
@@ -47,11 +47,11 @@ jobs:
         run: |
           git remote add upstream https://github.com/linkml/linkml-model
           git fetch upstream --tags
-      - uses: astral-sh/setup-uv@v10.2.0
+      - uses: astral-sh/setup-uv@v10.3.3
         with:
           version: ${{ env.UV_VERSION }}
           enable-cache: true
-      - uses: actions/setup-python@v7.0.0
+      - uses: actions/setup-python@v7.1.0
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
