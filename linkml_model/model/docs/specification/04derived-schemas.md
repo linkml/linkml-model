@@ -124,7 +124,7 @@ In the metamodel, the identifier **SlotDefinitionName** is always `name`, so thi
 ### URI and CURIE functions
 
 - a CURIE is a string that conforms to the [W3 CURIE specification](https://www.w3.org/TR/curie/)
-- a URI is a string that conforms to [rfc3987](https://www.ietf.org/rfc/rfc3987.txt)
+- a URI is a string that conforms to the URI rule of [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986)
 - The function **URI**(*s*, *v*) takes a string as input and normalizes it to a URI
     - if the input is already a URI, then return it
     - if the input is a CURIE, then expand it using the prefix map in *s*; this is known as *expansion*
