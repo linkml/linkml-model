@@ -575,7 +575,7 @@ These are:
 - Objectidentifier (ElementIdentifier) - A URI or CURIE that represents an object in the model.
 - String (str) - A character string
 - Time (XSDTime) - A time object represents a (local) time of day, independent of any particular day
-- Uri (URI) - a complete URI
+- Uri (URI) - a URI, which starts with a scheme
 - Uriorcurie (URIorCURIE) - a URI or a CURIE
 
 The type schema can be imported, used directly, or used as a basis to extend new types

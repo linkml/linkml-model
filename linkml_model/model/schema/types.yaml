@@ -136,7 +136,8 @@ types:
     repr: str
     description: a compact URI
     comments:
-      - in RDF serializations this MUST be expanded to a URI
+      - in RDF serializations a value of this type stays an xsd:string literal and is not expanded. Use uriorcurie for a
+        value that should become an IRI
       - in non-RDF serializations MAY be serialized as the compact representation
     notes: >-
       If you are authoring schemas in LinkML YAML, the type is referenced with the lower case "curie".
@@ -146,16 +147,17 @@ types:
     uri: xsd:anyURI
     base: URI
     repr: str
-    description: a complete URI
+    description: a URI, which starts with a scheme
     comments:
       - >-
-        in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or
-        a reference to an identifier, in which case it is translated directly to a node
+        in RDF serializations a value of this type is an IRI, whether or not its slot is an identifier. A relative
+        reference cannot be an RDF IRI, so for URI references held as text, derive a type from string and set its uri
+        to xsd:anyURI. Its values stay literals
     notes: >-
       If you are authoring schemas in LinkML YAML, the type is referenced with the lower case "uri".
     close_mappings:
       - schema:URL
-    conforms_to: https://www.ietf.org/rfc/rfc3987.txt
+    conforms_to: https://datatracker.ietf.org/doc/html/rfc3986
 
   ncname:
     uri: xsd:string
