@@ -2456,17 +2456,20 @@ slots:
   # -----------------------------------
 
   import_from:
+    description: Source of the import expression
     domain: import_expression
     required: true
     range: uriorcurie
     status: testing
 
   import_as:
+    description: Alias to use for this import
     domain: import_expression
     range: ncname
     status: testing
 
   import_map:
+    description: Settings to use for this import
     domain: import_expression
     multivalued: true
     inlined: true
@@ -2490,6 +2493,7 @@ slots:
     slot_uri: skos:altLabel
 
   local_names:
+    description: Attributed labels of an element
     domain: element
     range: local_name
     multivalued: true
@@ -2576,6 +2580,12 @@ classes:
 
   Anything:
     class_uri: linkml:Any
+    description: An unconstrained type or object
+    comments:
+      - If you don’t explicitly declare a range, the default_range is used instead, and the default value of default_range is string
+      - Any class in the schema can take on this role by being declared as linkml:Any using class_uri
+    see_also:
+      - https://linkml.io/linkml/schemas/advanced.html#linkml-any-type
 
   common_metadata:
     description: Generic metadata shared across definitions
@@ -2987,6 +2997,8 @@ classes:
         range: anonymous_slot_expression
 
   anonymous_slot_expression:
+    description: >-
+      A slot expression that is not a top-level named slot/attribute definition. Used for nesting.
     is_a: anonymous_expression
     mixins:
       - slot_expression
@@ -3084,6 +3096,8 @@ classes:
         range: anonymous_class_expression
 
   anonymous_class_expression:
+    description: >-
+      A class expression that is not a top-level named class definition. Used for nesting.
     is_a: anonymous_expression
     mixins:
       - class_expression
@@ -3370,9 +3384,14 @@ enums:
     description: enumeration of conditions by which a slot value should be set
     permissible_values:
       UNCOMMITTED:
+        description: Slot value may or may not be present
       PRESENT:
+        description: Slot value is present
       ABSENT:
+        description: Slot value is absent
     status: testing
+    see_also:
+      - https://github.com/orgs/linkml/discussions/3813
 
   relational_role_enum:
     rank: 3
@@ -3403,12 +3422,16 @@ enums:
     description: permissible values for the relationship between an element and an alias
     permissible_values:
       EXACT_SYNONYM:
+        description: The element and the alias have identical meaning.
         meaning: skos:exactMatch
       RELATED_SYNONYM:
+        description: The element and the alias have related meanings.
         meaning: skos:relatedMatch
       BROAD_SYNONYM:
+        description: The element has a broader meaning than the alias.
         meaning: skos:broaderMatch
       NARROW_SYNONYM:
+        description: The element has a narrower meaning than the alias.
         meaning: skos:narrowerMatch
 
   obligation_level_enum:
