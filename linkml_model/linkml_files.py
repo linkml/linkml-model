@@ -153,7 +153,7 @@ def GITHUB_PATH_FOR(source: Source,
                     release: Optional[Union[ReleaseTag, str]] = ReleaseTag.CURRENT,
                     branch: Optional[str] = "main") -> str:
     def do_request(url) -> object:
-        resp = requests.get(url)
+        resp = requests.get(url, timeout=30)
         if resp.ok:
             return resp.json()
         raise requests.HTTPError(f"{resp.status_code} - {resp.reason}: {url}")
