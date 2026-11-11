@@ -54,7 +54,7 @@ def test_is_open_on_anonymous_enum_range(schema, slot_name, expected):
 
 
 def test_is_open_in_slot_usage(schema):
-    """A slot_usage may narrow an open enum to a closed anonymous expression."""
+    """A slot_usage may narrow a closed enum to a closed anonymous expression."""
     slot_usage = schema.classes["Researcher"].slot_usage["marital_status"]
     assert slot_usage.enum_range.is_open is False
 
