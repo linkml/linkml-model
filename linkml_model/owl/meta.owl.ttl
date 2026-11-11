@@ -895,6 +895,7 @@ linkml:extra_slots a owl:ObjectProperty , linkml:SlotDefinition ;
 	rdfs:domain linkml:ClassDefinition ;
 	rdfs:label "extra_slots" ;
 	rdfs:range linkml:ExtraSlotsExpression ;
+	rdfs:seeAlso linkml:id_prefixes_are_closed , linkml:is_open ;
 	skos:definition "How a class instance handles extra data not specified in the class definition.\nNote that this does *not* define the constraints that are placed on additional slots defined by inheriting classes.\n\nPossible values:\n- `allowed: true` - allow all additional data\n- `allowed: false` (or `allowed:` or `allowed: null` while `range_expression` is `null`) -\n  forbid all additional data (default)\n- `range_expression: ...`  - allow additional data if it matches the slot expression (see examples)\n" ;
 	skos:inScheme linkml:meta .
 linkml:followed_by a owl:ObjectProperty , linkml:SlotDefinition ;
@@ -951,7 +952,7 @@ linkml:id_prefixes_are_closed a owl:ObjectProperty , linkml:SlotDefinition ;
 	rdfs:domain linkml:Element ;
 	rdfs:label "id_prefixes_are_closed" ;
 	rdfs:range linkml:Boolean ;
-	rdfs:seeAlso <https://github.com/linkml/linkml/issues/194> ;
+	rdfs:seeAlso <https://github.com/linkml/linkml/issues/194> , linkml:extra_slots , linkml:is_open ;
 	skos:definition "If true, then the id_prefixes slot is treated as being closed, and any use of an id that does not have this prefix is considered a violation." ;
 	skos:inScheme linkml:meta .
 linkml:identifier a owl:ObjectProperty , linkml:SlotDefinition ;
@@ -1152,7 +1153,7 @@ linkml:is_open a owl:ObjectProperty , linkml:SlotDefinition ;
 	rdfs:seeAlso <https://github.com/linkml/linkml/issues/127> , <https://github.com/linkml/linkml/pull/3712> , <https://pages.nist.gov/metaschema/specification/syntax/constraints/#allow-other> , linkml:extra_slots , linkml:id_prefixes_are_closed ;
 	skos:definition "Whether the enumeration is open, meaning that values outside of the set of permissible values are allowed. If true, the enumeration is open and data values that are not in the set of permissible values are permitted (though they SHOULD be drawn from the permissible values if available). If false (runtime default), the enumeration is closed and data values MUST be drawn from the set of permissible values." ;
 	skos:inScheme linkml:meta ;
-	skos:note "An open enumeration is analogous to the `allow-other=\"yes\"` construct in the OSCAL Metamodel." , "When an enum is open, the permissible value set is not exhaustive - they document the advised, recommended, or expected values but allow values outside the permissible set." .
+	skos:note "An open enumeration is analogous to the `allow-other=\"yes\"` construct in the NIST Metaschema." , "When an enum is open, the permissible value set is not exhaustive - they document the advised, recommended, or expected values but allow values outside the permissible set." .
 linkml:is_usage_slot a owl:ObjectProperty , linkml:SlotDefinition ;
 	rdfs:domain linkml:SlotDefinition ;
 	rdfs:label "is_usage_slot" ;

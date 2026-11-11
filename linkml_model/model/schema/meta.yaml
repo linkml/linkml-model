@@ -255,6 +255,8 @@ slots:
     description: >-
       If true, then the id_prefixes slot is treated as being closed, and any use of an id that does not have this prefix is considered a violation.
     see_also:
+      - linkml:is_open
+      - linkml:extra_slots
       - https://github.com/linkml/linkml/issues/194
 
   description:
@@ -665,7 +667,7 @@ slots:
       drawn from the permissible values if available). If false (runtime default), the
       enumeration is closed and data values MUST be drawn from the set of permissible values.
     comments:
-      - An open enumeration is analogous to the `allow-other="yes"` construct in the OSCAL Metamodel.
+      - An open enumeration is analogous to the `allow-other="yes"` construct in the NIST Metaschema.
       - When an enum is open, the permissible value set is not exhaustive - they document the
         advised, recommended, or expected values but allow values outside the permissible set.
     see_also:
@@ -1403,6 +1405,9 @@ slots:
       - `range_expression: ...`  - allow additional data if it matches the slot expression (see examples)
     domain: class_definition
     range: extra_slots_expression
+    see_also:
+      - linkml:is_open
+      - linkml:id_prefixes_are_closed
     in_subset:
       - SpecificationSubset
       - BasicSubset
